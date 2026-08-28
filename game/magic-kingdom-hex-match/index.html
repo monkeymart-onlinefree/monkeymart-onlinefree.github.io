@@ -82,6 +82,9 @@
           <div class="meta-tags" id="metaTags"></div>
         </div>
 
+        <!-- Long-form Overview / How to Play / FAQs content, loaded per-game -->
+        <div class="game-long-content" id="gameLongContent" hidden></div>
+
         <div class="related-section">
           <div class="section-head">
             <h2 class="section-title">🎲 More like this</h2>
@@ -133,16 +136,34 @@
   GB.buildSidebar(game.c);
 
   document.getElementById('pageTitle').textContent = game.t + ' — Play Free on GameBurst';
-  document.getElementById('pageDesc').setAttribute('content', 'Play ' + game.t + ' free online, instantly in your browser.');
+  const metaDesc = (game.d && game.d.trim())
+    ? game.d.trim().slice(0, 155)
+    : 'Play ' + game.t + ' free online, instantly in your browser.';
+  document.getElementById('pageDesc').setAttribute('content', metaDesc);
   document.getElementById('playerTitle').textContent = game.t;
   document.getElementById('playerHeading').textContent = 'About ' + game.t;
-  document.getElementById('playerDesc').textContent = `${game.t} is a free ${game.c} game you can play instantly in your browser — no downloads or installs required.`;
+  document.getElementById('playerDesc').textContent = game.d && game.d.trim()
+    ? game.d.trim()
+    : `${game.t} is a free ${game.c} game you can play instantly in your browser — no downloads or installs required.`;
 
   document.getElementById('metaTags').innerHTML = `
     <span class="meta-tag">${GB.emojiFor(game.c)} ${GB.capitalize(game.c)}</span>
     <span class="meta-tag">📱 ${GB.capitalize(game.o)}</span>
     <span class="meta-tag">★ ${Math.round((game.q||0)*100)} rating</span>
   `;
+
+  // Fetch this game's long-form content (Overview / How to Play / FAQs) —
+  // stored per-game so pages don't have to load one giant shared file.
+  fetch('../../data/content/' + encodeURIComponent(game.slug) + '.json')
+    .then(r => r.ok ? r.json() : null)
+    .then(data => {
+      if(data && data.content){
+        const el = document.getElementById('gameLongContent');
+        el.innerHTML = data.content;
+        el.hidden = false;
+      }
+    })
+    .catch(()=>{ /* content is optional; page still works without it */ });
 
   // Ad-blocker detection: show overlay if blocked, otherwise load game normally
   const frame = document.getElementById('gameFrame');
