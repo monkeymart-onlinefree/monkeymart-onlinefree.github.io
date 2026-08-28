@@ -4,6 +4,11 @@ const GB = (function(){
   let ALL_GAMES = null;
   let CATEGORIES = null;
 
+  // ROOT_PREFIX lets this same shared.js work both at site root (index.html, category.html, etc.)
+  // and two levels deep inside /game/<slug>/index.html. Set window.GB_ROOT_PREFIX = '../../'
+  // in pages that live inside game/<slug>/ before loading shared.js.
+  const ROOT_PREFIX = (typeof window !== 'undefined' && window.GB_ROOT_PREFIX) ? window.GB_ROOT_PREFIX : '';
+
   const EMOJI_MAP = {
     arcade:'👾',puzzle:'🧩',casual:'🎈',adventure:'🗺️',action:'💥','hyper-casual':'⚡',
     animal:'🐾',shooter:'🎯',platformer:'🏃',sports:'⚽','match-3':'💎',ball:'🏀',
@@ -35,8 +40,8 @@ const GB = (function(){
     return a;
   }
 
-  // Resolve data path relative to page location (works for /game.html and /category.html at root)
-  function dataUrl(name){ return 'data/' + name; }
+  // Resolve data path relative to page location (works at root and inside game/<slug>/)
+  function dataUrl(name){ return ROOT_PREFIX + 'data/' + name; }
 
   async function loadData(){
     if(ALL_GAMES && CATEGORIES) return {games:ALL_GAMES, categories:CATEGORIES};
@@ -53,6 +58,10 @@ const GB = (function(){
     return ALL_GAMES.find(g=>g.id === id);
   }
 
+  function getBySlug(slug){
+    return ALL_GAMES.find(g=>g.slug === slug);
+  }
+
   function topCategories(n){
     return Object.entries(CATEGORIES).sort((a,b)=>b[1]-a[1]).slice(0,n);
   }
@@ -61,16 +70,20 @@ const GB = (function(){
   function qs(name){
     return new URLSearchParams(window.location.search).get(name);
   }
-  function gameUrlFor(id){ return 'game.html?id=' + encodeURIComponent(id); }
-  function categoryUrlFor(cat){ return 'category.html?c=' + encodeURIComponent(cat); }
-  function searchUrlFor(q){ return 'search.html?q=' + encodeURIComponent(q); }
+  function gameUrlFor(game){
+    // Accepts either a game object or a raw slug string
+    const slug = (game && typeof game === 'object') ? game.slug : game;
+    return ROOT_PREFIX + 'game/' + encodeURIComponent(slug) + '/';
+  }
+  function categoryUrlFor(cat){ return ROOT_PREFIX + 'category.html?c=' + encodeURIComponent(cat); }
+  function searchUrlFor(q){ return ROOT_PREFIX + 'search.html?q=' + encodeURIComponent(q); }
 
   // ---- Card builder (shared across homepage/category/search/related) ----
   function buildCardEl(game, opts){
     opts = opts || {};
     const card = document.createElement('a');
     card.className = 'card';
-    card.href = gameUrlFor(game.id);
+    card.href = gameUrlFor(game);
     if(opts.delay!==undefined) card.style.animationDelay = opts.delay + 's';
 
     const qualityPct = Math.round((game.q || 0) * 100);
@@ -97,7 +110,7 @@ const GB = (function(){
   function buildBannerCardEl(game){
     const card = document.createElement('a');
     card.className = 'banner-card';
-    card.href = gameUrlFor(game.id);
+    card.href = gameUrlFor(game);
     card.innerHTML = `
       <img src="${escapeHtml(game.ban || game.img)}" alt="${escapeHtml(game.t)}" loading="lazy" onerror="this.onerror=null;this.src='${escapeHtml(game.img)}'">
       <div class="banner-card-overlay"><span class="banner-card-title">${escapeHtml(game.t)}</span></div>
@@ -108,7 +121,7 @@ const GB = (function(){
   function buildPlayNextItemEl(game){
     const item = document.createElement('a');
     item.className = 'playnext-item';
-    item.href = gameUrlFor(game.id);
+    item.href = gameUrlFor(game);
     item.innerHTML = `
       <img src="${escapeHtml(game.img)}" alt="${escapeHtml(game.t)}" loading="lazy" onerror="this.onerror=null;this.src='${escapeHtml(game.ban)}'">
       <div class="playnext-info">
@@ -125,14 +138,14 @@ const GB = (function(){
     if(!sidebar) return;
 
     const primaryLinks = [
-      {href:'index.html', ic:'🏠', label:'Home', match:'home'},
-      {href:'category.html?c=arcade', ic:'👾', label:'Arcade', match:'x'},
-      {href:'all.html?sort=quality', ic:'⭐', label:'Top Rated', match:'top'},
-      {href:'all.html?sort=new', ic:'🆕', label:'New Games', match:'new'},
+      {href:ROOT_PREFIX+'index.html', ic:'🏠', label:'Home', match:'home'},
+      {href:ROOT_PREFIX+'category.html?c=arcade', ic:'👾', label:'Arcade', match:'x'},
+      {href:ROOT_PREFIX+'all.html?sort=quality', ic:'⭐', label:'Top Rated', match:'top'},
+      {href:ROOT_PREFIX+'all.html?sort=new', ic:'🆕', label:'New Games', match:'new'},
     ];
 
     let html = `
-      <a class="sidebar-logo" href="index.html">
+      <a class="sidebar-logo" href="${ROOT_PREFIX}index.html">
         <span class="sidebar-logo-mark">🕹️</span>
         <span class="sidebar-logo-text">Game<span class="burst">Burst</span></span>
       </a>
@@ -171,7 +184,7 @@ const GB = (function(){
           suggestBox.innerHTML = '<div class="suggest-item">No games found</div>';
         } else {
           suggestBox.innerHTML = results.map(g=>`
-            <a class="suggest-item" href="${gameUrlFor(g.id)}">
+            <a class="suggest-item" href="${gameUrlFor(g)}">
               <img src="${escapeHtml(g.img)}" loading="lazy" onerror="this.onerror=null;this.src='${escapeHtml(g.ban)}'">
               <span>${escapeHtml(g.t)} <span class="cat">${escapeHtml(capitalize(g.c))}</span></span>
             </a>
@@ -213,11 +226,48 @@ const GB = (function(){
     if(el) el.textContent = ALL_GAMES.length.toLocaleString();
   }
 
+  // ---- Ad-blocker detection ----
+  // Creates a hidden bait element styled like a typical ad unit. If an ad blocker
+  // hides/removes it (as most extensions do based on class/id name patterns),
+  // we detect the missing dimensions and show the overlay.
+  function detectAdBlock(onDetected){
+    const bait = document.createElement('div');
+    bait.className = 'adsbox ad-banner ads advertisement';
+    bait.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;top:-9999px;';
+    bait.innerHTML = '&nbsp;';
+    document.body.appendChild(bait);
+
+    setTimeout(()=>{
+      const blocked = (
+        bait.offsetParent === null ||
+        bait.offsetHeight === 0 ||
+        bait.offsetWidth === 0 ||
+        window.getComputedStyle(bait).display === 'none' ||
+        window.getComputedStyle(bait).visibility === 'hidden'
+      );
+      document.body.removeChild(bait);
+      if(blocked && typeof onDetected === 'function') onDetected();
+    }, 120);
+  }
+
+  // Wires up the standard adblock-overlay markup (see game page) with a Refresh button.
+  function initAdblockOverlay(){
+    const overlay = document.getElementById('adblockOverlay');
+    if(!overlay) return;
+    detectAdBlock(()=>{
+      overlay.classList.add('show');
+    });
+    const refreshBtn = document.getElementById('adblockRefreshBtn');
+    refreshBtn && refreshBtn.addEventListener('click', ()=> window.location.reload());
+  }
+
   return {
-    loadData, getById, topCategories, emojiFor, capitalize, escapeHtml, shuffle,
+    loadData, getById, getBySlug, topCategories, emojiFor, capitalize, escapeHtml, shuffle,
     qs, gameUrlFor, categoryUrlFor, searchUrlFor,
     buildCardEl, buildBannerCardEl, buildPlayNextItemEl,
     buildSidebar, initTopbarSearch, initMobileSidebar, setGameCounter,
+    detectAdBlock, initAdblockOverlay,
+    rootPrefix: ROOT_PREFIX,
     get games(){ return ALL_GAMES; },
     get categories(){ return CATEGORIES; }
   };
