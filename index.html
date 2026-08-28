@@ -1,11 +1,118 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GameBurst — Play Free Games Online</title><meta name="description" content="Play thousands of free browser games online. Discover action, racing, puzzle, sports and multiplayer games."><link rel="stylesheet" href="style.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></head><body>
-<header class="site-header"><div class="header-inner"><button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button><a class="brand" href="./" onclick="resetHome();return false"><span class="brand-mark" aria-hidden="true"></span>GameBurst</a><nav class="main-nav"><a class="active" href="./" onclick="resetHome();return false">Home</a><a href="#new-games" onclick="setSpecial('new');return false">New</a><a href="#popular-games" onclick="setSpecial('popular');return false">Popular</a><a href="#categories" onclick="jumpSection('categories');return false">Categories</a></nav>
-<div class="search-wrap"><span class="search-icon" aria-hidden="true"></span><input id="searchInput" autocomplete="off" spellcheck="false" placeholder="Search games..." aria-label="Search games"><button id="clearSearch" class="clear-search" aria-label="Clear search">×</button><div id="searchResults" class="search-results"></div></div><button class="mobile-search" id="mobileSearch" aria-label="Search">⌕</button></div></header>
-<div class="layout"><aside class="sidebar" id="sidebar"><div class="sidebar-title">DISCOVER</div><button class="side-link active" id="sideHome" onclick="selectCategory('all')"></button><button class="side-link" id="sideNew" onclick="setSpecial('new')"></button><button class="side-link" id="sidePopular" onclick="setSpecial('popular')"></button><button class="side-link" id="sideRated" onclick="setSpecial('quality')"></button><div class="sidebar-title">CATEGORIES</div><div id="sideCategories"></div><div class="sidebar-title">YOUR GAMES</div><button class="side-link" id="sideRecent" onclick="showRecent()"></button></aside>
-<main class="content">
-<section class="hero"><div class="hero-image"></div><div class="hero-copy"><div class="eyebrow" id="heroCategory">FEATURED GAME</div><h1><span id="heroTitle">PLAY SOMETHING AWESOME.</span></h1><p id="heroDescription">Instant browser games with no downloads. Find something you want to play and start immediately.</p><div class="hero-actions"><button class="primary-btn" id="heroPlay">Play Now</button><button class="ghost-btn" onclick="jumpSection('categories')">Browse Categories</button></div></div></section>
-<section id="categories"><div class="category-strip" id="catStrip"></div></section>
-<section class="game-section" id="popular-games"><div class="section-head"><div><h2>Popular Games</h2><p>Top-rated games from your catalog</p></div><button onclick="setSpecial('popular')">View all</button></div><div class="game-grid" id="popularGrid"></div></section>
-<section class="game-section" id="new-games"><div class="section-head"><div><h2>New Games</h2><p>Recently published games</p></div><button onclick="setSpecial('new')">View all</button></div><div class="game-grid" id="newGrid"></div></section>
-<section class="game-section" id="all-games"><div class="section-head"><div><h2 id="sectionTitle">All Games</h2><p id="sectionSubtitle">Explore the complete catalog</p></div><select id="sortSelect" aria-label="Sort games"><option value="quality">Top Rated</option><option value="new">Newest</option><option value="az">A–Z</option><option value="za">Z–A</option></select></div><div class="game-grid" id="gamesGrid"></div><button id="loadMoreBtn" class="load-more">Load More</button><div id="emptyState" class="empty-state" hidden><strong>No games found</strong><span>Try another title or category.</span></div></section>
-</main></div><footer class="site-footer"><div><strong>GameBurst</strong><span>Free browser games built for instant play.</span></div></footer><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GameBurst — Play 13,000+ Free Games Online</title>
+<meta name="description" content="Play free browser games instantly. Arcade, puzzle, racing, shooter and more — no downloads needed.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <div class="main-area">
+    <header class="topbar">
+      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+      <div class="topbar-search">
+        <svg class="search-ic" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2.5"/><path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <input id="globalSearch" type="text" placeholder="Search games and categories" autocomplete="off">
+        <div class="search-suggest" id="searchSuggest"></div>
+      </div>
+      <div class="topbar-right">
+        <span class="game-counter"><span class="dot"></span><span id="gameCounter">0</span> games</span>
+        <button class="pill-btn primary">🔥 Explore</button>
+      </div>
+    </header>
+
+    <!-- banner strip -->
+    <div class="banner-strip-wrap">
+      <div class="banner-strip" id="bannerStrip"></div>
+    </div>
+
+    <!-- Featured -->
+    <section class="section">
+      <div class="section-head">
+        <h2 class="section-title">⭐ Featured Games</h2>
+        <a class="section-link" href="all.html?sort=quality">See all →</a>
+      </div>
+      <div class="hscroll" id="featuredRow"></div>
+    </section>
+
+    <!-- New -->
+    <section class="section">
+      <div class="section-head">
+        <h2 class="section-title">🆕 New Games</h2>
+        <a class="section-link" href="all.html?sort=new">See all →</a>
+      </div>
+      <div class="hscroll" id="newRow"></div>
+    </section>
+
+    <!-- Category sections (dynamic, few top categories) -->
+    <div id="categorySections"></div>
+
+    <footer class="site-footer">
+      <p>GameBurst — <span id="footerCount">13,485</span> free games. Play instantly in your browser, no downloads.</p>
+    </footer>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+(async function(){
+  await GB.loadData();
+  GB.buildSidebar('home');
+  GB.initTopbarSearch();
+  GB.initMobileSidebar();
+  GB.setGameCounter();
+  document.getElementById('footerCount').textContent = GB.games.length.toLocaleString();
+
+  const games = GB.games;
+
+  // Banner strip: high quality games, shuffled selection
+  const bannerPicks = GB.shuffle(games.filter(g=>g.q>0.35)).slice(0,12);
+  const bannerStrip = document.getElementById('bannerStrip');
+  bannerPicks.forEach(g=> bannerStrip.appendChild(GB.buildBannerCardEl(g)));
+
+  // Featured: top quality
+  const featured = games.slice().sort((a,b)=>b.q-a.q).slice(0,16);
+  const featuredRow = document.getElementById('featuredRow');
+  featured.forEach((g,i)=>{
+    const badge = i<3 ? 'top' : undefined;
+    featuredRow.appendChild(GB.buildCardEl(g, {delay:i*0.02, badge}));
+  });
+
+  // New: just a shuffled sample tagged "new" for demo variety
+  const newGames = GB.shuffle(games).slice(0,16);
+  const newRow = document.getElementById('newRow');
+  newGames.forEach((g,i)=> newRow.appendChild(GB.buildCardEl(g, {delay:i*0.02, badge:'new'})));
+
+  // Category sections: top 6 categories, 8 games each
+  const catContainer = document.getElementById('categorySections');
+  const topCats = GB.topCategories(6);
+  topCats.forEach(([cat])=>{
+    const catGames = games.filter(g=>g.c===cat).sort((a,b)=>b.q-a.q).slice(0,10);
+    if(catGames.length===0) return;
+    const section = document.createElement('section');
+    section.className = 'section';
+    section.innerHTML = `
+      <div class="section-head">
+        <h2 class="section-title">${GB.emojiFor(cat)} ${GB.capitalize(cat)}</h2>
+        <a class="section-link" href="${GB.categoryUrlFor(cat)}">See all →</a>
+      </div>
+      <div class="hscroll"></div>
+    `;
+    const row = section.querySelector('.hscroll');
+    catGames.forEach((g,i)=> row.appendChild(GB.buildCardEl(g, {delay:i*0.02})));
+    catContainer.appendChild(section);
+  });
+})();
+</script>
+</body>
+</html>
