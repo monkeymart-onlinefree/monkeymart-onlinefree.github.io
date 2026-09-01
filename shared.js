@@ -103,7 +103,7 @@ const GB = (function(){
 
     card.innerHTML = `
       <div class="card-thumb-wrap">
-        <img class="card-thumb" src="${escapeHtml(game.img)}" alt="${escapeHtml(game.t)}" loading="lazy" onerror="this.onerror=null;this.src='${escapeHtml(game.ban)}'">
+        <img class="card-thumb" src="${escapeHtml(game.ban)}" alt="${escapeHtml(game.t)}" loading="lazy" onerror="this.onerror=null;this.src='${escapeHtml(game.img)}'">
         <div class="card-badges">${badgesHtml}</div>
         <span class="card-quality">★ ${qualityPct}</span>
         <div class="card-play-overlay"><div class="play-circle">▶</div></div>
@@ -180,8 +180,7 @@ const GB = (function(){
 
     let html = `
       <a class="sidebar-logo" href="${ROOT_PREFIX}index.html">
-        <span class="sidebar-logo-mark">🕹️</span>
-        <span class="sidebar-logo-text">Game<span class="burst">Burst</span></span>
+        <img class="sidebar-logo-img" src="${ROOT_PREFIX}assets/logo.png" alt="GameBurst">
       </a>
       <div class="sidebar-section">
     `;
