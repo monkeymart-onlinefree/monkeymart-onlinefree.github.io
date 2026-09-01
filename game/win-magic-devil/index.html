@@ -32,7 +32,7 @@
         <input id="globalSearch" type="text" placeholder="Search games and categories" autocomplete="off">
         <div class="search-suggest" id="searchSuggest"></div>
       </div>
-      <div class="topbar-right">
+      <div class="topbar-right" id="topbarRight">
         <span class="game-counter"><span class="dot"></span><span id="gameCounter">0</span> games</span>
       </div>
     </header>
@@ -41,6 +41,8 @@
     <div class="grid-wrap" style="padding:16px 20px 0;">
       <div class="ad-slot ad-slot-banner">Ad space</div>
     </div>
+
+    <div class="breadcrumb" id="breadcrumb"></div>
 
     <div class="player-layout">
       <div>
@@ -64,7 +66,7 @@
         </div>
         <div class="player-toolbar">
           <div class="player-title-row">
-            <span class="player-title" id="playerTitle">Loading…</span>
+            <h1 class="player-title" id="playerTitle">Loading…</h1>
           </div>
           <div class="player-actions">
             <button class="icon-btn" id="likeBtn" title="Like">🤍</button>
@@ -77,8 +79,6 @@
         <div class="ad-slot ad-slot-inline">Ad space</div>
 
         <div class="player-meta-card">
-          <h3 id="playerHeading">About this game</h3>
-          <p id="playerDesc" style="color:var(--text-dim);font-size:13.5px;line-height:1.6;margin:0 0 12px;"></p>
           <div class="meta-tags" id="metaTags"></div>
         </div>
 
@@ -114,6 +114,7 @@
   await GB.loadData();
   GB.initTopbarSearch();
   GB.initMobileSidebar();
+  GB.buildTopbarRight();
   GB.setGameCounter();
   document.getElementById('footerCount').textContent = GB.games.length.toLocaleString();
 
@@ -136,15 +137,16 @@
   GB.buildSidebar(game.c);
 
   document.getElementById('pageTitle').textContent = game.t + ' — Play Free on GameBurst';
-  const metaDesc = (game.d && game.d.trim())
-    ? game.d.trim().slice(0, 155)
-    : 'Play ' + game.t + ' free online, instantly in your browser.';
-  document.getElementById('pageDesc').setAttribute('content', metaDesc);
+  document.getElementById('pageDesc').setAttribute('content', 'Play ' + game.t + ' free online, instantly in your browser.');
   document.getElementById('playerTitle').textContent = game.t;
-  document.getElementById('playerHeading').textContent = 'About ' + game.t;
-  document.getElementById('playerDesc').textContent = game.d && game.d.trim()
-    ? game.d.trim()
-    : `${game.t} is a free ${game.c} game you can play instantly in your browser — no downloads or installs required.`;
+
+  document.getElementById('breadcrumb').innerHTML = `
+    <a href="../../index.html">Home</a>
+    <span class="crumb-sep">›</span>
+    <a href="${GB.categoryUrlFor(game.c)}">${GB.capitalize(game.c)}</a>
+    <span class="crumb-sep">›</span>
+    <span class="crumb-current">${game.t}</span>
+  `;
 
   document.getElementById('metaTags').innerHTML = `
     <span class="meta-tag">${GB.emojiFor(game.c)} ${GB.capitalize(game.c)}</span>
@@ -161,6 +163,12 @@
         const el = document.getElementById('gameLongContent');
         el.innerHTML = data.content;
         el.hidden = false;
+
+        // Pull the first paragraph of the Overview for the page meta description
+        const firstP = el.querySelector('.game-overview p');
+        if(firstP && firstP.textContent.trim()){
+          document.getElementById('pageDesc').setAttribute('content', firstP.textContent.trim().slice(0, 155));
+        }
       }
     })
     .catch(()=>{ /* content is optional; page still works without it */ });

@@ -25,9 +25,8 @@
         <input id="globalSearch" type="text" placeholder="Search games and categories" autocomplete="off">
         <div class="search-suggest" id="searchSuggest"></div>
       </div>
-      <div class="topbar-right">
+      <div class="topbar-right" id="topbarRight">
         <span class="game-counter"><span class="dot"></span><span id="gameCounter">0</span> games</span>
-        <button class="pill-btn primary">🔥 Explore</button>
       </div>
     </header>
 
@@ -70,6 +69,7 @@
   GB.buildSidebar('home');
   GB.initTopbarSearch();
   GB.initMobileSidebar();
+  GB.buildTopbarRight();
   GB.setGameCounter();
   document.getElementById('footerCount').textContent = GB.games.length.toLocaleString();
 

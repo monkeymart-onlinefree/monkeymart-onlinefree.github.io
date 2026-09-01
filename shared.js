@@ -51,6 +51,15 @@ const GB = (function(){
     ]);
     ALL_GAMES = await gRes.json();
     CATEGORIES = await cRes.json();
+
+    // img/ban/url are 100% derivable from slug (verified across all games), so they're
+    // not stored in the JSON file to keep it small. Reconstruct them once here.
+    for(const g of ALL_GAMES){
+      g.img = `https://img.gamepix.com/games/${g.slug}/icon/${g.slug}.png?w=105`;
+      g.ban = `https://img.gamepix.com/games/${g.slug}/cover/${g.slug}.png?w=320`;
+      g.url = `https://play.gamepix.com/${g.slug}/embed?sid=1`;
+    }
+
     return {games:ALL_GAMES, categories:CATEGORIES};
   }
 
@@ -130,6 +139,31 @@ const GB = (function(){
       </div>
     `;
     return item;
+  }
+
+  // ---- Topbar right-side icons (Friends / My games / Notifications / Log in) ----
+  // Appends the CrazyGames-style icon buttons after whatever is already in #topbarRight
+  // (e.g. the game counter), rather than replacing it.
+  function buildTopbarRight(){
+    const el = document.getElementById('topbarRight');
+    if(!el) return;
+    const extra = document.createElement('div');
+    extra.className = 'topbar-right-icons';
+    extra.innerHTML = `
+      <button class="tb-icon-btn tb-text-btn" title="Friends">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M16 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zM8 11c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zM8 13c-2.67 0-8 1.34-8 4v3h9.5v-3c0-1.06.34-2.6 1.5-3.9-.75-.1-1.4-.1-3-.1zM16 13c-.29 0-.62.02-.97.05C16.19 14.35 17 15.9 17 17v3h7v-3c0-2.66-5.33-4-8-4z" fill="currentColor"/></svg>
+        <span>Friends</span>
+      </button>
+      <button class="tb-icon-btn tb-text-btn" title="My games">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 2h12a1 1 0 0 1 1 1v18l-7-4-7 4V3a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>
+        <span>My games</span>
+      </button>
+      <button class="tb-icon-btn" title="Notifications">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2a6 6 0 0 0-6 6v3.09c0 .58-.2 1.14-.57 1.59L4 15h16l-1.43-2.32a2.5 2.5 0 0 1-.57-1.59V8a6 6 0 0 0-6-6zM9.5 18a2.5 2.5 0 0 0 5 0h-5z" fill="currentColor"/></svg>
+      </button>
+      <button class="pill-btn primary" id="loginBtn">Log in</button>
+    `;
+    el.appendChild(extra);
   }
 
   // ---- Sidebar builder (shared) ----
@@ -265,7 +299,7 @@ const GB = (function(){
     loadData, getById, getBySlug, topCategories, emojiFor, capitalize, escapeHtml, shuffle,
     qs, gameUrlFor, categoryUrlFor, searchUrlFor,
     buildCardEl, buildBannerCardEl, buildPlayNextItemEl,
-    buildSidebar, initTopbarSearch, initMobileSidebar, setGameCounter,
+    buildSidebar, buildTopbarRight, initTopbarSearch, initMobileSidebar, setGameCounter,
     detectAdBlock, initAdblockOverlay,
     rootPrefix: ROOT_PREFIX,
     get games(){ return ALL_GAMES; },

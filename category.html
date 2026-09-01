@@ -25,15 +25,20 @@
         <input id="globalSearch" type="text" placeholder="Search games and categories" autocomplete="off">
         <div class="search-suggest" id="searchSuggest"></div>
       </div>
-      <div class="topbar-right">
+      <div class="topbar-right" id="topbarRight">
         <span class="game-counter"><span class="dot"></span><span id="gameCounter">0</span> games</span>
       </div>
     </header>
 
-    <div class="page-header">
-      <h1 class="page-title" id="catTitle">Category</h1>
-      <p class="page-sub" id="catSub"></p>
+    <div class="page-header cat-page-header">
+      <div class="cat-header-icon" id="catIcon">🎮</div>
+      <div>
+        <h1 class="page-title" id="catTitle">Category</h1>
+        <p class="page-sub" id="catSub"></p>
+      </div>
     </div>
+
+    <p class="cat-blurb" id="catBlurb"></p>
 
     <div class="toolbar">
       <div></div>
@@ -69,6 +74,7 @@
   await GB.loadData();
   GB.initTopbarSearch();
   GB.initMobileSidebar();
+  GB.buildTopbarRight();
   GB.setGameCounter();
   document.getElementById('footerCount').textContent = GB.games.length.toLocaleString();
 
@@ -77,8 +83,11 @@
 
   let list = GB.games.filter(g=>g.c === cat);
   document.getElementById('pageTitle').textContent = GB.capitalize(cat) + ' Games — GameBurst';
-  document.getElementById('catTitle').textContent = GB.emojiFor(cat) + ' ' + GB.capitalize(cat) + ' Games';
+  document.getElementById('catIcon').textContent = GB.emojiFor(cat);
+  document.getElementById('catTitle').textContent = GB.capitalize(cat) + ' Games';
   document.getElementById('catSub').textContent = list.length.toLocaleString() + ' free games in this category';
+  document.getElementById('catBlurb').textContent =
+    `Play our free online ${GB.capitalize(cat).toLowerCase()} games. Have fun playing hundreds of the best ${GB.capitalize(cat).toLowerCase()} games for free, right in your browser — no downloads needed.`;
 
   const grid = document.getElementById('grid');
   const emptyState = document.getElementById('emptyState');

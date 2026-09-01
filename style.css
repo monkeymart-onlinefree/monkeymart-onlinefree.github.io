@@ -1,18 +1,18 @@
 /* ============ TOKENS ============ */
 :root{
-  --bg:#12111A;
-  --bg-2:#191826;
-  --bg-3:#201F30;
-  --card:#1D1C2B;
-  --line:#2C2A3D;
-  --text:#F2F1F8;
-  --text-dim:#9C99B4;
-  --text-faint:#6E6B87;
-  --accent:#7C5CFF;
-  --accent-2:#B98CFF;
-  --pink:#FF4FA3;
-  --cyan:#2EE6D6;
-  --yellow:#FFC93C;
+  --bg:#0D0D12;
+  --bg-2:#15151C;
+  --bg-3:#1E1E27;
+  --card:#191920;
+  --line:#2A2A35;
+  --text:#FFFFFF;
+  --text-dim:#A0A0AC;
+  --text-faint:#6B6B78;
+  --accent:#6C5DD3;
+  --accent-2:#9C8FFF;
+  --pink:#FF5C8A;
+  --cyan:#00D9C6;
+  --yellow:#FFC531;
   --green:#3DDC84;
   --orange:#FF7A45;
   --sidebar-w:230px;
@@ -132,10 +132,15 @@ a{color:inherit;text-decoration:none;}
   gap:16px;
 }
 .mobile-menu-btn{
-  display:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   background:none;border:none;color:var(--text);font-size:20px;
-  padding:6px;
+  padding:6px 8px;
+  border-radius:8px;
+  flex-shrink:0;
 }
+.mobile-menu-btn:hover{background:var(--bg-3);}
 .topbar-search{
   flex:1;
   max-width:640px;
@@ -192,6 +197,9 @@ a{color:inherit;text-decoration:none;}
   margin-left:auto;
   flex-shrink:0;
 }
+.topbar-right-icons{
+  display:flex;align-items:center;gap:6px;
+}
 .pill-btn{
   display:flex;align-items:center;gap:6px;
   padding:9px 15px;
@@ -205,17 +213,40 @@ a{color:inherit;text-decoration:none;}
 }
 .pill-btn:hover{background:var(--line);color:#fff;}
 .pill-btn.primary{
-  background:linear-gradient(90deg, var(--accent), var(--pink));
+  background:var(--accent);
   color:#fff;
   border:none;
+  padding:10px 20px;
 }
-.pill-btn.primary:hover{filter:brightness(1.1);}
+.pill-btn.primary:hover{filter:brightness(1.12);}
 .game-counter{
   display:flex;align-items:center;gap:6px;
   color:var(--text-dim);font-size:12.5px;font-weight:600;
 }
 .game-counter .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:pulse 1.6s ease-in-out infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+
+/* ---- Topbar right icon buttons (Friends / My games / Notifications) ---- */
+.tb-icon-btn{
+  display:flex;align-items:center;gap:7px;
+  background:none;
+  border:none;
+  color:var(--text-dim);
+  padding:8px 10px;
+  border-radius:10px;
+  font-size:13px;
+  font-weight:700;
+  white-space:nowrap;
+  transition:background 0.12s ease, color 0.12s ease;
+}
+.tb-icon-btn svg{width:19px;height:19px;flex-shrink:0;}
+.tb-icon-btn:hover{background:var(--bg-3);color:#fff;}
+.tb-text-btn span{display:inline;}
+@media (max-width:900px){
+  .tb-text-btn span{display:none;}
+  .tb-icon-btn{padding:8px;}
+}
+
 
 /* ---- Main content wrapper ---- */
 .main-area{
@@ -403,6 +434,31 @@ a{color:inherit;text-decoration:none;}
   display:flex;align-items:center;gap:10px;
 }
 .page-sub{color:var(--text-dim);font-size:13.5px;margin-top:4px;}
+
+/* Category page header: big icon + title/count side by side */
+.cat-page-header{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.cat-header-icon{
+  width:56px;height:56px;
+  border-radius:14px;
+  background:var(--bg-3);
+  border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;
+  flex-shrink:0;
+}
+.cat-blurb{
+  color:var(--text-dim);
+  font-size:13px;
+  line-height:1.7;
+  padding:10px 20px 0;
+  margin:0;
+  max-width:820px;
+}
+
 .toolbar{
   display:flex;align-items:center;justify-content:space-between;
   padding:14px 20px;
@@ -540,6 +596,21 @@ a{color:inherit;text-decoration:none;}
   margin-top:12px !important;
 }
 
+/* ---- Breadcrumb (game page) ---- */
+.breadcrumb{
+  padding:12px 20px 0;
+  font-size:11.5px;
+  color:var(--text-faint);
+  display:flex;
+  align-items:center;
+  gap:6px;
+  flex-wrap:wrap;
+}
+.breadcrumb a{color:var(--accent-2);font-weight:600;}
+.breadcrumb a:hover{color:#fff;}
+.breadcrumb .crumb-sep{color:var(--text-faint);}
+.breadcrumb .crumb-current{color:var(--text-dim);}
+
 /* ---- Ad slots (empty placeholders until AdSense is approved) ---- */
 .ad-slot{
   background:var(--bg-2);
@@ -570,7 +641,7 @@ a{color:inherit;text-decoration:none;}
   margin-top:-1px;
 }
 .player-title-row{display:flex;align-items:center;gap:10px;min-width:0;}
-.player-title{font-family:var(--font-display);font-weight:700;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.player-title{font-family:var(--font-display);font-weight:700;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:0;}
 .player-actions{display:flex;gap:8px;flex-shrink:0;}
 .icon-btn{
   width:36px;height:36px;border-radius:9px;
