@@ -46,32 +46,39 @@
 
     <div class="player-layout">
       <div>
-        <div class="player-box">
-          <div class="player-loader" id="playerLoader">
-            <div class="loader-spin"></div>
-            <p id="loaderText">Loading game…</p>
-          </div>
-          <iframe id="gameFrame" allow="gamepad *; fullscreen *; autoplay; encrypted-media" allowfullscreen></iframe>
-
-          <!-- Ad-blocker detection overlay -->
-          <div class="adblock-overlay" id="adblockOverlay">
-            <div class="adblock-box">
-              <div class="adblock-icon">⚠️</div>
-              <h2>Ad Blocker Detected</h2>
-              <p>This game is free thanks to ads. Please disable your ad blocker for this site, then refresh to play.</p>
-              <button class="adblock-refresh-btn" id="adblockRefreshBtn">Refresh Game</button>
-              <p class="adblock-hint">After disabling your ad blocker, click Refresh Game.</p>
+        <div class="player-shell">
+          <div class="player-box" id="playerBox">
+            <div class="player-loader" id="playerLoader">
+              <div class="loader-spin"></div>
+              <p id="loaderText">Loading game…</p>
             </div>
+            <iframe id="gameFrame" allow="gamepad *; fullscreen *; autoplay; encrypted-media" allowfullscreen></iframe>
+
+            <!-- Ad-blocker detection overlay -->
+            <div class="adblock-overlay" id="adblockOverlay">
+              <div class="adblock-box">
+                <div class="adblock-icon">⚠️</div>
+                <h2>Ad Blocker Detected</h2>
+                <p>This game is free thanks to ads. Please disable your ad blocker for this site, then refresh to play.</p>
+                <button class="adblock-refresh-btn" id="adblockRefreshBtn">Refresh Game</button>
+                <p class="adblock-hint">After disabling your ad blocker, click Refresh Game.</p>
+              </div>
+            </div>
+
+            <!-- Floating fullscreen button, overlaid on the player itself -->
+            <button class="player-fullscreen-fab" id="fullscreenBtn" title="Fullscreen">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
           </div>
-        </div>
-        <div class="player-toolbar">
-          <div class="player-title-row">
-            <h1 class="player-title" id="playerTitle">Loading…</h1>
-          </div>
-          <div class="player-actions">
-            <button class="icon-btn" id="likeBtn" title="Like">🤍</button>
-            <button class="icon-btn" id="shareBtn" title="Copy link">🔗</button>
-            <button class="icon-btn" id="fullscreenBtn" title="Fullscreen">⛶</button>
+          <div class="player-toolbar">
+            <div class="player-title-row">
+              <h1 class="player-title" id="playerTitle">Loading…</h1>
+            </div>
+            <div class="player-actions">
+              <button class="icon-btn" id="likeBtn" title="Like">🤍</button>
+              <button class="icon-btn" id="shareBtn" title="Copy link">🔗</button>
+              <button class="icon-btn" id="fullscreenBtnToolbar" title="Fullscreen">⛶</button>
+            </div>
           </div>
         </div>
 
@@ -205,10 +212,26 @@
     });
   });
 
-  // fullscreen
-  document.getElementById('fullscreenBtn').addEventListener('click', ()=>{
-    const box = document.querySelector('.player-box');
-    if(box.requestFullscreen) box.requestFullscreen();
+  // Fullscreen: cross-browser support + toggle (enter/exit), wired to both buttons
+  function toggleFullscreen(){
+    const box = document.getElementById('playerBox');
+    const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement;
+    if(!isFullscreen){
+      const req = box.requestFullscreen || box.webkitRequestFullscreen || box.mozRequestFullScreen || box.msRequestFullscreen;
+      if(req) req.call(box);
+    } else {
+      const exit = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen;
+      if(exit) exit.call(document);
+    }
+  }
+  document.getElementById('fullscreenBtn').addEventListener('click', toggleFullscreen);
+  document.getElementById('fullscreenBtnToolbar').addEventListener('click', toggleFullscreen);
+
+  ['fullscreenchange','webkitfullscreenchange','mozfullscreenchange','MSFullscreenChange'].forEach(evt=>{
+    document.addEventListener(evt, ()=>{
+      const isFullscreen = !!(document.fullscreenElement || document.webkitFullscreenElement);
+      document.getElementById('playerBox').classList.toggle('is-fullscreen', isFullscreen);
+    });
   });
 
   // Play Next: same category, random order, excluding current
