@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Play Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo"><a href="index.html">🎮 GAME ARCADE</a></div>
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="Search games..." onkeyup="filterGames()">
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 id="game-title" class="game-heading">Loading Game...</h1>
+
+    <!-- 1. Game Player Frame -->
+    <div class="player-wrapper">
+      <iframe id="game-iframe" src="" allowfullscreen title="Game Player"></iframe>
+    </div>
+
+    <!-- 2. Dynamic SEO Text Content -->
+    <div id="game-seo-content" class="seo-box">
+      <p>Loading game details...</p>
+    </div>
+
+    <!-- 3. Related Games Grid -->
+    <h3 class="section-title" style="margin-top: 40px;">More Games You Might Like</h3>
+    <div id="games-grid" class="games-grid"></div>
+  </main>
+
+  <script src="shared.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      initGamePage();
+    });
+  </script>
+</body>
+</html>
