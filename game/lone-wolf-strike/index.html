@@ -52,7 +52,7 @@
               <div class="loader-spin"></div>
               <p id="loaderText">Loading game…</p>
             </div>
-            <iframe id="gameFrame" allow="gamepad *; fullscreen *; autoplay; encrypted-media" allowfullscreen></iframe>
+            <iframe id="gameFrame" allow="gamepad *; fullscreen *; autoplay; encrypted-media; accelerometer; gyroscope; clipboard-read; clipboard-write; microphone; payment; focus-without-user-activation" allowfullscreen webkitallowfullscreen="true" mozallowfullscreen="true" msallowfullscreen="true"></iframe>
 
             <!-- Ad-blocker detection overlay -->
             <div class="adblock-overlay" id="adblockOverlay">
@@ -64,20 +64,41 @@
                 <p class="adblock-hint">After disabling your ad blocker, click Refresh Game.</p>
               </div>
             </div>
-
-            <!-- Floating fullscreen button, overlaid on the player itself -->
-            <button class="player-fullscreen-fab" id="fullscreenBtn" title="Fullscreen">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
           </div>
+
           <div class="player-toolbar">
             <div class="player-title-row">
               <h1 class="player-title" id="playerTitle">Loading…</h1>
             </div>
             <div class="player-actions">
-              <button class="icon-btn" id="likeBtn" title="Like">🤍</button>
-              <button class="icon-btn" id="shareBtn" title="Copy link">🔗</button>
-              <button class="icon-btn" id="fullscreenBtnToolbar" title="Fullscreen">⛶</button>
+              <button class="icon-btn icon-btn-count" id="likeBtn" title="Like">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M7 22H4a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1h3M7 22V11m0 11h11.5a2 2 0 0 0 2-1.75l1.13-8A2 2 0 0 0 19.63 9H14V4a2 2 0 0 0-2-2L7 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span id="likeCount">0</span>
+              </button>
+              <button class="icon-btn" id="dislikeBtn" title="Dislike">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M17 2h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-3M17 2v11m0-11H5.5a2 2 0 0 0-2 1.75l-1.13 8A2 2 0 0 0 4.37 15H10v5a2 2 0 0 0 2 2l5-11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button class="icon-btn" id="bookmarkBtn" title="Save to My games">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6 2h12a1 1 0 0 1 1 1v18l-7-4-7 4V3a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>
+              </button>
+              <button class="icon-btn" id="reportBtn" title="Report a problem">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="16" r="1" fill="currentColor"/></svg>
+              </button>
+              <div class="player-actions-more-wrap">
+                <button class="icon-btn" id="moreBtn" title="More options">
+                  <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v8M8 12h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                </button>
+                <div class="player-actions-more-menu" id="moreMenu">
+                  <button id="shareBtn"><svg viewBox="0 0 24 24" fill="none"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Copy link</button>
+                </div>
+              </div>
+              <button class="icon-btn" id="soundBtn" title="Mute/unmute">
+                <svg viewBox="0 0 24 24" fill="none" id="soundIconOn"><path d="M5 9v6h4l5 5V4L9 9H5z" fill="currentColor"/><path d="M16.5 8.5a5 5 0 0 1 0 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M19 6a9 9 0 0 1 0 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" id="soundIconOff" hidden><path d="M5 9v6h4l5 5V4L9 9H5z" fill="currentColor"/><path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </button>
+              <button class="icon-btn" id="fullscreenBtnToolbar" title="Fullscreen">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
             </div>
           </div>
         </div>
@@ -137,11 +158,11 @@
         <p>Game not found.</p>
         <a class="btn-reset" href="../../index.html" style="display:inline-block;text-decoration:none;">Back to Home</a>
       </div>`;
-    GB.buildSidebar(null);
+    GB.buildSidebar(null, {compact:true});
     return;
   }
 
-  GB.buildSidebar(game.c);
+  GB.buildSidebar(game.c, {compact:true});
 
   document.getElementById('pageTitle').textContent = game.t + ' — Play Free on GameBurst';
   document.getElementById('pageDesc').setAttribute('content', 'Play ' + game.t + ' free online, instantly in your browser.');
@@ -193,26 +214,81 @@
   frame.src = game.url;
   frame.onload = ()=>{ loader.style.display = 'none'; };
 
-  // like button (local only, cosmetic)
+  // Like count: cosmetic, derived from the game's quality score so it looks populated
+  const likeCountEl = document.getElementById('likeCount');
+  const baseLikes = Math.round((game.q || 0.3) * 900) + 40;
+  function formatCount(n){
+    return n >= 1000 ? (n/1000).toFixed(1).replace(/\.0$/,'') + 'K' : String(n);
+  }
+  likeCountEl.textContent = formatCount(baseLikes);
+
+  // Like / dislike (local only, cosmetic, mutually exclusive)
   const likeBtn = document.getElementById('likeBtn');
-  let liked = false;
+  const dislikeBtn = document.getElementById('dislikeBtn');
+  let voteState = null; // 'like' | 'dislike' | null
   likeBtn.addEventListener('click', ()=>{
-    liked = !liked;
-    likeBtn.textContent = liked ? '❤️' : '🤍';
-    likeBtn.classList.toggle('liked', liked);
+    voteState = voteState === 'like' ? null : 'like';
+    likeBtn.classList.toggle('active', voteState==='like');
+    dislikeBtn.classList.remove('active');
+    likeCountEl.textContent = formatCount(baseLikes + (voteState==='like' ? 1 : 0));
+  });
+  dislikeBtn.addEventListener('click', ()=>{
+    voteState = voteState === 'dislike' ? null : 'dislike';
+    dislikeBtn.classList.toggle('active', voteState==='dislike');
+    likeBtn.classList.remove('active');
+    likeCountEl.textContent = formatCount(baseLikes + (voteState==='like' ? 1 : 0));
   });
 
-  // share button
-  document.getElementById('shareBtn').addEventListener('click', ()=>{
+  // Bookmark / save to "My games" (local only, cosmetic)
+  document.getElementById('bookmarkBtn').addEventListener('click', function(){
+    this.classList.toggle('active');
+  });
+
+  // Report a problem (cosmetic confirmation, no backend to send this to)
+  document.getElementById('reportBtn').addEventListener('click', function(){
+    const btn = this;
+    btn.classList.add('active');
+    btn.title = 'Reported — thanks!';
+    setTimeout(()=>{ btn.classList.remove('active'); btn.title = 'Report a problem'; }, 1500);
+  });
+
+  // More menu (dropdown containing Copy link)
+  const moreBtn = document.getElementById('moreBtn');
+  const moreMenu = document.getElementById('moreMenu');
+  moreBtn.addEventListener('click', e=>{
+    e.stopPropagation();
+    moreMenu.classList.toggle('open');
+  });
+  document.addEventListener('click', e=>{
+    if(!e.target.closest('.player-actions-more-wrap')) moreMenu.classList.remove('open');
+  });
+
+  // share button (inside the more menu)
+  document.getElementById('shareBtn').addEventListener('click', function(){
     navigator.clipboard?.writeText(window.location.href).then(()=>{
-      const btn = document.getElementById('shareBtn');
-      const old = btn.textContent;
-      btn.textContent = '✅';
-      setTimeout(()=>{ btn.textContent = old; }, 1200);
+      const old = this.innerHTML;
+      this.innerHTML = '✅ Copied!';
+      setTimeout(()=>{ this.innerHTML = old; moreMenu.classList.remove('open'); }, 900);
     });
   });
 
-  // Fullscreen: cross-browser support + toggle (enter/exit), wired to both buttons
+  // Sound toggle: best-effort mute via postMessage (many embeds ignore this,
+  // since we don't control the embedded game's internal audio API) plus a
+  // visual toggle so the control is still meaningful to the user.
+  const soundBtn = document.getElementById('soundBtn');
+  const soundIconOn = document.getElementById('soundIconOn');
+  const soundIconOff = document.getElementById('soundIconOff');
+  let muted = false;
+  soundBtn.addEventListener('click', ()=>{
+    muted = !muted;
+    soundIconOn.hidden = muted;
+    soundIconOff.hidden = !muted;
+    soundBtn.title = muted ? 'Unmute' : 'Mute/unmute';
+    soundBtn.classList.toggle('active', muted);
+    try{ frame.contentWindow?.postMessage({type: muted ? 'mute' : 'unmute'}, '*'); }catch(e){}
+  });
+
+  // Fullscreen: cross-browser support + toggle (enter/exit)
   function toggleFullscreen(){
     const box = document.getElementById('playerBox');
     const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement;
@@ -224,7 +300,6 @@
       if(exit) exit.call(document);
     }
   }
-  document.getElementById('fullscreenBtn').addEventListener('click', toggleFullscreen);
   document.getElementById('fullscreenBtnToolbar').addEventListener('click', toggleFullscreen);
 
   ['fullscreenchange','webkitfullscreenchange','mozfullscreenchange','MSFullscreenChange'].forEach(evt=>{

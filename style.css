@@ -65,6 +65,48 @@ a{color:inherit;text-decoration:none;}
   padding-bottom:20px;
   transition:width 0.2s ease, transform 0.2s ease;
 }
+
+/* ---- Compact (icon-only) sidebar, used on game pages ---- */
+.sidebar.sidebar-compact{
+  width:var(--sidebar-w-collapsed);
+}
+.sidebar.sidebar-compact .sidebar-logo-text,
+.sidebar.sidebar-compact .side-link span:not(.ic),
+.sidebar.sidebar-compact .sidebar-section-label{
+  display:none;
+}
+.sidebar.sidebar-compact .sidebar-logo{
+  justify-content:center;
+  padding:12px 8px;
+}
+.sidebar.sidebar-compact .side-link{
+  justify-content:center;
+  padding:11px 8px;
+  position:relative;
+}
+.sidebar.sidebar-compact .side-link .ic{font-size:19px;}
+.sidebar.sidebar-compact .side-link.active{
+  padding-left:8px;
+  border-left:3px solid var(--accent);
+}
+/* Hover reveals the label as a floating tooltip so it's still discoverable */
+.sidebar.sidebar-compact .side-link:hover::after{
+  content:attr(data-label);
+  position:absolute;
+  left:calc(100% + 8px);
+  top:50%;
+  transform:translateY(-50%);
+  background:var(--bg-3);
+  border:1px solid var(--line);
+  color:#fff;
+  font-size:12.5px;
+  font-weight:600;
+  padding:6px 10px;
+  border-radius:8px;
+  white-space:nowrap;
+  z-index:150;
+  box-shadow:0 6px 20px rgba(0,0,0,0.4);
+}
 .sidebar-logo{
   display:flex;
   align-items:center;
@@ -256,12 +298,17 @@ a{color:inherit;text-decoration:none;}
   min-width:0;
   display:flex;
   flex-direction:column;
+  transition:margin-left 0.2s ease;
+}
+.sidebar.sidebar-compact ~ .main-area{
+  margin-left:var(--sidebar-w-collapsed);
 }
 
 @media (max-width:1000px){
   .sidebar{transform:translateX(-100%);}
   .sidebar.open{transform:translateX(0);}
-  .main-area{margin-left:0;}
+  .main-area,
+  .sidebar.sidebar-compact ~ .main-area{margin-left:0;}
   .mobile-menu-btn{display:block;}
 }
 
@@ -373,6 +420,48 @@ a{color:inherit;text-decoration:none;}
 @media (max-width:640px){
   .hero-slideshow{aspect-ratio:4/3;}
   .hero-slide-title{max-width:80%;font-size:18px;}
+}
+
+/* ============ TOP PICKS BENTO GRID ============ */
+.bento-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  grid-auto-rows:130px;
+  gap:12px;
+}
+.bento-card{
+  position:relative;
+  display:block;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:var(--card);
+  animation:cardFade 0.35s ease backwards;
+}
+.bento-card.bento-large{
+  grid-column:span 2;
+  grid-row:span 2;
+}
+.bento-card-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.3s ease;}
+.bento-card:hover .bento-card-img{transform:scale(1.05);}
+.bento-card-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(0deg, rgba(0,0,0,0.75), transparent 55%);
+  display:flex;align-items:flex-end;
+  padding:12px;
+}
+.bento-card-title{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:14px;
+  color:#fff;
+  text-shadow:0 2px 6px rgba(0,0,0,0.6);
+}
+.bento-card.bento-large .bento-card-title{font-size:19px;}
+
+@media (max-width:900px){
+  .bento-grid{grid-template-columns:repeat(2, 1fr);grid-auto-rows:110px;}
+  .bento-card.bento-large{grid-column:span 2;grid-row:span 2;}
 }
 
 /* ============ SECTIONS ============ */
@@ -621,30 +710,6 @@ a{color:inherit;text-decoration:none;}
 }
 @keyframes spin{to{transform:rotate(360deg);}}
 
-/* Floating fullscreen button overlaid on the bottom-right of the player itself */
-.player-fullscreen-fab{
-  position:absolute;
-  bottom:12px;right:12px;
-  z-index:6;
-  width:38px;height:38px;
-  border-radius:9px;
-  background:rgba(15,15,20,0.72);
-  backdrop-filter:blur(6px);
-  border:1px solid rgba(255,255,255,0.12);
-  color:#fff;
-  display:flex;align-items:center;justify-content:center;
-  opacity:0;
-  transition:opacity 0.15s ease, background 0.15s ease;
-}
-.player-fullscreen-fab svg{width:18px;height:18px;}
-.player-box:hover .player-fullscreen-fab,
-.player-box:focus-within .player-fullscreen-fab{opacity:1;}
-.player-fullscreen-fab:hover{background:var(--accent);}
-@media (hover:none){
-  /* touch devices: always show, no hover state to rely on */
-  .player-fullscreen-fab{opacity:1;}
-}
-
 /* ---- Ad-blocker detection overlay ---- */
 .adblock-overlay{
   position:absolute;inset:0;z-index:10;
@@ -733,11 +798,44 @@ a{color:inherit;text-decoration:none;}
 .icon-btn{
   width:36px;height:36px;border-radius:9px;
   background:var(--bg-3);border:1px solid var(--line);color:var(--text-dim);
-  display:flex;align-items:center;justify-content:center;font-size:15px;
+  display:flex;align-items:center;justify-content:center;gap:5px;font-size:15px;
   transition:all 0.15s ease;
+  flex-shrink:0;
 }
+.icon-btn svg{width:17px;height:17px;flex-shrink:0;}
 .icon-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
-.icon-btn.liked{background:var(--pink);color:#fff;border-color:var(--pink);}
+.icon-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+.icon-btn-count{width:auto;padding:0 12px;font-size:12.5px;font-weight:700;}
+.icon-btn-count span{white-space:nowrap;}
+
+/* ---- "More" dropdown in player toolbar ---- */
+.player-actions-more-wrap{position:relative;}
+.player-actions-more-menu{
+  display:none;
+  position:absolute;
+  bottom:calc(100% + 8px);
+  right:0;
+  background:var(--bg-3);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:6px;
+  min-width:140px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+  z-index:20;
+}
+.player-actions-more-menu.open{display:block;}
+.player-actions-more-menu button{
+  display:flex;align-items:center;gap:8px;
+  width:100%;
+  background:none;border:none;
+  color:var(--text-dim);
+  font-size:13px;font-weight:600;
+  padding:8px 10px;
+  border-radius:7px;
+  text-align:left;
+}
+.player-actions-more-menu button:hover{background:var(--bg);color:#fff;}
+.player-actions-more-menu svg{width:16px;height:16px;flex-shrink:0;}
 
 .player-meta-card{
   background:var(--bg-2);border:1px solid var(--line);border-radius:14px;

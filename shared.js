@@ -167,9 +167,11 @@ const GB = (function(){
   }
 
   // ---- Sidebar builder (shared) ----
-  function buildSidebar(activeCat){
+  function buildSidebar(activeCat, opts){
+    opts = opts || {};
     const sidebar = document.getElementById('sidebar');
     if(!sidebar) return;
+    sidebar.classList.toggle('sidebar-compact', !!opts.compact);
 
     const primaryLinks = [
       {href:ROOT_PREFIX+'index.html', ic:'🏠', label:'Home', match:'home'},
@@ -186,14 +188,15 @@ const GB = (function(){
       <div class="sidebar-section">
     `;
     primaryLinks.forEach(l=>{
-      html += `<a class="side-link" href="${l.href}"><span class="ic">${l.ic}</span><span>${l.label}</span></a>`;
+      html += `<a class="side-link" href="${l.href}" data-label="${l.label}"><span class="ic">${l.ic}</span><span>${l.label}</span></a>`;
     });
     html += `</div><div class="sidebar-divider"></div>`;
     html += `<div class="sidebar-section"><div class="sidebar-section-label">Categories</div>`;
 
     topCategories(25).forEach(([cat])=>{
       const isActive = activeCat === cat;
-      html += `<a class="side-link${isActive?' active':''}" href="${categoryUrlFor(cat)}"><span class="ic">${emojiFor(cat)}</span><span>${capitalize(cat)}</span></a>`;
+      const label = capitalize(cat);
+      html += `<a class="side-link${isActive?' active':''}" href="${categoryUrlFor(cat)}" data-label="${label}"><span class="ic">${emojiFor(cat)}</span><span>${label}</span></a>`;
     });
     html += `</div>`;
 

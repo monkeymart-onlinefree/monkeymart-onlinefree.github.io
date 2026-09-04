@@ -44,6 +44,14 @@
       </div>
     </div>
 
+    <!-- Top Picks: bento grid (1 large + small cards) -->
+    <section class="section">
+      <div class="section-head">
+        <h2 class="section-title">🎯 Top Picks for You</h2>
+      </div>
+      <div class="bento-grid" id="bentoGrid"></div>
+    </section>
+
     <!-- Featured -->
     <section class="section">
       <div class="section-head">
@@ -141,6 +149,25 @@
     document.getElementById('heroNext').style.display = 'none';
     document.getElementById('heroPrev').style.display = 'none';
   }
+
+  // Top Picks bento grid: 1 large hero card + 5 smaller cards, different picks than the slideshow
+  const usedSlugs = new Set(slidePicks.map(g=>g.slug));
+  const bentoPool = GB.shuffle(games.filter(g=> g.q>0.35 && !usedSlugs.has(g.slug)));
+  const bentoPicks = bentoPool.slice(0, 6);
+  const bentoGrid = document.getElementById('bentoGrid');
+  bentoPicks.forEach((g, i)=>{
+    const card = document.createElement('a');
+    card.className = 'bento-card' + (i===0 ? ' bento-large' : '');
+    card.href = GB.gameUrlFor(g);
+    card.style.animationDelay = (i*0.03) + 's';
+    card.innerHTML = `
+      <img class="bento-card-img" src="${GB.escapeHtml(g.ban || g.img)}" alt="${GB.escapeHtml(g.t)}" loading="lazy" onerror="this.onerror=null;this.src='${GB.escapeHtml(g.img)}'">
+      <div class="bento-card-overlay">
+        <span class="bento-card-title">${GB.escapeHtml(g.t)}</span>
+      </div>
+    `;
+    bentoGrid.appendChild(card);
+  });
 
   // Featured: top quality
   const featured = games.slice().sort((a,b)=>b.q-a.q).slice(0,16);
