@@ -118,6 +118,35 @@ const calculators = [
 {id:'feet-inches',title:'Feet to Inches Converter',category:'Conversion',icon:'📏',description:'Convert feet into inches.',fields:[['feet','Feet','number']],run:v=>({value:v.feet*12,unit:' inches'})},
 ,
 {id:'ounces-pounds',title:'Ounces to Pounds Converter',category:'Conversion',icon:'⚖️',description:'Convert ounces into pounds.',fields:[['ounces','Ounces','number']],run:v=>({value:v.ounces/16,unit:' lb'})}
+
+,{id:'sales-margin',title:'Sales Margin Calculator',category:'Finance',icon:'💹',description:'Calculate profit margin from revenue and cost.',fields:[['revenue','Revenue','number'],['cost','Cost','number']],run:v=>{if(v.revenue<=0)throw Error('Revenue must be positive.');return{value:(v.revenue-v.cost)/v.revenue*100,unit:' %',detail:'Profit margin as a percentage of revenue.'}}},
+{id:'break-even-units',title:'Break-Even Units Calculator',category:'Finance',icon:'⚖️',description:'Estimate units needed to cover fixed costs.',fields:[['fixed','Fixed costs','number'],['price','Price per unit','number'],['variable','Variable cost per unit','number']],run:v=>{const d=v.price-v.variable;if(d<=0)throw Error('Price must exceed variable cost.');return{value:v.fixed/d,unit:' units'}}},
+{id:'future-value',title:'Future Value Calculator',category:'Finance',icon:'📈',description:'Estimate future value with periodic growth.',fields:[['principal','Principal','number'],['rate','Annual rate (%)','number'],['years','Years','number']],run:v=>({value:v.principal*Math.pow(1+v.rate/100,v.years)})},
+{id:'present-value',title:'Present Value Calculator',category:'Finance',icon:'💰',description:'Discount a future amount to present value.',fields:[['future','Future value','number'],['rate','Annual discount rate (%)','number'],['years','Years','number']],run:v=>{if(1+v.rate/100<=0)throw Error('Rate is invalid.');return{value:v.future/Math.pow(1+v.rate/100,v.years)}}},
+{id:'investment-return',title:'Investment Return Calculator',category:'Finance',icon:'📊',description:'Calculate return percentage on an investment.',fields:[['initial','Initial investment','number'],['finalValue','Final value','number']],run:v=>{if(v.initial===0)throw Error('Initial investment cannot be zero.');return{value:(v.finalValue-v.initial)/Math.abs(v.initial)*100,unit:' %'}}},
+{id:'hourly-pay',title:'Hourly Pay Calculator',category:'Finance',icon:'💵',description:'Convert hourly pay and hours into gross earnings.',fields:[['rate','Hourly rate','number'],['hours','Hours worked','number']],run:v=>({value:v.rate*v.hours,unit:' currency units'})},
+{id:'overtime-pay',title:'Overtime Pay Calculator',category:'Finance',icon:'⏰',description:'Estimate overtime earnings using a multiplier.',fields:[['rate','Regular hourly rate','number'],['hours','Overtime hours','number'],['multiplier','Overtime multiplier','number']],run:v=>({value:v.rate*v.hours*v.multiplier,unit:' currency units'})},
+{id:'rent-affordability',title:'Rent Affordability Calculator',category:'Finance',icon:'🏠',description:'Estimate a rent budget from monthly income.',fields:[['income','Monthly income','number'],['percent','Budget percentage (%)','number']],run:v=>({value:v.income*v.percent/100,unit:' currency units/month'})},
+{id:'calorie-percentage',title:'Calorie Percentage Calculator',category:'Health',icon:'🍽️',description:'Find the percentage of calories from a food amount.',fields:[['food','Food calories','number'],['total','Total calories','number']],run:v=>{if(v.total<=0)throw Error('Total calories must be positive.');return{value:v.food/v.total*100,unit:' %'}}},
+{id:'macro-split',title:'Macro Split Calculator',category:'Health',icon:'🥗',description:'Estimate calories from grams of protein, carbs, and fat.',fields:[['protein','Protein grams','number'],['carbs','Carbohydrate grams','number'],['fat','Fat grams','number']],run:v=>({value:v.protein*4+v.carbs*4+v.fat*9,unit:' kcal',detail:'Uses 4 kcal/g for protein and carbs and 9 kcal/g for fat.'})},
+{id:'target-heart-rate',title:'Target Heart Rate Calculator',category:'Health',icon:'❤️',description:'Estimate a target heart rate from age and intensity.',fields:[['age','Age','number'],['intensity','Intensity (%)','number']],run:v=>{if(v.age<=0)throw Error('Age must be positive.');return{value:(220-v.age)*v.intensity/100,unit:' bpm',detail:'Simple estimated maximum-heart-rate method.'}}},
+{id:'water-intake',title:'Water Intake Estimate',category:'Health',icon:'💧',description:'Estimate daily water intake from body weight.',fields:[['weight','Weight (kg)','number'],['factor','Milliliters per kg','number']],run:v=>({value:v.weight*v.factor,unit:' mL/day',detail:'General estimate; individual needs vary.'})},
+{id:'trapezoid-area',title:'Trapezoid Area Calculator',category:'Geometry',icon:'⏢',description:'Calculate trapezoid area from two parallel sides and height.',fields:[['a','Base A','number'],['b','Base B','number'],['height','Height','number']],run:v=>({value:(v.a+v.b)*v.height/2,unit:' square units'})},
+{id:'parallelogram-area',title:'Parallelogram Area Calculator',category:'Geometry',icon:'▱',description:'Calculate area from base and perpendicular height.',fields:[['base','Base','number'],['height','Height','number']],run:v=>({value:v.base*v.height,unit:' square units'})},
+{id:'ellipse-area',title:'Ellipse Area Calculator',category:'Geometry',icon:'⭕',description:'Calculate ellipse area from its semi-axes.',fields:[['a','Semi-major axis','number'],['b','Semi-minor axis','number']],run:v=>({value:Math.PI*v.a*v.b,unit:' square units'})},
+{id:'prism-volume',title:'Prism Volume Calculator',category:'Geometry',icon:'🔷',description:'Calculate prism volume from base area and height.',fields:[['baseArea','Base area','number'],['height','Height','number']],run:v=>({value:v.baseArea*v.height,unit:' cubic units'})},
+{id:'kinetic-energy',title:'Kinetic Energy Calculator',category:'Science',icon:'⚡',description:'Calculate kinetic energy from mass and velocity.',fields:[['mass','Mass (kg)','number'],['velocity','Velocity (m/s)','number']],run:v=>({value:.5*v.mass*v.velocity*v.velocity,unit:' J'})},
+{id:'voltage-divider',title:'Voltage Divider Calculator',category:'Science',icon:'🔌',description:'Calculate output voltage in a two-resistor divider.',fields:[['input','Input voltage','number'],['r1','R1','number'],['r2','R2','number']],run:v=>{if(v.r1+v.r2===0)throw Error('Resistance sum cannot be zero.');return{value:v.input*v.r2/(v.r1+v.r2),unit:' V'}}},
+{id:'kilograms-grams',title:'Kilograms to Grams Converter',category:'Conversion',icon:'⚖️',description:'Convert kilograms into grams.',fields:[['kg','Kilograms','number']],run:v=>({value:v.kg*1000,unit:' g'})},
+{id:'celsius-kelvin',title:'Celsius to Kelvin Converter',category:'Conversion',icon:'🌡️',description:'Convert Celsius temperature into Kelvin.',fields:[['celsius','Temperature (°C)','number']],run:v=>({value:v.celsius+273.15,unit:' K'})},
+
+,{id:'compound-growth-monthly',title:'Monthly Compound Growth',category:'Finance',icon:'📈',description:'Estimate growth with monthly compounding.',fields:[['principal','Principal','number'],['rate','Annual rate (%)','number'],['months','Months','number']],run:v=>({value:v.principal*Math.pow(1+v.rate/1200,v.months)})}
+,{id:'unit-price',title:'Unit Price Calculator',category:'Finance',icon:'🏷️',description:'Find the price per unit from total cost and quantity.',fields:[['total','Total cost','number'],['quantity','Quantity','number']],run:v=>{if(v.quantity<=0)throw Error('Quantity must be positive.');return{value:v.total/v.quantity,unit:' per unit'}}}
+,{id:'rhombus-area',title:'Rhombus Area Calculator',category:'Geometry',icon:'🔶',description:'Calculate rhombus area from diagonals.',fields:[['d1','Diagonal 1','number'],['d2','Diagonal 2','number']],run:v=>({value:v.d1*v.d2/2,unit:' square units'})}
+,{id:'angular-velocity',title:'Angular Velocity Calculator',category:'Science',icon:'🔄',description:'Calculate angular velocity from angle and time.',fields:[['angle','Angle (radians)','number'],['time','Time (seconds)','number']],run:v=>{if(v.time===0)throw Error('Time cannot be zero.');return{value:v.angle/v.time,unit:' rad/s'}}}
+,{id:'millimeters-centimeters',title:'Millimeters to Centimeters',category:'Conversion',icon:'📏',description:'Convert millimeters into centimeters.',fields:[['mm','Millimeters','number']],run:v=>({value:v.mm/10,unit:' cm'})}
+
+,{id:'fahrenheit-kelvin',title:'Fahrenheit to Kelvin Converter',category:'Conversion',icon:'🌡️',description:'Convert Fahrenheit temperature into Kelvin.',fields:[['fahrenheit','Temperature (°F)','number']],run:v=>({value:(v.fahrenheit-32)*5/9+273.15,unit:' K'})}
 ].filter(Boolean).filter((c,i,a)=>a.findIndex(x=>x.id===c.id)===i);
 
 const contentByCategory={
@@ -135,78 +164,36 @@ for(const c of calculators){const t=contentByCategory[c.category]||fallbackConte
 if(typeof document!=='undefined'){
 const $=s=>document.querySelector(s);
 const state={query:'',category:'all'};
-const catIcons={Math:'📐',Finance:'💰',Health:'❤️',Geometry:'📏',Conversion:'🔁',Science:'🔬',Date:'🕒',Time:'🕒',Everyday:'🧰',Business:'💼'};
-const catBlurb={Math:'Algebra, geometry, statistics and more.',Finance:'Loans, mortgage, investment, tax and more.',Health:'BMI, BMR, body fat, calories and more.',Geometry:'Area, perimeter, volume and surface area.',Conversion:'Length, weight, temperature, volume and more.',Science:'Physics, electricity, energy and pressure.',Date:'Age, date difference, duration and more.',Everyday:'Tips, bills, fuel and shopping tools.'};
-const popularIds=['percentage','bmi','age','loan-payment','discount-price','date-difference','mortgage','sales-tax'];
+const categoryMeta={
+  Math:{icon:'▦',description:'Algebra, geometry, statistics and more.'},
+  Finance:{icon:'▤',description:'Loans, mortgage, investment, tax and more.'},
+  Health:{icon:'♡',description:'BMI, BMR, body fat, pregnancy and more.'},
+  'Time & Date':{icon:'◷',description:'Age, date difference, time zones and more.'},
+  Conversion:{icon:'⇄',description:'Length, weight, temperature and more.'},
+  Geometry:{icon:'⌂',description:'Shapes, areas, volume and dimensions.'},
+  Science:{icon:'ϟ',description:'Physics formulas and useful science tools.'},
+  Business:{icon:'▥',description:'Profit, margin, tax and business planning.'},
+  Lifestyle:{icon:'⌂',description:'Daily life and personal-use calculators.'}
+};
 function fmt(x){return typeof x==='number'?Number(x.toFixed(8)).toLocaleString():x}
 function filtered(){return calculators.filter(c=>(state.category==='all'||c.category===state.category)&&`${c.title} ${c.description}`.toLowerCase().includes(state.query.toLowerCase()))}
-function card(c){return `<article class="calc-card" data-id="${c.id}" tabindex="0"><div class="ic">${c.icon}</div><h3>${c.title}</h3><p>${c.description}</p><span class="arrow">→</span></article>`}
-function bindCards(sel){document.querySelectorAll(sel).forEach(el=>{el.addEventListener('click',()=>openCalculator(el.dataset.id));el.addEventListener('keydown',e=>{if(e.key==='Enter')openCalculator(el.dataset.id)})})}
-function showHome(){['#home','#categories','#popular','#calculators','#about'].forEach(s=>{const e=$(s);if(e)e.hidden=false});$('#workspace').hidden=true}
-function renderCategories(){
-  const cats=[...new Set(calculators.map(c=>c.category))].sort();
-  $('#category-grid').innerHTML=cats.map(cat=>{const n=calculators.filter(c=>c.category===cat).length;
-    return `<article class="category-card" data-cat="${cat}" tabindex="0"><div class="ic">${catIcons[cat]||'🧮'}</div><h3>${cat} Calculators</h3><p>${catBlurb[cat]||'Handy tools for everyday '+cat.toLowerCase()+' tasks.'}</p><span class="more">${n} calculators →</span></article>`}).join('');
-  document.querySelectorAll('.category-card').forEach(el=>el.addEventListener('click',()=>{state.category=el.dataset.cat;$('#category').value=el.dataset.cat;renderCatalog();$('#calculators').scrollIntoView({behavior:'smooth'})}));
-  cats.forEach(cat=>$('#category').insertAdjacentHTML('beforeend',`<option value="${cat}">${cat}</option>`));
+function renderCategoryCards(){
+  const counts={};calculators.forEach(c=>counts[c.category]=(counts[c.category]||0)+1);
+  const order=['Finance','Health','Math','Time & Date','Conversion','Geometry','Science','Business','Lifestyle'];
+  const cats=[...new Set([...order,...Object.keys(counts)])].filter(c=>counts[c]);
+  $('#category-cards').innerHTML=cats.slice(0,9).map(cat=>{const m=categoryMeta[cat]||{icon:'◈',description:'Useful everyday calculation tools.'};return `<a href="#tools" class="category-card" data-category="${cat}"><span class="category-icon">${m.icon}</span><div><h3>${cat} Calculators</h3><p>${m.description}</p><small>${counts[cat]}+ calculators →</small></div></a>`}).join('');
+  document.querySelectorAll('[data-category]').forEach(el=>el.addEventListener('click',()=>{state.category=el.dataset.category;$('#category').value=state.category;renderCatalog();}));
 }
 function renderPopular(){
-  const list=popularIds.map(id=>calculators.find(c=>c.id===id)).filter(Boolean);
-  while(list.length<8){const c=calculators[list.length];if(!list.includes(c))list.push(c);else break}
-  $('#popular-grid').innerHTML=list.slice(0,8).map(card).join('');
-  bindCards('#popular-grid .calc-card');
-  $('#popular-searches').insertAdjacentHTML('beforeend',['Percentage','BMI','Loan','Age','Discount','Time','Area','Tax'].map(t=>`<button class="chip" type="button">${t}</button>`).join(''));
-  document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{state.query=b.textContent;$('#search').value=b.textContent;renderCatalog();$('#calculators').scrollIntoView({behavior:'smooth'})}));
+  const names=['Percentage Calculator','BMI Calculator','Age Calculator','Loan Calculator','Discount Calculator','Date Calculator','Mortgage Calculator','GST Calculator'];
+  const list=names.map(name=>calculators.find(c=>c.title.toLowerCase()===name.toLowerCase())||calculators.find(c=>c.title.toLowerCase().includes(name.split(' ')[0].toLowerCase()))).filter(Boolean).filter((c,i,a)=>a.findIndex(x=>x.id===c.id)===i).slice(0,8);
+  $('#popular-cards').innerHTML=list.map(c=>`<article class="popular-card" data-id="${c.id}" tabindex="0"><span class="popular-icon">${c.icon||'▦'}</span><div><h3>${c.title}</h3><p>${c.description}</p><div class="arrow">→</div></div></article>`).join('');
+  document.querySelectorAll('.popular-card').forEach(el=>{el.addEventListener('click',()=>openCalculator(el.dataset.id));el.addEventListener('keydown',e=>{if(e.key==='Enter')openCalculator(el.dataset.id)})});
 }
-function renderCatalog(){const list=filtered();$('#catalog').innerHTML=list.map(card).join('');$('#empty').hidden=list.length>0;bindCards('#catalog .calc-card')}
-function openCalculator(id){
-  const c=calculators.find(x=>x.id===id);if(!c)return;
-  ['#home','#categories','#popular','#calculators','#about'].forEach(s=>{const e=$(s);if(e)e.hidden=true});
-  $('#workspace').hidden=false;$('#crumb-category').textContent=c.category+' Calculators';$('#crumb-title').textContent=c.title;
-  const related=calculators.filter(x=>x.category===c.category&&x.id!==c.id).slice(0,5);
-  const faqs=c.faqs.map(q=>{const i=q.indexOf('?');const head=i>-1?q.slice(0,i+1):q;const body=i>-1?q.slice(i+1).trim():'';return `<details><summary>${head}</summary><p>${body}</p></details>`}).join('');
-  $('#calculator').innerHTML=`
-  <h1 class="calc-title">${c.title}</h1>
-  <p class="calc-lead">${c.description}</p>
-  <div class="content-grid">
-    <div>
-      <form id="calc-form" class="panel">
-        <h3>${c.title}</h3>
-        ${c.fields.map(f=>`<div class="field"><label for="f-${f[0]}">${f[1]}</label><input id="f-${f[0]}" name="${f[0]}" type="${f[2]}" step="any" required /></div>`).join('')}
-        <button class="primary" type="submit">Calculate</button>
-        <div id="error" class="error" role="alert"></div>
-        <div id="result" class="result" hidden></div>
-      </form>
-      <div class="panel"><h3>How to Use</h3><ol class="steps">${c.fields.map(f=>`<li>Enter the ${f[1].toLowerCase()}.</li>`).join('')}<li>Click the Calculate button.</li><li>The result will show the calculated value instantly.</li></ol></div>
-      <div class="panel"><h3>Formula</h3><p style="color:var(--muted);font-size:.92rem;margin:0">${c.formula}</p><div class="formula-box">${c.title} = result of the inputs above</div></div>
-      <div class="panel"><h3>Example</h3><p style="color:var(--muted);font-size:.92rem;margin:0">${c.example}</p></div>
-      <div class="panel faq"><h3>Common Questions</h3>${faqs}</div>
-    </div>
-    <aside>
-      <div class="side-card"><h3>Other ${c.category} Calculations</h3><div class="side-list">${related.map(r=>`<button data-id="${r.id}" type="button">${r.title}<span>›</span></button>`).join('')||'<p style="color:var(--muted)">No related tools yet.</p>'}</div></div>
-      <div class="side-card"><h3>Key Features</h3><ul class="checks"><li>Easy to use</li><li>Instant results</li><li>Clear formula and example</li><li>Mobile friendly</li><li>100% free</li></ul></div>
-      <div class="tip"><h3>💡 Tip</h3><p>${c.tips}</p></div>
-    </aside>
-  </div>`;
-  document.querySelectorAll('.side-list button').forEach(b=>b.addEventListener('click',()=>openCalculator(b.dataset.id)));
-  $('#calc-form').addEventListener('submit',e=>{
-    e.preventDefault();const data=Object.fromEntries(new FormData(e.target));
-    for(const f of c.fields){if(f[2]==='number')data[f[0]]=Number(data[f[0]])}
-    try{const r=c.run(data);$('#error').textContent='';$('#result').hidden=false;
-      $('#result').innerHTML=`<span>Result</span><strong>${fmt(r.value)}${r.unit||''}</strong><p>${r.detail||''}</p>`}
-    catch(err){$('#result').hidden=true;$('#error').textContent=err.message}});
-  location.hash=c.id;window.scrollTo({top:0,behavior:'smooth'});
-}
-$('#search').addEventListener('input',e=>{state.query=e.target.value;renderCatalog()});
-$('#category').addEventListener('change',e=>{state.category=e.target.value;renderCatalog()});
-$('#back').addEventListener('click',()=>{location.hash='';showHome();window.scrollTo({top:0,behavior:'smooth'})});
-$('#header-search').addEventListener('click',()=>{showHome();$('#search').focus();window.scrollTo({top:0,behavior:'smooth'})});
-['#view-all-categories','#view-all-popular','#cta-explore'].forEach(s=>$(s)&&$(s).addEventListener('click',()=>{showHome();$('#calculators').scrollIntoView({behavior:'smooth'})}));
-$('#theme-toggle').addEventListener('click',()=>{const r=document.documentElement;const d=r.dataset.theme==='dark';r.dataset.theme=d?'light':'dark';$('#theme-toggle').textContent=d?'🌙':'☀️'});
-$('#stat-count').textContent=calculators.length+'+';
-$('#year').textContent=new Date().getFullYear();
-renderCategories();renderPopular();renderCatalog();
+function renderCatalog(){const list=filtered();$('#catalog').innerHTML=list.map(c=>`<article class="calc-card" data-id="${c.id}" tabindex="0"><div class="icon">${c.icon||'▦'}</div><h3>${c.title}</h3><p>${c.description}</p></article>`).join('');$('#empty').hidden=list.length>0;document.querySelectorAll('.calc-card').forEach(el=>{el.addEventListener('click',()=>openCalculator(el.dataset.id));el.addEventListener('keydown',e=>{if(e.key==='Enter')openCalculator(el.dataset.id)})})}
+function openCalculator(id){const c=calculators.find(x=>x.id===id);if(!c)return;$('#home').hidden=true;$('#calculators').hidden=true;$('.popular-section').hidden=true;$('.catalog-section').hidden=true;$('#about').hidden=true;$('#workspace').hidden=false;$('#calculator').innerHTML=`<div class="calc-panel"><p class="section-kicker">${c.category.toUpperCase()}</p><h2>${c.title}</h2><p>${c.description}</p><div class="content-grid"><div><form id="calc-form">${c.fields.map(f=>`<div class="field"><label for="f-${f[0]}">${f[1]}</label><input id="f-${f[0]}" name="${f[0]}" type="${f[2]}" required /></div>`).join('')}<button class="primary" type="submit">Calculate</button><div id="error" class="error" role="alert"></div><div id="result" class="result" hidden></div></form></div><aside class="learning"><h3>Formula</h3><p>${c.formula}</p><h3>Example</h3><p>${c.example}</p><h3>Tips</h3><p>${c.tips}</p><h3>Common Questions</h3>${c.faqs.map(q=>`<p>${q}</p>`).join('')}</aside></div></div>`;$('#calc-form').addEventListener('submit',e=>{e.preventDefault();const data=Object.fromEntries(new FormData(e.target));for(const f of c.fields){if(f[2]==='number')data[f[0]]=Number(data[f[0]])}try{const r=c.run(data);$('#error').textContent='';$('#result').hidden=false;$('#result').innerHTML=`<span>RESULT</span><strong>${fmt(r.value)}${r.unit||''}</strong><p>${r.detail||''}</p>`}catch(err){$('#result').hidden=true;$('#error').textContent=err.message}});location.hash=c.id;window.scrollTo({top:0,behavior:'smooth'})}
+function showHome(){location.hash='home';$('#workspace').hidden=true;$('#home').hidden=false;$('#calculators').hidden=false;$('.popular-section').hidden=false;$('.catalog-section').hidden=false;$('#about').hidden=false;window.scrollTo({top:0,behavior:'smooth'})}
+$('#search').addEventListener('input',e=>{state.query=e.target.value;$('#top-search').value=e.target.value;renderCatalog()});$('#top-search').addEventListener('input',e=>{state.query=e.target.value;$('#search').value=e.target.value;renderCatalog();document.querySelector('#tools').scrollIntoView({behavior:'smooth'})});$('#hero-search-form').addEventListener('submit',e=>{e.preventDefault();state.query=$('#search').value;renderCatalog();$('#tools').scrollIntoView({behavior:'smooth'})});document.querySelectorAll('[data-search]').forEach(btn=>btn.addEventListener('click',()=>{state.query=btn.dataset.search;$('#search').value=state.query;$('#top-search').value=state.query;renderCatalog();$('#tools').scrollIntoView({behavior:'smooth'})}));$('#category').addEventListener('change',e=>{state.category=e.target.value;renderCatalog()});$('#back').addEventListener('click',showHome);$('#view-all').addEventListener('click',()=>{state.category='all';$('#category').value='all';renderCatalog()});[...new Set(calculators.map(c=>c.category))].sort().forEach(cat=>$('#category').insertAdjacentHTML('beforeend',`<option value="${cat}">${cat}</option>`));$('#theme-toggle').addEventListener('click',()=>document.body.classList.toggle('dark-mode'));$('#year').textContent=new Date().getFullYear();renderCategoryCards();renderPopular();renderCatalog();
 if(location.hash&&calculators.some(c=>c.id===location.hash.slice(1)))openCalculator(location.hash.slice(1));
 }
-
 if(typeof module!=='undefined')module.exports={calculators};
