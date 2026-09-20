@@ -2,8 +2,8 @@
 const assert=require('node:assert/strict');
 const {calculators}=require('./app.js');
 const byId=id=>calculators.find(c=>c.id===id);
-assert.equal(calculators.length,105,'Expected 105 calculators');
-assert.equal(new Set(calculators.map(c=>c.id)).size,105,'IDs must be unique');
+assert.equal(calculators.length,125,'Expected 105 calculators');
+assert.equal(new Set(calculators.map(c=>c.id)).size,125,'IDs must be unique');
 assert.equal(byId('percentage').run({percent:20,number:150}).value,30);
 assert.equal(byId('percent-change').run({old:100,newValue:125}).value,25);
 assert.equal(byId('average').run({numbers:'10,20,30'}).value,20);
@@ -57,3 +57,7 @@ assert.equal(byId('liters-milliliters').run({liters:2}).value,2000);
 
 console.log('PASS: Batch 7 dedicated calculator IDs');
 
+
+for (const id of ['sales-margin','break-even-units','future-value','present-value','investment-return','hourly-pay','overtime-pay','rent-affordability','calorie-percentage','macro-split','target-heart-rate','water-intake','trapezoid-area','parallelogram-area','ellipse-area','prism-volume','kinetic-energy','voltage-divider','kilograms-grams','celsius-kelvin']) assert.ok(calculators.some(c=>c.id===id), 'missing Batch 13 calculator: '+id);
+
+assert.ok(calculators.some(c=>c.id==='fahrenheit-kelvin'));
