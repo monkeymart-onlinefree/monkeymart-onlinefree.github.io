@@ -1,56 +1,87 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Free online calculators for finance, health, math, dates, conversions and everyday life." />
-  <title>CalcPro — Free Online Calculators</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>CalcPro — 185+ Free Online Calculators</title>
+<meta name="description" content="CalcPro offers 185+ free online calculators for finance, health, math, geometry, science, conversion, dates, education and construction. Each tool has its own page with a full guide." />
+<link rel="stylesheet" href="styles.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand" href="./" aria-label="CalcPro home"><span class="brand-mark">▦</span><span>Calc<span class="brand-blue">Pro</span></span></a>
-      <nav class="main-nav" aria-label="Main navigation">
-        <a class="active" href="#home">Home</a>
-        <a href="#calculators">Calculators <span>⌄</span></a>
-        <a href="#calculators">Converters <span>⌄</span></a>
-        <a href="#tools">Tools <span>⌄</span></a>
-        <a href="#about">Blog</a>
-      </nav>
-      <div class="header-actions"><div class="mini-search"><span>⌕</span><input id="top-search" type="search" placeholder="Search calculators..." aria-label="Search calculators" /></div><button id="theme-toggle" class="icon-button" type="button" aria-label="Toggle theme">☾</button></div>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="./"><span class="brand-mark">🧮</span>CalcPro</a>
+  <nav><a href="./" class="active">Home</a><a href="#categories">Categories</a><a href="#popular">Popular</a><a href="#calculators">All calculators</a><a href="#about">About</a></nav>
+  <div class="header-actions"><button class="icon-btn" id="theme-toggle" aria-label="Toggle theme">🌙</button></div>
+</div></header>
+
+<main>
+<section id="home">
+  <div class="hero">
+    <span class="badge">✨ Simple tools for smarter decisions</span>
+    <h1>Free Online <span>Calculators</span></h1>
+    <p class="hero-sub">Fast, accurate and beautifully simple calculators for finance, health, maths and everyday life. Every tool has its own page with a full guide — no sign-up, always free.</p>
+    <div class="search-wrap">
+      <input id="search" type="search" placeholder="Search calculators (e.g. mortgage, BMI, percentage…)" aria-label="Search calculators" />
+      <button class="primary" type="button">Search</button>
     </div>
-  </header>
+    <div class="chips" id="popular-searches"><span>Popular:</span></div>
+  </div>
+  <div class="stats">
+    <div class="stat"><span class="ic">🧮</span><div><b id="stat-count">185+</b><small>Calculators</small></div></div>
+    <div class="stat"><span class="ic">📖</span><div><b>Full guides</b><small>On every page</small></div></div>
+    <div class="stat"><span class="ic">⚡</span><div><b>Instant</b><small>Results in-browser</small></div></div>
+    <div class="stat"><span class="ic">🔒</span><div><b>Private</b><small>Nothing uploaded</small></div></div>
+  </div>
+</section>
 
-  
-  <main>
-    <section id="home" class="hero-section">
-      <div class="hero-copy">
-        <span class="pill"><span>✣</span> Simple Tools for a Smarter You</span>
-        <h1>Free Online <span>Calculators</span></h1>
-        <p>Fast, accurate and easy-to-use calculators for everyday life.<br />No signup required — just useful tools, always free.</p>
-        <form id="hero-search-form" class="hero-search"><span>⌕</span><input id="search" type="search" placeholder="Search calculators (e.g. percentage, loan, BMI...)" aria-label="Search calculators" /><button type="submit">Search</button></form>
-        <div class="popular-row"><strong>Popular searches:</strong><button data-search="percentage">Percentage</button><button data-search="BMI">BMI</button><button data-search="Loan">Loan</button><button data-search="Age">Age</button><button data-search="Discount">Discount</button><button data-search="Time">Time</button><button data-search="Area">Area</button><button data-search="GST">GST</button></div>
-        <div class="trust-row"><div><b>200+</b><span>Calculators</span></div><div><b>100%</b><span>Free to use</span></div><div><b>⚡</b><span>Works on all devices</span></div><div><b>✓</b><span>Accurate tools</span></div></div>
-      </div>
-      <div class="hero-visual"><div class="calculator-preview"><div class="preview-display">0</div><div class="preview-keys"><span>7</span><span>8</span><span>9</span><span>÷</span><span>4</span><span>5</span><span>6</span><span>×</span><span>1</span><span>2</span><span>3</span><span>−</span><span>0</span><span>.</span><span class="equals">=</span><span>+</span></div></div><div><h2>Simple Tools<br />Big Answers</h2><p>Make everyday calculations faster and easier.</p><ul><li>100% Free</li><li>No Registration</li><li>Mobile Friendly</li><li>Accurate Results</li></ul></div></div>
-    </section>
+<section id="recent" class="block" hidden>
+  <div class="section-heading"><div><h2>Recently used</h2><p class="sub">Picks up where you left off.</p></div></div>
+  <div id="recent-grid" class="calculator-grid"></div>
+</section>
 
-    <section id="calculators" class="content-section">
-      <div class="section-heading"><div><p class="section-kicker">EXPLORE OUR TOOLS</p><h2>Browse Calculators by Category</h2></div><a href="#calculators" id="view-all">View All Categories →</a></div>
-      <div id="category-cards" class="category-grid"></div>
-    </section>
+<section id="categories" class="block">
+  <div class="section-heading"><div><h2>Browse by category</h2><p class="sub">Ten categories, every tool on its own page.</p></div><a class="link" href="#calculators">View all →</a></div>
+  <div id="category-grid" class="category-grid"></div>
+</section>
 
-    <section class="content-section popular-section"><div class="section-heading"><div><p class="section-kicker">MOST USED</p><h2>Popular Calculators</h2></div><a href="#calculators">View All →</a></div><div id="popular-cards" class="popular-grid"></div></section>
+<section id="popular" class="block">
+  <div class="section-heading"><div><h2>Popular calculators</h2><p class="sub">The tools people open most.</p></div><a class="link" href="#calculators">View all →</a></div>
+  <div id="popular-grid" class="calculator-grid"></div>
+</section>
 
-    <section id="tools" class="content-section catalog-section"><div class="section-heading"><div><p class="section-kicker">FULL LIBRARY</p><h2>All Calculators</h2></div><select id="category" aria-label="Filter by category"><option value="all">All categories</option></select></div><div id="catalog" class="calculator-grid"></div><p id="empty" class="empty" hidden>No calculators match your search.</p></section>
+<section id="calculators" class="block">
+  <div class="section-heading"><div><h2>All calculators</h2><p class="sub" id="count"></p></div>
+    <select id="category" aria-label="Filter by category"><option value="all">All categories</option></select>
+  </div>
+  <div id="catalog" class="calculator-grid"></div>
+  <p id="empty" class="empty" hidden>No calculators match your search.</p>
+</section>
 
-    <section id="workspace" class="workspace" hidden><button id="back" class="back-button">← Back to calculators</button><div id="calculator"></div></section>
+<section class="cta">
+  <div class="cta-inner">
+    <span style="font-size:2.2rem">💻</span>
+    <div><h3>Calculate anywhere, on any device</h3><p>Every page is lightweight, mobile-friendly and works the moment it loads.</p></div>
+    <a class="primary" href="#calculators">Explore all calculators</a>
+  </div>
+</section>
 
-    <section id="about" class="about-section"><div><p class="section-kicker">WHY CALCPRO?</p><h2>Calculate Anytime,<br />Anywhere.</h2><p>Our tools work smoothly on desktop, tablet and mobile. Every calculator is designed with clear inputs, helpful explanations and instant results.</p></div><div class="about-badges"><div><span>✓</span><b>Clear & Simple</b><small>Easy-to-understand tools</small></div><div><span>⚡</span><b>Instant Results</b><small>Fast calculations</small></div><div><span>▣</span><b>Works Everywhere</b><small>Responsive on all devices</small></div></div></section>
-  </main>
+<section id="about" class="about">
+  <h2>Useful tools, without the clutter.</h2>
+  <p>CalcPro is a static, GitHub Pages–friendly project. Each calculator has a dedicated page with a full written guide explaining what the tool does, what it is used for, how to use it step by step, the formula behind it, a worked example, common mistakes and its limitations. Health, financial and construction outputs are estimates; check them against professional guidance when decisions matter.</p>
+</section>
+</main>
 
-  <footer><div class="footer-main"><div class="footer-brand"><a class="brand" href="./"><span class="brand-mark">▦</span><span>Calc<span class="brand-blue">Pro</span></span></a><p>Simple calculators for a smarter you.</p><div class="socials"><span>𝕏</span><span>f</span><span>▶</span><span>◎</span><span>in</span></div></div><div><h3>Calculators</h3><a href="#tools">All Calculators</a><a href="#calculators">By Category</a><a href="#tools">Popular Calculators</a><a href="#tools">New Calculators</a></div><div><h3>Quick Links</h3><a href="#home">Home</a><a href="#about">Blog</a><a href="#about">About Us</a><a href="#about">Contact</a></div><div><h3>Legal</h3><a href="#about">Privacy Policy</a><a href="#about">Terms of Use</a><a href="#about">Disclaimer</a><a href="#tools">Sitemap</a></div><div><h3>Subscribe</h3><p>Get updates about new tools directly to your inbox.</p><form class="subscribe"><input type="email" placeholder="Enter your email" aria-label="Email address" required /><button>Subscribe</button></form></div></div><div class="footer-bottom"><span>© <span id="year"></span> CalcPro. All rights reserved.</span><span>Made with <b>♥</b> for smarter calculations.</span></div></footer>
-  <script src="app.js"></script>
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div><a class="brand" href="./"><span class="brand-mark">🧮</span>CalcPro</a><p>Premium-quality calculators for everyday decisions.</p><div class="socials"><span>f</span><span>𝕏</span><span>▶</span><span>in</span></div></div>
+    <div><h4>Calculators</h4><a href="#calculators">All calculators</a><a href="#categories">By category</a><a href="#popular">Popular tools</a></div>
+    <div><h4>Quick links</h4><a href="./">Home</a><a href="#about">About</a><a href="sitemap.xml">Sitemap</a></div>
+    <div><h4>Legal</h4><a href="#about">Disclaimer</a><a href="#about">Privacy</a><a href="#about">Terms</a></div>
+  </div>
+  <div class="footer-bottom"><span>© <span id="year"></span> CalcPro. All rights reserved.</span><span>Made for clarity.</span></div>
+</footer>
+<script src="app.js"></script>
 </body>
 </html>

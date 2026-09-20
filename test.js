@@ -2,8 +2,9 @@
 const assert=require('node:assert/strict');
 const {calculators}=require('./app.js');
 const byId=id=>calculators.find(c=>c.id===id);
-assert.equal(calculators.length,125,'Expected 105 calculators');
-assert.equal(new Set(calculators.map(c=>c.id)).size,125,'IDs must be unique');
+assert.ok(calculators.length>=185,'Expected at least 185 calculators');
+assert.equal(new Set(calculators.map(c=>c.id)).size,calculators.length,'IDs must be unique');
+const _t=calculators.map(c=>c.title.toLowerCase());assert.equal(new Set(_t).size,_t.length,'Titles must be unique (no duplicate tools)');
 assert.equal(byId('percentage').run({percent:20,number:150}).value,30);
 assert.equal(byId('percent-change').run({old:100,newValue:125}).value,25);
 assert.equal(byId('average').run({numbers:'10,20,30'}).value,20);
@@ -58,6 +59,36 @@ assert.equal(byId('liters-milliliters').run({liters:2}).value,2000);
 console.log('PASS: Batch 7 dedicated calculator IDs');
 
 
-for (const id of ['sales-margin','break-even-units','future-value','present-value','investment-return','hourly-pay','overtime-pay','rent-affordability','calorie-percentage','macro-split','target-heart-rate','water-intake','trapezoid-area','parallelogram-area','ellipse-area','prism-volume','kinetic-energy','voltage-divider','kilograms-grams','celsius-kelvin']) assert.ok(calculators.some(c=>c.id===id), 'missing Batch 13 calculator: '+id);
-
-assert.ok(calculators.some(c=>c.id==='fahrenheit-kelvin'));
+// Batch 10 (new tools sourced from major calculator sites)
+assert.ok(Math.abs(byId('mortgage').run({principal:200000,rate:0,years:10}).value-(200000/120))<1e-9);
+assert.equal(byId('roi').run({cost:100,finalValue:150}).value,50);
+assert.ok(Math.abs(byId('cagr').run({start:100,end:200,years:1}).value-100)<1e-9);
+assert.equal(byId('rule-of-72').run({rate:8}).value,9);
+assert.equal(byId('debt-to-income').run({debt:500,income:2000}).value,25);
+assert.equal(byId('hourly-to-salary').run({rate:10,hours:40}).value,20800);
+assert.equal(byId('max-heart-rate').run({age:30}).value,190);
+assert.ok(Math.abs(byId('one-rep-max').run({weight:100,reps:3}).value-110)<1e-9);
+assert.equal(byId('prime-checker').run({number:7}).value,'Prime');
+assert.equal(byId('factorial').run({n:5}).value,120);
+assert.equal(byId('logarithm').run({number:8,base:2}).value,3);
+assert.equal(byId('median').run({numbers:'1,3,2'}).value,2);
+assert.equal(byId('standard-deviation').run({numbers:'2,4,4,4,5,5,7,9'}).value,2);
+assert.equal(byId('z-score').run({value:12,mean:10,sd:2}).value,1);
+assert.equal(byId('modulo').run({a:10,b:3}).value,1);
+assert.equal(byId('decimal-to-binary').run({number:10}).value,'1010');
+assert.equal(byId('binary-to-decimal').run({binary:'1010'}).value,10);
+assert.equal(byId('heron-area').run({a:3,b:4,c:5}).value,6);
+assert.ok(Math.abs(byId('ellipse-area').run({a:2,b:3}).value-6*Math.PI)<1e-9);
+assert.equal(byId('cube-volume').run({side:3}).value,27);
+assert.equal(byId('inches-centimeters').run({inches:1}).value,2.54);
+assert.equal(byId('fahrenheit-celsius').run({fahrenheit:32}).value,0);
+assert.ok(Math.abs(byId('mps-kmh').run({mps:10}).value-36)<1e-9);
+assert.equal(byId('leap-year').run({year:2024}).value,'Leap year');
+assert.equal(byId('workdays-between').run({start:'2024-01-01',end:'2024-01-07'}).value,5);
+assert.equal(byId('grade-percentage').run({obtained:45,total:50}).value,90);
+assert.equal(byId('tile-count').run({area:10,tileArea:1}).value,11);
+assert.equal(byId('electricity-cost').run({watts:1000,hours:2,price:0.5}).value,1);
+assert.throws(()=>byId('credit-card-payoff').run({balance:1000,apr:20,payment:5}));
+assert.throws(()=>byId('heron-area').run({a:1,b:1,c:10}));
+assert.throws(()=>byId('slope').run({x1:1,y1:2,x2:1,y2:5}));
+console.log('PASS: Batch 10 new calculators (no duplicates, unique titles)');
