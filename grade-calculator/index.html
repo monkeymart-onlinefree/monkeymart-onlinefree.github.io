@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grade Calculator | CalcPro</title>
+<meta name="description" content="Calculate a weighted course grade, add assignment rows, and estimate the score needed on remaining coursework to reach a target grade.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/grade-calculator/">
+<meta property="og:title" content="Grade Calculator | CalcPro">
+<meta property="og:description" content="Calculate a weighted course grade, add assignment rows, and estimate the score needed on remaining coursework to reach a target grade.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="/grade-calculator/">
+<meta name="theme-color" content="#07111f">
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+:root{--bg:#07111f;--panel:rgba(255,255,255,.09);--panel2:rgba(255,255,255,.06);--text:#f7fbff;--muted:#b8c6d8;--line:rgba(255,255,255,.14);--a:#67e8f9;--b:#34d399;--c:#fbbf24;--danger:#fb7185;--shadow:0 30px 80px rgba(0,0,0,.32)}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
+a{color:var(--a)}button,input,select{font:inherit}
+.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
+.site-nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0;position:relative;z-index:10}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.3px;color:var(--text);text-decoration:none}
+.brand-mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,var(--a),var(--b));display:grid;place-items:center;color:#04111f;box-shadow:inset 0 1px 0 #fff8,0 10px 25px #0004;transform:rotate(-7deg)}
+.nav-links{display:flex;gap:18px;align-items:center}.nav-links a{color:var(--muted);text-decoration:none;font-size:.92rem}.nav-links a:hover{color:var(--text)}
+.breadcrumb{font-size:.9rem;color:var(--muted);margin-bottom:18px}.breadcrumb a{color:inherit;text-decoration:none}
+.hero{position:relative;min-height:440px;padding:48px 0 72px;display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center}
+.hero h1{font-size:clamp(2.5rem,6vw,5.8rem);line-height:.92;letter-spacing:-.055em;margin:0 0 22px;max-width:800px}
+.hero p{font-size:1.08rem;color:var(--muted);max-width:700px;margin:0}
+.kicker{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:7px 12px;margin-bottom:18px;color:var(--a);font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
+.scene{min-height:330px;position:relative;perspective:900px;filter:drop-shadow(0 30px 40px #0005)}
+.orb{position:absolute;border-radius:50%;filter:blur(1px);opacity:.9}
+.calc-shell{margin-top:-25px;position:relative;z-index:4}
+.calculator{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);gap:24px;align-items:stretch}
+.card{background:linear-gradient(180deg,var(--panel),rgba(255,255,255,.045));border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.1);backdrop-filter:blur(18px)}
+.form-card{padding:28px}.result-card{padding:28px;position:relative;overflow:hidden}
+.result-card:after{content:"";position:absolute;inset:auto -80px -100px auto;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,var(--a),transparent 70%);opacity:.12}
+.section-title{font-size:1.35rem;margin:0 0 7px}.subtle{color:var(--muted);font-size:.92rem;margin:0 0 20px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
+label{font-weight:750;font-size:.88rem;color:#e8f0f8}
+input,select{width:100%;border:1px solid var(--line);background:rgba(4,10,20,.48);color:var(--text);border-radius:14px;padding:12px 13px;outline:none;box-shadow:inset 0 1px 8px #0003}
+input:focus,select:focus{border-color:var(--a);box-shadow:0 0 0 3px color-mix(in srgb,var(--a) 22%,transparent)}
+option{color:#111}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:900;cursor:pointer;transition:.2s;box-shadow:0 12px 24px #0003}
+.btn-primary{background:linear-gradient(135deg,var(--a),var(--b));color:#04111a}.btn-secondary{background:rgba(255,255,255,.08);color:var(--text);border:1px solid var(--line)}
+.btn:hover{transform:translateY(-2px)}
+.error{display:none;color:#fff;background:color-mix(in srgb,var(--danger) 26%,transparent);border:1px solid color-mix(in srgb,var(--danger) 52%,transparent);padding:11px 13px;border-radius:13px;margin-top:15px;font-size:.9rem}.error.show{display:block}
+.result-big{font-size:clamp(2.2rem,5vw,4.2rem);font-weight:950;line-height:1;letter-spacing:-.04em;margin:10px 0 12px;color:var(--a);word-break:break-word}
+.metric-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}.metric{padding:14px;border-radius:17px;background:rgba(255,255,255,.055);border:1px solid var(--line)}.metric b{display:block;font-size:1.08rem}.metric span{font-size:.78rem;color:var(--muted)}
+.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line);font-size:.78rem;color:var(--muted)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tab{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);padding:8px 12px;border-radius:999px;cursor:pointer;font-weight:800}.tab.active{background:var(--a);color:#06111c;border-color:transparent}
+.tab-panel{display:none}.tab-panel.active{display:block}
+.table-wrap{overflow:auto;border-radius:16px;border:1px solid var(--line);margin-top:16px}table{border-collapse:collapse;width:100%;min-width:520px;background:rgba(2,8,16,.28)}th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;font-size:.88rem}th{color:var(--a);background:rgba(255,255,255,.045)}
+.content{padding:80px 0}.content-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:32px}.article{background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:30px;padding:34px}.article h2{font-size:1.8rem;line-height:1.2;margin:38px 0 12px}.article h2:first-child{margin-top:0}.article h3{margin-top:24px}.article p,.article li{color:#c8d3df}.article code{background:#0004;padding:3px 6px;border-radius:6px}
+.aside{position:sticky;top:20px;height:max-content;padding:22px}.aside h3{margin-top:0}.aside a{display:block;color:var(--muted);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--line)}.aside a:hover{color:var(--text)}
+.faq details{border-top:1px solid var(--line);padding:15px 0}.faq summary{font-weight:850;cursor:pointer}.faq p{margin-bottom:0}
+.source-list a{overflow-wrap:anywhere}
+footer{border-top:1px solid var(--line);padding:32px 0 50px;color:var(--muted);font-size:.9rem}
+.small{font-size:.82rem;color:var(--muted)}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.pill{padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.055);border:1px solid var(--line);font-size:.78rem}
+.rangebar{height:11px;border-radius:999px;background:rgba(255,255,255,.09);overflow:hidden;margin-top:14px}.rangebar>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--b),var(--c));transition:.4s}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:28px}.scene{min-height:250px}.calculator,.content-grid{grid-template-columns:1fr}.aside{position:relative}.hero h1{font-size:clamp(2.7rem,12vw,5.2rem)}}
+@media(max-width:620px){.wrap{width:min(100% - 20px,1180px)}.nav-links{display:none}.grid,.grid3,.metric-row{grid-template-columns:1fr}.form-card,.result-card,.article{padding:20px}.hero{padding-bottom:46px}.content{padding:55px 0}}
+
+
+body{--bg:#17122a;--panel:rgba(48,36,81,.72);--panel2:rgba(92,63,127,.3);--a:#a6e3ff;--b:#ff9aa8;--c:#ffd76b;background:radial-gradient(circle at 14% 12%,#4da9ff26,transparent 28%),radial-gradient(circle at 82% 28%,#ff557b24,transparent 25%),#17122a}
+.grade-calculator .hero{grid-template-columns:.9fr 1.1fr}.notebook{position:absolute;right:9%;top:18px;width:315px;height:300px;background:#fff7dc;border-radius:18px;transform:rotate(5deg) rotateY(-8deg);box-shadow:25px 35px 60px #0007;color:#3f3353;padding:34px}.notebook:before{content:"";position:absolute;left:48px;top:0;bottom:0;width:2px;background:#ef929c}.notebook i{display:block;height:2px;background:#8db6d6;margin:26px 0}.gradebubble{position:absolute;left:1%;bottom:38px;width:110px;height:110px;border-radius:32px;background:linear-gradient(145deg,#ffcf70,#ff7a8e);display:grid;place-items:center;font-size:2.7rem;font-weight:950;color:#49223a;transform:rotate(-11deg);box-shadow:0 25px 45px #0006}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/grade-calculator/#app", "name": "Grade Calculator", "url": "/grade-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate a weighted course grade, add assignment rows, and estimate the score needed on remaining coursework to reach a target grade."}, {"@type": "BreadcrumbList", "@id": "/grade-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "/calculators/"}, {"@type": "ListItem", "position": 3, "name": "Grade Calculator", "item": "/grade-calculator/"}]}, {"@type": "FAQPage", "@id": "/grade-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "How do weighted grades work?", "acceptedAnswer": {"@type": "Answer", "text": "Each score contributes in proportion to its weight. A 40%-weight exam affects the final grade more than a 10%-weight quiz."}}, {"@type": "Question", "name": "What if my weights do not add to 100%?", "acceptedAnswer": {"@type": "Answer", "text": "The current-grade result normalizes the weights you entered. Final-grade planning assumes the remaining course weight you specify completes the course structure."}}, {"@type": "Question", "name": "Are letter-grade cutoffs universal?", "acceptedAnswer": {"@type": "Answer", "text": "No. Schools and instructors may use different boundaries, so always check the official syllabus or grading policy."}}]}]}</script>
+<link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body class="grade-calculator">
+<header>
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Primary">
+      <a class="brand" href="#"><span class="brand-mark">C</span>CalcPro</a>
+      <div class="nav-links"><a href="#calculator">Calculator</a><a href="#guide">Guide</a><a href="#faq">FAQ</a></div>
+    </nav>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="breadcrumb"><a href="#">Home</a> / <a href="#">Calculators</a> / Grade Calculator</div>
+        <div class="kicker">School · Scores</div>
+        <h1>Grade Calculator</h1>
+        <p>Turn a messy gradebook into one clear weighted score—and see what you need on the work that remains.</p>
+      </div>
+      <div class="scene" aria-hidden="true"><div class="notebook"><i></i><i></i><i></i><i></i><i></i></div><div class="gradebubble">A+</div></div>
+    </section>
+  </div>
+</header>
+<main>
+  <section id="calculator" class="calc-shell">
+    <div class="wrap calculator">
+      <div class="card form-card">
+<h2 class="section-title">Weighted course grade</h2><p class="subtle">Enter scores as percentages and each item's course weight.</p>
+<div id="gradeRows"></div>
+<div class="actions"><button id="addRow" class="btn btn-secondary">+ Add row</button></div>
+<hr style="border:0;border-top:1px solid var(--line);margin:22px 0">
+<div class="grid">
+<div class="field"><label for="target">Target final grade (%)</label><input id="target" type="number" value="90" step="any"></div>
+<div class="field"><label for="remainWeight">Remaining course weight (%)</label><input id="remainWeight" type="number" value="20" min="0" max="100" step="any"></div>
+</div>
+<div class="actions"><button id="gGo" class="btn btn-primary">Calculate grade</button><button id="gClear" class="btn btn-secondary">Clear</button></div><div id="gErr" class="error"></div>
+</div>
+      <aside class="card result-card" aria-live="polite">
+<span class="badge">Current weighted grade</span><div id="gBig" class="result-big">—</div><p id="gText" class="subtle">Add assignments and weights.</p>
+<div class="metric-row"><div class="metric"><span>Weight entered</span><b id="gWeight">—</b></div><div class="metric"><span>Needed on remaining work</span><b id="gNeed">—</b></div></div>
+<div class="table-wrap"><table><thead><tr><th>Letter</th><th>Typical %</th></tr></thead><tbody><tr><td>A</td><td>93–96</td></tr><tr><td>B</td><td>83–86</td></tr><tr><td>C</td><td>73–76</td></tr><tr><td>D</td><td>63–66</td></tr><tr><td>F</td><td>0–59</td></tr></tbody></table></div>
+</aside>
+    </div>
+  </section>
+  <section id="guide" class="content">
+    <div class="wrap content-grid">
+      <article class="article">
+        
+<h2>What Is a Grade Calculator?</h2>
+<p>A grade calculator combines assignment or exam scores according to their weights. It is useful when a course grade is based on categories or assessments that contribute different percentages to the final mark.</p>
+<h2>Weighted Grade Formula</h2>
+<p><code>Weighted grade = Σ(score × weight) ÷ Σ(weights)</code>. For final-grade planning, the calculator compares the grade points already earned with the course weight still remaining.</p>
+<h2>Letter Grades</h2>
+<p>Letter-grade cutoffs vary by school, instructor, and country. The reference table on this page shows one common U.S. mapping similar to the example used by Calculator.net, but your syllabus should take priority.</p>
+<h2>Limitations</h2>
+<p>Extra credit, dropped assignments, category caps, curved grading, pass/fail rules, and institution-specific GPA policies can change the final result.</p>
+
+        <h2 id="faq">Frequently Asked Questions</h2>
+        <div class="faq"><details><summary>How do weighted grades work?</summary><p>Each score contributes in proportion to its weight. A 40%-weight exam affects the final grade more than a 10%-weight quiz.</p></details><details><summary>What if my weights do not add to 100%?</summary><p>The current-grade result normalizes the weights you entered. Final-grade planning assumes the remaining course weight you specify completes the course structure.</p></details><details><summary>Are letter-grade cutoffs universal?</summary><p>No. Schools and instructors may use different boundaries, so always check the official syllabus or grading policy.</p></details></div>
+        <h2>Sources and Methodology</h2>
+        <p>The calculator logic and explanatory content were cross-checked against the following references. Estimates are separated from official data where applicable.</p>
+        <ul class="source-list"><li><a href="https://www.calculator.net/grade-calculator.html" rel="noopener noreferrer">Calculator.net Grade Calculator</a></li></ul>
+      </article>
+      <aside class="card aside">
+        <h3>On this page</h3>
+        <a href="#calculator">Calculator</a>
+        <a href="#guide">How it works</a>
+        <a href="#faq">FAQs</a>
+        <p class="small">Educational calculator. For regulated financial, tax, medical, engineering, or network changes, verify the result against the relevant professional or official source.</p>
+      </aside>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">CalcPro · Standalone calculator page · No account required.</div></footer>
+<script>
+let rows=document.getElementById('gradeRows');
+function add(name="",score="",weight=""){let d=document.createElement('div');d.className="grid3";d.style.marginBottom="11px";d.innerHTML=`<div class="field"><label>Item</label><input class="gn" value="${name}" placeholder="Exam 1"></div><div class="field"><label>Score %</label><input class="gs" type="number" step="any" value="${score}"></div><div class="field"><label>Weight %</label><input class="gw" type="number" step="any" value="${weight}"></div>`;rows.appendChild(d)}
+[["Homework",92,20],["Midterm",84,30],["Project",95,30]].forEach(x=>add(...x));add("Final","",20);
+addRow.onclick=()=>add();
+function letter(x){if(x>=97)return"A+";if(x>=93)return"A";if(x>=90)return"A-";if(x>=87)return"B+";if(x>=83)return"B";if(x>=80)return"B-";if(x>=77)return"C+";if(x>=73)return"C";if(x>=70)return"C-";if(x>=67)return"D+";if(x>=63)return"D";if(x>=60)return"D-";return"F"}
+gGo.onclick=()=>{gErr.classList.remove('show');let ss=[...document.querySelectorAll('.gs')],ww=[...document.querySelectorAll('.gw')],sum=0,w=0;for(let i=0;i<ss.length;i++){let s=parseFloat(ss[i].value),x=parseFloat(ww[i].value);if(isFinite(s)&&isFinite(x)&&x>=0){sum+=s*x;w+=x}}if(w<=0){gErr.textContent="Enter at least one valid score and weight.";gErr.classList.add('show');return}let current=sum/w;gBig.textContent=current.toFixed(2)+"% · "+letter(current);gWeight.textContent=w.toFixed(2)+"%";let t=+target.value,r=+remainWeight.value;if(r>0){let completed=100-r, earned=current*completed/100, need=(t-earned)/(r/100);gNeed.textContent=need.toFixed(2)+"%";gText.textContent=need>100?"Your target is not reachable with the remaining weight alone.":need<0?"Your target is already secured under these assumptions.":"Required average on the remaining course weight."}else{gNeed.textContent="—";gText.textContent="No remaining weight entered."}};
+gClear.onclick=()=>{rows.innerHTML="";add();gBig.textContent="—";gWeight.textContent="—";gNeed.textContent="—";};
+</script>
+<script src="/assets/js/global.js" defer></script>
+</body>
+</html>

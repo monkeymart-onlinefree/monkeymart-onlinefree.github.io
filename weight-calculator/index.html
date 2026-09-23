@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weight Calculator – Free Accurate Online Calculator | CalcPro</title>
+<meta name="description" content="Convert between kilograms, pounds, ounces, grams, stones, tonnes, and other common weight or mass units.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/weight-calculator/">
+<meta property="og:title" content="Weight Calculator | CalcPro">
+<meta property="og:description" content="Convert between kilograms, pounds, ounces, grams, stones, tonnes, and other common weight or mass units.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="/weight-calculator/">
+<meta name="theme-color" content="#1f7a55">
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
+.wrap{width:min(1160px,calc(100% - 32px));margin:auto}
+.crumbs{font-size:.9rem;opacity:.78;margin-bottom:14px}.crumbs a{text-decoration:none}
+.card{border-radius:24px}.field label{display:block;font-weight:700;font-size:.9rem;margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;border:1px solid rgba(127,127,127,.28);border-radius:14px;padding:12px 13px;background:rgba(255,255,255,.84);color:#151515;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{box-shadow:0 0 0 4px rgba(89,130,246,.15)}
+.btns{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:800}
+.btn.secondary{background:transparent;border:1px solid currentColor;opacity:.78}
+.error{min-height:22px;margin-top:10px;font-weight:700;color:#b42318}
+.result-title{font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;font-weight:900;opacity:.72}
+.result-main{font-size:clamp(2rem,6vw,4rem);line-height:1;font-weight:950;letter-spacing:-.05em;margin:8px 0 14px}
+.statgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.stat{border-radius:16px;padding:12px;background:rgba(255,255,255,.12)}
+.stat b{display:block;font-size:1.05rem}.stat span{font-size:.8rem;opacity:.75}
+.content{padding:66px 0}.prose{max-width:860px;margin:auto}.prose h2{font-size:clamp(1.5rem,3vw,2rem);line-height:1.2;margin:42px 0 12px}.prose h3{margin:28px 0 8px}.prose p,.prose li{color:var(--muted,#4c5564)}
+.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;padding:15px 17px;border-radius:16px;background:var(--soft,#f3f4f6);overflow:auto}
+.note{border-left:4px solid var(--accent,#4f46e5);padding:12px 16px;background:var(--soft,#f6f7fb);border-radius:0 14px 14px 0}
+.table-wrap{overflow:auto;border-radius:18px;border:1px solid rgba(127,127,127,.18)}table{width:100%;border-collapse:collapse;min-width:560px}th,td{text-align:left;padding:11px 13px;border-bottom:1px solid rgba(127,127,127,.15)}th{background:var(--soft,#f5f5f5)}
+.faq details{border:1px solid rgba(127,127,127,.18);border-radius:16px;margin:10px 0;padding:12px 15px;background:#fff}.faq summary{font-weight:800;cursor:pointer}
+.sources a{word-break:break-word}.footer{padding:28px 0;border-top:1px solid rgba(127,127,127,.18);font-size:.88rem;opacity:.75}
+.sr{position:absolute;left:-10000px}
+@media(max-width:780px){.statgrid{grid-template-columns:1fr}.content{padding:46px 0}.wrap{width:min(100% - 22px,1160px)}}
+
+:root{--ink:#17251f;--muted:#56665e;--accent:#1f7a55;--soft:#f3efe4}body{background:#f7f3e9;color:var(--ink)}
+.weight-hero{padding:30px 0 64px;background:radial-gradient(circle at 75% 20%,#fff4c8 0 14%,transparent 35%),linear-gradient(135deg,#efe5c7,#f9f6ec 55%,#e8efe9)}
+.weight-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center}
+.weight-copy h1{font-family:Georgia,serif;font-size:clamp(2.8rem,7vw,5.8rem);line-height:.92;margin:0;letter-spacing:-.06em}.weight-copy p{max-width:580px;color:#566158}
+.balance{height:290px;position:relative;perspective:800px}.beam{position:absolute;left:12%;right:12%;top:86px;height:16px;background:linear-gradient(#d2a63d,#8d6519);border-radius:30px;transform:rotate(-2deg);box-shadow:0 16px 22px #84651635}.post{position:absolute;left:50%;top:74px;width:18px;height:178px;background:linear-gradient(90deg,#6e4d15,#e0b84f,#6c4b10);transform:translateX(-50%);border-radius:20px}.base{position:absolute;left:33%;right:33%;bottom:18px;height:26px;background:#284b3d;border-radius:50%;box-shadow:0 18px 25px #0002}.pan{position:absolute;top:127px;width:120px;height:60px;border-radius:0 0 80px 80px;background:linear-gradient(#dcb650,#9a721d);box-shadow:0 18px 25px #0002}.pan:before,.pan:after{content:"";position:absolute;width:2px;height:58px;background:#84641b;top:-48px}.pan:before{left:20px;transform:rotate(18deg)}.pan:after{right:20px;transform:rotate(-18deg)}.pan.left{left:10%}.pan.right{right:10%;top:118px}
+.weight-calc{margin-top:-28px;position:relative;z-index:3}.weight-panel{display:grid;grid-template-columns:1.1fr .9fr;gap:0;background:#173d30;color:#fff;border-radius:30px;overflow:hidden;box-shadow:0 32px 80px #14281d2f}.weight-form{padding:28px}.weight-result{padding:28px;background:linear-gradient(145deg,#26684f,#164231);display:flex;flex-direction:column;justify-content:center}.weight-form .field{margin-bottom:14px}.weight-form .btn{background:#f0c75e;color:#1d2b24}
+@media(max-width:780px){.weight-layout,.weight-panel{grid-template-columns:1fr}.balance{height:230px}.weight-hero{padding-bottom:48px}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Weight Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Convert between kilograms, pounds, ounces, grams, stones, tonnes, and other common weight or mass units.", "url": "/weight-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Weight Calculator", "item": "/weight-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is weight the same as mass?", "acceptedAnswer": {"@type": "Answer", "text": "In everyday use, weight and mass are often treated as the same. In physics, mass measures the amount of matter while weight is a force caused by gravity. This converter handles common mass units used for everyday “weight” measurements."}}, {"@type": "Question", "name": "How many kilograms are in one pound?", "acceptedAnswer": {"@type": "Answer", "text": "One international avoirdupois pound is exactly 0.45359237 kilogram. The converter uses that exact relationship for pound-to-kilogram conversions."}}, {"@type": "Question", "name": "How many ounces are in a pound?", "acceptedAnswer": {"@type": "Answer", "text": "There are exactly 16 avoirdupois ounces in one avoirdupois pound."}}]}]}</script>
+<link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body>
+<header>
+<nav class="wrap" style="padding-top:18px"><div class="crumbs"><a href="/">Home</a> / Weight Calculator</div></nav>
+<section class="weight-hero"><div class="wrap weight-layout">
+<div class="weight-copy"><span style="font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#7f641f">Mass conversion studio</span><h1>Weight Calculator</h1><p>Convert kilograms, pounds, ounces, grams, stones, tonnes, and other common mass units with exact or standard conversion factors.</p></div>
+<div class="balance" aria-hidden="true"><div class="beam"></div><div class="post"></div><div class="pan left"></div><div class="pan right"></div><div class="base"></div></div>
+</div></section>
+</header>
+<main>
+<section class="wrap weight-calc" aria-labelledby="weightCalcTitle"><div class="weight-panel">
+<div class="weight-form"><h2 id="weightCalcTitle">Convert weight units</h2>
+<div class="field"><label for="wVal">Value</label><input id="wVal" type="number" step="any" value="70"></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div class="field"><label for="wFrom">From</label><select id="wFrom"></select></div><div class="field"><label for="wTo">To</label><select id="wTo"></select></div></div>
+<div class="btns"><button class="btn" onclick="convertWeight()">Convert</button><button class="btn secondary" onclick="resetWeight()">Reset</button></div><div id="wErr" class="error" role="alert"></div></div>
+<div class="weight-result"><div class="result-title">Converted value</div><div class="result-main" id="wMain">154.324 lb</div><div class="statgrid"><div class="stat"><span>Kilogram equivalent</span><b id="wKg">70 kg</b></div><div class="stat"><span>Conversion</span><b id="wFactor">1 kg = 2.20462 lb</b></div></div></div>
+</div></section>
+<!--CONTENT-->
+<h2>What Is a Weight Calculator?</h2><p>A weight calculator on this page is a unit converter for mass. Enter a value, choose the starting unit and target unit, and the calculator converts through kilograms as a common reference unit. It is useful for cooking, shipping, exercise logs, science work, and international measurements.</p>
+<h2>How Weight Conversion Works</h2><p>Each supported unit is assigned a factor relative to one kilogram. The input is first converted to kilograms, then divided by the target unit's kilogram factor.</p>
+<div class="formula">target value = input value × (from-unit kg factor ÷ to-unit kg factor)</div>
+<h2>Example</h2><p>For 70 kg to pounds, the exact international pound definition gives 1 lb = 0.45359237 kg. Therefore 70 ÷ 0.45359237 ≈ 154.324 lb.</p>
+<h2>Mass vs. Weight</h2><p>Strictly, mass and weight are different physical quantities. Mass is measured in kilograms, while weight is a force and can be expressed in newtons. Everyday “weight” conversions usually mean mass, so this calculator follows that common usage.</p>
+<div class="note"><strong>Methodology:</strong> the pound-to-kilogram relationship follows the international avoirdupois definition. Other customary units are derived consistently from pounds or kilograms.</div>
+<!--FAQ-->
+
+<section class="content"><article class="wrap prose">
+
+<h2>What Is a Weight Calculator?</h2><p>A weight calculator on this page is a unit converter for mass. Enter a value, choose the starting unit and target unit, and the calculator converts through kilograms as a common reference unit. It is useful for cooking, shipping, exercise logs, science work, and international measurements.</p>
+<h2>How Weight Conversion Works</h2><p>Each supported unit is assigned a factor relative to one kilogram. The input is first converted to kilograms, then divided by the target unit's kilogram factor.</p>
+<div class="formula">target value = input value × (from-unit kg factor ÷ to-unit kg factor)</div>
+<h2>Example</h2><p>For 70 kg to pounds, the exact international pound definition gives 1 lb = 0.45359237 kg. Therefore 70 ÷ 0.45359237 ≈ 154.324 lb.</p>
+<h2>Mass vs. Weight</h2><p>Strictly, mass and weight are different physical quantities. Mass is measured in kilograms, while weight is a force and can be expressed in newtons. Everyday “weight” conversions usually mean mass, so this calculator follows that common usage.</p>
+<div class="note"><strong>Methodology:</strong> the pound-to-kilogram relationship follows the international avoirdupois definition. Other customary units are derived consistently from pounds or kilograms.</div>
+
+<h2 id="faq">Frequently Asked Questions</h2>
+<div class="faq"><details><summary>Is weight the same as mass?</summary><p>In everyday use, weight and mass are often treated as the same. In physics, mass measures the amount of matter while weight is a force caused by gravity. This converter handles common mass units used for everyday “weight” measurements.</p></details>
+<details><summary>How many kilograms are in one pound?</summary><p>One international avoirdupois pound is exactly 0.45359237 kilogram. The converter uses that exact relationship for pound-to-kilogram conversions.</p></details>
+<details><summary>How many ounces are in a pound?</summary><p>There are exactly 16 avoirdupois ounces in one avoirdupois pound.</p></details></div>
+<h2>Sources and Methodology</h2>
+<div class="sources"><p><strong>NIST:</strong> U.S./SI mass conversion references, including 1 lb = 0.45359237 kg. <a href="https://nvlpubs.nist.gov/nistpubs/Legacy/IR/nistir88-4004p1.pdf" rel="nofollow">NIST mass unit table</a>.</p>
+<p><strong>Reference calculator:</strong> Calculator.net Weight Calculator was reviewed for common search intent and supported units; wording and design here are original.</p></div>
+</article></section>
+</main>
+<footer class="footer"><div class="wrap">CalcPro calculator estimate. Check professional or official requirements where relevant.</div></footer>
+<script>
+const WU={kg:["kilogram",1],g:["gram",.001],mg:["milligram",1e-6],lb:["pound",.45359237],oz:["ounce",.45359237/16],st:["stone",.45359237*14],t:["metric tonne",1000],"short ton":["US short ton",.45359237*2000],"long ton":["Imperial long ton",.45359237*2240]};
+const wf=document.getElementById("wFrom"),wt=document.getElementById("wTo");
+Object.entries(WU).forEach(([k,v])=>{wf.add(new Option(v[0]+" ("+k+")",k));wt.add(new Option(v[0]+" ("+k+")",k))});wf.value="kg";wt.value="lb";
+function fmt(n){return Math.abs(n)>=1e9||Math.abs(n)<1e-5&&n!==0?n.toExponential(6):Number(n.toPrecision(10)).toLocaleString(undefined,{maximumFractionDigits:8})}
+function convertWeight(){const v=+wVal.value;wErr.textContent="";if(!Number.isFinite(v)||v<0){wErr.textContent="Enter a non-negative number.";return}const kg=v*WU[wf.value][1],out=kg/WU[wt.value][1];wMain.textContent=fmt(out)+" "+wt.value;wKg.textContent=fmt(kg)+" kg";wFactor.textContent="1 "+wf.value+" = "+fmt(WU[wf.value][1]/WU[wt.value][1])+" "+wt.value}
+function resetWeight(){wVal.value=70;wf.value="kg";wt.value="lb";convertWeight()}convertWeight();
+</script>
+<script src="/assets/js/global.js" defer></script>
+</body></html>

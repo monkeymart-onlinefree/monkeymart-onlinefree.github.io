@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Number Sequence Calculator – Free Accurate Online Calculator</title>
+<meta name="description" content="Calculate arithmetic, geometric, and Fibonacci sequence terms, previews, and finite sums.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/number-sequence-calculator/">
+<meta property="og:title" content="Number Sequence Calculator">
+<meta property="og:description" content="Calculate arithmetic, geometric, and Fibonacci sequence terms, previews, and finite sums.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="/number-sequence-calculator/">
+<meta name="theme-color" content="#6d4ce6">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Number Sequence Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate arithmetic, geometric, and Fibonacci sequence terms, previews, and finite sums.", "url": "/number-sequence-calculator/", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Number Sequence Calculator", "item": "/number-sequence-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is an arithmetic sequence?", "acceptedAnswer": {"@type": "Answer", "text": "An arithmetic sequence changes by a constant difference. Its nth term is aₙ = a₁ + (n−1)d."}}, {"@type": "Question", "name": "What is a geometric sequence?", "acceptedAnswer": {"@type": "Answer", "text": "A geometric sequence changes by a constant ratio. Its nth term is aₙ = a₁r^(n−1)."}}, {"@type": "Question", "name": "How is the Fibonacci sequence defined here?", "acceptedAnswer": {"@type": "Answer", "text": "This page uses F₀=0, F₁=1, and Fₙ=Fₙ₋₁+Fₙ₋₂."}}, {"@type": "Question", "name": "Can the calculator show large Fibonacci terms?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The Fibonacci mode uses JavaScript BigInt for exact integer terms up to the input limit shown by the form."}}]}]}</script>
+<style>
+    :root{--bg:#faf8ff;--panel:#ffffff;--ink:#27213b;--muted:#706985;--accent:#6d4ce6;--accent2:#f2994a;--soft:#eee9ff;--line:#ddd5f5;--shadow:0 24px 70px rgba(79,57,150,.12);}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.62}
+    a{color:var(--accent)} .wrap{width:min(1160px,calc(100% - 32px));margin:auto}
+    .topbar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;position:relative;z-index:5}
+    .brand{font-weight:900;letter-spacing:-.04em;font-size:1.2rem;color:var(--ink);text-decoration:none} .brand i{color:var(--accent);font-style:normal}
+    .crumb{font-size:.86rem;color:var(--muted)} .crumb a{color:inherit;text-decoration:none}
+    .hero{position:relative;isolation:isolate;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);margin-bottom:28px}
+    .hero:before,.hero:after{content:"";position:absolute;z-index:-1;filter:blur(2px);opacity:.7}
+    .hero-copy h1{font-size:clamp(2.35rem,5vw,5.2rem);line-height:.98;letter-spacing:-.065em;margin:.15em 0 .28em}
+    .kicker{display:inline-flex;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--panel) 80%, transparent);font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em}
+    .hero-copy p{max-width:680px;color:var(--muted);font-size:1.03rem}
+    .stage{position:relative;min-height:300px;display:grid;place-items:center;perspective:900px}
+    .orb{width:210px;height:210px;border-radius:38% 62% 61% 39%/45% 43% 57% 55%;background:linear-gradient(145deg,var(--accent),var(--accent2));box-shadow:inset -22px -24px 45px rgba(0,0,0,.16),inset 14px 14px 30px rgba(255,255,255,.32),0 35px 70px color-mix(in srgb,var(--accent) 32%, transparent);transform:rotate(-10deg) translateZ(30px)}
+    .float{position:absolute;border:1px solid color-mix(in srgb,var(--line) 75%, transparent);background:color-mix(in srgb,var(--panel) 85%, transparent);backdrop-filter:blur(12px);box-shadow:0 18px 45px rgba(0,0,0,.12);border-radius:18px;padding:12px 14px;font-weight:800}
+    .calc-shell{display:grid;gap:22px;margin:24px 0 46px;align-items:start}
+    .calc-card,.result-card,.content-card{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow)}
+    .calc-card{padding:clamp(20px,3vw,34px)} .calc-card h2,.result-card h2{margin-top:0;letter-spacing:-.03em}
+    .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+    .field{display:grid;gap:7px} .field.full{grid-column:1/-1} label,.label{font-size:.88rem;font-weight:800}
+    input,select,button{font:inherit} input,select{width:100%;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 45%,var(--panel));color:var(--ink);padding:12px 13px;border-radius:13px;outline:none}
+    input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px} button{border:0;border-radius:14px;padding:12px 18px;font-weight:900;cursor:pointer}
+    .primary{background:var(--accent);color:white;box-shadow:0 10px 24px color-mix(in srgb,var(--accent) 28%,transparent)} .secondary{background:var(--soft);color:var(--ink);border:1px solid var(--line)}
+    .error{min-height:1.5em;color:#b42318;font-weight:700;font-size:.9rem;margin-top:8px}
+    .result-card{padding:clamp(20px,3vw,34px);position:sticky;top:18px;overflow:hidden}
+    .metric{font-size:clamp(2rem,5vw,4.6rem);line-height:1;font-weight:950;letter-spacing:-.06em;color:var(--accent);margin:.15em 0}
+    .submetrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px} .mini{background:var(--soft);padding:14px;border-radius:16px;border:1px solid var(--line)} .mini b{display:block;font-size:1.1rem}
+    .note{padding:13px 15px;border-left:4px solid var(--accent);background:var(--soft);border-radius:10px;color:var(--muted);font-size:.92rem}
+    .content{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;margin-bottom:56px} .content-card{padding:clamp(22px,4vw,40px)} .content h2{font-size:clamp(1.45rem,2.4vw,2.05rem);letter-spacing:-.035em;margin-top:1.65em} .content h2:first-child{margin-top:0}
+    .content h3{margin-top:1.35em} table{width:100%;border-collapse:collapse;margin:18px 0} th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top} th{font-size:.84rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+    code,.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--soft);padding:.15em .35em;border-radius:7px}
+    details{border-top:1px solid var(--line);padding:13px 0} summary{font-weight:850;cursor:pointer} details p{color:var(--muted)}
+    aside{display:grid;gap:16px;align-content:start} .sidebox{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);padding:18px} .sidebox h3{margin-top:0}
+    footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:.9rem}
+    .pillrow{display:flex;gap:8px;flex-wrap:wrap} .pill{padding:7px 10px;border-radius:999px;background:var(--soft);border:1px solid var(--line);font-size:.82rem;font-weight:800}
+    .unit-toggle{display:inline-flex;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px;margin-bottom:16px} .unit-toggle button{padding:7px 12px;border-radius:999px;background:transparent;color:var(--ink)} .unit-toggle button.active{background:var(--panel);box-shadow:0 4px 14px rgba(0,0,0,.1)}
+    ul.clean{padding-left:1.2rem} .source-list{padding-left:1.1rem;font-size:.9rem;color:var(--muted)} .source-list li{margin:.65em 0}
+    .hero{border-radius:18px;padding:34px 44px;background:linear-gradient(125deg,var(--panel),var(--soft));display:grid;grid-template-columns:1.1fr .9fr;align-items:center}.calc-shell{grid-template-columns:1.2fr .8fr}.calc-card{border-radius:18px;transform:rotate(-.25deg)}.result-card{border-radius:18px;transform:rotate(.25deg)}.content-card,.sidebox{border-radius:18px}.hero:before{width:180px;height:180px;transform:rotate(30deg);background:color-mix(in srgb,var(--accent) 18%,transparent);right:-60px;bottom:-80px;border-radius:32px}
+    @media(max-width:860px){.hero,.calc-shell,.content{grid-template-columns:1fr}.hero{padding:26px}.stage{min-height:230px}.result-card{position:static}.content{grid-template-columns:1fr}.stage{order:initial}}
+    @media(max-width:560px){.wrap{width:min(100% - 20px,1160px)}.form-grid,.submetrics{grid-template-columns:1fr}.hero-copy h1{font-size:2.45rem}.hero{border-radius:20px}.calc-card,.result-card,.content-card,.sidebox{border-radius:18px}}
+    @media(prefers-reduced-motion:no-preference){.float{animation:drift 5s ease-in-out infinite alternate}@keyframes drift{to{transform:translateY(-8px) rotate(1deg)}}}
+    </style>
+<link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body>
+<header class="wrap">
+  <div class="topbar"><a class="brand" href="/">Calc<i>Pro</i></a><div class="crumb"><a href="/">Home</a> / Number Sequence Calculator</div></div>
+</header>
+<main class="wrap">
+<section class="hero">
+  <div class="hero-copy"><span class="kicker">Math • Patterns</span><h1>Number Sequence Calculator</h1><p>Calculate nth terms and sequence previews for arithmetic, geometric, and Fibonacci patterns.</p>
+  <div class="pillrow"><span class="pill">Instant results</span><span class="pill">No sign-up</span><span class="pill">Mobile friendly</span></div></div>
+  <div class="stage" aria-hidden="true"><div class='orb' style='border-radius:30px;transform:rotate(18deg)'></div><div class='float' style='left:0;top:12%'>1, 3, 5, 7…</div><div class='float' style='right:0;bottom:13%'>0, 1, 1, 2…</div></div>
+</section>
+
+<section class="calc-shell" aria-label="Number Sequence Calculator tool">
+  <article class="calc-card">
+    <h2>Enter Your Details</h2>
+    <div class="form-grid"><div class="field full"><label for="type">Sequence type</label><select id="type" data-default="arithmetic" onchange="toggleFields()"><option value="arithmetic">Arithmetic</option><option value="geometric">Geometric</option><option value="fibonacci">Fibonacci</option></select></div><div class="field seq"><label for="first">First term (a₁)</label><input id="first" type="number" step="any" value="1" data-default="1"></div><div class="field seq"><label for="step">Difference d / Ratio r</label><input id="step" type="number" step="any" value="2" data-default="2"></div><div class="field full"><label for="n">Term position n</label><input id="n" type="number" min="0" max="1000" value="10" data-default="10"></div></div>
+    <div class="actions"><button class="primary" id="calcBtn" type="button">Calculate</button><button class="secondary" id="resetBtn" type="button">Reset</button></div>
+    <div class="error" id="error" role="alert" aria-live="polite"></div>
+  </article>
+  <aside class="result-card" aria-live="polite">
+    <h2>Your Result</h2>
+    <div class="metric" id="mainResult" style="word-break:break-word">—</div><p id="resultLabel">nth term</p><div class="submetrics"><div class="mini">Sequence preview<b id="preview" style="font-size:.9rem;word-break:break-word">—</b></div><div class="mini">Finite sum<b id="sum">—</b></div></div>
+    <p class="note">Fibonacci uses zero-based indexing: F₀ = 0, F₁ = 1.</p>
+  </aside>
+</section>
+
+<section class="content">
+  <article class="content-card">
+    <h2>What Is a Number Sequence Calculator?</h2><p>A number sequence calculator finds terms in arithmetic, geometric, or Fibonacci sequences. It can also display a preview of the sequence and, where appropriate, the finite sum through the requested term.</p>
+<h2>Arithmetic Sequence Formula</h2><p><span class='formula'>aₙ = a₁ + (n−1)d</span>, where a₁ is the first term, d is the common difference, and n is the term position. The finite sum is <span class='formula'>Sₙ = n(a₁+aₙ)/2</span>.</p>
+<h2>Geometric Sequence Formula</h2><p><span class='formula'>aₙ = a₁r^(n−1)</span>. For r ≠ 1, the finite sum is <span class='formula'>Sₙ = a₁(1−rⁿ)/(1−r)</span>.</p>
+<h2>Fibonacci Sequence</h2><p>Fibonacci numbers begin 0, 1, 1, 2, 3, 5… Each term after the first two is the sum of the previous two. This page uses zero-based indexing, so F₀ = 0.</p>
+<h2>Limitations</h2><p>Very large geometric terms can exceed JavaScript’s finite-number range. Fibonacci terms are calculated with exact integers but long outputs are truncated to keep the page readable.</p>
+    <h2 id="faq">Frequently Asked Questions</h2>
+    <details><summary>What is an arithmetic sequence?</summary><p>An arithmetic sequence changes by a constant difference. Its nth term is aₙ = a₁ + (n−1)d.</p></details><details><summary>What is a geometric sequence?</summary><p>A geometric sequence changes by a constant ratio. Its nth term is aₙ = a₁r^(n−1).</p></details><details><summary>How is the Fibonacci sequence defined here?</summary><p>This page uses F₀=0, F₁=1, and Fₙ=Fₙ₋₁+Fₙ₋₂.</p></details><details><summary>Can the calculator show large Fibonacci terms?</summary><p>Yes. The Fibonacci mode uses JavaScript BigInt for exact integer terms up to the input limit shown by the form.</p></details>
+    <h2>Sources and Methodology</h2>
+    <p>This page uses the formulas and assumptions described above. Health-related results are estimates and should be interpreted in context, not as a diagnosis or individualized medical advice.</p>
+    <ul class="source-list"><li><a href="https://www.calculator.net/number-sequence-calculator.html" rel="noopener" target="_blank">Calculator.net Number Sequence reference</a> — Sequence definitions and search intent reference.</li><li><a href="https://www.britannica.com/science/Fibonacci-number" rel="noopener" target="_blank">Encyclopaedia Britannica – Fibonacci sequence</a> — General mathematical background.</li></ul>
+  </article>
+  <aside>
+    <div class="sidebox"><h3>Method at a glance</h3><p>Calculate arithmetic, geometric, and Fibonacci sequence terms, previews, and finite sums.</p></div>
+    <div class="sidebox"><h3>Privacy</h3><p>Calculations run in your browser. This standalone page does not need to send form values to a server.</p></div>
+  </aside>
+</section>
+</main>
+<footer><div class="wrap">CalcPro calculator page • Educational use • Check important health decisions with a qualified professional.</div></footer>
+<script>
+
+function toggleFields(){let fib=document.getElementById('type').value==='fibonacci';document.querySelectorAll('.seq').forEach(x=>x.style.display=fib?'none':'grid');}
+function calculate(){toggleFields();const e=document.getElementById('error');e.textContent='';let type=document.getElementById('type').value,n=+document.getElementById('n').value;if(!Number.isInteger(n)||n<0||n>1000){e.textContent='Enter an integer n from 0 to 1000.';return}
+ if(type==='fibonacci'){let a=0n,b=1n,arr=[];for(let i=0;i<=n;i++){if(i<18)arr.push(a.toString());[a,b]=[b,a+b]}let fn=n===0?0n:(()=>{let x=0n,y=1n;for(let i=0;i<n;i++) [x,y]=[y,x+y];return x})();document.getElementById('mainResult').textContent=fn.toString();document.getElementById('resultLabel').textContent=`F${n}`;document.getElementById('preview').textContent=arr.join(', ')+(n>=18?', …':'');document.getElementById('sum').textContent='—';return}
+ let first=+document.getElementById('first').value,step=+document.getElementById('step').value;if(![first,step].every(Number.isFinite)||n<1){e.textContent='Arithmetic/geometric sequences use n ≥ 1 and valid numeric values.';return}
+ let term,sum,arr=[];if(type==='arithmetic'){term=first+(n-1)*step;sum=n*(first+term)/2;for(let i=1;i<=Math.min(n,18);i++)arr.push(first+(i-1)*step)}else{term=first*Math.pow(step,n-1);sum=step===1?first*n:first*(1-Math.pow(step,n))/(1-step);for(let i=1;i<=Math.min(n,18);i++)arr.push(first*Math.pow(step,i-1))}
+ if(!Number.isFinite(term)||!Number.isFinite(sum)){e.textContent='Result is too large for standard numeric display.';return}
+ const f=x=>Math.abs(x)>=1e12?x.toExponential(6):Number(x.toFixed(10)).toString();document.getElementById('mainResult').textContent=f(term);document.getElementById('resultLabel').textContent=`${n}th term`;document.getElementById('preview').textContent=arr.map(f).join(', ')+(n>18?', …':'');document.getElementById('sum').textContent=f(sum);
+}
+document.getElementById('calcBtn').addEventListener('click', calculate);
+document.getElementById('resetBtn').addEventListener('click', ()=>{document.querySelectorAll('input').forEach(i=>{if(i.dataset.default!==undefined)i.value=i.dataset.default;});document.querySelectorAll('select').forEach(s=>{if(s.dataset.default!==undefined)s.value=s.dataset.default;});document.getElementById('error').textContent='';calculate();});
+window.addEventListener('DOMContentLoaded', calculate);
+</script>
+<script src="/assets/js/global.js" defer></script>
+</body></html>

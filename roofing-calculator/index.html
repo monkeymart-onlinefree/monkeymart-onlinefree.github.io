@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Roofing Calculator – Free Accurate Online Calculator | CalcPro</title>
+<meta name="description" content="Estimate pitched roof area, roofing squares, bundle quantity, waste, and optional material cost.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/roofing-calculator/">
+<meta property="og:title" content="Roofing Calculator | CalcPro">
+<meta property="og:description" content="Estimate pitched roof area, roofing squares, bundle quantity, waste, and optional material cost.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="/roofing-calculator/">
+<meta name="theme-color" content="#ffb21a">
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
+.wrap{width:min(1160px,calc(100% - 32px));margin:auto}
+.crumbs{font-size:.9rem;opacity:.78;margin-bottom:14px}.crumbs a{text-decoration:none}
+.card{border-radius:24px}.field label{display:block;font-weight:700;font-size:.9rem;margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;border:1px solid rgba(127,127,127,.28);border-radius:14px;padding:12px 13px;background:rgba(255,255,255,.84);color:#151515;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{box-shadow:0 0 0 4px rgba(89,130,246,.15)}
+.btns{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:800}
+.btn.secondary{background:transparent;border:1px solid currentColor;opacity:.78}
+.error{min-height:22px;margin-top:10px;font-weight:700;color:#b42318}
+.result-title{font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;font-weight:900;opacity:.72}
+.result-main{font-size:clamp(2rem,6vw,4rem);line-height:1;font-weight:950;letter-spacing:-.05em;margin:8px 0 14px}
+.statgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.stat{border-radius:16px;padding:12px;background:rgba(255,255,255,.12)}
+.stat b{display:block;font-size:1.05rem}.stat span{font-size:.8rem;opacity:.75}
+.content{padding:66px 0}.prose{max-width:860px;margin:auto}.prose h2{font-size:clamp(1.5rem,3vw,2rem);line-height:1.2;margin:42px 0 12px}.prose h3{margin:28px 0 8px}.prose p,.prose li{color:var(--muted,#4c5564)}
+.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;padding:15px 17px;border-radius:16px;background:var(--soft,#f3f4f6);overflow:auto}
+.note{border-left:4px solid var(--accent,#4f46e5);padding:12px 16px;background:var(--soft,#f6f7fb);border-radius:0 14px 14px 0}
+.table-wrap{overflow:auto;border-radius:18px;border:1px solid rgba(127,127,127,.18)}table{width:100%;border-collapse:collapse;min-width:560px}th,td{text-align:left;padding:11px 13px;border-bottom:1px solid rgba(127,127,127,.15)}th{background:var(--soft,#f5f5f5)}
+.faq details{border:1px solid rgba(127,127,127,.18);border-radius:16px;margin:10px 0;padding:12px 15px;background:#fff}.faq summary{font-weight:800;cursor:pointer}
+.sources a{word-break:break-word}.footer{padding:28px 0;border-top:1px solid rgba(127,127,127,.18);font-size:.88rem;opacity:.75}
+.sr{position:absolute;left:-10000px}
+@media(max-width:780px){.statgrid{grid-template-columns:1fr}.content{padding:46px 0}.wrap{width:min(100% - 22px,1160px)}}
+
+:root{--accent:#ffb21a;--muted:#57606a;--soft:#f1f3f5}body{background:#f4f5f6;color:#20252a}.roof-hero{padding:24px 0 82px;background:#20272d;color:#fff;position:relative;overflow:hidden}.blueprint{position:absolute;inset:0;background-image:linear-gradient(#ffffff0a 1px,transparent 1px),linear-gradient(90deg,#ffffff0a 1px,transparent 1px);background-size:28px 28px}.roof-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}.roof-grid h1{font-size:clamp(3rem,7vw,6rem);line-height:.9;letter-spacing:-.06em;margin:10px 0}.house3d{height:350px;position:relative;perspective:800px}.house-body{position:absolute;left:23%;right:15%;bottom:30px;height:190px;background:linear-gradient(120deg,#d7d8d9,#9fa5a9);transform:skewY(-2deg);box-shadow:0 28px 45px #0007}.roof-shape{position:absolute;left:10%;right:8%;top:70px;height:160px;background:linear-gradient(140deg,#ffb31a,#d26d12);clip-path:polygon(50% 0,100% 70%,85% 100%,50% 35%,15% 100%,0 70%);filter:drop-shadow(0 24px 20px #0008)}.ruler{position:absolute;right:6%;top:55px;width:26px;height:220px;background:repeating-linear-gradient(#ffd568 0 7px,#f0a80d 7px 14px);box-shadow:0 10px 20px #0006;transform:rotate(12deg)}
+.roof-shell{margin-top:-52px;position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:18px}.roof-form{background:#fff;border-radius:26px;padding:26px;box-shadow:0 30px 80px #2d384034}.roof-form .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.roof-form .btn{background:#e58d07;color:#fff}.roof-result{background:linear-gradient(145deg,#2b333a,#171d22);color:#fff;border-radius:26px;padding:27px;box-shadow:0 30px 80px #2d384034}
+@media(max-width:780px){.roof-grid,.roof-shell,.roof-form .grid{grid-template-columns:1fr}.house3d{height:270px}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Roofing Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Estimate pitched roof area, roofing squares, bundle quantity, waste, and optional material cost.", "url": "/roofing-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Roofing Calculator", "item": "/roofing-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a roofing square?", "acceptedAnswer": {"@type": "Answer", "text": "In U.S. roofing measurement, one roofing square represents 100 square feet of roof area."}}, {"@type": "Question", "name": "How does roof pitch change roof area?", "acceptedAnswer": {"@type": "Answer", "text": "For a simple roof, multiply horizontal projected area by √(1 + (rise/run)²). A 6/12 pitch has a factor of about 1.118."}}, {"@type": "Question", "name": "How much extra roofing material should I buy?", "acceptedAnswer": {"@type": "Answer", "text": "Waste depends on roof complexity, layout, material, valleys, hips, starter strips, and manufacturer requirements. This calculator lets you choose a waste percentage rather than assuming one value."}}]}]}</script>
+<link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body>
+<header>
+<nav class="wrap" style="padding-top:18px"><div class="crumbs"><a href="/">Home</a> / Roofing Calculator</div></nav>
+<section class="roof-hero"><div class="blueprint"></div><div class="wrap roof-grid"><div><span style="color:#ffc24b;font-weight:900;letter-spacing:.15em;text-transform:uppercase">Roof takeoff estimator</span><h1>Roofing Calculator</h1><p>Estimate pitched roof area, roofing squares, shingle bundles, waste allowance, and optional material cost for a simple rectangular footprint.</p></div><div class="house3d" aria-hidden="true"><div class="house-body"></div><div class="roof-shape"></div><div class="ruler"></div></div></div></section>
+</header>
+<main>
+<section class="wrap roof-shell"><div class="roof-form"><h2>Roof dimensions</h2><div class="grid"><div class="field"><label>House length (ft)</label><input id="rfL" type="number" value="40" step="any"></div><div class="field"><label>House width (ft)</label><input id="rfW" type="number" value="30" step="any"></div><div class="field"><label>Pitch rise (x / 12)</label><input id="rfRise" type="number" value="6" step="any"></div><div class="field"><label>Eave overhang (ft)</label><input id="rfEave" type="number" value="1" step="any"></div><div class="field"><label>Waste allowance (%)</label><input id="rfWaste" type="number" value="10" step="any"></div><div class="field"><label>Coverage per bundle (ft²)</label><input id="rfCov" type="number" value="33.33" step="any"></div><div class="field"><label>Price per bundle (optional)</label><input id="rfPrice" type="number" value="35" step="any"></div></div><div class="btns"><button class="btn" onclick="calcRoof()">Estimate roof</button><button class="btn secondary" onclick="resetRoof()">Reset</button></div><div id="rfErr" class="error"></div></div>
+<div class="roof-result"><div class="result-title">Estimated roof area</div><div id="rfMain" class="result-main">1,503 ft²</div><div class="statgrid"><div class="stat"><span>Slope factor</span><b id="rfFactor">1.118</b></div><div class="stat"><span>Roofing squares</span><b id="rfSquares">15.03</b></div><div class="stat"><span>Bundles with waste</span><b id="rfBundles">50</b></div><div class="stat"><span>Estimated bundle cost</span><b id="rfCost">$1,750</b></div></div></div></section>
+<!--CONTENT-->
+<h2>What Is a Roofing Calculator?</h2><p>This roofing calculator estimates the surface area of a simple pitched roof from the horizontal footprint, roof pitch, and eave overhang. It can then convert the area to roofing squares and estimate bundle quantity using your chosen coverage and waste allowance.</p>
+<h2>Roof Pitch Area Formula</h2><div class="formula">slope factor = √(1 + (rise ÷ 12)²)<br>roof area ≈ projected plan area × slope factor</div>
+<p>For example, a 6/12 pitch has a slope factor of about 1.118. A steeper roof has more surface area than its horizontal projection.</p>
+<h2>Roofing Squares and Bundles</h2><p>One roofing square is 100 ft². Bundle coverage varies by product, which is why this calculator asks for coverage per bundle rather than assuming every shingle package is identical.</p>
+<h2>Important Limitations</h2><p>This simple model does not separately measure hips, valleys, dormers, intersecting roof planes, starter courses, ridge caps, flashing, or complex cut waste. For complex roofs, measure each roof plane and follow product-specific installation requirements.</p>
+<div class="note">The output is a planning estimate, not a contractor takeoff. Verify measurements on the actual structure and check local code and manufacturer instructions.</div>
+<!--FAQ-->
+
+<section class="content"><article class="wrap prose">
+
+<h2>What Is a Roofing Calculator?</h2><p>This roofing calculator estimates the surface area of a simple pitched roof from the horizontal footprint, roof pitch, and eave overhang. It can then convert the area to roofing squares and estimate bundle quantity using your chosen coverage and waste allowance.</p>
+<h2>Roof Pitch Area Formula</h2><div class="formula">slope factor = √(1 + (rise ÷ 12)²)<br>roof area ≈ projected plan area × slope factor</div>
+<p>For example, a 6/12 pitch has a slope factor of about 1.118. A steeper roof has more surface area than its horizontal projection.</p>
+<h2>Roofing Squares and Bundles</h2><p>One roofing square is 100 ft². Bundle coverage varies by product, which is why this calculator asks for coverage per bundle rather than assuming every shingle package is identical.</p>
+<h2>Important Limitations</h2><p>This simple model does not separately measure hips, valleys, dormers, intersecting roof planes, starter courses, ridge caps, flashing, or complex cut waste. For complex roofs, measure each roof plane and follow product-specific installation requirements.</p>
+<div class="note">The output is a planning estimate, not a contractor takeoff. Verify measurements on the actual structure and check local code and manufacturer instructions.</div>
+
+<h2 id="faq">Frequently Asked Questions</h2>
+<div class="faq"><details><summary>What is a roofing square?</summary><p>In U.S. roofing measurement, one roofing square represents 100 square feet of roof area.</p></details>
+<details><summary>How does roof pitch change roof area?</summary><p>For a simple roof, multiply horizontal projected area by √(1 + (rise/run)²). A 6/12 pitch has a factor of about 1.118.</p></details>
+<details><summary>How much extra roofing material should I buy?</summary><p>Waste depends on roof complexity, layout, material, valleys, hips, starter strips, and manufacturer requirements. This calculator lets you choose a waste percentage rather than assuming one value.</p></details></div>
+<h2>Sources and Methodology</h2>
+<div class="sources"><p><strong>Calculator.net:</strong> Roofing Calculator reviewed to cross-check pitch correction factors and common user inputs. Its 6/12 factor of about 1.118 matches √(1 + (6/12)²).</p><p><strong>Geometry method:</strong> the slope correction follows the right-triangle relationship between horizontal run and sloped rafter length.</p></div>
+</article></section>
+</main>
+<footer class="footer"><div class="wrap">CalcPro calculator estimate. Check professional or official requirements where relevant.</div></footer>
+<script>
+function calcRoof(){rfErr.textContent="";let L=+rfL.value,W=+rfW.value,r=+rfRise.value,e=+rfEave.value,w=+rfWaste.value,c=+rfCov.value,p=+rfPrice.value;if(!(L>0&&W>0&&r>=0&&e>=0&&w>=0&&c>0)){rfErr.textContent="Enter positive dimensions and coverage, with non-negative pitch, eave, and waste.";return}let plan=(L+2*e)*(W+2*e),factor=Math.sqrt(1+(r/12)**2),area=plan*factor,withWaste=area*(1+w/100),bundles=Math.ceil(withWaste/c);rfMain.textContent=Math.round(area).toLocaleString()+" ft²";rfFactor.textContent=factor.toFixed(3);rfSquares.textContent=(area/100).toFixed(2);rfBundles.textContent=bundles;rfCost.textContent=p>=0?"$"+(bundles*p).toLocaleString(undefined,{maximumFractionDigits:2}):"—"}
+function resetRoof(){[rfL,rfW,rfRise,rfEave,rfWaste,rfCov,rfPrice].forEach((x,i)=>x.value=[40,30,6,1,10,33.33,35][i]);calcRoof()}calcRoof();
+</script>
+<script src="/assets/js/global.js" defer></script>
+</body></html>

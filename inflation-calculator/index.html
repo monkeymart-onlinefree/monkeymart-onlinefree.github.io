@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Inflation Calculator | CalcPro</title>
+<meta name="description" content="Compare U.S. dollar purchasing power with CPI-U data or project inflation forward and backward using a flat annual rate.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/inflation-calculator/">
+<meta property="og:title" content="Inflation Calculator | CalcPro">
+<meta property="og:description" content="Compare U.S. dollar purchasing power with CPI-U data or project inflation forward and backward using a flat annual rate.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="/inflation-calculator/">
+<meta name="theme-color" content="#07111f">
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+:root{--bg:#07111f;--panel:rgba(255,255,255,.09);--panel2:rgba(255,255,255,.06);--text:#f7fbff;--muted:#b8c6d8;--line:rgba(255,255,255,.14);--a:#67e8f9;--b:#34d399;--c:#fbbf24;--danger:#fb7185;--shadow:0 30px 80px rgba(0,0,0,.32)}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
+a{color:var(--a)}button,input,select{font:inherit}
+.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
+.site-nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0;position:relative;z-index:10}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.3px;color:var(--text);text-decoration:none}
+.brand-mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,var(--a),var(--b));display:grid;place-items:center;color:#04111f;box-shadow:inset 0 1px 0 #fff8,0 10px 25px #0004;transform:rotate(-7deg)}
+.nav-links{display:flex;gap:18px;align-items:center}.nav-links a{color:var(--muted);text-decoration:none;font-size:.92rem}.nav-links a:hover{color:var(--text)}
+.breadcrumb{font-size:.9rem;color:var(--muted);margin-bottom:18px}.breadcrumb a{color:inherit;text-decoration:none}
+.hero{position:relative;min-height:440px;padding:48px 0 72px;display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center}
+.hero h1{font-size:clamp(2.5rem,6vw,5.8rem);line-height:.92;letter-spacing:-.055em;margin:0 0 22px;max-width:800px}
+.hero p{font-size:1.08rem;color:var(--muted);max-width:700px;margin:0}
+.kicker{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:7px 12px;margin-bottom:18px;color:var(--a);font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
+.scene{min-height:330px;position:relative;perspective:900px;filter:drop-shadow(0 30px 40px #0005)}
+.orb{position:absolute;border-radius:50%;filter:blur(1px);opacity:.9}
+.calc-shell{margin-top:-25px;position:relative;z-index:4}
+.calculator{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);gap:24px;align-items:stretch}
+.card{background:linear-gradient(180deg,var(--panel),rgba(255,255,255,.045));border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.1);backdrop-filter:blur(18px)}
+.form-card{padding:28px}.result-card{padding:28px;position:relative;overflow:hidden}
+.result-card:after{content:"";position:absolute;inset:auto -80px -100px auto;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,var(--a),transparent 70%);opacity:.12}
+.section-title{font-size:1.35rem;margin:0 0 7px}.subtle{color:var(--muted);font-size:.92rem;margin:0 0 20px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
+label{font-weight:750;font-size:.88rem;color:#e8f0f8}
+input,select{width:100%;border:1px solid var(--line);background:rgba(4,10,20,.48);color:var(--text);border-radius:14px;padding:12px 13px;outline:none;box-shadow:inset 0 1px 8px #0003}
+input:focus,select:focus{border-color:var(--a);box-shadow:0 0 0 3px color-mix(in srgb,var(--a) 22%,transparent)}
+option{color:#111}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:900;cursor:pointer;transition:.2s;box-shadow:0 12px 24px #0003}
+.btn-primary{background:linear-gradient(135deg,var(--a),var(--b));color:#04111a}.btn-secondary{background:rgba(255,255,255,.08);color:var(--text);border:1px solid var(--line)}
+.btn:hover{transform:translateY(-2px)}
+.error{display:none;color:#fff;background:color-mix(in srgb,var(--danger) 26%,transparent);border:1px solid color-mix(in srgb,var(--danger) 52%,transparent);padding:11px 13px;border-radius:13px;margin-top:15px;font-size:.9rem}.error.show{display:block}
+.result-big{font-size:clamp(2.2rem,5vw,4.2rem);font-weight:950;line-height:1;letter-spacing:-.04em;margin:10px 0 12px;color:var(--a);word-break:break-word}
+.metric-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}.metric{padding:14px;border-radius:17px;background:rgba(255,255,255,.055);border:1px solid var(--line)}.metric b{display:block;font-size:1.08rem}.metric span{font-size:.78rem;color:var(--muted)}
+.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line);font-size:.78rem;color:var(--muted)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tab{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);padding:8px 12px;border-radius:999px;cursor:pointer;font-weight:800}.tab.active{background:var(--a);color:#06111c;border-color:transparent}
+.tab-panel{display:none}.tab-panel.active{display:block}
+.table-wrap{overflow:auto;border-radius:16px;border:1px solid var(--line);margin-top:16px}table{border-collapse:collapse;width:100%;min-width:520px;background:rgba(2,8,16,.28)}th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;font-size:.88rem}th{color:var(--a);background:rgba(255,255,255,.045)}
+.content{padding:80px 0}.content-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:32px}.article{background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:30px;padding:34px}.article h2{font-size:1.8rem;line-height:1.2;margin:38px 0 12px}.article h2:first-child{margin-top:0}.article h3{margin-top:24px}.article p,.article li{color:#c8d3df}.article code{background:#0004;padding:3px 6px;border-radius:6px}
+.aside{position:sticky;top:20px;height:max-content;padding:22px}.aside h3{margin-top:0}.aside a{display:block;color:var(--muted);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--line)}.aside a:hover{color:var(--text)}
+.faq details{border-top:1px solid var(--line);padding:15px 0}.faq summary{font-weight:850;cursor:pointer}.faq p{margin-bottom:0}
+.source-list a{overflow-wrap:anywhere}
+footer{border-top:1px solid var(--line);padding:32px 0 50px;color:var(--muted);font-size:.9rem}
+.small{font-size:.82rem;color:var(--muted)}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.pill{padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.055);border:1px solid var(--line);font-size:.78rem}
+.rangebar{height:11px;border-radius:999px;background:rgba(255,255,255,.09);overflow:hidden;margin-top:14px}.rangebar>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--b),var(--c));transition:.4s}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:28px}.scene{min-height:250px}.calculator,.content-grid{grid-template-columns:1fr}.aside{position:relative}.hero h1{font-size:clamp(2.7rem,12vw,5.2rem)}}
+@media(max-width:620px){.wrap{width:min(100% - 20px,1180px)}.nav-links{display:none}.grid,.grid3,.metric-row{grid-template-columns:1fr}.form-card,.result-card,.article{padding:20px}.hero{padding-bottom:46px}.content{padding:55px 0}}
+
+
+body{--bg:#1b1022;--panel:rgba(54,28,63,.69);--panel2:rgba(91,45,83,.35);--a:#ffb86c;--b:#ff6f91;--c:#8be9fd;background:radial-gradient(circle at 75% 8%,#ff9d4d2b,transparent 30%),radial-gradient(circle at 15% 50%,#8d4bc828,transparent 30%),#160d1c}
+.inflation-calculator .hero{grid-template-columns:1.2fr .8fr}.balloon{position:absolute;width:180px;height:220px;border-radius:50% 50% 46% 46%;background:radial-gradient(circle at 35% 25%,#ffd2a7,#ff875f 40%,#9e355c 80%);right:18%;top:20px;box-shadow:inset -24px -25px 55px #6b1635aa,0 35px 70px #0007;transform:rotate(8deg)}.balloon:after{content:"";position:absolute;width:3px;height:120px;background:#f7d7c8;left:50%;top:98%}.coin-stack{position:absolute;left:8%;bottom:20px;width:175px;height:110px;transform:skewY(-5deg)}.coin-stack i{position:absolute;left:0;width:170px;height:34px;border-radius:50%;background:linear-gradient(#ffd87a,#b87a1d);border:1px solid #fff3;box-shadow:0 7px 18px #0005}.coin-stack i:nth-child(1){bottom:0}.coin-stack i:nth-child(2){bottom:23px}.coin-stack i:nth-child(3){bottom:46px}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/inflation-calculator/#app", "name": "Inflation Calculator", "url": "/inflation-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Compare U.S. dollar purchasing power with CPI-U data or project inflation forward and backward using a flat annual rate."}, {"@type": "BreadcrumbList", "@id": "/inflation-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "/calculators/"}, {"@type": "ListItem", "position": 3, "name": "Inflation Calculator", "item": "/inflation-calculator/"}]}, {"@type": "FAQPage", "@id": "/inflation-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "What does CPI mean?", "acceptedAnswer": {"@type": "Answer", "text": "CPI is the Consumer Price Index. It tracks the average change over time in prices paid by consumers for a basket of goods and services."}}, {"@type": "Question", "name": "How do I calculate inflation between two CPI values?", "acceptedAnswer": {"@type": "Answer", "text": "Divide the later CPI by the earlier CPI, then multiply the original amount by that ratio."}}, {"@type": "Question", "name": "Is a flat inflation rate a prediction?", "acceptedAnswer": {"@type": "Answer", "text": "No. It is a scenario that assumes the same annual percentage change repeats and compounds each year."}}]}]}</script>
+<link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body class="inflation-calculator">
+<header>
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Primary">
+      <a class="brand" href="#"><span class="brand-mark">C</span>CalcPro</a>
+      <div class="nav-links"><a href="#calculator">Calculator</a><a href="#guide">Guide</a><a href="#faq">FAQ</a></div>
+    </nav>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="breadcrumb"><a href="#">Home</a> / <a href="#">Calculators</a> / Inflation Calculator</div>
+        <div class="kicker">Economy · Purchasing power</div>
+        <h1>Inflation Calculator</h1>
+        <p>Compare what money buys across time with CPI data, or model a constant annual inflation scenario.</p>
+      </div>
+      <div class="scene" aria-hidden="true"><div class="balloon"></div><div class="coin-stack"><i></i><i></i><i></i></div></div>
+    </section>
+  </div>
+</header>
+<main>
+  <section id="calculator" class="calc-shell">
+    <div class="wrap calculator">
+      <div class="card form-card">
+<h2 class="section-title">Measure purchasing-power change</h2><p class="subtle">Use recent BLS CPI-U values, manual CPI indexes, or a constant inflation rate.</p>
+<div class="tabs"><button class="tab active" data-tab="cpi">CPI data</button><button class="tab" data-tab="manual">Manual CPI</button><button class="tab" data-tab="flat">Flat rate</button></div>
+<div id="cpi" class="tab-panel active"><div class="grid">
+<div class="field full"><label for="infAmt">Amount ($)</label><input id="infAmt" type="number" min="0" step="any" value="100"></div>
+<div class="field"><label for="fromPeriod">From period</label><select id="fromPeriod"></select></div>
+<div class="field"><label for="toPeriod">To period</label><select id="toPeriod"></select></div>
+</div><div class="actions"><button id="infGo" class="btn btn-primary">Calculate CPI change</button></div></div>
+<div id="manual" class="tab-panel"><div class="grid">
+<div class="field"><label for="mAmt">Amount</label><input id="mAmt" type="number" value="100" min="0" step="any"></div>
+<div class="field"><label for="mFrom">Starting CPI</label><input id="mFrom" type="number" value="250" min="0.001" step="any"></div>
+<div class="field"><label for="mTo">Target CPI</label><input id="mTo" type="number" value="325" min="0.001" step="any"></div></div>
+<div class="actions"><button id="mGo" class="btn btn-primary">Use CPI indexes</button></div></div>
+<div id="flat" class="tab-panel"><div class="grid">
+<div class="field"><label for="fAmt">Amount</label><input id="fAmt" type="number" value="1000" min="0" step="any"></div>
+<div class="field"><label for="fRate">Annual inflation rate (%)</label><input id="fRate" type="number" value="3" step="any"></div>
+<div class="field"><label for="fYears">Years</label><input id="fYears" type="number" value="10" min="0" step="any"></div>
+<div class="field"><label for="fDir">Direction</label><select id="fDir"><option value="forward">Forward</option><option value="backward">Backward</option></select></div>
+</div><div class="actions"><button id="fGo" class="btn btn-primary">Project inflation</button></div></div>
+<div id="infErr" class="error"></div>
+</div>
+      <aside class="card result-card" aria-live="polite">
+<span class="badge">Inflation-adjusted value</span><div class="result-big" id="infBig">—</div><p id="infText" class="subtle">Choose a method and calculate.</p>
+<div class="metric-row"><div class="metric"><span>Price-level change</span><b id="infPct">—</b></div><div class="metric"><span>Multiplier</span><b id="infMul">—</b></div></div>
+<div class="rangebar"><span id="infBar"></span></div>
+</aside>
+    </div>
+  </section>
+  <section id="guide" class="content">
+    <div class="wrap content-grid">
+      <article class="article">
+        
+<h2>What Is an Inflation Calculator?</h2>
+<p>An inflation calculator compares purchasing power across time. For CPI-based calculations, it scales an amount by the ratio of a target Consumer Price Index to a starting index. A flat-rate projection instead assumes the same inflation rate every year and compounds it.</p>
+<h2>Inflation Calculator Formula</h2>
+<p>For CPI data: <code>Adjusted value = Original value × (Target CPI ÷ Starting CPI)</code>. For a constant annual rate: <code>Future value = Present value × (1 + r)^n</code>.</p>
+<h2>About the CPI Data in This Page</h2>
+<p>The built-in quick selector contains recent U.S. CPI-U monthly values. For older periods, use Manual CPI mode with official BLS index values. CPI-U measures price changes for a broad basket of consumer goods and services and does not describe every household's personal inflation experience.</p>
+<h2>Limitations</h2>
+<p>Flat-rate inflation is a scenario, not a forecast. CPI data can also be revised or unavailable for a specific month. This calculator does not model taxes, investment returns, wage growth, or changes in spending patterns.</p>
+
+        <h2 id="faq">Frequently Asked Questions</h2>
+        <div class="faq"><details><summary>What does CPI mean?</summary><p>CPI is the Consumer Price Index. It tracks the average change over time in prices paid by consumers for a basket of goods and services.</p></details><details><summary>How do I calculate inflation between two CPI values?</summary><p>Divide the later CPI by the earlier CPI, then multiply the original amount by that ratio.</p></details><details><summary>Is a flat inflation rate a prediction?</summary><p>No. It is a scenario that assumes the same annual percentage change repeats and compounds each year.</p></details></div>
+        <h2>Sources and Methodology</h2>
+        <p>The calculator logic and explanatory content were cross-checked against the following references. Estimates are separated from official data where applicable.</p>
+        <ul class="source-list"><li><a href="https://www.calculator.net/inflation-calculator.html" rel="noopener noreferrer">Calculator.net Inflation Calculator</a></li><li><a href="https://www.bls.gov/cpi/data.htm" rel="noopener noreferrer">U.S. Bureau of Labor Statistics CPI databases</a></li><li><a href="https://www.bls.gov/regions/mid-atlantic/data/consumerpriceindexhistorical_us_table.htm" rel="noopener noreferrer">BLS CPI-U historical table</a></li><li><a href="https://fred.stlouisfed.org/series/CPIAUCNS" rel="noopener noreferrer">FRED CPIAUCNS series</a></li></ul>
+      </article>
+      <aside class="card aside">
+        <h3>On this page</h3>
+        <a href="#calculator">Calculator</a>
+        <a href="#guide">How it works</a>
+        <a href="#faq">FAQs</a>
+        <p class="small">Educational calculator. For regulated financial, tax, medical, engineering, or network changes, verify the result against the relevant professional or official source.</p>
+      </aside>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">CalcPro · Standalone calculator page · No account required.</div></footer>
+<script>
+const CPI={"2016": [236.916, 237.111, 238.132, 239.261, 240.229, 241.018, 240.628, 240.849, 241.428, 241.729, 241.353, 241.432], "2017": [242.839, 243.603, 243.801, 244.524, 244.733, 244.955, 244.786, 245.519, 246.819, 246.663, 246.669, 246.524], "2018": [247.867, 248.991, 249.554, 250.546, 251.588, 251.989, 252.006, 252.146, 252.439, 252.885, 252.038, 251.233], "2019": [251.712, 252.776, 254.202, 255.548, 256.092, 256.143, 256.571, 256.558, 256.759, 257.346, 257.208, 256.974], "2020": [257.971, 258.678, 258.115, 256.389, 256.394, 257.797, 259.101, 259.918, 260.28, 260.388, 260.229, 260.474], "2021": [261.582, 263.014, 264.877, 267.054, 269.195, 271.696, 273.003, 273.567, 274.31, 276.589, 277.948, 278.802], "2022": [281.148, 283.716, 287.504, 289.109, 292.296, 296.311, 296.276, 296.171, 296.808, 298.012, 297.711, 296.797], "2023": [299.17, 300.84, 301.836, 303.363, 304.127, 305.109, 305.691, 307.026, 307.789, 307.671, 307.051, 306.746], "2024": [308.417, 310.326, 312.332, 313.548, 314.069, 314.175, 314.54, 314.796, 315.301, 315.664, 315.493, 315.605], "2025": [317.671, 319.082, 319.799, 320.795, 321.465, 322.561, 323.048, 323.976, 324.8, null, 324.122, 324.054], "2026": [325.252, 326.785, 330.213, 333.02, 335.123, 333.952, 333.918, 334.98]};
+const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab,.tab-panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active');});
+const fp=document.getElementById('fromPeriod'),tp=document.getElementById('toPeriod');
+Object.keys(CPI).forEach(y=>CPI[y].forEach((v,i)=>{if(v!=null){let val=`${y}-${i}`;fp.add(new Option(`${months[i]} ${y}`,val));tp.add(new Option(`${months[i]} ${y}`,val));}}));
+fp.value="2020-0";tp.value="2026-7";
+function out(val,mult,text){document.getElementById('infBig').textContent=`$${val.toLocaleString(undefined,{maximumFractionDigits:2})}`;document.getElementById('infMul').textContent=mult.toFixed(4)+"×";const p=(mult-1)*100;document.getElementById('infPct').textContent=(p>=0?"+":"")+p.toFixed(2)+"%";document.getElementById('infText').textContent=text;document.getElementById('infBar').style.width=Math.min(100,Math.abs(p))+"%";}
+function getCPI(v){let [y,m]=v.split("-").map(Number);return CPI[y][m]}
+function ierr(m){let e=document.getElementById('infErr');e.textContent=m;e.classList.add('show')}
+document.getElementById('infGo').onclick=()=>{document.getElementById('infErr').classList.remove('show');let a=+document.getElementById('infAmt').value,c1=getCPI(fp.value),c2=getCPI(tp.value);if(!(a>=0&&c1>0&&c2>0))return ierr("Enter a valid amount and periods.");let mult=c2/c1;out(a*mult,mult,`CPI-U ratio: ${c2.toFixed(3)} ÷ ${c1.toFixed(3)}.`)};
+document.getElementById('mGo').onclick=()=>{document.getElementById('infErr').classList.remove('show');let a=+document.getElementById('mAmt').value,c1=+document.getElementById('mFrom').value,c2=+document.getElementById('mTo').value;if(!(a>=0&&c1>0&&c2>0))return ierr("Amount must be non-negative and CPI values must be above zero.");let mult=c2/c1;out(a*mult,mult,"Manual CPI indexes supplied by you.")};
+document.getElementById('fGo').onclick=()=>{document.getElementById('infErr').classList.remove('show');let a=+document.getElementById('fAmt').value,r=+document.getElementById('fRate').value/100,n=+document.getElementById('fYears').value,d=document.getElementById('fDir').value;if(!(a>=0&&n>=0&&r>-1))return ierr("Check amount, years, and inflation rate.");let mult=Math.pow(1+r,n);if(d==="backward")mult=1/mult;out(a*mult,mult,`${d==="forward"?"Forward":"Backward"} flat-rate inflation at ${(r*100).toFixed(2)}% for ${n} years.`)};
+</script>
+<script src="/assets/js/global.js" defer></script>
+</body>
+</html>

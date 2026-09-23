@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Currency Calculator | CalcPro</title>
+<meta name="description" content="Convert currencies using live exchange-rate data or enter a custom exchange rate, with inverse-rate and calculation details.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/currency-calculator/">
+<meta property="og:title" content="Currency Calculator | CalcPro">
+<meta property="og:description" content="Convert currencies using live exchange-rate data or enter a custom exchange rate, with inverse-rate and calculation details.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="/currency-calculator/">
+<meta name="theme-color" content="#07111f">
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+:root{--bg:#07111f;--panel:rgba(255,255,255,.09);--panel2:rgba(255,255,255,.06);--text:#f7fbff;--muted:#b8c6d8;--line:rgba(255,255,255,.14);--a:#67e8f9;--b:#34d399;--c:#fbbf24;--danger:#fb7185;--shadow:0 30px 80px rgba(0,0,0,.32)}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
+a{color:var(--a)}button,input,select{font:inherit}
+.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
+.site-nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0;position:relative;z-index:10}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.3px;color:var(--text);text-decoration:none}
+.brand-mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,var(--a),var(--b));display:grid;place-items:center;color:#04111f;box-shadow:inset 0 1px 0 #fff8,0 10px 25px #0004;transform:rotate(-7deg)}
+.nav-links{display:flex;gap:18px;align-items:center}.nav-links a{color:var(--muted);text-decoration:none;font-size:.92rem}.nav-links a:hover{color:var(--text)}
+.breadcrumb{font-size:.9rem;color:var(--muted);margin-bottom:18px}.breadcrumb a{color:inherit;text-decoration:none}
+.hero{position:relative;min-height:440px;padding:48px 0 72px;display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center}
+.hero h1{font-size:clamp(2.5rem,6vw,5.8rem);line-height:.92;letter-spacing:-.055em;margin:0 0 22px;max-width:800px}
+.hero p{font-size:1.08rem;color:var(--muted);max-width:700px;margin:0}
+.kicker{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:7px 12px;margin-bottom:18px;color:var(--a);font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
+.scene{min-height:330px;position:relative;perspective:900px;filter:drop-shadow(0 30px 40px #0005)}
+.orb{position:absolute;border-radius:50%;filter:blur(1px);opacity:.9}
+.calc-shell{margin-top:-25px;position:relative;z-index:4}
+.calculator{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);gap:24px;align-items:stretch}
+.card{background:linear-gradient(180deg,var(--panel),rgba(255,255,255,.045));border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.1);backdrop-filter:blur(18px)}
+.form-card{padding:28px}.result-card{padding:28px;position:relative;overflow:hidden}
+.result-card:after{content:"";position:absolute;inset:auto -80px -100px auto;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,var(--a),transparent 70%);opacity:.12}
+.section-title{font-size:1.35rem;margin:0 0 7px}.subtle{color:var(--muted);font-size:.92rem;margin:0 0 20px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
+label{font-weight:750;font-size:.88rem;color:#e8f0f8}
+input,select{width:100%;border:1px solid var(--line);background:rgba(4,10,20,.48);color:var(--text);border-radius:14px;padding:12px 13px;outline:none;box-shadow:inset 0 1px 8px #0003}
+input:focus,select:focus{border-color:var(--a);box-shadow:0 0 0 3px color-mix(in srgb,var(--a) 22%,transparent)}
+option{color:#111}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:900;cursor:pointer;transition:.2s;box-shadow:0 12px 24px #0003}
+.btn-primary{background:linear-gradient(135deg,var(--a),var(--b));color:#04111a}.btn-secondary{background:rgba(255,255,255,.08);color:var(--text);border:1px solid var(--line)}
+.btn:hover{transform:translateY(-2px)}
+.error{display:none;color:#fff;background:color-mix(in srgb,var(--danger) 26%,transparent);border:1px solid color-mix(in srgb,var(--danger) 52%,transparent);padding:11px 13px;border-radius:13px;margin-top:15px;font-size:.9rem}.error.show{display:block}
+.result-big{font-size:clamp(2.2rem,5vw,4.2rem);font-weight:950;line-height:1;letter-spacing:-.04em;margin:10px 0 12px;color:var(--a);word-break:break-word}
+.metric-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}.metric{padding:14px;border-radius:17px;background:rgba(255,255,255,.055);border:1px solid var(--line)}.metric b{display:block;font-size:1.08rem}.metric span{font-size:.78rem;color:var(--muted)}
+.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line);font-size:.78rem;color:var(--muted)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tab{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);padding:8px 12px;border-radius:999px;cursor:pointer;font-weight:800}.tab.active{background:var(--a);color:#06111c;border-color:transparent}
+.tab-panel{display:none}.tab-panel.active{display:block}
+.table-wrap{overflow:auto;border-radius:16px;border:1px solid var(--line);margin-top:16px}table{border-collapse:collapse;width:100%;min-width:520px;background:rgba(2,8,16,.28)}th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;font-size:.88rem}th{color:var(--a);background:rgba(255,255,255,.045)}
+.content{padding:80px 0}.content-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:32px}.article{background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:30px;padding:34px}.article h2{font-size:1.8rem;line-height:1.2;margin:38px 0 12px}.article h2:first-child{margin-top:0}.article h3{margin-top:24px}.article p,.article li{color:#c8d3df}.article code{background:#0004;padding:3px 6px;border-radius:6px}
+.aside{position:sticky;top:20px;height:max-content;padding:22px}.aside h3{margin-top:0}.aside a{display:block;color:var(--muted);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--line)}.aside a:hover{color:var(--text)}
+.faq details{border-top:1px solid var(--line);padding:15px 0}.faq summary{font-weight:850;cursor:pointer}.faq p{margin-bottom:0}
+.source-list a{overflow-wrap:anywhere}
+footer{border-top:1px solid var(--line);padding:32px 0 50px;color:var(--muted);font-size:.9rem}
+.small{font-size:.82rem;color:var(--muted)}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.pill{padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.055);border:1px solid var(--line);font-size:.78rem}
+.rangebar{height:11px;border-radius:999px;background:rgba(255,255,255,.09);overflow:hidden;margin-top:14px}.rangebar>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--b),var(--c));transition:.4s}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:28px}.scene{min-height:250px}.calculator,.content-grid{grid-template-columns:1fr}.aside{position:relative}.hero h1{font-size:clamp(2.7rem,12vw,5.2rem)}}
+@media(max-width:620px){.wrap{width:min(100% - 20px,1180px)}.nav-links{display:none}.grid,.grid3,.metric-row{grid-template-columns:1fr}.form-card,.result-card,.article{padding:20px}.hero{padding-bottom:46px}.content{padding:55px 0}}
+
+
+body{--bg:#041713;--panel:rgba(9,45,36,.72);--panel2:rgba(8,63,47,.42);--a:#5ee6b1;--b:#e5c86b;--c:#8ce7ff;background:
+radial-gradient(circle at 12% 12%,#0a5f493d,transparent 28%),radial-gradient(circle at 82% 24%,#d7b94a22,transparent 25%),#041713}
+.currency-calculator .hero{grid-template-columns:.95fr 1.05fr}
+.fx-board{position:absolute;inset:34px 20px 20px 30px;border-radius:36px;background:linear-gradient(145deg,#0b4e3c,#061d18);border:1px solid #ffffff22;transform:rotateY(-14deg) rotateX(8deg);box-shadow:inset 0 1px #ffffff22,0 45px 70px #0007}
+.fx-screen{position:absolute;inset:45px;border-radius:24px;background:#03100d;border:1px solid #ffffff16;padding:26px}
+.fx-line{height:13px;border-radius:20px;background:linear-gradient(90deg,var(--a),transparent);margin:17px 0}.coin{position:absolute;width:76px;height:76px;border-radius:50%;display:grid;place-items:center;font-weight:950;color:#3d3103;background:linear-gradient(145deg,#fff0a4,#b98b20);box-shadow:inset -10px -10px 20px #8f661d66,0 18px 30px #0005}.coin.c1{right:4%;top:4%;transform:rotate(12deg)}.coin.c2{left:2%;bottom:7%;background:linear-gradient(145deg,#baffdf,#259c73);color:#073a2b;transform:rotate(-15deg)}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/currency-calculator/#app", "name": "Currency Calculator", "url": "/currency-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Convert currencies using live exchange-rate data or enter a custom exchange rate, with inverse-rate and calculation details."}, {"@type": "BreadcrumbList", "@id": "/currency-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "/calculators/"}, {"@type": "ListItem", "position": 3, "name": "Currency Calculator", "item": "/currency-calculator/"}]}, {"@type": "FAQPage", "@id": "/currency-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "Are live exchange rates the same as bank rates?", "acceptedAnswer": {"@type": "Answer", "text": "Not always. Reference rates are useful benchmarks, while banks and payment providers can add a spread, fee, or different execution time."}}, {"@type": "Question", "name": "Can I use my own exchange rate?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Custom-rate mode multiplies your amount by the exact rate you enter."}}, {"@type": "Question", "name": "Why does the result change during the day?", "acceptedAnswer": {"@type": "Answer", "text": "Foreign-exchange markets move and data providers update at different times, so the latest available reference rate can change."}}]}]}</script>
+<link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body class="currency-calculator">
+<header>
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Primary">
+      <a class="brand" href="#"><span class="brand-mark">C</span>CalcPro</a>
+      <div class="nav-links"><a href="#calculator">Calculator</a><a href="#guide">Guide</a><a href="#faq">FAQ</a></div>
+    </nav>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="breadcrumb"><a href="#">Home</a> / <a href="#">Calculators</a> / Currency Calculator</div>
+        <div class="kicker">Markets · FX</div>
+        <h1>Currency Calculator</h1>
+        <p>Convert money with a live reference rate or a rate you control, then see the inverse quote instantly.</p>
+      </div>
+      <div class="scene" aria-hidden="true"><div class="fx-board"><div class="fx-screen"><div class="fx-line" style="width:72%"></div><div class="fx-line" style="width:48%"></div><div class="fx-line" style="width:85%"></div><div class="pill-row"><span class="pill">USD</span><span class="pill">EUR</span><span class="pill">GBP</span></div></div></div><div class="coin c1">$</div><div class="coin c2">€</div></div>
+    </section>
+  </div>
+</header>
+<main>
+  <section id="calculator" class="calc-shell">
+    <div class="wrap calculator">
+      <div class="card form-card">
+<h2 class="section-title">Convert currency</h2>
+<p class="subtle">Use current online rates or switch to a custom rate for bank, card, cash, or planning scenarios.</p>
+<div class="tabs"><button class="tab active" data-tab="live">Live rate</button><button class="tab" data-tab="custom">Custom rate</button></div>
+<div id="live" class="tab-panel active">
+  <div class="grid">
+    <div class="field full"><label for="fxAmount">Amount</label><input id="fxAmount" type="number" min="0" step="any" value="100"></div>
+    <div class="field"><label for="fxFrom">From</label><select id="fxFrom"></select></div>
+    <div class="field"><label for="fxTo">To</label><select id="fxTo"></select></div>
+  </div>
+  <div class="actions"><button class="btn btn-primary" id="fxGo">Get live rate</button><button class="btn btn-secondary" id="fxSwap">Swap</button></div>
+</div>
+<div id="custom" class="tab-panel">
+  <div class="grid">
+    <div class="field"><label for="cAmount">Amount</label><input id="cAmount" type="number" min="0" step="any" value="100"></div>
+    <div class="field"><label for="cRate">Rate (1 A = ? B)</label><input id="cRate" type="number" min="0" step="any" value="0.85"></div>
+  </div>
+  <div class="actions"><button class="btn btn-primary" id="cGo">Convert with custom rate</button></div>
+</div>
+<div id="fxErr" class="error"></div>
+</div>
+      <aside class="card result-card" aria-live="polite">
+<span class="badge">Exchange result</span>
+<div id="fxBig" class="result-big">—</div>
+<p id="fxNote" class="subtle">Choose currencies and calculate.</p>
+<div class="metric-row">
+ <div class="metric"><span>Rate</span><b id="fxRate">—</b></div>
+ <div class="metric"><span>Inverse</span><b id="fxInv">—</b></div>
+</div>
+<p class="small" id="fxSource">Live mode uses Frankfurter's no-key exchange-rate API. Reference rates can differ from retail bank/card rates.</p>
+</aside>
+    </div>
+  </section>
+  <section id="guide" class="content">
+    <div class="wrap content-grid">
+      <article class="article">
+        
+<h2>What Is a Currency Calculator?</h2>
+<p>A currency calculator converts an amount from one currency into another using an exchange rate. In live mode, the result depends on the latest reference-rate data available from the selected data provider. In custom mode, you supply the rate yourself, which is useful for bank quotes, card rates, cash exchange rates, or planning.</p>
+<h2>How to Use the Currency Calculator</h2>
+<p>Enter the amount, choose the source and target currencies, then calculate. If you already know the exact rate your bank or exchange service will use, choose Custom rate and enter how many units of currency B equal one unit of currency A.</p>
+<h2>Currency Conversion Formula</h2>
+<p><code>Converted amount = Original amount × Exchange rate</code>. The inverse rate is <code>1 ÷ exchange rate</code>.</p>
+<h2>Understanding Your Results</h2>
+<p>Reference exchange rates are informational and may not equal the final consumer rate. Banks, card networks, money-transfer services, and cash exchangers can apply spreads, fees, or timing differences.</p>
+<h2>Limitations</h2>
+<p>Live conversion requires an internet connection. The calculator does not add transfer fees, card foreign-transaction fees, commissions, or taxes unless you include them in a custom rate.</p>
+
+        <h2 id="faq">Frequently Asked Questions</h2>
+        <div class="faq"><details><summary>Are live exchange rates the same as bank rates?</summary><p>Not always. Reference rates are useful benchmarks, while banks and payment providers can add a spread, fee, or different execution time.</p></details><details><summary>Can I use my own exchange rate?</summary><p>Yes. Custom-rate mode multiplies your amount by the exact rate you enter.</p></details><details><summary>Why does the result change during the day?</summary><p>Foreign-exchange markets move and data providers update at different times, so the latest available reference rate can change.</p></details></div>
+        <h2>Sources and Methodology</h2>
+        <p>The calculator logic and explanatory content were cross-checked against the following references. Estimates are separated from official data where applicable.</p>
+        <ul class="source-list"><li><a href="https://www.calculator.net/currency-calculator.html" rel="noopener noreferrer">Calculator.net Currency Calculator</a></li><li><a href="https://frankfurter.dev/" rel="noopener noreferrer">Frankfurter Exchange Rates API</a></li><li><a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html" rel="noopener noreferrer">European Central Bank reference exchange rates</a></li></ul>
+      </article>
+      <aside class="card aside">
+        <h3>On this page</h3>
+        <a href="#calculator">Calculator</a>
+        <a href="#guide">How it works</a>
+        <a href="#faq">FAQs</a>
+        <p class="small">Educational calculator. For regulated financial, tax, medical, engineering, or network changes, verify the result against the relevant professional or official source.</p>
+      </aside>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">CalcPro · Standalone calculator page · No account required.</div></footer>
+<script>
+const currencies={"USD":"US Dollar","EUR":"Euro","GBP":"Pound Sterling","JPY":"Japanese Yen","CAD":"Canadian Dollar","AUD":"Australian Dollar","CHF":"Swiss Franc","CNY":"Chinese Yuan","INR":"Indian Rupee","PKR":"Pakistani Rupee","AED":"UAE Dirham","SAR":"Saudi Riyal","NZD":"New Zealand Dollar","SGD":"Singapore Dollar","HKD":"Hong Kong Dollar","TRY":"Turkish Lira","ZAR":"South African Rand","SEK":"Swedish Krona","NOK":"Norwegian Krone","DKK":"Danish Krone"};
+const from=document.getElementById('fxFrom'),to=document.getElementById('fxTo');
+Object.entries(currencies).forEach(([c,n])=>{from.add(new Option(`${c} — ${n}`,c));to.add(new Option(`${c} — ${n}`,c));});from.value="USD";to.value="EUR";
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab,.tab-panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active');});
+function showFx(v,rate,a,b,note){document.getElementById('fxBig').textContent=`${v.toLocaleString(undefined,{maximumFractionDigits:6})} ${b}`;document.getElementById('fxRate').textContent=`1 ${a} = ${rate.toLocaleString(undefined,{maximumFractionDigits:8})} ${b}`;document.getElementById('fxInv').textContent=`1 ${b} = ${(1/rate).toLocaleString(undefined,{maximumFractionDigits:8})} ${a}`;document.getElementById('fxNote').textContent=note}
+function err(m){let e=document.getElementById('fxErr');e.textContent=m;e.classList.add('show')}
+document.getElementById('fxGo').onclick=async()=>{document.getElementById('fxErr').classList.remove('show');const amount=+document.getElementById('fxAmount').value,a=from.value,b=to.value;if(!(amount>=0))return err("Enter a valid non-negative amount.");if(a===b)return showFx(amount,1,a,b,"Same-currency conversion.");
+try{const r=await fetch(`https://api.frankfurter.dev/v2/rate/${a.toLowerCase()}/${b.toLowerCase()}`);if(!r.ok)throw new Error();const d=await r.json();if(!d.rate)throw new Error();showFx(amount*d.rate,+d.rate,a,b,`Live reference data · ${d.date||"latest available"}`)}catch(_){err("Live rate could not be loaded. Try again online, or use Custom rate mode.")}};
+document.getElementById('fxSwap').onclick=()=>{let x=from.value;from.value=to.value;to.value=x;};
+document.getElementById('cGo').onclick=()=>{document.getElementById('fxErr').classList.remove('show');const a=+document.getElementById('cAmount').value,r=+document.getElementById('cRate').value;if(!(a>=0&&r>0))return err("Enter a non-negative amount and a rate greater than zero.");showFx(a*r,r,"A","B","Custom rate supplied by you.");};
+</script>
+<script src="/assets/js/global.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tire Size Calculator – Free Accurate Online Calculator | CalcPro</title>
+<meta name="description" content="Calculate tire diameter, sidewall height, circumference, revolutions per mile, and compare two tire sizes.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/tire-size-calculator/">
+<meta property="og:title" content="Tire Size Calculator | CalcPro">
+<meta property="og:description" content="Calculate tire diameter, sidewall height, circumference, revolutions per mile, and compare two tire sizes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="/tire-size-calculator/">
+<meta name="theme-color" content="#f1c232">
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
+.wrap{width:min(1160px,calc(100% - 32px));margin:auto}
+.crumbs{font-size:.9rem;opacity:.78;margin-bottom:14px}.crumbs a{text-decoration:none}
+.card{border-radius:24px}.field label{display:block;font-weight:700;font-size:.9rem;margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;border:1px solid rgba(127,127,127,.28);border-radius:14px;padding:12px 13px;background:rgba(255,255,255,.84);color:#151515;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{box-shadow:0 0 0 4px rgba(89,130,246,.15)}
+.btns{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:800}
+.btn.secondary{background:transparent;border:1px solid currentColor;opacity:.78}
+.error{min-height:22px;margin-top:10px;font-weight:700;color:#b42318}
+.result-title{font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;font-weight:900;opacity:.72}
+.result-main{font-size:clamp(2rem,6vw,4rem);line-height:1;font-weight:950;letter-spacing:-.05em;margin:8px 0 14px}
+.statgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.stat{border-radius:16px;padding:12px;background:rgba(255,255,255,.12)}
+.stat b{display:block;font-size:1.05rem}.stat span{font-size:.8rem;opacity:.75}
+.content{padding:66px 0}.prose{max-width:860px;margin:auto}.prose h2{font-size:clamp(1.5rem,3vw,2rem);line-height:1.2;margin:42px 0 12px}.prose h3{margin:28px 0 8px}.prose p,.prose li{color:var(--muted,#4c5564)}
+.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;padding:15px 17px;border-radius:16px;background:var(--soft,#f3f4f6);overflow:auto}
+.note{border-left:4px solid var(--accent,#4f46e5);padding:12px 16px;background:var(--soft,#f6f7fb);border-radius:0 14px 14px 0}
+.table-wrap{overflow:auto;border-radius:18px;border:1px solid rgba(127,127,127,.18)}table{width:100%;border-collapse:collapse;min-width:560px}th,td{text-align:left;padding:11px 13px;border-bottom:1px solid rgba(127,127,127,.15)}th{background:var(--soft,#f5f5f5)}
+.faq details{border:1px solid rgba(127,127,127,.18);border-radius:16px;margin:10px 0;padding:12px 15px;background:#fff}.faq summary{font-weight:800;cursor:pointer}
+.sources a{word-break:break-word}.footer{padding:28px 0;border-top:1px solid rgba(127,127,127,.18);font-size:.88rem;opacity:.75}
+.sr{position:absolute;left:-10000px}
+@media(max-width:780px){.statgrid{grid-template-columns:1fr}.content{padding:46px 0}.wrap{width:min(100% - 22px,1160px)}}
+
+:root{--accent:#f1c232;--muted:#68717a;--soft:#eceff1}body{background:#eef1f2;color:#1d252b}.tire-hero{padding:28px 0 78px;background:linear-gradient(120deg,#1e242a,#101418);color:#fff;overflow:hidden;position:relative}.road{position:absolute;left:0;right:0;bottom:0;height:90px;background:#252a2f}.road:after{content:"";position:absolute;left:0;right:0;top:42px;height:5px;background:repeating-linear-gradient(90deg,#f8dd62 0 70px,transparent 70px 120px)}.tire-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;position:relative;z-index:2}.tire-grid h1{font-size:clamp(3rem,7vw,6rem);line-height:.9;letter-spacing:-.065em;margin:10px 0}.wheel{width:330px;height:330px;border-radius:50%;margin:auto;background:radial-gradient(circle,#7e8790 0 10%,#222831 11% 32%,#8d969e 33% 37%,#1a1f24 38% 60%,#090b0d 61% 100%);box-shadow:inset 0 0 0 8px #343a3f,0 35px 70px #0008;position:relative}.wheel:after{content:"205/55 R16";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:250px;text-align:center;color:#f2c84b;font-weight:900;letter-spacing:.08em}
+.tire-shell{margin-top:-48px;position:relative;background:#fff;border-radius:28px;box-shadow:0 32px 80px #26333a35;padding:24px;display:grid;grid-template-columns:1.15fr .85fr;gap:22px}.tire-form{display:grid;grid-template-columns:1fr 1fr;gap:18px}.tire-group{border:1px solid #d9dfe2;border-radius:20px;padding:18px}.tire-inputs{display:grid;grid-template-columns:1fr .8fr .8fr;gap:7px}.tire-shell .btn{background:#202a31;color:#fff}.tire-result{background:#202a31;color:#fff;border-radius:22px;padding:24px}.mini-circles{height:140px;position:relative}.circle1,.circle2{position:absolute;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);border:5px solid #8e9aa2}.circle2{border-color:#f1c232}
+@media(max-width:780px){.tire-grid,.tire-shell,.tire-form{grid-template-columns:1fr}.wheel{width:250px;height:250px}.tire-inputs{grid-template-columns:1fr 1fr 1fr}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Tire Size Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate tire diameter, sidewall height, circumference, revolutions per mile, and compare two tire sizes.", "url": "/tire-size-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Tire Size Calculator", "item": "/tire-size-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does 205/55R16 mean?", "acceptedAnswer": {"@type": "Answer", "text": "205 is the nominal tire width in millimeters, 55 is the sidewall height as a percentage of width, R indicates radial construction, and 16 is the wheel diameter in inches."}}, {"@type": "Question", "name": "How is tire diameter calculated?", "acceptedAnswer": {"@type": "Answer", "text": "Sidewall height equals width × aspect ratio. Convert the sidewall from millimeters to inches, double it, then add the wheel diameter."}}, {"@type": "Question", "name": "Can I install any tire with a similar diameter?", "acceptedAnswer": {"@type": "Answer", "text": "No. Diameter is only one compatibility factor. Wheel width, load index, speed rating, vehicle clearance, manufacturer limits, and legal requirements also matter."}}]}]}</script>
+<link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body>
+<header>
+<nav class="wrap" style="padding-top:18px"><div class="crumbs"><a href="/">Home</a> / Tire Size Calculator</div></nav>
+<section class="tire-hero"><div class="road"></div><div class="wrap tire-grid"><div><span style="color:#f1c232;font-weight:900;letter-spacing:.15em;text-transform:uppercase">Fitment geometry</span><h1>Tire Size Calculator</h1><p>Decode tire dimensions and compare two tire sizes for diameter, circumference, revolutions, and speedometer change.</p></div><div class="wheel" aria-hidden="true"></div></div></section>
+</header>
+<main>
+<section class="wrap tire-shell"><div><div class="tire-form"><div class="tire-group"><h2>Tire 1</h2><div class="tire-inputs"><div class="field"><label>Width mm</label><input id="tW1" type="number" value="205"></div><div class="field"><label>Aspect %</label><input id="tA1" type="number" value="55"></div><div class="field"><label>Rim in</label><input id="tR1" type="number" value="16"></div></div></div><div class="tire-group"><h2>Tire 2</h2><div class="tire-inputs"><div class="field"><label>Width mm</label><input id="tW2" type="number" value="215"></div><div class="field"><label>Aspect %</label><input id="tA2" type="number" value="55"></div><div class="field"><label>Rim in</label><input id="tR2" type="number" value="16"></div></div></div></div><div class="btns" style="margin-top:14px"><button class="btn" onclick="calcTire()">Compare tires</button><button class="btn secondary" onclick="resetTire()">Reset</button></div><div id="tErr" class="error"></div></div>
+<div class="tire-result"><div class="result-title">Diameter difference</div><div id="tMain" class="result-main">+1.74%</div><div class="mini-circles"><div id="tc1" class="circle1"></div><div id="tc2" class="circle2"></div></div><div class="statgrid"><div class="stat"><span>Tire 1 diameter</span><b id="tD1">24.88 in</b></div><div class="stat"><span>Tire 2 diameter</span><b id="tD2">25.31 in</b></div><div class="stat"><span>Actual at indicated 60 mph</span><b id="tSpeed">61.0 mph</b></div><div class="stat"><span>Revs/mile (Tire 2)</span><b id="tRev">797</b></div></div></div></section>
+<!--CONTENT-->
+<h2>How to Read a Tire Size</h2><p>In 205/55R16, 205 is the nominal section width in millimeters, 55 is the aspect ratio, and 16 is the wheel diameter in inches. The aspect ratio means the sidewall height is 55% of the nominal tire width.</p>
+<h2>Tire Diameter Formula</h2><div class="formula">sidewall height (in) = width (mm) × aspect ratio ÷ 100 ÷ 25.4<br>overall diameter = wheel diameter + 2 × sidewall height</div>
+<h2>What the Comparison Shows</h2><p>A change in overall circumference changes how far the vehicle travels per wheel revolution. If a replacement tire is larger, actual road speed will be higher than the indicated speed if the speedometer calibration is unchanged.</p>
+<h2>Compatibility Is More Than Diameter</h2><p>This calculator only compares geometry. Before changing tire size, verify wheel-width compatibility, load index, speed rating, vehicle clearance, braking and suspension constraints, and the vehicle manufacturer's approved sizes.</p>
+<div class="note">Tire dimensions are nominal; real measured dimensions can vary by tire model, rim width, inflation pressure, and load.</div>
+<!--FAQ-->
+
+<section class="content"><article class="wrap prose">
+
+<h2>How to Read a Tire Size</h2><p>In 205/55R16, 205 is the nominal section width in millimeters, 55 is the aspect ratio, and 16 is the wheel diameter in inches. The aspect ratio means the sidewall height is 55% of the nominal tire width.</p>
+<h2>Tire Diameter Formula</h2><div class="formula">sidewall height (in) = width (mm) × aspect ratio ÷ 100 ÷ 25.4<br>overall diameter = wheel diameter + 2 × sidewall height</div>
+<h2>What the Comparison Shows</h2><p>A change in overall circumference changes how far the vehicle travels per wheel revolution. If a replacement tire is larger, actual road speed will be higher than the indicated speed if the speedometer calibration is unchanged.</p>
+<h2>Compatibility Is More Than Diameter</h2><p>This calculator only compares geometry. Before changing tire size, verify wheel-width compatibility, load index, speed rating, vehicle clearance, braking and suspension constraints, and the vehicle manufacturer's approved sizes.</p>
+<div class="note">Tire dimensions are nominal; real measured dimensions can vary by tire model, rim width, inflation pressure, and load.</div>
+
+<h2 id="faq">Frequently Asked Questions</h2>
+<div class="faq"><details><summary>What does 205/55R16 mean?</summary><p>205 is the nominal tire width in millimeters, 55 is the sidewall height as a percentage of width, R indicates radial construction, and 16 is the wheel diameter in inches.</p></details>
+<details><summary>How is tire diameter calculated?</summary><p>Sidewall height equals width × aspect ratio. Convert the sidewall from millimeters to inches, double it, then add the wheel diameter.</p></details>
+<details><summary>Can I install any tire with a similar diameter?</summary><p>No. Diameter is only one compatibility factor. Wheel width, load index, speed rating, vehicle clearance, manufacturer limits, and legal requirements also matter.</p></details></div>
+<h2>Sources and Methodology</h2>
+<div class="sources"><p><strong>NHTSA-hosted vehicle documentation:</strong> standardized sidewall concepts identify tire width, aspect ratio, radial construction, and wheel diameter. <a href="https://static.nhtsa.gov/odi/tsbs/2023/MC-10238123-9999.pdf" rel="nofollow">Tire marking example</a>.</p><p><strong>Calculator.net:</strong> Tire Size Calculator reviewed for dimension formulas and comparison intent.</p></div>
+</article></section>
+</main>
+<footer class="footer"><div class="wrap">CalcPro calculator estimate. Check professional or official requirements where relevant.</div></footer>
+<script>
+function tire(w,a,r){let side=w*a/100/25.4,diam=r+2*side,circ=Math.PI*diam,rev=63360/circ;return{side,diam,circ,rev}}
+function calcTire(){tErr.textContent="";let vals=[tW1,tA1,tR1,tW2,tA2,tR2].map(x=>+x.value);if(vals.some(x=>!(x>0))){tErr.textContent="Enter positive width, aspect ratio, and rim diameter for both tires.";return}let a=tire(vals[0],vals[1],vals[2]),b=tire(vals[3],vals[4],vals[5]),pct=(b.diam/a.diam-1)*100;tMain.textContent=(pct>=0?"+":"")+pct.toFixed(2)+"%";tD1.textContent=a.diam.toFixed(2)+" in";tD2.textContent=b.diam.toFixed(2)+" in";tSpeed.textContent=(60*b.circ/a.circ).toFixed(1)+" mph";tRev.textContent=Math.round(b.rev);let max=Math.max(a.diam,b.diam),s1=120*a.diam/max,s2=120*b.diam/max;tc1.style.width=tc1.style.height=s1+"px";tc2.style.width=tc2.style.height=s2+"px"}
+function resetTire(){[tW1,tA1,tR1,tW2,tA2,tR2].forEach((x,i)=>x.value=[205,55,16,215,55,16][i]);calcTire()}calcTire();
+</script>
+<script src="/assets/js/global.js" defer></script>
+</body></html>

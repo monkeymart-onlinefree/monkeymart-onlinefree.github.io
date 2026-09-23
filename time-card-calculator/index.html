@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Time Card Calculator | CalcPro</title>
+<meta name="description" content="Total weekly work hours, unpaid breaks, configurable overtime, and estimated gross pay from a simple seven-day time card.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/time-card-calculator/">
+<meta property="og:title" content="Time Card Calculator | CalcPro">
+<meta property="og:description" content="Total weekly work hours, unpaid breaks, configurable overtime, and estimated gross pay from a simple seven-day time card.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="/time-card-calculator/">
+<meta name="theme-color" content="#ffffff">
+<style>:root{--bg:#f7f3ea;--text:#24221f;--muted:#756f65;--bodyText:#504c45;--accent:#334155;--accentText:#fff;--accentShadow:#3341552e;--hero:linear-gradient(135deg,#f8fafc,#e7e5e4);--heroText:#5c5953;--panel:#fffdf8;--article:#fffdf9;--input:#fff;--result:#f1f5f9;--mini:#fff;--chip:#f1f0ec;--code:#f5f5f4;--line:#29252417;--lineStrong:#29252432;--focus:#64748b25;--shadow:0 25px 60px #44403c1e;--softShadow:0 15px 35px #44403c12}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.62}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.container{width:min(1180px,calc(100% - 32px));margin:auto}
+.sitebar{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:16px}.brand{font-weight:900;letter-spacing:-.04em;font-size:1.25rem}.brand span{color:var(--accent)}
+.crumbs{font-size:.9rem;color:var(--muted);margin:12px 0 0}.crumbs a{color:inherit}
+.hero{position:relative;overflow:hidden;margin:12px auto 30px;border-radius:32px;padding:clamp(28px,5vw,70px);background:var(--hero);box-shadow:var(--shadow);border:1px solid var(--line);isolation:isolate}
+.hero h1{font-size:clamp(2.35rem,5.7vw,5.2rem);line-height:.96;letter-spacing:-.065em;margin:12px 0 20px;max-width:800px}.hero p{font-size:clamp(1rem,1.5vw,1.18rem);max-width:720px;color:var(--heroText,var(--muted));margin:0}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.76rem;padding:8px 12px;border-radius:99px;background:var(--chip);border:1px solid var(--line)}
+.hero-art{position:absolute;right:3%;top:50%;transform:translateY(-50%);width:min(34vw,360px);height:min(34vw,360px);pointer-events:none;opacity:.96}
+.calc-zone{margin:0 auto 34px}.calc-shell{position:relative;background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:28px;padding:clamp(20px,3vw,34px);backdrop-filter:blur(14px)}
+.calc-title{margin:0 0 5px;font-size:1.5rem;letter-spacing:-.03em}.calc-note{margin:0 0 22px;color:var(--muted)}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
+label{font-size:.9rem;font-weight:750}.input-row{display:flex;gap:8px}input,select,textarea,button{font:inherit}
+input,select,textarea{width:100%;border:1px solid var(--lineStrong);background:var(--input);color:var(--text);border-radius:14px;padding:13px 14px;outline:none;transition:.2s}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}
+.unit{max-width:122px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+button{border:0;border-radius:14px;padding:13px 18px;font-weight:850;cursor:pointer;transition:transform .18s,box-shadow .18s}
+button:hover{transform:translateY(-2px)}.primary{background:var(--accent);color:var(--accentText,#fff);box-shadow:0 10px 25px var(--accentShadow)}.secondary{background:var(--chip);color:var(--text);border:1px solid var(--line)}
+.error{min-height:24px;margin-top:12px;color:#c33;font-weight:700}.result{margin-top:24px;padding:24px;border-radius:24px;background:var(--result);border:1px solid var(--line);position:relative;overflow:hidden}
+.result .big{font-size:clamp(2rem,5vw,3.7rem);font-weight:950;letter-spacing:-.055em;line-height:1;margin:.25rem 0}.result .sub{color:var(--muted)}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.stat{background:var(--mini);border:1px solid var(--line);border-radius:16px;padding:14px}.stat b{display:block;font-size:1.13rem}
+.content-grid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:28px;align-items:start}.article{background:var(--article);border:1px solid var(--line);box-shadow:var(--softShadow);border-radius:28px;padding:clamp(22px,4vw,42px)}
+.article h2{font-size:clamp(1.55rem,3vw,2.2rem);line-height:1.1;letter-spacing:-.035em;margin:2.2rem 0 .7rem}.article h2:first-child{margin-top:0}.article h3{margin:1.5rem 0 .5rem}.article p,.article li{color:var(--bodyText)}
+.aside{position:sticky;top:18px;background:var(--panel);border:1px solid var(--line);box-shadow:var(--softShadow);border-radius:22px;padding:20px}.aside h3{margin-top:0}.aside ul{padding-left:18px;margin-bottom:0}
+.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--code);padding:16px;border-radius:16px;overflow:auto;border:1px solid var(--line);font-weight:750}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px}table{width:100%;border-collapse:collapse;min-width:560px}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line)}th{background:var(--chip)}
+.faq details{border-top:1px solid var(--line);padding:14px 0}.faq summary{font-weight:850;cursor:pointer}.sources li{margin:.45rem 0}
+.footer{padding:34px 0 50px;color:var(--muted);font-size:.9rem}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.pill{padding:7px 11px;border-radius:999px;background:var(--chip);border:1px solid var(--line);font-size:.82rem;font-weight:750}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.tab{padding:9px 13px;border-radius:12px;background:var(--chip);border:1px solid var(--line);font-weight:800;cursor:pointer}.tab.active{background:var(--accent);color:var(--accentText,#fff)}
+.hidden{display:none!important}
+@media(max-width:860px){.content-grid{grid-template-columns:1fr}.aside{position:static}.hero-art{opacity:.28;width:250px;height:250px}.hero h1{max-width:95%}}
+@media(max-width:650px){.container{width:min(100% - 20px,1180px)}.hero{border-radius:22px;padding:26px 20px}.calc-shell,.article{border-radius:22px;padding:20px}.form-grid,.stat-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.input-row{flex-direction:column}.unit{max-width:none}.hero-art{right:-60px}}
+.theme-timecard .hero{border-radius:18px;transform:rotate(-.35deg)}.theme-timecard .calc-shell{border-radius:6px;box-shadow:0 26px 50px #44403c18,8px 8px 0 #d6d3d1}.theme-timecard .result{border-radius:6px;border-left:6px solid #334155}.stamp{position:absolute;right:9%;top:18%;width:180px;height:180px;border:12px double #b91c1c;border-radius:50%;display:grid;place-items:center;transform:rotate(14deg);font-weight:950;font-size:28px;color:#b91c1c;opacity:.78}.stamp:after{content:"HOURS";letter-spacing:.2em}.week-table{display:grid;gap:9px}.dayrow{display:grid;grid-template-columns:90px 1fr 1fr 120px;gap:8px;align-items:end}.dayrow strong{padding:12px 0}@media(max-width:720px){.dayrow{grid-template-columns:1fr 1fr}.dayrow strong{grid-column:1/-1}.dayrow .break{grid-column:1/-1}}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Time Card Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Total weekly work hours, unpaid breaks, configurable overtime, and estimated gross pay from a simple seven-day time card.", "url": "/time-card-calculator/", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "/calculators/"}, {"@type": "ListItem", "position": 3, "name": "Time Card Calculator", "item": "/time-card-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How are work hours calculated?", "acceptedAnswer": {"@type": "Answer", "text": "For each day, the calculator subtracts start time from end time and then subtracts the entered unpaid break. Overnight shifts are handled by treating an end time earlier than the start as the next day."}}, {"@type": "Question", "name": "How does overtime work?", "acceptedAnswer": {"@type": "Answer", "text": "The overtime threshold and multiplier are editable. The defaults are 40 hours and 1.5×, reflecting the general U.S. FLSA rule for covered, nonexempt employees; local rules and exemptions can differ."}}, {"@type": "Question", "name": "Does the time card replace payroll records?", "acceptedAnswer": {"@type": "Answer", "text": "No. It is a planning and checking tool. Employers should use their required timekeeping and payroll systems and apply the laws, contracts, and policies that govern the worker."}}]}]}</script>
+<link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body class="theme-timecard">
+<header class="container">
+  <nav class="sitebar" aria-label="Main navigation"><a class="brand" href="/">Calc<span>Pro</span></a><a href="/calculators/">All Calculators</a></nav>
+  <div class="crumbs"><a href="/">Home</a> / <a href="/calculators/">Calculators</a> / Time Card Calculator</div>
+</header>
+<main>
+<section class="container hero">
+  <span class="eyebrow">Weekly hours sheet</span>
+  <h1>Time Card Calculator</h1>
+  <p>Total weekly work hours, unpaid breaks, configurable overtime, and estimated gross pay from a simple seven-day time card.</p>
+  <div class="hero-art" aria-hidden="true"><div class="stamp"></div></div>
+</section>
+
+<section class="container calc-zone" aria-labelledby="calculator-heading">
+  <div class="calc-shell">
+    <h2 class="calc-title" id="calculator-heading">Time Card Calculator</h2>
+    <p class="calc-note">Add daily start/end times and unpaid breaks. Overtime settings are configurable.</p>
+<div class="week-table"><div class="dayrow"><strong>Monday</strong><div class="field"><label for="s0">Start</label><input id="s0" type="time" value="09:00"></div><div class="field"><label for="e0">End</label><input id="e0" type="time" value="17:00"></div><div class="field break"><label for="b0">Break (min)</label><input id="b0" type="number" min="0" step="1" value="30"></div></div><div class="dayrow"><strong>Tuesday</strong><div class="field"><label for="s1">Start</label><input id="s1" type="time" value="09:00"></div><div class="field"><label for="e1">End</label><input id="e1" type="time" value="17:00"></div><div class="field break"><label for="b1">Break (min)</label><input id="b1" type="number" min="0" step="1" value="30"></div></div><div class="dayrow"><strong>Wednesday</strong><div class="field"><label for="s2">Start</label><input id="s2" type="time" value="09:00"></div><div class="field"><label for="e2">End</label><input id="e2" type="time" value="17:00"></div><div class="field break"><label for="b2">Break (min)</label><input id="b2" type="number" min="0" step="1" value="30"></div></div><div class="dayrow"><strong>Thursday</strong><div class="field"><label for="s3">Start</label><input id="s3" type="time" value="09:00"></div><div class="field"><label for="e3">End</label><input id="e3" type="time" value="17:00"></div><div class="field break"><label for="b3">Break (min)</label><input id="b3" type="number" min="0" step="1" value="30"></div></div><div class="dayrow"><strong>Friday</strong><div class="field"><label for="s4">Start</label><input id="s4" type="time" value="09:00"></div><div class="field"><label for="e4">End</label><input id="e4" type="time" value="17:00"></div><div class="field break"><label for="b4">Break (min)</label><input id="b4" type="number" min="0" step="1" value="30"></div></div><div class="dayrow"><strong>Saturday</strong><div class="field"><label for="s5">Start</label><input id="s5" type="time"></div><div class="field"><label for="e5">End</label><input id="e5" type="time"></div><div class="field break"><label for="b5">Break (min)</label><input id="b5" type="number" min="0" step="1" value="0"></div></div><div class="dayrow"><strong>Sunday</strong><div class="field"><label for="s6">Start</label><input id="s6" type="time"></div><div class="field"><label for="e6">End</label><input id="e6" type="time"></div><div class="field break"><label for="b6">Break (min)</label><input id="b6" type="number" min="0" step="1" value="0"></div></div></div>
+<div class="form-grid" style="margin-top:18px">
+ <div class="field"><label for="rate">Hourly rate</label><input id="rate" type="number" min="0" step="any" value="20"></div>
+ <div class="field"><label for="threshold">Weekly overtime after</label><input id="threshold" type="number" min="0" step="any" value="40"></div>
+ <div class="field"><label for="multiplier">Overtime multiplier</label><input id="multiplier" type="number" min="0" step="any" value="1.5"></div>
+</div>
+<div class="actions"><button class="primary" id="calcBtn">Total Time Card</button><button class="secondary" id="clearBtn">Clear</button></div><div class="error" id="error" role="alert"></div>
+<div class="result"><span class="sub">Weekly hours</span><div class="big" id="hours">37.50 h</div><div class="stat-grid"><div class="stat"><span>Regular</span><b id="regular">37.50 h</b></div><div class="stat"><span>Overtime</span><b id="overtime">0.00 h</b></div><div class="stat"><span>Gross pay estimate</span><b id="pay">$750.00</b></div></div></div>
+  </div>
+</section>
+
+<section class="container content-grid">
+  <article class="article">
+    
+<h2>What Is a Time Card Calculator?</h2><p>A time card calculator totals hours worked during a week from daily start and end times, subtracts unpaid breaks, separates regular and overtime hours, and can estimate gross hourly pay. It is useful for employees, supervisors, freelancers, and payroll cross-checking.</p>
+<h2>How Work Hours Are Calculated</h2><div class="formula">Daily hours = End time − Start time − Unpaid break<br>Weekly hours = Sum of daily hours<br>Overtime = max(0, weekly hours − threshold)</div><p>If an end time is earlier than its start time, the calculator treats the shift as crossing midnight into the next day.</p>
+<h2>Overtime Settings</h2><p>The default threshold is 40 hours with a 1.5× overtime multiplier. The U.S. Department of Labor states that covered, nonexempt employees generally must receive at least one and one-half times their regular rate for hours over 40 in a workweek. Exemptions and other jurisdictions can use different rules, so both fields are editable.</p>
+<h3>Example</h3><p>Five 9:00 AM–5:00 PM days with a 30-minute unpaid break each total 37.5 hours. At $20 per hour and no overtime, the estimated gross pay is $750.</p>
+<h2>Limitations</h2><p>This page does not decide whether time is legally compensable, whether a worker is exempt, how rounding must be handled, or which local labor law applies. It also does not include taxes, benefits, bonuses, shift differentials, or other payroll items.</p>
+
+    <h2 id="faq">Frequently Asked Questions</h2>
+    <div class="faq"><details><summary>How are work hours calculated?</summary><p>For each day, the calculator subtracts start time from end time and then subtracts the entered unpaid break. Overnight shifts are handled by treating an end time earlier than the start as the next day.</p></details>
+<details><summary>How does overtime work?</summary><p>The overtime threshold and multiplier are editable. The defaults are 40 hours and 1.5×, reflecting the general U.S. FLSA rule for covered, nonexempt employees; local rules and exemptions can differ.</p></details>
+<details><summary>Does the time card replace payroll records?</summary><p>No. It is a planning and checking tool. Employers should use their required timekeeping and payroll systems and apply the laws, contracts, and policies that govern the worker.</p></details></div>
+    <h2>Sources and Methodology</h2>
+    <p>CalcPro uses the formulas and assumptions described above. References below were used to cross-check the calculator method and terminology. Results are estimates unless a definition or unit conversion is mathematically exact.</p>
+    <ul class="sources"><li><a href="https://www.dol.gov/agencies/whd/fact-sheets/23-flsa-overtime-pay" rel="noopener noreferrer">U.S. Department of Labor — Fact Sheet #23</a> — general U.S. overtime rule for covered, nonexempt employees.</li>
+<li><a href="https://www.calculator.net/time-card-calculator.html" rel="noopener noreferrer">Calculator.net Time Card Calculator</a> — cross-check of weekly time-card inputs and outputs.</li></ul>
+  </article>
+  <aside class="aside">
+    <h3>Quick reference</h3>
+    <div class="formula">Hours = end − start − break</div><div class="pills"><span class="pill">7 days</span><span class="pill">overnight shifts</span><span class="pill">configurable OT</span></div>
+  </aside>
+</section>
+</main>
+<footer class="container footer">CalcPro • Fast, transparent calculators with formulas and assumptions shown on-page.</footer>
+<script>
+
+const $=id=>document.getElementById(id);function mins(t){if(!t)return null;const [h,m]=t.split(":").map(Number);return h*60+m}
+function run(){let total=0,valid=true;for(let i=0;i<7;i++){const s=mins($("s"+i).value),e=mins($("e"+i).value),b=+$("b"+i).value||0;if(s===null&&e===null)continue;if(s===null||e===null||b<0){valid=false;break}let span=e-s;if(span<0)span+=1440;span-=b;if(span<0||span>1440){valid=false;break}total+=span/60}
+ if(!valid){$("error").textContent="Check each used day: enter both start and end times and a valid unpaid break.";return}
+ let th=+$("threshold").value,rate=+$("rate").value,m=+$("multiplier").value;if(!(th>=0)||!(rate>=0)||!(m>=0)){$("error").textContent="Enter valid pay and overtime settings.";return}
+ let reg=Math.min(total,th),ot=Math.max(0,total-th),pay=reg*rate+ot*rate*m;$("error").textContent="";$("hours").textContent=total.toFixed(2)+" h";$("regular").textContent=reg.toFixed(2)+" h";$("overtime").textContent=ot.toFixed(2)+" h";$("pay").textContent="$"+pay.toFixed(2)}
+$("calcBtn").onclick=run;$("clearBtn").onclick=()=>{for(let i=0;i<7;i++){$("s"+i).value="";$("e"+i).value="";$("b"+i).value=0}run()};run();
+
+</script>
+<script src="/assets/js/global.js" defer></script>
+</body></html>

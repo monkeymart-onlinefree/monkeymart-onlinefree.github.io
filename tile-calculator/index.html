@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tile Calculator – Free Accurate Online Calculator | CalcPro</title>
+<meta name="description" content="Estimate tile quantity, rows, columns, waste, boxes, and optional cost for a rectangular surface.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/tile-calculator/">
+<meta property="og:title" content="Tile Calculator | CalcPro">
+<meta property="og:description" content="Estimate tile quantity, rows, columns, waste, boxes, and optional cost for a rectangular surface.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="/tile-calculator/">
+<meta name="theme-color" content="#c66d45">
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
+.wrap{width:min(1160px,calc(100% - 32px));margin:auto}
+.crumbs{font-size:.9rem;opacity:.78;margin-bottom:14px}.crumbs a{text-decoration:none}
+.card{border-radius:24px}.field label{display:block;font-weight:700;font-size:.9rem;margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;border:1px solid rgba(127,127,127,.28);border-radius:14px;padding:12px 13px;background:rgba(255,255,255,.84);color:#151515;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{box-shadow:0 0 0 4px rgba(89,130,246,.15)}
+.btns{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:800}
+.btn.secondary{background:transparent;border:1px solid currentColor;opacity:.78}
+.error{min-height:22px;margin-top:10px;font-weight:700;color:#b42318}
+.result-title{font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;font-weight:900;opacity:.72}
+.result-main{font-size:clamp(2rem,6vw,4rem);line-height:1;font-weight:950;letter-spacing:-.05em;margin:8px 0 14px}
+.statgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.stat{border-radius:16px;padding:12px;background:rgba(255,255,255,.12)}
+.stat b{display:block;font-size:1.05rem}.stat span{font-size:.8rem;opacity:.75}
+.content{padding:66px 0}.prose{max-width:860px;margin:auto}.prose h2{font-size:clamp(1.5rem,3vw,2rem);line-height:1.2;margin:42px 0 12px}.prose h3{margin:28px 0 8px}.prose p,.prose li{color:var(--muted,#4c5564)}
+.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;padding:15px 17px;border-radius:16px;background:var(--soft,#f3f4f6);overflow:auto}
+.note{border-left:4px solid var(--accent,#4f46e5);padding:12px 16px;background:var(--soft,#f6f7fb);border-radius:0 14px 14px 0}
+.table-wrap{overflow:auto;border-radius:18px;border:1px solid rgba(127,127,127,.18)}table{width:100%;border-collapse:collapse;min-width:560px}th,td{text-align:left;padding:11px 13px;border-bottom:1px solid rgba(127,127,127,.15)}th{background:var(--soft,#f5f5f5)}
+.faq details{border:1px solid rgba(127,127,127,.18);border-radius:16px;margin:10px 0;padding:12px 15px;background:#fff}.faq summary{font-weight:800;cursor:pointer}
+.sources a{word-break:break-word}.footer{padding:28px 0;border-top:1px solid rgba(127,127,127,.18);font-size:.88rem;opacity:.75}
+.sr{position:absolute;left:-10000px}
+@media(max-width:780px){.statgrid{grid-template-columns:1fr}.content{padding:46px 0}.wrap{width:min(100% - 22px,1160px)}}
+
+:root{--accent:#c66d45;--muted:#6d625d;--soft:#f6ebe5}body{background:#fbf7f2;color:#352b27}.tile-hero{padding:26px 0 80px;background:linear-gradient(125deg,#f8e9df,#fff8ef 55%,#ead1c2);overflow:hidden}.tile-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:30px;align-items:center}.tile-grid h1{font-size:clamp(3rem,7vw,6rem);line-height:.9;letter-spacing:-.06em;margin:10px 0}.mosaic{height:360px;display:grid;grid-template-columns:repeat(5,65px);grid-auto-rows:65px;gap:9px;align-content:center;justify-content:center;transform:rotateX(58deg) rotateZ(-38deg);transform-style:preserve-3d;filter:drop-shadow(0 28px 18px #81584530)}.tile{border-radius:12px;background:linear-gradient(135deg,#fff5ea,#d9916c);box-shadow:8px 8px 0 #b85f3c,14px 18px 16px #6b3d2f28}.tile:nth-child(3n){background:linear-gradient(135deg,#e9c5ad,#b96744)}.tile:nth-child(4n){background:linear-gradient(135deg,#fff,#e8d4c7)}
+.tile-shell{margin-top:-48px;position:relative}.tile-card{background:#fff;border-radius:30px;padding:26px;box-shadow:0 32px 85px #89554028;display:grid;grid-template-columns:1.2fr .8fr;gap:20px}.tile-form .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.tile-form .btn{background:#b75e3c;color:#fff}.tile-result{border-radius:24px;background:linear-gradient(145deg,#8e4934,#c46d4b);color:#fff;padding:28px}.pattern{margin-top:20px;display:grid;grid-template-columns:repeat(6,1fr);gap:4px}.pattern i{aspect-ratio:1;background:#fff3;border:1px solid #fff4;border-radius:3px}
+@media(max-width:780px){.tile-grid,.tile-card,.tile-form .grid{grid-template-columns:1fr}.mosaic{height:280px;grid-template-columns:repeat(5,48px);grid-auto-rows:48px}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Tile Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Estimate tile quantity, rows, columns, waste, boxes, and optional cost for a rectangular surface.", "url": "/tile-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Tile Calculator", "item": "/tile-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I calculate how many tiles I need?", "acceptedAnswer": {"@type": "Answer", "text": "For a simple rectangular grid, divide each surface dimension by the repeating tile-plus-grout module, round up to whole rows and columns, multiply them, then add your chosen waste allowance."}}, {"@type": "Question", "name": "Should I include grout gap in a tile calculation?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. A positive grout joint increases the repeating module spacing between tiles. The exact layout near edges can still require cuts, so waste should be considered separately."}}, {"@type": "Question", "name": "Why do herringbone and diagonal layouts need more tile?", "acceptedAnswer": {"@type": "Answer", "text": "Angled or offset layouts create more edge cuts and offcuts than a simple straight grid, so practical waste is often higher."}}]}]}</script>
+<link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body>
+<header>
+<nav class="wrap" style="padding-top:18px"><div class="crumbs"><a href="/">Home</a> / Tile Calculator</div></nav>
+<section class="tile-hero"><div class="wrap tile-grid"><div><span style="font-weight:900;color:#9f5235;letter-spacing:.15em;text-transform:uppercase">Surface layout planner</span><h1>Tile Calculator</h1><p>Estimate tile count, rows and columns, waste, boxes, and optional cost for a rectangular wall or floor.</p></div><div class="mosaic" aria-hidden="true"><i class="tile"></i><i class="tile"></i><i class="tile"></i><i class="tile"></i><i class="tile"></i><i class="tile"></i><i class="tile"></i><i class="tile"></i><i class="tile"></i><i class="tile"></i><i class="tile"></i><i class="tile"></i><i class="tile"></i><i class="tile"></i><i class="tile"></i><i class="tile"></i><i class="tile"></i><i class="tile"></i><i class="tile"></i><i class="tile"></i></div></div></section>
+</header>
+<main>
+<section class="wrap tile-shell"><div class="tile-card"><div class="tile-form"><h2>Tile and surface dimensions</h2><div class="grid"><div class="field"><label>Tile length (in)</label><input id="tlL" type="number" value="12" step="any"></div><div class="field"><label>Tile width (in)</label><input id="tlW" type="number" value="12" step="any"></div><div class="field"><label>Surface length (ft)</label><input id="tlSL" type="number" value="10" step="any"></div><div class="field"><label>Surface width (ft)</label><input id="tlSW" type="number" value="10" step="any"></div><div class="field"><label>Grout gap (in)</label><input id="tlGap" type="number" value=".125" step="any"></div><div class="field"><label>Waste allowance (%)</label><input id="tlWaste" type="number" value="10" step="any"></div><div class="field"><label>Tiles per box</label><input id="tlBox" type="number" value="12" step="1"></div><div class="field"><label>Price per box (optional)</label><input id="tlPrice" type="number" value="28" step="any"></div></div><div class="btns"><button class="btn" onclick="calcTile()">Estimate tiles</button><button class="btn secondary" onclick="resetTile()">Reset</button></div><div id="tlErr" class="error"></div></div>
+<div class="tile-result"><div class="result-title">Tiles including waste</div><div id="tlMain" class="result-main">121</div><div class="statgrid"><div class="stat"><span>Base grid</span><b id="tlGrid">10 × 10</b></div><div class="stat"><span>Surface area</span><b id="tlArea">100 ft²</b></div><div class="stat"><span>Boxes to buy</span><b id="tlBoxes">11</b></div><div class="stat"><span>Estimated box cost</span><b id="tlCost">$308</b></div></div><div class="pattern"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div></section>
+<!--CONTENT-->
+<h2>What Is a Tile Calculator?</h2><p>A tile calculator estimates how many whole tiles are needed to cover a rectangular surface. This version uses the actual surface dimensions, tile dimensions, grout joint, a user-selected waste allowance, and optional packaging information.</p>
+<h2>How the Tile Count Is Calculated</h2><div class="formula">columns = ceil((surface length + grout gap) ÷ (tile length + grout gap))<br>rows = ceil((surface width + grout gap) ÷ (tile width + grout gap))<br>tiles = rows × columns</div>
+<p>The calculator then increases the tile count by your waste percentage and rounds up to a whole tile. If tiles per box are supplied, it also rounds up to a whole number of boxes.</p>
+<h2>Grout Joint and Layout</h2><p>Grout joints create spacing between neighboring tiles. The chosen joint affects the repeating module across the field, but edge cuts, pattern alignment, niches, obstacles, and irregular walls can still change the real quantity.</p>
+<h2>Waste Allowance</h2><p>Straight layouts usually create less cut waste than running bond, diagonal, or herringbone patterns. Instead of forcing one default as universally correct, this calculator lets you set the waste allowance to suit the project.</p>
+<div class="note">Measure the actual installation area and check the tile manufacturer's caliber, joint, and installation guidance before ordering.</div>
+<!--FAQ-->
+
+<section class="content"><article class="wrap prose">
+
+<h2>What Is a Tile Calculator?</h2><p>A tile calculator estimates how many whole tiles are needed to cover a rectangular surface. This version uses the actual surface dimensions, tile dimensions, grout joint, a user-selected waste allowance, and optional packaging information.</p>
+<h2>How the Tile Count Is Calculated</h2><div class="formula">columns = ceil((surface length + grout gap) ÷ (tile length + grout gap))<br>rows = ceil((surface width + grout gap) ÷ (tile width + grout gap))<br>tiles = rows × columns</div>
+<p>The calculator then increases the tile count by your waste percentage and rounds up to a whole tile. If tiles per box are supplied, it also rounds up to a whole number of boxes.</p>
+<h2>Grout Joint and Layout</h2><p>Grout joints create spacing between neighboring tiles. The chosen joint affects the repeating module across the field, but edge cuts, pattern alignment, niches, obstacles, and irregular walls can still change the real quantity.</p>
+<h2>Waste Allowance</h2><p>Straight layouts usually create less cut waste than running bond, diagonal, or herringbone patterns. Instead of forcing one default as universally correct, this calculator lets you set the waste allowance to suit the project.</p>
+<div class="note">Measure the actual installation area and check the tile manufacturer's caliber, joint, and installation guidance before ordering.</div>
+
+<h2 id="faq">Frequently Asked Questions</h2>
+<div class="faq"><details><summary>How do I calculate how many tiles I need?</summary><p>For a simple rectangular grid, divide each surface dimension by the repeating tile-plus-grout module, round up to whole rows and columns, multiply them, then add your chosen waste allowance.</p></details>
+<details><summary>Should I include grout gap in a tile calculation?</summary><p>Yes. A positive grout joint increases the repeating module spacing between tiles. The exact layout near edges can still require cuts, so waste should be considered separately.</p></details>
+<details><summary>Why do herringbone and diagonal layouts need more tile?</summary><p>Angled or offset layouts create more edge cuts and offcuts than a simple straight grid, so practical waste is often higher.</p></details></div>
+<h2>Sources and Methodology</h2>
+<div class="sources"><p><strong>Calculator.net:</strong> Tile Calculator reviewed for tile dimensions, area, grout gap, boxes, pricing, and layout considerations.</p><p><strong>Methodology:</strong> rectangular grid counting uses whole rows and columns plus a separate user-controlled waste allowance so cut loss is not hidden inside the geometry.</p></div>
+</article></section>
+</main>
+<footer class="footer"><div class="wrap">CalcPro calculator estimate. Check professional or official requirements where relevant.</div></footer>
+<script>
+function calcTile(){tlErr.textContent="";let L=+tlL.value,W=+tlW.value,SL=+tlSL.value*12,SW=+tlSW.value*12,g=+tlGap.value,wa=+tlWaste.value,b=+tlBox.value,p=+tlPrice.value;if(!(L>0&&W>0&&SL>0&&SW>0&&L+g>0&&W+g>0&&wa>=0&&b>0)){tlErr.textContent="Enter positive tile/surface dimensions and box size, with valid grout gap and waste.";return}let cols=Math.ceil((SL+g)/(L+g)),rows=Math.ceil((SW+g)/(W+g)),base=cols*rows,total=Math.ceil(base*(1+wa/100)),boxes=Math.ceil(total/b),area=SL*SW/144;tlMain.textContent=total.toLocaleString();tlGrid.textContent=`${cols} × ${rows} = ${base}`;tlArea.textContent=area.toFixed(2).replace(/\.00$/,"")+" ft²";tlBoxes.textContent=boxes;tlCost.textContent=p>=0?"$"+(boxes*p).toLocaleString(undefined,{maximumFractionDigits:2}):"—"}
+function resetTile(){[tlL,tlW,tlSL,tlSW,tlGap,tlWaste,tlBox,tlPrice].forEach((x,i)=>x.value=[12,12,10,10,.125,10,12,28][i]);calcTile()}calcTile();
+</script>
+<script src="/assets/js/global.js" defer></script>
+</body></html>

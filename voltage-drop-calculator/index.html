@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Voltage Drop Calculator | CalcPro</title>
+<meta name="description" content="Estimate conductor voltage drop, percentage drop, and load voltage for DC, single-phase, or three-phase circuits.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/voltage-drop-calculator/">
+<meta property="og:title" content="Voltage Drop Calculator | CalcPro">
+<meta property="og:description" content="Estimate conductor voltage drop, percentage drop, and load voltage for DC, single-phase, or three-phase circuits.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="/voltage-drop-calculator/">
+<meta name="theme-color" content="#07130f">
+<style>:root{--bg:#07130f;--text:#e8fff7;--muted:#9ab9ad;--bodyText:#b9cfc7;--accent:#34d399;--accentText:#06251a;--accentShadow:#34d39933;--hero:radial-gradient(circle at 75% 20%,#065f46 0%,#062e25 34%,#081713 70%);--heroText:#b7d9cc;--panel:#0c211abf;--article:#0a1c17;--input:#0b1915;--result:linear-gradient(135deg,#0f2a22,#0a1714);--mini:#0e241d;--chip:#123029;--code:#071b14;--line:#6ee7b722;--lineStrong:#6ee7b744;--focus:#34d39930;--shadow:0 30px 85px #0009;--softShadow:0 18px 50px #0006}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.62}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.container{width:min(1180px,calc(100% - 32px));margin:auto}
+.sitebar{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:16px}.brand{font-weight:900;letter-spacing:-.04em;font-size:1.25rem}.brand span{color:var(--accent)}
+.crumbs{font-size:.9rem;color:var(--muted);margin:12px 0 0}.crumbs a{color:inherit}
+.hero{position:relative;overflow:hidden;margin:12px auto 30px;border-radius:32px;padding:clamp(28px,5vw,70px);background:var(--hero);box-shadow:var(--shadow);border:1px solid var(--line);isolation:isolate}
+.hero h1{font-size:clamp(2.35rem,5.7vw,5.2rem);line-height:.96;letter-spacing:-.065em;margin:12px 0 20px;max-width:800px}.hero p{font-size:clamp(1rem,1.5vw,1.18rem);max-width:720px;color:var(--heroText,var(--muted));margin:0}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.76rem;padding:8px 12px;border-radius:99px;background:var(--chip);border:1px solid var(--line)}
+.hero-art{position:absolute;right:3%;top:50%;transform:translateY(-50%);width:min(34vw,360px);height:min(34vw,360px);pointer-events:none;opacity:.96}
+.calc-zone{margin:0 auto 34px}.calc-shell{position:relative;background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:28px;padding:clamp(20px,3vw,34px);backdrop-filter:blur(14px)}
+.calc-title{margin:0 0 5px;font-size:1.5rem;letter-spacing:-.03em}.calc-note{margin:0 0 22px;color:var(--muted)}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
+label{font-size:.9rem;font-weight:750}.input-row{display:flex;gap:8px}input,select,textarea,button{font:inherit}
+input,select,textarea{width:100%;border:1px solid var(--lineStrong);background:var(--input);color:var(--text);border-radius:14px;padding:13px 14px;outline:none;transition:.2s}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}
+.unit{max-width:122px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+button{border:0;border-radius:14px;padding:13px 18px;font-weight:850;cursor:pointer;transition:transform .18s,box-shadow .18s}
+button:hover{transform:translateY(-2px)}.primary{background:var(--accent);color:var(--accentText,#fff);box-shadow:0 10px 25px var(--accentShadow)}.secondary{background:var(--chip);color:var(--text);border:1px solid var(--line)}
+.error{min-height:24px;margin-top:12px;color:#c33;font-weight:700}.result{margin-top:24px;padding:24px;border-radius:24px;background:var(--result);border:1px solid var(--line);position:relative;overflow:hidden}
+.result .big{font-size:clamp(2rem,5vw,3.7rem);font-weight:950;letter-spacing:-.055em;line-height:1;margin:.25rem 0}.result .sub{color:var(--muted)}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.stat{background:var(--mini);border:1px solid var(--line);border-radius:16px;padding:14px}.stat b{display:block;font-size:1.13rem}
+.content-grid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:28px;align-items:start}.article{background:var(--article);border:1px solid var(--line);box-shadow:var(--softShadow);border-radius:28px;padding:clamp(22px,4vw,42px)}
+.article h2{font-size:clamp(1.55rem,3vw,2.2rem);line-height:1.1;letter-spacing:-.035em;margin:2.2rem 0 .7rem}.article h2:first-child{margin-top:0}.article h3{margin:1.5rem 0 .5rem}.article p,.article li{color:var(--bodyText)}
+.aside{position:sticky;top:18px;background:var(--panel);border:1px solid var(--line);box-shadow:var(--softShadow);border-radius:22px;padding:20px}.aside h3{margin-top:0}.aside ul{padding-left:18px;margin-bottom:0}
+.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--code);padding:16px;border-radius:16px;overflow:auto;border:1px solid var(--line);font-weight:750}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px}table{width:100%;border-collapse:collapse;min-width:560px}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line)}th{background:var(--chip)}
+.faq details{border-top:1px solid var(--line);padding:14px 0}.faq summary{font-weight:850;cursor:pointer}.sources li{margin:.45rem 0}
+.footer{padding:34px 0 50px;color:var(--muted);font-size:.9rem}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.pill{padding:7px 11px;border-radius:999px;background:var(--chip);border:1px solid var(--line);font-size:.82rem;font-weight:750}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.tab{padding:9px 13px;border-radius:12px;background:var(--chip);border:1px solid var(--line);font-weight:800;cursor:pointer}.tab.active{background:var(--accent);color:var(--accentText,#fff)}
+.hidden{display:none!important}
+@media(max-width:860px){.content-grid{grid-template-columns:1fr}.aside{position:static}.hero-art{opacity:.28;width:250px;height:250px}.hero h1{max-width:95%}}
+@media(max-width:650px){.container{width:min(100% - 20px,1180px)}.hero{border-radius:22px;padding:26px 20px}.calc-shell,.article{border-radius:22px;padding:20px}.form-grid,.stat-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.input-row{flex-direction:column}.unit{max-width:none}.hero-art{right:-60px}}
+.theme-voltage .hero{border-radius:12px;clip-path:polygon(0 0,97% 0,100% 18%,100% 100%,3% 100%,0 82%)}.theme-voltage .calc-shell{border-radius:12px;background-image:linear-gradient(#34d39908 1px,transparent 1px),linear-gradient(90deg,#34d39908 1px,transparent 1px);background-size:22px 22px}.theme-voltage .result{box-shadow:inset 0 0 40px #34d39912}.circuit{position:absolute;inset:5%;border:3px solid #34d399;border-radius:26px;box-shadow:0 0 45px #34d39966}.circuit:before,.circuit:after{content:"";position:absolute;background:#34d399}.circuit:before{width:70%;height:3px;left:15%;top:45%;box-shadow:0 60px 0 #34d399,0 -60px 0 #34d399}.circuit:after{height:70%;width:3px;left:50%;top:15%;box-shadow:60px 0 0 #34d399,-60px 0 0 #34d399}.bolt{position:absolute;left:41%;top:28%;font-size:100px;color:#facc15;filter:drop-shadow(0 0 22px #facc15aa)}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Voltage Drop Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Estimate conductor voltage drop, percentage drop, and load voltage for DC, single-phase, or three-phase circuits.", "url": "/voltage-drop-calculator/", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "/calculators/"}, {"@type": "ListItem", "position": 3, "name": "Voltage Drop Calculator", "item": "/voltage-drop-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is voltage drop?", "acceptedAnswer": {"@type": "Answer", "text": "Voltage drop is the decrease in electrical potential along a conductor as current flows through its resistance or impedance."}}, {"@type": "Question", "name": "What formula does this calculator use?", "acceptedAnswer": {"@type": "Answer", "text": "For the resistance-only estimate, DC and single-phase use Vdrop = 2 × I × R × L. Three-phase uses Vdrop = √3 × I × R × L, where R is resistance per unit length and L is one-way distance."}}, {"@type": "Question", "name": "Is this a substitute for electrical code design?", "acceptedAnswer": {"@type": "Answer", "text": "No. It is an engineering estimate. Conductor ampacity, temperature, insulation, termination ratings, local electrical codes, reactance, power factor, and installation conditions may require separate checks."}}]}]}</script>
+<link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body class="theme-voltage">
+<header class="container">
+  <nav class="sitebar" aria-label="Main navigation"><a class="brand" href="/">Calc<span>Pro</span></a><a href="/calculators/">All Calculators</a></nav>
+  <div class="crumbs"><a href="/">Home</a> / <a href="/calculators/">Calculators</a> / Voltage Drop Calculator</div>
+</header>
+<main>
+<section class="container hero">
+  <span class="eyebrow">Circuit engineering</span>
+  <h1>Voltage Drop Calculator</h1>
+  <p>Estimate conductor voltage drop, percentage drop, and load voltage for DC, single-phase, or three-phase circuits.</p>
+  <div class="hero-art" aria-hidden="true"><div class="circuit"></div><div class="bolt">ϟ</div></div>
+</section>
+
+<section class="container calc-zone" aria-labelledby="calculator-heading">
+  <div class="calc-shell">
+    <h2 class="calc-title" id="calculator-heading">Voltage Drop Calculator</h2>
+    <p class="calc-note">Estimate conductor voltage drop using wire resistance at approximately 20°C.</p>
+<div class="form-grid">
+ <div class="field"><label for="system">Circuit type</label><select id="system"><option value="single">DC / single-phase</option><option value="three">Three-phase</option></select></div>
+ <div class="field"><label for="voltage">System voltage (V)</label><input id="voltage" type="number" min="0.01" step="any" value="120"></div>
+ <div class="field"><label for="current">Load current (A)</label><input id="current" type="number" min="0" step="any" value="15"></div>
+ <div class="field"><label for="length">One-way conductor length</label><div class="input-row"><input id="length" type="number" min="0" step="any" value="100"><select id="lengthUnit" class="unit"><option value="ft">ft</option><option value="m">m</option></select></div></div>
+ <div class="field"><label for="material">Conductor</label><select id="material"><option value="cu">Copper</option><option value="al">Aluminum (estimated)</option></select></div>
+ <div class="field"><label for="gauge">Wire size (AWG)</label><select id="gauge"><option>14</option><option selected>12</option><option>10</option><option>8</option><option>6</option><option>4</option><option>2</option><option>1/0</option><option>2/0</option><option>4/0</option></select></div>
+</div>
+<div class="actions"><button class="primary" id="calcBtn">Calculate Drop</button><button class="secondary" id="resetBtn">Reset</button></div><div class="error" id="error" role="alert"></div>
+<div class="result"><span class="sub">Estimated voltage drop</span><div class="big" id="drop">4.76 V</div><div class="stat-grid"><div class="stat"><span>Percent drop</span><b id="percent">3.97%</b></div><div class="stat"><span>Load voltage</span><b id="loadV">115.24 V</b></div><div class="stat"><span>Loop resistance basis</span><b id="resOut">5.211 Ω/km</b></div></div></div>
+  </div>
+</section>
+
+<section class="container content-grid">
+  <article class="article">
+    
+<h2>What Is a Voltage Drop Calculator?</h2><p>This calculator estimates how much voltage is lost along a conductor because the conductor has electrical resistance. It is intended for quick planning and educational checks for DC, single-phase, and three-phase circuits.</p>
+<h2>Voltage Drop Formula</h2><div class="formula">DC / 1φ: Vdrop = 2 × I × R × L<br>3φ: Vdrop = √3 × I × R × L<br>Percent drop = Vdrop ÷ Vsystem × 100</div><p>Here, I is current in amperes, R is conductor resistance per unit length, and L is one-way conductor length. The factor 2 represents the outgoing and return path for DC or single-phase resistance-only calculations.</p>
+<h2>Wire Resistance Assumptions</h2><p>The copper AWG values are typical resistance values around 20°C. Aluminum is estimated using a resistivity ratio rather than a manufacturer-specific cable table. Actual installed impedance changes with conductor temperature, stranding, AC reactance, conduit arrangement, and other conditions.</p>
+<h3>Example</h3><p>For 15 A over 100 ft of 12 AWG copper on a 120 V single-phase circuit, using 5.211 Ω/km gives an estimated drop of about 4.76 V, or about 3.97%.</p>
+<h2>Why Voltage Drop Matters</h2><p>Excessive voltage drop can reduce equipment performance and waste energy. Design limits depend on the application and governing electrical rules, so the calculated percentage should be reviewed against the code, standard, equipment instructions, and project specifications that apply to the installation.</p>
+<h2>Limitations</h2><p>This version is a resistance-only estimate and does not model power factor or conductor reactance. It also does not verify ampacity, overcurrent protection, short-circuit duty, grounding, or compliance with local electrical codes. Use a qualified electrical professional for safety-critical design.</p>
+
+    <h2 id="faq">Frequently Asked Questions</h2>
+    <div class="faq"><details><summary>What is voltage drop?</summary><p>Voltage drop is the decrease in electrical potential along a conductor as current flows through its resistance or impedance.</p></details>
+<details><summary>What formula does this calculator use?</summary><p>For the resistance-only estimate, DC and single-phase use Vdrop = 2 × I × R × L. Three-phase uses Vdrop = √3 × I × R × L, where R is resistance per unit length and L is one-way distance.</p></details>
+<details><summary>Is this a substitute for electrical code design?</summary><p>No. It is an engineering estimate. Conductor ampacity, temperature, insulation, termination ratings, local electrical codes, reactance, power factor, and installation conditions may require separate checks.</p></details></div>
+    <h2>Sources and Methodology</h2>
+    <p>CalcPro uses the formulas and assumptions described above. References below were used to cross-check the calculator method and terminology. Results are estimates unless a definition or unit conversion is mathematically exact.</p>
+    <ul class="sources"><li><a href="https://www.calculator.net/voltage-drop-calculator.html" rel="noopener noreferrer">Calculator.net Voltage Drop Calculator</a> — cross-check of resistance-only voltage-drop equations and AWG resistance values.</li>
+<li><a href="https://www.nist.gov/pml/owm/si-units-electric-current" rel="noopener noreferrer">NIST SI resources</a> — reference for electrical SI units and measurement terminology.</li></ul>
+  </article>
+  <aside class="aside">
+    <h3>Quick reference</h3>
+    <div class="formula">Vdrop = 2IRL<br>or √3IRL</div><div class="pills"><span class="pill">DC / 1φ</span><span class="pill">3φ</span><span class="pill">AWG</span></div>
+  </aside>
+</section>
+</main>
+<footer class="container footer">CalcPro • Fast, transparent calculators with formulas and assumptions shown on-page.</footer>
+<script>
+
+const $=id=>document.getElementById(id);
+const cu={"14":8.286,"12":5.211,"10":3.277,"8":2.061,"6":1.296,"4":0.8152,"2":0.5127,"1/0":0.3224,"2/0":0.2557,"4/0":0.1608};
+function run(){
+ let V=+$("voltage").value,I=+$("current").value,L=+$("length").value;
+ if(!(V>0)||!(I>=0)||!(L>=0)){ $("error").textContent="Enter a positive system voltage and valid non-negative current and length."; return;}
+ let km=$("lengthUnit").value==="ft"?L*0.0003048:L/1000;
+ let r=cu[$("gauge").value]*($("material").value==="al"?1.64:1);
+ let drop=($("system").value==="three"?Math.sqrt(3):2)*I*r*km;
+ $("error").textContent="";$("drop").textContent=drop.toFixed(2)+" V";$("percent").textContent=(drop/V*100).toFixed(2)+"%";$("loadV").textContent=(V-drop).toFixed(2)+" V";$("resOut").textContent=r.toFixed(3)+" Ω/km";
+}
+$("calcBtn").onclick=run;$("resetBtn").onclick=()=>location.reload();run();
+
+</script>
+<script src="/assets/js/global.js" defer></script>
+</body></html>

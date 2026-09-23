@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Concrete Calculator | CalcPro</title>
+<meta name="description" content="Calculate concrete volume for slabs, round columns, or tubes, convert to cubic yards and cubic meters, and estimate common bag counts.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/concrete-calculator/">
+<meta property="og:title" content="Concrete Calculator | CalcPro">
+<meta property="og:description" content="Calculate concrete volume for slabs, round columns, or tubes, convert to cubic yards and cubic meters, and estimate common bag counts.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="/concrete-calculator/">
+<meta name="theme-color" content="#07111f">
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+:root{--bg:#07111f;--panel:rgba(255,255,255,.09);--panel2:rgba(255,255,255,.06);--text:#f7fbff;--muted:#b8c6d8;--line:rgba(255,255,255,.14);--a:#67e8f9;--b:#34d399;--c:#fbbf24;--danger:#fb7185;--shadow:0 30px 80px rgba(0,0,0,.32)}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
+a{color:var(--a)}button,input,select{font:inherit}
+.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
+.site-nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0;position:relative;z-index:10}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.3px;color:var(--text);text-decoration:none}
+.brand-mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,var(--a),var(--b));display:grid;place-items:center;color:#04111f;box-shadow:inset 0 1px 0 #fff8,0 10px 25px #0004;transform:rotate(-7deg)}
+.nav-links{display:flex;gap:18px;align-items:center}.nav-links a{color:var(--muted);text-decoration:none;font-size:.92rem}.nav-links a:hover{color:var(--text)}
+.breadcrumb{font-size:.9rem;color:var(--muted);margin-bottom:18px}.breadcrumb a{color:inherit;text-decoration:none}
+.hero{position:relative;min-height:440px;padding:48px 0 72px;display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center}
+.hero h1{font-size:clamp(2.5rem,6vw,5.8rem);line-height:.92;letter-spacing:-.055em;margin:0 0 22px;max-width:800px}
+.hero p{font-size:1.08rem;color:var(--muted);max-width:700px;margin:0}
+.kicker{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:7px 12px;margin-bottom:18px;color:var(--a);font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
+.scene{min-height:330px;position:relative;perspective:900px;filter:drop-shadow(0 30px 40px #0005)}
+.orb{position:absolute;border-radius:50%;filter:blur(1px);opacity:.9}
+.calc-shell{margin-top:-25px;position:relative;z-index:4}
+.calculator{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);gap:24px;align-items:stretch}
+.card{background:linear-gradient(180deg,var(--panel),rgba(255,255,255,.045));border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.1);backdrop-filter:blur(18px)}
+.form-card{padding:28px}.result-card{padding:28px;position:relative;overflow:hidden}
+.result-card:after{content:"";position:absolute;inset:auto -80px -100px auto;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,var(--a),transparent 70%);opacity:.12}
+.section-title{font-size:1.35rem;margin:0 0 7px}.subtle{color:var(--muted);font-size:.92rem;margin:0 0 20px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
+label{font-weight:750;font-size:.88rem;color:#e8f0f8}
+input,select{width:100%;border:1px solid var(--line);background:rgba(4,10,20,.48);color:var(--text);border-radius:14px;padding:12px 13px;outline:none;box-shadow:inset 0 1px 8px #0003}
+input:focus,select:focus{border-color:var(--a);box-shadow:0 0 0 3px color-mix(in srgb,var(--a) 22%,transparent)}
+option{color:#111}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:900;cursor:pointer;transition:.2s;box-shadow:0 12px 24px #0003}
+.btn-primary{background:linear-gradient(135deg,var(--a),var(--b));color:#04111a}.btn-secondary{background:rgba(255,255,255,.08);color:var(--text);border:1px solid var(--line)}
+.btn:hover{transform:translateY(-2px)}
+.error{display:none;color:#fff;background:color-mix(in srgb,var(--danger) 26%,transparent);border:1px solid color-mix(in srgb,var(--danger) 52%,transparent);padding:11px 13px;border-radius:13px;margin-top:15px;font-size:.9rem}.error.show{display:block}
+.result-big{font-size:clamp(2.2rem,5vw,4.2rem);font-weight:950;line-height:1;letter-spacing:-.04em;margin:10px 0 12px;color:var(--a);word-break:break-word}
+.metric-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}.metric{padding:14px;border-radius:17px;background:rgba(255,255,255,.055);border:1px solid var(--line)}.metric b{display:block;font-size:1.08rem}.metric span{font-size:.78rem;color:var(--muted)}
+.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line);font-size:.78rem;color:var(--muted)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tab{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);padding:8px 12px;border-radius:999px;cursor:pointer;font-weight:800}.tab.active{background:var(--a);color:#06111c;border-color:transparent}
+.tab-panel{display:none}.tab-panel.active{display:block}
+.table-wrap{overflow:auto;border-radius:16px;border:1px solid var(--line);margin-top:16px}table{border-collapse:collapse;width:100%;min-width:520px;background:rgba(2,8,16,.28)}th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;font-size:.88rem}th{color:var(--a);background:rgba(255,255,255,.045)}
+.content{padding:80px 0}.content-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:32px}.article{background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:30px;padding:34px}.article h2{font-size:1.8rem;line-height:1.2;margin:38px 0 12px}.article h2:first-child{margin-top:0}.article h3{margin-top:24px}.article p,.article li{color:#c8d3df}.article code{background:#0004;padding:3px 6px;border-radius:6px}
+.aside{position:sticky;top:20px;height:max-content;padding:22px}.aside h3{margin-top:0}.aside a{display:block;color:var(--muted);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--line)}.aside a:hover{color:var(--text)}
+.faq details{border-top:1px solid var(--line);padding:15px 0}.faq summary{font-weight:850;cursor:pointer}.faq p{margin-bottom:0}
+.source-list a{overflow-wrap:anywhere}
+footer{border-top:1px solid var(--line);padding:32px 0 50px;color:var(--muted);font-size:.9rem}
+.small{font-size:.82rem;color:var(--muted)}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.pill{padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.055);border:1px solid var(--line);font-size:.78rem}
+.rangebar{height:11px;border-radius:999px;background:rgba(255,255,255,.09);overflow:hidden;margin-top:14px}.rangebar>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--b),var(--c));transition:.4s}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:28px}.scene{min-height:250px}.calculator,.content-grid{grid-template-columns:1fr}.aside{position:relative}.hero h1{font-size:clamp(2.7rem,12vw,5.2rem)}}
+@media(max-width:620px){.wrap{width:min(100% - 20px,1180px)}.nav-links{display:none}.grid,.grid3,.metric-row{grid-template-columns:1fr}.form-card,.result-card,.article{padding:20px}.hero{padding-bottom:46px}.content{padding:55px 0}}
+
+
+body{--bg:#191a1c;--panel:rgba(43,44,46,.82);--panel2:rgba(74,75,77,.32);--a:#ffb34d;--b:#ffd879;--c:#9dd6ff;background:linear-gradient(125deg,#111213,#252526 55%,#171819)}
+.concrete-calculator .hero{grid-template-columns:.8fr 1.2fr}.blueprint{position:absolute;inset:22px 10px 18px 5px;border-radius:26px;background:#0c4565;background-image:linear-gradient(#ffffff12 1px,transparent 1px),linear-gradient(90deg,#ffffff12 1px,transparent 1px);background-size:24px 24px;transform:rotateY(10deg) rotateX(5deg);box-shadow:0 40px 70px #0008}.block{position:absolute;width:155px;height:95px;background:linear-gradient(145deg,#c8c8c3,#6c6d6e);right:9%;bottom:48px;transform:skewY(-8deg);box-shadow:22px 24px 0 #0004, inset -18px -18px 28px #555}.helmet{position:absolute;left:4%;top:15%;width:150px;height:90px;border-radius:100px 100px 20px 20px;background:linear-gradient(#ffc760,#d47b18);box-shadow:0 25px 40px #0006}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/concrete-calculator/#app", "name": "Concrete Calculator", "url": "/concrete-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate concrete volume for slabs, round columns, or tubes, convert to cubic yards and cubic meters, and estimate common bag counts."}, {"@type": "BreadcrumbList", "@id": "/concrete-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "/calculators/"}, {"@type": "ListItem", "position": 3, "name": "Concrete Calculator", "item": "/concrete-calculator/"}]}, {"@type": "FAQPage", "@id": "/concrete-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "How many cubic feet are in one cubic yard?", "acceptedAnswer": {"@type": "Answer", "text": "There are 27 cubic feet in one cubic yard."}}, {"@type": "Question", "name": "How many 80 lb bags make a cubic yard?", "acceptedAnswer": {"@type": "Answer", "text": "At an approximate yield of 0.60 cubic feet per standard 80 lb bag, a theoretical cubic yard is 45 bags before any waste allowance."}}, {"@type": "Question", "name": "Should I always add 10% extra concrete?", "acceptedAnswer": {"@type": "Answer", "text": "Not necessarily. Ten percent is a common planning allowance, but the right margin depends on the project, form accuracy, ground conditions, and supplier practices."}}]}]}</script>
+<link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body class="concrete-calculator">
+<header>
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Primary">
+      <a class="brand" href="#"><span class="brand-mark">C</span>CalcPro</a>
+      <div class="nav-links"><a href="#calculator">Calculator</a><a href="#guide">Guide</a><a href="#faq">FAQ</a></div>
+    </nav>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="breadcrumb"><a href="#">Home</a> / <a href="#">Calculators</a> / Concrete Calculator</div>
+        <div class="kicker">Construction · Volume</div>
+        <h1>Concrete Calculator</h1>
+        <p>Turn project dimensions into cubic yards, cubic meters, and practical bag counts with geometry you can inspect.</p>
+      </div>
+      <div class="scene" aria-hidden="true"><div class="blueprint"></div><div class="block"></div><div class="helmet"></div></div>
+    </section>
+  </div>
+</header>
+<main>
+  <section id="calculator" class="calc-shell">
+    <div class="wrap calculator">
+      <div class="card form-card">
+<h2 class="section-title">Estimate concrete volume</h2><p class="subtle">Choose a shape. Enter dimensions in feet; thickness can be inches for slabs.</p>
+<div class="tabs"><button class="tab active" data-tab="slab">Slab / wall</button><button class="tab" data-tab="column">Round column</button><button class="tab" data-tab="tube">Tube / ring</button></div>
+<div id="slab" class="tab-panel active"><div class="grid">
+<div class="field"><label for="cLen">Length (ft)</label><input id="cLen" type="number" value="10" min="0" step="any"></div>
+<div class="field"><label for="cWid">Width (ft)</label><input id="cWid" type="number" value="6" min="0" step="any"></div>
+<div class="field"><label for="cThick">Thickness (in)</label><input id="cThick" type="number" value="4" min="0" step="any"></div>
+<div class="field"><label for="cQty">Quantity</label><input id="cQty" type="number" value="1" min="1"></div></div></div>
+<div id="column" class="tab-panel"><div class="grid"><div class="field"><label for="cDia">Diameter (ft)</label><input id="cDia" type="number" value="2" min="0" step="any"></div><div class="field"><label for="cDepth">Height / depth (ft)</label><input id="cDepth" type="number" value="4" min="0" step="any"></div><div class="field"><label for="cQty2">Quantity</label><input id="cQty2" type="number" value="1" min="1"></div></div></div>
+<div id="tube" class="tab-panel"><div class="grid"><div class="field"><label for="cOut">Outer diameter (ft)</label><input id="cOut" type="number" value="3" min="0" step="any"></div><div class="field"><label for="cIn">Inner diameter (ft)</label><input id="cIn" type="number" value="2" min="0" step="any"></div><div class="field"><label for="cHeight">Height / length (ft)</label><input id="cHeight" type="number" value="4" min="0" step="any"></div><div class="field"><label for="cQty3">Quantity</label><input id="cQty3" type="number" value="1" min="1"></div></div></div>
+<div class="grid" style="margin-top:16px"><div class="field"><label for="waste">Waste allowance (%)</label><input id="waste" type="number" value="10" min="0" step="any"></div></div>
+<div class="actions"><button id="cGo" class="btn btn-primary">Calculate concrete</button></div><div id="cErr" class="error"></div>
+</div>
+      <aside class="card result-card" aria-live="polite">
+<span class="badge">Concrete required</span><div id="cBig" class="result-big">—</div><p id="cText" class="subtle">Includes your selected waste allowance.</p>
+<div class="metric-row"><div class="metric"><span>Cubic feet</span><b id="cFt">—</b></div><div class="metric"><span>Cubic meters</span><b id="cM">—</b></div><div class="metric"><span>60 lb bags</span><b id="c60">—</b></div><div class="metric"><span>80 lb bags</span><b id="c80">—</b></div></div>
+</aside>
+    </div>
+  </section>
+  <section id="guide" class="content">
+    <div class="wrap content-grid">
+      <article class="article">
+        
+<h2>What Is a Concrete Calculator?</h2>
+<p>A concrete calculator estimates the volume needed for a pour based on geometry. This version handles rectangular slabs or walls, solid round columns, and hollow circular tubes or rings, then converts the result to cubic feet, cubic yards, and cubic meters.</p>
+<h2>Concrete Volume Formulas</h2>
+<p>Rectangular volume is <code>length × width × thickness</code>. A solid cylinder is <code>π × radius² × height</code>. A hollow tube subtracts the inner cylinder from the outer cylinder.</p>
+<h2>Bag Estimates</h2>
+<p>QUIKRETE publishes approximate yields of 0.45 cubic feet for a 60 lb bag and 0.60 cubic feet for an 80 lb bag of its standard Concrete Mix. Bag yields vary by product, so verify the bag or manufacturer data sheet before purchase.</p>
+<h2>Why Add a Waste Allowance?</h2>
+<p>Real projects can require extra material because of uneven excavation, spillage, form variation, or measurement error. The default 10% is a planning allowance, not an engineering requirement.</p>
+
+        <h2 id="faq">Frequently Asked Questions</h2>
+        <div class="faq"><details><summary>How many cubic feet are in one cubic yard?</summary><p>There are 27 cubic feet in one cubic yard.</p></details><details><summary>How many 80 lb bags make a cubic yard?</summary><p>At an approximate yield of 0.60 cubic feet per standard 80 lb bag, a theoretical cubic yard is 45 bags before any waste allowance.</p></details><details><summary>Should I always add 10% extra concrete?</summary><p>Not necessarily. Ten percent is a common planning allowance, but the right margin depends on the project, form accuracy, ground conditions, and supplier practices.</p></details></div>
+        <h2>Sources and Methodology</h2>
+        <p>The calculator logic and explanatory content were cross-checked against the following references. Estimates are separated from official data where applicable.</p>
+        <ul class="source-list"><li><a href="https://www.calculator.net/concrete-calculator.html" rel="noopener noreferrer">Calculator.net Concrete Calculator</a></li><li><a href="https://www.quikrete.com/pdfs/data_sheet-concrete%20mix%201101.pdf" rel="noopener noreferrer">QUIKRETE Concrete Mix data sheet</a></li><li><a href="https://www.sakrete.com/wp-content/uploads/2024/01/Sakrete-High-Strength-Concrete-Mix-TDS.pdf" rel="noopener noreferrer">SAKRETE High-Strength Concrete Mix</a></li></ul>
+      </article>
+      <aside class="card aside">
+        <h3>On this page</h3>
+        <a href="#calculator">Calculator</a>
+        <a href="#guide">How it works</a>
+        <a href="#faq">FAQs</a>
+        <p class="small">Educational calculator. For regulated financial, tax, medical, engineering, or network changes, verify the result against the relevant professional or official source.</p>
+      </aside>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">CalcPro · Standalone calculator page · No account required.</div></footer>
+<script>
+let cmode="slab";document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab,.tab-panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active');cmode=b.dataset.tab});
+cGo.onclick=()=>{cErr.classList.remove('show');let v=0;if(cmode==="slab"){let l=+cLen.value,w=+cWid.value,t=+cThick.value/12,q=+cQty.value;if(!(l>0&&w>0&&t>0&&q>0))return bad();v=l*w*t*q}else if(cmode==="column"){let d=+cDia.value,h=+cDepth.value,q=+cQty2.value;if(!(d>0&&h>0&&q>0))return bad();v=Math.PI*Math.pow(d/2,2)*h*q}else{let d1=+cOut.value,d2=+cIn.value,h=+cHeight.value,q=+cQty3.value;if(!(d1>0&&d2>=0&&d1>d2&&h>0&&q>0))return bad();v=Math.PI*(Math.pow(d1/2,2)-Math.pow(d2/2,2))*h*q}let wa=+waste.value||0;if(wa<0)return bad();v*=1+wa/100;let yd=v/27,m=v*0.028316846592;cBig.textContent=yd.toFixed(3)+" yd³";cFt.textContent=v.toFixed(2)+" ft³";cM.textContent=m.toFixed(3)+" m³";c60.textContent=Math.ceil(v/.45)+" bags";c80.textContent=Math.ceil(v/.60)+" bags";cText.textContent=`Volume includes ${wa.toFixed(1)}% allowance. Bag yields are product-specific reference values.`}
+function bad(){cErr.textContent="Enter valid positive dimensions. For a tube, outer diameter must exceed inner diameter.";cErr.classList.add('show')}
+</script>
+<script src="/assets/js/global.js" defer></script>
+</body>
+</html>

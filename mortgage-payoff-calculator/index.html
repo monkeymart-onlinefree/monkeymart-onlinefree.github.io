@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mortgage Payoff Calculator | CalcPro</title>
+<meta name="description" content="Estimate how extra monthly, annual, or one-time mortgage payments can shorten payoff time and reduce remaining interest.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/mortgage-payoff-calculator/">
+<meta property="og:title" content="Mortgage Payoff Calculator | CalcPro">
+<meta property="og:description" content="Estimate how extra monthly, annual, or one-time mortgage payments can shorten payoff time and reduce remaining interest.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="/mortgage-payoff-calculator/">
+<meta name="theme-color" content="#07111f">
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+:root{--bg:#07111f;--panel:rgba(255,255,255,.09);--panel2:rgba(255,255,255,.06);--text:#f7fbff;--muted:#b8c6d8;--line:rgba(255,255,255,.14);--a:#67e8f9;--b:#34d399;--c:#fbbf24;--danger:#fb7185;--shadow:0 30px 80px rgba(0,0,0,.32)}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
+a{color:var(--a)}button,input,select{font:inherit}
+.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
+.site-nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0;position:relative;z-index:10}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.3px;color:var(--text);text-decoration:none}
+.brand-mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,var(--a),var(--b));display:grid;place-items:center;color:#04111f;box-shadow:inset 0 1px 0 #fff8,0 10px 25px #0004;transform:rotate(-7deg)}
+.nav-links{display:flex;gap:18px;align-items:center}.nav-links a{color:var(--muted);text-decoration:none;font-size:.92rem}.nav-links a:hover{color:var(--text)}
+.breadcrumb{font-size:.9rem;color:var(--muted);margin-bottom:18px}.breadcrumb a{color:inherit;text-decoration:none}
+.hero{position:relative;min-height:440px;padding:48px 0 72px;display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center}
+.hero h1{font-size:clamp(2.5rem,6vw,5.8rem);line-height:.92;letter-spacing:-.055em;margin:0 0 22px;max-width:800px}
+.hero p{font-size:1.08rem;color:var(--muted);max-width:700px;margin:0}
+.kicker{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:7px 12px;margin-bottom:18px;color:var(--a);font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
+.scene{min-height:330px;position:relative;perspective:900px;filter:drop-shadow(0 30px 40px #0005)}
+.orb{position:absolute;border-radius:50%;filter:blur(1px);opacity:.9}
+.calc-shell{margin-top:-25px;position:relative;z-index:4}
+.calculator{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);gap:24px;align-items:stretch}
+.card{background:linear-gradient(180deg,var(--panel),rgba(255,255,255,.045));border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.1);backdrop-filter:blur(18px)}
+.form-card{padding:28px}.result-card{padding:28px;position:relative;overflow:hidden}
+.result-card:after{content:"";position:absolute;inset:auto -80px -100px auto;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,var(--a),transparent 70%);opacity:.12}
+.section-title{font-size:1.35rem;margin:0 0 7px}.subtle{color:var(--muted);font-size:.92rem;margin:0 0 20px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
+label{font-weight:750;font-size:.88rem;color:#e8f0f8}
+input,select{width:100%;border:1px solid var(--line);background:rgba(4,10,20,.48);color:var(--text);border-radius:14px;padding:12px 13px;outline:none;box-shadow:inset 0 1px 8px #0003}
+input:focus,select:focus{border-color:var(--a);box-shadow:0 0 0 3px color-mix(in srgb,var(--a) 22%,transparent)}
+option{color:#111}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:900;cursor:pointer;transition:.2s;box-shadow:0 12px 24px #0003}
+.btn-primary{background:linear-gradient(135deg,var(--a),var(--b));color:#04111a}.btn-secondary{background:rgba(255,255,255,.08);color:var(--text);border:1px solid var(--line)}
+.btn:hover{transform:translateY(-2px)}
+.error{display:none;color:#fff;background:color-mix(in srgb,var(--danger) 26%,transparent);border:1px solid color-mix(in srgb,var(--danger) 52%,transparent);padding:11px 13px;border-radius:13px;margin-top:15px;font-size:.9rem}.error.show{display:block}
+.result-big{font-size:clamp(2.2rem,5vw,4.2rem);font-weight:950;line-height:1;letter-spacing:-.04em;margin:10px 0 12px;color:var(--a);word-break:break-word}
+.metric-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}.metric{padding:14px;border-radius:17px;background:rgba(255,255,255,.055);border:1px solid var(--line)}.metric b{display:block;font-size:1.08rem}.metric span{font-size:.78rem;color:var(--muted)}
+.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line);font-size:.78rem;color:var(--muted)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tab{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);padding:8px 12px;border-radius:999px;cursor:pointer;font-weight:800}.tab.active{background:var(--a);color:#06111c;border-color:transparent}
+.tab-panel{display:none}.tab-panel.active{display:block}
+.table-wrap{overflow:auto;border-radius:16px;border:1px solid var(--line);margin-top:16px}table{border-collapse:collapse;width:100%;min-width:520px;background:rgba(2,8,16,.28)}th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;font-size:.88rem}th{color:var(--a);background:rgba(255,255,255,.045)}
+.content{padding:80px 0}.content-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:32px}.article{background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:30px;padding:34px}.article h2{font-size:1.8rem;line-height:1.2;margin:38px 0 12px}.article h2:first-child{margin-top:0}.article h3{margin-top:24px}.article p,.article li{color:#c8d3df}.article code{background:#0004;padding:3px 6px;border-radius:6px}
+.aside{position:sticky;top:20px;height:max-content;padding:22px}.aside h3{margin-top:0}.aside a{display:block;color:var(--muted);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--line)}.aside a:hover{color:var(--text)}
+.faq details{border-top:1px solid var(--line);padding:15px 0}.faq summary{font-weight:850;cursor:pointer}.faq p{margin-bottom:0}
+.source-list a{overflow-wrap:anywhere}
+footer{border-top:1px solid var(--line);padding:32px 0 50px;color:var(--muted);font-size:.9rem}
+.small{font-size:.82rem;color:var(--muted)}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.pill{padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.055);border:1px solid var(--line);font-size:.78rem}
+.rangebar{height:11px;border-radius:999px;background:rgba(255,255,255,.09);overflow:hidden;margin-top:14px}.rangebar>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--b),var(--c));transition:.4s}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:28px}.scene{min-height:250px}.calculator,.content-grid{grid-template-columns:1fr}.aside{position:relative}.hero h1{font-size:clamp(2.7rem,12vw,5.2rem)}}
+@media(max-width:620px){.wrap{width:min(100% - 20px,1180px)}.nav-links{display:none}.grid,.grid3,.metric-row{grid-template-columns:1fr}.form-card,.result-card,.article{padding:20px}.hero{padding-bottom:46px}.content{padding:55px 0}}
+
+
+body{--bg:#061526;--panel:rgba(11,43,69,.71);--panel2:rgba(22,68,89,.36);--a:#6ee7d8;--b:#55a7ff;--c:#f6c15f;background:radial-gradient(circle at 80% 15%,#1a93ba24,transparent 28%),linear-gradient(#061526,#08101b)}
+.mortgage-payoff-calculator .hero{grid-template-columns:1fr 1fr}.house{position:absolute;right:11%;top:44px;width:260px;height:210px;background:linear-gradient(145deg,#eaf7ff,#82cce0);clip-path:polygon(50% 0,100% 39%,91% 39%,91% 100%,9% 100%,9% 39%,0 39%);filter:drop-shadow(20px 30px 25px #0006);transform:rotateY(-14deg)}.house:after{content:"";position:absolute;width:58px;height:90px;background:#0b5672;bottom:0;left:101px;border-radius:7px 7px 0 0}.key{position:absolute;left:4%;bottom:38px;width:150px;height:34px;border-radius:20px;background:linear-gradient(#ffd979,#a96917);transform:rotate(-20deg);box-shadow:0 22px 35px #0005}.key:before{content:"";position:absolute;width:66px;height:66px;border:16px solid #e2b64b;border-radius:50%;left:-55px;top:-31px}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/mortgage-payoff-calculator/#app", "name": "Mortgage Payoff Calculator", "url": "/mortgage-payoff-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Estimate how extra monthly, annual, or one-time mortgage payments can shorten payoff time and reduce remaining interest."}, {"@type": "BreadcrumbList", "@id": "/mortgage-payoff-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "/calculators/"}, {"@type": "ListItem", "position": 3, "name": "Mortgage Payoff Calculator", "item": "/mortgage-payoff-calculator/"}]}, {"@type": "FAQPage", "@id": "/mortgage-payoff-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "Do extra mortgage payments reduce interest?", "acceptedAnswer": {"@type": "Answer", "text": "For a typical fixed-rate amortizing mortgage, extra principal reduces the balance earlier, so less interest can accrue later, assuming the servicer applies the extra amount to principal."}}, {"@type": "Question", "name": "Does this include property taxes and insurance?", "acceptedAnswer": {"@type": "Answer", "text": "No. The payoff math here is for principal and interest. Escrow items do not normally reduce the mortgage principal."}}, {"@type": "Question", "name": "What is a one-time principal payment?", "acceptedAnswer": {"@type": "Answer", "text": "It is an extra amount applied directly to principal now. The calculator reduces the starting balance by that amount before simulating future payments."}}]}]}</script>
+<link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body class="mortgage-payoff-calculator">
+<header>
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Primary">
+      <a class="brand" href="#"><span class="brand-mark">C</span>CalcPro</a>
+      <div class="nav-links"><a href="#calculator">Calculator</a><a href="#guide">Guide</a><a href="#faq">FAQ</a></div>
+    </nav>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="breadcrumb"><a href="#">Home</a> / <a href="#">Calculators</a> / Mortgage Payoff Calculator</div>
+        <div class="kicker">Home · Debt strategy</div>
+        <h1>Mortgage Payoff Calculator</h1>
+        <p>See how extra principal can reshape a fixed-rate mortgage: fewer months, less remaining interest, and a clearer payoff target.</p>
+      </div>
+      <div class="scene" aria-hidden="true"><div class="house"></div><div class="key"></div></div>
+    </section>
+  </div>
+</header>
+<main>
+  <section id="calculator" class="calc-shell">
+    <div class="wrap calculator">
+      <div class="card form-card">
+<h2 class="section-title">Plan an earlier payoff</h2><p class="subtle">Enter either the original loan details and remaining term or use the current balance directly.</p>
+<div class="tabs"><button class="tab active" data-tab="orig">From original loan</button><button class="tab" data-tab="bal">From current balance</button></div>
+<div id="orig" class="tab-panel active"><div class="grid">
+<div class="field"><label for="mAmount">Original loan amount</label><input id="mAmount" type="number" value="400000" min="1" step="any"></div>
+<div class="field"><label for="mTerm">Original term (years)</label><input id="mTerm" type="number" value="30" min="1"></div>
+<div class="field"><label for="mRate">Interest rate (%)</label><input id="mRate" type="number" value="6.5" min="0" step="any"></div>
+<div class="field"><label for="mRemainY">Remaining years</label><input id="mRemainY" type="number" value="25" min="0"></div>
+<div class="field"><label for="mRemainM">Extra remaining months</label><input id="mRemainM" type="number" value="0" min="0" max="11"></div>
+</div></div>
+<div id="bal" class="tab-panel"><div class="grid">
+<div class="field"><label for="bBal">Current principal balance</label><input id="bBal" type="number" value="372217.43" min="1" step="any"></div>
+<div class="field"><label for="bPay">Current monthly P&I payment</label><input id="bPay" type="number" value="2398.20" min="0" step="any"></div>
+<div class="field"><label for="bRate">Interest rate (%)</label><input id="bRate" type="number" value="6.5" min="0" step="any"></div>
+</div></div>
+<hr style="border:0;border-top:1px solid var(--line);margin:22px 0">
+<div class="grid">
+<div class="field"><label for="xMonthly">Extra each month</label><input id="xMonthly" type="number" value="500" min="0" step="any"></div>
+<div class="field"><label for="xAnnual">Extra once per year</label><input id="xAnnual" type="number" value="0" min="0" step="any"></div>
+<div class="field"><label for="xOne">One-time payment now</label><input id="xOne" type="number" value="0" min="0" step="any"></div>
+</div>
+<div class="actions"><button id="mGo" class="btn btn-primary">Compare payoff</button></div><div id="mErr" class="error"></div>
+</div>
+      <aside class="card result-card" aria-live="polite">
+<span class="badge">With extra payments</span><div id="mBig" class="result-big">—</div><p id="mText" class="subtle">See time and interest savings.</p>
+<div class="metric-row"><div class="metric"><span>Interest saved</span><b id="mSave">—</b></div><div class="metric"><span>Months saved</span><b id="mMonths">—</b></div><div class="metric"><span>Current balance</span><b id="mBalOut">—</b></div><div class="metric"><span>Base monthly P&I</span><b id="mBasePay">—</b></div></div>
+</aside>
+    </div>
+  </section>
+  <section id="guide" class="content">
+    <div class="wrap content-grid">
+      <article class="article">
+        
+<h2>What Is a Mortgage Payoff Calculator?</h2>
+<p>A mortgage payoff calculator estimates how additional principal payments can change the remaining life of a fixed-rate mortgage. It compares the existing amortization path with a faster-payment plan and reports estimated payoff time and interest savings.</p>
+<h2>How the Mortgage Calculation Works</h2>
+<p>The base principal-and-interest payment uses the standard fixed-rate amortization formula. Each month, interest is charged on the remaining principal; the rest of the payment reduces principal. Extra principal lowers the balance sooner, which can reduce future interest.</p>
+<h2>Important Assumptions</h2>
+<p>This page models principal and interest only. It does not include escrowed property tax, homeowners insurance, mortgage insurance, HOA fees, servicing fees, late charges, adjustable rates, or lender-specific prepayment rules.</p>
+<h2>Before Making Extra Payments</h2>
+<p>Confirm with your servicer that extra money will be applied to principal and review whether your loan has any prepayment restrictions. Also consider emergency savings and higher-priority debt before accelerating a mortgage.</p>
+
+        <h2 id="faq">Frequently Asked Questions</h2>
+        <div class="faq"><details><summary>Do extra mortgage payments reduce interest?</summary><p>For a typical fixed-rate amortizing mortgage, extra principal reduces the balance earlier, so less interest can accrue later, assuming the servicer applies the extra amount to principal.</p></details><details><summary>Does this include property taxes and insurance?</summary><p>No. The payoff math here is for principal and interest. Escrow items do not normally reduce the mortgage principal.</p></details><details><summary>What is a one-time principal payment?</summary><p>It is an extra amount applied directly to principal now. The calculator reduces the starting balance by that amount before simulating future payments.</p></details></div>
+        <h2>Sources and Methodology</h2>
+        <p>The calculator logic and explanatory content were cross-checked against the following references. Estimates are separated from official data where applicable.</p>
+        <ul class="source-list"><li><a href="https://www.calculator.net/mortgage-payoff-calculator.html" rel="noopener noreferrer">Calculator.net Mortgage Payoff Calculator</a></li><li><a href="https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/" rel="noopener noreferrer">CFPB: how mortgage payments are calculated</a></li><li><a href="https://www.consumerfinance.gov/ask-cfpb/how-does-paying-down-a-mortgage-work-en-1943/" rel="noopener noreferrer">CFPB: how paying down a mortgage works</a></li></ul>
+      </article>
+      <aside class="card aside">
+        <h3>On this page</h3>
+        <a href="#calculator">Calculator</a>
+        <a href="#guide">How it works</a>
+        <a href="#faq">FAQs</a>
+        <p class="small">Educational calculator. For regulated financial, tax, medical, engineering, or network changes, verify the result against the relevant professional or official source.</p>
+      </aside>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">CalcPro · Standalone calculator page · No account required.</div></footer>
+<script>
+let mode="orig";document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab,.tab-panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active');mode=b.dataset.tab});
+function pay(P,r,n){let i=r/12;if(i===0)return P/n;return P*i/(1-Math.pow(1+i,-n))}
+function balance(P,r,n,k){let i=r/12,A=pay(P,r,n);if(i===0)return Math.max(0,P-A*k);return P*Math.pow(1+i,k)-A*(Math.pow(1+i,k)-1)/i}
+function sim(P,r,A,extraM,extraY,one){P=Math.max(0,P-one);let i=r/12,totalInt=0,months=0,totalPaid=one;while(P>0.005&&months<12000){let interest=P*i,principal=Math.max(0,A+extraM-interest);let annual=(months>0&&months%12===11)?extraY:0;let pmt=Math.min(P+interest,A+extraM+annual);totalInt+=interest;totalPaid+=pmt;P=Math.max(0,P-(pmt-interest));months++}return{months,totalInt,totalPaid}}
+function merr(m){let e=mErr;e.textContent=m;e.classList.add('show')}
+mGo.onclick=()=>{mErr.classList.remove('show');let P,r,A,remain;
+if(mode==="orig"){let orig=+mAmount.value,term=+mTerm.value*12;r=+mRate.value/100;remain=+mRemainY.value*12+(+mRemainM.value);if(!(orig>0&&term>0&&remain>0&&remain<=term&&r>=0))return merr("Check loan amount, rate, term, and remaining term.");A=pay(orig,r,term);P=balance(orig,r,term,term-remain)}
+else{P=+bBal.value;A=+bPay.value;r=+bRate.value/100;if(!(P>0&&A>0&&r>=0))return merr("Check current balance, payment, and rate.");remain=null;if(A<=P*(r/12))return merr("Payment is not high enough to reduce principal at this rate.");}
+let em=+xMonthly.value||0,ey=+xAnnual.value||0,one=+xOne.value||0;if(em<0||ey<0||one<0)return merr("Extra payments cannot be negative.");
+let base=sim(P,r,A,0,0,0),fast=sim(P,r,A,em,ey,one);if(fast.months>=12000)return merr("Loan did not amortize within the supported range.");
+let y=Math.floor(fast.months/12),mo=fast.months%12;mBig.textContent=`${y} yr ${mo} mo`;mText.textContent=`Estimated payoff time with your extra-payment plan.`;mSave.textContent="$"+Math.max(0,base.totalInt-fast.totalInt).toLocaleString(undefined,{maximumFractionDigits:2});mMonths.textContent=Math.max(0,base.months-fast.months).toLocaleString();mBalOut.textContent="$"+P.toLocaleString(undefined,{maximumFractionDigits:2});mBasePay.textContent="$"+A.toLocaleString(undefined,{maximumFractionDigits:2});};
+</script>
+<script src="/assets/js/global.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Speed Calculator – Free Accurate Online Calculator | CalcPro</title>
+<meta name="description" content="Calculate speed, distance, or time and convert between m/s, km/h, mph, knots, and ft/s.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/speed-calculator/">
+<meta property="og:title" content="Speed Calculator | CalcPro">
+<meta property="og:description" content="Calculate speed, distance, or time and convert between m/s, km/h, mph, knots, and ft/s.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="/speed-calculator/">
+<meta name="theme-color" content="#ff5a36">
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
+.wrap{width:min(1160px,calc(100% - 32px));margin:auto}
+.crumbs{font-size:.9rem;opacity:.78;margin-bottom:14px}.crumbs a{text-decoration:none}
+.card{border-radius:24px}.field label{display:block;font-weight:700;font-size:.9rem;margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;border:1px solid rgba(127,127,127,.28);border-radius:14px;padding:12px 13px;background:rgba(255,255,255,.84);color:#151515;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{box-shadow:0 0 0 4px rgba(89,130,246,.15)}
+.btns{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:800}
+.btn.secondary{background:transparent;border:1px solid currentColor;opacity:.78}
+.error{min-height:22px;margin-top:10px;font-weight:700;color:#b42318}
+.result-title{font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;font-weight:900;opacity:.72}
+.result-main{font-size:clamp(2rem,6vw,4rem);line-height:1;font-weight:950;letter-spacing:-.05em;margin:8px 0 14px}
+.statgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.stat{border-radius:16px;padding:12px;background:rgba(255,255,255,.12)}
+.stat b{display:block;font-size:1.05rem}.stat span{font-size:.8rem;opacity:.75}
+.content{padding:66px 0}.prose{max-width:860px;margin:auto}.prose h2{font-size:clamp(1.5rem,3vw,2rem);line-height:1.2;margin:42px 0 12px}.prose h3{margin:28px 0 8px}.prose p,.prose li{color:var(--muted,#4c5564)}
+.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;padding:15px 17px;border-radius:16px;background:var(--soft,#f3f4f6);overflow:auto}
+.note{border-left:4px solid var(--accent,#4f46e5);padding:12px 16px;background:var(--soft,#f6f7fb);border-radius:0 14px 14px 0}
+.table-wrap{overflow:auto;border-radius:18px;border:1px solid rgba(127,127,127,.18)}table{width:100%;border-collapse:collapse;min-width:560px}th,td{text-align:left;padding:11px 13px;border-bottom:1px solid rgba(127,127,127,.15)}th{background:var(--soft,#f5f5f5)}
+.faq details{border:1px solid rgba(127,127,127,.18);border-radius:16px;margin:10px 0;padding:12px 15px;background:#fff}.faq summary{font-weight:800;cursor:pointer}
+.sources a{word-break:break-word}.footer{padding:28px 0;border-top:1px solid rgba(127,127,127,.18);font-size:.88rem;opacity:.75}
+.sr{position:absolute;left:-10000px}
+@media(max-width:780px){.statgrid{grid-template-columns:1fr}.content{padding:46px 0}.wrap{width:min(100% - 22px,1160px)}}
+
+:root{--accent:#ff5a36;--muted:#aeb7c5;--soft:#161c26}body{background:#090d13;color:#f5f7fa}.prose p,.prose li{color:#b8c0cb}.speed-hero{min-height:500px;padding:30px 0 80px;background:radial-gradient(circle at 78% 36%,#ff552233,transparent 26%),linear-gradient(160deg,#0a0f16,#111a25 55%,#090d13);overflow:hidden}.speed-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px}.speed-copy h1{font-size:clamp(3rem,8vw,6.8rem);line-height:.86;letter-spacing:-.075em;margin:10px 0 20px}.gauge{aspect-ratio:1;max-width:420px;margin:auto;border-radius:50%;position:relative;background:conic-gradient(from 220deg,#222b37 0 65%,#ff5a36 65% 78%,#2b3440 78% 100%);box-shadow:inset 0 0 0 22px #0d1219,0 30px 80px #000a;transform:rotateX(9deg)}.gauge:before{content:"";position:absolute;inset:58px;border-radius:50%;background:#0e141d;box-shadow:inset 0 0 45px #000}.needle{position:absolute;left:50%;top:50%;width:40%;height:5px;background:linear-gradient(90deg,#ffb39f,#ff4f2a);transform-origin:left center;transform:rotate(-26deg);border-radius:10px;box-shadow:0 0 18px #ff5a36}.hub{position:absolute;width:34px;height:34px;border-radius:50%;background:#f6f6f6;left:50%;top:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 8px #ff5a36}
+.speed-card{margin-top:-52px;background:#121923;border:1px solid #293242;border-radius:28px;box-shadow:0 28px 90px #0007;display:grid;grid-template-columns:1.2fr .8fr;overflow:hidden}.speed-form{padding:28px}.speed-result{padding:28px;background:linear-gradient(155deg,#ff603c,#c93419);color:#fff}.speed-form .field input,.speed-form .field select{background:#0c1118;color:#fff;border-color:#2d3746}.speed-form .btn{background:#ff5a36;color:#fff}.modebar{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 18px}.modebar button{border:1px solid #3a4657;background:#0d131b;color:#dce2eb;border-radius:999px;padding:8px 12px;font-weight:800}.modebar button.active{background:#fff;color:#111}
+@media(max-width:780px){.speed-grid,.speed-card{grid-template-columns:1fr}.gauge{max-width:290px}.speed-hero{min-height:0;padding-bottom:70px}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Speed Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate speed, distance, or time and convert between m/s, km/h, mph, knots, and ft/s.", "url": "/speed-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Speed Calculator", "item": "/speed-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the formula for speed?", "acceptedAnswer": {"@type": "Answer", "text": "Speed equals distance divided by time. Rearranging the same relationship gives distance = speed × time and time = distance ÷ speed."}}, {"@type": "Question", "name": "How do I convert km/h to m/s?", "acceptedAnswer": {"@type": "Answer", "text": "Multiply kilometers per hour by 0.277777… (or divide by 3.6). For example, 36 km/h equals 10 m/s."}}, {"@type": "Question", "name": "Is speed the same as velocity?", "acceptedAnswer": {"@type": "Answer", "text": "Speed is a scalar magnitude. Velocity includes direction as well as magnitude, so velocity is a vector quantity."}}]}]}</script>
+<link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body>
+<header>
+<nav class="wrap" style="padding-top:18px"><div class="crumbs"><a href="/">Home</a> / Speed Calculator</div></nav>
+<section class="speed-hero"><div class="wrap speed-grid"><div class="speed-copy"><span style="color:#ff765a;font-weight:900;text-transform:uppercase;letter-spacing:.16em">Distance • Time • Motion</span><h1>Speed<br>Calculator</h1><p>Calculate speed, distance, or travel time and convert the result between common speed units.</p></div><div class="gauge" aria-hidden="true"><div class="needle"></div><div class="hub"></div></div></div></section>
+</header>
+<main>
+<section class="wrap" style="margin-top:-48px"><div class="speed-card"><div class="speed-form"><h2>Choose what to solve</h2>
+<div class="modebar"><button id="mSpeed" class="active" onclick="setMode('speed')">Speed</button><button id="mDistance" onclick="setMode('distance')">Distance</button><button id="mTime" onclick="setMode('time')">Time</button></div>
+<div id="speedInput" class="field" style="display:none"><label>Speed</label><div style="display:grid;grid-template-columns:1fr 140px;gap:8px"><input id="sSpeed" type="number" value="60" step="any"><select id="sSpeedUnit"><option value="mps">m/s</option><option value="kph" selected>km/h</option><option value="mph">mph</option><option value="knot">knots</option><option value="fps">ft/s</option></select></div></div>
+<div id="distanceInput" class="field"><label>Distance</label><div style="display:grid;grid-template-columns:1fr 140px;gap:8px"><input id="sDistance" type="number" value="100" step="any"><select id="sDistanceUnit"><option value="m">m</option><option value="km" selected>km</option><option value="mi">miles</option><option value="ft">ft</option></select></div></div>
+<div id="timeInput" class="field"><label>Time</label><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"><input id="sH" type="number" value="2" min="0" placeholder="hours"><input id="sM" type="number" value="0" min="0" placeholder="min"><input id="sS" type="number" value="0" min="0" placeholder="sec"></div></div>
+<div id="outputUnitWrap" class="field"><label>Result unit</label><select id="sOutUnit"><option value="mps">m/s</option><option value="kph" selected>km/h</option><option value="mph">mph</option><option value="knot">knots</option><option value="fps">ft/s</option></select></div>
+<div class="btns"><button class="btn" onclick="calcSpeed()">Calculate</button><button class="btn secondary" onclick="resetSpeed()">Reset</button></div><div id="sErr" class="error"></div></div>
+<div class="speed-result"><div class="result-title">Result</div><div id="sMain" class="result-main">50 km/h</div><div class="statgrid"><div class="stat"><span>Distance</span><b id="sDistOut">100 km</b></div><div class="stat"><span>Time</span><b id="sTimeOut">2 h 0 m</b></div></div></div></div></section>
+<!--CONTENT-->
+<h2>What Is a Speed Calculator?</h2><p>This calculator solves the standard speed–distance–time relationship. Provide any two known quantities and select the third quantity to calculate. It also converts common speed units such as meters per second, kilometers per hour, miles per hour, knots, and feet per second.</p>
+<h2>Speed, Distance, and Time Formula</h2><div class="formula">speed = distance ÷ time<br>distance = speed × time<br>time = distance ÷ speed</div>
+<h2>Example</h2><p>If a vehicle covers 100 km in 2 hours, its average speed is 100 ÷ 2 = 50 km/h. This is an average over the whole interval; actual instantaneous speed can vary during the trip.</p>
+<h2>Unit Conversion</h2><p>The calculator converts speed through meters per second. NIST lists 1 km/h as approximately 0.2777778 m/s and 1 mph as exactly 0.44704 m/s under standard unit definitions.</p>
+<div class="note">This calculator assumes consistent average motion over the measured distance and time. Stops, acceleration, route changes, and measurement error can make real-world travel differ.</div>
+<!--FAQ-->
+
+<section class="content"><article class="wrap prose">
+
+<h2>What Is a Speed Calculator?</h2><p>This calculator solves the standard speed–distance–time relationship. Provide any two known quantities and select the third quantity to calculate. It also converts common speed units such as meters per second, kilometers per hour, miles per hour, knots, and feet per second.</p>
+<h2>Speed, Distance, and Time Formula</h2><div class="formula">speed = distance ÷ time<br>distance = speed × time<br>time = distance ÷ speed</div>
+<h2>Example</h2><p>If a vehicle covers 100 km in 2 hours, its average speed is 100 ÷ 2 = 50 km/h. This is an average over the whole interval; actual instantaneous speed can vary during the trip.</p>
+<h2>Unit Conversion</h2><p>The calculator converts speed through meters per second. NIST lists 1 km/h as approximately 0.2777778 m/s and 1 mph as exactly 0.44704 m/s under standard unit definitions.</p>
+<div class="note">This calculator assumes consistent average motion over the measured distance and time. Stops, acceleration, route changes, and measurement error can make real-world travel differ.</div>
+
+<h2 id="faq">Frequently Asked Questions</h2>
+<div class="faq"><details><summary>What is the formula for speed?</summary><p>Speed equals distance divided by time. Rearranging the same relationship gives distance = speed × time and time = distance ÷ speed.</p></details>
+<details><summary>How do I convert km/h to m/s?</summary><p>Multiply kilometers per hour by 0.277777… (or divide by 3.6). For example, 36 km/h equals 10 m/s.</p></details>
+<details><summary>Is speed the same as velocity?</summary><p>Speed is a scalar magnitude. Velocity includes direction as well as magnitude, so velocity is a vector quantity.</p></details></div>
+<h2>Sources and Methodology</h2>
+<div class="sources"><p><strong>NIST Guide to the SI:</strong> standard velocity and time conversion factors. <a href="https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9" rel="nofollow">NIST conversion factors</a>.</p><p><strong>Calculator.net:</strong> Speed Calculator reviewed to cross-check common inputs and user intent.</p></div>
+</article></section>
+</main>
+<footer class="footer"><div class="wrap">CalcPro calculator estimate. Check professional or official requirements where relevant.</div></footer>
+<script>
+let sMode="speed";const SF={mps:1,kph:1/3.6,mph:.44704,knot:.5144444444,fps:.3048},DF={m:1,km:1000,mi:1609.344,ft:.3048};
+function setMode(m){sMode=m;["speed","distance","time"].forEach(x=>document.getElementById("m"+x[0].toUpperCase()+x.slice(1)).classList.toggle("active",x===m));speedInput.style.display=m==="speed"?"none":"block";distanceInput.style.display=m==="distance"?"none":"block";timeInput.style.display=m==="time"?"none":"block";outputUnitWrap.style.display=m==="speed"?"block":"none"}
+function dur(sec){let h=Math.floor(sec/3600),m=Math.floor((sec%3600)/60),s=Math.round(sec%60);return `${h} h ${m} m ${s} s`}
+function calcSpeed(){sErr.textContent="";let v=+sSpeed.value*SF[sSpeedUnit.value],d=+sDistance.value*DF[sDistanceUnit.value],t=(+sH.value||0)*3600+(+sM.value||0)*60+(+sS.value||0);if(sMode==="speed"){if(!(d>=0)||!(t>0)){sErr.textContent="Enter a valid distance and a time greater than zero.";return}v=d/t;sMain.textContent=(v/SF[sOutUnit.value]).toFixed(4).replace(/\.?0+$/,"")+" "+sOutUnit.options[sOutUnit.selectedIndex].text}else if(sMode==="distance"){if(!(v>=0)||!(t>=0)){sErr.textContent="Enter valid speed and time.";return}d=v*t;sMain.textContent=(d/1000).toFixed(4).replace(/\.?0+$/,"")+" km"}else{if(!(d>=0)||!(v>0)){sErr.textContent="Enter a valid distance and speed greater than zero.";return}t=d/v;sMain.textContent=dur(t)}sDistOut.textContent=(d/1000).toFixed(3).replace(/\.?0+$/,"")+" km";sTimeOut.textContent=dur(t)}
+function resetSpeed(){sSpeed.value=60;sDistance.value=100;sH.value=2;sM.value=0;sS.value=0;sSpeedUnit.value="kph";sDistanceUnit.value="km";sOutUnit.value="kph";setMode("speed");calcSpeed()}setMode("speed");calcSpeed();
+</script>
+<script src="/assets/js/global.js" defer></script>
+</body></html>

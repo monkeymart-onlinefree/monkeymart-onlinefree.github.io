@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Golf Handicap Calculator – Free Accurate Online Calculator | CalcPro</title>
+<meta name="description" content="Calculate Course Handicap and estimate a base Handicap Index using current World Handicap System formulas.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/golf-handicap-calculator/">
+<meta property="og:title" content="Golf Handicap Calculator | CalcPro">
+<meta property="og:description" content="Calculate Course Handicap and estimate a base Handicap Index using current World Handicap System formulas.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="/golf-handicap-calculator/">
+<meta name="theme-color" content="#235d35">
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
+.wrap{width:min(1160px,calc(100% - 32px));margin:auto}
+.crumbs{font-size:.9rem;opacity:.78;margin-bottom:14px}.crumbs a{text-decoration:none}
+.card{border-radius:24px}.field label{display:block;font-weight:700;font-size:.9rem;margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;border:1px solid rgba(127,127,127,.28);border-radius:14px;padding:12px 13px;background:rgba(255,255,255,.84);color:#151515;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{box-shadow:0 0 0 4px rgba(89,130,246,.15)}
+.btns{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:800}
+.btn.secondary{background:transparent;border:1px solid currentColor;opacity:.78}
+.error{min-height:22px;margin-top:10px;font-weight:700;color:#b42318}
+.result-title{font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;font-weight:900;opacity:.72}
+.result-main{font-size:clamp(2rem,6vw,4rem);line-height:1;font-weight:950;letter-spacing:-.05em;margin:8px 0 14px}
+.statgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.stat{border-radius:16px;padding:12px;background:rgba(255,255,255,.12)}
+.stat b{display:block;font-size:1.05rem}.stat span{font-size:.8rem;opacity:.75}
+.content{padding:66px 0}.prose{max-width:860px;margin:auto}.prose h2{font-size:clamp(1.5rem,3vw,2rem);line-height:1.2;margin:42px 0 12px}.prose h3{margin:28px 0 8px}.prose p,.prose li{color:var(--muted,#4c5564)}
+.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;padding:15px 17px;border-radius:16px;background:var(--soft,#f3f4f6);overflow:auto}
+.note{border-left:4px solid var(--accent,#4f46e5);padding:12px 16px;background:var(--soft,#f6f7fb);border-radius:0 14px 14px 0}
+.table-wrap{overflow:auto;border-radius:18px;border:1px solid rgba(127,127,127,.18)}table{width:100%;border-collapse:collapse;min-width:560px}th,td{text-align:left;padding:11px 13px;border-bottom:1px solid rgba(127,127,127,.15)}th{background:var(--soft,#f5f5f5)}
+.faq details{border:1px solid rgba(127,127,127,.18);border-radius:16px;margin:10px 0;padding:12px 15px;background:#fff}.faq summary{font-weight:800;cursor:pointer}
+.sources a{word-break:break-word}.footer{padding:28px 0;border-top:1px solid rgba(127,127,127,.18);font-size:.88rem;opacity:.75}
+.sr{position:absolute;left:-10000px}
+@media(max-width:780px){.statgrid{grid-template-columns:1fr}.content{padding:46px 0}.wrap{width:min(100% - 22px,1160px)}}
+
+:root{--accent:#d7ef58;--muted:#4d6657;--soft:#edf6e8}body{background:#f5f7ee;color:#193226}.golf-hero{padding:26px 0 78px;background:linear-gradient(170deg,#dff0ce 0 48%,#b5d993 48% 64%,#88b869 64%);overflow:hidden}.golf-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:25px;align-items:center}.golf-grid h1{font-size:clamp(3rem,7vw,6.2rem);line-height:.9;letter-spacing:-.06em;margin:10px 0}.green{height:340px;position:relative}.hill{position:absolute;inset:110px 0 0;border-radius:50% 50% 0 0/28% 28% 0 0;background:linear-gradient(#5fa355,#2f7b40);box-shadow:inset 0 20px 30px #fff2}.flag{position:absolute;left:56%;top:28px;width:5px;height:215px;background:#f1f1df}.flag:before{content:"";position:absolute;left:4px;top:0;border-top:28px solid transparent;border-bottom:28px solid transparent;border-left:78px solid #f66a45}.hole{position:absolute;left:52%;top:230px;width:48px;height:15px;border-radius:50%;background:#183821;box-shadow:inset 0 3px 6px #000}.ball{position:absolute;left:35%;top:245px;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 32% 27%,#fff,#d9ddd7);box-shadow:0 8px 12px #173b2444}
+.golf-shell{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:-48px;position:relative}.scorecard{background:#fff;border-radius:24px;padding:26px;box-shadow:0 30px 80px #315f3230;border-top:7px solid #183f2b}.scorecard .btn{background:#1e5e3b;color:#fff}.handicap-result{background:#163f2b;color:#fff;border-radius:24px;padding:28px;box-shadow:0 30px 80px #315f3230}.tabs{display:flex;gap:7px;margin-bottom:14px}.tabs button{flex:1;border:1px solid #c9d9c8;background:#eff6ed;border-radius:12px;padding:9px;font-weight:800}.tabs button.active{background:#173f2b;color:white}.diffs{min-height:110px}
+@media(max-width:780px){.golf-grid,.golf-shell{grid-template-columns:1fr}.green{height:260px}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Golf Handicap Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate Course Handicap and estimate a base Handicap Index using current World Handicap System formulas.", "url": "/golf-handicap-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Golf Handicap Calculator", "item": "/golf-handicap-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the current Course Handicap formula?", "acceptedAnswer": {"@type": "Answer", "text": "For an 18-hole round under the World Handicap System, Course Handicap = Handicap Index × (Slope Rating ÷ 113) + (Course Rating − par)."}}, {"@type": "Question", "name": "How many scores are needed for a Handicap Index?", "acceptedAnswer": {"@type": "Answer", "text": "Under the current USGA World Handicap System, an initial Handicap Index can be calculated with as few as three 18-hole Score Differentials, including eligible combinations created from 9-hole scores."}}, {"@type": "Question", "name": "Why can an official Handicap Index differ from this estimate?", "acceptedAnswer": {"@type": "Answer", "text": "Official systems can apply safeguards such as exceptional score reductions, soft/hard caps, committee adjustments, and current 9-hole expected-score processing. This page estimates the base calculation from supplied differentials."}}]}]}</script>
+<link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body>
+<header>
+<nav class="wrap" style="padding-top:18px"><div class="crumbs"><a href="/">Home</a> / Golf Handicap Calculator</div></nav>
+<section class="golf-hero"><div class="wrap golf-grid"><div><span style="font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:#235d35">World Handicap System tools</span><h1>Golf Handicap Calculator</h1><p>Calculate an 18-hole Course Handicap or estimate a base Handicap Index from recent Score Differentials.</p></div><div class="green" aria-hidden="true"><div class="hill"></div><div class="flag"></div><div class="hole"></div><div class="ball"></div></div></div></section>
+</header>
+<main>
+<section class="wrap golf-shell"><div class="scorecard"><div class="tabs"><button id="gTabCourse" class="active" onclick="gTab('course')">Course Handicap</button><button id="gTabIndex" onclick="gTab('index')">Handicap Index</button></div>
+<div id="gCourse"><div class="field"><label>Handicap Index</label><input id="gIndex" type="number" value="12.4" step=".1"></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"><div class="field"><label>Slope Rating</label><input id="gSlope" type="number" value="125"></div><div class="field"><label>Course Rating</label><input id="gRating" type="number" value="71.4" step=".1"></div><div class="field"><label>Par</label><input id="gPar" type="number" value="72"></div></div><button class="btn" onclick="calcGolfCourse()">Calculate</button></div>
+<div id="gIndexBox" style="display:none"><div class="field"><label>Score Differentials (3–20, comma separated)</label><textarea id="gDiffs" class="diffs">12.1, 14.3, 11.8, 15.2, 10.9, 13.4, 12.7, 16.0</textarea></div><button class="btn" onclick="calcGolfIndex()">Estimate index</button></div><div id="gErr" class="error"></div></div>
+<div class="handicap-result"><div class="result-title">Result</div><div id="gMain" class="result-main">13</div><div id="gSub">Course Handicap</div><div class="statgrid" style="margin-top:18px"><div class="stat"><span>Standard slope</span><b>113</b></div><div class="stat"><span>System</span><b>WHS 2024+</b></div></div></div></section>
+<!--CONTENT-->
+<h2>What Is a Golf Handicap Calculator?</h2><p>This page provides two related tools. Course Handicap converts a player's Handicap Index to the strokes applicable to a specific course and tees. The Handicap Index estimator uses the lowest recent Score Differentials according to the World Handicap System table for 3–20 differentials.</p>
+<h2>Course Handicap Formula</h2><div class="formula">Course Handicap = Handicap Index × (Slope Rating ÷ 113) + (Course Rating − Par)</div>
+<p>USGA identifies 113 as the standard Slope Rating used in this calculation. The final rounding depends on how the handicap is being applied; this calculator displays the nearest whole Course Handicap for a practical estimate.</p>
+<h2>Score Differential Formula</h2><div class="formula">Score Differential = (113 ÷ Slope Rating) × (Adjusted Gross Score − Course Rating − PCC)</div>
+<h2>Handicap Index from Fewer Than 20 Scores</h2><p>Current WHS rules use the lowest 1–7 differentials when there are fewer than 20, with adjustments at 3, 4, and 6 scores. At 20, the lowest 8 are averaged. The official Handicap Index can also be affected by safeguards such as caps and exceptional-score reductions.</p>
+<div class="note"><strong>Not an official handicap service:</strong> use an authorized WHS service for posting scores and an official Handicap Index. This page is for calculation and learning.</div>
+<!--FAQ-->
+
+<section class="content"><article class="wrap prose">
+
+<h2>What Is a Golf Handicap Calculator?</h2><p>This page provides two related tools. Course Handicap converts a player's Handicap Index to the strokes applicable to a specific course and tees. The Handicap Index estimator uses the lowest recent Score Differentials according to the World Handicap System table for 3–20 differentials.</p>
+<h2>Course Handicap Formula</h2><div class="formula">Course Handicap = Handicap Index × (Slope Rating ÷ 113) + (Course Rating − Par)</div>
+<p>USGA identifies 113 as the standard Slope Rating used in this calculation. The final rounding depends on how the handicap is being applied; this calculator displays the nearest whole Course Handicap for a practical estimate.</p>
+<h2>Score Differential Formula</h2><div class="formula">Score Differential = (113 ÷ Slope Rating) × (Adjusted Gross Score − Course Rating − PCC)</div>
+<h2>Handicap Index from Fewer Than 20 Scores</h2><p>Current WHS rules use the lowest 1–7 differentials when there are fewer than 20, with adjustments at 3, 4, and 6 scores. At 20, the lowest 8 are averaged. The official Handicap Index can also be affected by safeguards such as caps and exceptional-score reductions.</p>
+<div class="note"><strong>Not an official handicap service:</strong> use an authorized WHS service for posting scores and an official Handicap Index. This page is for calculation and learning.</div>
+
+<h2 id="faq">Frequently Asked Questions</h2>
+<div class="faq"><details><summary>What is the current Course Handicap formula?</summary><p>For an 18-hole round under the World Handicap System, Course Handicap = Handicap Index × (Slope Rating ÷ 113) + (Course Rating − par).</p></details>
+<details><summary>How many scores are needed for a Handicap Index?</summary><p>Under the current USGA World Handicap System, an initial Handicap Index can be calculated with as few as three 18-hole Score Differentials, including eligible combinations created from 9-hole scores.</p></details>
+<details><summary>Why can an official Handicap Index differ from this estimate?</summary><p>Official systems can apply safeguards such as exceptional score reductions, soft/hard caps, committee adjustments, and current 9-hole expected-score processing. This page estimates the base calculation from supplied differentials.</p></details></div>
+<h2>Sources and Methodology</h2>
+<div class="sources"><p><strong>USGA Rules of Handicapping:</strong> current Course Handicap formula and fewer-than-20 table. <a href="https://www.usga.org/content/usga/home-page/handicapping/world-handicap-system/topics/course-handicap-and-playing-handicap.html" rel="nofollow">Course Handicap</a> · <a href="https://www.usga.org/content/usga/home-page/handicapping/roh/Content/rules/5%202a%20For%20Fewer%20Than%2020%20Scores.htm" rel="nofollow">Handicap Index table</a>.</p><p><strong>USGA:</strong> Score Differential formula includes PCC. <a href="https://www.usga.org/handicapping/roh/Content/rules/5%201a%20Calculation%20of%20a%20Score%20Differential18Hole.htm" rel="nofollow">Rule 5.1a</a>.</p></div>
+</article></section>
+</main>
+<footer class="footer"><div class="wrap">CalcPro calculator estimate. Check professional or official requirements where relevant.</div></footer>
+<script>
+function gTab(t){gTabCourse.classList.toggle("active",t==="course");gTabIndex.classList.toggle("active",t==="index");gCourse.style.display=t==="course"?"block":"none";gIndexBox.style.display=t==="index"?"block":"none";gErr.textContent=""}
+function roundHalfUp(n){return Math.sign(n)*Math.floor(Math.abs(n)+.5)}
+function calcGolfCourse(){gErr.textContent="";let i=+gIndex.value,s=+gSlope.value,r=+gRating.value,p=+gPar.value;if(!Number.isFinite(i)||!(s>0)||!Number.isFinite(r)||!(p>0)){gErr.textContent="Enter valid Handicap Index, Slope, Course Rating, and Par.";return}let raw=i*(s/113)+(r-p);gMain.textContent=roundHalfUp(raw);gSub.textContent=`Course Handicap (unrounded ${raw.toFixed(2)})`}
+function rule(n){if(n===3)return[1,-2];if(n===4)return[1,-1];if(n===5)return[1,0];if(n===6)return[2,-1];if(n<=8)return[2,0];if(n<=11)return[3,0];if(n<=14)return[4,0];if(n<=16)return[5,0];if(n<=18)return[6,0];if(n===19)return[7,0];return[8,0]}
+function calcGolfIndex(){gErr.textContent="";let a=gDiffs.value.split(/[\s,;]+/).filter(Boolean).map(Number);if(a.some(x=>!Number.isFinite(x))||a.length<3||a.length>20){gErr.textContent="Enter between 3 and 20 valid Score Differentials.";return}a.sort((x,y)=>x-y);let[k,adj]=rule(a.length),used=a.slice(0,k),avg=used.reduce((x,y)=>x+y,0)/k+adj,hi=Math.min(54,Math.round(avg*10)/10);gMain.textContent=hi.toFixed(1);gSub.textContent=`Estimated base Handicap Index • using lowest ${k}${adj?` • adjustment ${adj}`:""}`}
+calcGolfCourse();
+</script>
+<script src="/assets/js/global.js" defer></script>
+</body></html>

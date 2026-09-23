@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GFR Calculator – Free Accurate Online Calculator</title>
+<meta name="description" content="Estimate adult eGFR with the current 2021 race-free CKD-EPI creatinine equation.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/gfr-calculator/">
+<meta property="og:title" content="GFR Calculator">
+<meta property="og:description" content="Estimate adult eGFR with the current 2021 race-free CKD-EPI creatinine equation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="/gfr-calculator/">
+<meta name="theme-color" content="#0d9a8c">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "GFR Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Estimate adult eGFR with the current 2021 race-free CKD-EPI creatinine equation.", "url": "/gfr-calculator/", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "GFR Calculator", "item": "/gfr-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Which eGFR equation does this calculator use?", "acceptedAnswer": {"@type": "Answer", "text": "It uses the 2021 CKD-EPI creatinine equation for adults, which is race-free and uses age, sex, and standardized serum creatinine."}}, {"@type": "Question", "name": "Can eGFR diagnose chronic kidney disease by itself?", "acceptedAnswer": {"@type": "Answer", "text": "No. CKD classification depends on persistence and other evidence such as albuminuria. NKF notes that eGFR below 60 or uACR at least 30 mg/g must be present for at least three months, or other kidney-damage markers must be present."}}, {"@type": "Question", "name": "Why can creatinine-based eGFR be inaccurate?", "acceptedAnswer": {"@type": "Answer", "text": "Serum creatinine is influenced by factors beyond filtration, including muscle mass and diet. NIDDK notes that creatinine-cystatin C equations can be more accurate near important clinical decision points."}}, {"@type": "Question", "name": "Is this calculator for children?", "acceptedAnswer": {"@type": "Answer", "text": "No. This implementation uses the adult CKD-EPI equation and requires age 18 or older."}}]}]}</script>
+<style>
+    :root{--bg:#f2fbfa;--panel:#ffffff;--ink:#163332;--muted:#5c7775;--accent:#0d9a8c;--accent2:#69d7ce;--soft:#e1f5f2;--line:#c7e6e1;--shadow:0 24px 70px rgba(31,101,94,.12);}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.62}
+    a{color:var(--accent)} .wrap{width:min(1160px,calc(100% - 32px));margin:auto}
+    .topbar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;position:relative;z-index:5}
+    .brand{font-weight:900;letter-spacing:-.04em;font-size:1.2rem;color:var(--ink);text-decoration:none} .brand i{color:var(--accent);font-style:normal}
+    .crumb{font-size:.86rem;color:var(--muted)} .crumb a{color:inherit;text-decoration:none}
+    .hero{position:relative;isolation:isolate;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);margin-bottom:28px}
+    .hero:before,.hero:after{content:"";position:absolute;z-index:-1;filter:blur(2px);opacity:.7}
+    .hero-copy h1{font-size:clamp(2.35rem,5vw,5.2rem);line-height:.98;letter-spacing:-.065em;margin:.15em 0 .28em}
+    .kicker{display:inline-flex;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--panel) 80%, transparent);font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em}
+    .hero-copy p{max-width:680px;color:var(--muted);font-size:1.03rem}
+    .stage{position:relative;min-height:300px;display:grid;place-items:center;perspective:900px}
+    .orb{width:210px;height:210px;border-radius:38% 62% 61% 39%/45% 43% 57% 55%;background:linear-gradient(145deg,var(--accent),var(--accent2));box-shadow:inset -22px -24px 45px rgba(0,0,0,.16),inset 14px 14px 30px rgba(255,255,255,.32),0 35px 70px color-mix(in srgb,var(--accent) 32%, transparent);transform:rotate(-10deg) translateZ(30px)}
+    .float{position:absolute;border:1px solid color-mix(in srgb,var(--line) 75%, transparent);background:color-mix(in srgb,var(--panel) 85%, transparent);backdrop-filter:blur(12px);box-shadow:0 18px 45px rgba(0,0,0,.12);border-radius:18px;padding:12px 14px;font-weight:800}
+    .calc-shell{display:grid;gap:22px;margin:24px 0 46px;align-items:start}
+    .calc-card,.result-card,.content-card{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow)}
+    .calc-card{padding:clamp(20px,3vw,34px)} .calc-card h2,.result-card h2{margin-top:0;letter-spacing:-.03em}
+    .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+    .field{display:grid;gap:7px} .field.full{grid-column:1/-1} label,.label{font-size:.88rem;font-weight:800}
+    input,select,button{font:inherit} input,select{width:100%;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 45%,var(--panel));color:var(--ink);padding:12px 13px;border-radius:13px;outline:none}
+    input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px} button{border:0;border-radius:14px;padding:12px 18px;font-weight:900;cursor:pointer}
+    .primary{background:var(--accent);color:white;box-shadow:0 10px 24px color-mix(in srgb,var(--accent) 28%,transparent)} .secondary{background:var(--soft);color:var(--ink);border:1px solid var(--line)}
+    .error{min-height:1.5em;color:#b42318;font-weight:700;font-size:.9rem;margin-top:8px}
+    .result-card{padding:clamp(20px,3vw,34px);position:sticky;top:18px;overflow:hidden}
+    .metric{font-size:clamp(2rem,5vw,4.6rem);line-height:1;font-weight:950;letter-spacing:-.06em;color:var(--accent);margin:.15em 0}
+    .submetrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px} .mini{background:var(--soft);padding:14px;border-radius:16px;border:1px solid var(--line)} .mini b{display:block;font-size:1.1rem}
+    .note{padding:13px 15px;border-left:4px solid var(--accent);background:var(--soft);border-radius:10px;color:var(--muted);font-size:.92rem}
+    .content{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;margin-bottom:56px} .content-card{padding:clamp(22px,4vw,40px)} .content h2{font-size:clamp(1.45rem,2.4vw,2.05rem);letter-spacing:-.035em;margin-top:1.65em} .content h2:first-child{margin-top:0}
+    .content h3{margin-top:1.35em} table{width:100%;border-collapse:collapse;margin:18px 0} th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top} th{font-size:.84rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+    code,.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--soft);padding:.15em .35em;border-radius:7px}
+    details{border-top:1px solid var(--line);padding:13px 0} summary{font-weight:850;cursor:pointer} details p{color:var(--muted)}
+    aside{display:grid;gap:16px;align-content:start} .sidebox{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);padding:18px} .sidebox h3{margin-top:0}
+    footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:.9rem}
+    .pillrow{display:flex;gap:8px;flex-wrap:wrap} .pill{padding:7px 10px;border-radius:999px;background:var(--soft);border:1px solid var(--line);font-size:.82rem;font-weight:800}
+    .unit-toggle{display:inline-flex;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px;margin-bottom:16px} .unit-toggle button{padding:7px 12px;border-radius:999px;background:transparent;color:var(--ink)} .unit-toggle button.active{background:var(--panel);box-shadow:0 4px 14px rgba(0,0,0,.1)}
+    ul.clean{padding-left:1.2rem} .source-list{padding-left:1.1rem;font-size:.9rem;color:var(--muted)} .source-list li{margin:.65em 0}
+    .hero{border-radius:12px 42px 12px 42px;padding:44px;background:linear-gradient(120deg,var(--panel) 0 62%,var(--soft) 62%);display:grid;grid-template-columns:1.1fr .9fr;align-items:center}.calc-shell{grid-template-columns:1.2fr .8fr}.calc-card{border-radius:12px 36px 12px 36px}.result-card{border-radius:36px 12px 36px 12px}.content-card,.sidebox{border-radius:16px}.hero:before{width:7px;height:65%;background:var(--accent);left:0;top:18%}
+    @media(max-width:860px){.hero,.calc-shell,.content{grid-template-columns:1fr}.hero{padding:26px}.stage{min-height:230px}.result-card{position:static}.content{grid-template-columns:1fr}.stage{order:initial}}
+    @media(max-width:560px){.wrap{width:min(100% - 20px,1160px)}.form-grid,.submetrics{grid-template-columns:1fr}.hero-copy h1{font-size:2.45rem}.hero{border-radius:20px}.calc-card,.result-card,.content-card,.sidebox{border-radius:18px}}
+    @media(prefers-reduced-motion:no-preference){.float{animation:drift 5s ease-in-out infinite alternate}@keyframes drift{to{transform:translateY(-8px) rotate(1deg)}}}
+    </style>
+<link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body>
+<header class="wrap">
+  <div class="topbar"><a class="brand" href="/">Calc<i>Pro</i></a><div class="crumb"><a href="/">Home</a> / GFR Calculator</div></div>
+</header>
+<main class="wrap">
+<section class="hero">
+  <div class="hero-copy"><span class="kicker">Kidney • Lab</span><h1>GFR Calculator</h1><p>Estimate adult kidney filtration with the current race-free 2021 CKD-EPI creatinine equation.</p>
+  <div class="pillrow"><span class="pill">Instant results</span><span class="pill">No sign-up</span><span class="pill">Mobile friendly</span></div></div>
+  <div class="stage" aria-hidden="true"><div class='orb' style='border-radius:56% 44% 46% 54%/62% 45% 55% 38%'></div><div class='float' style='left:1%;top:12%'>2021 CKD-EPI</div><div class='float' style='right:1%;bottom:11%'>Race-free</div></div>
+</section>
+
+<section class="calc-shell" aria-label="GFR Calculator tool">
+  <article class="calc-card">
+    <h2>Enter Your Details</h2>
+    <div class="form-grid"><div class="field"><label for="age">Age (18+)</label><input id="age" type="number" min="18" max="120" value="50" data-default="50"></div><div class="field"><label for="sex">Sex used by equation</label><select id="sex" data-default="male"><option value="male">Male</option><option value="female">Female</option></select></div><div class="field"><label for="scr">Serum creatinine</label><input id="scr" type="number" min=".1" step=".01" value="1.0" data-default="1.0"></div><div class="field"><label for="unit">Creatinine unit</label><select id="unit" data-default="mg"><option value="mg">mg/dL</option><option value="umol">µmol/L</option></select></div></div>
+    <div class="actions"><button class="primary" id="calcBtn" type="button">Calculate</button><button class="secondary" id="resetBtn" type="button">Reset</button></div>
+    <div class="error" id="error" role="alert" aria-live="polite"></div>
+  </article>
+  <aside class="result-card" aria-live="polite">
+    <h2>Your Result</h2>
+    <div class="metric" id="mainResult">—</div><p>mL/min/1.73m² estimated GFR</p><div class="submetrics"><div class="mini">G category<b id="cat">—</b></div><div class="mini">Creatinine used<b id="used">—</b></div></div>
+    <p class="note">Medical estimate only. Do not use a single eGFR result to diagnose CKD or change medication.</p>
+  </aside>
+</section>
+
+<section class="content">
+  <article class="content-card">
+    <h2>What Is a GFR Calculator?</h2><p>This calculator estimates glomerular filtration rate (eGFR), a widely used index of kidney filtration, from serum creatinine, age, and sex. It uses the 2021 CKD-EPI creatinine equation recommended by the National Kidney Foundation and supported by NIDDK.</p>
+<h2>How to Use the GFR Calculator</h2><p>Enter age, sex, serum creatinine, and the creatinine unit. If you enter µmol/L, the value is converted to mg/dL by dividing by 88.4 before the equation is applied.</p>
+<h2>2021 CKD-EPI Creatinine Formula</h2><p><span class='formula'>eGFR = 142 × min(SCr/κ,1)^α × max(SCr/κ,1)^−1.200 × 0.9938^Age × 1.012 if female</span>. For women κ=0.7 and α=−0.241; for men κ=0.9 and α=−0.302.</p>
+<h2>Understanding eGFR Categories</h2><table><tr><th>Category</th><th>eGFR (mL/min/1.73m²)</th></tr><tr><td>G1</td><td>≥90</td></tr><tr><td>G2</td><td>60–89</td></tr><tr><td>G3a</td><td>45–59</td></tr><tr><td>G3b</td><td>30–44</td></tr><tr><td>G4</td><td>15–29</td></tr><tr><td>G5</td><td>&lt;15</td></tr></table><p>G1 or G2 alone does not establish CKD without evidence of kidney damage.</p>
+<h2>Limitations</h2><p>eGFR is an estimate, not a direct filtration measurement. Creatinine-only equations may be less reliable in unusual muscle mass, rapidly changing kidney function, or near drug-dosing/transplant decision thresholds.</p>
+    <h2 id="faq">Frequently Asked Questions</h2>
+    <details><summary>Which eGFR equation does this calculator use?</summary><p>It uses the 2021 CKD-EPI creatinine equation for adults, which is race-free and uses age, sex, and standardized serum creatinine.</p></details><details><summary>Can eGFR diagnose chronic kidney disease by itself?</summary><p>No. CKD classification depends on persistence and other evidence such as albuminuria. NKF notes that eGFR below 60 or uACR at least 30 mg/g must be present for at least three months, or other kidney-damage markers must be present.</p></details><details><summary>Why can creatinine-based eGFR be inaccurate?</summary><p>Serum creatinine is influenced by factors beyond filtration, including muscle mass and diet. NIDDK notes that creatinine-cystatin C equations can be more accurate near important clinical decision points.</p></details><details><summary>Is this calculator for children?</summary><p>No. This implementation uses the adult CKD-EPI equation and requires age 18 or older.</p></details>
+    <h2>Sources and Methodology</h2>
+    <p>This page uses the formulas and assumptions described above. Health-related results are estimates and should be interpreted in context, not as a diagnosis or individualized medical advice.</p>
+    <ul class="source-list"><li><a href="https://www.kidney.org/professionals/ckd-epi-creatinine-equation-2021" rel="noopener" target="_blank">National Kidney Foundation – CKD-EPI 2021</a> — Current race-free adult creatinine equation.</li><li><a href="https://www.niddk.nih.gov/research-funding/research-programs/kidney-clinical-research-epidemiology/laboratory/glomerular-filtration-rate-equations/adults" rel="noopener" target="_blank">NIDDK – eGFR Equations for Adults</a> — Equation details, unit conversion, and limitations.</li><li><a href="https://www.kidney.org/professionals/gfr_calculator" rel="noopener" target="_blank">NKF eGFR Calculator</a> — Clinical context and CKD criteria.</li></ul>
+  </article>
+  <aside>
+    <div class="sidebox"><h3>Method at a glance</h3><p>Estimate adult eGFR with the current 2021 race-free CKD-EPI creatinine equation.</p></div>
+    <div class="sidebox"><h3>Privacy</h3><p>Calculations run in your browser. This standalone page does not need to send form values to a server.</p></div>
+  </aside>
+</section>
+</main>
+<footer><div class="wrap">CalcPro calculator page • Educational use • Check important health decisions with a qualified professional.</div></footer>
+<script>
+
+function calculate(){const e=document.getElementById('error');e.textContent='';let age=+document.getElementById('age').value,s=+document.getElementById('scr').value,sex=document.getElementById('sex').value,u=document.getElementById('unit').value;if(age<18||age>120||!Number.isFinite(s)||s<=0){e.textContent='Enter age 18 or older and a valid serum creatinine value.';return}if(u==='umol')s/=88.4;let k=sex==='female'?.7:.9,a=sex==='female'?-.241:-.302;let eg=142*Math.pow(Math.min(s/k,1),a)*Math.pow(Math.max(s/k,1),-1.2)*Math.pow(.9938,age)*(sex==='female'?1.012:1);let cat=eg>=90?'G1':eg>=60?'G2':eg>=45?'G3a':eg>=30?'G3b':eg>=15?'G4':'G5';document.getElementById('mainResult').textContent=Math.round(eg);document.getElementById('cat').textContent=cat;document.getElementById('used').textContent=`${s.toFixed(2)} mg/dL`;}
+
+document.getElementById('calcBtn').addEventListener('click', calculate);
+document.getElementById('resetBtn').addEventListener('click', ()=>{document.querySelectorAll('input').forEach(i=>{if(i.dataset.default!==undefined)i.value=i.dataset.default;});document.querySelectorAll('select').forEach(s=>{if(s.dataset.default!==undefined)s.value=s.dataset.default;});document.getElementById('error').textContent='';calculate();});
+window.addEventListener('DOMContentLoaded', calculate);
+</script>
+<script src="/assets/js/global.js" defer></script>
+</body></html>

@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Boat Loan Calculator with Tax &amp; Trade-In | CalcPro</title>
+<meta name="description" content="Estimate a boat loan payment, amount financed, tax, trade-in equity, total interest, and amortization from purchase price, down payment, APR, and term.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/boat-loan-calculator/">
+<meta property="og:title" content="Boat Loan Calculator | CalcPro">
+<meta property="og:description" content="Estimate a boat loan payment, amount financed, tax, trade-in equity, total interest, and amortization from purchase price, down payment, APR, and term.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yourdomain.com/boat-loan-calculator/">
+<meta name="theme-color" content="#0284c7">
+<style>
+:root{
+  --bg:#0f172a;--bg2:#111827;--panel:#ffffff;--ink:#0f172a;--muted:#64748b;
+  --a:#2563eb;--b:#14b8a6;--c:#f59e0b;--soft:#eef2ff;--line:#e2e8f0;
+  --shadow:0 25px 60px rgba(15,23,42,.18);--radius:28px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#f8fafc;line-height:1.6}
+a{color:inherit}
+button,input,select{font:inherit}
+.sitebar{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:16px max(20px,calc((100vw - 1180px)/2));background:rgba(255,255,255,.82);backdrop-filter:blur(16px);border-bottom:1px solid rgba(148,163,184,.2)}
+.brand{font-weight:900;letter-spacing:-.04em;font-size:1.18rem}.brand b{color:var(--a)}
+.sitebar a{text-decoration:none}
+.navpill{padding:9px 14px;border-radius:999px;background:var(--soft);font-size:.9rem}
+.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
+.breadcrumb{font-size:.88rem;opacity:.78;margin-bottom:18px}
+.hero{position:relative;overflow:hidden}
+.hero h1{font-size:clamp(2.4rem,6vw,5.5rem);line-height:.94;letter-spacing:-.06em;margin:0 0 18px;max-width:850px}
+.hero p.lead{font-size:clamp(1rem,2vw,1.2rem);max-width:760px;margin:0;color:inherit;opacity:.84}
+.hero-badge{display:inline-flex;gap:9px;align-items:center;padding:8px 12px;border-radius:999px;font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px}
+.visual{position:relative;min-height:250px}
+.calc-section{position:relative;z-index:4}
+.panel{background:var(--panel);border:1px solid rgba(148,163,184,.18);box-shadow:var(--shadow);border-radius:var(--radius)}
+.form-panel{padding:26px}
+.result-panel{padding:26px}
+.section-title{margin:0 0 6px;font-size:1.55rem;letter-spacing:-.03em}
+.section-kicker{margin:0 0 22px;color:var(--muted);font-size:.93rem}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full{grid-column:1/-1}
+label{font-weight:750;font-size:.9rem}
+.hint{font-size:.78rem;color:var(--muted)}
+input,select{width:100%;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:14px;padding:12px 13px;outline:none;transition:.2s}
+input:focus,select:focus{border-color:var(--a);box-shadow:0 0 0 4px color-mix(in srgb,var(--a) 14%,transparent)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:850;cursor:pointer}
+.btn.primary{background:var(--a);color:#fff;box-shadow:0 10px 22px color-mix(in srgb,var(--a) 28%,transparent)}
+.btn.ghost{background:var(--soft);color:var(--ink)}
+.error{margin-top:14px;padding:12px 14px;border-radius:12px;background:#fff1f2;color:#be123c;border:1px solid #fecdd3;font-weight:700}
+.results{display:grid;gap:12px}
+.metric{display:flex;justify-content:space-between;gap:20px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line)}
+.metric:last-child{border-bottom:0}.metric strong{font-size:1.14rem;text-align:right}
+.hero-result{font-size:clamp(2.2rem,5vw,4.1rem);line-height:1;font-weight:950;letter-spacing:-.06em;margin:10px 0 8px;color:var(--a)}
+.small-note{font-size:.82rem;color:var(--muted)}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;margin-top:18px}
+table{border-collapse:collapse;width:100%;min-width:620px}
+th,td{padding:11px 12px;text-align:right;border-bottom:1px solid var(--line);font-size:.86rem}
+th:first-child,td:first-child{text-align:left}th{background:#f8fafc}
+.content{padding:72px 0 44px}
+.prose{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:34px}
+.article{background:#fff;border:1px solid var(--line);border-radius:30px;padding:clamp(24px,4vw,46px);box-shadow:0 18px 50px rgba(15,23,42,.07)}
+.article h2{font-size:clamp(1.55rem,3vw,2.15rem);letter-spacing:-.04em;margin:34px 0 12px}
+.article h2:first-child{margin-top:0}.article h3{margin-top:24px}
+.article p,.article li{color:#334155}
+.article code,.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.formula{padding:16px;border-radius:16px;background:var(--soft);overflow:auto}
+.aside{align-self:start;position:sticky;top:88px;background:linear-gradient(145deg,var(--soft),#fff);border:1px solid var(--line);border-radius:26px;padding:24px}
+.aside h3{margin-top:0}
+.faq details{border-top:1px solid var(--line);padding:14px 0}.faq summary{cursor:pointer;font-weight:800}
+.sources a{word-break:break-word;color:var(--a)}
+footer{padding:32px 0 46px;color:#64748b;text-align:center;font-size:.85rem}
+@media(max-width:860px){.grid{grid-template-columns:1fr}.prose{grid-template-columns:1fr}.aside{position:static}.hero h1{font-size:clamp(2.4rem,12vw,4.3rem)}}
+@media(max-width:580px){.sitebar{padding:12px 16px}.navpill{display:none}.wrap{width:min(100% - 22px,1180px)}.form-panel,.result-panel{padding:20px}.panel{border-radius:22px}}
+
+
+/* Ten layout systems are intentionally different: each topic gets a distinct composition. */
+body.debt{--bg:#18212f;--bg2:#111827;--a:#f97316;--b:#38bdf8;--c:#facc15;--soft:#fff7ed}
+.debt .hero{background:radial-gradient(circle at 80% 20%,rgba(56,189,248,.18),transparent 30%),linear-gradient(135deg,#101827,#263649);color:#fff;padding:72px 0 110px}
+.debt .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:38px}
+.debt .hero-badge{background:rgba(255,255,255,.1)}
+.debt .balance-ring{width:220px;height:220px;border-radius:50%;margin:auto;background:conic-gradient(var(--a) 0 36%,#334155 36%);box-shadow:inset 0 0 0 24px #1d2939,0 28px 60px rgba(0,0,0,.3);display:grid;place-items:center;transform:rotate(-8deg)}
+.debt .balance-ring:after{content:"DTI";font-weight:950;font-size:3rem;transform:rotate(8deg);letter-spacing:-.08em}
+.debt .calc-section{margin-top:-62px}.debt .calc-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:22px}
+.debt .result-panel{background:#18212f;color:#fff;border-color:#334155}.debt .result-panel .metric{border-color:#334155}.debt .result-panel .small-note{color:#cbd5e1}
+
+body.realestate{--a:#0f766e;--b:#d97706;--c:#ef4444;--soft:#ecfdf5}
+.realestate .hero{background:linear-gradient(180deg,#f0fdfa,#fff7ed);padding:64px 0 84px;border-bottom:1px solid #d1fae5}
+.realestate .hero-inner{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px;align-items:center}
+.realestate .house-scene{height:320px;position:relative;perspective:800px}
+.realestate .house{position:absolute;left:16%;top:70px;width:250px;height:160px;background:#fff;border:1px solid #d1d5db;box-shadow:24px 28px 0 #a7f3d0,40px 48px 60px rgba(15,118,110,.16);transform:rotateY(-18deg) rotateX(6deg)}
+.realestate .house:before{content:"";position:absolute;left:-25px;top:-92px;border-left:150px solid transparent;border-right:150px solid transparent;border-bottom:100px solid #f59e0b;filter:drop-shadow(0 15px 10px rgba(0,0,0,.12))}
+.realestate .house:after{content:"";position:absolute;width:58px;height:95px;background:#0f766e;bottom:0;left:96px}
+.realestate .calc-section{padding:42px 0}.realestate .calc-layout{display:grid;grid-template-columns:.72fr 1.28fr;gap:24px;align-items:start}
+.realestate .form-panel{border-radius:46px 18px 46px 18px}.realestate .result-panel{border-radius:18px 46px 18px 46px;background:linear-gradient(145deg,#064e3b,#0f766e);color:#fff}.realestate .result-panel .metric{border-color:rgba(255,255,255,.15)}.realestate .result-panel .small-note{color:#d1fae5}
+
+body.takehome{--a:#7c3aed;--b:#06b6d4;--c:#ec4899;--soft:#f5f3ff}
+.takehome .hero{padding:76px 0 54px;background:linear-gradient(120deg,#faf5ff 0 55%,#ecfeff 55%)}
+.takehome .hero-inner{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:32px}
+.takehome .paycheck{margin:auto;width:min(440px,90%);height:220px;background:#fff;border:2px dashed #c4b5fd;border-radius:22px;box-shadow:20px 22px 0 #cffafe,0 25px 55px rgba(124,58,237,.16);transform:rotate(3deg);padding:30px}
+.takehome .paycheck .line{height:12px;background:#ede9fe;border-radius:99px;margin:13px 0}.takehome .paycheck .line:nth-child(2){width:65%}.takehome .paycheck .line:nth-child(3){width:82%}
+.takehome .calc-section{padding:30px 0 52px}.takehome .calc-layout{display:grid;grid-template-columns:1fr;gap:20px}.takehome .form-panel{max-width:930px;margin:auto}.takehome .result-panel{max-width:930px;margin:auto;background:linear-gradient(135deg,#1e1b4b,#312e81);color:#fff;display:grid;grid-template-columns:.8fr 1.2fr;gap:26px}.takehome .result-panel .metric{border-color:#4338ca}.takehome .result-panel .small-note{color:#c7d2fe}
+
+body.personalloan{--a:#b7791f;--b:#0f172a;--c:#f59e0b;--soft:#fffbeb}
+.personalloan .hero{background:#0b1220;color:#fff;padding:70px 0 90px}
+.personalloan .hero-inner{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center}
+.personalloan .docstack{height:270px;position:relative}.personalloan .sheet{position:absolute;width:230px;height:165px;border-radius:18px;background:#fff;right:18%;top:44px;box-shadow:0 28px 60px rgba(0,0,0,.35);transform:rotate(-8deg)}.personalloan .sheet:before{content:"$";position:absolute;font-size:5rem;color:#b7791f;font-weight:950;left:78px;top:24px}.personalloan .sheet:after{content:"";position:absolute;width:92px;height:18px;border-radius:99px;background:#fde68a;left:69px;bottom:28px}
+.personalloan .calc-section{margin-top:-42px}.personalloan .calc-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;box-shadow:var(--shadow);border-radius:32px;overflow:hidden}.personalloan .form-panel,.personalloan .result-panel{border:0;border-radius:0;box-shadow:none}.personalloan .result-panel{background:#fffbeb}
+
+body.boat{--a:#0284c7;--b:#0f766e;--c:#f8fafc;--soft:#e0f2fe}
+.boat .hero{padding:64px 0 120px;background:linear-gradient(#e0f2fe,#bae6fd 72%,#38bdf8 72%,#0284c7);overflow:hidden}
+.boat .hero-inner{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:28px}
+.boat .boat-art{height:280px;position:relative}.boat .hull{position:absolute;width:330px;height:90px;right:4%;top:130px;background:#0f172a;clip-path:polygon(0 0,100% 0,80% 100%,16% 100%);box-shadow:0 35px 55px rgba(2,132,199,.3)}.boat .hull:before{content:"";position:absolute;width:120px;height:82px;background:#fff;left:130px;top:-76px;clip-path:polygon(10% 100%,22% 0,78% 0,100% 100%)}.boat .hull:after{content:"";position:absolute;width:95px;height:8px;background:#fbbf24;left:115px;top:28px;border-radius:99px}
+.boat .calc-section{margin-top:-66px}.boat .calc-layout{display:grid;grid-template-columns:1.25fr .75fr;gap:22px}.boat .form-panel{background:rgba(255,255,255,.95)}.boat .result-panel{background:linear-gradient(180deg,#082f49,#0c4a6e);color:#fff}.boat .result-panel .metric{border-color:#155e75}.boat .result-panel .small-note{color:#bae6fd}
+
+body.lease{--a:#65a30d;--b:#27272a;--c:#84cc16;--soft:#f7fee7}
+.lease .hero{background:#18181b;color:#fafafa;padding:72px 0 70px}
+.lease .hero-inner{display:grid;grid-template-columns:.8fr 1.2fr;gap:38px;align-items:center}
+.lease .contract{height:300px;position:relative}.lease .contract-card{width:280px;height:220px;background:#fafafa;color:#18181b;border-radius:12px;position:absolute;left:12%;top:25px;padding:28px;box-shadow:24px 28px 0 #65a30d,0 28px 60px rgba(0,0,0,.38);transform:rotate(5deg)}.lease .contract-card:before{content:"LEASE";font-size:2.6rem;font-weight:950;letter-spacing:-.08em}.lease .contract-card:after{content:"✓";position:absolute;right:28px;bottom:28px;width:54px;height:54px;border:4px solid #65a30d;color:#65a30d;border-radius:50%;display:grid;place-items:center;font-size:2rem;font-weight:900}
+.lease .calc-section{padding:42px 0}.lease .calc-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px}.lease .modebar{display:flex;gap:8px;margin-bottom:18px}.lease .modebar button{flex:1}.lease .result-panel{border:2px solid #bef264;box-shadow:12px 12px 0 #d9f99d}
+
+body.refinance{--a:#4f46e5;--b:#db2777;--c:#22d3ee;--soft:#eef2ff}
+.refinance .hero{padding:72px 0 88px;background:radial-gradient(circle at 85% 20%,#fce7f3,transparent 25%),linear-gradient(120deg,#eef2ff,#fff)}
+.refinance .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.refinance .swap{display:flex;gap:12px;align-items:center;justify-content:center;perspective:900px}.refinance .loan-card{width:180px;height:220px;border-radius:22px;background:#fff;border:1px solid #c7d2fe;box-shadow:0 25px 45px rgba(79,70,229,.16);padding:18px;transform:rotateY(15deg)}.refinance .loan-card.new{transform:rotateY(-15deg);background:#312e81;color:#fff}.refinance .arrow{font-size:2.5rem;color:#db2777;font-weight:950}
+.refinance .calc-section{padding:0 0 50px}.refinance .calc-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px}.refinance .form-panel{margin-top:-28px}.refinance .result-panel{margin-top:28px;background:linear-gradient(145deg,#312e81,#4f46e5);color:#fff}.refinance .result-panel .metric{border-color:#6366f1}.refinance .result-panel .small-note{color:#c7d2fe}
+
+body.budget{--a:#ea580c;--b:#16a34a;--c:#eab308;--soft:#fff7ed}
+.budget .hero{background:#fffaf0;padding:58px 0 34px}
+.budget .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:28px}
+.budget .jars{height:270px;display:flex;align-items:end;justify-content:center;gap:18px}.budget .jar{width:105px;border:7px solid #fdba74;border-top:18px solid #fb923c;border-radius:12px 12px 28px 28px;background:linear-gradient(to top,#fed7aa 0 55%,transparent 55%);height:190px;box-shadow:0 18px 30px rgba(234,88,12,.15)}.budget .jar:nth-child(2){height:230px;border-color:#86efac;border-top-color:#22c55e;background:linear-gradient(to top,#bbf7d0 0 72%,transparent 72%)}.budget .jar:nth-child(3){height:160px;border-color:#fde047;border-top-color:#eab308;background:linear-gradient(to top,#fef08a 0 40%,transparent 40%)}
+.budget .calc-section{padding:24px 0 54px}.budget .calc-layout{display:grid;grid-template-columns:1.3fr .7fr;gap:24px}.budget .form-panel{box-shadow:none;border:2px solid #fed7aa}.budget .result-panel{box-shadow:none;border:2px solid #bbf7d0;background:#f0fdf4}.budget .donut{width:180px;height:180px;border-radius:50%;background:conic-gradient(#ea580c 0 50%,#16a34a 50% 75%,#eab308 75%);margin:18px auto;position:relative}.budget .donut:after{content:"";position:absolute;inset:32px;background:#f0fdf4;border-radius:50%}
+
+body.rental{--a:#166534;--b:#d97706;--c:#22c55e;--soft:#f0fdf4}
+.rental .hero{background:linear-gradient(135deg,#052e16,#14532d);color:#fff;padding:72px 0 98px}
+.rental .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.rental .building{width:260px;height:270px;background:#fef3c7;margin:auto;position:relative;box-shadow:28px 24px 0 #d97706,0 35px 60px rgba(0,0,0,.28);transform:skewY(-2deg)}.rental .building:before{content:"";position:absolute;inset:28px;background:repeating-linear-gradient(90deg,#166534 0 32px,transparent 32px 54px),repeating-linear-gradient(0deg,transparent 0 38px,#fff 38px 48px)}.rental .building:after{content:"$";position:absolute;right:-58px;top:-34px;width:92px;height:92px;border-radius:50%;background:#22c55e;display:grid;place-items:center;font-size:3rem;font-weight:950;box-shadow:0 18px 30px rgba(34,197,94,.26)}
+.rental .calc-section{margin-top:-48px}.rental .calc-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px}.rental .form-panel{max-height:860px;overflow:auto}.rental .result-panel{background:#fffdf5;border:2px solid #fde68a}
+
+body.irr{--a:#a3e635;--b:#a855f7;--c:#22d3ee;--soft:#f7fee7;--ink:#f8fafc;--muted:#a1a1aa;--line:#3f3f46;--panel:#18181b}
+.irr{background:#09090b;color:#f8fafc}.irr .sitebar{background:rgba(9,9,11,.82);border-color:#27272a}.irr .brand,.irr .sitebar a{color:#fff}.irr .navpill{background:#27272a}
+.irr .hero{padding:72px 0 70px;background:radial-gradient(circle at 72% 22%,rgba(168,85,247,.22),transparent 28%),#09090b}
+.irr .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.irr .graph3d{height:300px;position:relative;perspective:700px}.irr .gridplane{position:absolute;inset:50px 10% 0;background:repeating-linear-gradient(0deg,rgba(163,230,53,.18) 0 1px,transparent 1px 30px),repeating-linear-gradient(90deg,rgba(34,211,238,.18) 0 1px,transparent 1px 40px);transform:rotateX(62deg) rotateZ(-8deg);box-shadow:0 0 50px rgba(163,230,53,.08)}.irr .curve{position:absolute;width:250px;height:130px;border-top:8px solid #a3e635;border-radius:50%;left:25%;top:75px;transform:rotate(-18deg);filter:drop-shadow(0 0 12px rgba(163,230,53,.5))}
+.irr .calc-section{padding:24px 0 56px}.irr .calc-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:24px}.irr .panel{border-color:#3f3f46}.irr input,.irr select{background:#09090b;color:#f8fafc;border-color:#3f3f46}.irr .result-panel{background:linear-gradient(145deg,#18181b,#27272a);box-shadow:0 25px 60px rgba(0,0,0,.45)}.irr .hero-result{color:#a3e635}.irr .content{background:#111113}.irr .article{background:#18181b;border-color:#3f3f46}.irr .article p,.irr .article li{color:#d4d4d8}.irr .aside{background:#18181b;border-color:#3f3f46}.irr .formula{background:#27272a}.irr th{background:#27272a}.irr footer{background:#09090b}
+@media(max-width:900px){
+.debt .hero-inner,.realestate .hero-inner,.takehome .hero-inner,.personalloan .hero-inner,.boat .hero-inner,.lease .hero-inner,.refinance .hero-inner,.budget .hero-inner,.rental .hero-inner,.irr .hero-inner{grid-template-columns:1fr}
+.debt .calc-layout,.realestate .calc-layout,.personalloan .calc-layout,.boat .calc-layout,.lease .calc-layout,.refinance .calc-layout,.budget .calc-layout,.rental .calc-layout,.irr .calc-layout{grid-template-columns:1fr}
+.takehome .result-panel{grid-template-columns:1fr}
+.visual{min-height:200px}
+}
+
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://yourdomain.com/boat-loan-calculator/#app", "name": "Boat Loan Calculator", "url": "https://yourdomain.com/boat-loan-calculator/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "description": "Estimate a boat loan payment, amount financed, tax, trade-in equity, total interest, and amortization from purchase price, down payment, APR, and term.", "browserRequirements": "Requires JavaScript for interactive calculations."}, {"@type": "BreadcrumbList", "@id": "https://yourdomain.com/boat-loan-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://yourdomain.com/"}, {"@type": "ListItem", "position": 2, "name": "Financial Calculators", "item": "https://yourdomain.com/financial-calculator/"}, {"@type": "ListItem", "position": 3, "name": "Boat Loan Calculator", "item": "https://yourdomain.com/boat-loan-calculator/"}]}, {"@type": "FAQPage", "@id": "https://yourdomain.com/boat-loan-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "How is a boat loan monthly payment calculated?", "acceptedAnswer": {"@type": "Answer", "text": "The calculator uses the standard fixed-rate amortization formula with amount financed, monthly interest rate, and total number of monthly payments."}}, {"@type": "Question", "name": "Does a trade-in reduce the boat loan?", "acceptedAnswer": {"@type": "Answer", "text": "Net trade-in equity can reduce the amount that must be financed. If the trade-in has an outstanding loan, this page subtracts that payoff from the trade-in value before applying the equity."}}, {"@type": "Question", "name": "Why can sales tax differ from this estimate?", "acceptedAnswer": {"@type": "Answer", "text": "Jurisdictions vary in rates, taxable fees, exemptions, and whether trade-in value reduces the taxable base. Choose the tax basis that matches your local rules and verify the final amount with the seller or tax authority."}}]}]}</script>
+<link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body class="boat">
+<header class="sitebar"><a class="brand" href="/">Calc<b>Pro</b></a><a class="navpill" href="#calculator">Calculator</a></header>
+<main>
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/financial-calculator/">Financial Calculators</a> / Boat Loan Calculator</nav>
+      <div class="hero-badge">Marine financing • purchase model</div>
+      <h1>Boat Loan Calculator</h1>
+      <p class="lead">Model the financed cost of a boat purchase with down payment, trade-in equity, sales tax, fees, and a fixed-rate marine loan.</p>
+    </div>
+    <div class="visual" aria-hidden="true"><div class="boat-art"><div class="hull"></div></div></div>
+  </div>
+</section>
+<section class="calc-section" id="calculator">
+  <div class="wrap calc-layout">
+    <section class="panel form-panel" aria-labelledby="calc-title">
+      <h2 class="section-title" id="calc-title">Boat Financing Estimate</h2>
+      <p class="section-kicker">Sales-tax treatment varies by jurisdiction, so choose the tax basis that matches your local rules.</p>
+      
+<form id="form">
+<div class="grid">
+<div class="field"><label for="price">Boat price</label><input id="price" type="number" min="0" step="1000" value="75000"></div>
+<div class="field"><label for="down">Down payment</label><input id="down" type="number" min="0" step="100" value="15000"></div>
+<div class="field"><label for="trade">Trade-in value</label><input id="trade" type="number" min="0" step="100" value="5000"></div>
+<div class="field"><label for="tradeLoan">Remaining trade-in loan</label><input id="tradeLoan" type="number" min="0" step="100" value="0"></div>
+<div class="field"><label for="taxRate">Sales tax rate (%)</label><input id="taxRate" type="number" min="0" max="30" step="0.1" value="6"></div>
+<div class="field"><label for="taxBasis">Tax basis</label><select id="taxBasis"><option value="price">Full boat price</option><option value="net">Price less trade-in value</option></select></div>
+<div class="field"><label for="fees">Registration / dealer / other fees</label><input id="fees" type="number" min="0" step="100" value="1200"></div>
+<div class="field"><label for="rate">APR (%)</label><input id="rate" type="number" min="0" step="0.01" value="7.5"></div>
+<div class="field full"><label for="term">Loan term (years)</label><input id="term" type="number" min="1" max="30" step="1" value="15"></div>
+</div>
+<div class="actions"><button class="btn primary" type="submit">Calculate Boat Loan</button><button class="btn ghost" type="reset">Reset</button></div>
+</form>
+      <div id="error" class="error" role="alert" hidden></div>
+    </section>
+    <aside class="panel result-panel" aria-live="polite">
+      
+<div class="small-note">Estimated monthly marine loan payment</div><div class="hero-result" id="payment">—</div>
+<div class="results">
+<div class="metric"><span>Amount financed</span><strong id="financed">—</strong></div>
+<div class="metric"><span>Net trade-in equity</span><strong id="equity">—</strong></div>
+<div class="metric"><span>Estimated sales tax</span><strong id="tax">—</strong></div>
+<div class="metric"><span>Total interest</span><strong id="interest">—</strong></div>
+<div class="metric"><span>Total of loan payments</span><strong id="total">—</strong></div>
+</div>
+<div class="table-wrap"><table><thead><tr><th>Month</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody id="schedule"></tbody></table></div>
+    </aside>
+  </div>
+</section>
+<section class="content">
+  <div class="wrap prose">
+    <article class="article">
+      
+<h2>What Is a Boat Loan Calculator?</h2>
+<p>A boat loan calculator estimates the monthly payment and total financing cost of purchasing a vessel with a fixed-rate installment loan. The financed amount can include sales tax and fees, then subtract down payment and net trade-in equity.</p>
+<h2>Boat Loan Formula</h2>
+<div class="formula">Payment = P × r ÷ [1 − (1 + r)<sup>−n</sup>]</div>
+<p>The formula is the same fixed-payment amortization equation used for many mortgages and auto loans. <strong>P</strong> is amount financed, <strong>r</strong> is the monthly rate, and <strong>n</strong> is the number of monthly payments.</p>
+<h2>Trade-In Equity and Tax</h2>
+<p>Net trade-in equity is trade-in value minus any remaining balance on the traded boat. Sales-tax treatment can vary by location, so the calculator lets you apply the entered tax rate either to the full boat price or to price less trade-in value.</p>
+<h2>What the Result Does Not Include</h2>
+<p>Boat ownership can involve insurance, registration, storage or marina fees, maintenance, fuel, winterization, inspections, and other costs. Those are not part of the loan payment unless you include a lender-approved financed fee in the fee input.</p>
+
+      <section class="faq" id="faq"><h2>Frequently Asked Questions</h2><details><summary>How is a boat loan monthly payment calculated?</summary><p>The calculator uses the standard fixed-rate amortization formula with amount financed, monthly interest rate, and total number of monthly payments.</p></details>
+<details><summary>Does a trade-in reduce the boat loan?</summary><p>Net trade-in equity can reduce the amount that must be financed. If the trade-in has an outstanding loan, this page subtracts that payoff from the trade-in value before applying the equity.</p></details>
+<details><summary>Why can sales tax differ from this estimate?</summary><p>Jurisdictions vary in rates, taxable fees, exemptions, and whether trade-in value reduces the taxable base. Choose the tax basis that matches your local rules and verify the final amount with the seller or tax authority.</p></details></section>
+      <section class="sources"><h2>Sources and Methodology</h2><p>The calculator methodology was cross-checked against the following sources. Results are estimates based on the assumptions entered and do not replace lender, tax, legal, or investment advice.</p><ul><li><a href="https://www.boattrader.com/research/whats-the-easiest-way-to-estimate-my-boat-loan-payment/" rel="noopener noreferrer">Boat Trader — Boat loan payment formula and planning</a></li>
+<li><a href="https://www.calculator.net/personal-loan-calculator.html" rel="noopener noreferrer">Calculator.net — General loan amortization reference via Personal Loan Calculator</a></li></ul></section>
+    </article>
+    <aside class="aside">
+      <h3>CalcPro Method</h3>
+      <p>Amount financed is purchase price plus the selected tax basis and fees, less down payment and net trade-in equity; the payment is standard amortization.</p>
+      <p class="small-note">Sales tax is intentionally configurable because trade-in tax treatment differs by jurisdiction.</p>
+    </aside>
+  </div>
+</section>
+</main>
+<footer><div class="wrap">CalcPro · Interactive financial calculator · Standalone browser calculation</div></footer>
+<script>
+const $ = (id) => document.getElementById(id);
+const n = (id) => {
+  const el = $(id);
+  const v = el ? parseFloat(el.value) : NaN;
+  return Number.isFinite(v) ? v : 0;
+};
+const money = (v) => Number.isFinite(v) ? new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(v) : '—';
+const pct = (v,d=2) => Number.isFinite(v) ? v.toFixed(d)+'%' : '—';
+const pmt = (principal, annualRate, months) => {
+  if (principal < 0 || months <= 0) return NaN;
+  const r = annualRate/100/12;
+  if (Math.abs(r) < 1e-12) return principal/months;
+  return principal * r / (1 - Math.pow(1+r,-months));
+};
+const balanceAfter = (principal, annualRate, months, paidMonths) => {
+  if (paidMonths <= 0) return principal;
+  if (paidMonths >= months) return 0;
+  const r = annualRate/100/12;
+  const pay = pmt(principal,annualRate,months);
+  if (Math.abs(r) < 1e-12) return Math.max(0, principal-pay*paidMonths);
+  return Math.max(0, principal*Math.pow(1+r,paidMonths)-pay*((Math.pow(1+r,paidMonths)-1)/r));
+};
+const setText = (id, value) => { const el=$(id); if(el) el.textContent=value; };
+const setHTML = (id, value) => { const el=$(id); if(el) el.innerHTML=value; };
+const showError = (msg) => { const e=$('error'); if(e){e.textContent=msg;e.hidden=!msg;} };
+
+
+function calculate(){
+ showError('');
+ const price=n('price'), down=n('down'), trade=n('trade'), tradeLoan=n('tradeLoan'), rate=n('rate'), term=n('term');
+ if(price<=0||term<=0||down<0||trade<0||tradeLoan<0||rate<0){showError('Enter a valid boat price and term with non-negative financing inputs.');return;}
+ const tradeEq=trade-tradeLoan;
+ const taxable=$('taxBasis').value==='net'?Math.max(0,price-trade):price;
+ const tax=taxable*n('taxRate')/100;
+ const financed=Math.max(0,price+tax+n('fees')-down-tradeEq);
+ const months=Math.round(term*12), pay=pmt(financed,rate,months), interest=pay*months-financed;
+ setText('payment',money(pay));setText('financed',money(financed));setText('equity',money(tradeEq));setText('tax',money(tax));setText('interest',money(interest));setText('total',money(pay*months));
+ let bal=financed, rows='', r=rate/100/12;
+ for(let i=1;i<=Math.min(12,months);i++){const int=bal*r;const pr=Math.min(bal,pay-int);bal=Math.max(0,bal-pr);rows+=`<tr><td>${i}</td><td>${money(pr)}</td><td>${money(int)}</td><td>${money(bal)}</td></tr>`;}
+ setHTML('schedule',rows);
+}
+$('form').addEventListener('submit',e=>{e.preventDefault();calculate()});$('form').addEventListener('reset',()=>setTimeout(calculate,0));calculate();
+</script>
+<script src="/assets/js/global.js" defer></script>
+</body>
+</html>

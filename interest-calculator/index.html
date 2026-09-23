@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Interest Calculator – Compound Growth & Contributions | CalcPro</title>
+<meta name="description" content="Calculate compound interest with an initial balance, monthly contributions, annual rate, compounding frequency, tax estimate, and inflation adjustment.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<link rel="canonical" href="/interest-calculator/">
+<meta property="og:type" content="website"><meta property="og:title" content="Interest Calculator">
+<meta property="og:description" content="Calculate compound interest with an initial balance, monthly contributions, annual rate, compounding frequency, tax estimate, and inflation adjustment."><meta name="theme-color" content="#0a6ff2">
+<style>
+:root{
+  --ink:#0b1933;--muted:#60708a;--line:#dbe8f6;--blue:#0a6ff2;--blue2:#20a5ff;
+  --green:#16b86b;--yellow:#f6b51f;--red:#ef4f58;--panel:rgba(255,255,255,.82);
+  --shadow:0 18px 45px rgba(25,74,123,.16),inset 0 1px 0 rgba(255,255,255,.95);
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+background:radial-gradient(circle at 12% 6%,rgba(32,165,255,.18),transparent 28%),
+radial-gradient(circle at 88% 15%,rgba(35,205,153,.12),transparent 24%),
+linear-gradient(180deg,#f8fcff,#eef7ff 48%,#f7fbff);line-height:1.65}
+a{color:#0967d8;text-decoration:none}a:hover{text-decoration:underline}
+.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(248,252,255,.8);backdrop-filter:blur(18px);border-bottom:1px solid rgba(196,219,241,.72)}
+.nav{height:72px;display:flex;align-items:center;gap:28px}.brand{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:850;color:var(--ink)}
+.brand i{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;color:white;font-style:normal;background:linear-gradient(145deg,#27b3ff,#0562d7);box-shadow:0 9px 18px rgba(10,111,242,.28),inset 0 2px 2px rgba(255,255,255,.45)}
+.navlinks{display:flex;gap:20px;margin-left:18px;font-size:14px;font-weight:700}.navlinks a{color:#20324e}.search{margin-left:auto;background:#fff;border:1px solid #e0ebf6;border-radius:999px;padding:10px 15px;min-width:210px;color:#6d7d93;font-size:13px;box-shadow:0 8px 20px rgba(26,70,112,.08)}
+.hero{padding:28px 0 18px}.breadcrumb{font-size:13px;color:#6c7b91;margin-bottom:18px}.breadcrumb span{margin:0 8px;color:#a1aec0}
+.hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:28px;align-items:center}
+h1{font-size:clamp(44px,6vw,72px);line-height:.98;margin:0 0 16px;letter-spacing:-3px}h1 b{color:var(--blue)}
+.lead{font-size:17px;color:#42546e;max-width:700px;margin:0}.chips{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.chip{background:#fff;border:1px solid #dceafa;border-radius:999px;padding:7px 11px;font-size:12px;font-weight:800;color:#35506f;box-shadow:0 8px 18px rgba(37,86,137,.07)}
+.hero-art{height:270px;position:relative;perspective:900px}.floor{position:absolute;left:10%;right:7%;bottom:12px;height:34px;border-radius:50%;background:rgba(32,75,115,.14);filter:blur(15px)}
+.obj{position:absolute;box-shadow:var(--shadow)}.glass{background:rgba(255,255,255,.78);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.9)}
+.calc-shell{margin-top:20px;padding:16px;border-radius:32px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.92);box-shadow:0 28px 70px rgba(37,86,137,.15);backdrop-filter:blur(20px)}
+.calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}.card{background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(244,249,255,.86));border:1px solid rgba(218,231,245,.92);border-radius:24px;padding:22px;box-shadow:var(--shadow)}
+.card h2{font-size:21px;margin:0 0 4px;letter-spacing:-.5px}.sub{font-size:13px;color:#687990;margin:0 0 15px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}
+label{font-size:13px;font-weight:800;color:#263a56}.input-wrap{display:flex;align-items:center;gap:8px}
+input,select{width:100%;border:1px solid #cddff1;background:#fbfdff;border-radius:12px;padding:11px 12px;font:inherit;color:#152641;box-shadow:inset 0 2px 4px rgba(26,77,123,.05);outline:none}
+input:focus,select:focus{border-color:#66b5ff;box-shadow:0 0 0 3px rgba(32,165,255,.12)}.unit{font-size:12px;color:#667890;white-space:nowrap}
+.check{display:flex;align-items:center;gap:8px;font-size:13px;color:#42536d}.check input{width:auto;accent-color:var(--blue)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;background:#edf5ff;border:1px solid #dceafb;padding:4px;border-radius:15px;margin-bottom:16px}
+.tab{border:0;background:transparent;padding:9px 12px;border-radius:11px;font-weight:800;color:#334866;cursor:pointer}.tab.active{background:linear-gradient(145deg,#2aa8ff,#0668df);color:#fff;box-shadow:0 9px 17px rgba(8,111,240,.26)}
+.actions{display:grid;grid-template-columns:1.5fr .8fr;gap:10px;margin-top:18px}.btn{border:0;border-radius:14px;padding:13px 14px;font-weight:800;cursor:pointer}.primary{color:#fff;background:linear-gradient(145deg,#25a9ff,#0064dc);box-shadow:0 12px 22px rgba(6,104,221,.28)}.secondary{background:#edf3f9;color:#273a55}
+.error{color:#b4232b;font-size:12px;margin-top:10px;min-height:18px}
+.result-hero{padding:18px;border-radius:19px;background:linear-gradient(135deg,#edfff7,#eef8ff);position:relative;overflow:hidden}.result-hero:after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;right:-30px;top:-45px;background:radial-gradient(circle,#55d7ff,#0b79ef);opacity:.17}
+.result-hero small{color:#60728b}.big{font-size:36px;font-weight:900;letter-spacing:-1.8px;line-height:1.1;margin-top:3px}.accent{color:var(--green);font-weight:850;font-size:18px}
+.stats{margin-top:13px;border-radius:16px;background:#fff;border:1px solid #e3edf7;overflow:hidden}.stat{display:flex;justify-content:space-between;gap:12px;padding:10px 12px;border-bottom:1px solid #e8f0f7;font-size:13px}.stat:last-child{border-bottom:0}.stat b{text-align:right}
+.answerbox{margin:14px 0 0;padding:15px 16px;border-radius:16px;background:#0e2544;color:#fff;box-shadow:0 15px 28px rgba(12,37,68,.18);font-size:13px}.answerbox strong{color:#73d3ff}
+.bar{height:12px;background:#e7f1fb;border-radius:999px;overflow:hidden;margin-top:14px}.bar span{display:block;height:100%;background:linear-gradient(90deg,var(--blue2),var(--green));border-radius:inherit}
+.mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}.mini{padding:13px;border-radius:15px;background:#fff;border:1px solid #e1ecf7}.mini small{display:block;color:#718299}.mini b{font-size:16px}
+.schedule{max-height:300px;overflow:auto;border:1px solid #e0ebf5;border-radius:14px;margin-top:14px}table{width:100%;border-collapse:collapse;background:#fff;min-width:540px}th,td{padding:10px 12px;text-align:right;border-bottom:1px solid #e8eff6;font-size:12px}th:first-child,td:first-child{text-align:left}th{position:sticky;top:0;background:#eff6fc;z-index:1}
+.content{padding:38px 0 70px}.content-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:22px}.article,.toc{background:rgba(255,255,255,.9);border:1px solid #dfeaf6;border-radius:25px;box-shadow:var(--shadow)}
+.article{padding:30px}.toc{padding:24px;align-self:start;position:sticky;top:94px}.article h2{font-size:28px;line-height:1.2;margin:38px 0 12px;letter-spacing:-.8px}.article h2:first-child{margin-top:0}.article h3{font-size:20px;margin:24px 0 8px}.article p,.article li{color:#42536d}.direct{border-left:5px solid var(--blue);background:#f0f7ff;padding:16px 18px;border-radius:14px;color:#263a56}
+.formula{font:800 16px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;background:#0d213c;color:#eef8ff;padding:16px;border-radius:15px;overflow:auto}.note{background:#fff9e9;border:1px solid #f5df9c;padding:15px 17px;border-radius:14px;color:#5c4d22}
+.faq{border-top:1px solid #e4edf6;padding:15px 0}.faq summary{font-weight:800;cursor:pointer}.faq p{margin-bottom:0}.toc h3{margin-top:0}.toc a{display:block;padding:7px 0;color:#34506f;font-size:14px}
+.sources li{margin:8px 0}footer{padding:28px 0 42px;color:#63748a;font-size:13px;text-align:center}
+@media(max-width:960px){.navlinks,.search{display:none}.hero-grid,.calc-grid,.content-grid{grid-template-columns:1fr}.hero-art{height:235px}.toc{position:static}}
+@media(max-width:620px){.wrap{width:min(100% - 20px,1180px)}.hero{padding-top:18px}.hero-art{transform:scale(.86);transform-origin:center top;margin-bottom:-28px}h1{font-size:43px;letter-spacing:-2px}.calc-shell{padding:8px;border-radius:23px}.card{padding:16px;border-radius:19px}.form-grid,.mini-grid,.actions{grid-template-columns:1fr}.field.full{grid-column:auto}.article{padding:21px}.nav{height:64px}}
+
+
+/* Topic-specific 3D hero scenes */
+.visual-tvm .cube{width:90px;height:90px;border-radius:21px;background:linear-gradient(145deg,#fff,#bfe1ff);transform:rotateX(12deg) rotateY(-18deg) rotateZ(7deg);display:grid;place-items:center;font-weight:900;color:#0b6fe8;font-size:20px}
+.visual-tvm .a{right:210px;top:72px}.visual-tvm .b{right:102px;top:35px}.visual-tvm .c{right:28px;top:112px}.visual-tvm .arrow{right:80px;top:108px;width:250px;height:12px;border-radius:10px;background:linear-gradient(90deg,#21a7ff,#16b86b);transform:rotate(-10deg)}
+.visual-house .house{right:68px;top:52px;width:235px;height:155px;border-radius:22px;background:linear-gradient(145deg,#f6fbff,#c9e4fa);transform:rotateY(-12deg) rotateX(7deg);border:5px solid #fff}.visual-house .house:before{content:"";position:absolute;left:27px;top:-68px;border-left:88px solid transparent;border-right:88px solid transparent;border-bottom:78px solid #178cff;filter:drop-shadow(0 12px 10px rgba(22,105,190,.2))}.visual-house .door{right:145px;top:125px;width:58px;height:82px;border-radius:15px 15px 4px 4px;background:#0d315f}.visual-house .key{right:15px;top:155px;width:160px;height:22px;border-radius:20px;background:linear-gradient(145deg,#ffe27a,#f3b91f);transform:rotate(-12deg)}.visual-house .key:before{content:"";position:absolute;width:50px;height:50px;border:14px solid #f6c72b;border-radius:50%;left:-38px;top:-28px}
+.visual-loan .paper{right:80px;top:34px;width:215px;height:185px;border-radius:22px;background:#fff;transform:rotate(6deg);border:1px solid #dceafa}.visual-loan .paper:before{content:"LOAN\A AGREEMENT";white-space:pre;position:absolute;left:28px;top:26px;font-weight:900;color:#0b6ff2;line-height:1.25;font-size:20px}.visual-loan .paper:after{content:"";position:absolute;left:28px;right:28px;bottom:35px;height:55px;background:repeating-linear-gradient(#dfeaf5 0 6px,transparent 6px 15px)}.visual-loan .coin{width:72px;height:72px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#fff4a6,#f8c62b 55%,#d79b00);border:6px solid #ffd94d}.visual-loan .c1{right:24px;bottom:20px}.visual-loan .c2{right:265px;bottom:28px;transform:scale(.78)}
+.visual-car .car{right:18px;top:95px;width:320px;height:92px;border-radius:50px 70px 24px 24px;background:linear-gradient(145deg,#24a8ff,#0564dc);transform:rotateY(-8deg);box-shadow:0 24px 35px rgba(0,92,190,.24)}.visual-car .car:before{content:"";position:absolute;left:65px;top:-58px;width:168px;height:70px;border-radius:70px 70px 10px 10px;background:linear-gradient(145deg,#bfe7ff,#73c5fb);border:8px solid #147fe5}.visual-car .wheel{width:60px;height:60px;border-radius:50%;background:radial-gradient(circle,#dfe7ed 0 26%,#17304b 27% 60%,#081522 61%);bottom:28px}.visual-car .w1{right:238px}.visual-car .w2{right:60px}.visual-car .road{right:0;bottom:17px;width:360px;height:36px;border-radius:50%;background:#9db0c3;filter:blur(1px)}
+.visual-interest .coin{width:118px;height:118px;border-radius:50%;background:radial-gradient(circle at 32% 25%,#fff8b0,#ffd547 50%,#e3a500 73%);border:9px solid #ffe76d;display:grid;place-items:center;font-size:34px;font-weight:900;color:#9b6800}.visual-interest .c1{right:175px;top:46px}.visual-interest .c2{right:67px;top:111px;transform:scale(.75)}.visual-interest .ring{right:30px;top:22px;width:300px;height:180px;border:4px solid rgba(10,111,242,.22);border-radius:50%;transform:rotate(-15deg)}
+.visual-payment .cardpay{right:82px;top:55px;width:250px;height:155px;border-radius:24px;background:linear-gradient(145deg,#1ea4ff,#075dce);transform:rotate(-8deg);color:#fff;padding:28px;font-weight:900;font-size:20px}.visual-payment .cardpay:before{content:"MONTHLY PAYMENT";display:block;font-size:11px;letter-spacing:2px;opacity:.78;margin-bottom:18px}.visual-payment .calendar{right:28px;bottom:24px;width:150px;height:128px;border-radius:20px;background:#fff;border:1px solid #dceafa;transform:rotate(7deg)}.visual-payment .calendar:before{content:"12";position:absolute;inset:25px;display:grid;place-items:center;font-size:46px;font-weight:900;color:#0a6ff2}
+.visual-retirement .sun{right:80px;top:18px;width:115px;height:115px;border-radius:50%;background:radial-gradient(circle,#fff7aa,#ffc83d 60%,#f2a900);box-shadow:0 0 45px rgba(255,194,32,.35)}.visual-retirement .bars{right:55px;bottom:30px;width:300px;height:150px;display:flex;gap:18px;align-items:flex-end}.visual-retirement .bars i{display:block;width:48px;border-radius:15px 15px 6px 6px;background:linear-gradient(#33b9ff,#0a6ff2);box-shadow:0 14px 25px rgba(10,111,242,.18)}.visual-retirement .bars i:nth-child(1){height:45px}.visual-retirement .bars i:nth-child(2){height:76px}.visual-retirement .bars i:nth-child(3){height:105px}.visual-retirement .bars i:nth-child(4){height:140px}
+.visual-amort .steps3d{right:28px;bottom:30px;width:340px;height:200px;transform:rotateY(-13deg) rotateX(5deg)}.visual-amort .steps3d i{position:absolute;right:0;height:42px;border-radius:12px 0 0 12px;background:linear-gradient(145deg,#cbe8ff,#5eb8ff);box-shadow:0 13px 18px rgba(30,105,170,.15)}.visual-amort .steps3d i:nth-child(1){bottom:0;width:330px}.visual-amort .steps3d i:nth-child(2){bottom:48px;width:260px}.visual-amort .steps3d i:nth-child(3){bottom:96px;width:190px}.visual-amort .steps3d i:nth-child(4){bottom:144px;width:120px}.visual-amort .tag{right:245px;top:18px;width:115px;padding:14px;border-radius:18px;background:#0d2c51;color:#fff;font-weight:900;text-align:center}
+.visual-invest .chart3d{right:45px;bottom:30px;width:320px;height:190px;display:flex;gap:20px;align-items:flex-end;transform:rotateY(-10deg)}.visual-invest .chart3d i{width:52px;border-radius:14px 14px 5px 5px;background:linear-gradient(#43d8ae,#0a8f72);box-shadow:12px 15px 20px rgba(9,114,91,.18)}.visual-invest .chart3d i:nth-child(1){height:55px}.visual-invest .chart3d i:nth-child(2){height:85px}.visual-invest .chart3d i:nth-child(3){height:126px}.visual-invest .chart3d i:nth-child(4){height:175px}.visual-invest .arrowup{right:68px;top:18px;font-size:74px;color:#0a6ff2;font-weight:900;transform:rotate(-7deg)}
+.visual-compound .core{right:130px;top:70px;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff,#72c9ff 40%,#0868dd 75%);box-shadow:0 25px 45px rgba(10,111,242,.25)}.visual-compound .orbit{right:45px;top:45px;width:300px;height:190px;border-radius:50%;border:4px solid rgba(10,111,242,.24);transform:rotate(-15deg)}.visual-compound .orbit:after{content:"";position:absolute;width:28px;height:28px;border-radius:50%;background:#16b86b;right:22px;top:16px;box-shadow:0 0 0 9px rgba(22,184,107,.12)}.visual-compound .orbit.o2{transform:rotate(35deg);border-color:rgba(246,181,31,.35)}
+
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Interest Calculator", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "description": "Calculate compound interest with an initial balance, monthly contributions, annual rate, compounding frequency, tax estimate, and inflation adjustment.", "url": "/interest-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Financial Calculators", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Interest Calculator", "item": "/interest-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is compound interest?", "acceptedAnswer": {"@type": "Answer", "text": "Compound interest means interest can be earned on both the original principal and previously accumulated interest."}}, {"@type": "Question", "name": "What is an effective annual rate?", "acceptedAnswer": {"@type": "Answer", "text": "The effective annual rate reflects the effect of compounding within the year."}}, {"@type": "Question", "name": "Does this predict investment returns?", "acceptedAnswer": {"@type": "Answer", "text": "No. It is a mathematical projection based on the rate you enter, not a market forecast."}}]}]}</script>
+<link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body class="">
+<header class="topbar"><div class="wrap nav"><a class="brand" href="/"><i>▦</i> CalcPro</a>
+<nav class="navlinks"><a href="/finance/">Finance</a><a href="/health/">Health</a><a href="/math/">Math</a><a href="/other/">Other</a></nav>
+<a class="search site-search" href="/search/">⌕ Search calculators...</a></div></header>
+<main>
+<section class="hero"><div class="wrap">
+<div class="breadcrumb">Home <span>›</span> Financial Calculators <span>›</span> Interest Calculator</div>
+<div class="hero-grid"><div><h1>Interest <b>Calculator</b></h1><p class="lead">Project how an initial balance and regular contributions may grow under compound interest, then view interest earned and inflation-adjusted buying power.</p>
+<div class="chips"><span class="chip">Compound growth</span><span class="chip">Contributions</span><span class="chip">Tax estimate</span><span class="chip">Inflation</span></div></div><div class="hero-art visual-interest"><div class="floor"></div><div class="obj ring"></div><div class="obj coin c1">%</div><div class="obj coin c2">+</div></div></div>
+<section class="calc-shell" id="calculator"><div class="calc-grid">
+<div class="card">
+<h2>Compound interest projection</h2><p class="sub">Monthly contributions are modeled with an equivalent monthly rate derived from the selected nominal compounding frequency.</p>
+<div class="form-grid">
+<div class="field"><label for="initial">Initial amount ($)</label><input id="initial" type="number" value="20000" min="0"></div>
+<div class="field"><label for="monthly">Monthly contribution ($)</label><input id="monthly" type="number" value="500" min="0"></div>
+<div class="field"><label for="rate">Annual nominal rate (%)</label><input id="rate" type="number" value="6" step=".001"></div>
+<div class="field"><label for="freq">Compound frequency</label><select id="freq"><option value="12">Monthly</option><option value="4">Quarterly</option><option value="2">Semiannual</option><option value="1">Annual</option><option value="365">Daily</option></select></div>
+<div class="field"><label for="years">Years</label><input id="years" type="number" value="10" min="0"></div>
+<div class="field"><label for="tax">Tax on interest estimate (%)</label><input id="tax" type="number" value="0" min="0" max="100"></div>
+<div class="field full"><label for="inflation">Inflation estimate (%)</label><input id="inflation" type="number" value="2.5" min="0"></div>
+</div><div class="actions"><button class="btn primary" id="calculate">Calculate →</button><button class="btn secondary" id="clear">Reset</button></div><div class="error" id="error"></div>
+</div>
+<div class="card">
+<div class="result-hero"><small>Projected ending balance</small><div class="big" id="ending">$0.00</div><div class="accent" id="effective">—</div></div>
+<div class="stats"><div class="stat"><span>Total principal contributed</span><b id="principal">—</b></div><div class="stat"><span>Interest earned</span><b id="interest">—</b></div><div class="stat"><span>After simple tax estimate</span><b id="afterTax">—</b></div><div class="stat"><span>Inflation-adjusted value</span><b id="real">—</b></div></div>
+</div>
+</div></section></div></section>
+<section class="content"><div class="wrap content-grid"><article class="article">
+<section id="what"><h2>What Is an Interest Calculator?</h2><p class="direct"><strong>Answer:</strong> An interest calculator projects how money can grow when interest is compounded and when additional contributions are made. This version also provides simple planning adjustments for tax on interest and inflation.</p></section>
+<section id="how"><h2>How to Use the Interest Calculator</h2><ol><li>Enter the starting amount and monthly contribution.</li><li>Enter the nominal annual interest rate and compounding frequency.</li><li>Set the investment length.</li><li>Optionally enter tax and inflation estimates.</li></ol></section>
+<section id="formula"><h2>Compound Interest Method</h2><p>Without additional contributions, compound growth is commonly written as:</p><div class="formula">A = P(1 + r/n)^(nt)</div><p>With recurring contributions, this page compounds the balance monthly using a monthly rate equivalent to the selected nominal compounding frequency, then adds each monthly contribution.</p></section>
+<section id="example"><h2>Calculation Example</h2><p>A $20,000 starting balance with $500 contributed each month grows from both new deposits and compounding. The longer the time horizon, the larger the share of the ending balance that may come from interest.</p></section>
+<section id="limits"><h2>Assumptions and Limitations</h2><p>Returns are assumed constant, contributions occur monthly, the tax estimate is simplified, and the inflation adjustment assumes a constant annual rate. Real investments can fluctuate and may have fees.</p></section>
+<section id="faq"><h2>Interest Calculator FAQs</h2><details class="faq"><summary>What is compound interest?</summary><p>Compound interest means interest can be earned on both the original principal and previously accumulated interest.</p></details>
+<details class="faq"><summary>What is an effective annual rate?</summary><p>The effective annual rate reflects the effect of compounding within the year.</p></details>
+<details class="faq"><summary>Does this predict investment returns?</summary><p>No. It is a mathematical projection based on the rate you enter, not a market forecast.</p></details></section>
+<section id="sources"><h2>Sources and Methodology</h2><p>This page uses standard financial mathematics and the following sources for methodology and context.</p><ul class="sources"><li><a href="https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator" target="_blank" rel="noopener">Investor.gov — Compound Interest Calculator</a></li>
+<li><a href="https://www.calculator.net/interest-calculator.html" target="_blank" rel="noopener">Calculator.net — Interest Calculator</a></li></ul>
+<p style="font-size:13px;color:#687990"><strong>Note:</strong> Results are estimates for planning and education. Actual lender, investment, tax, insurance, or account terms can differ.</p></section>
+</article><aside class="toc"><h3>On this page</h3><a href="#calculator">Calculator</a>
+<a href="#what">What it calculates</a>
+<a href="#how">How to use</a>
+<a href="#formula">Formula / method</a>
+<a href="#example">Example</a>
+<a href="#limits">Limitations</a>
+<a href="#faq">FAQs</a>
+<a href="#sources">Sources</a></aside></div></section>
+</main><footer><div class="wrap">Interest Calculator • CalcPro • Browser-based financial planning tool.</div></footer>
+<script>
+const $=id=>document.getElementById(id);
+const money=n=>Number.isFinite(n)?new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(n):'—';
+const number=(n,d=2)=>Number.isFinite(n)?Number(n).toLocaleString('en-US',{maximumFractionDigits:d,minimumFractionDigits:d}):'—';
+function val(id){return parseFloat($(id).value)}
+function err(msg=''){const e=$('error');if(e)e.textContent=msg}
+
+
+function calculate(){try{
+ const initial=val('initial'),monthly=val('monthly'),annual=val('rate')/100,m=val('freq'),years=val('years'),tax=val('tax')/100,infl=val('inflation')/100;
+ if(!(initial>=0&&monthly>=0&&annual>-1&&m>0&&years>=0&&tax>=0&&tax<=1&&infl>=0))throw Error('Please check the amounts, rates, and time period.');
+ const months=Math.round(years*12),monthlyEff=Math.pow(1+annual/m,m/12)-1;
+ let bal=initial;for(let i=0;i<months;i++){bal*=1+monthlyEff;bal+=monthly}
+ const principal=initial+monthly*months,interest=bal-principal,afterTax=bal-Math.max(0,interest)*tax,real=afterTax/Math.pow(1+infl,years),ear=Math.pow(1+annual/m,m)-1;
+ $('ending').textContent=money(bal);$('principal').textContent=money(principal);$('interest').textContent=money(interest);$('afterTax').textContent=money(afterTax);$('real').textContent=money(real);$('effective').textContent=`Effective annual rate ≈ ${number(ear*100,3)}%`;err('');
+}catch(e){err(e.message)}}
+$('calculate').onclick=calculate;$('clear').onclick=()=>location.reload();calculate();
+</script>
+<script src="/assets/js/global.js" defer></script>
+</body></html>

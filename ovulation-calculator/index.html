@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ovulation Calculator – Free Accurate Online Calculator</title>
+<meta name="description" content="Estimate ovulation, fertile-window dates, and the next period from the last menstrual period and average cycle length.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/ovulation-calculator/">
+<meta property="og:title" content="Ovulation Calculator">
+<meta property="og:description" content="Estimate ovulation, fertile-window dates, and the next period from the last menstrual period and average cycle length.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="/ovulation-calculator/">
+<meta name="theme-color" content="#d94f92">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Ovulation Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Estimate ovulation, fertile-window dates, and the next period from the last menstrual period and average cycle length.", "url": "/ovulation-calculator/", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Ovulation Calculator", "item": "/ovulation-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does this ovulation calculator estimate ovulation?", "acceptedAnswer": {"@type": "Answer", "text": "It estimates the next period from the last menstrual period and average cycle length, then counts back 14 days to estimate ovulation."}}, {"@type": "Question", "name": "What is the fertile window?", "acceptedAnswer": {"@type": "Answer", "text": "ACOG describes a fertile window that extends from about five days before ovulation through about one day after ovulation because sperm may survive several days and the egg survives roughly 12–24 hours."}}, {"@type": "Question", "name": "Is the estimated ovulation date exact?", "acceptedAnswer": {"@type": "Answer", "text": "No. Ovulation varies between people and between cycles. Calendar prediction is less reliable when cycles are irregular."}}, {"@type": "Question", "name": "Can I use this calculator as birth control?", "acceptedAnswer": {"@type": "Answer", "text": "No. A calendar estimate is not reliable enough to be used alone to prevent pregnancy."}}]}]}</script>
+<style>
+    :root{--bg:#fff8fb;--panel:#ffffff;--ink:#392536;--muted:#7e6579;--accent:#d94f92;--accent2:#ffb3d5;--soft:#fde7f2;--line:#efd3e2;--shadow:0 24px 65px rgba(126,54,94,.12);}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.62}
+    a{color:var(--accent)} .wrap{width:min(1160px,calc(100% - 32px));margin:auto}
+    .topbar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;position:relative;z-index:5}
+    .brand{font-weight:900;letter-spacing:-.04em;font-size:1.2rem;color:var(--ink);text-decoration:none} .brand i{color:var(--accent);font-style:normal}
+    .crumb{font-size:.86rem;color:var(--muted)} .crumb a{color:inherit;text-decoration:none}
+    .hero{position:relative;isolation:isolate;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);margin-bottom:28px}
+    .hero:before,.hero:after{content:"";position:absolute;z-index:-1;filter:blur(2px);opacity:.7}
+    .hero-copy h1{font-size:clamp(2.35rem,5vw,5.2rem);line-height:.98;letter-spacing:-.065em;margin:.15em 0 .28em}
+    .kicker{display:inline-flex;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--panel) 80%, transparent);font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em}
+    .hero-copy p{max-width:680px;color:var(--muted);font-size:1.03rem}
+    .stage{position:relative;min-height:300px;display:grid;place-items:center;perspective:900px}
+    .orb{width:210px;height:210px;border-radius:38% 62% 61% 39%/45% 43% 57% 55%;background:linear-gradient(145deg,var(--accent),var(--accent2));box-shadow:inset -22px -24px 45px rgba(0,0,0,.16),inset 14px 14px 30px rgba(255,255,255,.32),0 35px 70px color-mix(in srgb,var(--accent) 32%, transparent);transform:rotate(-10deg) translateZ(30px)}
+    .float{position:absolute;border:1px solid color-mix(in srgb,var(--line) 75%, transparent);background:color-mix(in srgb,var(--panel) 85%, transparent);backdrop-filter:blur(12px);box-shadow:0 18px 45px rgba(0,0,0,.12);border-radius:18px;padding:12px 14px;font-weight:800}
+    .calc-shell{display:grid;gap:22px;margin:24px 0 46px;align-items:start}
+    .calc-card,.result-card,.content-card{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow)}
+    .calc-card{padding:clamp(20px,3vw,34px)} .calc-card h2,.result-card h2{margin-top:0;letter-spacing:-.03em}
+    .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+    .field{display:grid;gap:7px} .field.full{grid-column:1/-1} label,.label{font-size:.88rem;font-weight:800}
+    input,select,button{font:inherit} input,select{width:100%;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 45%,var(--panel));color:var(--ink);padding:12px 13px;border-radius:13px;outline:none}
+    input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px} button{border:0;border-radius:14px;padding:12px 18px;font-weight:900;cursor:pointer}
+    .primary{background:var(--accent);color:white;box-shadow:0 10px 24px color-mix(in srgb,var(--accent) 28%,transparent)} .secondary{background:var(--soft);color:var(--ink);border:1px solid var(--line)}
+    .error{min-height:1.5em;color:#b42318;font-weight:700;font-size:.9rem;margin-top:8px}
+    .result-card{padding:clamp(20px,3vw,34px);position:sticky;top:18px;overflow:hidden}
+    .metric{font-size:clamp(2rem,5vw,4.6rem);line-height:1;font-weight:950;letter-spacing:-.06em;color:var(--accent);margin:.15em 0}
+    .submetrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px} .mini{background:var(--soft);padding:14px;border-radius:16px;border:1px solid var(--line)} .mini b{display:block;font-size:1.1rem}
+    .note{padding:13px 15px;border-left:4px solid var(--accent);background:var(--soft);border-radius:10px;color:var(--muted);font-size:.92rem}
+    .content{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;margin-bottom:56px} .content-card{padding:clamp(22px,4vw,40px)} .content h2{font-size:clamp(1.45rem,2.4vw,2.05rem);letter-spacing:-.035em;margin-top:1.65em} .content h2:first-child{margin-top:0}
+    .content h3{margin-top:1.35em} table{width:100%;border-collapse:collapse;margin:18px 0} th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top} th{font-size:.84rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+    code,.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--soft);padding:.15em .35em;border-radius:7px}
+    details{border-top:1px solid var(--line);padding:13px 0} summary{font-weight:850;cursor:pointer} details p{color:var(--muted)}
+    aside{display:grid;gap:16px;align-content:start} .sidebox{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);padding:18px} .sidebox h3{margin-top:0}
+    footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:.9rem}
+    .pillrow{display:flex;gap:8px;flex-wrap:wrap} .pill{padding:7px 10px;border-radius:999px;background:var(--soft);border:1px solid var(--line);font-size:.82rem;font-weight:800}
+    .unit-toggle{display:inline-flex;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px;margin-bottom:16px} .unit-toggle button{padding:7px 12px;border-radius:999px;background:transparent;color:var(--ink)} .unit-toggle button.active{background:var(--panel);box-shadow:0 4px 14px rgba(0,0,0,.1)}
+    ul.clean{padding-left:1.2rem} .source-list{padding-left:1.1rem;font-size:.9rem;color:var(--muted)} .source-list li{margin:.65em 0}
+    .hero{border-radius:52px 18px 52px 18px;padding:46px;background:linear-gradient(145deg,var(--panel),var(--soft));display:grid;grid-template-columns:1.05fr .95fr;align-items:center}.calc-shell{grid-template-columns:1fr 1fr}.calc-card{border-radius:38px 18px 38px 18px}.result-card{border-radius:18px 38px 18px 38px}.content-card,.sidebox{border-radius:30px}.hero:before{width:420px;height:420px;border-radius:50%;background:color-mix(in srgb,var(--accent) 18%,transparent);left:-230px;bottom:-260px}
+    @media(max-width:860px){.hero,.calc-shell,.content{grid-template-columns:1fr}.hero{padding:26px}.stage{min-height:230px}.result-card{position:static}.content{grid-template-columns:1fr}.stage{order:initial}}
+    @media(max-width:560px){.wrap{width:min(100% - 20px,1160px)}.form-grid,.submetrics{grid-template-columns:1fr}.hero-copy h1{font-size:2.45rem}.hero{border-radius:20px}.calc-card,.result-card,.content-card,.sidebox{border-radius:18px}}
+    @media(prefers-reduced-motion:no-preference){.float{animation:drift 5s ease-in-out infinite alternate}@keyframes drift{to{transform:translateY(-8px) rotate(1deg)}}}
+    </style>
+<link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body>
+<header class="wrap">
+  <div class="topbar"><a class="brand" href="/">Calc<i>Pro</i></a><div class="crumb"><a href="/">Home</a> / Ovulation Calculator</div></div>
+</header>
+<main class="wrap">
+<section class="hero">
+  <div class="hero-copy"><span class="kicker">Cycle • Fertility</span><h1>Ovulation Calculator</h1><p>Estimate an ovulation date and fertile window from your cycle pattern. Dates are calendar estimates, not a confirmation of ovulation.</p>
+  <div class="pillrow"><span class="pill">Instant results</span><span class="pill">No sign-up</span><span class="pill">Mobile friendly</span></div></div>
+  <div class="stage" aria-hidden="true"><div class='orb' style='border-radius:26px;transform:rotate(4deg)'></div><div class='float' style='left:0;top:12%'>Day 1 = period</div><div class='float' style='right:1%;bottom:12%'>−14 days</div></div>
+</section>
+
+<section class="calc-shell" aria-label="Ovulation Calculator tool">
+  <article class="calc-card">
+    <h2>Enter Your Details</h2>
+    <div class="form-grid"><div class="field full"><label for="lmp">First day of last period</label><input id="lmp" type="date" value="2026-09-01" data-default="2026-09-01"></div><div class="field full"><label for="cycle">Average cycle length (days)</label><input id="cycle" type="number" min="21" max="45" value="28" data-default="28"></div></div>
+    <div class="actions"><button class="primary" id="calcBtn" type="button">Calculate</button><button class="secondary" id="resetBtn" type="button">Reset</button></div>
+    <div class="error" id="error" role="alert" aria-live="polite"></div>
+  </article>
+  <aside class="result-card" aria-live="polite">
+    <h2>Your Result</h2>
+    <div class="metric" id="mainResult">—</div><p>Estimated ovulation date</p><div class="submetrics"><div class="mini">Fertile window<b id="window">—</b></div><div class="mini">Next period<b id="next">—</b></div></div>
+    <p class="note">Do not use a calendar estimate alone to prevent pregnancy.</p>
+  </aside>
+</section>
+
+<section class="content">
+  <article class="content-card">
+    <h2>What Is an Ovulation Calculator?</h2><p>An ovulation calculator estimates when ovulation may occur based on the first day of the last menstrual period and the average cycle length. It also highlights an estimated fertile window around that date.</p>
+<h2>How to Use the Ovulation Calculator</h2><p>Select the first day of your last period and enter your usual cycle length. The calculator predicts the next period, estimates ovulation about 14 days before it, and shows a fertile window from five days before through one day after the estimated ovulation date.</p>
+<h2>Ovulation Calculation</h2><p>The calendar method used here is <span class='formula'>estimated ovulation cycle day = cycle length − 14; the calendar-date offset from LMP is one day less because LMP is cycle day 1</span>. This mirrors the common clinical observation that ovulation usually occurs about 14 days before the next period, not necessarily on cycle day 14.</p>
+<h2>Understanding Your Results</h2><p>The highest fertility is around ovulation, but the exact day cannot be known from cycle dates alone. Cervical mucus changes or luteinizing-hormone tests may provide additional clues.</p>
+<h2>Limitations</h2><p>Stress, illness, postpartum changes, perimenopause, and naturally irregular cycles can shift ovulation. This calculator is for planning and education, not contraception or diagnosis.</p>
+    <h2 id="faq">Frequently Asked Questions</h2>
+    <details><summary>How does this ovulation calculator estimate ovulation?</summary><p>It estimates the next period from the last menstrual period and average cycle length, then counts back 14 days to estimate ovulation.</p></details><details><summary>What is the fertile window?</summary><p>ACOG describes a fertile window that extends from about five days before ovulation through about one day after ovulation because sperm may survive several days and the egg survives roughly 12–24 hours.</p></details><details><summary>Is the estimated ovulation date exact?</summary><p>No. Ovulation varies between people and between cycles. Calendar prediction is less reliable when cycles are irregular.</p></details><details><summary>Can I use this calculator as birth control?</summary><p>No. A calendar estimate is not reliable enough to be used alone to prevent pregnancy.</p></details>
+    <h2>Sources and Methodology</h2>
+    <p>This page uses the formulas and assumptions described above. Health-related results are estimates and should be interpreted in context, not as a diagnosis or individualized medical advice.</p>
+    <ul class="source-list"><li><a href="https://www.acog.org/womens-health/faqs/fertility-awareness-based-methods-of-family-planning" rel="noopener" target="_blank">ACOG – Fertility Awareness-Based Methods</a> — Cycle definition, fertile window, and ovulation timing.</li><li><a href="https://www.acog.org/womens-health/experts-and-stories/the-latest/trying-to-get-pregnant-heres-when-to-have-sex" rel="noopener" target="_blank">ACOG – Timing Sex Around Ovulation</a> — Ovulation is typically about 14 days before the next period; fertile window spans about six days.</li></ul>
+  </article>
+  <aside>
+    <div class="sidebox"><h3>Method at a glance</h3><p>Estimate ovulation, fertile-window dates, and the next period from the last menstrual period and average cycle length.</p></div>
+    <div class="sidebox"><h3>Privacy</h3><p>Calculations run in your browser. This standalone page does not need to send form values to a server.</p></div>
+  </aside>
+</section>
+</main>
+<footer><div class="wrap">CalcPro calculator page • Educational use • Check important health decisions with a qualified professional.</div></footer>
+<script>
+
+function add(d,n){let x=new Date(d+'T12:00:00');x.setDate(x.getDate()+n);return x}
+function fmt(d){return d.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'})}
+function calculate(){
+ const e=document.getElementById('error');e.textContent='';const v=document.getElementById('lmp').value,c=parseInt(document.getElementById('cycle').value);
+ if(!v||!Number.isFinite(c)||c<21||c>45){e.textContent='Choose a last-period date and cycle length from 21 to 45 days.';return}
+ const next=add(v,c), ovu=add(v,c-15), ws=new Date(ovu);ws.setDate(ws.getDate()-5);const we=new Date(ovu);we.setDate(we.getDate()+1);
+ document.getElementById('mainResult').textContent=fmt(ovu);document.getElementById('window').textContent=`${fmt(ws)} – ${fmt(we)}`;document.getElementById('next').textContent=fmt(next);
+}
+document.getElementById('calcBtn').addEventListener('click', calculate);
+document.getElementById('resetBtn').addEventListener('click', ()=>{document.querySelectorAll('input').forEach(i=>{if(i.dataset.default!==undefined)i.value=i.dataset.default;});document.querySelectorAll('select').forEach(s=>{if(s.dataset.default!==undefined)s.value=s.dataset.default;});document.getElementById('error').textContent='';calculate();});
+window.addEventListener('DOMContentLoaded', calculate);
+</script>
+<script src="/assets/js/global.js" defer></script>
+</body></html>

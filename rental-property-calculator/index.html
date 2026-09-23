@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rental Property ROI, Cap Rate &amp; IRR Calculator | CalcPro</title>
+<meta name="description" content="Analyze a rental property with mortgage financing, rent, vacancy, operating expenses, growth, appreciation, selling costs, cash flow, cap rate, cash-on-cash return, and IRR.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/rental-property-calculator/">
+<meta property="og:title" content="Rental Property Calculator | CalcPro">
+<meta property="og:description" content="Analyze a rental property with mortgage financing, rent, vacancy, operating expenses, growth, appreciation, selling costs, cash flow, cap rate, cash-on-cash return, and IRR.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yourdomain.com/rental-property-calculator/">
+<meta name="theme-color" content="#14532d">
+<style>
+:root{
+  --bg:#0f172a;--bg2:#111827;--panel:#ffffff;--ink:#0f172a;--muted:#64748b;
+  --a:#2563eb;--b:#14b8a6;--c:#f59e0b;--soft:#eef2ff;--line:#e2e8f0;
+  --shadow:0 25px 60px rgba(15,23,42,.18);--radius:28px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#f8fafc;line-height:1.6}
+a{color:inherit}
+button,input,select{font:inherit}
+.sitebar{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:16px max(20px,calc((100vw - 1180px)/2));background:rgba(255,255,255,.82);backdrop-filter:blur(16px);border-bottom:1px solid rgba(148,163,184,.2)}
+.brand{font-weight:900;letter-spacing:-.04em;font-size:1.18rem}.brand b{color:var(--a)}
+.sitebar a{text-decoration:none}
+.navpill{padding:9px 14px;border-radius:999px;background:var(--soft);font-size:.9rem}
+.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
+.breadcrumb{font-size:.88rem;opacity:.78;margin-bottom:18px}
+.hero{position:relative;overflow:hidden}
+.hero h1{font-size:clamp(2.4rem,6vw,5.5rem);line-height:.94;letter-spacing:-.06em;margin:0 0 18px;max-width:850px}
+.hero p.lead{font-size:clamp(1rem,2vw,1.2rem);max-width:760px;margin:0;color:inherit;opacity:.84}
+.hero-badge{display:inline-flex;gap:9px;align-items:center;padding:8px 12px;border-radius:999px;font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px}
+.visual{position:relative;min-height:250px}
+.calc-section{position:relative;z-index:4}
+.panel{background:var(--panel);border:1px solid rgba(148,163,184,.18);box-shadow:var(--shadow);border-radius:var(--radius)}
+.form-panel{padding:26px}
+.result-panel{padding:26px}
+.section-title{margin:0 0 6px;font-size:1.55rem;letter-spacing:-.03em}
+.section-kicker{margin:0 0 22px;color:var(--muted);font-size:.93rem}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full{grid-column:1/-1}
+label{font-weight:750;font-size:.9rem}
+.hint{font-size:.78rem;color:var(--muted)}
+input,select{width:100%;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:14px;padding:12px 13px;outline:none;transition:.2s}
+input:focus,select:focus{border-color:var(--a);box-shadow:0 0 0 4px color-mix(in srgb,var(--a) 14%,transparent)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:850;cursor:pointer}
+.btn.primary{background:var(--a);color:#fff;box-shadow:0 10px 22px color-mix(in srgb,var(--a) 28%,transparent)}
+.btn.ghost{background:var(--soft);color:var(--ink)}
+.error{margin-top:14px;padding:12px 14px;border-radius:12px;background:#fff1f2;color:#be123c;border:1px solid #fecdd3;font-weight:700}
+.results{display:grid;gap:12px}
+.metric{display:flex;justify-content:space-between;gap:20px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line)}
+.metric:last-child{border-bottom:0}.metric strong{font-size:1.14rem;text-align:right}
+.hero-result{font-size:clamp(2.2rem,5vw,4.1rem);line-height:1;font-weight:950;letter-spacing:-.06em;margin:10px 0 8px;color:var(--a)}
+.small-note{font-size:.82rem;color:var(--muted)}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;margin-top:18px}
+table{border-collapse:collapse;width:100%;min-width:620px}
+th,td{padding:11px 12px;text-align:right;border-bottom:1px solid var(--line);font-size:.86rem}
+th:first-child,td:first-child{text-align:left}th{background:#f8fafc}
+.content{padding:72px 0 44px}
+.prose{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:34px}
+.article{background:#fff;border:1px solid var(--line);border-radius:30px;padding:clamp(24px,4vw,46px);box-shadow:0 18px 50px rgba(15,23,42,.07)}
+.article h2{font-size:clamp(1.55rem,3vw,2.15rem);letter-spacing:-.04em;margin:34px 0 12px}
+.article h2:first-child{margin-top:0}.article h3{margin-top:24px}
+.article p,.article li{color:#334155}
+.article code,.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.formula{padding:16px;border-radius:16px;background:var(--soft);overflow:auto}
+.aside{align-self:start;position:sticky;top:88px;background:linear-gradient(145deg,var(--soft),#fff);border:1px solid var(--line);border-radius:26px;padding:24px}
+.aside h3{margin-top:0}
+.faq details{border-top:1px solid var(--line);padding:14px 0}.faq summary{cursor:pointer;font-weight:800}
+.sources a{word-break:break-word;color:var(--a)}
+footer{padding:32px 0 46px;color:#64748b;text-align:center;font-size:.85rem}
+@media(max-width:860px){.grid{grid-template-columns:1fr}.prose{grid-template-columns:1fr}.aside{position:static}.hero h1{font-size:clamp(2.4rem,12vw,4.3rem)}}
+@media(max-width:580px){.sitebar{padding:12px 16px}.navpill{display:none}.wrap{width:min(100% - 22px,1180px)}.form-panel,.result-panel{padding:20px}.panel{border-radius:22px}}
+
+
+/* Ten layout systems are intentionally different: each topic gets a distinct composition. */
+body.debt{--bg:#18212f;--bg2:#111827;--a:#f97316;--b:#38bdf8;--c:#facc15;--soft:#fff7ed}
+.debt .hero{background:radial-gradient(circle at 80% 20%,rgba(56,189,248,.18),transparent 30%),linear-gradient(135deg,#101827,#263649);color:#fff;padding:72px 0 110px}
+.debt .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:38px}
+.debt .hero-badge{background:rgba(255,255,255,.1)}
+.debt .balance-ring{width:220px;height:220px;border-radius:50%;margin:auto;background:conic-gradient(var(--a) 0 36%,#334155 36%);box-shadow:inset 0 0 0 24px #1d2939,0 28px 60px rgba(0,0,0,.3);display:grid;place-items:center;transform:rotate(-8deg)}
+.debt .balance-ring:after{content:"DTI";font-weight:950;font-size:3rem;transform:rotate(8deg);letter-spacing:-.08em}
+.debt .calc-section{margin-top:-62px}.debt .calc-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:22px}
+.debt .result-panel{background:#18212f;color:#fff;border-color:#334155}.debt .result-panel .metric{border-color:#334155}.debt .result-panel .small-note{color:#cbd5e1}
+
+body.realestate{--a:#0f766e;--b:#d97706;--c:#ef4444;--soft:#ecfdf5}
+.realestate .hero{background:linear-gradient(180deg,#f0fdfa,#fff7ed);padding:64px 0 84px;border-bottom:1px solid #d1fae5}
+.realestate .hero-inner{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px;align-items:center}
+.realestate .house-scene{height:320px;position:relative;perspective:800px}
+.realestate .house{position:absolute;left:16%;top:70px;width:250px;height:160px;background:#fff;border:1px solid #d1d5db;box-shadow:24px 28px 0 #a7f3d0,40px 48px 60px rgba(15,118,110,.16);transform:rotateY(-18deg) rotateX(6deg)}
+.realestate .house:before{content:"";position:absolute;left:-25px;top:-92px;border-left:150px solid transparent;border-right:150px solid transparent;border-bottom:100px solid #f59e0b;filter:drop-shadow(0 15px 10px rgba(0,0,0,.12))}
+.realestate .house:after{content:"";position:absolute;width:58px;height:95px;background:#0f766e;bottom:0;left:96px}
+.realestate .calc-section{padding:42px 0}.realestate .calc-layout{display:grid;grid-template-columns:.72fr 1.28fr;gap:24px;align-items:start}
+.realestate .form-panel{border-radius:46px 18px 46px 18px}.realestate .result-panel{border-radius:18px 46px 18px 46px;background:linear-gradient(145deg,#064e3b,#0f766e);color:#fff}.realestate .result-panel .metric{border-color:rgba(255,255,255,.15)}.realestate .result-panel .small-note{color:#d1fae5}
+
+body.takehome{--a:#7c3aed;--b:#06b6d4;--c:#ec4899;--soft:#f5f3ff}
+.takehome .hero{padding:76px 0 54px;background:linear-gradient(120deg,#faf5ff 0 55%,#ecfeff 55%)}
+.takehome .hero-inner{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:32px}
+.takehome .paycheck{margin:auto;width:min(440px,90%);height:220px;background:#fff;border:2px dashed #c4b5fd;border-radius:22px;box-shadow:20px 22px 0 #cffafe,0 25px 55px rgba(124,58,237,.16);transform:rotate(3deg);padding:30px}
+.takehome .paycheck .line{height:12px;background:#ede9fe;border-radius:99px;margin:13px 0}.takehome .paycheck .line:nth-child(2){width:65%}.takehome .paycheck .line:nth-child(3){width:82%}
+.takehome .calc-section{padding:30px 0 52px}.takehome .calc-layout{display:grid;grid-template-columns:1fr;gap:20px}.takehome .form-panel{max-width:930px;margin:auto}.takehome .result-panel{max-width:930px;margin:auto;background:linear-gradient(135deg,#1e1b4b,#312e81);color:#fff;display:grid;grid-template-columns:.8fr 1.2fr;gap:26px}.takehome .result-panel .metric{border-color:#4338ca}.takehome .result-panel .small-note{color:#c7d2fe}
+
+body.personalloan{--a:#b7791f;--b:#0f172a;--c:#f59e0b;--soft:#fffbeb}
+.personalloan .hero{background:#0b1220;color:#fff;padding:70px 0 90px}
+.personalloan .hero-inner{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center}
+.personalloan .docstack{height:270px;position:relative}.personalloan .sheet{position:absolute;width:230px;height:165px;border-radius:18px;background:#fff;right:18%;top:44px;box-shadow:0 28px 60px rgba(0,0,0,.35);transform:rotate(-8deg)}.personalloan .sheet:before{content:"$";position:absolute;font-size:5rem;color:#b7791f;font-weight:950;left:78px;top:24px}.personalloan .sheet:after{content:"";position:absolute;width:92px;height:18px;border-radius:99px;background:#fde68a;left:69px;bottom:28px}
+.personalloan .calc-section{margin-top:-42px}.personalloan .calc-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;box-shadow:var(--shadow);border-radius:32px;overflow:hidden}.personalloan .form-panel,.personalloan .result-panel{border:0;border-radius:0;box-shadow:none}.personalloan .result-panel{background:#fffbeb}
+
+body.boat{--a:#0284c7;--b:#0f766e;--c:#f8fafc;--soft:#e0f2fe}
+.boat .hero{padding:64px 0 120px;background:linear-gradient(#e0f2fe,#bae6fd 72%,#38bdf8 72%,#0284c7);overflow:hidden}
+.boat .hero-inner{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:28px}
+.boat .boat-art{height:280px;position:relative}.boat .hull{position:absolute;width:330px;height:90px;right:4%;top:130px;background:#0f172a;clip-path:polygon(0 0,100% 0,80% 100%,16% 100%);box-shadow:0 35px 55px rgba(2,132,199,.3)}.boat .hull:before{content:"";position:absolute;width:120px;height:82px;background:#fff;left:130px;top:-76px;clip-path:polygon(10% 100%,22% 0,78% 0,100% 100%)}.boat .hull:after{content:"";position:absolute;width:95px;height:8px;background:#fbbf24;left:115px;top:28px;border-radius:99px}
+.boat .calc-section{margin-top:-66px}.boat .calc-layout{display:grid;grid-template-columns:1.25fr .75fr;gap:22px}.boat .form-panel{background:rgba(255,255,255,.95)}.boat .result-panel{background:linear-gradient(180deg,#082f49,#0c4a6e);color:#fff}.boat .result-panel .metric{border-color:#155e75}.boat .result-panel .small-note{color:#bae6fd}
+
+body.lease{--a:#65a30d;--b:#27272a;--c:#84cc16;--soft:#f7fee7}
+.lease .hero{background:#18181b;color:#fafafa;padding:72px 0 70px}
+.lease .hero-inner{display:grid;grid-template-columns:.8fr 1.2fr;gap:38px;align-items:center}
+.lease .contract{height:300px;position:relative}.lease .contract-card{width:280px;height:220px;background:#fafafa;color:#18181b;border-radius:12px;position:absolute;left:12%;top:25px;padding:28px;box-shadow:24px 28px 0 #65a30d,0 28px 60px rgba(0,0,0,.38);transform:rotate(5deg)}.lease .contract-card:before{content:"LEASE";font-size:2.6rem;font-weight:950;letter-spacing:-.08em}.lease .contract-card:after{content:"✓";position:absolute;right:28px;bottom:28px;width:54px;height:54px;border:4px solid #65a30d;color:#65a30d;border-radius:50%;display:grid;place-items:center;font-size:2rem;font-weight:900}
+.lease .calc-section{padding:42px 0}.lease .calc-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px}.lease .modebar{display:flex;gap:8px;margin-bottom:18px}.lease .modebar button{flex:1}.lease .result-panel{border:2px solid #bef264;box-shadow:12px 12px 0 #d9f99d}
+
+body.refinance{--a:#4f46e5;--b:#db2777;--c:#22d3ee;--soft:#eef2ff}
+.refinance .hero{padding:72px 0 88px;background:radial-gradient(circle at 85% 20%,#fce7f3,transparent 25%),linear-gradient(120deg,#eef2ff,#fff)}
+.refinance .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.refinance .swap{display:flex;gap:12px;align-items:center;justify-content:center;perspective:900px}.refinance .loan-card{width:180px;height:220px;border-radius:22px;background:#fff;border:1px solid #c7d2fe;box-shadow:0 25px 45px rgba(79,70,229,.16);padding:18px;transform:rotateY(15deg)}.refinance .loan-card.new{transform:rotateY(-15deg);background:#312e81;color:#fff}.refinance .arrow{font-size:2.5rem;color:#db2777;font-weight:950}
+.refinance .calc-section{padding:0 0 50px}.refinance .calc-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px}.refinance .form-panel{margin-top:-28px}.refinance .result-panel{margin-top:28px;background:linear-gradient(145deg,#312e81,#4f46e5);color:#fff}.refinance .result-panel .metric{border-color:#6366f1}.refinance .result-panel .small-note{color:#c7d2fe}
+
+body.budget{--a:#ea580c;--b:#16a34a;--c:#eab308;--soft:#fff7ed}
+.budget .hero{background:#fffaf0;padding:58px 0 34px}
+.budget .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:28px}
+.budget .jars{height:270px;display:flex;align-items:end;justify-content:center;gap:18px}.budget .jar{width:105px;border:7px solid #fdba74;border-top:18px solid #fb923c;border-radius:12px 12px 28px 28px;background:linear-gradient(to top,#fed7aa 0 55%,transparent 55%);height:190px;box-shadow:0 18px 30px rgba(234,88,12,.15)}.budget .jar:nth-child(2){height:230px;border-color:#86efac;border-top-color:#22c55e;background:linear-gradient(to top,#bbf7d0 0 72%,transparent 72%)}.budget .jar:nth-child(3){height:160px;border-color:#fde047;border-top-color:#eab308;background:linear-gradient(to top,#fef08a 0 40%,transparent 40%)}
+.budget .calc-section{padding:24px 0 54px}.budget .calc-layout{display:grid;grid-template-columns:1.3fr .7fr;gap:24px}.budget .form-panel{box-shadow:none;border:2px solid #fed7aa}.budget .result-panel{box-shadow:none;border:2px solid #bbf7d0;background:#f0fdf4}.budget .donut{width:180px;height:180px;border-radius:50%;background:conic-gradient(#ea580c 0 50%,#16a34a 50% 75%,#eab308 75%);margin:18px auto;position:relative}.budget .donut:after{content:"";position:absolute;inset:32px;background:#f0fdf4;border-radius:50%}
+
+body.rental{--a:#166534;--b:#d97706;--c:#22c55e;--soft:#f0fdf4}
+.rental .hero{background:linear-gradient(135deg,#052e16,#14532d);color:#fff;padding:72px 0 98px}
+.rental .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.rental .building{width:260px;height:270px;background:#fef3c7;margin:auto;position:relative;box-shadow:28px 24px 0 #d97706,0 35px 60px rgba(0,0,0,.28);transform:skewY(-2deg)}.rental .building:before{content:"";position:absolute;inset:28px;background:repeating-linear-gradient(90deg,#166534 0 32px,transparent 32px 54px),repeating-linear-gradient(0deg,transparent 0 38px,#fff 38px 48px)}.rental .building:after{content:"$";position:absolute;right:-58px;top:-34px;width:92px;height:92px;border-radius:50%;background:#22c55e;display:grid;place-items:center;font-size:3rem;font-weight:950;box-shadow:0 18px 30px rgba(34,197,94,.26)}
+.rental .calc-section{margin-top:-48px}.rental .calc-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px}.rental .form-panel{max-height:860px;overflow:auto}.rental .result-panel{background:#fffdf5;border:2px solid #fde68a}
+
+body.irr{--a:#a3e635;--b:#a855f7;--c:#22d3ee;--soft:#f7fee7;--ink:#f8fafc;--muted:#a1a1aa;--line:#3f3f46;--panel:#18181b}
+.irr{background:#09090b;color:#f8fafc}.irr .sitebar{background:rgba(9,9,11,.82);border-color:#27272a}.irr .brand,.irr .sitebar a{color:#fff}.irr .navpill{background:#27272a}
+.irr .hero{padding:72px 0 70px;background:radial-gradient(circle at 72% 22%,rgba(168,85,247,.22),transparent 28%),#09090b}
+.irr .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.irr .graph3d{height:300px;position:relative;perspective:700px}.irr .gridplane{position:absolute;inset:50px 10% 0;background:repeating-linear-gradient(0deg,rgba(163,230,53,.18) 0 1px,transparent 1px 30px),repeating-linear-gradient(90deg,rgba(34,211,238,.18) 0 1px,transparent 1px 40px);transform:rotateX(62deg) rotateZ(-8deg);box-shadow:0 0 50px rgba(163,230,53,.08)}.irr .curve{position:absolute;width:250px;height:130px;border-top:8px solid #a3e635;border-radius:50%;left:25%;top:75px;transform:rotate(-18deg);filter:drop-shadow(0 0 12px rgba(163,230,53,.5))}
+.irr .calc-section{padding:24px 0 56px}.irr .calc-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:24px}.irr .panel{border-color:#3f3f46}.irr input,.irr select{background:#09090b;color:#f8fafc;border-color:#3f3f46}.irr .result-panel{background:linear-gradient(145deg,#18181b,#27272a);box-shadow:0 25px 60px rgba(0,0,0,.45)}.irr .hero-result{color:#a3e635}.irr .content{background:#111113}.irr .article{background:#18181b;border-color:#3f3f46}.irr .article p,.irr .article li{color:#d4d4d8}.irr .aside{background:#18181b;border-color:#3f3f46}.irr .formula{background:#27272a}.irr th{background:#27272a}.irr footer{background:#09090b}
+@media(max-width:900px){
+.debt .hero-inner,.realestate .hero-inner,.takehome .hero-inner,.personalloan .hero-inner,.boat .hero-inner,.lease .hero-inner,.refinance .hero-inner,.budget .hero-inner,.rental .hero-inner,.irr .hero-inner{grid-template-columns:1fr}
+.debt .calc-layout,.realestate .calc-layout,.personalloan .calc-layout,.boat .calc-layout,.lease .calc-layout,.refinance .calc-layout,.budget .calc-layout,.rental .calc-layout,.irr .calc-layout{grid-template-columns:1fr}
+.takehome .result-panel{grid-template-columns:1fr}
+.visual{min-height:200px}
+}
+
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://yourdomain.com/rental-property-calculator/#app", "name": "Rental Property Calculator", "url": "https://yourdomain.com/rental-property-calculator/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "description": "Analyze a rental property with mortgage financing, rent, vacancy, operating expenses, growth, appreciation, selling costs, cash flow, cap rate, cash-on-cash return, and IRR.", "browserRequirements": "Requires JavaScript for interactive calculations."}, {"@type": "BreadcrumbList", "@id": "https://yourdomain.com/rental-property-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://yourdomain.com/"}, {"@type": "ListItem", "position": 2, "name": "Financial Calculators", "item": "https://yourdomain.com/financial-calculator/"}, {"@type": "ListItem", "position": 3, "name": "Rental Property Calculator", "item": "https://yourdomain.com/rental-property-calculator/"}]}, {"@type": "FAQPage", "@id": "https://yourdomain.com/rental-property-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "What is NOI in rental property analysis?", "acceptedAnswer": {"@type": "Answer", "text": "Net operating income is property income after vacancy and operating expenses, but before mortgage payments and income taxes. This calculator also subtracts the entered management fee from collected income."}}, {"@type": "Question", "name": "What is cap rate?", "acceptedAnswer": {"@type": "Answer", "text": "Cap rate is first-year net operating income divided by purchase price in this calculator. It is a property-level measure and does not include the effect of mortgage financing."}}, {"@type": "Question", "name": "Why can rental property IRR change a lot?", "acceptedAnswer": {"@type": "Answer", "text": "IRR depends on every projected cash flow, including rent growth, operating expenses, financing, holding period, appreciation, selling costs, and remaining loan balance. Small assumption changes can compound over many years."}}]}]}</script>
+<link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body class="rental">
+<header class="sitebar"><a class="brand" href="/">Calc<b>Pro</b></a><a class="navpill" href="#calculator">Calculator</a></header>
+<main>
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/financial-calculator/">Financial Calculators</a> / Rental Property Calculator</nav>
+      <div class="hero-badge">Income property • cash flow • return</div>
+      <h1>Rental Property Calculator</h1>
+      <p class="lead">Model a buy-hold-sell rental scenario from acquisition through operations and exit, with first-year cash flow plus a multi-year IRR estimate.</p>
+    </div>
+    <div class="visual" aria-hidden="true"><div class="building"></div></div>
+  </div>
+</section>
+<section class="calc-section" id="calculator">
+  <div class="wrap calc-layout">
+    <section class="panel form-panel" aria-labelledby="calc-title">
+      <h2 class="section-title" id="calc-title">Rental Investment Model</h2>
+      <p class="section-kicker">Enter purchase, financing, operating, income growth, and exit assumptions. The model builds annual cash flows through the sale year.</p>
+      
+<form id="form">
+<div class="grid">
+<div class="field"><label for="price">Purchase price</label><input id="price" type="number" min="0" step="1000" value="300000"></div>
+<div class="field"><label for="down">Down payment (%)</label><input id="down" type="number" min="0" max="100" step="0.1" value="25"></div>
+<div class="field"><label for="rate">Mortgage rate (%)</label><input id="rate" type="number" min="0" step="0.01" value="6.5"></div>
+<div class="field"><label for="term">Loan term (years)</label><input id="term" type="number" min="1" max="40" step="1" value="30"></div>
+<div class="field"><label for="closing">Closing + repair cash</label><input id="closing" type="number" min="0" step="100" value="12000"></div>
+<div class="field"><label for="rent">Monthly rent</label><input id="rent" type="number" min="0" step="10" value="2600"></div>
+<div class="field"><label for="otherIncome">Other monthly income</label><input id="otherIncome" type="number" min="0" step="10" value="0"></div>
+<div class="field"><label for="vacancy">Vacancy rate (%)</label><input id="vacancy" type="number" min="0" max="100" step="0.1" value="5"></div>
+<div class="field"><label for="management">Management fee (% of collected income)</label><input id="management" type="number" min="0" max="100" step="0.1" value="8"></div>
+<div class="field"><label for="tax">Property tax / year</label><input id="tax" type="number" min="0" step="100" value="4200"></div>
+<div class="field"><label for="insurance">Insurance / year</label><input id="insurance" type="number" min="0" step="100" value="1800"></div>
+<div class="field"><label for="hoa">HOA / year</label><input id="hoa" type="number" min="0" step="100" value="0"></div>
+<div class="field"><label for="maintenance">Maintenance / year</label><input id="maintenance" type="number" min="0" step="100" value="3000"></div>
+<div class="field"><label for="otherExp">Other operating expenses / year</label><input id="otherExp" type="number" min="0" step="100" value="1200"></div>
+<div class="field"><label for="rentGrowth">Rent growth (%/year)</label><input id="rentGrowth" type="number" min="-20" max="30" step="0.1" value="3"></div>
+<div class="field"><label for="expGrowth">Expense growth (%/year)</label><input id="expGrowth" type="number" min="-20" max="30" step="0.1" value="3"></div>
+<div class="field"><label for="appreciation">Property appreciation (%/year)</label><input id="appreciation" type="number" min="-20" max="30" step="0.1" value="3"></div>
+<div class="field"><label for="hold">Holding period (years)</label><input id="hold" type="number" min="1" max="40" step="1" value="10"></div>
+<div class="field full"><label for="sellCost">Selling cost (% of sale price)</label><input id="sellCost" type="number" min="0" max="30" step="0.1" value="7"></div>
+</div>
+<div class="actions"><button class="btn primary" type="submit">Analyze Rental</button><button class="btn ghost" type="reset">Reset</button></div>
+</form>
+      <div id="error" class="error" role="alert" hidden></div>
+    </section>
+    <aside class="panel result-panel" aria-live="polite">
+      
+<div class="small-note">Estimated investment IRR</div><div class="hero-result" id="irrOut">—</div>
+<div class="results">
+<div class="metric"><span>First-year NOI</span><strong id="noi">—</strong></div>
+<div class="metric"><span>First-year cash flow</span><strong id="cashflow">—</strong></div>
+<div class="metric"><span>Cap rate</span><strong id="cap">—</strong></div>
+<div class="metric"><span>Cash-on-cash return</span><strong id="coc">—</strong></div>
+<div class="metric"><span>Initial cash invested</span><strong id="initial">—</strong></div>
+<div class="metric"><span>Projected sale price</span><strong id="sale">—</strong></div>
+</div>
+<div class="table-wrap"><table><thead><tr><th>Year</th><th>Collected income</th><th>NOI</th><th>Debt service</th><th>Cash flow</th><th>Loan balance</th></tr></thead><tbody id="schedule"></tbody></table></div>
+    </aside>
+  </div>
+</section>
+<section class="content">
+  <div class="wrap prose">
+    <article class="article">
+      
+<h2>What Is a Rental Property Calculator?</h2>
+<p>A rental property calculator estimates operating income, mortgage cash flow, cap rate, cash-on-cash return, and an investment IRR from a buy-hold-sell scenario. It separates property operations from financing so you can see what the asset earns before and after debt service.</p>
+<h2>Net Operating Income and Cap Rate</h2>
+<div class="formula">NOI = Collected rental income − Management − Operating expenses</div>
+<div class="formula">Cap rate = First-year NOI ÷ Purchase price × 100</div>
+<p>Mortgage principal and interest are not included in NOI. They are deducted afterward to estimate cash flow to the investor.</p>
+<h2>Cash-on-Cash Return</h2>
+<div class="formula">Cash-on-cash return = First-year cash flow ÷ Initial cash invested × 100</div>
+<p>Initial cash invested is modeled as down payment plus entered closing and repair cash.</p>
+<h2>Rental Property IRR</h2>
+<p>The calculator creates one annual cash flow for each holding year. The final year adds estimated net sale proceeds after selling costs and remaining mortgage payoff. IRR is the discount rate that makes the net present value of those annual cash flows equal zero.</p>
+<h2>Limitations</h2>
+<p>Long-range real estate returns are highly sensitive to rent, vacancy, repairs, taxes, insurance, financing, appreciation, and sale assumptions. The model does not include income taxes, depreciation, capital gains tax, depreciation recapture, major capital expenditures, refinancing, or irregular cash-flow timing.</p>
+
+      <section class="faq" id="faq"><h2>Frequently Asked Questions</h2><details><summary>What is NOI in rental property analysis?</summary><p>Net operating income is property income after vacancy and operating expenses, but before mortgage payments and income taxes. This calculator also subtracts the entered management fee from collected income.</p></details>
+<details><summary>What is cap rate?</summary><p>Cap rate is first-year net operating income divided by purchase price in this calculator. It is a property-level measure and does not include the effect of mortgage financing.</p></details>
+<details><summary>Why can rental property IRR change a lot?</summary><p>IRR depends on every projected cash flow, including rent growth, operating expenses, financing, holding period, appreciation, selling costs, and remaining loan balance. Small assumption changes can compound over many years.</p></details></section>
+      <section class="sources"><h2>Sources and Methodology</h2><p>The calculator methodology was cross-checked against the following sources. Results are estimates based on the assumptions entered and do not replace lender, tax, legal, or investment advice.</p><ul><li><a href="https://www.calculator.net/rental-property-calculator.html" rel="noopener noreferrer">Calculator.net — Rental Property Calculator</a></li>
+<li><a href="https://support.microsoft.com/en-us/excel/functions/irr-function" rel="noopener noreferrer">Microsoft Support — IRR and NPV relationship</a></li>
+<li><a href="https://www.consumerfinance.gov/owning-a-home/loan-estimate/" rel="noopener noreferrer">Consumer Financial Protection Bureau — Mortgage payment and closing-cost components</a></li></ul></section>
+    </article>
+    <aside class="aside">
+      <h3>CalcPro Method</h3>
+      <p>Annual operating cash flows are projected from user-entered growth rates; the final cash flow includes net sale proceeds and mortgage payoff, then IRR is solved numerically.</p>
+      <p class="small-note">Cap rate excludes debt service; cash-on-cash and IRR incorporate financing, so each metric answers a different question.</p>
+    </aside>
+  </div>
+</section>
+</main>
+<footer><div class="wrap">CalcPro · Interactive financial calculator · Standalone browser calculation</div></footer>
+<script>
+const $ = (id) => document.getElementById(id);
+const n = (id) => {
+  const el = $(id);
+  const v = el ? parseFloat(el.value) : NaN;
+  return Number.isFinite(v) ? v : 0;
+};
+const money = (v) => Number.isFinite(v) ? new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(v) : '—';
+const pct = (v,d=2) => Number.isFinite(v) ? v.toFixed(d)+'%' : '—';
+const pmt = (principal, annualRate, months) => {
+  if (principal < 0 || months <= 0) return NaN;
+  const r = annualRate/100/12;
+  if (Math.abs(r) < 1e-12) return principal/months;
+  return principal * r / (1 - Math.pow(1+r,-months));
+};
+const balanceAfter = (principal, annualRate, months, paidMonths) => {
+  if (paidMonths <= 0) return principal;
+  if (paidMonths >= months) return 0;
+  const r = annualRate/100/12;
+  const pay = pmt(principal,annualRate,months);
+  if (Math.abs(r) < 1e-12) return Math.max(0, principal-pay*paidMonths);
+  return Math.max(0, principal*Math.pow(1+r,paidMonths)-pay*((Math.pow(1+r,paidMonths)-1)/r));
+};
+const setText = (id, value) => { const el=$(id); if(el) el.textContent=value; };
+const setHTML = (id, value) => { const el=$(id); if(el) el.innerHTML=value; };
+const showError = (msg) => { const e=$('error'); if(e){e.textContent=msg;e.hidden=!msg;} };
+
+
+function irrSolve(cfs){
+ const npv=(r)=>cfs.reduce((s,cf,i)=>s+cf/Math.pow(1+r,i),0);
+ let prevR=-.999, prev=npv(prevR), roots=[];
+ const maxR=10, steps=2500;
+ for(let k=1;k<=steps;k++){
+   const r=-.999+(maxR+.999)*k/steps, v=npv(r);
+   if(Number.isFinite(v)&&Number.isFinite(prev)&&v*prev<0){
+     let lo=prevR,hi=r,flo=prev;
+     for(let j=0;j<100;j++){const mid=(lo+hi)/2,f=npv(mid);if(flo*f<=0){hi=mid}else{lo=mid;flo=f}}
+     roots.push((lo+hi)/2);
+   }
+   prevR=r;prev=v;
+ }
+ return roots.length?roots[0]:NaN;
+}
+function calculate(){
+ showError('');
+ const price=n('price'), down=n('down'), rate=n('rate'), term=n('term'), hold=Math.round(n('hold'));
+ if(price<=0||down<0||down>=100||term<=0||hold<=0){showError('Enter a valid purchase price, down payment below 100%, loan term, and holding period.');return;}
+ const downAmt=price*down/100, loan=price-downAmt, initial=downAmt+n('closing'), months=Math.round(term*12), pay=pmt(loan,rate,months), annualDebt=pay*12;
+ const baseGross=(n('rent')+n('otherIncome'))*12, vacancy=n('vacancy')/100, mgmt=n('management')/100;
+ const baseFixed=n('tax')+n('insurance')+n('hoa')+n('maintenance')+n('otherExp');
+ let cfs=[-initial], rows='', firstNOI=0, firstCF=0;
+ for(let y=1;y<=hold;y++){
+   const gross=baseGross*Math.pow(1+n('rentGrowth')/100,y-1);
+   const collected=gross*(1-vacancy), management=collected*mgmt, fixed=baseFixed*Math.pow(1+n('expGrowth')/100,y-1);
+   const noi=collected-management-fixed;
+   const debt=(y*12<=months)?annualDebt:Math.max(0, pmt(loan,rate,months)*(months-(y-1)*12));
+   let cf=noi-debt;
+   const bal=balanceAfter(loan,rate,months,Math.min(months,y*12));
+   if(y===1){firstNOI=noi;firstCF=cf;}
+   if(y===hold){
+     const sale=price*Math.pow(1+n('appreciation')/100,hold);
+     const netSale=sale*(1-n('sellCost')/100)-bal;
+     cf+=netSale;
+     setText('sale',money(sale));
+   }
+   cfs.push(cf);
+   rows+=`<tr><td>${y}</td><td>${money(collected)}</td><td>${money(noi)}</td><td>${money(debt)}</td><td>${money(cf)}</td><td>${money(bal)}</td></tr>`;
+ }
+ const irr=irrSolve(cfs), cap=firstNOI/price*100, coc=firstCF/initial*100;
+ setText('irrOut',Number.isFinite(irr)?pct(irr*100,2):'N/A');setText('noi',money(firstNOI));setText('cashflow',money(firstCF));setText('cap',pct(cap,2));setText('coc',pct(coc,2));setText('initial',money(initial));setHTML('schedule',rows);
+}
+$('form').addEventListener('submit',e=>{e.preventDefault();calculate()});$('form').addEventListener('reset',()=>setTimeout(calculate,0));calculate();
+</script>
+<script src="/assets/js/global.js" defer></script>
+</body>
+</html>
