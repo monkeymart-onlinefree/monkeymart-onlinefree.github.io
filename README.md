@@ -31,3 +31,19 @@ This updates `sitemap.xml` and `robots.txt` only.
 - Two batch-level demo `index.html` files were deliberately excluded.
 - One slug was normalized to the master list: `permutation-and-combination-calculator`.
 - Calculator-specific inline CSS/JS was retained to preserve each page's unique 3D identity and tested behavior; a shared global layer was added for site-wide navigation/accessibility behavior.
+
+## Unified UI update
+- The homepage now uses a responsive 3D dashboard design with SVG icons.
+- A functional Quick Math widget is available on the homepage.
+- Every HTML page now uses the same shared CalcPro top navigation.
+- Header search provides ranked autocomplete and keyboard navigation.
+- Search data is lazy-loaded on normal pages for lower initial page weight.
+- `/search/` includes category filters and ranked full-directory results.
+- Calculator-specific heroes, formulas, content, and calculator JavaScript remain page-specific.
+
+## Opening Locally
+This package is built to work in two modes:
+- Double-click `index.html` after extracting the ZIP.
+- Serve the folder from any normal static web server.
+
+Internal navigation and shared assets use relative paths, while the search index loads as a local JavaScript file so it also works under `file://` without a fetch/CORS dependency.

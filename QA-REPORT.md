@@ -31,3 +31,31 @@
 - JavaScript syntax errors found: 0
 - `sitemap.xml` XML parsing: Passed
 - Final ZIP integrity test: Passed
+
+## 3D Homepage + Unified Header Update
+- Homepage redesigned as a responsive 3D CalcPro dashboard with SVG iconography.
+- Functional Quick Math widget added to the homepage.
+- Unified CalcPro header installed on all 228 HTML pages.
+- Legacy calculator hero sections are preserved; no calculator hero/H1 was replaced.
+- SVG icons used in brand, navigation, category cards, search, and homepage UI.
+- Global header search supports ranked autocomplete, keyboard arrows, Enter, Escape, `/`, and Ctrl/Cmd+K.
+- Search index contains 216 master pages.
+- Search index is lazy-loaded on normal pages and eagerly loaded only on `/search/`.
+- Dedicated search page upgraded with relevance ranking and category filters.
+- Search page remains `noindex,follow`.
+- Pages with exactly one H1 after UI regression check: 228/228.
+- Pages with unified header: 228/228.
+- Broken root-relative internal links after update: 0.
+- `example.com` leftovers after update: 0.
+- Changed inline JavaScript blocks syntax-checked: 32; errors: 0.
+- Shared `global.js` and `search-index.js` syntax checks: Passed.
+
+## Local-Open Compatibility Fix
+- HTML pages patched to relative shared-asset paths: 228
+- Directory navigation uses explicit `index.html` targets for direct local opening.
+- Header autocomplete loads `search-index.js` without Fetch/CORS dependency.
+- Render-critical local references checked: 5619
+- Broken local references: 0
+- Remaining root-relative render references: 0
+- Shared JavaScript syntax checks: Passed
+- Added `OPEN-CALCPRO.bat` and `LOCAL-OPEN-INSTRUCTIONS.txt` for Windows.
