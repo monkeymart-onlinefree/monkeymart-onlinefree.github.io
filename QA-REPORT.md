@@ -59,3 +59,9 @@
 - Remaining root-relative render references: 0
 - Shared JavaScript syntax checks: Passed
 - Added `OPEN-CALCPRO.bat` and `LOCAL-OPEN-INSTRUCTIONS.txt` for Windows.
+
+## Header + Related Tools Fix
+- Legacy inner navigation removed from pages with duplicate headers: 10
+- Calculator pages with static Related Tools section: 207
+- Related cards per calculator: 6
+- Related tool links validated against existing calculator slugs.
