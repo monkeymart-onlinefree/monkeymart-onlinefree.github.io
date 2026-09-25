@@ -1,17 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en-US">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Monthly Budget Calculator | CalcPro</title>
-<meta name="description" content="Build a monthly budget from take-home income, essential spending, debt payments, lifestyle costs, planned savings, and other expenses.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="../budget-calculator/">
-<meta property="og:title" content="Budget Calculator | CalcPro">
-<meta property="og:description" content="Build a monthly budget from take-home income, essential spending, debt payments, lifestyle costs, planned savings, and other expenses.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://yourdomain.com/budget-calculator/">
-<meta name="theme-color" content="#ea580c">
+<meta content="Build a monthly budget from take-home income, essential spending, debt payments, lifestyle costs, planned savings, and other expenses." name="description"/>
+<meta content="index,follow" name="robots"/>
+<link href="../budget-calculator/" rel="canonical"/>
+<meta content="Budget Calculator | CalcPro" property="og:title"/>
+<meta content="Build a monthly budget from take-home income, essential spending, debt payments, lifestyle costs, planned savings, and other expenses." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://yourdomain.com/budget-calculator/" property="og:url"/>
+<meta content="#1477ff" name="theme-color"/>
 <style>
 :root{
   --bg:#0f172a;--bg2:#111827;--panel:#ffffff;--ink:#0f172a;--muted:#64748b;
@@ -155,76 +156,48 @@ body.irr{--a:#a3e635;--b:#a855f7;--c:#22d3ee;--soft:#f7fee7;--ink:#f8fafc;--mute
 }
 
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://yourdomain.com/budget-calculator/#app", "name": "Budget Calculator", "url": "https://yourdomain.com/budget-calculator/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "description": "Build a monthly budget from take-home income, essential spending, debt payments, lifestyle costs, planned savings, and other expenses.", "browserRequirements": "Requires JavaScript for interactive calculations."}, {"@type": "BreadcrumbList", "@id": "https://yourdomain.com/budget-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://yourdomain.com/"}, {"@type": "ListItem", "position": 2, "name": "Financial Calculators", "item": "https://yourdomain.com/financial-calculator/"}, {"@type": "ListItem", "position": 3, "name": "Budget Calculator", "item": "https://yourdomain.com/budget-calculator/"}]}, {"@type": "FAQPage", "@id": "https://yourdomain.com/budget-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "Should I enter gross or take-home income?", "acceptedAnswer": {"@type": "Answer", "text": "This calculator is designed for take-home income: money available after payroll taxes and deductions. That makes the monthly cash-flow result easier to compare with real bills and savings transfers."}}, {"@type": "Question", "name": "What does a negative result mean?", "acceptedAnswer": {"@type": "Answer", "text": "It means the entered expenses plus planned savings are greater than the entered monthly net income. Review the categories or confirm whether irregular costs or income were entered on a consistent monthly basis."}}, {"@type": "Question", "name": "Is there one ideal budget percentage?", "acceptedAnswer": {"@type": "Answer", "text": "No single percentage works for every household. Housing costs, family size, debt, location, benefits, income stability, and financial goals can all change an appropriate spending and saving plan."}}]}]}</script>
-<link rel="stylesheet" href="../assets/css/global.css">
-</head>
-<body class="budget">
-<header class="cp-site-header" data-cp-header>
-  <div class="cp-header-shell">
-    <a class="cp-brand" href="../index.html" aria-label="CalcPro home"><span class="cp-brand-mark"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="2.8" width="18" height="18.4" rx="4" fill="currentColor" opacity=".14"/><rect x="6.4" y="6.2" width="11.2" height="3.6" rx="1.2" fill="currentColor"/><path d="M7 12h2.2v2.2H7zm3.9 0h2.2v2.2h-2.2zm3.9 0H17v2.2h-2.2zM7 15.8h2.2V18H7zm3.9 0h2.2V18h-2.2zm3.9 0H17V18h-2.2z" fill="currentColor"/></svg></span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
-    <nav class="cp-main-nav" aria-label="Primary navigation">
-      <a href="../finance/index.html" data-cp-section="finance"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg><span>Finance</span></a>
-      <a href="../health/index.html" data-cp-section="health"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8.3 12h2.1l1.1-2.2 1.5 4.3 1.1-2.1h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Health</span></a>
-      <a href="../math/index.html" data-cp-section="math"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h6M8 4v6m6 5h5m-5 4h5M15 5l4 4m0-4-4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg><span>Math</span></a>
-      <a href="../date-time/index.html" data-cp-section="date-time"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 3v4m10-4v4M3.5 9h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg><span>Date &amp; Time</span></a>
-      <a href="../engineering/index.html" data-cp-section="engineering"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5 8.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Engineering</span></a>
-      <a href="../conversion/index.html" data-cp-section="conversion"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h12l-3-3m5 13H7l3 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Convert</span></a>
-    </nav>
-    <div class="cp-header-actions">
-      <form class="cp-header-search" action="../search/index.html" method="get" role="search" autocomplete="off">
-        <svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m20 20-4.4-4.4m2.4-5.1a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input class="cp-search-input" type="search" name="q" placeholder="Search calculators…" aria-label="Search CalcPro calculators" aria-autocomplete="list" aria-expanded="false"><kbd>/</kbd>
-        <div class="cp-search-results" role="listbox" aria-label="Search suggestions" hidden></div>
-      </form>
-      <a class="cp-icon-button" href="../calculators/index.html" aria-label="Browse all calculators" title="All calculators"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
-      <button class="cp-icon-button cp-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-    </div>
-  </div>
-  <div class="cp-mobile-panel" hidden>
-    <form class="cp-mobile-search" action="../search/index.html" method="get" role="search"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m20 20-4.4-4.4m2.4-5.1a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input class="cp-mobile-search-input" type="search" name="q" placeholder="Search all calculators…" aria-label="Search all calculators"></form>
-    <nav class="cp-mobile-nav" aria-label="Mobile navigation">
-      <a href="../finance/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg> Finance</a><a href="../health/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8.3 12h2.1l1.1-2.2 1.5 4.3 1.1-2.1h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Health</a><a href="../math/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h6M8 4v6m6 5h5m-5 4h5M15 5l4 4m0-4-4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg> Math</a><a href="../date-time/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 3v4m10-4v4M3.5 9h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg> Date &amp; Time</a><a href="../engineering/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5 8.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Engineering</a><a href="../conversion/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h12l-3-3m5 13H7l3 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg> Conversion</a><a href="../education/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 9 9-5 9 5-9 5-9-5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 12v4c3 2.3 7 2.3 10 0v-4m4-3v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Education</a><a href="../other/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> Other</a><a href="../calculators/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> All calculators</a>
-    </nav>
-  </div>
-</header>
-<main>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://yourdomain.com/budget-calculator/#app", "name": "Budget Calculator", "url": "https://yourdomain.com/budget-calculator/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "description": "Build a monthly budget from take-home income, essential spending, debt payments, lifestyle costs, planned savings, and other expenses.", "browserRequirements": "Requires JavaScript for interactive calculations."}, {"@type": "BreadcrumbList", "@id": "https://yourdomain.com/budget-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Everyday Money", "item": "/finance/everyday-money/"}, {"@type": "ListItem", "position": 4, "name": "Budget Calculator", "item": "/budget-calculator/"}]}, {"@type": "FAQPage", "@id": "https://yourdomain.com/budget-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "Should I enter gross or take-home income?", "acceptedAnswer": {"@type": "Answer", "text": "This calculator is designed for take-home income: money available after payroll taxes and deductions. That makes the monthly cash-flow result easier to compare with real bills and savings transfers."}}, {"@type": "Question", "name": "What does a negative result mean?", "acceptedAnswer": {"@type": "Answer", "text": "It means the entered expenses plus planned savings are greater than the entered monthly net income. Review the categories or confirm whether irregular costs or income were entered on a consistent monthly basis."}}, {"@type": "Question", "name": "Is there one ideal budget percentage?", "acceptedAnswer": {"@type": "Answer", "text": "No single percentage works for every household. Housing costs, family size, debt, location, benefits, income stability, and financial goals can all change an appropriate spending and saving plan."}}]}]}</script>
+<link href="../assets/css/global.css" rel="stylesheet"/>
+<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
+<body class="budget" data-cp-category="finance" data-cp-page-type="Calculator">
+<header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
+<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../finance/index.html">Finance</a></li><li><a aria-current="page" href="index.html">Budget Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main">
 <section class="hero">
-  <div class="wrap hero-inner">
-    <div>
-      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a> / <a href="../financial-calculator/index.html">Financial Calculators</a> / Budget Calculator</nav>
-      <div class="hero-badge">Cash flow • monthly plan</div>
-      <h1>Budget Calculator</h1>
-      <p class="lead">Turn take-home income and planned monthly outflows into a clear budget surplus or shortfall, with spending and savings shares.</p>
-    </div>
-    <div class="visual" aria-hidden="true"><div class="jars"><div class="jar"></div><div class="jar"></div><div class="jar"></div></div></div>
-  </div>
+<div class="wrap hero-inner">
+<div>
+<nav aria-label="Breadcrumb" class="breadcrumb"><a href="../index.html">Home</a> / <a href="../financial-calculator/index.html">Financial Calculators</a> / Budget Calculator</nav>
+<div class="hero-badge">Cash flow • monthly plan</div>
+<h1>Budget Calculator</h1>
+<p class="lead">Turn take-home income and planned monthly outflows into a clear budget surplus or shortfall, with spending and savings shares.</p>
+</div>
+<div aria-hidden="true" class="visual"><div class="jars"><div class="jar"></div><div class="jar"></div><div class="jar"></div></div></div>
+</div>
 </section>
-<section class="calc-section" id="calculator">
-  <div class="wrap calc-layout">
-    <section class="panel form-panel" aria-labelledby="calc-title">
-      <h2 class="section-title" id="calc-title">Build Your Monthly Budget</h2>
-      <p class="section-kicker">Use after-tax income so the result reflects money that is actually available to spend or save.</p>
-      
+<div class="cp-tool-actions"><button data-cp-print="" type="button">Print / Save PDF</button><span aria-live="polite" class="cp-action-status" role="status"></span></div><section class="calc-section" id="calculator">
+<div class="wrap calc-layout">
+<section aria-labelledby="calc-title" class="panel form-panel">
+<h2 class="section-title" id="calc-title">Build Your Monthly Budget</h2>
+<p class="section-kicker">Use after-tax income so the result reflects money that is actually available to spend or save.</p>
 <form id="form">
 <div class="grid">
-<div class="field"><label for="income">Take-home pay</label><input id="income" type="number" min="0" step="100" value="5000"></div>
-<div class="field"><label for="otherIncome">Other net income</label><input id="otherIncome" type="number" min="0" step="50" value="300"></div>
-<div class="field"><label for="housing">Housing & utilities</label><input id="housing" type="number" min="0" step="50" value="1800"></div>
-<div class="field"><label for="transport">Transportation</label><input id="transport" type="number" min="0" step="50" value="600"></div>
-<div class="field"><label for="food">Food & household</label><input id="food" type="number" min="0" step="50" value="700"></div>
-<div class="field"><label for="health">Healthcare</label><input id="health" type="number" min="0" step="50" value="250"></div>
-<div class="field"><label for="debt">Debt payments</label><input id="debt" type="number" min="0" step="50" value="450"></div>
-<div class="field"><label for="lifestyle">Lifestyle & entertainment</label><input id="lifestyle" type="number" min="0" step="50" value="400"></div>
-<div class="field"><label for="savings">Planned savings / investing</label><input id="savings" type="number" min="0" step="50" value="600"></div>
-<div class="field"><label for="other">Other expenses</label><input id="other" type="number" min="0" step="50" value="250"></div>
+<div class="field"><label for="income">Take-home pay</label><input id="income" min="0" step="100" type="number" value="5000"/></div>
+<div class="field"><label for="otherIncome">Other net income</label><input id="otherIncome" min="0" step="50" type="number" value="300"/></div>
+<div class="field"><label for="housing">Housing &amp; utilities</label><input id="housing" min="0" step="50" type="number" value="1800"/></div>
+<div class="field"><label for="transport">Transportation</label><input id="transport" min="0" step="50" type="number" value="600"/></div>
+<div class="field"><label for="food">Food &amp; household</label><input id="food" min="0" step="50" type="number" value="700"/></div>
+<div class="field"><label for="health">Healthcare</label><input id="health" min="0" step="50" type="number" value="250"/></div>
+<div class="field"><label for="debt">Debt payments</label><input id="debt" min="0" step="50" type="number" value="450"/></div>
+<div class="field"><label for="lifestyle">Lifestyle &amp; entertainment</label><input id="lifestyle" min="0" step="50" type="number" value="400"/></div>
+<div class="field"><label for="savings">Planned savings / investing</label><input id="savings" min="0" step="50" type="number" value="600"/></div>
+<div class="field"><label for="other">Other expenses</label><input id="other" min="0" step="50" type="number" value="250"/></div>
 </div>
 <div class="actions"><button class="btn primary" type="submit">Build Budget</button><button class="btn ghost" type="reset">Reset</button></div>
 </form>
-      <div id="error" class="error" role="alert" hidden></div>
-    </section>
-    <aside class="panel result-panel" aria-live="polite">
-      
+<div class="error" hidden="" id="error" role="alert"></div>
+</section>
+<aside aria-live="polite" class="panel result-panel">
 <div class="small-note">Monthly amount left after plan</div><div class="hero-result" id="left">—</div>
-<div class="donut" id="donut" aria-hidden="true"></div>
+<div aria-hidden="true" class="donut" id="donut"></div>
 <div class="results">
 <div class="metric"><span>Total monthly income</span><strong id="incOut">—</strong></div>
 <div class="metric"><span>Living + debt expenses</span><strong id="expenseOut">—</strong></div>
@@ -232,13 +205,12 @@ body.irr{--a:#a3e635;--b:#a855f7;--c:#22d3ee;--soft:#f7fee7;--ink:#f8fafc;--mute
 <div class="metric"><span>Savings share of income</span><strong id="saveRate">—</strong></div>
 <div class="metric"><span>Expense share of income</span><strong id="expenseRate">—</strong></div>
 </div>
-    </aside>
-  </div>
-</section>
+</aside>
+</div>
+</section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
 <section class="content">
-  <div class="wrap prose">
-    <article class="article">
-      
+<div class="wrap prose">
+<article class="article">
 <h2>What Is a Budget Calculator?</h2>
 <p>A budget calculator compares monthly income with monthly spending and planned saving. This page uses take-home income so the result represents cash available after payroll taxes and deductions rather than mixing pre-tax income with after-tax bills.</p>
 <h2>Budget Formula</h2>
@@ -250,52 +222,21 @@ body.irr{--a:#a3e635;--b:#a855f7;--c:#22d3ee;--soft:#f7fee7;--ink:#f8fafc;--mute
 <p>The result panel separates living and debt expenses from planned saving and unassigned income. It does not label a particular spending percentage as universally correct because appropriate budgets vary by household, location, debt load, goals, and income stability.</p>
 <h2>Limitations</h2>
 <p>A monthly budget can hide annual or irregular expenses such as insurance renewals, repairs, travel, school costs, or taxes. Update the inputs as actual income and expenses change.</p>
-
-      <section class="faq" id="faq"><h2>Frequently Asked Questions</h2><details><summary>Should I enter gross or take-home income?</summary><p>This calculator is designed for take-home income: money available after payroll taxes and deductions. That makes the monthly cash-flow result easier to compare with real bills and savings transfers.</p></details>
+<section class="faq" id="faq"><h2>Frequently Asked Questions</h2><details><summary>Should I enter gross or take-home income?</summary><p>This calculator is designed for take-home income: money available after payroll taxes and deductions. That makes the monthly cash-flow result easier to compare with real bills and savings transfers.</p></details>
 <details><summary>What does a negative result mean?</summary><p>It means the entered expenses plus planned savings are greater than the entered monthly net income. Review the categories or confirm whether irregular costs or income were entered on a consistent monthly basis.</p></details>
 <details><summary>Is there one ideal budget percentage?</summary><p>No single percentage works for every household. Housing costs, family size, debt, location, benefits, income stability, and financial goals can all change an appropriate spending and saving plan.</p></details></section>
-      <section class="sources"><h2>Sources and Methodology</h2><p>The calculator methodology was cross-checked against the following sources. Results are estimates based on the assumptions entered and do not replace lender, tax, legal, or investment advice.</p><ul><li><a href="https://files.consumerfinance.gov/f/documents/cfpb_well-being_monthly-budget.pdf" rel="noopener noreferrer">Consumer Financial Protection Bureau — Monthly Budget worksheet</a></li>
+<section class="sources"><h2>Sources and Methodology</h2><p>The calculator methodology was cross-checked against the following sources. Results are estimates based on the assumptions entered and do not replace lender, tax, legal, or investment advice.</p><ul><li><a href="https://files.consumerfinance.gov/f/documents/cfpb_well-being_monthly-budget.pdf" rel="noopener noreferrer">Consumer Financial Protection Bureau — Monthly Budget worksheet</a></li>
 <li><a href="https://www.calculator.net/budget-calculator.html" rel="noopener noreferrer">Calculator.net — Budget Calculator</a></li></ul></section>
-    </article>
-    <aside class="aside">
-      <h3>CalcPro Method</h3>
-      <p>The calculator follows a simple cash-flow budget: total monthly net income minus monthly expenses and planned savings.</p>
-      <p class="small-note">Use consistent monthly amounts. Annual bills can be divided by 12 to create a planning reserve.</p>
-    </aside>
-  </div>
+</article>
+<aside class="aside">
+<h3>CalcPro Method</h3>
+<p>The calculator follows a simple cash-flow budget: total monthly net income minus monthly expenses and planned savings.</p>
+<p class="small-note">Use consistent monthly amounts. Annual bills can be divided by 12 to create a planning reserve.</p>
+</aside>
+</div>
 </section>
 
-<section class="cp-related-tools" aria-labelledby="cp-related-title">
-  <div class="cp-related-shell">
-    <div class="cp-related-heading"><div><span class="cp-related-kicker">Explore next</span><h2 id="cp-related-title">Related Tools</h2><p>Useful calculators closely related to Budget Calculator.</p></div><a class="cp-related-all" href="../calculators/index.html">View all calculators <span aria-hidden="true">→</span></a></div>
-    <div class="cp-related-grid"><a class="cp-related-card" href="../debt-payoff-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Debt Payoff Calculator</strong><small>Compare debt avalanche and snowball payoff strategies using balances, APRs, minimum payments, and an extra monthly…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../debt-consolidation-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Debt Consolidation Calculator</strong><small>Compare multiple existing debts with a consolidation loan using balances, APRs, payments, new-loan rate, term, and fees.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../credit-card-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Credit Card Calculator</strong><small>Estimate a single credit card payoff time, required monthly payment, total interest, and payment schedule using…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../credit-card-payoff-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Credit Card Payoff Calculator</strong><small>Build a multi-card debt avalanche payoff plan using balances, APRs, minimum payments, and a fixed monthly…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../repayment-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Repayment Calculator</strong><small>Calculate fixed-loan repayment time, monthly payment, total interest, and the impact of recurring extra payments.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../debt-ratio-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Debt-to-Income Ratio Calculator</strong><small>Calculate your debt-to-income ratio from gross monthly income and recurring monthly debt payments, with housing and…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a></div>
-  </div>
-</section>
-</main>
+<details class="cp-data-panel"><summary><span>Calculator Data — exact tool basis</span><small>Finance · Calculator</small></summary><div class="cp-data-grid"><div class="cp-data-item wide"><b>Purpose</b><p>Build a monthly budget from take-home income, essential spending, debt payments, lifestyle costs, planned savings, and other expenses.</p></div><div class="cp-data-item wide"><b>Formula / Algorithm Used in Tool</b><p>Budget Formula: Money left = Monthly net income − Monthly expenses − Planned savings A positive result means part of the entered income remains unassigned. A negative result means the planned expenses and savings exceed the entered net income.</p></div><div class="cp-data-item"><b>Required User Inputs</b><p>Take-home pay; Other net income; Housing &amp; utilities; Transportation; Food &amp; household; Healthcare; Debt payments; Lifestyle &amp; entertainment; Planned savings / investing; Other expenses</p></div><div class="cp-data-item"><b>Primary Outputs</b><p>Total monthly income; Living + debt expenses; Planned savings; Savings share of income; Expense share of income</p></div><div class="cp-data-item wide"><b>Important Assumptions / Limitations</b><p>A monthly budget can hide annual or irregular expenses such as insurance renewals, repairs, travel, school costs, or taxes. Update the inputs as actual income and expenses change. Frequently Asked Questions Should I enter gross or take-home income? This calculator is designed for take-home income: money available after payroll taxes and deductions. That makes the monthly cash-flow result easier to compare with real bills and savings transfers. What does a negative result mean? It means the entered expenses plus planned savings are greater than the entered monthly net income. Review the categories or confirm whether irregular costs or income were entered on a consistent monthly basis. Is there one ideal budget percentage? No single percentage works for every household. Housing costs, family size, debt, location, benefits, income stability, and financial goals can all change an appropriate spending and saving plan. Sources and Methodology The calculator methodology was cross-checked against the following sources. Results are estimates based on the assumptions entered and do not replace lender, tax, legal, or investment advice. Consumer Financial Protection Bureau — Monthly Budget worksheet Calculator.net — Budget Calculator</p></div><div class="cp-data-item"><b>Fresh Data Required?</b><p>Conditional</p></div><div class="cp-data-item"><b>Recommended Update Frequency</b><p>When product/rule assumptions change</p></div><div class="cp-data-item wide"><b>Current Source URLs in Page</b><p><a href="https://files.consumerfinance.gov/f/documents/cfpb_well-being_monthly-budget.pdf" rel="nofollow noopener" target="_blank">https://files.consumerfinance.gov/f/documents/cfpb_well-being_monthly-budget.pdf</a><br/><a href="https://www.calculator.net/budget-calculator.html" rel="nofollow noopener" target="_blank">https://www.calculator.net/budget-calculator.html</a></p></div></div></details><script class="cp-calculator-data" type="application/json">{"index":"91","Batch":"10","Calculator / Page":"Budget Calculator","Slug":"budget-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Build a monthly budget from take-home income, essential spending, debt payments, lifestyle costs, planned savings, and other expenses.","Formula / Algorithm Used in Tool":"Budget Formula: Money left = Monthly net income − Monthly expenses − Planned savings A positive result means part of the entered income remains unassigned. A negative result means the planned expenses and savings exceed the entered net income.","Required User Inputs":"Take-home pay; Other net income; Housing & utilities; Transportation; Food & household; Healthcare; Debt payments; Lifestyle & entertainment; Planned savings / investing; Other expenses","Primary Outputs":"Total monthly income; Living + debt expenses; Planned savings; Savings share of income; Expense share of income","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Take-home pay, Other net income, Housing & utilities, Transportation, Food & household, Healthcare, Debt payments, Lifestyle & entertainment, Planned savings / investing, Other expenses. Explain outputs: Total monthly income, Living + debt expenses, Planned savings, Savings share of income, Expense share of income. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"A monthly budget can hide annual or irregular expenses such as insurance renewals, repairs, travel, school costs, or taxes. Update the inputs as actual income and expenses change. Frequently Asked Questions Should I enter gross or take-home income? This calculator is designed for take-home income: money available after payroll taxes and deductions. That makes the monthly cash-flow result easier to compare with real bills and savings transfers. What does a negative result mean? It means the entered expenses plus planned savings are greater than the entered monthly net income. Review the categories or confirm whether irregular costs or income were entered on a consistent monthly basis. Is there one ideal budget percentage? No single percentage works for every household. Housing costs, family size, debt, location, benefits, income stability, and financial goals can all change an appropriate spending and saving plan. Sources and Methodology The calculator methodology was cross-checked against the following sources. Results are estimates based on the assumptions entered and do not replace lender, tax, legal, or investment advice. Consumer Financial Protection Bureau — Monthly Budget worksheet Calculator.net — Budget Calculator","Current Source URLs in Page":"https://files.consumerfinance.gov/f/documents/cfpb_well-being_monthly-budget.pdf | https://www.calculator.net/budget-calculator.html","Implementation Path":"/budget-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><span class="cp-side-kicker">Related tools</span><h2>Finance</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../credit-card-payoff-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Credit Card Payoff Calculator</strong><small>Build a multi-card debt avalanche payoff plan using balances, APRs, minimum payment…</small></span></a><a class="cp-related-link" href="../rent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Rent Calculator</strong><small>Estimate a monthly rent budget from pre-tax income, existing debt, and adjustable h…</small></span></a><a class="cp-related-link" href="../salary-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Salary Calculator</strong><small>Estimate 2026 U.S. annual and per-paycheck take-home pay using gross salary, pre-ta…</small></span></a><a class="cp-related-link" href="../debt-payoff-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Debt Payoff Calculator</strong><small>Compare debt avalanche and snowball payoff strategies using balances, APRs, minimum…</small></span></a><a class="cp-related-link" href="../amortization-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Amortization Calculator</strong><small>Create an amortization schedule and see how extra monthly payments can change payof…</small></span></a><a class="cp-related-link" href="../retirement-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Retirement Calculator</strong><small>Project retirement savings from current balance, monthly contributions, time to ret…</small></span></a><a class="cp-related-link" href="../mortgage-payoff-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Mortgage Payoff Calculator</strong><small>Estimate how extra monthly, annual, or one-time mortgage payments can shorten payof…</small></span></a><a class="cp-related-link" href="../pension-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Pension Calculator</strong><small>Compare pension lump sums, monthly pension income, joint-survivor options, and dela…</small></span></a></div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div></aside></div>
 <footer><div class="wrap">CalcPro · Interactive financial calculator · Standalone browser calculation</div></footer>
 <script>
 const $ = (id) => document.getElementById(id);
@@ -339,6 +280,6 @@ function calculate(){
 }
 $('form').addEventListener('submit',e=>{e.preventDefault();calculate()});$('form').addEventListener('reset',()=>setTimeout(calculate,0));calculate();
 </script>
-<script src="../assets/js/global.js" defer></script>
-</body>
+<script defer="" src="../assets/js/global.js"></script>
+<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body>
 </html>

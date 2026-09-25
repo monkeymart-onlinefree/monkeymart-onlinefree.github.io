@@ -31,7 +31,7 @@
   }
   function score(item,q){
     const query=norm(q);if(!query)return 0;
-    const terms=query.split(/\s+/).filter(Boolean),title=norm(item.title),slug=norm(item.slug.replace(/-/g,' ')),cat=norm(item.category),desc=norm(item.description),all=`${title} ${slug} ${cat} ${desc}`;
+    const terms=query.split(/\s+/).filter(Boolean),title=norm(item.title),slug=norm(item.slug.replace(/-/g,' ')),cat=norm(item.category+' '+(item.subcategory||'')),desc=norm(item.description),all=`${title} ${slug} ${cat} ${desc}`;
     let s=0;if(title===query)s+=240;else if(title.startsWith(query))s+=140;else if(title.includes(query))s+=95;if(slug===query)s+=160;else if(slug.startsWith(query))s+=100;else if(slug.includes(query))s+=70;if(cat.includes(query))s+=26;if(desc.includes(query))s+=16;
     let hits=0;for(const t of terms){if(title.includes(t)){s+=34;hits++}else if(slug.includes(t)){s+=25;hits++}else if(cat.includes(t)){s+=12;hits++}else if(desc.includes(t)){s+=5;hits++}}if(hits===terms.length)s+=45;return s;
   }

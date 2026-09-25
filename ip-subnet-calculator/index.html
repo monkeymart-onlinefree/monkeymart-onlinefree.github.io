@@ -1,17 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>IP Subnet Calculator | CalcPro</title>
-<meta name="description" content="Calculate IPv4 network, broadcast, subnet mask, host range, address count, and inspect IPv6 network prefixes using CIDR notation.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="../ip-subnet-calculator/">
-<meta property="og:title" content="IP Subnet Calculator | CalcPro">
-<meta property="og:description" content="Calculate IPv4 network, broadcast, subnet mask, host range, address count, and inspect IPv6 network prefixes using CIDR notation.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="/ip-subnet-calculator/">
-<meta name="theme-color" content="#07111f">
+<meta content="Calculate IPv4 network, broadcast, subnet mask, host range, address count, and inspect IPv6 network prefixes using CIDR notation." name="description"/>
+<meta content="index,follow" name="robots"/>
+<link href="../ip-subnet-calculator/" rel="canonical"/>
+<meta content="IP Subnet Calculator | CalcPro" property="og:title"/>
+<meta content="Calculate IPv4 network, broadcast, subnet mask, host range, address count, and inspect IPv6 network prefixes using CIDR notation." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="/ip-subnet-calculator/" property="og:url"/>
+<meta content="#1477ff" name="theme-color"/>
 <style>
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 :root{--bg:#07111f;--panel:rgba(255,255,255,.09);--panel2:rgba(255,255,255,.06);--text:#f7fbff;--muted:#b8c6d8;--line:rgba(255,255,255,.14);--a:#67e8f9;--b:#34d399;--c:#fbbf24;--danger:#fb7185;--shadow:0 30px 80px rgba(0,0,0,.32)}
@@ -68,72 +69,45 @@ footer{border-top:1px solid var(--line);padding:32px 0 50px;color:var(--muted);f
 body{--bg:#02080b;--panel:rgba(5,24,29,.83);--panel2:rgba(8,51,55,.34);--a:#4ef2e4;--b:#a5ff66;--c:#56a9ff;background:radial-gradient(circle at 50% 0,#0b3440 0,transparent 34%),#02080b}
 .ip-subnet-calculator .hero{grid-template-columns:1.15fr .85fr}.net{position:absolute;inset:15px}.node{position:absolute;width:58px;height:58px;border-radius:18px;background:linear-gradient(145deg,#0d4e54,#072024);border:1px solid #4ef2e477;box-shadow:0 0 32px #4ef2e433,inset 0 0 22px #4ef2e422}.node:after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:var(--b);top:14px;left:14px;box-shadow:0 0 12px var(--b)}.n1{left:10%;top:18%}.n2{right:13%;top:12%}.n3{left:35%;bottom:10%}.n4{right:2%;bottom:25%}.wire{position:absolute;height:2px;background:linear-gradient(90deg,var(--a),transparent);transform-origin:left center;box-shadow:0 0 10px var(--a)}.w1{left:18%;top:28%;width:52%;transform:rotate(-5deg)}.w2{left:20%;top:35%;width:43%;transform:rotate(48deg)}.w3{left:45%;bottom:27%;width:43%;transform:rotate(-15deg)}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/ip-subnet-calculator/#app", "name": "IP Subnet Calculator", "url": "/ip-subnet-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate IPv4 network, broadcast, subnet mask, host range, address count, and inspect IPv6 network prefixes using CIDR notation."}, {"@type": "BreadcrumbList", "@id": "/ip-subnet-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "/calculators/"}, {"@type": "ListItem", "position": 3, "name": "IP Subnet Calculator", "item": "/ip-subnet-calculator/"}]}, {"@type": "FAQPage", "@id": "/ip-subnet-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "How many addresses are in a /24 IPv4 subnet?", "acceptedAnswer": {"@type": "Answer", "text": "A /24 leaves 8 host bits, so the block contains 256 total IPv4 addresses."}}, {"@type": "Question", "name": "What is the subnet mask for /24?", "acceptedAnswer": {"@type": "Answer", "text": "The dotted-decimal mask is 255.255.255.0."}}, {"@type": "Question", "name": "How many bits are in an IPv6 address?", "acceptedAnswer": {"@type": "Answer", "text": "IPv6 addresses are 128 bits long."}}]}]}</script>
-<link rel="stylesheet" href="../assets/css/global.css"></head>
-<body class="ip-subnet-calculator"><header class="cp-site-header" data-cp-header>
-  <div class="cp-header-shell">
-    <a class="cp-brand" href="../index.html" aria-label="CalcPro home"><span class="cp-brand-mark"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="2.8" width="18" height="18.4" rx="4" fill="currentColor" opacity=".14"/><rect x="6.4" y="6.2" width="11.2" height="3.6" rx="1.2" fill="currentColor"/><path d="M7 12h2.2v2.2H7zm3.9 0h2.2v2.2h-2.2zm3.9 0H17v2.2h-2.2zM7 15.8h2.2V18H7zm3.9 0h2.2V18h-2.2zm3.9 0H17V18h-2.2z" fill="currentColor"/></svg></span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
-    <nav class="cp-main-nav" aria-label="Primary navigation">
-      <a href="../finance/index.html" data-cp-section="finance"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg><span>Finance</span></a>
-      <a href="../health/index.html" data-cp-section="health"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8.3 12h2.1l1.1-2.2 1.5 4.3 1.1-2.1h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Health</span></a>
-      <a href="../math/index.html" data-cp-section="math"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h6M8 4v6m6 5h5m-5 4h5M15 5l4 4m0-4-4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg><span>Math</span></a>
-      <a href="../date-time/index.html" data-cp-section="date-time"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 3v4m10-4v4M3.5 9h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg><span>Date &amp; Time</span></a>
-      <a href="../engineering/index.html" data-cp-section="engineering"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5 8.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Engineering</span></a>
-      <a href="../conversion/index.html" data-cp-section="conversion"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h12l-3-3m5 13H7l3 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Convert</span></a>
-    </nav>
-    <div class="cp-header-actions">
-      <form class="cp-header-search" action="../search/index.html" method="get" role="search" autocomplete="off">
-        <svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m20 20-4.4-4.4m2.4-5.1a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input class="cp-search-input" type="search" name="q" placeholder="Search calculators…" aria-label="Search CalcPro calculators" aria-autocomplete="list" aria-expanded="false"><kbd>/</kbd>
-        <div class="cp-search-results" role="listbox" aria-label="Search suggestions" hidden></div>
-      </form>
-      <a class="cp-icon-button" href="../calculators/index.html" aria-label="Browse all calculators" title="All calculators"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
-      <button class="cp-icon-button cp-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-    </div>
-  </div>
-  <div class="cp-mobile-panel" hidden>
-    <form class="cp-mobile-search" action="../search/index.html" method="get" role="search"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m20 20-4.4-4.4m2.4-5.1a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input class="cp-mobile-search-input" type="search" name="q" placeholder="Search all calculators…" aria-label="Search all calculators"></form>
-    <nav class="cp-mobile-nav" aria-label="Mobile navigation">
-      <a href="../finance/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg> Finance</a><a href="../health/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8.3 12h2.1l1.1-2.2 1.5 4.3 1.1-2.1h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Health</a><a href="../math/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h6M8 4v6m6 5h5m-5 4h5M15 5l4 4m0-4-4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg> Math</a><a href="../date-time/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 3v4m10-4v4M3.5 9h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg> Date &amp; Time</a><a href="../engineering/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5 8.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Engineering</a><a href="../conversion/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h12l-3-3m5 13H7l3 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg> Conversion</a><a href="../education/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 9 9-5 9 5-9 5-9-5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 12v4c3 2.3 7 2.3 10 0v-4m4-3v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Education</a><a href="../other/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> Other</a><a href="../calculators/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> All calculators</a>
-    </nav>
-  </div>
-</header>
-<header>
-  <div class="wrap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/ip-subnet-calculator/#app", "name": "IP Subnet Calculator", "url": "/ip-subnet-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate IPv4 network, broadcast, subnet mask, host range, address count, and inspect IPv6 network prefixes using CIDR notation."}, {"@type": "BreadcrumbList", "@id": "/ip-subnet-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Conversion & Web", "item": "/conversion/"}, {"@type": "ListItem", "position": 3, "name": "Web & Network Utilities", "item": "/conversion/web-network-utilities/"}, {"@type": "ListItem", "position": 4, "name": "IP Subnet Calculator", "item": "/ip-subnet-calculator/"}]}, {"@type": "FAQPage", "@id": "/ip-subnet-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "How many addresses are in a /24 IPv4 subnet?", "acceptedAnswer": {"@type": "Answer", "text": "A /24 leaves 8 host bits, so the block contains 256 total IPv4 addresses."}}, {"@type": "Question", "name": "What is the subnet mask for /24?", "acceptedAnswer": {"@type": "Answer", "text": "The dotted-decimal mask is 255.255.255.0."}}, {"@type": "Question", "name": "How many bits are in an IPv6 address?", "acceptedAnswer": {"@type": "Answer", "text": "IPv6 addresses are 128 bits long."}}]}]}</script>
+<link href="../assets/css/global.css" rel="stylesheet"/><link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
+<body class="ip-subnet-calculator" data-cp-category="conversion" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
+<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../conversion/index.html">Conversion &amp; Web</a></li><li><a aria-current="page" href="index.html">IP Subnet Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../conversion/index.html">Browse Conversion &amp; Web</a><a href="../calculators/index.html">All calculators</a></div><header>
+<div class="wrap">
 <section class="hero">
-      <div class="hero-copy">
-        <div class="breadcrumb"><a href="#">Home</a> / <a href="#">Calculators</a> / IP Subnet Calculator</div>
-        <div class="kicker">Networking · CIDR</div>
-        <h1>IP Subnet Calculator</h1>
-        <p>Inspect IPv4 blocks and IPv6 prefixes with transparent bit math instead of memorized subnet tables.</p>
-      </div>
-      <div class="scene" aria-hidden="true"><div class="net"><div class="wire w1"></div><div class="wire w2"></div><div class="wire w3"></div><div class="node n1"></div><div class="node n2"></div><div class="node n3"></div><div class="node n4"></div></div></div>
-    </section>
-  </div>
+<div class="hero-copy">
+<div class="breadcrumb"><a href="#">Home</a> / <a href="#">Calculators</a> / IP Subnet Calculator</div>
+<div class="kicker">Networking · CIDR</div>
+<h1>IP Subnet Calculator</h1>
+<p>Inspect IPv4 blocks and IPv6 prefixes with transparent bit math instead of memorized subnet tables.</p>
+</div>
+<div aria-hidden="true" class="scene"><div class="net"><div class="wire w1"></div><div class="wire w2"></div><div class="wire w3"></div><div class="node n1"></div><div class="node n2"></div><div class="node n3"></div><div class="node n4"></div></div></div>
+</section>
+</div>
 </header>
-<main>
-  <section id="calculator" class="calc-shell">
-    <div class="wrap calculator">
-      <div class="card form-card">
+<div class="cp-page-layout"><main id="main">
+<div class="cp-tool-actions"><button data-cp-print="" type="button">Print / Save PDF</button><span aria-live="polite" class="cp-action-status" role="status"></span></div><section class="calc-shell" id="calculator">
+<div class="wrap calculator">
+<div class="card form-card">
 <h2 class="section-title">CIDR subnet tools</h2><p class="subtle">Calculate IPv4 ranges or normalize an IPv6 prefix.</p>
 <div class="tabs"><button class="tab active" data-tab="v4">IPv4</button><button class="tab" data-tab="v6">IPv6</button></div>
-<div id="v4" class="tab-panel active"><div class="grid">
-<div class="field full"><label for="ip4">IPv4 address</label><input id="ip4" value="192.168.1.130"></div>
-<div class="field"><label for="p4">Prefix length</label><input id="p4" type="number" min="0" max="32" value="24"></div></div>
-<div class="actions"><button id="ip4Go" class="btn btn-primary">Calculate IPv4 subnet</button></div></div>
-<div id="v6" class="tab-panel"><div class="grid"><div class="field full"><label for="ip6">IPv6 address</label><input id="ip6" value="2001:db8:1234:5678::1"></div><div class="field"><label for="p6">Prefix length</label><input id="p6" type="number" min="0" max="128" value="64"></div></div>
-<div class="actions"><button id="ip6Go" class="btn btn-primary">Calculate IPv6 prefix</button></div></div>
-<div id="ipErr" class="error"></div>
+<div class="tab-panel active" id="v4"><div class="grid">
+<div class="field full"><label for="ip4">IPv4 address</label><input id="ip4" value="192.168.1.130"/></div>
+<div class="field"><label for="p4">Prefix length</label><input id="p4" max="32" min="0" type="number" value="24"/></div></div>
+<div class="actions"><button class="btn btn-primary" id="ip4Go">Calculate IPv4 subnet</button></div></div>
+<div class="tab-panel" id="v6"><div class="grid"><div class="field full"><label for="ip6">IPv6 address</label><input id="ip6" value="2001:db8:1234:5678::1"/></div><div class="field"><label for="p6">Prefix length</label><input id="p6" max="128" min="0" type="number" value="64"/></div></div>
+<div class="actions"><button class="btn btn-primary" id="ip6Go">Calculate IPv6 prefix</button></div></div>
+<div class="error" id="ipErr"></div>
 </div>
-      <aside class="card result-card" aria-live="polite">
-<span class="badge">Subnet result</span><div id="ipBig" class="result-big">—</div><p id="ipText" class="subtle">Enter an address and prefix length.</p>
+<aside aria-live="polite" class="card result-card">
+<span class="badge">Subnet result</span><div class="result-big" id="ipBig">—</div><p class="subtle" id="ipText">Enter an address and prefix length.</p>
 <div class="metric-row"><div class="metric"><span>Mask / prefix</span><b id="ipMask">—</b></div><div class="metric"><span>Total addresses</span><b id="ipCount">—</b></div><div class="metric"><span>First / usable start</span><b id="ipFirst">—</b></div><div class="metric"><span>Last / broadcast</span><b id="ipLast">—</b></div></div>
 </aside>
-    </div>
-  </section>
-  <section id="guide" class="content">
-    <div class="wrap content-grid">
-      <article class="article">
-        
+</div>
+</section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+<section class="content" id="guide">
+<div class="wrap content-grid">
+<article class="article">
 <h2>What Is an IP Subnet Calculator?</h2>
 <p>An IP subnet calculator separates the network prefix from the host portion of an address. For IPv4, it can show the dotted-decimal subnet mask, network address, broadcast address, and address count. For IPv6, the prefix length identifies how many of the 128 address bits belong to the subnet prefix.</p>
 <h2>IPv4 CIDR Math</h2>
@@ -142,54 +116,23 @@ body{--bg:#02080b;--panel:rgba(5,24,29,.83);--panel2:rgba(8,51,55,.34);--a:#4ef2
 <p>A /31 is commonly used for point-to-point links under modern standards, while /32 identifies a single host route. These do not follow the simple “subtract two usable hosts” rule.</p>
 <h2>IPv6 Prefixes</h2>
 <p>IPv6 addresses are 128 bits. A /64 prefix leaves 64 bits after the subnet prefix, representing 2^64 possible interface identifiers within that prefix space.</p>
-
-        <h2 id="faq">Frequently Asked Questions</h2>
-        <div class="faq"><details><summary>How many addresses are in a /24 IPv4 subnet?</summary><p>A /24 leaves 8 host bits, so the block contains 256 total IPv4 addresses.</p></details><details><summary>What is the subnet mask for /24?</summary><p>The dotted-decimal mask is 255.255.255.0.</p></details><details><summary>How many bits are in an IPv6 address?</summary><p>IPv6 addresses are 128 bits long.</p></details></div>
-        <h2>Sources and Methodology</h2>
-        <p>The calculator logic and explanatory content were cross-checked against the following references. Estimates are separated from official data where applicable.</p>
-        <ul class="source-list"><li><a href="https://www.calculator.net/ip-subnet-calculator.html" rel="noopener noreferrer">Calculator.net IP Subnet Calculator</a></li><li><a href="https://www.rfc-editor.org/info/rfc4632/" rel="noopener noreferrer">RFC 4632: CIDR</a></li><li><a href="https://www.rfc-editor.org/info/rfc4291/" rel="noopener noreferrer">RFC 4291: IPv6 Addressing Architecture</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc3021" rel="noopener noreferrer">RFC 3021: /31 point-to-point links</a></li></ul>
-      </article>
-      <aside class="card aside">
-        <h3>On this page</h3>
-        <a href="#calculator">Calculator</a>
-        <a href="#guide">How it works</a>
-        <a href="#faq">FAQs</a>
-        <p class="small">Educational calculator. For regulated financial, tax, medical, engineering, or network changes, verify the result against the relevant professional or official source.</p>
-      </aside>
-    </div>
-  </section>
-
-<section class="cp-related-tools" aria-labelledby="cp-related-title">
-  <div class="cp-related-shell">
-    <div class="cp-related-heading"><div><span class="cp-related-kicker">Explore next</span><h2 id="cp-related-title">Related Tools</h2><p>Useful calculators closely related to IP Subnet Calculator.</p></div><a class="cp-related-all" href="../calculators/index.html">View all calculators <span aria-hidden="true">→</span></a></div>
-    <div class="cp-related-grid"><a class="cp-related-card" href="../conversion-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h12l-3-3m5 13H7l3 3"/></svg></span>
-  <span class="cp-related-body"><strong>Conversion Calculator</strong><small>Convert common units of length, mass, temperature, area, volume, speed, pressure, and energy with clear…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../shoe-size-conversion/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h12l-3-3m5 13H7l3 3"/></svg></span>
-  <span class="cp-related-body"><strong>Shoe Size Conversion Calculator</strong><small>Convert shoe sizes between US/Canada, UK/India, EU, Japan/Mexico, China, and foot length with category-aware formulas.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../roman-numeral-converter/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h12l-3-3m5 13H7l3 3"/></svg></span>
-  <span class="cp-related-body"><strong>Roman Numeral Converter</strong><small>Convert whole numbers to Roman numerals, Roman numerals to Arabic numbers, and numeric dates to Roman form.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../base64-encode-decode/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h12l-3-3m5 13H7l3 3"/></svg></span>
-  <span class="cp-related-body"><strong>Base64 Encode / Decode</strong><small>Encode UTF-8 text to Base64 or decode Base64 back to text, with standard and Base64URL options.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../url-encode-decode/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h12l-3-3m5 13H7l3 3"/></svg></span>
-  <span class="cp-related-body"><strong>URL Encode / Decode</strong><small>Percent-encode or decode URL text with separate whole-URI and URI-component modes based on browser URL encoding…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../bandwidth-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h12l-3-3m5 13H7l3 3"/></svg></span>
-  <span class="cp-related-body"><strong>Bandwidth Calculator</strong><small>Estimate file transfer time from data size and bandwidth, or calculate the bandwidth needed to meet a target duration.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a></div>
-  </div>
+<h2 id="faq">Frequently Asked Questions</h2>
+<div class="faq"><details><summary>How many addresses are in a /24 IPv4 subnet?</summary><p>A /24 leaves 8 host bits, so the block contains 256 total IPv4 addresses.</p></details><details><summary>What is the subnet mask for /24?</summary><p>The dotted-decimal mask is 255.255.255.0.</p></details><details><summary>How many bits are in an IPv6 address?</summary><p>IPv6 addresses are 128 bits long.</p></details></div>
+<h2>Sources and Methodology</h2>
+<p>The calculator logic and explanatory content were cross-checked against the following references. Estimates are separated from official data where applicable.</p>
+<ul class="source-list"><li><a href="https://www.calculator.net/ip-subnet-calculator.html" rel="noopener noreferrer">Calculator.net IP Subnet Calculator</a></li><li><a href="https://www.rfc-editor.org/info/rfc4632/" rel="noopener noreferrer">RFC 4632: CIDR</a></li><li><a href="https://www.rfc-editor.org/info/rfc4291/" rel="noopener noreferrer">RFC 4291: IPv6 Addressing Architecture</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc3021" rel="noopener noreferrer">RFC 3021: /31 point-to-point links</a></li></ul>
+</article>
+<aside class="card aside">
+<h3>On this page</h3>
+<a href="#calculator">Calculator</a>
+<a href="#guide">How it works</a>
+<a href="#faq">FAQs</a>
+<p class="small">Educational calculator. For regulated financial, tax, medical, engineering, or network changes, verify the result against the relevant professional or official source.</p>
+</aside>
+</div>
 </section>
-</main>
+
+<details class="cp-data-panel"><summary><span>Calculator Data — exact tool basis</span><small>Conversion &amp; Web · Calculator</small></summary><div class="cp-data-grid"><div class="cp-data-item wide"><b>Purpose</b><p>Calculate IPv4 network, broadcast, subnet mask, host range, address count, and inspect IPv6 network prefixes using CIDR notation.</p></div><div class="cp-data-item wide"><b>Formula / Algorithm Used in Tool</b><p>IPv4: mask = (0xFFFFFFFF &lt;&lt; (32−prefix)); network = IP AND mask; total addresses = 2^(32−prefix); broadcast = network + total − 1. /31 and /32 use special host semantics. IPv6: zero all host bits after the prefix to obtain the subnet prefix.</p></div><div class="cp-data-item"><b>Required User Inputs</b><p>IPv4 address; Prefix length; IPv6 address</p></div><div class="cp-data-item"><b>Primary Outputs</b><p>Mask / prefix; Total addresses; First / usable start; Last / broadcast</p></div><div class="cp-data-item wide"><b>Important Assumptions / Limitations</b><p>Explain formula domain, unit consistency, rounding, input validation and real-world limitations.</p></div><div class="cp-data-item"><b>Fresh Data Required?</b><p>Conditional</p></div><div class="cp-data-item"><b>Recommended Update Frequency</b><p>When standards/constants change</p></div><div class="cp-data-item wide"><b>Current Source URLs in Page</b><p><a href="https://www.calculator.net/ip-subnet-calculator.html" rel="nofollow noopener" target="_blank">https://www.calculator.net/ip-subnet-calculator.html</a><br/><a href="https://www.rfc-editor.org/info/rfc4632/" rel="nofollow noopener" target="_blank">https://www.rfc-editor.org/info/rfc4632/</a><br/><a href="https://www.rfc-editor.org/info/rfc4291/" rel="nofollow noopener" target="_blank">https://www.rfc-editor.org/info/rfc4291/</a><br/><a href="https://www.rfc-editor.org/rfc/rfc3021" rel="nofollow noopener" target="_blank">https://www.rfc-editor.org/rfc/rfc3021</a></p></div></div></details><script class="cp-calculator-data" type="application/json">{"index":"47","Batch":"5","Calculator / Page":"IP Subnet Calculator","Slug":"ip-subnet-calculator","Site Category (Current)":"Conversion & Web","Recommended Content Domain":"Conversion / Science / Web","Page Type":"Calculator","Search Intent / Purpose":"Calculate IPv4 network, broadcast, subnet mask, host range, address count, and inspect IPv6 network prefixes using CIDR notation.","Formula / Algorithm Used in Tool":"IPv4: mask = (0xFFFFFFFF << (32−prefix)); network = IP AND mask; total addresses = 2^(32−prefix); broadcast = network + total − 1. /31 and /32 use special host semantics. IPv6: zero all host bits after the prefix to obtain the subnet prefix.","Required User Inputs":"IPv4 address; Prefix length; IPv6 address","Primary Outputs":"Mask / prefix; Total addresses; First / usable start; Last / broadcast","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: IPv4 address, Prefix length, IPv6 address. Explain outputs: Mask / prefix, Total addresses, First / usable start, Last / broadcast. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Exact conversion constants/protocol/standard definitions, units and edge cases; cite primary standards where practical.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When standards/constants change","Important Assumptions / Limitations":"Explain formula domain, unit consistency, rounding, input validation and real-world limitations.","Current Source URLs in Page":"https://www.calculator.net/ip-subnet-calculator.html | https://www.rfc-editor.org/info/rfc4632/ | https://www.rfc-editor.org/info/rfc4291/ | https://www.rfc-editor.org/rfc/rfc3021","Implementation Path":"/ip-subnet-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><span class="cp-side-kicker">Related tools</span><h2>Conversion &amp; Web</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../conversion-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Conversion Calculator</strong><small>Convert common units of length, mass, temperature, area, volume, speed, pressure, a…</small></span></a><a class="cp-related-link" href="../shoe-size-conversion/index.html"><span class="cp-related-dot">›</span><span><strong>Shoe Size Conversion Calculator</strong><small>Convert shoe sizes between US/Canada, UK/India, EU, Japan/Mexico, China, and foot l…</small></span></a><a class="cp-related-link" href="../roman-numeral-converter/index.html"><span class="cp-related-dot">›</span><span><strong>Roman Numeral Converter</strong><small>Convert whole numbers to Roman numerals, Roman numerals to Arabic numbers, and nume…</small></span></a><a class="cp-related-link" href="../bandwidth-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Bandwidth Calculator</strong><small>Estimate file transfer time from data size and bandwidth, or calculate the bandwidt…</small></span></a><a class="cp-related-link" href="../base64-encode-decode/index.html"><span class="cp-related-dot">›</span><span><strong>Base64 Encode / Decode</strong><small>Encode UTF-8 text to Base64 or decode Base64 back to text, with standard and Base64…</small></span></a><a class="cp-related-link" href="../url-encode-decode/index.html"><span class="cp-related-dot">›</span><span><strong>URL Encode / Decode</strong><small>Percent-encode or decode URL text with separate whole-URI and URI-component modes b…</small></span></a><a class="cp-related-link" href="../dice-roller/index.html"><span class="cp-related-dot">›</span><span><strong>Dice Roller</strong><small>Roll standard six-sided dice or custom-sided virtual dice, view each result, the to…</small></span></a><a class="cp-related-link" href="../password-generator/index.html"><span class="cp-related-dot">›</span><span><strong>Password Generator</strong><small>Generate long random passwords locally in your browser, control character sets, avo…</small></span></a></div><a class="cp-side-category" href="../conversion/index.html"><span>View category</span><span>→</span></a><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div></aside></div>
 <footer><div class="wrap">CalcPro · Standalone calculator page · No account required.</div></footer>
 <script>
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab,.tab-panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active')});
@@ -203,5 +146,5 @@ function expand6(s){s=s.toLowerCase();if((s.match(/::/g)||[]).length>1)return nu
 function compress6(arr){let h=arr.map(x=>x.toString(16));let bestS=-1,bestL=0;for(let i=0;i<8;){if(arr[i]!==0){i++;continue}let j=i;while(j<8&&arr[j]===0)j++;if(j-i>bestL&&j-i>1){bestS=i;bestL=j-i}i=j}if(bestS>=0){h.splice(bestS,bestL,"");let s=h.join(":");if(bestS===0)s=":"+s;if(bestS+bestL===8)s=s+":";return s.replace(":::", "::")}return h.join(":")}
 ip6Go.onclick=()=>{ipErr.classList.remove('show');let arr=expand6(ip6.value),p=+p6.value;if(!arr||!Number.isInteger(p)||p<0||p>128)return ipErrMsg("Enter a valid IPv6 address and prefix from 0 to 128.");let bits=arr.map(x=>x.toString(2).padStart(16,"0")).join(""),netbits=bits.slice(0,p).padEnd(128,"0"),out=[];for(let i=0;i<8;i++)out.push(parseInt(netbits.slice(i*16,i*16+16),2));ipBig.textContent=compress6(out)+"/"+p;ipMask.textContent="/"+p;ipCount.textContent="2^"+(128-p);ipFirst.textContent=compress6(out);ipLast.textContent="Prefix-based IPv6 range";ipText.textContent="IPv6 uses a 128-bit address and prefix length; this shows the normalized subnet prefix.";};
 </script>
-<script src="../assets/js/global.js" defer></script></body>
+<script defer="" src="../assets/js/global.js"></script><script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body>
 </html>

@@ -1,17 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Grade Calculator | CalcPro</title>
-<meta name="description" content="Calculate a weighted course grade, add assignment rows, and estimate the score needed on remaining coursework to reach a target grade.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="../grade-calculator/">
-<meta property="og:title" content="Grade Calculator | CalcPro">
-<meta property="og:description" content="Calculate a weighted course grade, add assignment rows, and estimate the score needed on remaining coursework to reach a target grade.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="/grade-calculator/">
-<meta name="theme-color" content="#07111f">
+<meta content="Calculate a weighted course grade, add assignment rows, and estimate the score needed on remaining coursework to reach a target grade." name="description"/>
+<meta content="index,follow" name="robots"/>
+<link href="../grade-calculator/" rel="canonical"/>
+<meta content="Grade Calculator | CalcPro" property="og:title"/>
+<meta content="Calculate a weighted course grade, add assignment rows, and estimate the score needed on remaining coursework to reach a target grade." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="/grade-calculator/" property="og:url"/>
+<meta content="#1477ff" name="theme-color"/>
 <style>
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 :root{--bg:#07111f;--panel:rgba(255,255,255,.09);--panel2:rgba(255,255,255,.06);--text:#f7fbff;--muted:#b8c6d8;--line:rgba(255,255,255,.14);--a:#67e8f9;--b:#34d399;--c:#fbbf24;--danger:#fb7185;--shadow:0 30px 80px rgba(0,0,0,.32)}
@@ -68,73 +69,46 @@ footer{border-top:1px solid var(--line);padding:32px 0 50px;color:var(--muted);f
 body{--bg:#17122a;--panel:rgba(48,36,81,.72);--panel2:rgba(92,63,127,.3);--a:#a6e3ff;--b:#ff9aa8;--c:#ffd76b;background:radial-gradient(circle at 14% 12%,#4da9ff26,transparent 28%),radial-gradient(circle at 82% 28%,#ff557b24,transparent 25%),#17122a}
 .grade-calculator .hero{grid-template-columns:.9fr 1.1fr}.notebook{position:absolute;right:9%;top:18px;width:315px;height:300px;background:#fff7dc;border-radius:18px;transform:rotate(5deg) rotateY(-8deg);box-shadow:25px 35px 60px #0007;color:#3f3353;padding:34px}.notebook:before{content:"";position:absolute;left:48px;top:0;bottom:0;width:2px;background:#ef929c}.notebook i{display:block;height:2px;background:#8db6d6;margin:26px 0}.gradebubble{position:absolute;left:1%;bottom:38px;width:110px;height:110px;border-radius:32px;background:linear-gradient(145deg,#ffcf70,#ff7a8e);display:grid;place-items:center;font-size:2.7rem;font-weight:950;color:#49223a;transform:rotate(-11deg);box-shadow:0 25px 45px #0006}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/grade-calculator/#app", "name": "Grade Calculator", "url": "/grade-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate a weighted course grade, add assignment rows, and estimate the score needed on remaining coursework to reach a target grade."}, {"@type": "BreadcrumbList", "@id": "/grade-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "/calculators/"}, {"@type": "ListItem", "position": 3, "name": "Grade Calculator", "item": "/grade-calculator/"}]}, {"@type": "FAQPage", "@id": "/grade-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "How do weighted grades work?", "acceptedAnswer": {"@type": "Answer", "text": "Each score contributes in proportion to its weight. A 40%-weight exam affects the final grade more than a 10%-weight quiz."}}, {"@type": "Question", "name": "What if my weights do not add to 100%?", "acceptedAnswer": {"@type": "Answer", "text": "The current-grade result normalizes the weights you entered. Final-grade planning assumes the remaining course weight you specify completes the course structure."}}, {"@type": "Question", "name": "Are letter-grade cutoffs universal?", "acceptedAnswer": {"@type": "Answer", "text": "No. Schools and instructors may use different boundaries, so always check the official syllabus or grading policy."}}]}]}</script>
-<link rel="stylesheet" href="../assets/css/global.css"></head>
-<body class="grade-calculator"><header class="cp-site-header" data-cp-header>
-  <div class="cp-header-shell">
-    <a class="cp-brand" href="../index.html" aria-label="CalcPro home"><span class="cp-brand-mark"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="2.8" width="18" height="18.4" rx="4" fill="currentColor" opacity=".14"/><rect x="6.4" y="6.2" width="11.2" height="3.6" rx="1.2" fill="currentColor"/><path d="M7 12h2.2v2.2H7zm3.9 0h2.2v2.2h-2.2zm3.9 0H17v2.2h-2.2zM7 15.8h2.2V18H7zm3.9 0h2.2V18h-2.2zm3.9 0H17V18h-2.2z" fill="currentColor"/></svg></span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
-    <nav class="cp-main-nav" aria-label="Primary navigation">
-      <a href="../finance/index.html" data-cp-section="finance"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg><span>Finance</span></a>
-      <a href="../health/index.html" data-cp-section="health"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8.3 12h2.1l1.1-2.2 1.5 4.3 1.1-2.1h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Health</span></a>
-      <a href="../math/index.html" data-cp-section="math"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h6M8 4v6m6 5h5m-5 4h5M15 5l4 4m0-4-4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg><span>Math</span></a>
-      <a href="../date-time/index.html" data-cp-section="date-time"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 3v4m10-4v4M3.5 9h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg><span>Date &amp; Time</span></a>
-      <a href="../engineering/index.html" data-cp-section="engineering"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5 8.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Engineering</span></a>
-      <a href="../conversion/index.html" data-cp-section="conversion"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h12l-3-3m5 13H7l3 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Convert</span></a>
-    </nav>
-    <div class="cp-header-actions">
-      <form class="cp-header-search" action="../search/index.html" method="get" role="search" autocomplete="off">
-        <svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m20 20-4.4-4.4m2.4-5.1a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input class="cp-search-input" type="search" name="q" placeholder="Search calculators…" aria-label="Search CalcPro calculators" aria-autocomplete="list" aria-expanded="false"><kbd>/</kbd>
-        <div class="cp-search-results" role="listbox" aria-label="Search suggestions" hidden></div>
-      </form>
-      <a class="cp-icon-button" href="../calculators/index.html" aria-label="Browse all calculators" title="All calculators"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
-      <button class="cp-icon-button cp-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-    </div>
-  </div>
-  <div class="cp-mobile-panel" hidden>
-    <form class="cp-mobile-search" action="../search/index.html" method="get" role="search"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m20 20-4.4-4.4m2.4-5.1a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input class="cp-mobile-search-input" type="search" name="q" placeholder="Search all calculators…" aria-label="Search all calculators"></form>
-    <nav class="cp-mobile-nav" aria-label="Mobile navigation">
-      <a href="../finance/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg> Finance</a><a href="../health/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8.3 12h2.1l1.1-2.2 1.5 4.3 1.1-2.1h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Health</a><a href="../math/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h6M8 4v6m6 5h5m-5 4h5M15 5l4 4m0-4-4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg> Math</a><a href="../date-time/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 3v4m10-4v4M3.5 9h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg> Date &amp; Time</a><a href="../engineering/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5 8.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Engineering</a><a href="../conversion/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h12l-3-3m5 13H7l3 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg> Conversion</a><a href="../education/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 9 9-5 9 5-9 5-9-5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 12v4c3 2.3 7 2.3 10 0v-4m4-3v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Education</a><a href="../other/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> Other</a><a href="../calculators/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> All calculators</a>
-    </nav>
-  </div>
-</header>
-<header>
-  <div class="wrap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/grade-calculator/#app", "name": "Grade Calculator", "url": "/grade-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate a weighted course grade, add assignment rows, and estimate the score needed on remaining coursework to reach a target grade."}, {"@type": "BreadcrumbList", "@id": "/grade-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Education", "item": "/education/"}, {"@type": "ListItem", "position": 3, "name": "Grades & GPA", "item": "/education/grades-gpa/"}, {"@type": "ListItem", "position": 4, "name": "Grade Calculator", "item": "/grade-calculator/"}]}, {"@type": "FAQPage", "@id": "/grade-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "How do weighted grades work?", "acceptedAnswer": {"@type": "Answer", "text": "Each score contributes in proportion to its weight. A 40%-weight exam affects the final grade more than a 10%-weight quiz."}}, {"@type": "Question", "name": "What if my weights do not add to 100%?", "acceptedAnswer": {"@type": "Answer", "text": "The current-grade result normalizes the weights you entered. Final-grade planning assumes the remaining course weight you specify completes the course structure."}}, {"@type": "Question", "name": "Are letter-grade cutoffs universal?", "acceptedAnswer": {"@type": "Answer", "text": "No. Schools and instructors may use different boundaries, so always check the official syllabus or grading policy."}}]}]}</script>
+<link href="../assets/css/global.css" rel="stylesheet"/><link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
+<body class="grade-calculator" data-cp-category="education" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
+<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../education/index.html">Education</a></li><li><a aria-current="page" href="index.html">Grade Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../education/index.html">Browse Education</a><a href="../calculators/index.html">All calculators</a></div><header>
+<div class="wrap">
 <section class="hero">
-      <div class="hero-copy">
-        <div class="breadcrumb"><a href="#">Home</a> / <a href="#">Calculators</a> / Grade Calculator</div>
-        <div class="kicker">School · Scores</div>
-        <h1>Grade Calculator</h1>
-        <p>Turn a messy gradebook into one clear weighted score—and see what you need on the work that remains.</p>
-      </div>
-      <div class="scene" aria-hidden="true"><div class="notebook"><i></i><i></i><i></i><i></i><i></i></div><div class="gradebubble">A+</div></div>
-    </section>
-  </div>
+<div class="hero-copy">
+<div class="breadcrumb"><a href="#">Home</a> / <a href="#">Calculators</a> / Grade Calculator</div>
+<div class="kicker">School · Scores</div>
+<h1>Grade Calculator</h1>
+<p>Turn a messy gradebook into one clear weighted score—and see what you need on the work that remains.</p>
+</div>
+<div aria-hidden="true" class="scene"><div class="notebook"><i></i><i></i><i></i><i></i><i></i></div><div class="gradebubble">A+</div></div>
+</section>
+</div>
 </header>
-<main>
-  <section id="calculator" class="calc-shell">
-    <div class="wrap calculator">
-      <div class="card form-card">
+<div class="cp-page-layout"><main id="main">
+<div class="cp-tool-actions"><button data-cp-print="" type="button">Print / Save PDF</button><span aria-live="polite" class="cp-action-status" role="status"></span></div><section class="calc-shell" id="calculator">
+<div class="wrap calculator">
+<div class="card form-card">
 <h2 class="section-title">Weighted course grade</h2><p class="subtle">Enter scores as percentages and each item's course weight.</p>
 <div id="gradeRows"></div>
-<div class="actions"><button id="addRow" class="btn btn-secondary">+ Add row</button></div>
-<hr style="border:0;border-top:1px solid var(--line);margin:22px 0">
+<div class="actions"><button class="btn btn-secondary" id="addRow">+ Add row</button></div>
+<hr style="border:0;border-top:1px solid var(--line);margin:22px 0"/>
 <div class="grid">
-<div class="field"><label for="target">Target final grade (%)</label><input id="target" type="number" value="90" step="any"></div>
-<div class="field"><label for="remainWeight">Remaining course weight (%)</label><input id="remainWeight" type="number" value="20" min="0" max="100" step="any"></div>
+<div class="field"><label for="target">Target final grade (%)</label><input id="target" step="any" type="number" value="90"/></div>
+<div class="field"><label for="remainWeight">Remaining course weight (%)</label><input id="remainWeight" max="100" min="0" step="any" type="number" value="20"/></div>
 </div>
-<div class="actions"><button id="gGo" class="btn btn-primary">Calculate grade</button><button id="gClear" class="btn btn-secondary">Clear</button></div><div id="gErr" class="error"></div>
+<div class="actions"><button class="btn btn-primary" id="gGo">Calculate grade</button><button class="btn btn-secondary" id="gClear">Clear</button></div><div class="error" id="gErr"></div>
 </div>
-      <aside class="card result-card" aria-live="polite">
-<span class="badge">Current weighted grade</span><div id="gBig" class="result-big">—</div><p id="gText" class="subtle">Add assignments and weights.</p>
+<aside aria-live="polite" class="card result-card">
+<span class="badge">Current weighted grade</span><div class="result-big" id="gBig">—</div><p class="subtle" id="gText">Add assignments and weights.</p>
 <div class="metric-row"><div class="metric"><span>Weight entered</span><b id="gWeight">—</b></div><div class="metric"><span>Needed on remaining work</span><b id="gNeed">—</b></div></div>
 <div class="table-wrap"><table><thead><tr><th>Letter</th><th>Typical %</th></tr></thead><tbody><tr><td>A</td><td>93–96</td></tr><tr><td>B</td><td>83–86</td></tr><tr><td>C</td><td>73–76</td></tr><tr><td>D</td><td>63–66</td></tr><tr><td>F</td><td>0–59</td></tr></tbody></table></div>
 </aside>
-    </div>
-  </section>
-  <section id="guide" class="content">
-    <div class="wrap content-grid">
-      <article class="article">
-        
+</div>
+</section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+<section class="content" id="guide">
+<div class="wrap content-grid">
+<article class="article">
 <h2>What Is a Grade Calculator?</h2>
 <p>A grade calculator combines assignment or exam scores according to their weights. It is useful when a course grade is based on categories or assessments that contribute different percentages to the final mark.</p>
 <h2>Weighted Grade Formula</h2>
@@ -143,54 +117,23 @@ body{--bg:#17122a;--panel:rgba(48,36,81,.72);--panel2:rgba(92,63,127,.3);--a:#a6
 <p>Letter-grade cutoffs vary by school, instructor, and country. The reference table on this page shows one common U.S. mapping similar to the example used by Calculator.net, but your syllabus should take priority.</p>
 <h2>Limitations</h2>
 <p>Extra credit, dropped assignments, category caps, curved grading, pass/fail rules, and institution-specific GPA policies can change the final result.</p>
-
-        <h2 id="faq">Frequently Asked Questions</h2>
-        <div class="faq"><details><summary>How do weighted grades work?</summary><p>Each score contributes in proportion to its weight. A 40%-weight exam affects the final grade more than a 10%-weight quiz.</p></details><details><summary>What if my weights do not add to 100%?</summary><p>The current-grade result normalizes the weights you entered. Final-grade planning assumes the remaining course weight you specify completes the course structure.</p></details><details><summary>Are letter-grade cutoffs universal?</summary><p>No. Schools and instructors may use different boundaries, so always check the official syllabus or grading policy.</p></details></div>
-        <h2>Sources and Methodology</h2>
-        <p>The calculator logic and explanatory content were cross-checked against the following references. Estimates are separated from official data where applicable.</p>
-        <ul class="source-list"><li><a href="https://www.calculator.net/grade-calculator.html" rel="noopener noreferrer">Calculator.net Grade Calculator</a></li></ul>
-      </article>
-      <aside class="card aside">
-        <h3>On this page</h3>
-        <a href="#calculator">Calculator</a>
-        <a href="#guide">How it works</a>
-        <a href="#faq">FAQs</a>
-        <p class="small">Educational calculator. For regulated financial, tax, medical, engineering, or network changes, verify the result against the relevant professional or official source.</p>
-      </aside>
-    </div>
-  </section>
-
-<section class="cp-related-tools" aria-labelledby="cp-related-title">
-  <div class="cp-related-shell">
-    <div class="cp-related-heading"><div><span class="cp-related-kicker">Explore next</span><h2 id="cp-related-title">Related Tools</h2><p>Useful calculators closely related to Grade Calculator.</p></div><a class="cp-related-all" href="../calculators/index.html">View all calculators <span aria-hidden="true">→</span></a></div>
-    <div class="cp-related-grid"><a class="cp-related-card" href="../gpa-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 9 9-5 9 5-9 5-9-5Z"/><path d="M7 12v4c3 2.3 7 2.3 10 0v-4"/></svg></span>
-  <span class="cp-related-body"><strong>GPA Calculator</strong><small>Calculate a credit-weighted GPA on a standard 4.0 scale and optionally combine it with a prior cumulative GPA and…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../college-cost-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>College Cost Calculator</strong><small>Project college cost across multiple years using annual cost, cost inflation, grants, scholarships, savings, savings…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../student-loan-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Student Loan Calculator</strong><small>Estimate student-loan monthly payment, in-school interest accrual, capitalization, total repayment, and…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../tax-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>2026 Federal Income Tax Calculator</strong><small>Estimate 2026 U.S. federal ordinary income tax using IRS tax brackets and standard deductions, with optional…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../401k-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>401(k) Calculator</strong><small>Project a 401(k) balance using salary, contribution percentage, employer match, salary growth, investment return,…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../mortgage-calculator-uk/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>A mortgage view built in pounds, not guesses.</strong><small>Estimate UK mortgage repayment and interest-only payments in pounds, total interest, LTV, and an amortization schedule.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a></div>
-  </div>
+<h2 id="faq">Frequently Asked Questions</h2>
+<div class="faq"><details><summary>How do weighted grades work?</summary><p>Each score contributes in proportion to its weight. A 40%-weight exam affects the final grade more than a 10%-weight quiz.</p></details><details><summary>What if my weights do not add to 100%?</summary><p>The current-grade result normalizes the weights you entered. Final-grade planning assumes the remaining course weight you specify completes the course structure.</p></details><details><summary>Are letter-grade cutoffs universal?</summary><p>No. Schools and instructors may use different boundaries, so always check the official syllabus or grading policy.</p></details></div>
+<h2>Sources and Methodology</h2>
+<p>The calculator logic and explanatory content were cross-checked against the following references. Estimates are separated from official data where applicable.</p>
+<ul class="source-list"><li><a href="https://www.calculator.net/grade-calculator.html" rel="noopener noreferrer">Calculator.net Grade Calculator</a></li></ul>
+</article>
+<aside class="card aside">
+<h3>On this page</h3>
+<a href="#calculator">Calculator</a>
+<a href="#guide">How it works</a>
+<a href="#faq">FAQs</a>
+<p class="small">Educational calculator. For regulated financial, tax, medical, engineering, or network changes, verify the result against the relevant professional or official source.</p>
+</aside>
+</div>
 </section>
-</main>
+
+<details class="cp-data-panel"><summary><span>Calculator Data — exact tool basis</span><small>Education · Calculator</small></summary><div class="cp-data-grid"><div class="cp-data-item wide"><b>Purpose</b><p>Calculate a weighted course grade, add assignment rows, and estimate the score needed on remaining coursework to reach a target grade.</p></div><div class="cp-data-item wide"><b>Formula / Algorithm Used in Tool</b><p>Weighted Grade Formula: Weighted grade = Σ(score × weight) ÷ Σ(weights) . For final-grade planning, the calculator compares the grade points already earned with the course weight still remaining.</p></div><div class="cp-data-item"><b>Required User Inputs</b><p>Target final grade (%); Remaining course weight (%)</p></div><div class="cp-data-item"><b>Primary Outputs</b><p>Weight entered; Needed on remaining work</p></div><div class="cp-data-item wide"><b>Important Assumptions / Limitations</b><p>Extra credit, dropped assignments, category caps, curved grading, pass/fail rules, and institution-specific GPA policies can change the final result.</p></div><div class="cp-data-item"><b>Fresh Data Required?</b><p>No</p></div><div class="cp-data-item"><b>Recommended Update Frequency</b><p>Only if formula/definition changes</p></div><div class="cp-data-item wide"><b>Current Source URLs in Page</b><p><a href="https://www.calculator.net/grade-calculator.html" rel="nofollow noopener" target="_blank">https://www.calculator.net/grade-calculator.html</a></p></div></div></details><script class="cp-calculator-data" type="application/json">{"index":"44","Batch":"5","Calculator / Page":"Grade Calculator","Slug":"grade-calculator","Site Category (Current)":"Education","Recommended Content Domain":"Education","Page Type":"Calculator","Search Intent / Purpose":"Calculate a weighted course grade, add assignment rows, and estimate the score needed on remaining coursework to reach a target grade.","Formula / Algorithm Used in Tool":"Weighted Grade Formula: Weighted grade = Σ(score × weight) ÷ Σ(weights) . For final-grade planning, the calculator compares the grade points already earned with the course weight still remaining.","Required User Inputs":"Target final grade (%); Remaining course weight (%)","Primary Outputs":"Weight entered; Needed on remaining work","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Target final grade (%), Remaining course weight (%). Explain outputs: Weight entered, Needed on remaining work. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"Extra credit, dropped assignments, category caps, curved grading, pass/fail rules, and institution-specific GPA policies can change the final result.","Current Source URLs in Page":"https://www.calculator.net/grade-calculator.html","Implementation Path":"/grade-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><span class="cp-side-kicker">Related tools</span><h2>Education</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../gpa-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>GPA Calculator</strong><small>Calculate a credit-weighted GPA on a standard 4.0 scale and optionally combine it w…</small></span></a><a class="cp-related-link" href="../college-cost-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>College Cost Calculator</strong><small>Project college cost across multiple years using annual cost, cost inflation, grant…</small></span></a><a class="cp-related-link" href="../student-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Student Loan Calculator</strong><small>Estimate student-loan monthly payment, in-school interest accrual, capitalization,…</small></span></a></div><a class="cp-side-category" href="../education/index.html"><span>View category</span><span>→</span></a><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div></aside></div>
 <footer><div class="wrap">CalcPro · Standalone calculator page · No account required.</div></footer>
 <script>
 let rows=document.getElementById('gradeRows');
@@ -201,5 +144,5 @@ function letter(x){if(x>=97)return"A+";if(x>=93)return"A";if(x>=90)return"A-";if
 gGo.onclick=()=>{gErr.classList.remove('show');let ss=[...document.querySelectorAll('.gs')],ww=[...document.querySelectorAll('.gw')],sum=0,w=0;for(let i=0;i<ss.length;i++){let s=parseFloat(ss[i].value),x=parseFloat(ww[i].value);if(isFinite(s)&&isFinite(x)&&x>=0){sum+=s*x;w+=x}}if(w<=0){gErr.textContent="Enter at least one valid score and weight.";gErr.classList.add('show');return}let current=sum/w;gBig.textContent=current.toFixed(2)+"% · "+letter(current);gWeight.textContent=w.toFixed(2)+"%";let t=+target.value,r=+remainWeight.value;if(r>0){let completed=100-r, earned=current*completed/100, need=(t-earned)/(r/100);gNeed.textContent=need.toFixed(2)+"%";gText.textContent=need>100?"Your target is not reachable with the remaining weight alone.":need<0?"Your target is already secured under these assumptions.":"Required average on the remaining course weight."}else{gNeed.textContent="—";gText.textContent="No remaining weight entered."}};
 gClear.onclick=()=>{rows.innerHTML="";add();gBig.textContent="—";gWeight.textContent="—";gNeed.textContent="—";};
 </script>
-<script src="../assets/js/global.js" defer></script></body>
+<script defer="" src="../assets/js/global.js"></script><script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body>
 </html>

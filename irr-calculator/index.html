@@ -1,17 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en-US">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>IRR Calculator for Periodic Cash Flows | CalcPro</title>
-<meta name="description" content="Calculate internal rate of return for periodic cash flows, view NPV at the solved rate, detect multiple IRR roots in the scan range, and add or remove cash-flow periods.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="../irr-calculator/">
-<meta property="og:title" content="IRR Calculator | CalcPro">
-<meta property="og:description" content="Calculate internal rate of return for periodic cash flows, view NPV at the solved rate, detect multiple IRR roots in the scan range, and add or remove cash-flow periods.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://yourdomain.com/irr-calculator/">
-<meta name="theme-color" content="#09090b">
+<meta content="Calculate internal rate of return for periodic cash flows, view NPV at the solved rate, detect multiple IRR roots in the scan range, and add or remove cash-flow periods." name="description"/>
+<meta content="index,follow" name="robots"/>
+<link href="../irr-calculator/" rel="canonical"/>
+<meta content="IRR Calculator | CalcPro" property="og:title"/>
+<meta content="Calculate internal rate of return for periodic cash flows, view NPV at the solved rate, detect multiple IRR roots in the scan range, and add or remove cash-flow periods." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://yourdomain.com/irr-calculator/" property="og:url"/>
+<meta content="#1477ff" name="theme-color"/>
 <style>
 :root{
   --bg:#0f172a;--bg2:#111827;--panel:#ffffff;--ink:#0f172a;--muted:#64748b;
@@ -155,68 +156,40 @@ body.irr{--a:#a3e635;--b:#a855f7;--c:#22d3ee;--soft:#f7fee7;--ink:#f8fafc;--mute
 }
 
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://yourdomain.com/irr-calculator/#app", "name": "IRR Calculator", "url": "https://yourdomain.com/irr-calculator/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "description": "Calculate internal rate of return for periodic cash flows, view NPV at the solved rate, detect multiple IRR roots in the scan range, and add or remove cash-flow periods.", "browserRequirements": "Requires JavaScript for interactive calculations."}, {"@type": "BreadcrumbList", "@id": "https://yourdomain.com/irr-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://yourdomain.com/"}, {"@type": "ListItem", "position": 2, "name": "Financial Calculators", "item": "https://yourdomain.com/financial-calculator/"}, {"@type": "ListItem", "position": 3, "name": "IRR Calculator", "item": "https://yourdomain.com/irr-calculator/"}]}, {"@type": "FAQPage", "@id": "https://yourdomain.com/irr-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "What does an IRR of 10% mean?", "acceptedAnswer": {"@type": "Answer", "text": "For the entered equally spaced cash flows, a 10% IRR means 10% per period is the discount rate that makes their net present value equal to zero. The period must be interpreted consistently with the cash-flow interval."}}, {"@type": "Question", "name": "Why does IRR require positive and negative cash flows?", "acceptedAnswer": {"@type": "Answer", "text": "A return rate is solved from an exchange of cash outflows and inflows. If every cash flow has the same sign, there is generally no discount rate that makes NPV equal zero."}}, {"@type": "Question", "name": "Can IRR have multiple answers?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Non-conventional cash flows that change sign more than once can produce multiple IRRs. In that case, review NPV at relevant discount rates and use other investment measures as well."}}]}]}</script>
-<link rel="stylesheet" href="../assets/css/global.css">
-</head>
-<body class="irr">
-<header class="cp-site-header" data-cp-header>
-  <div class="cp-header-shell">
-    <a class="cp-brand" href="../index.html" aria-label="CalcPro home"><span class="cp-brand-mark"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="2.8" width="18" height="18.4" rx="4" fill="currentColor" opacity=".14"/><rect x="6.4" y="6.2" width="11.2" height="3.6" rx="1.2" fill="currentColor"/><path d="M7 12h2.2v2.2H7zm3.9 0h2.2v2.2h-2.2zm3.9 0H17v2.2h-2.2zM7 15.8h2.2V18H7zm3.9 0h2.2V18h-2.2zm3.9 0H17V18h-2.2z" fill="currentColor"/></svg></span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
-    <nav class="cp-main-nav" aria-label="Primary navigation">
-      <a href="../finance/index.html" data-cp-section="finance"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg><span>Finance</span></a>
-      <a href="../health/index.html" data-cp-section="health"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8.3 12h2.1l1.1-2.2 1.5 4.3 1.1-2.1h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Health</span></a>
-      <a href="../math/index.html" data-cp-section="math"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h6M8 4v6m6 5h5m-5 4h5M15 5l4 4m0-4-4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg><span>Math</span></a>
-      <a href="../date-time/index.html" data-cp-section="date-time"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 3v4m10-4v4M3.5 9h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg><span>Date &amp; Time</span></a>
-      <a href="../engineering/index.html" data-cp-section="engineering"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5 8.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Engineering</span></a>
-      <a href="../conversion/index.html" data-cp-section="conversion"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h12l-3-3m5 13H7l3 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Convert</span></a>
-    </nav>
-    <div class="cp-header-actions">
-      <form class="cp-header-search" action="../search/index.html" method="get" role="search" autocomplete="off">
-        <svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m20 20-4.4-4.4m2.4-5.1a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input class="cp-search-input" type="search" name="q" placeholder="Search calculators…" aria-label="Search CalcPro calculators" aria-autocomplete="list" aria-expanded="false"><kbd>/</kbd>
-        <div class="cp-search-results" role="listbox" aria-label="Search suggestions" hidden></div>
-      </form>
-      <a class="cp-icon-button" href="../calculators/index.html" aria-label="Browse all calculators" title="All calculators"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
-      <button class="cp-icon-button cp-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-    </div>
-  </div>
-  <div class="cp-mobile-panel" hidden>
-    <form class="cp-mobile-search" action="../search/index.html" method="get" role="search"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m20 20-4.4-4.4m2.4-5.1a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input class="cp-mobile-search-input" type="search" name="q" placeholder="Search all calculators…" aria-label="Search all calculators"></form>
-    <nav class="cp-mobile-nav" aria-label="Mobile navigation">
-      <a href="../finance/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg> Finance</a><a href="../health/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8.3 12h2.1l1.1-2.2 1.5 4.3 1.1-2.1h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Health</a><a href="../math/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h6M8 4v6m6 5h5m-5 4h5M15 5l4 4m0-4-4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg> Math</a><a href="../date-time/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 3v4m10-4v4M3.5 9h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg> Date &amp; Time</a><a href="../engineering/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5 8.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Engineering</a><a href="../conversion/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h12l-3-3m5 13H7l3 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg> Conversion</a><a href="../education/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 9 9-5 9 5-9 5-9-5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 12v4c3 2.3 7 2.3 10 0v-4m4-3v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Education</a><a href="../other/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> Other</a><a href="../calculators/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> All calculators</a>
-    </nav>
-  </div>
-</header>
-<main>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://yourdomain.com/irr-calculator/#app", "name": "IRR Calculator", "url": "https://yourdomain.com/irr-calculator/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "description": "Calculate internal rate of return for periodic cash flows, view NPV at the solved rate, detect multiple IRR roots in the scan range, and add or remove cash-flow periods.", "browserRequirements": "Requires JavaScript for interactive calculations."}, {"@type": "BreadcrumbList", "@id": "https://yourdomain.com/irr-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Investing & Interest", "item": "/finance/investing-interest/"}, {"@type": "ListItem", "position": 4, "name": "IRR Calculator", "item": "/irr-calculator/"}]}, {"@type": "FAQPage", "@id": "https://yourdomain.com/irr-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "What does an IRR of 10% mean?", "acceptedAnswer": {"@type": "Answer", "text": "For the entered equally spaced cash flows, a 10% IRR means 10% per period is the discount rate that makes their net present value equal to zero. The period must be interpreted consistently with the cash-flow interval."}}, {"@type": "Question", "name": "Why does IRR require positive and negative cash flows?", "acceptedAnswer": {"@type": "Answer", "text": "A return rate is solved from an exchange of cash outflows and inflows. If every cash flow has the same sign, there is generally no discount rate that makes NPV equal zero."}}, {"@type": "Question", "name": "Can IRR have multiple answers?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Non-conventional cash flows that change sign more than once can produce multiple IRRs. In that case, review NPV at relevant discount rates and use other investment measures as well."}}]}]}</script>
+<link href="../assets/css/global.css" rel="stylesheet"/>
+<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
+<body class="irr" data-cp-category="finance" data-cp-page-type="Calculator">
+<header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
+<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../finance/index.html">Finance</a></li><li><a aria-current="page" href="index.html">IRR Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main">
 <section class="hero">
-  <div class="wrap hero-inner">
-    <div>
-      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a> / <a href="../financial-calculator/index.html">Financial Calculators</a> / IRR Calculator</nav>
-      <div class="hero-badge">Discounted cash flow • periodic series</div>
-      <h1>IRR Calculator</h1>
-      <p class="lead">Find the discount rate that drives net present value to zero for a sequence of equally spaced cash flows.</p>
-    </div>
-    <div class="visual" aria-hidden="true"><div class="graph3d"><div class="gridplane"></div><div class="curve"></div></div></div>
-  </div>
+<div class="wrap hero-inner">
+<div>
+<nav aria-label="Breadcrumb" class="breadcrumb"><a href="../index.html">Home</a> / <a href="../financial-calculator/index.html">Financial Calculators</a> / IRR Calculator</nav>
+<div class="hero-badge">Discounted cash flow • periodic series</div>
+<h1>IRR Calculator</h1>
+<p class="lead">Find the discount rate that drives net present value to zero for a sequence of equally spaced cash flows.</p>
+</div>
+<div aria-hidden="true" class="visual"><div class="graph3d"><div class="gridplane"></div><div class="curve"></div></div></div>
+</div>
 </section>
-<section class="calc-section" id="calculator">
-  <div class="wrap calc-layout">
-    <section class="panel form-panel" aria-labelledby="calc-title">
-      <h2 class="section-title" id="calc-title">Periodic Cash-Flow IRR</h2>
-      <p class="section-kicker">Use negative values for cash outflows and positive values for cash inflows. Periods must be equally spaced.</p>
-      
+<div class="cp-tool-actions"><button data-cp-print="" type="button">Print / Save PDF</button><span aria-live="polite" class="cp-action-status" role="status"></span></div><section class="calc-section" id="calculator">
+<div class="wrap calc-layout">
+<section aria-labelledby="calc-title" class="panel form-panel">
+<h2 class="section-title" id="calc-title">Periodic Cash-Flow IRR</h2>
+<p class="section-kicker">Use negative values for cash outflows and positive values for cash inflows. Periods must be equally spaced.</p>
 <form id="form">
 <div id="cashflows">
-<div class="grid cfrow"><div class="field"><label>Period 0</label><input class="cf" type="number" step="100" value="-100000"></div><div class="field"><label>Period 1</label><input class="cf" type="number" step="100" value="25000"></div></div>
-<div class="grid cfrow"><div class="field"><label>Period 2</label><input class="cf" type="number" step="100" value="30000"></div><div class="field"><label>Period 3</label><input class="cf" type="number" step="100" value="35000"></div></div>
-<div class="grid cfrow"><div class="field"><label>Period 4</label><input class="cf" type="number" step="100" value="30000"></div><div class="field"><label>Period 5</label><input class="cf" type="number" step="100" value="25000"></div></div>
+<div class="grid cfrow"><div class="field"><label>Period 0</label><input class="cf" step="100" type="number" value="-100000"/></div><div class="field"><label>Period 1</label><input class="cf" step="100" type="number" value="25000"/></div></div>
+<div class="grid cfrow"><div class="field"><label>Period 2</label><input class="cf" step="100" type="number" value="30000"/></div><div class="field"><label>Period 3</label><input class="cf" step="100" type="number" value="35000"/></div></div>
+<div class="grid cfrow"><div class="field"><label>Period 4</label><input class="cf" step="100" type="number" value="30000"/></div><div class="field"><label>Period 5</label><input class="cf" step="100" type="number" value="25000"/></div></div>
 </div>
-<div class="actions"><button class="btn ghost" type="button" id="add">Add Period</button><button class="btn ghost" type="button" id="remove">Remove Period</button></div>
+<div class="actions"><button class="btn ghost" id="add" type="button">Add Period</button><button class="btn ghost" id="remove" type="button">Remove Period</button></div>
 <div class="actions"><button class="btn primary" type="submit">Calculate IRR</button><button class="btn ghost" type="reset">Reset</button></div>
 </form>
-      <div id="error" class="error" role="alert" hidden></div>
-    </section>
-    <aside class="panel result-panel" aria-live="polite">
-      
+<div class="error" hidden="" id="error" role="alert"></div>
+</section>
+<aside aria-live="polite" class="panel result-panel">
 <div class="small-note">Internal rate of return per period</div><div class="hero-result" id="irrOut">—</div>
 <div class="results">
 <div class="metric"><span>NPV at solved IRR</span><strong id="npvOut">—</strong></div>
@@ -225,13 +198,12 @@ body.irr{--a:#a3e635;--b:#a855f7;--c:#22d3ee;--soft:#f7fee7;--ink:#f8fafc;--mute
 <div class="metric"><span>Roots found in scan range</span><strong id="rootsOut">—</strong></div>
 </div>
 <p class="small-note" id="warning">IRR can be ambiguous when cash flows change sign more than once. Compare IRR with NPV and other return measures.</p>
-    </aside>
-  </div>
-</section>
+</aside>
+</div>
+</section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
 <section class="content">
-  <div class="wrap prose">
-    <article class="article">
-      
+<div class="wrap prose">
+<article class="article">
 <h2>What Is Internal Rate of Return?</h2>
 <p>Internal rate of return (IRR) is the discount rate that makes the net present value of a sequence of cash flows equal to zero. For periodic IRR, the cash flows are assumed to occur at equal intervals such as monthly, quarterly, or annually.</p>
 <h2>IRR Formula</h2>
@@ -243,53 +215,22 @@ body.irr{--a:#a3e635;--b:#a855f7;--c:#22d3ee;--soft:#f7fee7;--ink:#f8fafc;--mute
 <p>When a cash-flow series changes sign more than once, the NPV equation can have multiple valid roots. In that situation IRR by itself can be ambiguous. The calculator reports how many roots it detects in its scan range and shows the first detected root as the primary result.</p>
 <h2>IRR vs. XIRR</h2>
 <p>Use periodic IRR only when cash flows are evenly spaced. If actual dates are irregular, a date-aware calculation such as XIRR is more appropriate because timing differences affect the annualized result.</p>
-
-      <section class="faq" id="faq"><h2>Frequently Asked Questions</h2><details><summary>What does an IRR of 10% mean?</summary><p>For the entered equally spaced cash flows, a 10% IRR means 10% per period is the discount rate that makes their net present value equal to zero. The period must be interpreted consistently with the cash-flow interval.</p></details>
+<section class="faq" id="faq"><h2>Frequently Asked Questions</h2><details><summary>What does an IRR of 10% mean?</summary><p>For the entered equally spaced cash flows, a 10% IRR means 10% per period is the discount rate that makes their net present value equal to zero. The period must be interpreted consistently with the cash-flow interval.</p></details>
 <details><summary>Why does IRR require positive and negative cash flows?</summary><p>A return rate is solved from an exchange of cash outflows and inflows. If every cash flow has the same sign, there is generally no discount rate that makes NPV equal zero.</p></details>
 <details><summary>Can IRR have multiple answers?</summary><p>Yes. Non-conventional cash flows that change sign more than once can produce multiple IRRs. In that case, review NPV at relevant discount rates and use other investment measures as well.</p></details></section>
-      <section class="sources"><h2>Sources and Methodology</h2><p>The calculator methodology was cross-checked against the following sources. Results are estimates based on the assumptions entered and do not replace lender, tax, legal, or investment advice.</p><ul><li><a href="https://support.microsoft.com/en-us/excel/functions/irr-function" rel="noopener noreferrer">Microsoft Support — IRR function and NPV relationship</a></li>
+<section class="sources"><h2>Sources and Methodology</h2><p>The calculator methodology was cross-checked against the following sources. Results are estimates based on the assumptions entered and do not replace lender, tax, legal, or investment advice.</p><ul><li><a href="https://support.microsoft.com/en-us/excel/functions/irr-function" rel="noopener noreferrer">Microsoft Support — IRR function and NPV relationship</a></li>
 <li><a href="https://support.microsoft.com/en-us/excel/go-with-the-cash-flow-calculate-npv-and-irr-in-excel" rel="noopener noreferrer">Microsoft Support — NPV and IRR cash-flow methods</a></li>
 <li><a href="https://www.calculator.net/irr-calculator.html" rel="noopener noreferrer">Calculator.net — IRR Calculator</a></li></ul></section>
-    </article>
-    <aside class="aside">
-      <h3>CalcPro Method</h3>
-      <p>IRR is solved as the root of the periodic NPV equation. The browser scans −99.9% through 1000% per period and refines sign-change intervals by bisection.</p>
-      <p class="small-note">The scan can identify multiple roots, but no numerical method guarantees that every possible root of an arbitrary cash-flow polynomial will be found.</p>
-    </aside>
-  </div>
+</article>
+<aside class="aside">
+<h3>CalcPro Method</h3>
+<p>IRR is solved as the root of the periodic NPV equation. The browser scans −99.9% through 1000% per period and refines sign-change intervals by bisection.</p>
+<p class="small-note">The scan can identify multiple roots, but no numerical method guarantees that every possible root of an arbitrary cash-flow polynomial will be found.</p>
+</aside>
+</div>
 </section>
 
-<section class="cp-related-tools" aria-labelledby="cp-related-title">
-  <div class="cp-related-shell">
-    <div class="cp-related-heading"><div><span class="cp-related-kicker">Explore next</span><h2 id="cp-related-title">Related Tools</h2><p>Useful calculators closely related to IRR Calculator.</p></div><a class="cp-related-all" href="../calculators/index.html">View all calculators <span aria-hidden="true">→</span></a></div>
-    <div class="cp-related-grid"><a class="cp-related-card" href="../investment-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Investment Calculator</strong><small>Project an investment balance from a starting amount, monthly contributions, time horizon, and assumed annual return.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../compound-interest-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Compound Interest Calculator</strong><small>Convert a nominal annual interest rate between compounding frequencies and calculate the effective annual rate.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../interest-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Interest Calculator</strong><small>Calculate compound interest with an initial balance, monthly contributions, annual rate, compounding frequency, tax…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../simple-interest-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Simple Interest Calculator</strong><small>Calculate simple interest, final amount, principal, annual rate, or time using I = P × r × t.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../future-value-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Future Value Calculator</strong><small>Calculate the future value of a lump sum and periodic deposits with compound growth, payment timing, interest…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../present-value-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Present Value Calculator</strong><small>Calculate the present value of a future lump sum using a discount rate, time horizon, and compounding frequency.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a></div>
-  </div>
-</section>
-</main>
+<details class="cp-data-panel"><summary><span>Calculator Data — exact tool basis</span><small>Finance · Calculator</small></summary><div class="cp-data-grid"><div class="cp-data-item wide"><b>Purpose</b><p>Calculate internal rate of return for periodic cash flows, view NPV at the solved rate, detect multiple IRR roots in the scan range, and add or remove cash-flow periods.</p></div><div class="cp-data-item wide"><b>Formula / Algorithm Used in Tool</b><p>IRR Formula: 0 = Σ [ CF t ÷ (1 + IRR) t ] There is usually no simple algebraic formula for IRR, so calculators solve the rate iteratively or numerically. This page scans a broad rate range for sign changes in NPV and then uses bisection to refine each detected root.</p></div><div class="cp-data-item"><b>Required User Inputs</b><p>Period 0; Period 1; Period 2; Period 3; Period 4; Period 5</p></div><div class="cp-data-item"><b>Primary Outputs</b><p>NPV at solved IRR; Total undiscounted cash flow; Cash-flow periods; Roots found in scan range</p></div><div class="cp-data-item wide"><b>Important Assumptions / Limitations</b><p>Explain formula domain, unit consistency, rounding, input validation and real-world limitations.</p></div><div class="cp-data-item"><b>Fresh Data Required?</b><p>Conditional</p></div><div class="cp-data-item"><b>Recommended Update Frequency</b><p>When product/rule assumptions change</p></div><div class="cp-data-item wide"><b>Current Source URLs in Page</b><p><a href="https://support.microsoft.com/en-us/excel/functions/irr-function" rel="nofollow noopener" target="_blank">https://support.microsoft.com/en-us/excel/functions/irr-function</a><br/><a href="https://support.microsoft.com/en-us/excel/go-with-the-cash-flow-calculate-npv-and-irr-in-excel" rel="nofollow noopener" target="_blank">https://support.microsoft.com/en-us/excel/go-with-the-cash-flow-calculate-npv-and-irr-in-excel</a><br/><a href="https://www.calculator.net/irr-calculator.html" rel="nofollow noopener" target="_blank">https://www.calculator.net/irr-calculator.html</a></p></div></div></details><script class="cp-calculator-data" type="application/json">{"index":"93","Batch":"10","Calculator / Page":"IRR Calculator","Slug":"irr-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Calculate internal rate of return for periodic cash flows, view NPV at the solved rate, detect multiple IRR roots in the scan range, and add or remove cash-flow periods.","Formula / Algorithm Used in Tool":"IRR Formula: 0 = Σ [ CF t ÷ (1 + IRR) t ] There is usually no simple algebraic formula for IRR, so calculators solve the rate iteratively or numerically. This page scans a broad rate range for sign changes in NPV and then uses bisection to refine each detected root.","Required User Inputs":"Period 0; Period 1; Period 2; Period 3; Period 4; Period 5","Primary Outputs":"NPV at solved IRR; Total undiscounted cash flow; Cash-flow periods; Roots found in scan range","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Period 0, Period 1, Period 2, Period 3, Period 4, Period 5. Explain outputs: NPV at solved IRR, Total undiscounted cash flow, Cash-flow periods, Roots found in scan range. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"Explain formula domain, unit consistency, rounding, input validation and real-world limitations.","Current Source URLs in Page":"https://support.microsoft.com/en-us/excel/functions/irr-function | https://support.microsoft.com/en-us/excel/go-with-the-cash-flow-calculate-npv-and-irr-in-excel | https://www.calculator.net/irr-calculator.html","Implementation Path":"/irr-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><span class="cp-side-kicker">Related tools</span><h2>Finance</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../rental-property-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Rental Property Calculator</strong><small>Analyze a rental property with mortgage financing, rent, vacancy, operating expense…</small></span></a><a class="cp-related-link" href="../vat-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>VAT Calculator</strong><small>Add VAT to a net price or remove VAT from a gross price using a custom rate, with t…</small></span></a><a class="cp-related-link" href="../finance-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Finance Calculator</strong><small>Solve time-value-of-money variables including future value, present value, payment,…</small></span></a><a class="cp-related-link" href="../annuity-payout-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Annuity Payout Calculator</strong><small>Estimate a level annuity payout for a fixed term or estimate how long a starting ba…</small></span></a><a class="cp-related-link" href="../apr-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>APR Calculator</strong><small>Estimate loan APR from the note rate, term, and upfront finance charges using a mon…</small></span></a><a class="cp-related-link" href="../auto-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Auto Loan Calculator</strong><small>Estimate a car loan payment using vehicle price, down payment, trade-in, tax, fees,…</small></span></a><a class="cp-related-link" href="../sales-tax-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Sales Tax Calculator</strong><small>Calculate sales tax, total after tax, price before tax, or the effective tax rate f…</small></span></a><a class="cp-related-link" href="../currency-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Currency Calculator</strong><small>Convert currencies using live exchange-rate data or enter a custom exchange rate, w…</small></span></a></div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div></aside></div>
 <footer><div class="wrap">CalcPro · Interactive financial calculator · Standalone browser calculation</div></footer>
 <script>
 const $ = (id) => document.getElementById(id);
@@ -357,6 +298,6 @@ function calculate(){
 }
 $('form').addEventListener('submit',e=>{e.preventDefault();calculate()});$('form').addEventListener('reset',()=>setTimeout(()=>{$('cashflows').innerHTML=defaultFlows;relabel();calculate()},0));calculate();
 </script>
-<script src="../assets/js/global.js" defer></script>
-</body>
+<script defer="" src="../assets/js/global.js"></script>
+<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body>
 </html>

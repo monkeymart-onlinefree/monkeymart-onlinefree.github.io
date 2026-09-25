@@ -1,17 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en-US">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Lease Calculator — Payment or Effective Rate | CalcPro</title>
-<meta name="description" content="Calculate a level monthly lease payment from asset value, residual value, term, and rate, or solve the effective annual rate from a known monthly payment.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="../lease-calculator/">
-<meta property="og:title" content="Lease Calculator | CalcPro">
-<meta property="og:description" content="Calculate a level monthly lease payment from asset value, residual value, term, and rate, or solve the effective annual rate from a known monthly payment.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://yourdomain.com/lease-calculator/">
-<meta name="theme-color" content="#18181b">
+<meta content="Calculate a level monthly lease payment from asset value, residual value, term, and rate, or solve the effective annual rate from a known monthly payment." name="description"/>
+<meta content="index,follow" name="robots"/>
+<link href="../lease-calculator/" rel="canonical"/>
+<meta content="Lease Calculator | CalcPro" property="og:title"/>
+<meta content="Calculate a level monthly lease payment from asset value, residual value, term, and rate, or solve the effective annual rate from a known monthly payment." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://yourdomain.com/lease-calculator/" property="og:url"/>
+<meta content="#1477ff" name="theme-color"/>
 <style>
 :root{
   --bg:#0f172a;--bg2:#111827;--panel:#ffffff;--ink:#0f172a;--muted:#64748b;
@@ -155,70 +156,42 @@ body.irr{--a:#a3e635;--b:#a855f7;--c:#22d3ee;--soft:#f7fee7;--ink:#f8fafc;--mute
 }
 
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://yourdomain.com/lease-calculator/#app", "name": "Lease Calculator", "url": "https://yourdomain.com/lease-calculator/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "description": "Calculate a level monthly lease payment from asset value, residual value, term, and rate, or solve the effective annual rate from a known monthly payment.", "browserRequirements": "Requires JavaScript for interactive calculations."}, {"@type": "BreadcrumbList", "@id": "https://yourdomain.com/lease-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://yourdomain.com/"}, {"@type": "ListItem", "position": 2, "name": "Financial Calculators", "item": "https://yourdomain.com/financial-calculator/"}, {"@type": "ListItem", "position": 3, "name": "Lease Calculator", "item": "https://yourdomain.com/lease-calculator/"}]}, {"@type": "FAQPage", "@id": "https://yourdomain.com/lease-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "Can this calculate an auto lease?", "acceptedAnswer": {"@type": "Answer", "text": "The mathematics can model a simple asset lease, but auto leases often use money factors, taxes, rebates, acquisition fees, and jurisdiction-specific rules. A dedicated auto lease model may be more appropriate."}}, {"@type": "Question", "name": "What does Find Rate do?", "acceptedAnswer": {"@type": "Answer", "text": "It solves for the monthly discount rate that makes the present value of the entered lease payments and residual equal the asset value, then annualizes that monthly rate by multiplying by 12."}}, {"@type": "Question", "name": "Does the calculator assume payments at the beginning or end of the month?", "acceptedAnswer": {"@type": "Answer", "text": "It assumes payments at the end of each month. Beginning-of-period payments would have a different present value."}}]}]}</script>
-<link rel="stylesheet" href="../assets/css/global.css">
-</head>
-<body class="lease">
-<header class="cp-site-header" data-cp-header>
-  <div class="cp-header-shell">
-    <a class="cp-brand" href="../index.html" aria-label="CalcPro home"><span class="cp-brand-mark"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="2.8" width="18" height="18.4" rx="4" fill="currentColor" opacity=".14"/><rect x="6.4" y="6.2" width="11.2" height="3.6" rx="1.2" fill="currentColor"/><path d="M7 12h2.2v2.2H7zm3.9 0h2.2v2.2h-2.2zm3.9 0H17v2.2h-2.2zM7 15.8h2.2V18H7zm3.9 0h2.2V18h-2.2zm3.9 0H17V18h-2.2z" fill="currentColor"/></svg></span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
-    <nav class="cp-main-nav" aria-label="Primary navigation">
-      <a href="../finance/index.html" data-cp-section="finance"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg><span>Finance</span></a>
-      <a href="../health/index.html" data-cp-section="health"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8.3 12h2.1l1.1-2.2 1.5 4.3 1.1-2.1h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Health</span></a>
-      <a href="../math/index.html" data-cp-section="math"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h6M8 4v6m6 5h5m-5 4h5M15 5l4 4m0-4-4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg><span>Math</span></a>
-      <a href="../date-time/index.html" data-cp-section="date-time"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 3v4m10-4v4M3.5 9h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg><span>Date &amp; Time</span></a>
-      <a href="../engineering/index.html" data-cp-section="engineering"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5 8.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Engineering</span></a>
-      <a href="../conversion/index.html" data-cp-section="conversion"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h12l-3-3m5 13H7l3 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Convert</span></a>
-    </nav>
-    <div class="cp-header-actions">
-      <form class="cp-header-search" action="../search/index.html" method="get" role="search" autocomplete="off">
-        <svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m20 20-4.4-4.4m2.4-5.1a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input class="cp-search-input" type="search" name="q" placeholder="Search calculators…" aria-label="Search CalcPro calculators" aria-autocomplete="list" aria-expanded="false"><kbd>/</kbd>
-        <div class="cp-search-results" role="listbox" aria-label="Search suggestions" hidden></div>
-      </form>
-      <a class="cp-icon-button" href="../calculators/index.html" aria-label="Browse all calculators" title="All calculators"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
-      <button class="cp-icon-button cp-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-    </div>
-  </div>
-  <div class="cp-mobile-panel" hidden>
-    <form class="cp-mobile-search" action="../search/index.html" method="get" role="search"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m20 20-4.4-4.4m2.4-5.1a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input class="cp-mobile-search-input" type="search" name="q" placeholder="Search all calculators…" aria-label="Search all calculators"></form>
-    <nav class="cp-mobile-nav" aria-label="Mobile navigation">
-      <a href="../finance/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg> Finance</a><a href="../health/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8.3 12h2.1l1.1-2.2 1.5 4.3 1.1-2.1h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Health</a><a href="../math/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h6M8 4v6m6 5h5m-5 4h5M15 5l4 4m0-4-4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg> Math</a><a href="../date-time/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 3v4m10-4v4M3.5 9h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg> Date &amp; Time</a><a href="../engineering/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5 8.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Engineering</a><a href="../conversion/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h12l-3-3m5 13H7l3 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg> Conversion</a><a href="../education/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 9 9-5 9 5-9 5-9-5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 12v4c3 2.3 7 2.3 10 0v-4m4-3v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Education</a><a href="../other/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> Other</a><a href="../calculators/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> All calculators</a>
-    </nav>
-  </div>
-</header>
-<main>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://yourdomain.com/lease-calculator/#app", "name": "Lease Calculator", "url": "https://yourdomain.com/lease-calculator/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "description": "Calculate a level monthly lease payment from asset value, residual value, term, and rate, or solve the effective annual rate from a known monthly payment.", "browserRequirements": "Requires JavaScript for interactive calculations."}, {"@type": "BreadcrumbList", "@id": "https://yourdomain.com/lease-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Loans & Debt", "item": "/finance/loans-debt/"}, {"@type": "ListItem", "position": 4, "name": "Lease Calculator", "item": "/lease-calculator/"}]}, {"@type": "FAQPage", "@id": "https://yourdomain.com/lease-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "Can this calculate an auto lease?", "acceptedAnswer": {"@type": "Answer", "text": "The mathematics can model a simple asset lease, but auto leases often use money factors, taxes, rebates, acquisition fees, and jurisdiction-specific rules. A dedicated auto lease model may be more appropriate."}}, {"@type": "Question", "name": "What does Find Rate do?", "acceptedAnswer": {"@type": "Answer", "text": "It solves for the monthly discount rate that makes the present value of the entered lease payments and residual equal the asset value, then annualizes that monthly rate by multiplying by 12."}}, {"@type": "Question", "name": "Does the calculator assume payments at the beginning or end of the month?", "acceptedAnswer": {"@type": "Answer", "text": "It assumes payments at the end of each month. Beginning-of-period payments would have a different present value."}}]}]}</script>
+<link href="../assets/css/global.css" rel="stylesheet"/>
+<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
+<body class="lease" data-cp-category="finance" data-cp-page-type="Calculator">
+<header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
+<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../finance/index.html">Finance</a></li><li><a aria-current="page" href="index.html">Lease Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main">
 <section class="hero">
-  <div class="wrap hero-inner">
-    <div>
-      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a> / <a href="../financial-calculator/index.html">Financial Calculators</a> / Lease Calculator</nav>
-      <div class="hero-badge">General asset lease • two-way solver</div>
-      <h1>Lease Calculator</h1>
-      <p class="lead">Price a general asset lease from a known rate, or reverse the calculation to estimate the rate implied by a known monthly payment.</p>
-    </div>
-    <div class="visual" aria-hidden="true"><div class="contract"><div class="contract-card"></div></div></div>
-  </div>
+<div class="wrap hero-inner">
+<div>
+<nav aria-label="Breadcrumb" class="breadcrumb"><a href="../index.html">Home</a> / <a href="../financial-calculator/index.html">Financial Calculators</a> / Lease Calculator</nav>
+<div class="hero-badge">General asset lease • two-way solver</div>
+<h1>Lease Calculator</h1>
+<p class="lead">Price a general asset lease from a known rate, or reverse the calculation to estimate the rate implied by a known monthly payment.</p>
+</div>
+<div aria-hidden="true" class="visual"><div class="contract"><div class="contract-card"></div></div></div>
+</div>
 </section>
-<section class="calc-section" id="calculator">
-  <div class="wrap calc-layout">
-    <section class="panel form-panel" aria-labelledby="calc-title">
-      <h2 class="section-title" id="calc-title">Lease Cash-Flow Model</h2>
-      <p class="section-kicker">The model assumes end-of-month payments and a residual value due at the end of the lease term.</p>
-      
+<div class="cp-tool-actions"><button data-cp-print="" type="button">Print / Save PDF</button><span aria-live="polite" class="cp-action-status" role="status"></span></div><section class="calc-section" id="calculator">
+<div class="wrap calc-layout">
+<section aria-labelledby="calc-title" class="panel form-panel">
+<h2 class="section-title" id="calc-title">Lease Cash-Flow Model</h2>
+<p class="section-kicker">The model assumes end-of-month payments and a residual value due at the end of the lease term.</p>
 <form id="form">
-<div class="modebar"><button class="btn primary" type="button" id="modePay">Find Payment</button><button class="btn ghost" type="button" id="modeRate">Find Rate</button></div>
+<div class="modebar"><button class="btn primary" id="modePay" type="button">Find Payment</button><button class="btn ghost" id="modeRate" type="button">Find Rate</button></div>
 <div class="grid">
-<div class="field"><label for="asset">Asset value / present value</label><input id="asset" type="number" min="0" step="100" value="25000"></div>
-<div class="field"><label for="residual">Residual value at lease end</label><input id="residual" type="number" min="0" step="100" value="8000"></div>
-<div class="field"><label for="term">Lease term (months)</label><input id="term" type="number" min="1" max="360" step="1" value="36"></div>
-<div class="field" id="rateField"><label for="rate">Annual interest rate (%)</label><input id="rate" type="number" min="0" step="0.01" value="7"></div>
-<div class="field" id="paymentField" hidden><label for="knownPayment">Known monthly payment</label><input id="knownPayment" type="number" min="0" step="1" value="550"></div>
+<div class="field"><label for="asset">Asset value / present value</label><input id="asset" min="0" step="100" type="number" value="25000"/></div>
+<div class="field"><label for="residual">Residual value at lease end</label><input id="residual" min="0" step="100" type="number" value="8000"/></div>
+<div class="field"><label for="term">Lease term (months)</label><input id="term" max="360" min="1" step="1" type="number" value="36"/></div>
+<div class="field" id="rateField"><label for="rate">Annual interest rate (%)</label><input id="rate" min="0" step="0.01" type="number" value="7"/></div>
+<div class="field" hidden="" id="paymentField"><label for="knownPayment">Known monthly payment</label><input id="knownPayment" min="0" step="1" type="number" value="550"/></div>
 </div>
 <div class="actions"><button class="btn primary" type="submit">Calculate Lease</button><button class="btn ghost" type="reset">Reset</button></div>
 </form>
-      <div id="error" class="error" role="alert" hidden></div>
-    </section>
-    <aside class="panel result-panel" aria-live="polite">
-      
+<div class="error" hidden="" id="error" role="alert"></div>
+</section>
+<aside aria-live="polite" class="panel result-panel">
 <div class="small-note" id="headline">Estimated monthly lease payment</div><div class="hero-result" id="primary">—</div>
 <div class="results">
 <div class="metric"><span>Total monthly payments</span><strong id="totalPay">—</strong></div>
@@ -227,13 +200,12 @@ body.irr{--a:#a3e635;--b:#a855f7;--c:#22d3ee;--soft:#f7fee7;--ink:#f8fafc;--mute
 <div class="metric"><span>Lease term</span><strong id="termOut">—</strong></div>
 </div>
 <p class="small-note">Taxes, fees, deposits, maintenance, insurance, and lessor-specific lease accounting are not included.</p>
-    </aside>
-  </div>
-</section>
+</aside>
+</div>
+</section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
 <section class="content">
-  <div class="wrap prose">
-    <article class="article">
-      
+<div class="wrap prose">
+<article class="article">
 <h2>What Is a Lease Calculator?</h2>
 <p>This lease calculator values a simple general asset lease using present-value mathematics. In payment mode, it solves the level monthly payment from asset value, residual value, term, and annual rate. In rate mode, it reverses the cash flow to estimate the annual rate implied by a known payment.</p>
 <h2>Lease Payment Formula</h2>
@@ -243,52 +215,21 @@ body.irr{--a:#a3e635;--b:#a855f7;--c:#22d3ee;--soft:#f7fee7;--ink:#f8fafc;--mute
 <p>Residual value is the assumed value of the asset at the end of the lease term. A larger residual generally reduces the amount that must be recovered through periodic lease payments, although the financing rate still affects the payment.</p>
 <h2>Limitations</h2>
 <p>This is a finance-math model, not a legal or accounting lease classification tool. It excludes taxes, acquisition fees, deposits, maintenance, insurance, purchase-option fees, and payment timing other than end-of-month.</p>
-
-      <section class="faq" id="faq"><h2>Frequently Asked Questions</h2><details><summary>Can this calculate an auto lease?</summary><p>The mathematics can model a simple asset lease, but auto leases often use money factors, taxes, rebates, acquisition fees, and jurisdiction-specific rules. A dedicated auto lease model may be more appropriate.</p></details>
+<section class="faq" id="faq"><h2>Frequently Asked Questions</h2><details><summary>Can this calculate an auto lease?</summary><p>The mathematics can model a simple asset lease, but auto leases often use money factors, taxes, rebates, acquisition fees, and jurisdiction-specific rules. A dedicated auto lease model may be more appropriate.</p></details>
 <details><summary>What does Find Rate do?</summary><p>It solves for the monthly discount rate that makes the present value of the entered lease payments and residual equal the asset value, then annualizes that monthly rate by multiplying by 12.</p></details>
 <details><summary>Does the calculator assume payments at the beginning or end of the month?</summary><p>It assumes payments at the end of each month. Beginning-of-period payments would have a different present value.</p></details></section>
-      <section class="sources"><h2>Sources and Methodology</h2><p>The calculator methodology was cross-checked against the following sources. Results are estimates based on the assumptions entered and do not replace lender, tax, legal, or investment advice.</p><ul><li><a href="https://www.calculator.net/lease-calculator.html" rel="noopener noreferrer">Calculator.net — Lease Calculator</a></li>
+<section class="sources"><h2>Sources and Methodology</h2><p>The calculator methodology was cross-checked against the following sources. Results are estimates based on the assumptions entered and do not replace lender, tax, legal, or investment advice.</p><ul><li><a href="https://www.calculator.net/lease-calculator.html" rel="noopener noreferrer">Calculator.net — Lease Calculator</a></li>
 <li><a href="https://support.microsoft.com/en-us/excel/financial-functions-reference" rel="noopener noreferrer">Microsoft Support — Present-value and financial function references</a></li></ul></section>
-    </article>
-    <aside class="aside">
-      <h3>CalcPro Method</h3>
-      <p>A discounted cash-flow equation values the payment stream plus residual at the asset’s present value; rate mode solves the same equation numerically.</p>
-      <p class="small-note">If your contract includes taxes, fees, deposits, or beginning-of-period payments, incorporate those terms separately.</p>
-    </aside>
-  </div>
+</article>
+<aside class="aside">
+<h3>CalcPro Method</h3>
+<p>A discounted cash-flow equation values the payment stream plus residual at the asset’s present value; rate mode solves the same equation numerically.</p>
+<p class="small-note">If your contract includes taxes, fees, deposits, or beginning-of-period payments, incorporate those terms separately.</p>
+</aside>
+</div>
 </section>
 
-<section class="cp-related-tools" aria-labelledby="cp-related-title">
-  <div class="cp-related-shell">
-    <div class="cp-related-heading"><div><span class="cp-related-kicker">Explore next</span><h2 id="cp-related-title">Related Tools</h2><p>Useful calculators closely related to Lease Calculator.</p></div><a class="cp-related-all" href="../calculators/index.html">View all calculators <span aria-hidden="true">→</span></a></div>
-    <div class="cp-related-grid"><a class="cp-related-card" href="../auto-lease-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Auto Lease Calculator</strong><small>Estimate a monthly car lease payment from capitalized cost, residual value, lease term, APR-equivalent money factor,…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../tax-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>2026 Federal Income Tax Calculator</strong><small>Estimate 2026 U.S. federal ordinary income tax using IRS tax brackets and standard deductions, with optional…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../401k-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>401(k) Calculator</strong><small>Project a 401(k) balance using salary, contribution percentage, employer match, salary growth, investment return,…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../mortgage-calculator-uk/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>A mortgage view built in pounds, not guesses.</strong><small>Estimate UK mortgage repayment and interest-only payments in pounds, total interest, LTV, and an amortization schedule.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../apr-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>APR Calculator</strong><small>Estimate loan APR from the note rate, term, and upfront finance charges using a monthly cash-flow method.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../amortization-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Amortization Calculator</strong><small>Create an amortization schedule and see how extra monthly payments can change payoff time and total interest.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a></div>
-  </div>
-</section>
-</main>
+<details class="cp-data-panel"><summary><span>Calculator Data — exact tool basis</span><small>Finance · Calculator</small></summary><div class="cp-data-grid"><div class="cp-data-item wide"><b>Purpose</b><p>Calculate a level monthly lease payment from asset value, residual value, term, and rate, or solve the effective annual rate from a known monthly payment.</p></div><div class="cp-data-item wide"><b>Formula / Algorithm Used in Tool</b><p>Lease Payment Formula: Asset value = Payment × [1 − (1 + r) −n ] ÷ r + Residual ÷ (1 + r) n Solving this equation for Payment gives the level end-of-month lease payment. The residual is discounted back from the end of the lease.</p></div><div class="cp-data-item"><b>Required User Inputs</b><p>Asset value / present value; Residual value at lease end; Lease term (months); Annual interest rate (%); Known monthly payment</p></div><div class="cp-data-item"><b>Primary Outputs</b><p>Total monthly payments; Residual value; Implied finance cost; Lease term</p></div><div class="cp-data-item wide"><b>Important Assumptions / Limitations</b><p>This is a finance-math model, not a legal or accounting lease classification tool. It excludes taxes, acquisition fees, deposits, maintenance, insurance, purchase-option fees, and payment timing other than end-of-month. Frequently Asked Questions Can this calculate an auto lease? The mathematics can model a simple asset lease, but auto leases often use money factors, taxes, rebates, acquisition fees, and jurisdiction-specific rules. A dedicated auto lease model may be more appropriate. What does Find Rate do? It solves for the monthly discount rate that makes the present value of the entered lease payments and residual equal the asset value, then annualizes that monthly rate by multiplying by 12. Does the calculator assume payments at the beginning or end of the month? It assumes payments at the end of each month. Beginning-of-period payments would have a different present value. Sources and Methodology The calculator methodology was cross-checked against the following sources. Results are estimates based on the assumptions entered and do not replace lender, tax, legal, or investment advice. Calculator.net — Lease Calculator Microsoft Support — Present-value and financial function references</p></div><div class="cp-data-item"><b>Fresh Data Required?</b><p>Conditional</p></div><div class="cp-data-item"><b>Recommended Update Frequency</b><p>When product/rule assumptions change</p></div><div class="cp-data-item wide"><b>Current Source URLs in Page</b><p><a href="https://www.calculator.net/lease-calculator.html" rel="nofollow noopener" target="_blank">https://www.calculator.net/lease-calculator.html</a><br/><a href="https://support.microsoft.com/en-us/excel/financial-functions-reference" rel="nofollow noopener" target="_blank">https://support.microsoft.com/en-us/excel/financial-functions-reference</a></p></div></div></details><script class="cp-calculator-data" type="application/json">{"index":"94","Batch":"10","Calculator / Page":"Lease Calculator","Slug":"lease-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Calculate a level monthly lease payment from asset value, residual value, term, and rate, or solve the effective annual rate from a known monthly payment.","Formula / Algorithm Used in Tool":"Lease Payment Formula: Asset value = Payment × [1 − (1 + r) −n ] ÷ r + Residual ÷ (1 + r) n Solving this equation for Payment gives the level end-of-month lease payment. The residual is discounted back from the end of the lease.","Required User Inputs":"Asset value / present value; Residual value at lease end; Lease term (months); Annual interest rate (%); Known monthly payment","Primary Outputs":"Total monthly payments; Residual value; Implied finance cost; Lease term","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Asset value / present value, Residual value at lease end, Lease term (months), Annual interest rate (%), Known monthly payment. Explain outputs: Total monthly payments, Residual value, Implied finance cost, Lease term. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"This is a finance-math model, not a legal or accounting lease classification tool. It excludes taxes, acquisition fees, deposits, maintenance, insurance, purchase-option fees, and payment timing other than end-of-month. Frequently Asked Questions Can this calculate an auto lease? The mathematics can model a simple asset lease, but auto leases often use money factors, taxes, rebates, acquisition fees, and jurisdiction-specific rules. A dedicated auto lease model may be more appropriate. What does Find Rate do? It solves for the monthly discount rate that makes the present value of the entered lease payments and residual equal the asset value, then annualizes that monthly rate by multiplying by 12. Does the calculator assume payments at the beginning or end of the month? It assumes payments at the end of each month. Beginning-of-period payments would have a different present value. Sources and Methodology The calculator methodology was cross-checked against the following sources. Results are estimates based on the assumptions entered and do not replace lender, tax, legal, or investment advice. Calculator.net — Lease Calculator Microsoft Support — Present-value and financial function references","Current Source URLs in Page":"https://www.calculator.net/lease-calculator.html | https://support.microsoft.com/en-us/excel/financial-functions-reference","Implementation Path":"/lease-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><span class="cp-side-kicker">Related tools</span><h2>Finance</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../auto-lease-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Auto Lease Calculator</strong><small>Estimate a monthly car lease payment from capitalized cost, residual value, lease t…</small></span></a><a class="cp-related-link" href="../interest-rate-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Interest Rate Calculator</strong><small>Estimate the nominal annual interest rate implied by a loan amount, fixed monthly p…</small></span></a><a class="cp-related-link" href="../payment-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Payment Calculator</strong><small>Calculate a monthly loan payment for a fixed term or estimate how long a loan takes…</small></span></a><a class="cp-related-link" href="../sales-tax-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Sales Tax Calculator</strong><small>Calculate sales tax, total after tax, price before tax, or the effective tax rate f…</small></span></a><a class="cp-related-link" href="../finance-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Finance Calculator</strong><small>Solve time-value-of-money variables including future value, present value, payment,…</small></span></a><a class="cp-related-link" href="../annuity-payout-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Annuity Payout Calculator</strong><small>Estimate a level annuity payout for a fixed term or estimate how long a starting ba…</small></span></a><a class="cp-related-link" href="../bond-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Bond Calculator</strong><small>Calculate bond price from face value, coupon rate, yield to maturity, term, and pay…</small></span></a><a class="cp-related-link" href="../auto-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Auto Loan Calculator</strong><small>Estimate a car loan payment using vehicle price, down payment, trade-in, tax, fees,…</small></span></a></div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div></aside></div>
 <footer><div class="wrap">CalcPro · Interactive financial calculator · Standalone browser calculation</div></footer>
 <script>
 const $ = (id) => document.getElementById(id);
@@ -351,6 +292,6 @@ function calculate(){
 $('modePay').onclick=()=>{mode='pay';renderMode();calculate()};$('modeRate').onclick=()=>{mode='rate';renderMode();calculate()};
 $('form').addEventListener('submit',e=>{e.preventDefault();calculate()});$('form').addEventListener('reset',()=>setTimeout(()=>{mode='pay';renderMode();calculate()},0));renderMode();calculate();
 </script>
-<script src="../assets/js/global.js" defer></script>
-</body>
+<script defer="" src="../assets/js/global.js"></script>
+<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body>
 </html>

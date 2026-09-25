@@ -1,17 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Currency Calculator | CalcPro</title>
-<meta name="description" content="Convert currencies using live exchange-rate data or enter a custom exchange rate, with inverse-rate and calculation details.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="../currency-calculator/">
-<meta property="og:title" content="Currency Calculator | CalcPro">
-<meta property="og:description" content="Convert currencies using live exchange-rate data or enter a custom exchange rate, with inverse-rate and calculation details.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="/currency-calculator/">
-<meta name="theme-color" content="#07111f">
+<meta content="Convert currencies using live exchange-rate data or enter a custom exchange rate, with inverse-rate and calculation details." name="description"/>
+<meta content="index,follow" name="robots"/>
+<link href="../currency-calculator/" rel="canonical"/>
+<meta content="Currency Calculator | CalcPro" property="og:title"/>
+<meta content="Convert currencies using live exchange-rate data or enter a custom exchange rate, with inverse-rate and calculation details." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="/currency-calculator/" property="og:url"/>
+<meta content="#1477ff" name="theme-color"/>
 <style>
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 :root{--bg:#07111f;--panel:rgba(255,255,255,.09);--panel2:rgba(255,255,255,.06);--text:#f7fbff;--muted:#b8c6d8;--line:rgba(255,255,255,.14);--a:#67e8f9;--b:#34d399;--c:#fbbf24;--danger:#fb7185;--shadow:0 30px 80px rgba(0,0,0,.32)}
@@ -72,88 +73,61 @@ radial-gradient(circle at 12% 12%,#0a5f493d,transparent 28%),radial-gradient(cir
 .fx-screen{position:absolute;inset:45px;border-radius:24px;background:#03100d;border:1px solid #ffffff16;padding:26px}
 .fx-line{height:13px;border-radius:20px;background:linear-gradient(90deg,var(--a),transparent);margin:17px 0}.coin{position:absolute;width:76px;height:76px;border-radius:50%;display:grid;place-items:center;font-weight:950;color:#3d3103;background:linear-gradient(145deg,#fff0a4,#b98b20);box-shadow:inset -10px -10px 20px #8f661d66,0 18px 30px #0005}.coin.c1{right:4%;top:4%;transform:rotate(12deg)}.coin.c2{left:2%;bottom:7%;background:linear-gradient(145deg,#baffdf,#259c73);color:#073a2b;transform:rotate(-15deg)}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/currency-calculator/#app", "name": "Currency Calculator", "url": "/currency-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Convert currencies using live exchange-rate data or enter a custom exchange rate, with inverse-rate and calculation details."}, {"@type": "BreadcrumbList", "@id": "/currency-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "/calculators/"}, {"@type": "ListItem", "position": 3, "name": "Currency Calculator", "item": "/currency-calculator/"}]}, {"@type": "FAQPage", "@id": "/currency-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "Are live exchange rates the same as bank rates?", "acceptedAnswer": {"@type": "Answer", "text": "Not always. Reference rates are useful benchmarks, while banks and payment providers can add a spread, fee, or different execution time."}}, {"@type": "Question", "name": "Can I use my own exchange rate?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Custom-rate mode multiplies your amount by the exact rate you enter."}}, {"@type": "Question", "name": "Why does the result change during the day?", "acceptedAnswer": {"@type": "Answer", "text": "Foreign-exchange markets move and data providers update at different times, so the latest available reference rate can change."}}]}]}</script>
-<link rel="stylesheet" href="../assets/css/global.css"></head>
-<body class="currency-calculator"><header class="cp-site-header" data-cp-header>
-  <div class="cp-header-shell">
-    <a class="cp-brand" href="../index.html" aria-label="CalcPro home"><span class="cp-brand-mark"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="2.8" width="18" height="18.4" rx="4" fill="currentColor" opacity=".14"/><rect x="6.4" y="6.2" width="11.2" height="3.6" rx="1.2" fill="currentColor"/><path d="M7 12h2.2v2.2H7zm3.9 0h2.2v2.2h-2.2zm3.9 0H17v2.2h-2.2zM7 15.8h2.2V18H7zm3.9 0h2.2V18h-2.2zm3.9 0H17V18h-2.2z" fill="currentColor"/></svg></span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
-    <nav class="cp-main-nav" aria-label="Primary navigation">
-      <a href="../finance/index.html" data-cp-section="finance"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg><span>Finance</span></a>
-      <a href="../health/index.html" data-cp-section="health"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8.3 12h2.1l1.1-2.2 1.5 4.3 1.1-2.1h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Health</span></a>
-      <a href="../math/index.html" data-cp-section="math"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h6M8 4v6m6 5h5m-5 4h5M15 5l4 4m0-4-4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg><span>Math</span></a>
-      <a href="../date-time/index.html" data-cp-section="date-time"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 3v4m10-4v4M3.5 9h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg><span>Date &amp; Time</span></a>
-      <a href="../engineering/index.html" data-cp-section="engineering"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5 8.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Engineering</span></a>
-      <a href="../conversion/index.html" data-cp-section="conversion"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h12l-3-3m5 13H7l3 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Convert</span></a>
-    </nav>
-    <div class="cp-header-actions">
-      <form class="cp-header-search" action="../search/index.html" method="get" role="search" autocomplete="off">
-        <svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m20 20-4.4-4.4m2.4-5.1a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input class="cp-search-input" type="search" name="q" placeholder="Search calculators…" aria-label="Search CalcPro calculators" aria-autocomplete="list" aria-expanded="false"><kbd>/</kbd>
-        <div class="cp-search-results" role="listbox" aria-label="Search suggestions" hidden></div>
-      </form>
-      <a class="cp-icon-button" href="../calculators/index.html" aria-label="Browse all calculators" title="All calculators"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
-      <button class="cp-icon-button cp-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-    </div>
-  </div>
-  <div class="cp-mobile-panel" hidden>
-    <form class="cp-mobile-search" action="../search/index.html" method="get" role="search"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m20 20-4.4-4.4m2.4-5.1a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input class="cp-mobile-search-input" type="search" name="q" placeholder="Search all calculators…" aria-label="Search all calculators"></form>
-    <nav class="cp-mobile-nav" aria-label="Mobile navigation">
-      <a href="../finance/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg> Finance</a><a href="../health/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8.3 12h2.1l1.1-2.2 1.5 4.3 1.1-2.1h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Health</a><a href="../math/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h6M8 4v6m6 5h5m-5 4h5M15 5l4 4m0-4-4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg> Math</a><a href="../date-time/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 3v4m10-4v4M3.5 9h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg> Date &amp; Time</a><a href="../engineering/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5 8.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Engineering</a><a href="../conversion/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h12l-3-3m5 13H7l3 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg> Conversion</a><a href="../education/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 9 9-5 9 5-9 5-9-5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 12v4c3 2.3 7 2.3 10 0v-4m4-3v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Education</a><a href="../other/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> Other</a><a href="../calculators/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> All calculators</a>
-    </nav>
-  </div>
-</header>
-<header>
-  <div class="wrap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/currency-calculator/#app", "name": "Currency Calculator", "url": "/currency-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Convert currencies using live exchange-rate data or enter a custom exchange rate, with inverse-rate and calculation details."}, {"@type": "BreadcrumbList", "@id": "/currency-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Conversion & Web", "item": "/conversion/"}, {"@type": "ListItem", "position": 3, "name": "Currency Conversion", "item": "/conversion/currency-conversion/"}, {"@type": "ListItem", "position": 4, "name": "Currency Calculator", "item": "/currency-calculator/"}]}, {"@type": "FAQPage", "@id": "/currency-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "Are live exchange rates the same as bank rates?", "acceptedAnswer": {"@type": "Answer", "text": "Not always. Reference rates are useful benchmarks, while banks and payment providers can add a spread, fee, or different execution time."}}, {"@type": "Question", "name": "Can I use my own exchange rate?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Custom-rate mode multiplies your amount by the exact rate you enter."}}, {"@type": "Question", "name": "Why does the result change during the day?", "acceptedAnswer": {"@type": "Answer", "text": "Foreign-exchange markets move and data providers update at different times, so the latest available reference rate can change."}}]}]}</script>
+<link href="../assets/css/global.css" rel="stylesheet"/><link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
+<body class="currency-calculator" data-cp-category="finance" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
+<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../finance/index.html">Finance</a></li><li><a aria-current="page" href="index.html">Currency Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a href="../calculators/index.html">All calculators</a></div><header>
+<div class="wrap">
 <section class="hero">
-      <div class="hero-copy">
-        <div class="breadcrumb"><a href="#">Home</a> / <a href="#">Calculators</a> / Currency Calculator</div>
-        <div class="kicker">Markets · FX</div>
-        <h1>Currency Calculator</h1>
-        <p>Convert money with a live reference rate or a rate you control, then see the inverse quote instantly.</p>
-      </div>
-      <div class="scene" aria-hidden="true"><div class="fx-board"><div class="fx-screen"><div class="fx-line" style="width:72%"></div><div class="fx-line" style="width:48%"></div><div class="fx-line" style="width:85%"></div><div class="pill-row"><span class="pill">USD</span><span class="pill">EUR</span><span class="pill">GBP</span></div></div></div><div class="coin c1">$</div><div class="coin c2">€</div></div>
-    </section>
-  </div>
+<div class="hero-copy">
+<div class="breadcrumb"><a href="#">Home</a> / <a href="#">Calculators</a> / Currency Calculator</div>
+<div class="kicker">Markets · FX</div>
+<h1>Currency Calculator</h1>
+<p>Convert money with a live reference rate or a rate you control, then see the inverse quote instantly.</p>
+</div>
+<div aria-hidden="true" class="scene"><div class="fx-board"><div class="fx-screen"><div class="fx-line" style="width:72%"></div><div class="fx-line" style="width:48%"></div><div class="fx-line" style="width:85%"></div><div class="pill-row"><span class="pill">USD</span><span class="pill">EUR</span><span class="pill">GBP</span></div></div></div><div class="coin c1">$</div><div class="coin c2">€</div></div>
+</section>
+</div>
 </header>
-<main>
-  <section id="calculator" class="calc-shell">
-    <div class="wrap calculator">
-      <div class="card form-card">
+<div class="cp-page-layout"><main id="main">
+<div class="cp-tool-actions"><button data-cp-print="" type="button">Print / Save PDF</button><span aria-live="polite" class="cp-action-status" role="status"></span></div><section class="calc-shell" id="calculator">
+<div class="wrap calculator">
+<div class="card form-card">
 <h2 class="section-title">Convert currency</h2>
 <p class="subtle">Use current online rates or switch to a custom rate for bank, card, cash, or planning scenarios.</p>
 <div class="tabs"><button class="tab active" data-tab="live">Live rate</button><button class="tab" data-tab="custom">Custom rate</button></div>
-<div id="live" class="tab-panel active">
-  <div class="grid">
-    <div class="field full"><label for="fxAmount">Amount</label><input id="fxAmount" type="number" min="0" step="any" value="100"></div>
-    <div class="field"><label for="fxFrom">From</label><select id="fxFrom"></select></div>
-    <div class="field"><label for="fxTo">To</label><select id="fxTo"></select></div>
-  </div>
-  <div class="actions"><button class="btn btn-primary" id="fxGo">Get live rate</button><button class="btn btn-secondary" id="fxSwap">Swap</button></div>
+<div class="tab-panel active" id="live">
+<div class="grid">
+<div class="field full"><label for="fxAmount">Amount</label><input id="fxAmount" min="0" step="any" type="number" value="100"/></div>
+<div class="field"><label for="fxFrom">From</label><select id="fxFrom"></select></div>
+<div class="field"><label for="fxTo">To</label><select id="fxTo"></select></div>
 </div>
-<div id="custom" class="tab-panel">
-  <div class="grid">
-    <div class="field"><label for="cAmount">Amount</label><input id="cAmount" type="number" min="0" step="any" value="100"></div>
-    <div class="field"><label for="cRate">Rate (1 A = ? B)</label><input id="cRate" type="number" min="0" step="any" value="0.85"></div>
-  </div>
-  <div class="actions"><button class="btn btn-primary" id="cGo">Convert with custom rate</button></div>
+<div class="actions"><button class="btn btn-primary" id="fxGo">Get live rate</button><button class="btn btn-secondary" id="fxSwap">Swap</button></div>
 </div>
-<div id="fxErr" class="error"></div>
+<div class="tab-panel" id="custom">
+<div class="grid">
+<div class="field"><label for="cAmount">Amount</label><input id="cAmount" min="0" step="any" type="number" value="100"/></div>
+<div class="field"><label for="cRate">Rate (1 A = ? B)</label><input id="cRate" min="0" step="any" type="number" value="0.85"/></div>
 </div>
-      <aside class="card result-card" aria-live="polite">
+<div class="actions"><button class="btn btn-primary" id="cGo">Convert with custom rate</button></div>
+</div>
+<div class="error" id="fxErr"></div>
+</div>
+<aside aria-live="polite" class="card result-card">
 <span class="badge">Exchange result</span>
-<div id="fxBig" class="result-big">—</div>
-<p id="fxNote" class="subtle">Choose currencies and calculate.</p>
+<div class="result-big" id="fxBig">—</div>
+<p class="subtle" id="fxNote">Choose currencies and calculate.</p>
 <div class="metric-row">
- <div class="metric"><span>Rate</span><b id="fxRate">—</b></div>
- <div class="metric"><span>Inverse</span><b id="fxInv">—</b></div>
+<div class="metric"><span>Rate</span><b id="fxRate">—</b></div>
+<div class="metric"><span>Inverse</span><b id="fxInv">—</b></div>
 </div>
 <p class="small" id="fxSource">Live mode uses Frankfurter's no-key exchange-rate API. Reference rates can differ from retail bank/card rates.</p>
 </aside>
-    </div>
-  </section>
-  <section id="guide" class="content">
-    <div class="wrap content-grid">
-      <article class="article">
-        
+</div>
+</section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+<section class="content" id="guide">
+<div class="wrap content-grid">
+<article class="article">
 <h2>What Is a Currency Calculator?</h2>
 <p>A currency calculator converts an amount from one currency into another using an exchange rate. In live mode, the result depends on the latest reference-rate data available from the selected data provider. In custom mode, you supply the rate yourself, which is useful for bank quotes, card rates, cash exchange rates, or planning.</p>
 <h2>How to Use the Currency Calculator</h2>
@@ -164,54 +138,23 @@ radial-gradient(circle at 12% 12%,#0a5f493d,transparent 28%),radial-gradient(cir
 <p>Reference exchange rates are informational and may not equal the final consumer rate. Banks, card networks, money-transfer services, and cash exchangers can apply spreads, fees, or timing differences.</p>
 <h2>Limitations</h2>
 <p>Live conversion requires an internet connection. The calculator does not add transfer fees, card foreign-transaction fees, commissions, or taxes unless you include them in a custom rate.</p>
-
-        <h2 id="faq">Frequently Asked Questions</h2>
-        <div class="faq"><details><summary>Are live exchange rates the same as bank rates?</summary><p>Not always. Reference rates are useful benchmarks, while banks and payment providers can add a spread, fee, or different execution time.</p></details><details><summary>Can I use my own exchange rate?</summary><p>Yes. Custom-rate mode multiplies your amount by the exact rate you enter.</p></details><details><summary>Why does the result change during the day?</summary><p>Foreign-exchange markets move and data providers update at different times, so the latest available reference rate can change.</p></details></div>
-        <h2>Sources and Methodology</h2>
-        <p>The calculator logic and explanatory content were cross-checked against the following references. Estimates are separated from official data where applicable.</p>
-        <ul class="source-list"><li><a href="https://www.calculator.net/currency-calculator.html" rel="noopener noreferrer">Calculator.net Currency Calculator</a></li><li><a href="https://frankfurter.dev/" rel="noopener noreferrer">Frankfurter Exchange Rates API</a></li><li><a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html" rel="noopener noreferrer">European Central Bank reference exchange rates</a></li></ul>
-      </article>
-      <aside class="card aside">
-        <h3>On this page</h3>
-        <a href="#calculator">Calculator</a>
-        <a href="#guide">How it works</a>
-        <a href="#faq">FAQs</a>
-        <p class="small">Educational calculator. For regulated financial, tax, medical, engineering, or network changes, verify the result against the relevant professional or official source.</p>
-      </aside>
-    </div>
-  </section>
-
-<section class="cp-related-tools" aria-labelledby="cp-related-title">
-  <div class="cp-related-shell">
-    <div class="cp-related-heading"><div><span class="cp-related-kicker">Explore next</span><h2 id="cp-related-title">Related Tools</h2><p>Useful calculators closely related to Currency Calculator.</p></div><a class="cp-related-all" href="../calculators/index.html">View all calculators <span aria-hidden="true">→</span></a></div>
-    <div class="cp-related-grid"><a class="cp-related-card" href="../tax-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>2026 Federal Income Tax Calculator</strong><small>Estimate 2026 U.S. federal ordinary income tax using IRS tax brackets and standard deductions, with optional…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../401k-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>401(k) Calculator</strong><small>Project a 401(k) balance using salary, contribution percentage, employer match, salary growth, investment return,…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../mortgage-calculator-uk/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>A mortgage view built in pounds, not guesses.</strong><small>Estimate UK mortgage repayment and interest-only payments in pounds, total interest, LTV, and an amortization schedule.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../apr-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>APR Calculator</strong><small>Estimate loan APR from the note rate, term, and upfront finance charges using a monthly cash-flow method.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../amortization-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Amortization Calculator</strong><small>Create an amortization schedule and see how extra monthly payments can change payoff time and total interest.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../annuity-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Annuity Calculator</strong><small>Estimate the accumulation value of an annuity-style investment using starting principal, recurring additions, growth…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a></div>
-  </div>
+<h2 id="faq">Frequently Asked Questions</h2>
+<div class="faq"><details><summary>Are live exchange rates the same as bank rates?</summary><p>Not always. Reference rates are useful benchmarks, while banks and payment providers can add a spread, fee, or different execution time.</p></details><details><summary>Can I use my own exchange rate?</summary><p>Yes. Custom-rate mode multiplies your amount by the exact rate you enter.</p></details><details><summary>Why does the result change during the day?</summary><p>Foreign-exchange markets move and data providers update at different times, so the latest available reference rate can change.</p></details></div>
+<h2>Sources and Methodology</h2>
+<p>The calculator logic and explanatory content were cross-checked against the following references. Estimates are separated from official data where applicable.</p>
+<ul class="source-list"><li><a href="https://www.calculator.net/currency-calculator.html" rel="noopener noreferrer">Calculator.net Currency Calculator</a></li><li><a href="https://frankfurter.dev/" rel="noopener noreferrer">Frankfurter Exchange Rates API</a></li><li><a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html" rel="noopener noreferrer">European Central Bank reference exchange rates</a></li></ul>
+</article>
+<aside class="card aside">
+<h3>On this page</h3>
+<a href="#calculator">Calculator</a>
+<a href="#guide">How it works</a>
+<a href="#faq">FAQs</a>
+<p class="small">Educational calculator. For regulated financial, tax, medical, engineering, or network changes, verify the result against the relevant professional or official source.</p>
+</aside>
+</div>
 </section>
-</main>
+
+<details class="cp-data-panel"><summary><span>Calculator Data — exact tool basis</span><small>Finance · Calculator</small></summary><div class="cp-data-grid"><div class="cp-data-item wide"><b>Purpose</b><p>Convert currencies using live exchange-rate data or enter a custom exchange rate, with inverse-rate and calculation details.</p></div><div class="cp-data-item wide"><b>Formula / Algorithm Used in Tool</b><p>Currency Conversion Formula: Converted amount = Original amount × Exchange rate . The inverse rate is 1 ÷ exchange rate .</p></div><div class="cp-data-item"><b>Required User Inputs</b><p>Amount; From; To; Rate (1 A = ? B)</p></div><div class="cp-data-item"><b>Primary Outputs</b><p>Rate; Inverse</p></div><div class="cp-data-item wide"><b>Important Assumptions / Limitations</b><p>Live conversion requires an internet connection. The calculator does not add transfer fees, card foreign-transaction fees, commissions, or taxes unless you include them in a custom rate.</p></div><div class="cp-data-item"><b>Fresh Data Required?</b><p>Yes</p></div><div class="cp-data-item"><b>Recommended Update Frequency</b><p>Daily / whenever rate content is updated</p></div><div class="cp-data-item wide"><b>Current Source URLs in Page</b><p><a href="https://www.calculator.net/currency-calculator.html" rel="nofollow noopener" target="_blank">https://www.calculator.net/currency-calculator.html</a><br/><a href="https://frankfurter.dev/" rel="nofollow noopener" target="_blank">https://frankfurter.dev/</a><br/><a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html" rel="nofollow noopener" target="_blank">https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html</a></p></div></div></details><script class="cp-calculator-data" type="application/json">{"index":"42","Batch":"5","Calculator / Page":"Currency Calculator","Slug":"currency-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Convert currencies using live exchange-rate data or enter a custom exchange rate, with inverse-rate and calculation details.","Formula / Algorithm Used in Tool":"Currency Conversion Formula: Converted amount = Original amount × Exchange rate . The inverse rate is 1 ÷ exchange rate .","Required User Inputs":"Amount; From; To; Rate (1 A = ? B)","Primary Outputs":"Rate; Inverse","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Amount, From, To, Rate (1 A = ? B). Explain outputs: Rate, Inverse. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Current FX reference rate, source, currency pair, timestamp/date; explain consumer spreads/fees.","Fresh Data Required?":"Yes","Recommended Update Frequency":"Daily / whenever rate content is updated","Important Assumptions / Limitations":"Live conversion requires an internet connection. The calculator does not add transfer fees, card foreign-transaction fees, commissions, or taxes unless you include them in a custom rate.","Current Source URLs in Page":"https://www.calculator.net/currency-calculator.html | https://frankfurter.dev/ | https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html","Implementation Path":"/currency-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><span class="cp-side-kicker">Related tools</span><h2>Finance</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../inflation-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Inflation Calculator</strong><small>Compare U.S. dollar purchasing power with CPI-U data or project inflation forward a…</small></span></a><a class="cp-related-link" href="../vat-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>VAT Calculator</strong><small>Add VAT to a net price or remove VAT from a gross price using a custom rate, with t…</small></span></a><a class="cp-related-link" href="../simple-interest-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Simple Interest Calculator</strong><small>Calculate simple interest, final amount, principal, annual rate, or time using I =…</small></span></a><a class="cp-related-link" href="../auto-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Auto Loan Calculator</strong><small>Estimate a car loan payment using vehicle price, down payment, trade-in, tax, fees,…</small></span></a><a class="cp-related-link" href="../compound-interest-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Compound Interest Calculator</strong><small>Convert a nominal annual interest rate between compounding frequencies and calculat…</small></span></a><a class="cp-related-link" href="../interest-rate-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Interest Rate Calculator</strong><small>Estimate the nominal annual interest rate implied by a loan amount, fixed monthly p…</small></span></a><a class="cp-related-link" href="../salary-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Salary Calculator</strong><small>Estimate 2026 U.S. annual and per-paycheck take-home pay using gross salary, pre-ta…</small></span></a><a class="cp-related-link" href="../sales-tax-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Sales Tax Calculator</strong><small>Calculate sales tax, total after tax, price before tax, or the effective tax rate f…</small></span></a></div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div></aside></div>
 <footer><div class="wrap">CalcPro · Standalone calculator page · No account required.</div></footer>
 <script>
 const currencies={"USD":"US Dollar","EUR":"Euro","GBP":"Pound Sterling","JPY":"Japanese Yen","CAD":"Canadian Dollar","AUD":"Australian Dollar","CHF":"Swiss Franc","CNY":"Chinese Yuan","INR":"Indian Rupee","PKR":"Pakistani Rupee","AED":"UAE Dirham","SAR":"Saudi Riyal","NZD":"New Zealand Dollar","SGD":"Singapore Dollar","HKD":"Hong Kong Dollar","TRY":"Turkish Lira","ZAR":"South African Rand","SEK":"Swedish Krona","NOK":"Norwegian Krone","DKK":"Danish Krone"};
@@ -225,5 +168,5 @@ try{const r=await fetch(`https://api.frankfurter.dev/v2/rate/${a.toLowerCase()}/
 document.getElementById('fxSwap').onclick=()=>{let x=from.value;from.value=to.value;to.value=x;};
 document.getElementById('cGo').onclick=()=>{document.getElementById('fxErr').classList.remove('show');const a=+document.getElementById('cAmount').value,r=+document.getElementById('cRate').value;if(!(a>=0&&r>0))return err("Enter a non-negative amount and a rate greater than zero.");showFx(a*r,r,"A","B","Custom rate supplied by you.");};
 </script>
-<script src="../assets/js/global.js" defer></script></body>
+<script defer="" src="../assets/js/global.js"></script><script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body>
 </html>

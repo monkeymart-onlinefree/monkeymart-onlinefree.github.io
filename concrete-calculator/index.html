@@ -1,17 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Concrete Calculator | CalcPro</title>
-<meta name="description" content="Calculate concrete volume for slabs, round columns, or tubes, convert to cubic yards and cubic meters, and estimate common bag counts.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="../concrete-calculator/">
-<meta property="og:title" content="Concrete Calculator | CalcPro">
-<meta property="og:description" content="Calculate concrete volume for slabs, round columns, or tubes, convert to cubic yards and cubic meters, and estimate common bag counts.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="/concrete-calculator/">
-<meta name="theme-color" content="#07111f">
+<meta content="Calculate concrete volume for slabs, round columns, or tubes, convert to cubic yards and cubic meters, and estimate common bag counts." name="description"/>
+<meta content="index,follow" name="robots"/>
+<link href="../concrete-calculator/" rel="canonical"/>
+<meta content="Concrete Calculator | CalcPro" property="og:title"/>
+<meta content="Calculate concrete volume for slabs, round columns, or tubes, convert to cubic yards and cubic meters, and estimate common bag counts." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="/concrete-calculator/" property="og:url"/>
+<meta content="#1477ff" name="theme-color"/>
 <style>
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 :root{--bg:#07111f;--panel:rgba(255,255,255,.09);--panel2:rgba(255,255,255,.06);--text:#f7fbff;--muted:#b8c6d8;--line:rgba(255,255,255,.14);--a:#67e8f9;--b:#34d399;--c:#fbbf24;--danger:#fb7185;--shadow:0 30px 80px rgba(0,0,0,.32)}
@@ -68,74 +69,47 @@ footer{border-top:1px solid var(--line);padding:32px 0 50px;color:var(--muted);f
 body{--bg:#191a1c;--panel:rgba(43,44,46,.82);--panel2:rgba(74,75,77,.32);--a:#ffb34d;--b:#ffd879;--c:#9dd6ff;background:linear-gradient(125deg,#111213,#252526 55%,#171819)}
 .concrete-calculator .hero{grid-template-columns:.8fr 1.2fr}.blueprint{position:absolute;inset:22px 10px 18px 5px;border-radius:26px;background:#0c4565;background-image:linear-gradient(#ffffff12 1px,transparent 1px),linear-gradient(90deg,#ffffff12 1px,transparent 1px);background-size:24px 24px;transform:rotateY(10deg) rotateX(5deg);box-shadow:0 40px 70px #0008}.block{position:absolute;width:155px;height:95px;background:linear-gradient(145deg,#c8c8c3,#6c6d6e);right:9%;bottom:48px;transform:skewY(-8deg);box-shadow:22px 24px 0 #0004, inset -18px -18px 28px #555}.helmet{position:absolute;left:4%;top:15%;width:150px;height:90px;border-radius:100px 100px 20px 20px;background:linear-gradient(#ffc760,#d47b18);box-shadow:0 25px 40px #0006}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/concrete-calculator/#app", "name": "Concrete Calculator", "url": "/concrete-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate concrete volume for slabs, round columns, or tubes, convert to cubic yards and cubic meters, and estimate common bag counts."}, {"@type": "BreadcrumbList", "@id": "/concrete-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "/calculators/"}, {"@type": "ListItem", "position": 3, "name": "Concrete Calculator", "item": "/concrete-calculator/"}]}, {"@type": "FAQPage", "@id": "/concrete-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "How many cubic feet are in one cubic yard?", "acceptedAnswer": {"@type": "Answer", "text": "There are 27 cubic feet in one cubic yard."}}, {"@type": "Question", "name": "How many 80 lb bags make a cubic yard?", "acceptedAnswer": {"@type": "Answer", "text": "At an approximate yield of 0.60 cubic feet per standard 80 lb bag, a theoretical cubic yard is 45 bags before any waste allowance."}}, {"@type": "Question", "name": "Should I always add 10% extra concrete?", "acceptedAnswer": {"@type": "Answer", "text": "Not necessarily. Ten percent is a common planning allowance, but the right margin depends on the project, form accuracy, ground conditions, and supplier practices."}}]}]}</script>
-<link rel="stylesheet" href="../assets/css/global.css"></head>
-<body class="concrete-calculator"><header class="cp-site-header" data-cp-header>
-  <div class="cp-header-shell">
-    <a class="cp-brand" href="../index.html" aria-label="CalcPro home"><span class="cp-brand-mark"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="2.8" width="18" height="18.4" rx="4" fill="currentColor" opacity=".14"/><rect x="6.4" y="6.2" width="11.2" height="3.6" rx="1.2" fill="currentColor"/><path d="M7 12h2.2v2.2H7zm3.9 0h2.2v2.2h-2.2zm3.9 0H17v2.2h-2.2zM7 15.8h2.2V18H7zm3.9 0h2.2V18h-2.2zm3.9 0H17V18h-2.2z" fill="currentColor"/></svg></span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
-    <nav class="cp-main-nav" aria-label="Primary navigation">
-      <a href="../finance/index.html" data-cp-section="finance"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg><span>Finance</span></a>
-      <a href="../health/index.html" data-cp-section="health"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8.3 12h2.1l1.1-2.2 1.5 4.3 1.1-2.1h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Health</span></a>
-      <a href="../math/index.html" data-cp-section="math"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h6M8 4v6m6 5h5m-5 4h5M15 5l4 4m0-4-4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg><span>Math</span></a>
-      <a href="../date-time/index.html" data-cp-section="date-time"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 3v4m10-4v4M3.5 9h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg><span>Date &amp; Time</span></a>
-      <a href="../engineering/index.html" data-cp-section="engineering"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5 8.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Engineering</span></a>
-      <a href="../conversion/index.html" data-cp-section="conversion"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h12l-3-3m5 13H7l3 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Convert</span></a>
-    </nav>
-    <div class="cp-header-actions">
-      <form class="cp-header-search" action="../search/index.html" method="get" role="search" autocomplete="off">
-        <svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m20 20-4.4-4.4m2.4-5.1a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input class="cp-search-input" type="search" name="q" placeholder="Search calculators…" aria-label="Search CalcPro calculators" aria-autocomplete="list" aria-expanded="false"><kbd>/</kbd>
-        <div class="cp-search-results" role="listbox" aria-label="Search suggestions" hidden></div>
-      </form>
-      <a class="cp-icon-button" href="../calculators/index.html" aria-label="Browse all calculators" title="All calculators"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
-      <button class="cp-icon-button cp-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-    </div>
-  </div>
-  <div class="cp-mobile-panel" hidden>
-    <form class="cp-mobile-search" action="../search/index.html" method="get" role="search"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m20 20-4.4-4.4m2.4-5.1a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input class="cp-mobile-search-input" type="search" name="q" placeholder="Search all calculators…" aria-label="Search all calculators"></form>
-    <nav class="cp-mobile-nav" aria-label="Mobile navigation">
-      <a href="../finance/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg> Finance</a><a href="../health/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8.3 12h2.1l1.1-2.2 1.5 4.3 1.1-2.1h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Health</a><a href="../math/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h6M8 4v6m6 5h5m-5 4h5M15 5l4 4m0-4-4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg> Math</a><a href="../date-time/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 3v4m10-4v4M3.5 9h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg> Date &amp; Time</a><a href="../engineering/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5 8.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Engineering</a><a href="../conversion/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h12l-3-3m5 13H7l3 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg> Conversion</a><a href="../education/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 9 9-5 9 5-9 5-9-5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 12v4c3 2.3 7 2.3 10 0v-4m4-3v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Education</a><a href="../other/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> Other</a><a href="../calculators/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> All calculators</a>
-    </nav>
-  </div>
-</header>
-<header>
-  <div class="wrap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/concrete-calculator/#app", "name": "Concrete Calculator", "url": "/concrete-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate concrete volume for slabs, round columns, or tubes, convert to cubic yards and cubic meters, and estimate common bag counts."}, {"@type": "BreadcrumbList", "@id": "/concrete-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Construction & Home", "item": "/construction/"}, {"@type": "ListItem", "position": 3, "name": "Concrete & Materials", "item": "/construction/concrete-materials/"}, {"@type": "ListItem", "position": 4, "name": "Concrete Calculator", "item": "/concrete-calculator/"}]}, {"@type": "FAQPage", "@id": "/concrete-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "How many cubic feet are in one cubic yard?", "acceptedAnswer": {"@type": "Answer", "text": "There are 27 cubic feet in one cubic yard."}}, {"@type": "Question", "name": "How many 80 lb bags make a cubic yard?", "acceptedAnswer": {"@type": "Answer", "text": "At an approximate yield of 0.60 cubic feet per standard 80 lb bag, a theoretical cubic yard is 45 bags before any waste allowance."}}, {"@type": "Question", "name": "Should I always add 10% extra concrete?", "acceptedAnswer": {"@type": "Answer", "text": "Not necessarily. Ten percent is a common planning allowance, but the right margin depends on the project, form accuracy, ground conditions, and supplier practices."}}]}]}</script>
+<link href="../assets/css/global.css" rel="stylesheet"/><link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
+<body class="concrete-calculator" data-cp-category="engineering" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
+<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../engineering/index.html">Engineering &amp; Construction</a></li><li><a aria-current="page" href="index.html">Concrete Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../engineering/index.html">Browse Engineering &amp; Construction</a><a href="../calculators/index.html">All calculators</a></div><header>
+<div class="wrap">
 <section class="hero">
-      <div class="hero-copy">
-        <div class="breadcrumb"><a href="#">Home</a> / <a href="#">Calculators</a> / Concrete Calculator</div>
-        <div class="kicker">Construction · Volume</div>
-        <h1>Concrete Calculator</h1>
-        <p>Turn project dimensions into cubic yards, cubic meters, and practical bag counts with geometry you can inspect.</p>
-      </div>
-      <div class="scene" aria-hidden="true"><div class="blueprint"></div><div class="block"></div><div class="helmet"></div></div>
-    </section>
-  </div>
+<div class="hero-copy">
+<div class="breadcrumb"><a href="#">Home</a> / <a href="#">Calculators</a> / Concrete Calculator</div>
+<div class="kicker">Construction · Volume</div>
+<h1>Concrete Calculator</h1>
+<p>Turn project dimensions into cubic yards, cubic meters, and practical bag counts with geometry you can inspect.</p>
+</div>
+<div aria-hidden="true" class="scene"><div class="blueprint"></div><div class="block"></div><div class="helmet"></div></div>
+</section>
+</div>
 </header>
-<main>
-  <section id="calculator" class="calc-shell">
-    <div class="wrap calculator">
-      <div class="card form-card">
+<div class="cp-page-layout"><main id="main">
+<div class="cp-tool-actions"><button data-cp-print="" type="button">Print / Save PDF</button><span aria-live="polite" class="cp-action-status" role="status"></span></div><section class="calc-shell" id="calculator">
+<div class="wrap calculator">
+<div class="card form-card">
 <h2 class="section-title">Estimate concrete volume</h2><p class="subtle">Choose a shape. Enter dimensions in feet; thickness can be inches for slabs.</p>
 <div class="tabs"><button class="tab active" data-tab="slab">Slab / wall</button><button class="tab" data-tab="column">Round column</button><button class="tab" data-tab="tube">Tube / ring</button></div>
-<div id="slab" class="tab-panel active"><div class="grid">
-<div class="field"><label for="cLen">Length (ft)</label><input id="cLen" type="number" value="10" min="0" step="any"></div>
-<div class="field"><label for="cWid">Width (ft)</label><input id="cWid" type="number" value="6" min="0" step="any"></div>
-<div class="field"><label for="cThick">Thickness (in)</label><input id="cThick" type="number" value="4" min="0" step="any"></div>
-<div class="field"><label for="cQty">Quantity</label><input id="cQty" type="number" value="1" min="1"></div></div></div>
-<div id="column" class="tab-panel"><div class="grid"><div class="field"><label for="cDia">Diameter (ft)</label><input id="cDia" type="number" value="2" min="0" step="any"></div><div class="field"><label for="cDepth">Height / depth (ft)</label><input id="cDepth" type="number" value="4" min="0" step="any"></div><div class="field"><label for="cQty2">Quantity</label><input id="cQty2" type="number" value="1" min="1"></div></div></div>
-<div id="tube" class="tab-panel"><div class="grid"><div class="field"><label for="cOut">Outer diameter (ft)</label><input id="cOut" type="number" value="3" min="0" step="any"></div><div class="field"><label for="cIn">Inner diameter (ft)</label><input id="cIn" type="number" value="2" min="0" step="any"></div><div class="field"><label for="cHeight">Height / length (ft)</label><input id="cHeight" type="number" value="4" min="0" step="any"></div><div class="field"><label for="cQty3">Quantity</label><input id="cQty3" type="number" value="1" min="1"></div></div></div>
-<div class="grid" style="margin-top:16px"><div class="field"><label for="waste">Waste allowance (%)</label><input id="waste" type="number" value="10" min="0" step="any"></div></div>
-<div class="actions"><button id="cGo" class="btn btn-primary">Calculate concrete</button></div><div id="cErr" class="error"></div>
+<div class="tab-panel active" id="slab"><div class="grid">
+<div class="field"><label for="cLen">Length (ft)</label><input id="cLen" min="0" step="any" type="number" value="10"/></div>
+<div class="field"><label for="cWid">Width (ft)</label><input id="cWid" min="0" step="any" type="number" value="6"/></div>
+<div class="field"><label for="cThick">Thickness (in)</label><input id="cThick" min="0" step="any" type="number" value="4"/></div>
+<div class="field"><label for="cQty">Quantity</label><input id="cQty" min="1" type="number" value="1"/></div></div></div>
+<div class="tab-panel" id="column"><div class="grid"><div class="field"><label for="cDia">Diameter (ft)</label><input id="cDia" min="0" step="any" type="number" value="2"/></div><div class="field"><label for="cDepth">Height / depth (ft)</label><input id="cDepth" min="0" step="any" type="number" value="4"/></div><div class="field"><label for="cQty2">Quantity</label><input id="cQty2" min="1" type="number" value="1"/></div></div></div>
+<div class="tab-panel" id="tube"><div class="grid"><div class="field"><label for="cOut">Outer diameter (ft)</label><input id="cOut" min="0" step="any" type="number" value="3"/></div><div class="field"><label for="cIn">Inner diameter (ft)</label><input id="cIn" min="0" step="any" type="number" value="2"/></div><div class="field"><label for="cHeight">Height / length (ft)</label><input id="cHeight" min="0" step="any" type="number" value="4"/></div><div class="field"><label for="cQty3">Quantity</label><input id="cQty3" min="1" type="number" value="1"/></div></div></div>
+<div class="grid" style="margin-top:16px"><div class="field"><label for="waste">Waste allowance (%)</label><input id="waste" min="0" step="any" type="number" value="10"/></div></div>
+<div class="actions"><button class="btn btn-primary" id="cGo">Calculate concrete</button></div><div class="error" id="cErr"></div>
 </div>
-      <aside class="card result-card" aria-live="polite">
-<span class="badge">Concrete required</span><div id="cBig" class="result-big">—</div><p id="cText" class="subtle">Includes your selected waste allowance.</p>
+<aside aria-live="polite" class="card result-card">
+<span class="badge">Concrete required</span><div class="result-big" id="cBig">—</div><p class="subtle" id="cText">Includes your selected waste allowance.</p>
 <div class="metric-row"><div class="metric"><span>Cubic feet</span><b id="cFt">—</b></div><div class="metric"><span>Cubic meters</span><b id="cM">—</b></div><div class="metric"><span>60 lb bags</span><b id="c60">—</b></div><div class="metric"><span>80 lb bags</span><b id="c80">—</b></div></div>
 </aside>
-    </div>
-  </section>
-  <section id="guide" class="content">
-    <div class="wrap content-grid">
-      <article class="article">
-        
+</div>
+</section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+<section class="content" id="guide">
+<div class="wrap content-grid">
+<article class="article">
 <h2>What Is a Concrete Calculator?</h2>
 <p>A concrete calculator estimates the volume needed for a pour based on geometry. This version handles rectangular slabs or walls, solid round columns, and hollow circular tubes or rings, then converts the result to cubic feet, cubic yards, and cubic meters.</p>
 <h2>Concrete Volume Formulas</h2>
@@ -144,59 +118,28 @@ body{--bg:#191a1c;--panel:rgba(43,44,46,.82);--panel2:rgba(74,75,77,.32);--a:#ff
 <p>QUIKRETE publishes approximate yields of 0.45 cubic feet for a 60 lb bag and 0.60 cubic feet for an 80 lb bag of its standard Concrete Mix. Bag yields vary by product, so verify the bag or manufacturer data sheet before purchase.</p>
 <h2>Why Add a Waste Allowance?</h2>
 <p>Real projects can require extra material because of uneven excavation, spillage, form variation, or measurement error. The default 10% is a planning allowance, not an engineering requirement.</p>
-
-        <h2 id="faq">Frequently Asked Questions</h2>
-        <div class="faq"><details><summary>How many cubic feet are in one cubic yard?</summary><p>There are 27 cubic feet in one cubic yard.</p></details><details><summary>How many 80 lb bags make a cubic yard?</summary><p>At an approximate yield of 0.60 cubic feet per standard 80 lb bag, a theoretical cubic yard is 45 bags before any waste allowance.</p></details><details><summary>Should I always add 10% extra concrete?</summary><p>Not necessarily. Ten percent is a common planning allowance, but the right margin depends on the project, form accuracy, ground conditions, and supplier practices.</p></details></div>
-        <h2>Sources and Methodology</h2>
-        <p>The calculator logic and explanatory content were cross-checked against the following references. Estimates are separated from official data where applicable.</p>
-        <ul class="source-list"><li><a href="https://www.calculator.net/concrete-calculator.html" rel="noopener noreferrer">Calculator.net Concrete Calculator</a></li><li><a href="https://www.quikrete.com/pdfs/data_sheet-concrete%20mix%201101.pdf" rel="noopener noreferrer">QUIKRETE Concrete Mix data sheet</a></li><li><a href="https://www.sakrete.com/wp-content/uploads/2024/01/Sakrete-High-Strength-Concrete-Mix-TDS.pdf" rel="noopener noreferrer">SAKRETE High-Strength Concrete Mix</a></li></ul>
-      </article>
-      <aside class="card aside">
-        <h3>On this page</h3>
-        <a href="#calculator">Calculator</a>
-        <a href="#guide">How it works</a>
-        <a href="#faq">FAQs</a>
-        <p class="small">Educational calculator. For regulated financial, tax, medical, engineering, or network changes, verify the result against the relevant professional or official source.</p>
-      </aside>
-    </div>
-  </section>
-
-<section class="cp-related-tools" aria-labelledby="cp-related-title">
-  <div class="cp-related-shell">
-    <div class="cp-related-heading"><div><span class="cp-related-kicker">Explore next</span><h2 id="cp-related-title">Related Tools</h2><p>Useful calculators closely related to Concrete Calculator.</p></div><a class="cp-related-all" href="../calculators/index.html">View all calculators <span aria-hidden="true">→</span></a></div>
-    <div class="cp-related-grid"><a class="cp-related-card" href="../square-footage-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9"/></svg></span>
-  <span class="cp-related-body"><strong>Square Footage Calculator</strong><small>Calculate square footage for rectangles, triangles, and circles, with square-meter conversion and optional cost per…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../roofing-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9"/></svg></span>
-  <span class="cp-related-body"><strong>Roofing Calculator</strong><small>Estimate pitched roof area, roofing squares, bundle quantity, waste, and optional material cost.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../tile-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9"/></svg></span>
-  <span class="cp-related-body"><strong>Tile Calculator</strong><small>Estimate tile quantity, rows, columns, waste, boxes, and optional cost for a rectangular surface.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../mulch-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9"/></svg></span>
-  <span class="cp-related-body"><strong>Mulch Calculator</strong><small>Estimate mulch volume in cubic yards or cubic meters, plus bag counts, from area and depth.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../gravel-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9"/></svg></span>
-  <span class="cp-related-body"><strong>Gravel Calculator</strong><small>Calculate gravel volume from length, width, and depth, with optional supplier density for weight estimates.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../stair-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9"/></svg></span>
-  <span class="cp-related-body"><strong>Stair Calculator</strong><small>Calculate straight-stair risers, treads, total run, pitch angle, and stringer length with common residential code…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a></div>
-  </div>
+<h2 id="faq">Frequently Asked Questions</h2>
+<div class="faq"><details><summary>How many cubic feet are in one cubic yard?</summary><p>There are 27 cubic feet in one cubic yard.</p></details><details><summary>How many 80 lb bags make a cubic yard?</summary><p>At an approximate yield of 0.60 cubic feet per standard 80 lb bag, a theoretical cubic yard is 45 bags before any waste allowance.</p></details><details><summary>Should I always add 10% extra concrete?</summary><p>Not necessarily. Ten percent is a common planning allowance, but the right margin depends on the project, form accuracy, ground conditions, and supplier practices.</p></details></div>
+<h2>Sources and Methodology</h2>
+<p>The calculator logic and explanatory content were cross-checked against the following references. Estimates are separated from official data where applicable.</p>
+<ul class="source-list"><li><a href="https://www.calculator.net/concrete-calculator.html" rel="noopener noreferrer">Calculator.net Concrete Calculator</a></li><li><a href="https://www.quikrete.com/pdfs/data_sheet-concrete%20mix%201101.pdf" rel="noopener noreferrer">QUIKRETE Concrete Mix data sheet</a></li><li><a href="https://www.sakrete.com/wp-content/uploads/2024/01/Sakrete-High-Strength-Concrete-Mix-TDS.pdf" rel="noopener noreferrer">SAKRETE High-Strength Concrete Mix</a></li></ul>
+</article>
+<aside class="card aside">
+<h3>On this page</h3>
+<a href="#calculator">Calculator</a>
+<a href="#guide">How it works</a>
+<a href="#faq">FAQs</a>
+<p class="small">Educational calculator. For regulated financial, tax, medical, engineering, or network changes, verify the result against the relevant professional or official source.</p>
+</aside>
+</div>
 </section>
-</main>
+
+<details class="cp-data-panel"><summary><span>Calculator Data — exact tool basis</span><small>Engineering &amp; Construction · Calculator</small></summary><div class="cp-data-grid"><div class="cp-data-item wide"><b>Purpose</b><p>Calculate concrete volume for slabs, round columns, or tubes, convert to cubic yards and cubic meters, and estimate common bag counts.</p></div><div class="cp-data-item wide"><b>Formula / Algorithm Used in Tool</b><p>Concrete Volume Formulas: Rectangular volume is length × width × thickness . A solid cylinder is π × radius² × height . A hollow tube subtracts the inner cylinder from the outer cylinder.</p></div><div class="cp-data-item"><b>Required User Inputs</b><p>Length (ft); Width (ft); Thickness (in); Quantity; Diameter (ft); Height / depth (ft); Outer diameter (ft); Inner diameter (ft); Height / length (ft); Waste allowance (%)</p></div><div class="cp-data-item"><b>Primary Outputs</b><p>Cubic feet; Cubic meters; 60 lb bags; 80 lb bags</p></div><div class="cp-data-item wide"><b>Important Assumptions / Limitations</b><p>Explain formula domain, unit consistency, rounding, input validation and real-world limitations.</p></div><div class="cp-data-item"><b>Fresh Data Required?</b><p>Conditional</p></div><div class="cp-data-item"><b>Recommended Update Frequency</b><p>When standards/default factors change</p></div><div class="cp-data-item wide"><b>Current Source URLs in Page</b><p><a href="https://www.calculator.net/concrete-calculator.html" rel="nofollow noopener" target="_blank">https://www.calculator.net/concrete-calculator.html</a><br/><a href="https://www.quikrete.com/pdfs/data_sheet-concrete%20mix%201101.pdf" rel="nofollow noopener" target="_blank">https://www.quikrete.com/pdfs/data_sheet-concrete%20mix%201101.pdf</a><br/><a href="https://www.sakrete.com/wp-content/uploads/2024/01/Sakrete-High-Strength-Concrete-Mix-TDS.pdf" rel="nofollow noopener" target="_blank">https://www.sakrete.com/wp-content/uploads/2024/01/Sakrete-High-Strength-Concrete-Mix-TDS.pdf</a></p></div></div></details><script class="cp-calculator-data" type="application/json">{"index":"41","Batch":"5","Calculator / Page":"Concrete Calculator","Slug":"concrete-calculator","Site Category (Current)":"Engineering & Construction","Recommended Content Domain":"Engineering / Construction","Page Type":"Calculator","Search Intent / Purpose":"Calculate concrete volume for slabs, round columns, or tubes, convert to cubic yards and cubic meters, and estimate common bag counts.","Formula / Algorithm Used in Tool":"Concrete Volume Formulas: Rectangular volume is length × width × thickness . A solid cylinder is π × radius² × height . A hollow tube subtracts the inner cylinder from the outer cylinder.","Required User Inputs":"Length (ft); Width (ft); Thickness (in); Quantity; Diameter (ft); Height / depth (ft); Outer diameter (ft); Inner diameter (ft); Height / length (ft); Waste allowance (%)","Primary Outputs":"Cubic feet; Cubic meters; 60 lb bags; 80 lb bags","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Length (ft), Width (ft), Thickness (in), Quantity, Diameter (ft), Height / depth (ft), Outer diameter (ft), Inner diameter (ft), Height / length (ft), Waste allowance (%). Explain outputs: Cubic feet, Cubic meters, 60 lb bags, 80 lb bags. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Exact engineering/geometry formula, units, standards; document any default density, waste factor, safety factor or material assumption.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When standards/default factors change","Important Assumptions / Limitations":"Explain formula domain, unit consistency, rounding, input validation and real-world limitations.","Current Source URLs in Page":"https://www.calculator.net/concrete-calculator.html | https://www.quikrete.com/pdfs/data_sheet-concrete%20mix%201101.pdf | https://www.sakrete.com/wp-content/uploads/2024/01/Sakrete-High-Strength-Concrete-Mix-TDS.pdf","Implementation Path":"/concrete-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><span class="cp-side-kicker">Related tools</span><h2>Engineering &amp; Construction</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../mulch-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Mulch Calculator</strong><small>Estimate mulch volume in cubic yards or cubic meters, plus bag counts, from area an…</small></span></a><a class="cp-related-link" href="../concrete-calculator-for-your-site/index.html"><span class="cp-related-dot">›</span><span><strong>Concrete Calculator for Your Site</strong><small>Calculate concrete volume for rectangular slabs, round columns, and circular tubes…</small></span></a><a class="cp-related-link" href="../horsepower-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Horsepower Calculator</strong><small>Calculate mechanical horsepower from torque and RPM, or convert between hp, kilowat…</small></span></a><a class="cp-related-link" href="../btu-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>BTU Calculator</strong><small>Estimate room air-conditioner cooling capacity in BTU per hour using ENERGY STAR ro…</small></span></a><a class="cp-related-link" href="../fuel-cost-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fuel Cost Calculator</strong><small>Estimate trip fuel use and fuel cost from distance, fuel efficiency, and gas or die…</small></span></a><a class="cp-related-link" href="../voltage-drop-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Voltage Drop Calculator</strong><small>Estimate conductor voltage drop, percentage drop, and load voltage for DC, single-p…</small></span></a><a class="cp-related-link" href="../engine-horsepower-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Engine Horsepower Calculator</strong><small>Estimate engine horsepower from quarter-mile elapsed time or trap speed with weight…</small></span></a><a class="cp-related-link" href="../resistor-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Resistor Calculator</strong><small>Decode 4-, 5-, or 6-band resistor colors and calculate equivalent resistance for se…</small></span></a></div><a class="cp-side-category" href="../engineering/index.html"><span>View category</span><span>→</span></a><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div></aside></div>
 <footer><div class="wrap">CalcPro · Standalone calculator page · No account required.</div></footer>
 <script>
 let cmode="slab";document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab,.tab-panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active');cmode=b.dataset.tab});
 cGo.onclick=()=>{cErr.classList.remove('show');let v=0;if(cmode==="slab"){let l=+cLen.value,w=+cWid.value,t=+cThick.value/12,q=+cQty.value;if(!(l>0&&w>0&&t>0&&q>0))return bad();v=l*w*t*q}else if(cmode==="column"){let d=+cDia.value,h=+cDepth.value,q=+cQty2.value;if(!(d>0&&h>0&&q>0))return bad();v=Math.PI*Math.pow(d/2,2)*h*q}else{let d1=+cOut.value,d2=+cIn.value,h=+cHeight.value,q=+cQty3.value;if(!(d1>0&&d2>=0&&d1>d2&&h>0&&q>0))return bad();v=Math.PI*(Math.pow(d1/2,2)-Math.pow(d2/2,2))*h*q}let wa=+waste.value||0;if(wa<0)return bad();v*=1+wa/100;let yd=v/27,m=v*0.028316846592;cBig.textContent=yd.toFixed(3)+" yd³";cFt.textContent=v.toFixed(2)+" ft³";cM.textContent=m.toFixed(3)+" m³";c60.textContent=Math.ceil(v/.45)+" bags";c80.textContent=Math.ceil(v/.60)+" bags";cText.textContent=`Volume includes ${wa.toFixed(1)}% allowance. Bag yields are product-specific reference values.`}
 function bad(){cErr.textContent="Enter valid positive dimensions. For a tube, outer diameter must exceed inner diameter.";cErr.classList.add('show')}
 </script>
-<script src="../assets/js/global.js" defer></script></body>
+<script defer="" src="../assets/js/global.js"></script><script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body>
 </html>

@@ -1,17 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Finance Calculator | CalcPro</title>
-<meta name="description" content="Solve time-value-of-money variables including future value, present value, payment, number of periods, and periodic interest rate.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="../finance-calculator/">
-<meta property="og:title" content="Finance Calculator | CalcPro">
-<meta property="og:description" content="Solve time-value-of-money variables including future value, present value, payment, number of periods, and periodic interest rate.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="/finance-calculator/">
-<meta name="theme-color" content="#07111f">
+<meta content="Solve time-value-of-money variables including future value, present value, payment, number of periods, and periodic interest rate." name="description"/>
+<meta content="index,follow" name="robots"/>
+<link href="../finance-calculator/" rel="canonical"/>
+<meta content="Finance Calculator | CalcPro" property="og:title"/>
+<meta content="Solve time-value-of-money variables including future value, present value, payment, number of periods, and periodic interest rate." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="/finance-calculator/" property="og:url"/>
+<meta content="#1477ff" name="theme-color"/>
 <style>
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 :root{--bg:#07111f;--panel:rgba(255,255,255,.09);--panel2:rgba(255,255,255,.06);--text:#f7fbff;--muted:#b8c6d8;--line:rgba(255,255,255,.14);--a:#67e8f9;--b:#34d399;--c:#fbbf24;--danger:#fb7185;--shadow:0 30px 80px rgba(0,0,0,.32)}
@@ -68,74 +69,47 @@ footer{border-top:1px solid var(--line);padding:32px 0 50px;color:var(--muted);f
 body{--bg:#10091b;--panel:rgba(35,20,58,.72);--panel2:rgba(83,49,119,.3);--a:#d5b3ff;--b:#f3c96f;--c:#72e6cf;background:linear-gradient(135deg,#0b0712,#170c26 50%,#0c1524)}
 .finance-calculator .hero{grid-template-columns:.82fr 1.18fr}.ledger{position:absolute;inset:20px 35px 20px 10px;border-radius:28px;background:linear-gradient(160deg,#291742,#110a1e);transform:rotateY(14deg) rotateX(5deg);border:1px solid #ffffff1f;box-shadow:0 40px 70px #0007}.ledger:before{content:"TVM";position:absolute;font-size:5rem;font-weight:950;color:#ffffff10;right:30px;top:20px}.chart3d{position:absolute;inset:auto 45px 42px 45px;height:150px;display:flex;align-items:end;gap:16px}.chart3d i{flex:1;border-radius:12px 12px 5px 5px;background:linear-gradient(var(--a),#6944a7);box-shadow:inset -9px -9px 16px #0003,10px 13px 0 #0003}.chart3d i:nth-child(1){height:35%}.chart3d i:nth-child(2){height:55%}.chart3d i:nth-child(3){height:80%}.chart3d i:nth-child(4){height:100%}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/finance-calculator/#app", "name": "Finance Calculator", "url": "/finance-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Solve time-value-of-money variables including future value, present value, payment, number of periods, and periodic interest rate."}, {"@type": "BreadcrumbList", "@id": "/finance-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "/calculators/"}, {"@type": "ListItem", "position": 3, "name": "Finance Calculator", "item": "/finance-calculator/"}]}, {"@type": "FAQPage", "@id": "/finance-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "Why are some finance-calculator inputs negative?", "acceptedAnswer": {"@type": "Answer", "text": "The signs show cash-flow direction. Money you pay or invest is typically negative, while money you receive is positive."}}, {"@type": "Question", "name": "What rate should I enter?", "acceptedAnswer": {"@type": "Answer", "text": "Enter the interest rate for one calculation period. If periods are monthly, use an appropriate monthly periodic rate."}}, {"@type": "Question", "name": "Can the calculator solve interest rate?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. It uses a numerical root search because the rate is not isolated by a simple general algebraic formula."}}]}]}</script>
-<link rel="stylesheet" href="../assets/css/global.css"></head>
-<body class="finance-calculator"><header class="cp-site-header" data-cp-header>
-  <div class="cp-header-shell">
-    <a class="cp-brand" href="../index.html" aria-label="CalcPro home"><span class="cp-brand-mark"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="2.8" width="18" height="18.4" rx="4" fill="currentColor" opacity=".14"/><rect x="6.4" y="6.2" width="11.2" height="3.6" rx="1.2" fill="currentColor"/><path d="M7 12h2.2v2.2H7zm3.9 0h2.2v2.2h-2.2zm3.9 0H17v2.2h-2.2zM7 15.8h2.2V18H7zm3.9 0h2.2V18h-2.2zm3.9 0H17V18h-2.2z" fill="currentColor"/></svg></span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
-    <nav class="cp-main-nav" aria-label="Primary navigation">
-      <a href="../finance/index.html" data-cp-section="finance"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg><span>Finance</span></a>
-      <a href="../health/index.html" data-cp-section="health"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8.3 12h2.1l1.1-2.2 1.5 4.3 1.1-2.1h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Health</span></a>
-      <a href="../math/index.html" data-cp-section="math"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h6M8 4v6m6 5h5m-5 4h5M15 5l4 4m0-4-4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg><span>Math</span></a>
-      <a href="../date-time/index.html" data-cp-section="date-time"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 3v4m10-4v4M3.5 9h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg><span>Date &amp; Time</span></a>
-      <a href="../engineering/index.html" data-cp-section="engineering"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5 8.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Engineering</span></a>
-      <a href="../conversion/index.html" data-cp-section="conversion"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h12l-3-3m5 13H7l3 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Convert</span></a>
-    </nav>
-    <div class="cp-header-actions">
-      <form class="cp-header-search" action="../search/index.html" method="get" role="search" autocomplete="off">
-        <svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m20 20-4.4-4.4m2.4-5.1a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input class="cp-search-input" type="search" name="q" placeholder="Search calculators…" aria-label="Search CalcPro calculators" aria-autocomplete="list" aria-expanded="false"><kbd>/</kbd>
-        <div class="cp-search-results" role="listbox" aria-label="Search suggestions" hidden></div>
-      </form>
-      <a class="cp-icon-button" href="../calculators/index.html" aria-label="Browse all calculators" title="All calculators"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
-      <button class="cp-icon-button cp-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-    </div>
-  </div>
-  <div class="cp-mobile-panel" hidden>
-    <form class="cp-mobile-search" action="../search/index.html" method="get" role="search"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m20 20-4.4-4.4m2.4-5.1a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input class="cp-mobile-search-input" type="search" name="q" placeholder="Search all calculators…" aria-label="Search all calculators"></form>
-    <nav class="cp-mobile-nav" aria-label="Mobile navigation">
-      <a href="../finance/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg> Finance</a><a href="../health/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8.3 12h2.1l1.1-2.2 1.5 4.3 1.1-2.1h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Health</a><a href="../math/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h6M8 4v6m6 5h5m-5 4h5M15 5l4 4m0-4-4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg> Math</a><a href="../date-time/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 3v4m10-4v4M3.5 9h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg> Date &amp; Time</a><a href="../engineering/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5 8.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Engineering</a><a href="../conversion/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h12l-3-3m5 13H7l3 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg> Conversion</a><a href="../education/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 9 9-5 9 5-9 5-9-5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 12v4c3 2.3 7 2.3 10 0v-4m4-3v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Education</a><a href="../other/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> Other</a><a href="../calculators/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> All calculators</a>
-    </nav>
-  </div>
-</header>
-<header>
-  <div class="wrap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/finance-calculator/#app", "name": "Finance Calculator", "url": "/finance-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Solve time-value-of-money variables including future value, present value, payment, number of periods, and periodic interest rate."}, {"@type": "BreadcrumbList", "@id": "/finance-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Investing & Interest", "item": "/finance/investing-interest/"}, {"@type": "ListItem", "position": 4, "name": "Finance Calculator", "item": "/finance-calculator/"}]}, {"@type": "FAQPage", "@id": "/finance-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "Why are some finance-calculator inputs negative?", "acceptedAnswer": {"@type": "Answer", "text": "The signs show cash-flow direction. Money you pay or invest is typically negative, while money you receive is positive."}}, {"@type": "Question", "name": "What rate should I enter?", "acceptedAnswer": {"@type": "Answer", "text": "Enter the interest rate for one calculation period. If periods are monthly, use an appropriate monthly periodic rate."}}, {"@type": "Question", "name": "Can the calculator solve interest rate?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. It uses a numerical root search because the rate is not isolated by a simple general algebraic formula."}}]}]}</script>
+<link href="../assets/css/global.css" rel="stylesheet"/><link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
+<body class="finance-calculator" data-cp-category="finance" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
+<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../finance/index.html">Finance</a></li><li><a aria-current="page" href="index.html">Finance Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a href="../calculators/index.html">All calculators</a></div><header>
+<div class="wrap">
 <section class="hero">
-      <div class="hero-copy">
-        <div class="breadcrumb"><a href="#">Home</a> / <a href="#">Calculators</a> / Finance Calculator</div>
-        <div class="kicker">Finance · TVM</div>
-        <h1>Finance Calculator</h1>
-        <p>Solve the five core time-value-of-money variables with a financial-calculator style cash-flow engine.</p>
-      </div>
-      <div class="scene" aria-hidden="true"><div class="ledger"><div class="chart3d"><i></i><i></i><i></i><i></i></div></div></div>
-    </section>
-  </div>
+<div class="hero-copy">
+<div class="breadcrumb"><a href="#">Home</a> / <a href="#">Calculators</a> / Finance Calculator</div>
+<div class="kicker">Finance · TVM</div>
+<h1>Finance Calculator</h1>
+<p>Solve the five core time-value-of-money variables with a financial-calculator style cash-flow engine.</p>
+</div>
+<div aria-hidden="true" class="scene"><div class="ledger"><div class="chart3d"><i></i><i></i><i></i><i></i></div></div></div>
+</section>
+</div>
 </header>
-<main>
-  <section id="calculator" class="calc-shell">
-    <div class="wrap calculator">
-      <div class="card form-card">
+<div class="cp-page-layout"><main id="main">
+<div class="cp-tool-actions"><button data-cp-print="" type="button">Print / Save PDF</button><span aria-live="polite" class="cp-action-status" role="status"></span></div><section class="calc-shell" id="calculator">
+<div class="wrap calculator">
+<div class="card form-card">
 <h2 class="section-title">5-key time value of money</h2><p class="subtle">Choose the variable to solve. Use financial-calculator signs: money paid out is negative; money received is positive.</p>
 <div class="grid">
 <div class="field"><label for="solve">Solve for</label><select id="solve"><option value="fv">Future Value (FV)</option><option value="pv">Present Value (PV)</option><option value="pmt">Payment (PMT)</option><option value="rate">Rate per period</option><option value="n">Number of periods (N)</option></select></div>
-<div class="field"><label for="tvN">N (# periods)</label><input id="tvN" type="number" value="120" min="0" step="any"></div>
-<div class="field"><label for="tvRate">Rate per period (%)</label><input id="tvRate" type="number" value="0.5" step="any"></div>
-<div class="field"><label for="tvPV">PV</label><input id="tvPV" type="number" value="-10000" step="any"></div>
-<div class="field"><label for="tvPMT">PMT</label><input id="tvPMT" type="number" value="-200" step="any"></div>
-<div class="field"><label for="tvFV">FV</label><input id="tvFV" type="number" value="0" step="any"></div>
+<div class="field"><label for="tvN">N (# periods)</label><input id="tvN" min="0" step="any" type="number" value="120"/></div>
+<div class="field"><label for="tvRate">Rate per period (%)</label><input id="tvRate" step="any" type="number" value="0.5"/></div>
+<div class="field"><label for="tvPV">PV</label><input id="tvPV" step="any" type="number" value="-10000"/></div>
+<div class="field"><label for="tvPMT">PMT</label><input id="tvPMT" step="any" type="number" value="-200"/></div>
+<div class="field"><label for="tvFV">FV</label><input id="tvFV" step="any" type="number" value="0"/></div>
 <div class="field"><label for="tvType">Payment timing</label><select id="tvType"><option value="0">End of period</option><option value="1">Beginning of period</option></select></div>
 </div>
-<div class="actions"><button id="tvGo" class="btn btn-primary">Solve TVM</button><button id="tvReset" class="btn btn-secondary">Reset</button></div><div id="tvErr" class="error"></div>
+<div class="actions"><button class="btn btn-primary" id="tvGo">Solve TVM</button><button class="btn btn-secondary" id="tvReset">Reset</button></div><div class="error" id="tvErr"></div>
 </div>
-      <aside class="card result-card" aria-live="polite">
-<span class="badge">Solved value</span><div id="tvBig" class="result-big">—</div><p id="tvText" class="subtle">Cash-flow signs matter.</p>
+<aside aria-live="polite" class="card result-card">
+<span class="badge">Solved value</span><div class="result-big" id="tvBig">—</div><p class="subtle" id="tvText">Cash-flow signs matter.</p>
 <div class="metric-row"><div class="metric"><span>Total scheduled payments</span><b id="tvPay">—</b></div><div class="metric"><span>Rate convention</span><b id="tvConv">per period</b></div></div>
 </aside>
-    </div>
-  </section>
-  <section id="guide" class="content">
-    <div class="wrap content-grid">
-      <article class="article">
-        
+</div>
+</section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+<section class="content" id="guide">
+<div class="wrap content-grid">
+<article class="article">
 <h2>What Is a Finance Calculator?</h2>
 <p>This finance calculator solves the standard time-value-of-money relationship between present value (PV), future value (FV), periodic payment (PMT), interest rate, and number of periods (N). It can model lump sums and equal periodic cash flows.</p>
 <h2>Core Time Value of Money Formula</h2>
@@ -144,54 +118,23 @@ body{--bg:#10091b;--panel:rgba(35,20,58,.72);--panel2:rgba(83,49,119,.3);--a:#d5
 <p>Financial calculators use signs to represent direction. A deposit or payment you make is normally negative; money you receive is positive. At least one side of the transaction generally needs the opposite sign for a valid solution.</p>
 <h2>Limitations</h2>
 <p>The calculator assumes a constant periodic rate and equal periodic payments. It does not automatically convert nominal annual rates when payment and compounding frequencies differ; enter the effective rate for each period you are modeling.</p>
-
-        <h2 id="faq">Frequently Asked Questions</h2>
-        <div class="faq"><details><summary>Why are some finance-calculator inputs negative?</summary><p>The signs show cash-flow direction. Money you pay or invest is typically negative, while money you receive is positive.</p></details><details><summary>What rate should I enter?</summary><p>Enter the interest rate for one calculation period. If periods are monthly, use an appropriate monthly periodic rate.</p></details><details><summary>Can the calculator solve interest rate?</summary><p>Yes. It uses a numerical root search because the rate is not isolated by a simple general algebraic formula.</p></details></div>
-        <h2>Sources and Methodology</h2>
-        <p>The calculator logic and explanatory content were cross-checked against the following references. Estimates are separated from official data where applicable.</p>
-        <ul class="source-list"><li><a href="https://www.calculator.net/finance-calculator.html" rel="noopener noreferrer">Calculator.net Finance Calculator</a></li><li><a href="https://openstax.org/books/principles-managerial-accounting/pages/11-3-explain-the-time-value-of-money-and-calculate-present-and-future-values-of-lump-sums-and-annuities" rel="noopener noreferrer">OpenStax Time Value of Money</a></li><li><a href="https://openstax.org/books/principles-finance-2e/pages/8-2-annuities" rel="noopener noreferrer">OpenStax Annuities</a></li></ul>
-      </article>
-      <aside class="card aside">
-        <h3>On this page</h3>
-        <a href="#calculator">Calculator</a>
-        <a href="#guide">How it works</a>
-        <a href="#faq">FAQs</a>
-        <p class="small">Educational calculator. For regulated financial, tax, medical, engineering, or network changes, verify the result against the relevant professional or official source.</p>
-      </aside>
-    </div>
-  </section>
-
-<section class="cp-related-tools" aria-labelledby="cp-related-title">
-  <div class="cp-related-shell">
-    <div class="cp-related-heading"><div><span class="cp-related-kicker">Explore next</span><h2 id="cp-related-title">Related Tools</h2><p>Useful calculators closely related to Finance Calculator.</p></div><a class="cp-related-all" href="../calculators/index.html">View all calculators <span aria-hidden="true">→</span></a></div>
-    <div class="cp-related-grid"><a class="cp-related-card" href="../tax-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>2026 Federal Income Tax Calculator</strong><small>Estimate 2026 U.S. federal ordinary income tax using IRS tax brackets and standard deductions, with optional…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../sales-tax-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Sales Tax Calculator</strong><small>Calculate sales tax, total after tax, price before tax, or the effective tax rate from any two known values.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../estate-tax-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Estate Tax Calculator</strong><small>Estimate a simplified 2026 U.S. federal estate tax using estate assets, deductible amounts, prior taxable gifts, and…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../vat-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>VAT Calculator</strong><small>Add VAT to a net price or remove VAT from a gross price using a custom rate, with the tax amount shown clearly.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../salary-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Salary Calculator</strong><small>Estimate 2026 U.S. annual and per-paycheck take-home pay using gross salary, pre-tax deductions, federal income tax,…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../take-home-pay-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Take Home Pay Calculator</strong><small>Estimate 2026 U.S. take-home pay using federal tax brackets, standard or custom deductions, FICA taxes, pay…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a></div>
-  </div>
+<h2 id="faq">Frequently Asked Questions</h2>
+<div class="faq"><details><summary>Why are some finance-calculator inputs negative?</summary><p>The signs show cash-flow direction. Money you pay or invest is typically negative, while money you receive is positive.</p></details><details><summary>What rate should I enter?</summary><p>Enter the interest rate for one calculation period. If periods are monthly, use an appropriate monthly periodic rate.</p></details><details><summary>Can the calculator solve interest rate?</summary><p>Yes. It uses a numerical root search because the rate is not isolated by a simple general algebraic formula.</p></details></div>
+<h2>Sources and Methodology</h2>
+<p>The calculator logic and explanatory content were cross-checked against the following references. Estimates are separated from official data where applicable.</p>
+<ul class="source-list"><li><a href="https://www.calculator.net/finance-calculator.html" rel="noopener noreferrer">Calculator.net Finance Calculator</a></li><li><a href="https://openstax.org/books/principles-managerial-accounting/pages/11-3-explain-the-time-value-of-money-and-calculate-present-and-future-values-of-lump-sums-and-annuities" rel="noopener noreferrer">OpenStax Time Value of Money</a></li><li><a href="https://openstax.org/books/principles-finance-2e/pages/8-2-annuities" rel="noopener noreferrer">OpenStax Annuities</a></li></ul>
+</article>
+<aside class="card aside">
+<h3>On this page</h3>
+<a href="#calculator">Calculator</a>
+<a href="#guide">How it works</a>
+<a href="#faq">FAQs</a>
+<p class="small">Educational calculator. For regulated financial, tax, medical, engineering, or network changes, verify the result against the relevant professional or official source.</p>
+</aside>
+</div>
 </section>
-</main>
+
+<details class="cp-data-panel"><summary><span>Calculator Data — exact tool basis</span><small>Finance · Calculator</small></summary><div class="cp-data-grid"><div class="cp-data-item wide"><b>Purpose</b><p>Solve time-value-of-money variables including future value, present value, payment, number of periods, and periodic interest rate.</p></div><div class="cp-data-item wide"><b>Formula / Algorithm Used in Tool</b><p>Core Time Value of Money Formula: For an ordinary annuity, the future-value relationship is based on PV(1+i)^N plus the accumulated value of periodic payments. Beginning-of-period payments gain one additional period of growth.</p></div><div class="cp-data-item"><b>Required User Inputs</b><p>Solve for; N (# periods); Rate per period (%); PV; PMT; FV; Payment timing</p></div><div class="cp-data-item"><b>Primary Outputs</b><p>Total scheduled payments; Rate convention</p></div><div class="cp-data-item wide"><b>Important Assumptions / Limitations</b><p>The calculator assumes a constant periodic rate and equal periodic payments. It does not automatically convert nominal annual rates when payment and compounding frequencies differ; enter the effective rate for each period you are modeling.</p></div><div class="cp-data-item"><b>Fresh Data Required?</b><p>Conditional</p></div><div class="cp-data-item"><b>Recommended Update Frequency</b><p>When product/rule assumptions change</p></div><div class="cp-data-item wide"><b>Current Source URLs in Page</b><p><a href="https://www.calculator.net/finance-calculator.html" rel="nofollow noopener" target="_blank">https://www.calculator.net/finance-calculator.html</a><br/><a href="https://openstax.org/books/principles-managerial-accounting/pages/11-3-explain-the-time-value-of-money-and-calculate-present-and-future-values-of-lump-sums-and-annuities" rel="nofollow noopener" target="_blank">https://openstax.org/books/principles-managerial-accounting/pages/11-3-explain-the-time-value-of-money-and-calculate-present-and-future-values-of-lump-sums-and-annuities</a><br/><a href="https://openstax.org/books/principles-finance-2e/pages/8-2-annuities" rel="nofollow noopener" target="_blank">https://openstax.org/books/principles-finance-2e/pages/8-2-annuities</a></p></div></div></details><script class="cp-calculator-data" type="application/json">{"index":"43","Batch":"5","Calculator / Page":"Finance Calculator","Slug":"finance-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Solve time-value-of-money variables including future value, present value, payment, number of periods, and periodic interest rate.","Formula / Algorithm Used in Tool":"Core Time Value of Money Formula: For an ordinary annuity, the future-value relationship is based on PV(1+i)^N plus the accumulated value of periodic payments. Beginning-of-period payments gain one additional period of growth.","Required User Inputs":"Solve for; N (# periods); Rate per period (%); PV; PMT; FV; Payment timing","Primary Outputs":"Total scheduled payments; Rate convention","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Solve for, N (# periods), Rate per period (%), PV, PMT, FV, Payment timing. Explain outputs: Total scheduled payments, Rate convention. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"The calculator assumes a constant periodic rate and equal periodic payments. It does not automatically convert nominal annual rates when payment and compounding frequencies differ; enter the effective rate for each period you are modeling.","Current Source URLs in Page":"https://www.calculator.net/finance-calculator.html | https://openstax.org/books/principles-managerial-accounting/pages/11-3-explain-the-time-value-of-money-and-calculate-present-and-future-values-of-lump-sums-and-annuities | https://openstax.org/books/principles-finance-2e/pages/8-2-annuities","Implementation Path":"/finance-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><span class="cp-side-kicker">Related tools</span><h2>Finance</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../financial-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Financial Calculator</strong><small>Use this financial calculator for time value of money calculations including future…</small></span></a><a class="cp-related-link" href="../lease-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Lease Calculator</strong><small>Calculate a level monthly lease payment from asset value, residual value, term, and…</small></span></a><a class="cp-related-link" href="../refinance-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Refinance Calculator</strong><small>Compare an existing fixed-rate loan with a proposed refinance, including payment ch…</small></span></a><a class="cp-related-link" href="../auto-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Auto Loan Calculator</strong><small>Estimate a car loan payment using vehicle price, down payment, trade-in, tax, fees,…</small></span></a><a class="cp-related-link" href="../loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Loan Calculator</strong><small>Calculate a fixed-rate amortized loan payment, total payments, total interest, and…</small></span></a><a class="cp-related-link" href="../interest-rate-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Interest Rate Calculator</strong><small>Estimate the nominal annual interest rate implied by a loan amount, fixed monthly p…</small></span></a><a class="cp-related-link" href="../credit-card-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Credit Card Calculator</strong><small>Estimate a single credit card payoff time, required monthly payment, total interest…</small></span></a><a class="cp-related-link" href="../bond-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Bond Calculator</strong><small>Calculate bond price from face value, coupon rate, yield to maturity, term, and pay…</small></span></a></div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div></aside></div>
 <footer><div class="wrap">CalcPro · Standalone calculator page · No account required.</div></footer>
 <script>
 function af(i,n,type){if(Math.abs(i)<1e-12)return n;return ((Math.pow(1+i,n)-1)/i)*(type?1+i:1)}
@@ -208,5 +151,5 @@ if(s==="n"){if(i<=-1)return terr("Invalid rate.");let f=x=>eq(i,x,pv,pmt,fv,type
 let big=document.getElementById('tvBig');big.textContent=(label==="Rate"?res.toFixed(6)+"%":label==="N"?res.toFixed(4):res.toLocaleString(undefined,{maximumFractionDigits:2}));document.getElementById('tvText').textContent=`${label} solved from the TVM cash-flow equation.`;document.getElementById('tvPay').textContent=(pmt*n).toLocaleString(undefined,{maximumFractionDigits:2});};
 document.getElementById('tvReset').onclick=()=>{tvN.value=120;tvRate.value=.5;tvPV.value=-10000;tvPMT.value=-200;tvFV.value=0;tvType.value=0;solve.value="fv";tvBig.textContent="—";};
 </script>
-<script src="../assets/js/global.js" defer></script></body>
+<script defer="" src="../assets/js/global.js"></script><script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body>
 </html>

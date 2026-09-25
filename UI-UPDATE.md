@@ -1,3 +1,5 @@
+> Update notice (2026-09-24): see UPDATE-README.md and UPDATE-QA.json for current changes and verification limits. The original report below is retained for history.
+
 # CalcPro UI Update
 
 ## Completed

@@ -1,17 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Mortgage Payoff Calculator | CalcPro</title>
-<meta name="description" content="Estimate how extra monthly, annual, or one-time mortgage payments can shorten payoff time and reduce remaining interest.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="../mortgage-payoff-calculator/">
-<meta property="og:title" content="Mortgage Payoff Calculator | CalcPro">
-<meta property="og:description" content="Estimate how extra monthly, annual, or one-time mortgage payments can shorten payoff time and reduce remaining interest.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="/mortgage-payoff-calculator/">
-<meta name="theme-color" content="#07111f">
+<meta content="Estimate how extra monthly, annual, or one-time mortgage payments can shorten payoff time and reduce remaining interest." name="description"/>
+<meta content="index,follow" name="robots"/>
+<link href="../mortgage-payoff-calculator/" rel="canonical"/>
+<meta content="Mortgage Payoff Calculator | CalcPro" property="og:title"/>
+<meta content="Estimate how extra monthly, annual, or one-time mortgage payments can shorten payoff time and reduce remaining interest." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="/mortgage-payoff-calculator/" property="og:url"/>
+<meta content="#1477ff" name="theme-color"/>
 <style>
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 :root{--bg:#07111f;--panel:rgba(255,255,255,.09);--panel2:rgba(255,255,255,.06);--text:#f7fbff;--muted:#b8c6d8;--line:rgba(255,255,255,.14);--a:#67e8f9;--b:#34d399;--c:#fbbf24;--danger:#fb7185;--shadow:0 30px 80px rgba(0,0,0,.32)}
@@ -68,84 +69,57 @@ footer{border-top:1px solid var(--line);padding:32px 0 50px;color:var(--muted);f
 body{--bg:#061526;--panel:rgba(11,43,69,.71);--panel2:rgba(22,68,89,.36);--a:#6ee7d8;--b:#55a7ff;--c:#f6c15f;background:radial-gradient(circle at 80% 15%,#1a93ba24,transparent 28%),linear-gradient(#061526,#08101b)}
 .mortgage-payoff-calculator .hero{grid-template-columns:1fr 1fr}.house{position:absolute;right:11%;top:44px;width:260px;height:210px;background:linear-gradient(145deg,#eaf7ff,#82cce0);clip-path:polygon(50% 0,100% 39%,91% 39%,91% 100%,9% 100%,9% 39%,0 39%);filter:drop-shadow(20px 30px 25px #0006);transform:rotateY(-14deg)}.house:after{content:"";position:absolute;width:58px;height:90px;background:#0b5672;bottom:0;left:101px;border-radius:7px 7px 0 0}.key{position:absolute;left:4%;bottom:38px;width:150px;height:34px;border-radius:20px;background:linear-gradient(#ffd979,#a96917);transform:rotate(-20deg);box-shadow:0 22px 35px #0005}.key:before{content:"";position:absolute;width:66px;height:66px;border:16px solid #e2b64b;border-radius:50%;left:-55px;top:-31px}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/mortgage-payoff-calculator/#app", "name": "Mortgage Payoff Calculator", "url": "/mortgage-payoff-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Estimate how extra monthly, annual, or one-time mortgage payments can shorten payoff time and reduce remaining interest."}, {"@type": "BreadcrumbList", "@id": "/mortgage-payoff-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "/calculators/"}, {"@type": "ListItem", "position": 3, "name": "Mortgage Payoff Calculator", "item": "/mortgage-payoff-calculator/"}]}, {"@type": "FAQPage", "@id": "/mortgage-payoff-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "Do extra mortgage payments reduce interest?", "acceptedAnswer": {"@type": "Answer", "text": "For a typical fixed-rate amortizing mortgage, extra principal reduces the balance earlier, so less interest can accrue later, assuming the servicer applies the extra amount to principal."}}, {"@type": "Question", "name": "Does this include property taxes and insurance?", "acceptedAnswer": {"@type": "Answer", "text": "No. The payoff math here is for principal and interest. Escrow items do not normally reduce the mortgage principal."}}, {"@type": "Question", "name": "What is a one-time principal payment?", "acceptedAnswer": {"@type": "Answer", "text": "It is an extra amount applied directly to principal now. The calculator reduces the starting balance by that amount before simulating future payments."}}]}]}</script>
-<link rel="stylesheet" href="../assets/css/global.css"></head>
-<body class="mortgage-payoff-calculator"><header class="cp-site-header" data-cp-header>
-  <div class="cp-header-shell">
-    <a class="cp-brand" href="../index.html" aria-label="CalcPro home"><span class="cp-brand-mark"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="2.8" width="18" height="18.4" rx="4" fill="currentColor" opacity=".14"/><rect x="6.4" y="6.2" width="11.2" height="3.6" rx="1.2" fill="currentColor"/><path d="M7 12h2.2v2.2H7zm3.9 0h2.2v2.2h-2.2zm3.9 0H17v2.2h-2.2zM7 15.8h2.2V18H7zm3.9 0h2.2V18h-2.2zm3.9 0H17V18h-2.2z" fill="currentColor"/></svg></span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
-    <nav class="cp-main-nav" aria-label="Primary navigation">
-      <a href="../finance/index.html" data-cp-section="finance"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg><span>Finance</span></a>
-      <a href="../health/index.html" data-cp-section="health"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8.3 12h2.1l1.1-2.2 1.5 4.3 1.1-2.1h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Health</span></a>
-      <a href="../math/index.html" data-cp-section="math"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h6M8 4v6m6 5h5m-5 4h5M15 5l4 4m0-4-4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg><span>Math</span></a>
-      <a href="../date-time/index.html" data-cp-section="date-time"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 3v4m10-4v4M3.5 9h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg><span>Date &amp; Time</span></a>
-      <a href="../engineering/index.html" data-cp-section="engineering"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5 8.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Engineering</span></a>
-      <a href="../conversion/index.html" data-cp-section="conversion"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h12l-3-3m5 13H7l3 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Convert</span></a>
-    </nav>
-    <div class="cp-header-actions">
-      <form class="cp-header-search" action="../search/index.html" method="get" role="search" autocomplete="off">
-        <svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m20 20-4.4-4.4m2.4-5.1a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input class="cp-search-input" type="search" name="q" placeholder="Search calculators…" aria-label="Search CalcPro calculators" aria-autocomplete="list" aria-expanded="false"><kbd>/</kbd>
-        <div class="cp-search-results" role="listbox" aria-label="Search suggestions" hidden></div>
-      </form>
-      <a class="cp-icon-button" href="../calculators/index.html" aria-label="Browse all calculators" title="All calculators"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
-      <button class="cp-icon-button cp-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-    </div>
-  </div>
-  <div class="cp-mobile-panel" hidden>
-    <form class="cp-mobile-search" action="../search/index.html" method="get" role="search"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m20 20-4.4-4.4m2.4-5.1a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input class="cp-mobile-search-input" type="search" name="q" placeholder="Search all calculators…" aria-label="Search all calculators"></form>
-    <nav class="cp-mobile-nav" aria-label="Mobile navigation">
-      <a href="../finance/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg> Finance</a><a href="../health/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8.3 12h2.1l1.1-2.2 1.5 4.3 1.1-2.1h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Health</a><a href="../math/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h6M8 4v6m6 5h5m-5 4h5M15 5l4 4m0-4-4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg> Math</a><a href="../date-time/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 3v4m10-4v4M3.5 9h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg> Date &amp; Time</a><a href="../engineering/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14.7 6.3 3-3 3 3-3 3m-3-3-8.9 8.9a2.8 2.8 0 1 0 4 4l8.9-8.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5 8.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Engineering</a><a href="../conversion/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7h12l-3-3m5 13H7l3 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg> Conversion</a><a href="../education/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 9 9-5 9 5-9 5-9-5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 12v4c3 2.3 7 2.3 10 0v-4m4-3v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Education</a><a href="../other/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> Other</a><a href="../calculators/index.html"><svg class="cp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> All calculators</a>
-    </nav>
-  </div>
-</header>
-<header>
-  <div class="wrap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/mortgage-payoff-calculator/#app", "name": "Mortgage Payoff Calculator", "url": "/mortgage-payoff-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Estimate how extra monthly, annual, or one-time mortgage payments can shorten payoff time and reduce remaining interest."}, {"@type": "BreadcrumbList", "@id": "/mortgage-payoff-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Mortgages & Real Estate", "item": "/finance/mortgages-real-estate/"}, {"@type": "ListItem", "position": 4, "name": "Mortgage Payoff Calculator", "item": "/mortgage-payoff-calculator/"}]}, {"@type": "FAQPage", "@id": "/mortgage-payoff-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "Do extra mortgage payments reduce interest?", "acceptedAnswer": {"@type": "Answer", "text": "For a typical fixed-rate amortizing mortgage, extra principal reduces the balance earlier, so less interest can accrue later, assuming the servicer applies the extra amount to principal."}}, {"@type": "Question", "name": "Does this include property taxes and insurance?", "acceptedAnswer": {"@type": "Answer", "text": "No. The payoff math here is for principal and interest. Escrow items do not normally reduce the mortgage principal."}}, {"@type": "Question", "name": "What is a one-time principal payment?", "acceptedAnswer": {"@type": "Answer", "text": "It is an extra amount applied directly to principal now. The calculator reduces the starting balance by that amount before simulating future payments."}}]}]}</script>
+<link href="../assets/css/global.css" rel="stylesheet"/><link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
+<body class="mortgage-payoff-calculator" data-cp-category="finance" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
+<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../finance/index.html">Finance</a></li><li><a aria-current="page" href="index.html">Mortgage Payoff Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a href="../calculators/index.html">All calculators</a></div><header>
+<div class="wrap">
 <section class="hero">
-      <div class="hero-copy">
-        <div class="breadcrumb"><a href="#">Home</a> / <a href="#">Calculators</a> / Mortgage Payoff Calculator</div>
-        <div class="kicker">Home · Debt strategy</div>
-        <h1>Mortgage Payoff Calculator</h1>
-        <p>See how extra principal can reshape a fixed-rate mortgage: fewer months, less remaining interest, and a clearer payoff target.</p>
-      </div>
-      <div class="scene" aria-hidden="true"><div class="house"></div><div class="key"></div></div>
-    </section>
-  </div>
+<div class="hero-copy">
+<div class="breadcrumb"><a href="#">Home</a> / <a href="#">Calculators</a> / Mortgage Payoff Calculator</div>
+<div class="kicker">Home · Debt strategy</div>
+<h1>Mortgage Payoff Calculator</h1>
+<p>See how extra principal can reshape a fixed-rate mortgage: fewer months, less remaining interest, and a clearer payoff target.</p>
+</div>
+<div aria-hidden="true" class="scene"><div class="house"></div><div class="key"></div></div>
+</section>
+</div>
 </header>
-<main>
-  <section id="calculator" class="calc-shell">
-    <div class="wrap calculator">
-      <div class="card form-card">
+<div class="cp-page-layout"><main id="main">
+<div class="cp-tool-actions"><button data-cp-print="" type="button">Print / Save PDF</button><span aria-live="polite" class="cp-action-status" role="status"></span></div><section class="calc-shell" id="calculator">
+<div class="wrap calculator">
+<div class="card form-card">
 <h2 class="section-title">Plan an earlier payoff</h2><p class="subtle">Enter either the original loan details and remaining term or use the current balance directly.</p>
 <div class="tabs"><button class="tab active" data-tab="orig">From original loan</button><button class="tab" data-tab="bal">From current balance</button></div>
-<div id="orig" class="tab-panel active"><div class="grid">
-<div class="field"><label for="mAmount">Original loan amount</label><input id="mAmount" type="number" value="400000" min="1" step="any"></div>
-<div class="field"><label for="mTerm">Original term (years)</label><input id="mTerm" type="number" value="30" min="1"></div>
-<div class="field"><label for="mRate">Interest rate (%)</label><input id="mRate" type="number" value="6.5" min="0" step="any"></div>
-<div class="field"><label for="mRemainY">Remaining years</label><input id="mRemainY" type="number" value="25" min="0"></div>
-<div class="field"><label for="mRemainM">Extra remaining months</label><input id="mRemainM" type="number" value="0" min="0" max="11"></div>
+<div class="tab-panel active" id="orig"><div class="grid">
+<div class="field"><label for="mAmount">Original loan amount</label><input id="mAmount" min="1" step="any" type="number" value="400000"/></div>
+<div class="field"><label for="mTerm">Original term (years)</label><input id="mTerm" min="1" type="number" value="30"/></div>
+<div class="field"><label for="mRate">Interest rate (%)</label><input id="mRate" min="0" step="any" type="number" value="6.5"/></div>
+<div class="field"><label for="mRemainY">Remaining years</label><input id="mRemainY" min="0" type="number" value="25"/></div>
+<div class="field"><label for="mRemainM">Extra remaining months</label><input id="mRemainM" max="11" min="0" type="number" value="0"/></div>
 </div></div>
-<div id="bal" class="tab-panel"><div class="grid">
-<div class="field"><label for="bBal">Current principal balance</label><input id="bBal" type="number" value="372217.43" min="1" step="any"></div>
-<div class="field"><label for="bPay">Current monthly P&I payment</label><input id="bPay" type="number" value="2398.20" min="0" step="any"></div>
-<div class="field"><label for="bRate">Interest rate (%)</label><input id="bRate" type="number" value="6.5" min="0" step="any"></div>
+<div class="tab-panel" id="bal"><div class="grid">
+<div class="field"><label for="bBal">Current principal balance</label><input id="bBal" min="1" step="any" type="number" value="372217.43"/></div>
+<div class="field"><label for="bPay">Current monthly P&amp;I payment</label><input id="bPay" min="0" step="any" type="number" value="2398.20"/></div>
+<div class="field"><label for="bRate">Interest rate (%)</label><input id="bRate" min="0" step="any" type="number" value="6.5"/></div>
 </div></div>
-<hr style="border:0;border-top:1px solid var(--line);margin:22px 0">
+<hr style="border:0;border-top:1px solid var(--line);margin:22px 0"/>
 <div class="grid">
-<div class="field"><label for="xMonthly">Extra each month</label><input id="xMonthly" type="number" value="500" min="0" step="any"></div>
-<div class="field"><label for="xAnnual">Extra once per year</label><input id="xAnnual" type="number" value="0" min="0" step="any"></div>
-<div class="field"><label for="xOne">One-time payment now</label><input id="xOne" type="number" value="0" min="0" step="any"></div>
+<div class="field"><label for="xMonthly">Extra each month</label><input id="xMonthly" min="0" step="any" type="number" value="500"/></div>
+<div class="field"><label for="xAnnual">Extra once per year</label><input id="xAnnual" min="0" step="any" type="number" value="0"/></div>
+<div class="field"><label for="xOne">One-time payment now</label><input id="xOne" min="0" step="any" type="number" value="0"/></div>
 </div>
-<div class="actions"><button id="mGo" class="btn btn-primary">Compare payoff</button></div><div id="mErr" class="error"></div>
+<div class="actions"><button class="btn btn-primary" id="mGo">Compare payoff</button></div><div class="error" id="mErr"></div>
 </div>
-      <aside class="card result-card" aria-live="polite">
-<span class="badge">With extra payments</span><div id="mBig" class="result-big">—</div><p id="mText" class="subtle">See time and interest savings.</p>
-<div class="metric-row"><div class="metric"><span>Interest saved</span><b id="mSave">—</b></div><div class="metric"><span>Months saved</span><b id="mMonths">—</b></div><div class="metric"><span>Current balance</span><b id="mBalOut">—</b></div><div class="metric"><span>Base monthly P&I</span><b id="mBasePay">—</b></div></div>
+<aside aria-live="polite" class="card result-card">
+<span class="badge">With extra payments</span><div class="result-big" id="mBig">—</div><p class="subtle" id="mText">See time and interest savings.</p>
+<div class="metric-row"><div class="metric"><span>Interest saved</span><b id="mSave">—</b></div><div class="metric"><span>Months saved</span><b id="mMonths">—</b></div><div class="metric"><span>Current balance</span><b id="mBalOut">—</b></div><div class="metric"><span>Base monthly P&amp;I</span><b id="mBasePay">—</b></div></div>
 </aside>
-    </div>
-  </section>
-  <section id="guide" class="content">
-    <div class="wrap content-grid">
-      <article class="article">
-        
+</div>
+</section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+<section class="content" id="guide">
+<div class="wrap content-grid">
+<article class="article">
 <h2>What Is a Mortgage Payoff Calculator?</h2>
 <p>A mortgage payoff calculator estimates how additional principal payments can change the remaining life of a fixed-rate mortgage. It compares the existing amortization path with a faster-payment plan and reports estimated payoff time and interest savings.</p>
 <h2>How the Mortgage Calculation Works</h2>
@@ -154,54 +128,23 @@ body{--bg:#061526;--panel:rgba(11,43,69,.71);--panel2:rgba(22,68,89,.36);--a:#6e
 <p>This page models principal and interest only. It does not include escrowed property tax, homeowners insurance, mortgage insurance, HOA fees, servicing fees, late charges, adjustable rates, or lender-specific prepayment rules.</p>
 <h2>Before Making Extra Payments</h2>
 <p>Confirm with your servicer that extra money will be applied to principal and review whether your loan has any prepayment restrictions. Also consider emergency savings and higher-priority debt before accelerating a mortgage.</p>
-
-        <h2 id="faq">Frequently Asked Questions</h2>
-        <div class="faq"><details><summary>Do extra mortgage payments reduce interest?</summary><p>For a typical fixed-rate amortizing mortgage, extra principal reduces the balance earlier, so less interest can accrue later, assuming the servicer applies the extra amount to principal.</p></details><details><summary>Does this include property taxes and insurance?</summary><p>No. The payoff math here is for principal and interest. Escrow items do not normally reduce the mortgage principal.</p></details><details><summary>What is a one-time principal payment?</summary><p>It is an extra amount applied directly to principal now. The calculator reduces the starting balance by that amount before simulating future payments.</p></details></div>
-        <h2>Sources and Methodology</h2>
-        <p>The calculator logic and explanatory content were cross-checked against the following references. Estimates are separated from official data where applicable.</p>
-        <ul class="source-list"><li><a href="https://www.calculator.net/mortgage-payoff-calculator.html" rel="noopener noreferrer">Calculator.net Mortgage Payoff Calculator</a></li><li><a href="https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/" rel="noopener noreferrer">CFPB: how mortgage payments are calculated</a></li><li><a href="https://www.consumerfinance.gov/ask-cfpb/how-does-paying-down-a-mortgage-work-en-1943/" rel="noopener noreferrer">CFPB: how paying down a mortgage works</a></li></ul>
-      </article>
-      <aside class="card aside">
-        <h3>On this page</h3>
-        <a href="#calculator">Calculator</a>
-        <a href="#guide">How it works</a>
-        <a href="#faq">FAQs</a>
-        <p class="small">Educational calculator. For regulated financial, tax, medical, engineering, or network changes, verify the result against the relevant professional or official source.</p>
-      </aside>
-    </div>
-  </section>
-
-<section class="cp-related-tools" aria-labelledby="cp-related-title">
-  <div class="cp-related-shell">
-    <div class="cp-related-heading"><div><span class="cp-related-kicker">Explore next</span><h2 id="cp-related-title">Related Tools</h2><p>Useful calculators closely related to Mortgage Payoff Calculator.</p></div><a class="cp-related-all" href="../calculators/index.html">View all calculators <span aria-hidden="true">→</span></a></div>
-    <div class="cp-related-grid"><a class="cp-related-card" href="../mortgage-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Mortgage Calculator</strong><small>Estimate a fixed-rate mortgage payment including principal and interest, property tax, homeowners insurance, and HOA…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../house-affordability-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>House Affordability Calculator</strong><small>Estimate an affordable home price from income and debt-to-income limits or from a fixed monthly housing budget, with…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../down-payment-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Down Payment Calculator</strong><small>Calculate a home down payment, loan amount, LTV, estimated closing costs, total cash needed, and cash remaining.</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../rent-vs-buy-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Rent vs Buy Calculator</strong><small>Compare renting versus buying using mortgage amortization, home appreciation, rent growth, ownership costs, selling…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../refinance-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Refinance Calculator</strong><small>Compare an existing fixed-rate loan with a proposed refinance, including payment change, remaining interest, closing…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a><a class="cp-related-card" href="../mortgage-amortization-calculator/index.html">
-  <span class="cp-related-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m6 14v-7m5 7V3M3 21h18"/></svg></span>
-  <span class="cp-related-body"><strong>Watch a mortgage balance step down payment by payment.</strong><small>Calculate mortgage payment, total interest, and a clear amortization schedule showing how principal and interest…</small></span>
-  <span class="cp-related-arrow" aria-hidden="true">→</span>
-</a></div>
-  </div>
+<h2 id="faq">Frequently Asked Questions</h2>
+<div class="faq"><details><summary>Do extra mortgage payments reduce interest?</summary><p>For a typical fixed-rate amortizing mortgage, extra principal reduces the balance earlier, so less interest can accrue later, assuming the servicer applies the extra amount to principal.</p></details><details><summary>Does this include property taxes and insurance?</summary><p>No. The payoff math here is for principal and interest. Escrow items do not normally reduce the mortgage principal.</p></details><details><summary>What is a one-time principal payment?</summary><p>It is an extra amount applied directly to principal now. The calculator reduces the starting balance by that amount before simulating future payments.</p></details></div>
+<h2>Sources and Methodology</h2>
+<p>The calculator logic and explanatory content were cross-checked against the following references. Estimates are separated from official data where applicable.</p>
+<ul class="source-list"><li><a href="https://www.calculator.net/mortgage-payoff-calculator.html" rel="noopener noreferrer">Calculator.net Mortgage Payoff Calculator</a></li><li><a href="https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/" rel="noopener noreferrer">CFPB: how mortgage payments are calculated</a></li><li><a href="https://www.consumerfinance.gov/ask-cfpb/how-does-paying-down-a-mortgage-work-en-1943/" rel="noopener noreferrer">CFPB: how paying down a mortgage works</a></li></ul>
+</article>
+<aside class="card aside">
+<h3>On this page</h3>
+<a href="#calculator">Calculator</a>
+<a href="#guide">How it works</a>
+<a href="#faq">FAQs</a>
+<p class="small">Educational calculator. For regulated financial, tax, medical, engineering, or network changes, verify the result against the relevant professional or official source.</p>
+</aside>
+</div>
 </section>
-</main>
+
+<details class="cp-data-panel"><summary><span>Calculator Data — exact tool basis</span><small>Finance · Calculator</small></summary><div class="cp-data-grid"><div class="cp-data-item wide"><b>Purpose</b><p>Estimate how extra monthly, annual, or one-time mortgage payments can shorten payoff time and reduce remaining interest.</p></div><div class="cp-data-item wide"><b>Formula / Algorithm Used in Tool</b><p>How the Mortgage Calculation Works: The base principal-and-interest payment uses the standard fixed-rate amortization formula. Each month, interest is charged on the remaining principal; the rest of the payment reduces principal. Extra principal lowers the balance sooner, which can reduce future interest.</p></div><div class="cp-data-item"><b>Required User Inputs</b><p>Original loan amount; Original term (years); Interest rate (%); Remaining years; Extra remaining months; Current principal balance; Current monthly P&amp;I payment; Extra each month; Extra once per year; One-time payment now</p></div><div class="cp-data-item"><b>Primary Outputs</b><p>Interest saved; Months saved; Current balance; Base monthly P&amp;I</p></div><div class="cp-data-item wide"><b>Important Assumptions / Limitations</b><p>Explain formula domain, unit consistency, rounding, input validation and real-world limitations.</p></div><div class="cp-data-item"><b>Fresh Data Required?</b><p>Conditional</p></div><div class="cp-data-item"><b>Recommended Update Frequency</b><p>When product/rule assumptions change</p></div><div class="cp-data-item wide"><b>Current Source URLs in Page</b><p><a href="https://www.calculator.net/mortgage-payoff-calculator.html" rel="nofollow noopener" target="_blank">https://www.calculator.net/mortgage-payoff-calculator.html</a><br/><a href="https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/" rel="nofollow noopener" target="_blank">https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/</a><br/><a href="https://www.consumerfinance.gov/ask-cfpb/how-does-paying-down-a-mortgage-work-en-1943/" rel="nofollow noopener" target="_blank">https://www.consumerfinance.gov/ask-cfpb/how-does-paying-down-a-mortgage-work-en-1943/</a></p></div></div></details><script class="cp-calculator-data" type="application/json">{"index":"48","Batch":"5","Calculator / Page":"Mortgage Payoff Calculator","Slug":"mortgage-payoff-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Estimate how extra monthly, annual, or one-time mortgage payments can shorten payoff time and reduce remaining interest.","Formula / Algorithm Used in Tool":"How the Mortgage Calculation Works: The base principal-and-interest payment uses the standard fixed-rate amortization formula. Each month, interest is charged on the remaining principal; the rest of the payment reduces principal. Extra principal lowers the balance sooner, which can reduce future interest.","Required User Inputs":"Original loan amount; Original term (years); Interest rate (%); Remaining years; Extra remaining months; Current principal balance; Current monthly P&I payment; Extra each month; Extra once per year; One-time payment now","Primary Outputs":"Interest saved; Months saved; Current balance; Base monthly P&I","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Original loan amount, Original term (years), Interest rate (%), Remaining years, Extra remaining months, Current principal balance, Current monthly P&I payment, Extra each month, Extra once per year, One-time payment now. Explain outputs: Interest saved, Months saved, Current balance, Base monthly P&I. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"Explain formula domain, unit consistency, rounding, input validation and real-world limitations.","Current Source URLs in Page":"https://www.calculator.net/mortgage-payoff-calculator.html | https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/ | https://www.consumerfinance.gov/ask-cfpb/how-does-paying-down-a-mortgage-work-en-1943/","Implementation Path":"/mortgage-payoff-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><span class="cp-side-kicker">Related tools</span><h2>Finance</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../amortization-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Amortization Calculator</strong><small>Create an amortization schedule and see how extra monthly payments can change payof…</small></span></a><a class="cp-related-link" href="../repayment-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Repayment Calculator</strong><small>Calculate fixed-loan repayment time, monthly payment, total interest, and the impac…</small></span></a><a class="cp-related-link" href="../credit-card-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Credit Card Calculator</strong><small>Estimate a single credit card payoff time, required monthly payment, total interest…</small></span></a><a class="cp-related-link" href="../debt-payoff-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Debt Payoff Calculator</strong><small>Compare debt avalanche and snowball payoff strategies using balances, APRs, minimum…</small></span></a><a class="cp-related-link" href="../simple-interest-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Simple Interest Calculator</strong><small>Calculate simple interest, final amount, principal, annual rate, or time using I =…</small></span></a><a class="cp-related-link" href="../mortgage-amortization-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Watch a mortgage balance step down payment by payment.</strong><small>Calculate mortgage payment, total interest, and a clear amortization schedule showi…</small></span></a><a class="cp-related-link" href="../interest-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Interest Calculator</strong><small>Calculate compound interest with an initial balance, monthly contributions, annual…</small></span></a><a class="cp-related-link" href="../investment-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Investment Calculator</strong><small>Project an investment balance from a starting amount, monthly contributions, time h…</small></span></a></div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div></aside></div>
 <footer><div class="wrap">CalcPro · Standalone calculator page · No account required.</div></footer>
 <script>
 let mode="orig";document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab,.tab-panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active');mode=b.dataset.tab});
@@ -216,5 +159,5 @@ let em=+xMonthly.value||0,ey=+xAnnual.value||0,one=+xOne.value||0;if(em<0||ey<0|
 let base=sim(P,r,A,0,0,0),fast=sim(P,r,A,em,ey,one);if(fast.months>=12000)return merr("Loan did not amortize within the supported range.");
 let y=Math.floor(fast.months/12),mo=fast.months%12;mBig.textContent=`${y} yr ${mo} mo`;mText.textContent=`Estimated payoff time with your extra-payment plan.`;mSave.textContent="$"+Math.max(0,base.totalInt-fast.totalInt).toLocaleString(undefined,{maximumFractionDigits:2});mMonths.textContent=Math.max(0,base.months-fast.months).toLocaleString();mBalOut.textContent="$"+P.toLocaleString(undefined,{maximumFractionDigits:2});mBasePay.textContent="$"+A.toLocaleString(undefined,{maximumFractionDigits:2});};
 </script>
-<script src="../assets/js/global.js" defer></script></body>
+<script defer="" src="../assets/js/global.js"></script><script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body>
 </html>
