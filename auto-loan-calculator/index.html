@@ -1,152 +1,1766 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>Auto Loan Calculator – Car Payment, Tax &amp; Fees | CalcPro</title>
-<meta content="Estimate a car loan payment using vehicle price, down payment, trade-in, tax, fees, incentives, interest rate, and loan term." name="description"/>
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
-<link href="../auto-loan-calculator/" rel="canonical"/>
-<meta content="website" property="og:type"/><meta content="Auto Loan Calculator" property="og:title"/>
-<meta content="Estimate a car loan payment using vehicle price, down payment, trade-in, tax, fees, incentives, interest rate, and loan term." property="og:description"/><meta content="#1477ff" name="theme-color"/>
-<style>
-:root{
-  --ink:#0b1933;--muted:#60708a;--line:#dbe8f6;--blue:#0a6ff2;--blue2:#20a5ff;
-  --green:#16b86b;--yellow:#f6b51f;--red:#ef4f58;--panel:rgba(255,255,255,.82);
-  --shadow:0 18px 45px rgba(25,74,123,.16),inset 0 1px 0 rgba(255,255,255,.95);
+  <meta charset="utf-8" />
+  <meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+<title>Auto Loan Calculator – Estimate Monthly Car Payments</title>
+<meta name="title" content="Auto Loan Calculator – Estimate Monthly Car Payments">
+<meta name="description" content="Estimate your monthly auto loan payment using vehicle price, down payment, trade-in, taxes, fees, incentives, interest rate, and loan term, plus total interest.">
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/auto-loan-calculator/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/auto-loan-calculator/">
+<meta property="og:title" content="Auto Loan Calculator – Estimate Monthly Car Payments">
+<meta property="og:description" content="Estimate your monthly auto loan payment using vehicle price, down payment, trade-in, taxes, fees, incentives, interest rate, and loan term, plus total interest.">
+<meta property="og:site_name" content="Monkey Mart Online Free">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/auto-loan-calculator/">
+<meta name="twitter:title" content="Auto Loan Calculator – Estimate Monthly Car Payments">
+<meta name="twitter:description" content="Estimate your monthly auto loan payment using vehicle price, down payment, trade-in, taxes, fees, incentives, interest rate, and loan term, plus total interest.">
+    <meta content="#1477ff" name="theme-color" />
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+  <style>
+    :root {
+      --ink: #0b1933;
+      --muted: #60708a;
+      --line: #dbe8f6;
+      --blue: #0a6ff2;
+      --blue2: #20a5ff;
+      --green: #16b86b;
+      --yellow: #f6b51f;
+      --red: #ef4f58;
+      --panel: rgba(255, 255, 255, .82);
+      --shadow: 0 18px 45px rgba(25, 74, 123, .16), inset 0 1px 0 rgba(255, 255, 255, .95);
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at 12% 6%, rgba(32, 165, 255, .18), transparent 28%),
+        radial-gradient(circle at 88% 15%, rgba(35, 205, 153, .12), transparent 24%),
+        linear-gradient(180deg, #f8fcff, #eef7ff 48%, #f7fbff);
+      line-height: 1.65
+    }
+
+    a {
+      color: #0967d8;
+      text-decoration: none
+    }
+
+    a:hover {
+      text-decoration: underline
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: auto
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(248, 252, 255, .8);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(196, 219, 241, .72)
+    }
+
+    .nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      gap: 28px
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 23px;
+      font-weight: 850;
+      color: var(--ink)
+    }
+
+    .brand i {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      color: white;
+      font-style: normal;
+      background: linear-gradient(145deg, #27b3ff, #0562d7);
+      box-shadow: 0 9px 18px rgba(10, 111, 242, .28), inset 0 2px 2px rgba(255, 255, 255, .45)
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 20px;
+      margin-left: 18px;
+      font-size: 14px;
+      font-weight: 700
+    }
+
+    .navlinks a {
+      color: #20324e
+    }
+
+    .search {
+      margin-left: auto;
+      background: #fff;
+      border: 1px solid #e0ebf6;
+      border-radius: 999px;
+      padding: 10px 15px;
+      min-width: 210px;
+      color: #6d7d93;
+      font-size: 13px;
+      box-shadow: 0 8px 20px rgba(26, 70, 112, .08)
+    }
+
+    .hero {
+      padding: 28px 0 18px
+    }
+
+    .breadcrumb {
+      font-size: 13px;
+      color: #6c7b91;
+      margin-bottom: 18px
+    }
+
+    .breadcrumb span {
+      margin: 0 8px;
+      color: #a1aec0
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.03fr .97fr;
+      gap: 28px;
+      align-items: center
+    }
+
+    h1 {
+      font-size: clamp(2.6rem,5vw,4.5rem);
+line-height: 1.05;
+margin: 0 auto 18px;
+text-align: center;
+letter-spacing: -.06em;
+font-weight: 900;
+color: var(--ink)
+    }
+
+    h1 b {
+      color: var(--blue)
+    }
+
+    .lead {
+      font-size: 17px;
+      color: #42546e;
+      max-width: 700px;
+      margin: 0
+    }
+
+    .chips {
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+      margin-top: 18px
+    }
+
+    .chip {
+      background: #fff;
+      border: 1px solid #dceafa;
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #35506f;
+      box-shadow: 0 8px 18px rgba(37, 86, 137, .07)
+    }
+
+    .hero-art {
+      height: 270px;
+      position: relative;
+      perspective: 900px
+    }
+
+    .floor {
+      position: absolute;
+      left: 10%;
+      right: 7%;
+      bottom: 12px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(32, 75, 115, .14);
+      filter: blur(15px)
+    }
+
+    .obj {
+      position: absolute;
+      box-shadow: var(--shadow)
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, .78);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, .9)
+    }
+
+    .calc-shell {
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 32px;
+      background: rgba(255, 255, 255, .5);
+      border: 1px solid rgba(255, 255, 255, .92);
+      box-shadow: 0 28px 70px rgba(37, 86, 137, .15);
+      backdrop-filter: blur(20px)
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 16px
+    }
+
+    .card {
+      background: linear-gradient(145deg, rgba(255, 255, 255, .97), rgba(244, 249, 255, .86));
+      border: 1px solid rgba(218, 231, 245, .92);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow)
+    }
+
+    .card h2 {
+      font-size: 21px;
+      margin: 0 0 4px;
+      letter-spacing: -.5px
+    }
+
+    .sub {
+      font-size: 13px;
+      color: #687990;
+      margin: 0 0 15px
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px
+    }
+
+    .field.full {
+      grid-column: 1/-1
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 800;
+      color: #263a56
+    }
+
+    .input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    input,
+    select {
+      width: 100%;
+      border: 1px solid #cddff1;
+      background: #fbfdff;
+      border-radius: 12px;
+      padding: 11px 12px;
+      font: inherit;
+      color: #152641;
+      box-shadow: inset 0 2px 4px rgba(26, 77, 123, .05);
+      outline: none
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #66b5ff;
+      box-shadow: 0 0 0 3px rgba(32, 165, 255, .12)
+    }
+
+    .unit {
+      font-size: 12px;
+      color: #667890;
+      white-space: nowrap
+    }
+
+    .check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #42536d
+    }
+
+    .check input {
+      width: auto;
+      accent-color: var(--blue)
+    }
+
+    .tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      background: #edf5ff;
+      border: 1px solid #dceafb;
+      padding: 4px;
+      border-radius: 15px;
+      margin-bottom: 16px
+    }
+
+    .tab {
+      border: 0;
+      background: transparent;
+      padding: 9px 12px;
+      border-radius: 11px;
+      font-weight: 800;
+      color: #334866;
+      cursor: pointer
+    }
+
+    .tab.active {
+      background: linear-gradient(145deg, #2aa8ff, #0668df);
+      color: #fff;
+      box-shadow: 0 9px 17px rgba(8, 111, 240, .26)
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1.5fr .8fr;
+      gap: 10px;
+      margin-top: 18px
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 14px;
+      padding: 13px 14px;
+      font-weight: 800;
+      cursor: pointer
+    }
+
+    .primary {
+      color: #fff;
+      background: linear-gradient(145deg, #25a9ff, #0064dc);
+      box-shadow: 0 12px 22px rgba(6, 104, 221, .28)
+    }
+
+    .secondary {
+      background: #edf3f9;
+      color: #273a55
+    }
+
+    .error {
+      color: #b4232b;
+      font-size: 12px;
+      margin-top: 10px;
+      min-height: 18px
+    }
+
+    .result-hero {
+      padding: 18px;
+      border-radius: 19px;
+      background: linear-gradient(135deg, #edfff7, #eef8ff);
+      position: relative;
+      overflow: hidden
+    }
+
+    .result-hero:after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      right: -30px;
+      top: -45px;
+      background: radial-gradient(circle, #55d7ff, #0b79ef);
+      opacity: .17
+    }
+
+    .result-hero small {
+      color: #60728b
+    }
+
+    .big {
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: -1.8px;
+      line-height: 1.1;
+      margin-top: 3px
+    }
+
+    .accent {
+      color: var(--green);
+      font-weight: 850;
+      font-size: 18px
+    }
+
+    .stats {
+      margin-top: 13px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid #e3edf7;
+      overflow: hidden
+    }
+
+    .stat {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 12px;
+      border-bottom: 1px solid #e8f0f7;
+      font-size: 13px
+    }
+
+    .stat:last-child {
+      border-bottom: 0
+    }
+
+    .stat b {
+      text-align: right
+    }
+
+    .loan-breakdown {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid #e3edf7
+    }
+
+    .loan-breakdown h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: -.04em
+    }
+
+    .loan-breakdown-layout {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      align-items: center
+    }
+
+    .loan-donut {
+      --principal-angle: 0deg;
+      width: 150px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      position: relative;
+      margin: 0 auto;
+      background: conic-gradient(#0a6ff2 0 var(--principal-angle), #16b86b var(--principal-angle) 100%);
+      box-shadow: 0 16px 26px rgba(10, 111, 242, .12)
+    }
+
+    .loan-donut::before {
+      content: "";
+      position: absolute;
+      inset: 24px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid #e1ecf6
+    }
+
+    .loan-donut-center {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 12px;
+      color: #516682
+    }
+
+    .loan-donut-center strong {
+      font-size: 24px;
+      line-height: 1.1;
+      color: var(--ink)
+    }
+
+    .loan-legend {
+      display: grid;
+      gap: 10px
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+      color: #35506f
+    }
+
+    .legend-item .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .swatch {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border-radius: 4px
+    }
+
+    .swatch-blue {
+      background: #0a6ff2
+    }
+
+    .swatch-green {
+      background: #16b86b
+    }
+
+    .answerbox {
+      margin: 14px 0 0;
+      padding: 15px 16px;
+      border-radius: 16px;
+      background: #0e2544;
+      color: #fff;
+      box-shadow: 0 15px 28px rgba(12, 37, 68, .18);
+      font-size: 13px
+    }
+
+    .answerbox strong {
+      color: #73d3ff
+    }
+
+    .bar {
+      height: 12px;
+      background: #e7f1fb;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 14px
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue2), var(--green));
+      border-radius: inherit
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 12px
+    }
+
+    .mini {
+      padding: 13px;
+      border-radius: 15px;
+      background: #fff;
+      border: 1px solid #e1ecf7
+    }
+
+    .mini small {
+      display: block;
+      color: #718299
+    }
+
+    .mini b {
+      font-size: 16px
+    }
+
+    .schedule {
+      max-height: 300px;
+      overflow: auto;
+      border: 1px solid #e0ebf5;
+      border-radius: 14px;
+      margin-top: 14px
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      min-width: 540px
+    }
+
+    th,
+    td {
+      padding: 10px 12px;
+      text-align: right;
+      border-bottom: 1px solid #e8eff6;
+      font-size: 12px
+    }
+
+    th:first-child,
+    td:first-child {
+      text-align: left
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      background: #eff6fc;
+      z-index: 1
+    }
+
+    .content {
+      padding: 38px 0 70px
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.fr;
+      gap: 22px
+    }
+
+    .article,
+    .toc {
+      background: rgba(255, 255, 255, .9);
+      border: 1px solid #dfeaf6;
+      border-radius: 25px;
+      box-shadow: var(--shadow)
+    }
+
+    .article {
+      padding: 30px
+    }
+
+    .toc {
+      padding: 24px;
+      align-self: start;
+      position: sticky;
+      top: 94px
+    }
+
+    .article h2 {
+      font-size: 28px;
+      line-height: 1.2;
+      margin: 38px 0 12px;
+      letter-spacing: -.8px
+    }
+
+    .article h2:first-child {
+      margin-top: 0
+    }
+
+    .article h3 {
+      font-size: 20px;
+      margin: 24px 0 8px
+    }
+
+    .article p,
+    .article li {
+      color: #42536d
+    }
+
+    .direct {
+      border-left: 5px solid var(--blue);
+      background: #f0f7ff;
+      padding: 16px 18px;
+      border-radius: 14px;
+      color: #263a56
+    }
+
+    .formula {
+      font: 800 16px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace;
+      background: #0d213c;
+      color: #eef8ff;
+      padding: 16px;
+      border-radius: 15px;
+      overflow: auto
+    }
+
+    .note {
+      background: #fff9e9;
+      border: 1px solid #f5df9c;
+      padding: 15px 17px;
+      border-radius: 14px;
+      color: #5c4d22
+    }
+
+    .faq {
+      border-top: 1px solid #e4edf6;
+      padding: 15px 0
+    }
+
+    .faq summary {
+      font-weight: 800;
+      cursor: pointer
+    }
+
+    .faq p {
+      margin-bottom: 0
+    }
+
+    .toc h3 {
+      margin-top: 0
+    }
+
+    .toc a {
+      display: block;
+      padding: 7px 0;
+      color: #34506f;
+      font-size: 14px
+    }
+
+    .sources li {
+      margin: 8px 0
+    }
+
+    footer {
+      padding: 28px 0 42px;
+      color: #63748a;
+      font-size: 13px;
+      text-align: center
+    }
+
+    @media(max-width:960px) {
+
+      .navlinks,
+      .search {
+        display: none
+      }
+
+      .hero-grid,
+      .calc-grid,
+      .content-grid {
+        grid-template-columns: 1fr
+      }
+
+      .hero-art {
+        height: 235px
+      }
+
+      .toc {
+        position: static
+      }
+    }
+
+    @media(max-width:620px) {
+      .wrap {
+        width: min(100% - 20px, 1180px)
+      }
+
+      .hero {
+        padding-top: 18px
+      }
+
+      .hero-art {
+        transform: scale(.86);
+        transform-origin: center top;
+        margin-bottom: -28px
+      }
+
+
+      .calc-shell {
+        padding: 8px;
+        border-radius: 23px
+      }
+
+      .card {
+        padding: 16px;
+        border-radius: 19px
+      }
+
+      .form-grid,
+      .mini-grid,
+      .actions {
+        grid-template-columns: 1fr
+      }
+
+      .field.full {
+        grid-column: auto
+      }
+
+      .article {
+        padding: 21px
+      }
+
+      .nav {
+        height: 64px
+      }
+    }
+
+
+    /* Topic-specific 3D hero scenes */
+    .visual-tvm .cube {
+      width: 90px;
+      height: 90px;
+      border-radius: 21px;
+      background: linear-gradient(145deg, #fff, #bfe1ff);
+      transform: rotateX(12deg) rotateY(-18deg) rotateZ(7deg);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: #0b6fe8;
+      font-size: 20px
+    }
+
+    .visual-tvm .a {
+      right: 210px;
+      top: 72px
+    }
+
+    .visual-tvm .b {
+      right: 102px;
+      top: 35px
+    }
+
+    .visual-tvm .c {
+      right: 28px;
+      top: 112px
+    }
+
+    .visual-tvm .arrow {
+      right: 80px;
+      top: 108px;
+      width: 250px;
+      height: 12px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #21a7ff, #16b86b);
+      transform: rotate(-10deg)
+    }
+
+    .visual-house .house {
+      right: 68px;
+      top: 52px;
+      width: 235px;
+      height: 155px;
+      border-radius: 22px;
+      background: linear-gradient(145deg, #f6fbff, #c9e4fa);
+      transform: rotateY(-12deg) rotateX(7deg);
+      border: 5px solid #fff
+    }
+
+    .visual-house .house:before {
+      content: "";
+      position: absolute;
+      left: 27px;
+      top: -68px;
+      border-left: 88px solid transparent;
+      border-right: 88px solid transparent;
+      border-bottom: 78px solid #178cff;
+      filter: drop-shadow(0 12px 10px rgba(22, 105, 190, .2))
+    }
+
+    .visual-house .door {
+      right: 145px;
+      top: 125px;
+      width: 58px;
+      height: 82px;
+      border-radius: 15px 15px 4px 4px;
+      background: #0d315f
+    }
+
+    .visual-house .key {
+      right: 15px;
+      top: 155px;
+      width: 160px;
+      height: 22px;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #ffe27a, #f3b91f);
+      transform: rotate(-12deg)
+    }
+
+    .visual-house .key:before {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border: 14px solid #f6c72b;
+      border-radius: 50%;
+      left: -38px;
+      top: -28px
+    }
+
+    .visual-loan .paper {
+      right: 80px;
+      top: 34px;
+      width: 215px;
+      height: 185px;
+      border-radius: 22px;
+      background: #fff;
+      transform: rotate(6deg);
+      border: 1px solid #dceafa
+    }
+
+    .visual-loan .paper:before {
+      content: "LOAN\A AGREEMENT";
+      white-space: pre;
+      position: absolute;
+      left: 28px;
+      top: 26px;
+      font-weight: 900;
+      color: #0b6ff2;
+      line-height: 1.25;
+      font-size: 20px
+    }
+
+    .visual-loan .paper:after {
+      content: "";
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 35px;
+      height: 55px;
+      background: repeating-linear-gradient(#dfeaf5 0 6px, transparent 6px 15px)
+    }
+
+    .visual-loan .coin {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 28%, #fff4a6, #f8c62b 55%, #d79b00);
+      border: 6px solid #ffd94d
+    }
+
+    .visual-loan .c1 {
+      right: 24px;
+      bottom: 20px
+    }
+
+    .visual-loan .c2 {
+      right: 265px;
+      bottom: 28px;
+      transform: scale(.78)
+    }
+
+    .visual-car .car {
+      right: 18px;
+      top: 95px;
+      width: 320px;
+      height: 92px;
+      border-radius: 50px 70px 24px 24px;
+      background: linear-gradient(145deg, #24a8ff, #0564dc);
+      transform: rotateY(-8deg);
+      box-shadow: 0 24px 35px rgba(0, 92, 190, .24)
+    }
+
+    .visual-car .car:before {
+      content: "";
+      position: absolute;
+      left: 65px;
+      top: -58px;
+      width: 168px;
+      height: 70px;
+      border-radius: 70px 70px 10px 10px;
+      background: linear-gradient(145deg, #bfe7ff, #73c5fb);
+      border: 8px solid #147fe5
+    }
+
+    .visual-car .wheel {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #dfe7ed 0 26%, #17304b 27% 60%, #081522 61%);
+      bottom: 28px
+    }
+
+    .visual-car .w1 {
+      right: 238px
+    }
+
+    .visual-car .w2 {
+      right: 60px
+    }
+
+    .visual-car .road {
+      right: 0;
+      bottom: 17px;
+      width: 360px;
+      height: 36px;
+      border-radius: 50%;
+      background: #9db0c3;
+      filter: blur(1px)
+    }
+
+    .visual-interest .coin {
+      width: 118px;
+      height: 118px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 32% 25%, #fff8b0, #ffd547 50%, #e3a500 73%);
+      border: 9px solid #ffe76d;
+      display: grid;
+      place-items: center;
+      font-size: 34px;
+      font-weight: 900;
+      color: #9b6800
+    }
+
+    .visual-interest .c1 {
+      right: 175px;
+      top: 46px
+    }
+
+    .visual-interest .c2 {
+      right: 67px;
+      top: 111px;
+      transform: scale(.75)
+    }
+
+    .visual-interest .ring {
+      right: 30px;
+      top: 22px;
+      width: 300px;
+      height: 180px;
+      border: 4px solid rgba(10, 111, 242, .22);
+      border-radius: 50%;
+      transform: rotate(-15deg)
+    }
+
+    .visual-payment .cardpay {
+      right: 82px;
+      top: 55px;
+      width: 250px;
+      height: 155px;
+      border-radius: 24px;
+      background: linear-gradient(145deg, #1ea4ff, #075dce);
+      transform: rotate(-8deg);
+      color: #fff;
+      padding: 28px;
+      font-weight: 900;
+      font-size: 20px
+    }
+
+    .visual-payment .cardpay:before {
+      content: "MONTHLY PAYMENT";
+      display: block;
+      font-size: 11px;
+      letter-spacing: 2px;
+      opacity: .78;
+      margin-bottom: 18px
+    }
+
+    .visual-payment .calendar {
+      right: 28px;
+      bottom: 24px;
+      width: 150px;
+      height: 128px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid #dceafa;
+      transform: rotate(7deg)
+    }
+
+    .visual-payment .calendar:before {
+      content: "12";
+      position: absolute;
+      inset: 25px;
+      display: grid;
+      place-items: center;
+      font-size: 46px;
+      font-weight: 900;
+      color: #0a6ff2
+    }
+
+    .visual-retirement .sun {
+      right: 80px;
+      top: 18px;
+      width: 115px;
+      height: 115px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #fff7aa, #ffc83d 60%, #f2a900);
+      box-shadow: 0 0 45px rgba(255, 194, 32, .35)
+    }
+
+    .visual-retirement .bars {
+      right: 55px;
+      bottom: 30px;
+      width: 300px;
+      height: 150px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-end
+    }
+
+    .visual-retirement .bars i {
+      display: block;
+      width: 48px;
+      border-radius: 15px 15px 6px 6px;
+      background: linear-gradient(#33b9ff, #0a6ff2);
+      box-shadow: 0 14px 25px rgba(10, 111, 242, .18)
+    }
+
+    .visual-retirement .bars i:nth-child(1) {
+      height: 45px
+    }
+
+    .visual-retirement .bars i:nth-child(2) {
+      height: 76px
+    }
+
+    .visual-retirement .bars i:nth-child(3) {
+      height: 105px
+    }
+
+    .visual-retirement .bars i:nth-child(4) {
+      height: 140px
+    }
+
+    .visual-amort .steps3d {
+      right: 28px;
+      bottom: 30px;
+      width: 340px;
+      height: 200px;
+      transform: rotateY(-13deg) rotateX(5deg)
+    }
+
+    .visual-amort .steps3d i {
+      position: absolute;
+      right: 0;
+      height: 42px;
+      border-radius: 12px 0 0 12px;
+      background: linear-gradient(145deg, #cbe8ff, #5eb8ff);
+      box-shadow: 0 13px 18px rgba(30, 105, 170, .15)
+    }
+
+    .visual-amort .steps3d i:nth-child(1) {
+      bottom: 0;
+      width: 330px
+    }
+
+    .visual-amort .steps3d i:nth-child(2) {
+      bottom: 48px;
+      width: 260px
+    }
+
+    .visual-amort .steps3d i:nth-child(3) {
+      bottom: 96px;
+      width: 190px
+    }
+
+    .visual-amort .steps3d i:nth-child(4) {
+      bottom: 144px;
+      width: 120px
+    }
+
+    .visual-amort .tag {
+      right: 245px;
+      top: 18px;
+      width: 115px;
+      padding: 14px;
+      border-radius: 18px;
+      background: #0d2c51;
+      color: #fff;
+      font-weight: 900;
+      text-align: center
+    }
+
+    .visual-invest .chart3d {
+      right: 45px;
+      bottom: 30px;
+      width: 320px;
+      height: 190px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-end;
+      transform: rotateY(-10deg)
+    }
+
+    .visual-invest .chart3d i {
+      width: 52px;
+      border-radius: 14px 14px 5px 5px;
+      background: linear-gradient(#43d8ae, #0a8f72);
+      box-shadow: 12px 15px 20px rgba(9, 114, 91, .18)
+    }
+
+    .visual-invest .chart3d i:nth-child(1) {
+      height: 55px
+    }
+
+    .visual-invest .chart3d i:nth-child(2) {
+      height: 85px
+    }
+
+    .visual-invest .chart3d i:nth-child(3) {
+      height: 126px
+    }
+
+    .visual-invest .chart3d i:nth-child(4) {
+      height: 175px
+    }
+
+    .visual-invest .arrowup {
+      right: 68px;
+      top: 18px;
+      font-size: 74px;
+      color: #0a6ff2;
+      font-weight: 900;
+      transform: rotate(-7deg)
+    }
+
+    .visual-compound .core {
+      right: 130px;
+      top: 70px;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 25%, #fff, #72c9ff 40%, #0868dd 75%);
+      box-shadow: 0 25px 45px rgba(10, 111, 242, .25)
+    }
+
+    .visual-compound .orbit {
+      right: 45px;
+      top: 45px;
+      width: 300px;
+      height: 190px;
+      border-radius: 50%;
+      border: 4px solid rgba(10, 111, 242, .24);
+      transform: rotate(-15deg)
+    }
+
+    .visual-compound .orbit:after {
+      content: "";
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #16b86b;
+      right: 22px;
+      top: 16px;
+      box-shadow: 0 0 0 9px rgba(22, 184, 107, .12)
+    }
+
+    .visual-compound .orbit.o2 {
+      transform: rotate(35deg);
+      border-color: rgba(246, 181, 31, .35)
+    }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/auto-loan-calculator/#webapplication",
+      "name": "Auto Loan Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/auto-loan-calculator/",
+      "description": "Estimate your monthly auto loan payment using vehicle price, down payment, trade-in, taxes, fees, incentives, interest rate, and loan term, plus total interest.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/auto-loan-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Auto Loan Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/auto-loan-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/auto-loan-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does a larger down payment reduce an auto loan payment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Generally, a larger down payment reduces the amount that needs to be financed, which can reduce the resulting loan payment when the other assumptions stay the same. CFPB notes that a down payment can lower the amount you need to finance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I still owe money on my trade-in?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Enter the remaining balance in the Amount owed on trade field. An outstanding loan balance affects the trade-in position used in the financing estimate. CFPB notes that when a trade-in still has an unpaid balance, part of the transaction must account for paying off that existing loan."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I enter the interest rate or APR?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the calculator's Interest rate (%) input as labeled. Interest rate and APR are not always the same: APR can include certain additional loan fees as well as interest."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a longer auto loan term lower the monthly payment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A longer term can reduce the monthly payment because repayment is spread across more months. However, CFPB advises looking at total loan cost as well because a longer term can result in more total interest."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the estimated sales taxes exact?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Vehicle-tax rules vary by jurisdiction and can depend on factors such as trade-in treatment and incentives. Use the applicable rate for your situation and compare the estimate with a dealer or relevant tax authority when making a purchase."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why might my lender's payment be different?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A lender may use different financed amounts, fees, tax treatment, loan charges, or rounding. Your lender's actual contract terms should therefore be used for the final payment and borrowing-cost figures."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "Monkeymart Onlinefree",
+      "inLanguage": "en-US"
+    }
+  ]
 }
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-background:radial-gradient(circle at 12% 6%,rgba(32,165,255,.18),transparent 28%),
-radial-gradient(circle at 88% 15%,rgba(35,205,153,.12),transparent 24%),
-linear-gradient(180deg,#f8fcff,#eef7ff 48%,#f7fbff);line-height:1.65}
-a{color:#0967d8;text-decoration:none}a:hover{text-decoration:underline}
-.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
-.topbar{position:sticky;top:0;z-index:20;background:rgba(248,252,255,.8);backdrop-filter:blur(18px);border-bottom:1px solid rgba(196,219,241,.72)}
-.nav{height:72px;display:flex;align-items:center;gap:28px}.brand{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:850;color:var(--ink)}
-.brand i{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;color:white;font-style:normal;background:linear-gradient(145deg,#27b3ff,#0562d7);box-shadow:0 9px 18px rgba(10,111,242,.28),inset 0 2px 2px rgba(255,255,255,.45)}
-.navlinks{display:flex;gap:20px;margin-left:18px;font-size:14px;font-weight:700}.navlinks a{color:#20324e}.search{margin-left:auto;background:#fff;border:1px solid #e0ebf6;border-radius:999px;padding:10px 15px;min-width:210px;color:#6d7d93;font-size:13px;box-shadow:0 8px 20px rgba(26,70,112,.08)}
-.hero{padding:28px 0 18px}.breadcrumb{font-size:13px;color:#6c7b91;margin-bottom:18px}.breadcrumb span{margin:0 8px;color:#a1aec0}
-.hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:28px;align-items:center}
-h1{font-size:clamp(44px,6vw,72px);line-height:.98;margin:0 0 16px;letter-spacing:-3px}h1 b{color:var(--blue)}
-.lead{font-size:17px;color:#42546e;max-width:700px;margin:0}.chips{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.chip{background:#fff;border:1px solid #dceafa;border-radius:999px;padding:7px 11px;font-size:12px;font-weight:800;color:#35506f;box-shadow:0 8px 18px rgba(37,86,137,.07)}
-.hero-art{height:270px;position:relative;perspective:900px}.floor{position:absolute;left:10%;right:7%;bottom:12px;height:34px;border-radius:50%;background:rgba(32,75,115,.14);filter:blur(15px)}
-.obj{position:absolute;box-shadow:var(--shadow)}.glass{background:rgba(255,255,255,.78);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.9)}
-.calc-shell{margin-top:20px;padding:16px;border-radius:32px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.92);box-shadow:0 28px 70px rgba(37,86,137,.15);backdrop-filter:blur(20px)}
-.calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}.card{background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(244,249,255,.86));border:1px solid rgba(218,231,245,.92);border-radius:24px;padding:22px;box-shadow:var(--shadow)}
-.card h2{font-size:21px;margin:0 0 4px;letter-spacing:-.5px}.sub{font-size:13px;color:#687990;margin:0 0 15px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}
-label{font-size:13px;font-weight:800;color:#263a56}.input-wrap{display:flex;align-items:center;gap:8px}
-input,select{width:100%;border:1px solid #cddff1;background:#fbfdff;border-radius:12px;padding:11px 12px;font:inherit;color:#152641;box-shadow:inset 0 2px 4px rgba(26,77,123,.05);outline:none}
-input:focus,select:focus{border-color:#66b5ff;box-shadow:0 0 0 3px rgba(32,165,255,.12)}.unit{font-size:12px;color:#667890;white-space:nowrap}
-.check{display:flex;align-items:center;gap:8px;font-size:13px;color:#42536d}.check input{width:auto;accent-color:var(--blue)}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;background:#edf5ff;border:1px solid #dceafb;padding:4px;border-radius:15px;margin-bottom:16px}
-.tab{border:0;background:transparent;padding:9px 12px;border-radius:11px;font-weight:800;color:#334866;cursor:pointer}.tab.active{background:linear-gradient(145deg,#2aa8ff,#0668df);color:#fff;box-shadow:0 9px 17px rgba(8,111,240,.26)}
-.actions{display:grid;grid-template-columns:1.5fr .8fr;gap:10px;margin-top:18px}.btn{border:0;border-radius:14px;padding:13px 14px;font-weight:800;cursor:pointer}.primary{color:#fff;background:linear-gradient(145deg,#25a9ff,#0064dc);box-shadow:0 12px 22px rgba(6,104,221,.28)}.secondary{background:#edf3f9;color:#273a55}
-.error{color:#b4232b;font-size:12px;margin-top:10px;min-height:18px}
-.result-hero{padding:18px;border-radius:19px;background:linear-gradient(135deg,#edfff7,#eef8ff);position:relative;overflow:hidden}.result-hero:after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;right:-30px;top:-45px;background:radial-gradient(circle,#55d7ff,#0b79ef);opacity:.17}
-.result-hero small{color:#60728b}.big{font-size:36px;font-weight:900;letter-spacing:-1.8px;line-height:1.1;margin-top:3px}.accent{color:var(--green);font-weight:850;font-size:18px}
-.stats{margin-top:13px;border-radius:16px;background:#fff;border:1px solid #e3edf7;overflow:hidden}.stat{display:flex;justify-content:space-between;gap:12px;padding:10px 12px;border-bottom:1px solid #e8f0f7;font-size:13px}.stat:last-child{border-bottom:0}.stat b{text-align:right}
-.answerbox{margin:14px 0 0;padding:15px 16px;border-radius:16px;background:#0e2544;color:#fff;box-shadow:0 15px 28px rgba(12,37,68,.18);font-size:13px}.answerbox strong{color:#73d3ff}
-.bar{height:12px;background:#e7f1fb;border-radius:999px;overflow:hidden;margin-top:14px}.bar span{display:block;height:100%;background:linear-gradient(90deg,var(--blue2),var(--green));border-radius:inherit}
-.mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}.mini{padding:13px;border-radius:15px;background:#fff;border:1px solid #e1ecf7}.mini small{display:block;color:#718299}.mini b{font-size:16px}
-.schedule{max-height:300px;overflow:auto;border:1px solid #e0ebf5;border-radius:14px;margin-top:14px}table{width:100%;border-collapse:collapse;background:#fff;min-width:540px}th,td{padding:10px 12px;text-align:right;border-bottom:1px solid #e8eff6;font-size:12px}th:first-child,td:first-child{text-align:left}th{position:sticky;top:0;background:#eff6fc;z-index:1}
-.content{padding:38px 0 70px}.content-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:22px}.article,.toc{background:rgba(255,255,255,.9);border:1px solid #dfeaf6;border-radius:25px;box-shadow:var(--shadow)}
-.article{padding:30px}.toc{padding:24px;align-self:start;position:sticky;top:94px}.article h2{font-size:28px;line-height:1.2;margin:38px 0 12px;letter-spacing:-.8px}.article h2:first-child{margin-top:0}.article h3{font-size:20px;margin:24px 0 8px}.article p,.article li{color:#42536d}.direct{border-left:5px solid var(--blue);background:#f0f7ff;padding:16px 18px;border-radius:14px;color:#263a56}
-.formula{font:800 16px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;background:#0d213c;color:#eef8ff;padding:16px;border-radius:15px;overflow:auto}.note{background:#fff9e9;border:1px solid #f5df9c;padding:15px 17px;border-radius:14px;color:#5c4d22}
-.faq{border-top:1px solid #e4edf6;padding:15px 0}.faq summary{font-weight:800;cursor:pointer}.faq p{margin-bottom:0}.toc h3{margin-top:0}.toc a{display:block;padding:7px 0;color:#34506f;font-size:14px}
-.sources li{margin:8px 0}footer{padding:28px 0 42px;color:#63748a;font-size:13px;text-align:center}
-@media(max-width:960px){.navlinks,.search{display:none}.hero-grid,.calc-grid,.content-grid{grid-template-columns:1fr}.hero-art{height:235px}.toc{position:static}}
-@media(max-width:620px){.wrap{width:min(100% - 20px,1180px)}.hero{padding-top:18px}.hero-art{transform:scale(.86);transform-origin:center top;margin-bottom:-28px}h1{font-size:43px;letter-spacing:-2px}.calc-shell{padding:8px;border-radius:23px}.card{padding:16px;border-radius:19px}.form-grid,.mini-grid,.actions{grid-template-columns:1fr}.field.full{grid-column:auto}.article{padding:21px}.nav{height:64px}}
-
-
-/* Topic-specific 3D hero scenes */
-.visual-tvm .cube{width:90px;height:90px;border-radius:21px;background:linear-gradient(145deg,#fff,#bfe1ff);transform:rotateX(12deg) rotateY(-18deg) rotateZ(7deg);display:grid;place-items:center;font-weight:900;color:#0b6fe8;font-size:20px}
-.visual-tvm .a{right:210px;top:72px}.visual-tvm .b{right:102px;top:35px}.visual-tvm .c{right:28px;top:112px}.visual-tvm .arrow{right:80px;top:108px;width:250px;height:12px;border-radius:10px;background:linear-gradient(90deg,#21a7ff,#16b86b);transform:rotate(-10deg)}
-.visual-house .house{right:68px;top:52px;width:235px;height:155px;border-radius:22px;background:linear-gradient(145deg,#f6fbff,#c9e4fa);transform:rotateY(-12deg) rotateX(7deg);border:5px solid #fff}.visual-house .house:before{content:"";position:absolute;left:27px;top:-68px;border-left:88px solid transparent;border-right:88px solid transparent;border-bottom:78px solid #178cff;filter:drop-shadow(0 12px 10px rgba(22,105,190,.2))}.visual-house .door{right:145px;top:125px;width:58px;height:82px;border-radius:15px 15px 4px 4px;background:#0d315f}.visual-house .key{right:15px;top:155px;width:160px;height:22px;border-radius:20px;background:linear-gradient(145deg,#ffe27a,#f3b91f);transform:rotate(-12deg)}.visual-house .key:before{content:"";position:absolute;width:50px;height:50px;border:14px solid #f6c72b;border-radius:50%;left:-38px;top:-28px}
-.visual-loan .paper{right:80px;top:34px;width:215px;height:185px;border-radius:22px;background:#fff;transform:rotate(6deg);border:1px solid #dceafa}.visual-loan .paper:before{content:"LOAN\A AGREEMENT";white-space:pre;position:absolute;left:28px;top:26px;font-weight:900;color:#0b6ff2;line-height:1.25;font-size:20px}.visual-loan .paper:after{content:"";position:absolute;left:28px;right:28px;bottom:35px;height:55px;background:repeating-linear-gradient(#dfeaf5 0 6px,transparent 6px 15px)}.visual-loan .coin{width:72px;height:72px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#fff4a6,#f8c62b 55%,#d79b00);border:6px solid #ffd94d}.visual-loan .c1{right:24px;bottom:20px}.visual-loan .c2{right:265px;bottom:28px;transform:scale(.78)}
-.visual-car .car{right:18px;top:95px;width:320px;height:92px;border-radius:50px 70px 24px 24px;background:linear-gradient(145deg,#24a8ff,#0564dc);transform:rotateY(-8deg);box-shadow:0 24px 35px rgba(0,92,190,.24)}.visual-car .car:before{content:"";position:absolute;left:65px;top:-58px;width:168px;height:70px;border-radius:70px 70px 10px 10px;background:linear-gradient(145deg,#bfe7ff,#73c5fb);border:8px solid #147fe5}.visual-car .wheel{width:60px;height:60px;border-radius:50%;background:radial-gradient(circle,#dfe7ed 0 26%,#17304b 27% 60%,#081522 61%);bottom:28px}.visual-car .w1{right:238px}.visual-car .w2{right:60px}.visual-car .road{right:0;bottom:17px;width:360px;height:36px;border-radius:50%;background:#9db0c3;filter:blur(1px)}
-.visual-interest .coin{width:118px;height:118px;border-radius:50%;background:radial-gradient(circle at 32% 25%,#fff8b0,#ffd547 50%,#e3a500 73%);border:9px solid #ffe76d;display:grid;place-items:center;font-size:34px;font-weight:900;color:#9b6800}.visual-interest .c1{right:175px;top:46px}.visual-interest .c2{right:67px;top:111px;transform:scale(.75)}.visual-interest .ring{right:30px;top:22px;width:300px;height:180px;border:4px solid rgba(10,111,242,.22);border-radius:50%;transform:rotate(-15deg)}
-.visual-payment .cardpay{right:82px;top:55px;width:250px;height:155px;border-radius:24px;background:linear-gradient(145deg,#1ea4ff,#075dce);transform:rotate(-8deg);color:#fff;padding:28px;font-weight:900;font-size:20px}.visual-payment .cardpay:before{content:"MONTHLY PAYMENT";display:block;font-size:11px;letter-spacing:2px;opacity:.78;margin-bottom:18px}.visual-payment .calendar{right:28px;bottom:24px;width:150px;height:128px;border-radius:20px;background:#fff;border:1px solid #dceafa;transform:rotate(7deg)}.visual-payment .calendar:before{content:"12";position:absolute;inset:25px;display:grid;place-items:center;font-size:46px;font-weight:900;color:#0a6ff2}
-.visual-retirement .sun{right:80px;top:18px;width:115px;height:115px;border-radius:50%;background:radial-gradient(circle,#fff7aa,#ffc83d 60%,#f2a900);box-shadow:0 0 45px rgba(255,194,32,.35)}.visual-retirement .bars{right:55px;bottom:30px;width:300px;height:150px;display:flex;gap:18px;align-items:flex-end}.visual-retirement .bars i{display:block;width:48px;border-radius:15px 15px 6px 6px;background:linear-gradient(#33b9ff,#0a6ff2);box-shadow:0 14px 25px rgba(10,111,242,.18)}.visual-retirement .bars i:nth-child(1){height:45px}.visual-retirement .bars i:nth-child(2){height:76px}.visual-retirement .bars i:nth-child(3){height:105px}.visual-retirement .bars i:nth-child(4){height:140px}
-.visual-amort .steps3d{right:28px;bottom:30px;width:340px;height:200px;transform:rotateY(-13deg) rotateX(5deg)}.visual-amort .steps3d i{position:absolute;right:0;height:42px;border-radius:12px 0 0 12px;background:linear-gradient(145deg,#cbe8ff,#5eb8ff);box-shadow:0 13px 18px rgba(30,105,170,.15)}.visual-amort .steps3d i:nth-child(1){bottom:0;width:330px}.visual-amort .steps3d i:nth-child(2){bottom:48px;width:260px}.visual-amort .steps3d i:nth-child(3){bottom:96px;width:190px}.visual-amort .steps3d i:nth-child(4){bottom:144px;width:120px}.visual-amort .tag{right:245px;top:18px;width:115px;padding:14px;border-radius:18px;background:#0d2c51;color:#fff;font-weight:900;text-align:center}
-.visual-invest .chart3d{right:45px;bottom:30px;width:320px;height:190px;display:flex;gap:20px;align-items:flex-end;transform:rotateY(-10deg)}.visual-invest .chart3d i{width:52px;border-radius:14px 14px 5px 5px;background:linear-gradient(#43d8ae,#0a8f72);box-shadow:12px 15px 20px rgba(9,114,91,.18)}.visual-invest .chart3d i:nth-child(1){height:55px}.visual-invest .chart3d i:nth-child(2){height:85px}.visual-invest .chart3d i:nth-child(3){height:126px}.visual-invest .chart3d i:nth-child(4){height:175px}.visual-invest .arrowup{right:68px;top:18px;font-size:74px;color:#0a6ff2;font-weight:900;transform:rotate(-7deg)}
-.visual-compound .core{right:130px;top:70px;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff,#72c9ff 40%,#0868dd 75%);box-shadow:0 25px 45px rgba(10,111,242,.25)}.visual-compound .orbit{right:45px;top:45px;width:300px;height:190px;border-radius:50%;border:4px solid rgba(10,111,242,.24);transform:rotate(-15deg)}.visual-compound .orbit:after{content:"";position:absolute;width:28px;height:28px;border-radius:50%;background:#16b86b;right:22px;top:16px;box-shadow:0 0 0 9px rgba(22,184,107,.12)}.visual-compound .orbit.o2{transform:rotate(35deg);border-color:rgba(246,181,31,.35)}
-
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Auto Loan Calculator", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "description": "Estimate a car loan payment using vehicle price, down payment, trade-in, tax, fees, incentives, interest rate, and loan term.", "url": "/auto-loan-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Auto Finance", "item": "/finance/auto-finance/"}, {"@type": "ListItem", "position": 4, "name": "Auto Loan Calculator", "item": "/auto-loan-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does a larger down payment reduce the monthly payment?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, when other terms are unchanged, a larger down payment reduces the amount financed."}}, {"@type": "Question", "name": "Does a trade-in always reduce sales tax?", "acceptedAnswer": {"@type": "Answer", "text": "Not everywhere. Trade-in tax treatment depends on local law, so verify the rule where the vehicle is registered."}}, {"@type": "Question", "name": "Should taxes and fees be financed?", "acceptedAnswer": {"@type": "Answer", "text": "Financing them can reduce upfront cash but increases the amount on which loan interest is charged."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body class="" data-cp-category="finance" data-cp-page-type="Calculator">
-<header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../finance/index.html">Finance</a></li><li><a aria-current="page" href="index.html">Auto Loan Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main">
-<section class="hero"><div class="wrap">
-<div class="breadcrumb">Home <span>›</span> Financial Calculators <span>›</span> Auto Loan Calculator</div>
-<div class="hero-grid"><div><h1>Auto Loan <b>Calculator</b></h1><p class="lead">Build a car-financing estimate from vehicle price through taxes, trade-in, down payment, incentives, fees, and monthly loan payment.</p>
-<div class="chips"><span class="chip">Vehicle price</span><span class="chip">Trade-in</span><span class="chip">Tax &amp; fees</span><span class="chip">Monthly pay</span></div></div><div class="hero-art visual-car"><div class="floor"></div><div class="obj road"></div><div class="obj car"></div><div class="obj wheel w1"></div><div class="obj wheel w2"></div></div></div>
-<section class="calc-shell" id="calculator"><div class="calc-grid">
-<div class="card">
-<h2>Vehicle financing</h2><p class="sub">Tax rules vary by jurisdiction; this calculator uses the transparent assumptions shown below.</p>
-<div class="form-grid">
-<div class="field"><label for="price">Vehicle price ($)</label><input id="price" type="number" value="35000"/></div>
-<div class="field"><label for="down">Down payment ($)</label><input id="down" type="number" value="5000"/></div>
-<div class="field"><label for="trade">Trade-in value ($)</label><input id="trade" type="number" value="3000"/></div>
-<div class="field"><label for="owed">Amount owed on trade ($)</label><input id="owed" type="number" value="0"/></div>
-<div class="field"><label for="incentive">Cash incentives ($)</label><input id="incentive" type="number" value="0"/></div>
-<div class="field"><label for="tax">Sales tax (%)</label><input id="tax" min="0" type="number" value="7"/></div>
-<div class="field"><label for="fees">Title / other fees ($)</label><input id="fees" min="0" type="number" value="600"/></div>
-<div class="field"><label for="term">Loan term (months)</label><input id="term" min="1" type="number" value="60"/></div>
-<div class="field full"><label for="rate">Interest rate (%)</label><input id="rate" min="0" step=".001" type="number" value="6.5"/></div>
-<label class="check field full"><input checked="" id="financeCosts" type="checkbox"/> Finance estimated sales tax and fees in the loan</label>
-</div><div class="actions"><button class="btn primary" id="calculate">Calculate →</button><button class="btn secondary" id="clear">Reset</button></div><div class="error" id="error"></div>
-</div>
-<div class="card">
-<div class="result-hero"><small>Estimated monthly payment</small><div class="big" id="monthly">$0.00</div><div class="accent">Auto financing estimate</div></div>
-<div class="stats"><div class="stat"><span>Base amount after trade/down/incentive</span><b id="base">—</b></div><div class="stat"><span>Estimated sales tax</span><b id="taxAmt">—</b></div><div class="stat"><span>Amount financed</span><b id="financed">—</b></div><div class="stat"><span>Upfront estimated costs</span><b id="upfront">—</b></div><div class="stat"><span>Total loan interest</span><b id="interest">—</b></div></div>
-<div class="answerbox"><strong>Tax assumption:</strong> sales tax is applied to vehicle price minus trade-in and incentives, floored at zero.</div>
-</div>
-</div></section></div></section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<div class="cp-tool-actions"><button data-cp-print="" type="button">Print / Save PDF</button><span aria-live="polite" class="cp-action-status" role="status"></span></div><section class="content"><div class="wrap content-grid"><article class="article">
-<section id="what"><h2>What Is an Auto Loan Calculator?</h2><p class="direct"><strong>Answer:</strong> An auto loan calculator estimates the monthly payment and borrowing cost for a vehicle purchase after considering price, down payment, trade-in, incentives, estimated taxes and fees, interest rate, and term.</p></section>
-<section id="how"><h2>How to Use the Auto Loan Calculator</h2><ol><li>Enter the vehicle price.</li><li>Add the down payment, trade-in, incentives, and any amount still owed on the trade.</li><li>Enter the tax rate, fees, loan term, and interest rate.</li><li>Choose whether estimated tax and fees are financed.</li></ol></section>
-<section id="formula"><h2>Auto Loan Payment Method</h2><p>After estimating the amount financed, the calculator uses the standard amortized-loan payment formula:</p><div class="formula">Payment = P × [r(1 + r)^n] ÷ [(1 + r)^n − 1]</div></section>
-<section id="example"><h2>Calculation Example</h2><p>For a $35,000 vehicle with a $5,000 down payment and $3,000 trade-in, the base financed amount falls before tax and fees are considered. Financing those costs raises principal and therefore interest.</p></section>
-<section id="limits"><h2>Assumptions and Limitations</h2><p>Vehicle sales-tax rules differ by state, province, country, incentive type, and trade-in treatment. This page uses a simplified taxable-base assumption and should not replace a dealer or tax-authority quote.</p></section>
-<section id="faq"><h2>Auto Loan Calculator FAQs</h2><details class="faq"><summary>Does a larger down payment reduce the monthly payment?</summary><p>Yes, when other terms are unchanged, a larger down payment reduces the amount financed.</p></details>
-<details class="faq"><summary>Does a trade-in always reduce sales tax?</summary><p>Not everywhere. Trade-in tax treatment depends on local law, so verify the rule where the vehicle is registered.</p></details>
-<details class="faq"><summary>Should taxes and fees be financed?</summary><p>Financing them can reduce upfront cash but increases the amount on which loan interest is charged.</p></details></section>
-<section id="sources"><h2>Sources and Methodology</h2><p>This page uses standard financial mathematics and the following sources for methodology and context.</p><ul class="sources"><li><a href="https://www.calculator.net/auto-loan-calculator.html" rel="noopener" target="_blank">Calculator.net — Auto Loan Calculator</a></li>
-<li><a href="https://www.consumerfinance.gov/consumer-tools/auto-loans/" rel="noopener" target="_blank">CFPB — Auto loan resources</a></li></ul>
-<p style="font-size:13px;color:#687990"><strong>Note:</strong> Results are estimates for planning and education. Actual lender, investment, tax, insurance, or account terms can differ.</p></section>
-</article><aside class="toc"><h3>On this page</h3><a href="#calculator">Calculator</a>
-<a href="#what">What it calculates</a>
-<a href="#how">How to use</a>
-<a href="#formula">Formula / method</a>
-<a href="#example">Example</a>
-<a href="#limits">Limitations</a>
-<a href="#faq">FAQs</a>
-<a href="#sources">Sources</a></aside></div></section>
-
-<details class="cp-data-panel"><summary><span>Calculator Data — exact tool basis</span><small>Finance · Calculator</small></summary><div class="cp-data-grid"><div class="cp-data-item wide"><b>Purpose</b><p>Estimate a car loan payment using vehicle price, down payment, trade-in, tax, fees, incentives, interest rate, and loan term.</p></div><div class="cp-data-item wide"><b>Formula / Algorithm Used in Tool</b><p>Auto Loan Payment Method: After estimating the amount financed, the calculator uses the standard amortized-loan payment formula: Payment = P × [r(1 + r)^n] ÷ [(1 + r)^n − 1]</p></div><div class="cp-data-item"><b>Required User Inputs</b><p>Vehicle price ($); Down payment ($); Trade-in value ($); Amount owed on trade ($); Cash incentives ($); Sales tax (%); Title / other fees ($); Loan term (months); Interest rate (%); Finance estimated sales tax and fees in the loan</p></div><div class="cp-data-item"><b>Primary Outputs</b><p>Estimated monthly payment; Base amount after trade/down/incentive; Estimated sales tax; Amount financed; Upfront estimated costs; Total loan interest</p></div><div class="cp-data-item wide"><b>Important Assumptions / Limitations</b><p>Vehicle sales-tax rules differ by state, province, country, incentive type, and trade-in treatment. This page uses a simplified taxable-base assumption and should not replace a dealer or tax-authority quote.</p></div><div class="cp-data-item"><b>Fresh Data Required?</b><p>Conditional</p></div><div class="cp-data-item"><b>Recommended Update Frequency</b><p>When product/rule assumptions change</p></div><div class="cp-data-item wide"><b>Current Source URLs in Page</b><p><a href="https://www.calculator.net/auto-loan-calculator.html" rel="nofollow noopener" target="_blank">https://www.calculator.net/auto-loan-calculator.html</a><br/><a href="https://www.consumerfinance.gov/consumer-tools/auto-loans/" rel="nofollow noopener" target="_blank">https://www.consumerfinance.gov/consumer-tools/auto-loans/</a></p></div></div></details><script class="cp-calculator-data" type="application/json">{"index":"1","Batch":"1","Calculator / Page":"Auto Loan Calculator","Slug":"auto-loan-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Estimate a car loan payment using vehicle price, down payment, trade-in, tax, fees, incentives, interest rate, and loan term.","Formula / Algorithm Used in Tool":"Auto Loan Payment Method: After estimating the amount financed, the calculator uses the standard amortized-loan payment formula: Payment = P × [r(1 + r)^n] ÷ [(1 + r)^n − 1]","Required User Inputs":"Vehicle price ($); Down payment ($); Trade-in value ($); Amount owed on trade ($); Cash incentives ($); Sales tax (%); Title / other fees ($); Loan term (months); Interest rate (%); Finance estimated sales tax and fees in the loan","Primary Outputs":"Estimated monthly payment; Base amount after trade/down/incentive; Estimated sales tax; Amount financed; Upfront estimated costs; Total loan interest","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Vehicle price ($), Down payment ($), Trade-in value ($), Amount owed on trade ($), Cash incentives ($), Sales tax (%), Title / other fees ($), Loan term (months), Interest rate (%), Finance estimated sales tax and fees in the loan. Explain outputs: Estimated monthly payment, Base amount after trade/down/incentive, Estimated sales tax, Amount financed, Upfront estimated costs, Total loan interest. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"Vehicle sales-tax rules differ by state, province, country, incentive type, and trade-in treatment. This page uses a simplified taxable-base assumption and should not replace a dealer or tax-authority quote.","Current Source URLs in Page":"https://www.calculator.net/auto-loan-calculator.html | https://www.consumerfinance.gov/consumer-tools/auto-loans/","Implementation Path":"/auto-loan-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Finance</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../boat-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Boat Loan Calculator</strong><small>Estimate a boat loan payment, amount financed, tax, trade-in equity, total interest…</small></span></a><a class="cp-related-link" href="../interest-rate-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Interest Rate Calculator</strong><small>Estimate the nominal annual interest rate implied by a loan amount, fixed monthly p…</small></span></a><a class="cp-related-link" href="../debt-consolidation-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Debt Consolidation Calculator</strong><small>Compare multiple existing debts with a consolidation loan using balances, APRs, pay…</small></span></a><a class="cp-related-link" href="../auto-lease-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Auto Lease Calculator</strong><small>Estimate a monthly car lease payment from capitalized cost, residual value, lease t…</small></span></a><a class="cp-related-link" href="../loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Loan Calculator</strong><small>Calculate a fixed-rate amortized loan payment, total payments, total interest, and…</small></span></a><a class="cp-related-link" href="../bond-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Bond Calculator</strong><small>Calculate bond price from face value, coupon rate, yield to maturity, term, and pay…</small></span></a><a class="cp-related-link" href="../vat-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>VAT Calculator</strong><small>Add VAT to a net price or remove VAT from a gross price using a custom rate, with t…</small></span></a><a class="cp-related-link" href="../refinance-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Refinance Calculator</strong><small>Compare an existing fixed-rate loan with a proposed refinance, including payment ch…</small></span></a></div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">Auto Loan Calculator • CalcPro • Browser-based financial planning tool.</div></footer>
-<script>
-const $=id=>document.getElementById(id);
-const money=n=>Number.isFinite(n)?new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(n):'—';
-const number=(n,d=2)=>Number.isFinite(n)?Number(n).toLocaleString('en-US',{maximumFractionDigits:d,minimumFractionDigits:d}):'—';
-function val(id){return parseFloat($(id).value)}
-function err(msg=''){const e=$('error');if(e)e.textContent=msg}
-
-
-function calculate(){try{
- const price=val('price'),down=val('down'),trade=val('trade'),owed=val('owed'),inc=val('incentive'),tax=val('tax')/100,fees=val('fees'),n=Math.round(val('term')),annual=val('rate')/100;
- if(![price,down,trade,owed,inc,tax,fees,n,annual].every(Number.isFinite)||price<=0||n<=0||annual<0||tax<0)throw Error('Please check all vehicle and loan inputs.');
- const taxable=Math.max(0,price-trade-inc),taxAmt=taxable*tax,base=price-down-trade+owed-inc;
- let P=base,upfront=down;
- if($('financeCosts').checked){P+=taxAmt+fees}else{upfront+=taxAmt+fees}
- if(P<=0)throw Error('The financed amount must be greater than zero.');
- const r=annual/12,pay=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1),interest=pay*n-P;
- $('monthly').textContent=money(pay);$('base').textContent=money(base);$('taxAmt').textContent=money(taxAmt);$('financed').textContent=money(P);$('upfront').textContent=money(upfront);$('interest').textContent=money(interest);err('');
-}catch(e){err(e.message)}}
-$('calculate').onclick=calculate;$('clear').onclick=()=>location.reload();calculate();
 </script>
-<script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+  <link href="../assets/css/global.css" rel="stylesheet" />
+  <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+  <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body class="" data-cp-category="finance" data-cp-page-type="Calculator">
+  <header class="cp-site-header" data-cp-header="">
+    <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+          class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+      <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+          href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+          href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+          href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+          href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+          href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+          data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+          class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+      <div class="cp-header-actions">
+        <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search">
+          <input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+            placeholder="Search calculators…" type="search" />
+          <div class="cp-search-results" hidden="" role="listbox"></div>
+        </form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a>
+      </div>
+    </div>
+  </header>
+  <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+    <ol>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../finance/index.html">Finance</a></li>
+      <li><a aria-current="page" href="index.html">Auto Loan Calculator</a></li>
+    </ol>
+  </nav>
+  <div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a
+      href="../calculators/index.html">All calculators</a></div>
+  <div class="cp-page-layout">
+    <main id="main">
+      <h1 class="page-title">Auto Loan Calculator</h1>
+      <div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+      <section class="calc-shell" id="calculator">
+        <div class="calc-grid">
+          <div class="card">
+            <h2>Vehicle financing</h2>
+            <p class="sub">Tax rules vary by jurisdiction; this calculator uses the transparent assumptions shown below.
+            </p>
+            <div class="form-grid">
+              <div class="field"><label for="price">Vehicle price ($)</label><input id="price" type="number"
+                  value="35000" /></div>
+              <div class="field"><label for="down">Down payment ($)</label><input id="down" type="number"
+                  value="5000" /></div>
+              <div class="field"><label for="trade">Trade-in value ($)</label><input id="trade" type="number"
+                  value="3000" /></div>
+              <div class="field"><label for="owed">Amount owed on trade ($)</label><input id="owed" type="number"
+                  value="0" /></div>
+              <div class="field"><label for="incentive">Cash incentives ($)</label><input id="incentive" type="number"
+                  value="0" /></div>
+              <div class="field"><label for="tax">Sales tax (%)</label><input id="tax" min="0" type="number"
+                  value="7" /></div>
+              <div class="field"><label for="fees">Title / other fees ($)</label><input id="fees" min="0" type="number"
+                  value="600" /></div>
+              <div class="field"><label for="term">Loan term (months)</label><input id="term" min="1" type="number"
+                  value="60" /></div>
+              <div class="field full"><label for="rate">Interest rate (%)</label><input id="rate" min="0" step=".001"
+                  type="number" value="6.5" /></div>
+              <label class="check field full"><input checked="" id="financeCosts" type="checkbox" /> Finance estimated
+                sales tax and fees in the loan</label>
+            </div>
+            <div class="actions"><button class="btn primary" id="calculate">Calculate →</button><button
+                class="btn secondary" id="clear">Reset</button></div>
+            <div class="error" id="error"></div>
+          </div>
+          <div class="card">
+            <div class="result-hero"><small>Estimated monthly payment</small>
+              <div class="big" id="monthly">$0.00</div>
+              <div class="accent">Auto financing estimate</div>
+            </div>
+            <div class="stats">
+              <div class="stat"><span>Base amount after trade/down/incentive</span><b id="base">—</b></div>
+              <div class="stat"><span>Estimated sales tax</span><b id="taxAmt">—</b></div>
+              <div class="stat"><span>Amount financed</span><b id="financed">—</b></div>
+              <div class="stat"><span>Upfront estimated costs</span><b id="upfront">—</b></div>
+              <div class="stat"><span>Total loan interest</span><b id="interest">—</b></div>
+            </div>
+            <div class="loan-breakdown">
+              <h3>Loan Breakdown</h3>
+              <div class="loan-breakdown-layout">
+                <div class="loan-donut" id="loanDonut" aria-label="Loan principal and interest breakdown">
+                  <div class="loan-donut-center">
+                    <span>Principal</span>
+                    <strong id="principalPct">0%</strong>
+                  </div>
+                </div>
+                <div class="loan-legend">
+                  <div class="legend-item">
+                    <span class="label"><span class="swatch swatch-blue"></span> Principal</span>
+                    <strong id="principalShare">$0.00</strong>
+                  </div>
+                  <div class="legend-item">
+                    <span class="label"><span class="swatch swatch-green"></span> Interest</span>
+                    <strong id="interestShare">$0.00</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="answerbox"><strong>Tax assumption:</strong> sales tax is applied to vehicle price minus trade-in
+              and incentives, floored at zero.</div>
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+        <div class="cp-visual-top">
+          <div><span class="cp-visual-kicker">Visual breakdown</span>
+            <h2 id="cp-visual-title">Calculation Graph</h2>
+            <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+          </div><span class="cp-chart-badge">Live view</span>
+        </div>
+        <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+        <div aria-label="Calculation method flow" class="cp-flow">
+          <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+            class="cp-flow-arrow">→</span>
+          <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+            class="cp-flow-arrow">→</span>
+          <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+        </div>
+      </section>
+      <div class="cp-ad-slot cp-ad-wide">
+        <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+      </div>
+     
+      <section class="content">
+        <div class="wrap content-grid">
+          <article class="article">
+  <section id="what">
+    <h2>What Is the Auto Loan Calculator?</h2>
+    <p class="direct"><strong>Answer:</strong> An Auto Loan Calculator helps estimate the cost of financing a vehicle before you accept a loan. You can account for a down payment, trade-in, existing trade balance, cash incentives, estimated sales tax, fees, loan length, and interest rate.</p>
+    <p>It is useful when comparing vehicle prices or financing scenarios and understanding how different inputs may affect the estimated monthly payment. CFPB guidance also notes that vehicle price, taxes, fees, down payment, trade-in value, interest rate, and loan term can all affect auto-financing costs.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Auto Loan Calculator</h2>
+    <p>Enter the following information in the calculator:</p>
+    <ol>
+      <li><strong>Vehicle price ($):</strong> Enter the purchase price of the vehicle.</li>
+      <li><strong>Down payment ($):</strong> Enter the cash amount you plan to pay upfront.</li>
+      <li><strong>Trade-in value ($):</strong> Enter the estimated value credited for your current vehicle.</li>
+      <li><strong>Amount owed on trade ($):</strong> Enter any outstanding balance that still needs to be paid on the traded vehicle.</li>
+      <li><strong>Cash incentives ($):</strong> Enter applicable rebates or cash incentives.</li>
+      <li><strong>Sales tax (%):</strong> Enter the estimated sales tax rate that applies to the purchase.</li>
+      <li><strong>Title / other fees ($):</strong> Enter estimated title, registration, or other applicable vehicle fees.</li>
+      <li><strong>Loan term (months):</strong> Enter the number of monthly payments in the loan.</li>
+      <li><strong>Interest rate (%):</strong> Enter the annual interest rate used for the loan estimate.</li>
+      <li><strong>Finance estimated sales tax and fees in the loan:</strong> Choose whether the estimated tax and fees are included in the financed balance or treated as upfront estimated costs.</li>
+    </ol>
+    <p>Then calculate the results to see the estimated monthly payment and other financing figures.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+    <p>After estimating the amount financed, the calculator uses the standard amortized-loan payment formula:</p>
+    <div class="formula">Payment = P × [r(1 + r)^n] ÷ [(1 + r)^n − 1]</div>
+
+    <h3>Variables</h3>
+    <ul>
+      <li><strong>Payment</strong> = estimated monthly loan payment, in dollars</li>
+      <li><strong>P</strong> = amount financed, in dollars</li>
+      <li><strong>r</strong> = monthly interest rate expressed as a decimal</li>
+      <li><strong>n</strong> = total number of monthly loan payments</li>
+    </ul>
+
+    <p>For monthly payments, the annual percentage entered as the interest rate is converted to a decimal and then to its corresponding monthly rate.</p>
+
+    <h3>Calculation Sequence</h3>
+    <ol>
+      <li>The vehicle price and entered financing adjustments are used to establish the financing base.</li>
+      <li>The calculator accounts for the entered down payment, trade-in information, cash incentives, estimated sales tax, and fees.</li>
+      <li>The tax-and-fee financing selection determines whether applicable estimated costs are rolled into the loan or treated as upfront costs.</li>
+      <li>The resulting <strong>amount financed</strong> becomes <strong>P</strong> in the loan-payment formula.</li>
+      <li>The interest rate is converted to the monthly periodic rate <strong>r</strong>.</li>
+      <li>The loan term in months becomes <strong>n</strong>.</li>
+      <li>The amortized-loan formula calculates the estimated monthly payment.</li>
+    </ol>
+
+    <p>This page describes only the inputs and calculations supported by the calculator specification and does not add unsupported features or formulas.</p>
+
+    <h3>Base Amount After Trade, Down Payment, and Incentives</h3>
+    <p>This result summarizes the vehicle-price balance after the entered down payment, trade-in position, and cash incentives are taken into account.</p>
+
+    <h3>Estimated Sales Tax</h3>
+    <p>The calculator estimates sales tax from the sales-tax input and its simplified taxable-base treatment. Actual vehicle-tax rules can vary by jurisdiction and by how trade-ins or incentives are treated.</p>
+
+    <h3>Amount Financed</h3>
+    <p>The amount financed is the estimated principal used in the monthly payment calculation after the applicable entered adjustments and the selected treatment of estimated tax and fees.</p>
+
+    <h3>Upfront Estimated Costs</h3>
+    <p>This result represents estimated costs that are not included in the financed amount under the selected financing option.</p>
+
+    <h3>Total Loan Interest</h3>
+    <p>Total loan interest represents the estimated interest charged over the modeled loan term. It helps show why the monthly payment alone does not describe the full borrowing cost.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+    <p>Consider a simple example where tax, fees, trade-in amounts, incentives, and other adjustments are set to zero. This isolates the implemented loan-payment formula.</p>
+
+    <h3>Inputs</h3>
+    <ul>
+      <li>Vehicle price: <strong>$30,000</strong></li>
+      <li>Down payment: <strong>$0</strong></li>
+      <li>Trade-in value: <strong>$0</strong></li>
+      <li>Amount owed on trade: <strong>$0</strong></li>
+      <li>Cash incentives: <strong>$0</strong></li>
+      <li>Sales tax: <strong>0%</strong></li>
+      <li>Title / other fees: <strong>$0</strong></li>
+      <li>Loan term: <strong>60 months</strong></li>
+      <li>Interest rate: <strong>6% per year</strong></li>
+    </ul>
+
+    <p>With all other adjustments at zero, the amount financed is <strong>$30,000</strong>.</p>
+
+    <h3>Step 1: Convert the Interest Rate</h3>
+    <p>Annual interest rate:</p>
+    <div class="formula">6% = 0.06</div>
+    <p>Monthly rate:</p>
+    <div class="formula">r = 0.06 ÷ 12 = 0.005</div>
+    <p>Number of payments:</p>
+    <div class="formula">n = 60</div>
+
+    <h3>Step 2: Substitute the Values</h3>
+    <div class="formula">Payment = 30,000 × [0.005(1.005)^60] ÷ [(1.005)^60 − 1]</div>
+
+    <h3>Step 3: Calculate the Payment</h3>
+    <div class="formula">Payment ≈ $579.984</div>
+
+    <h3>Final Result</h3>
+    <p>The estimated monthly auto loan payment is approximately:</p>
+    <div class="formula">$579.98 per month</div>
+    <p>The actual calculator result can also include tax, fees, incentives, trade-in information, and other entered financing adjustments.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+    <p><strong>Estimated monthly payment</strong> is the projected payment for each month under the entered loan assumptions. It is useful for comparing financing scenarios, but it is not a lender quote.</p>
+    <p><strong>Base amount after trade/down/incentive</strong> shows how the entered purchase-price adjustments affect the financing estimate before the final loan calculation.</p>
+    <p><strong>Estimated sales tax</strong> shows the calculator's estimated tax amount based on the information you entered.</p>
+    <p><strong>Amount financed</strong> is the estimated loan principal used to calculate the payment.</p>
+    <p><strong>Upfront estimated costs</strong> indicate costs that remain outside the financed balance under the selected option.</p>
+    <p><strong>Total loan interest</strong> shows the estimated interest cost over the modeled loan term. A longer loan can reduce the monthly payment while increasing the amount of interest paid over time.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+    <p>The calculator provides an estimate rather than a lender, dealer, or tax-authority quote.</p>
+    <p>Vehicle sales-tax rules can differ by state, province, country, trade-in treatment, and incentive type. Because the calculator uses a simplified taxable-base assumption, the estimated tax may differ from the amount charged in an actual transaction.</p>
+    <p>The calculation also depends on the interest rate you enter. CFPB distinguishes an <strong>interest rate</strong> from an <strong>APR</strong>: APR can include certain additional loan fees, so entering an APR as though it were only an interest rate may not reproduce a lender's payment calculation.</p>
+    <p>Real financing agreements may also contain lender fees, dealer products, add-ons, different tax treatment, or other charges that are not represented by the entered values. Small differences may also result from lender-specific rounding.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>Does a larger down payment reduce an auto loan payment?</summary>
+      <p>Generally, a larger down payment reduces the amount that needs to be financed, which can reduce the resulting loan payment when the other assumptions stay the same. CFPB notes that a down payment can lower the amount you need to finance.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What happens if I still owe money on my trade-in?</summary>
+      <p>Enter the remaining balance in the <strong>Amount owed on trade</strong> field. An outstanding loan balance affects the trade-in position used in the financing estimate. CFPB notes that when a trade-in still has an unpaid balance, part of the transaction must account for paying off that existing loan.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Should I enter the interest rate or APR?</summary>
+      <p>Use the calculator's <strong>Interest rate (%)</strong> input as labeled. Interest rate and APR are not always the same: APR can include certain additional loan fees as well as interest.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does a longer auto loan term lower the monthly payment?</summary>
+      <p>A longer term can reduce the monthly payment because repayment is spread across more months. However, CFPB advises looking at total loan cost as well because a longer term can result in more total interest.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Are the estimated sales taxes exact?</summary>
+      <p>No. Vehicle-tax rules vary by jurisdiction and can depend on factors such as trade-in treatment and incentives. Use the applicable rate for your situation and compare the estimate with a dealer or relevant tax authority when making a purchase.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why might my lender's payment be different?</summary>
+      <p>A lender may use different financed amounts, fees, tax treatment, loan charges, or rounding. Your lender's actual contract terms should therefore be used for the final payment and borrowing-cost figures.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+    <ul class="sources">
+      <li>
+        <a href="https://www.consumerfinance.gov/consumer-tools/auto-loans/?utm_source=chatgpt.com" rel="noopener" target="_blank">Consumer Financial Protection Bureau — Auto Loans</a>
+        <p>Used to verify auto-loan terminology and consumer-financing concepts.</p>
+      </li>
+      <li>
+        <a href="https://www.consumerfinance.gov/ask-cfpb/how-much-can-i-afford-to-borrow-for-a-car-or-auto-loan-en-751/?utm_source=chatgpt.com" rel="noopener" target="_blank">Consumer Financial Protection Bureau — How Much Can I Afford to Borrow for a Car or Auto Loan?</a>
+        <p>Supports the role of vehicle price, taxes, fees, down payment, trade-in value, interest rate, and loan term in auto-financing costs.</p>
+      </li>
+      <li>
+        <a href="https://www.consumerfinance.gov/ask-cfpb/what-is-the-difference-between-a-loan-interest-rate-and-the-apr-en-733/?utm_source=chatgpt.com" rel="noopener" target="_blank">Consumer Financial Protection Bureau — Interest Rate vs. APR</a>
+        <p>Supports the distinction between a loan's interest rate and APR.</p>
+      </li>
+      <li>
+        <a href="https://www.calculator.net/auto-loan-calculator.html?utm_source=chatgpt.com" rel="noopener" target="_blank">Calculator.net — Auto Loan Calculator</a>
+        <p>Used as a secondary reference for common auto-loan inputs, financing adjustments, and result terminology.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="https://example.com/loan-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Loan Calculator</a> — Estimate payments for a general fixed-rate loan.</li>
+      <li><a href="https://example.com/payment-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Payment Calculator</a> — Calculate payments for a fixed-term loan.</li>
+      <li><a href="https://example.com/interest-rate-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Interest Rate Calculator</a> — Estimate the interest rate when other loan details are known.</li>
+      <li><a href="https://example.com/amortization-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Amortization Calculator</a> — Review payment allocation and loan payoff over time.</li>
+      <li><a href="https://example.com/finance-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Finance Calculator</a> — Work with common time-value-of-money calculations.</li>
+    </ul>
+  </section>
+</article>
+          
+        </div>
+      </section>
+
+      <script class="cp-calculator-data"
+        type="application/json">{"index":"1","Batch":"1","Calculator / Page":"Auto Loan Calculator","Slug":"auto-loan-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Estimate a car loan payment using vehicle price, down payment, trade-in, tax, fees, incentives, interest rate, and loan term.","Formula / Algorithm Used in Tool":"Auto Loan Payment Method: After estimating the amount financed, the calculator uses the standard amortized-loan payment formula: Payment = P × [r(1 + r)^n] ÷ [(1 + r)^n − 1]","Required User Inputs":"Vehicle price ($); Down payment ($); Trade-in value ($); Amount owed on trade ($); Cash incentives ($); Sales tax (%); Title / other fees ($); Loan term (months); Interest rate (%); Finance estimated sales tax and fees in the loan","Primary Outputs":"Estimated monthly payment; Base amount after trade/down/incentive; Estimated sales tax; Amount financed; Upfront estimated costs; Total loan interest","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Vehicle price ($), Down payment ($), Trade-in value ($), Amount owed on trade ($), Cash incentives ($), Sales tax (%), Title / other fees ($), Loan term (months), Interest rate (%), Finance estimated sales tax and fees in the loan. Explain outputs: Estimated monthly payment, Base amount after trade/down/incentive, Estimated sales tax, Amount financed, Upfront estimated costs, Total loan interest. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"Vehicle sales-tax rules differ by state, province, country, incentive type, and trade-in treatment. This page uses a simplified taxable-base assumption and should not replace a dealer or tax-authority quote.","Current Source URLs in Page":"https://www.calculator.net/auto-loan-calculator.html | https://www.consumerfinance.gov/consumer-tools/auto-loans/","Implementation Path":"/auto-loan-calculator/index.html"}</script>
+      <div class="cp-ad-slot cp-ad-wide">
+        <div>Advertisement<small>Responsive lower-page placement</small></div>
+      </div>
+    </main>
+    <aside aria-label="Related calculators" class="cp-related-sidebar">
+      <div class="cp-ad-slot cp-ad-sidebar">
+        <div>Advertisement<small>300 × 250 / responsive</small></div>
+      </div><span class="cp-side-kicker">Related tools</span>
+      <h2>Finance</h2>
+      <p>More tools from the same Calculator Data category.</p>
+      <div class="cp-related-list"><a class="cp-related-link" href="../boat-loan-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Boat Loan Calculator</strong><small>Estimate a boat loan
+              payment, amount financed, tax, trade-in equity, total interest…</small></span></a><a
+          class="cp-related-link" href="../interest-rate-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Interest Rate Calculator</strong><small>Estimate the nominal
+              annual interest rate implied by a loan amount, fixed monthly p…</small></span></a><a
+          class="cp-related-link" href="../debt-consolidation-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Debt Consolidation Calculator</strong><small>Compare multiple
+              existing debts with a consolidation loan using balances, APRs, pay…</small></span></a><a
+          class="cp-related-link" href="../auto-lease-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Auto Lease Calculator</strong><small>Estimate a monthly car
+              lease payment from capitalized cost, residual value, lease t…</small></span></a><a class="cp-related-link"
+          href="../loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Loan
+              Calculator</strong><small>Calculate a fixed-rate amortized loan payment, total payments, total interest,
+              and…</small></span></a><a class="cp-related-link" href="../bond-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Bond Calculator</strong><small>Calculate bond price from face
+              value, coupon rate, yield to maturity, term, and pay…</small></span></a><a class="cp-related-link"
+          href="../vat-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>VAT
+              Calculator</strong><small>Add VAT to a net price or remove VAT from a gross price using a custom rate,
+              with t…</small></span></a><a class="cp-related-link" href="../refinance-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Refinance Calculator</strong><small>Compare an existing
+              fixed-rate loan with a proposed refinance, including payment ch…</small></span></a></div><a
+        class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a>
+    </aside>
+  </div>
+  <footer>
+    <div class="wrap">Auto Loan Calculator • CalcPro • Browser-based financial planning tool.</div>
+  </footer>
+  <script>
+    const $ = id => document.getElementById(id);
+    const money = n => Number.isFinite(n) ? new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 }).format(n) : '—';
+    const number = (n, d = 2) => Number.isFinite(n) ? Number(n).toLocaleString('en-US', { maximumFractionDigits: d, minimumFractionDigits: d }) : '—';
+    function val(id) { return parseFloat($(id).value) }
+    function err(msg = '') { const e = $('error'); if (e) e.textContent = msg }
+
+
+    function updateBreakdown(principal, interest) {
+      const total = principal + interest;
+      const principalPct = total > 0 ? (principal / total) * 100 : 0;
+      const donut = $('loanDonut');
+      if (donut) donut.style.setProperty('--principal-angle', `${principalPct}%`);
+      $('principalPct').textContent = `${Math.round(principalPct)}%`;
+      $('principalShare').textContent = money(principal);
+      $('interestShare').textContent = money(interest);
+    }
+
+    function calculate() {
+      try {
+        const price = val('price'), down = val('down'), trade = val('trade'), owed = val('owed'), inc = val('incentive'), tax = val('tax') / 100, fees = val('fees'), n = Math.round(val('term')), annual = val('rate') / 100;
+        if (![price, down, trade, owed, inc, tax, fees, n, annual].every(Number.isFinite) || price <= 0 || n <= 0 || annual < 0 || tax < 0) throw Error('Please check all vehicle and loan inputs.');
+        const taxable = Math.max(0, price - trade - inc), taxAmt = taxable * tax, base = price - down - trade + owed - inc;
+        let P = base, upfront = down;
+        if ($('financeCosts').checked) { P += taxAmt + fees } else { upfront += taxAmt + fees }
+        if (P <= 0) throw Error('The financed amount must be greater than zero.');
+        const r = annual / 12, pay = r === 0 ? P / n : P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1), interest = pay * n - P;
+        $('monthly').textContent = money(pay); $('base').textContent = money(base); $('taxAmt').textContent = money(taxAmt); $('financed').textContent = money(P); $('upfront').textContent = money(upfront); $('interest').textContent = money(interest); updateBreakdown(P, interest); err('');
+      } catch (e) { err(e.message) }
+    }
+    $('calculate').onclick = calculate; $('clear').onclick = () => location.reload(); calculate();
+  </script>
+  <script defer="" src="../assets/js/global.js"></script>
+  <script defer="" src="../assets/js/taxonomy.js"></script>
+  <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>
