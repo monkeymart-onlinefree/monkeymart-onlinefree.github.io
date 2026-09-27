@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Estimate the amount due at maturity for a deferred-payment loan with no periodic payments.">
+  <meta name="robots" content="index,follow">
+  <title>Deferred Payment Loan Calculator | CalcPro</title>
+  <link rel="canonical" href="https://monkeymart-onlinefree.github.io/deferred-payment-loan-calculator/">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/taxonomy.css">
+  <link rel="stylesheet" href="../assets/css/redesign.css">
+  <style>
+    .deferred-tool{max-width:980px;margin:30px auto;padding:20px;border:1px solid #dce7f2;border-radius:18px;background:#fff}
+    .deferred-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .deferred-panel{padding:20px;border:1px solid #e2eaf2;border-radius:12px;background:#fbfdff}
+    .deferred-panel h2{margin:0 0 5px;font-size:21px}.deferred-panel p{margin:0 0 16px;color:#60708a;font-size:14px}
+    .deferred-fields{display:grid;grid-template-columns:1fr 1fr;gap:13px}.deferred-field{display:grid;gap:6px}.deferred-field.full{grid-column:1/-1}
+    .deferred-field label{font-weight:700;font-size:13px}.deferred-field input,.deferred-field select{width:100%;padding:10px 11px;border:1px solid #cdd9e5;border-radius:7px;font:inherit;background:#fff}
+    .deferred-actions{display:flex;gap:9px;margin-top:16px}.deferred-actions button{padding:10px 15px;border:0;border-radius:7px;font:inherit;font-weight:700;cursor:pointer}.deferred-calculate{background:#197246;color:#fff}.deferred-reset{background:#e8edf2;color:#26384b}
+    .deferred-result{padding:16px;border-radius:10px;background:#eef8f1}.deferred-result small{color:#526c5b}.deferred-total{font-size:34px;line-height:1.2;font-weight:850;overflow-wrap:anywhere}.deferred-stats{margin-top:12px}.deferred-stat{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #e5edf3;font-size:14px}.deferred-stat:last-child{border:0}.deferred-error{min-height:20px;margin-top:8px;color:#b4232b;font-size:13px}
+    .deferred-table{margin-top:15px;max-height:260px;overflow:auto;border:1px solid #dce7f2;border-radius:9px}.deferred-table table{width:100%;border-collapse:collapse;min-width:390px;background:#fff}.deferred-table th,.deferred-table td{padding:9px 10px;text-align:right;border-bottom:1px solid #e8eef4;font-size:12px}.deferred-table th:first-child,.deferred-table td:first-child{text-align:left}.deferred-table th{position:sticky;top:0;background:#eff5fa}
+    .deferred-copy{max-width:980px;margin:30px auto 60px}.deferred-copy section{margin:26px 0}.deferred-copy h2{font-size:24px}.deferred-copy p,.deferred-copy li{color:#46596d}.deferred-formula{padding:14px 16px;border-radius:9px;background:#10283f;color:#fff;font:700 15px/1.6 ui-monospace,monospace;overflow:auto}
+    @media(max-width:700px){.deferred-tool{margin:18px 10px;padding:10px}.deferred-grid{grid-template-columns:1fr}.deferred-panel{padding:15px}.deferred-copy{margin:24px 16px 45px}}
+  </style>
+</head>
+<body data-cp-category="finance" data-cp-page-type="Calculator">
+  <header class="cp-site-header" data-cp-header>
+    <div class="cp-header-shell"><a class="cp-brand" href="../index.html" aria-label="CalcPro home"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+      <nav class="cp-main-nav" aria-label="Primary navigation"><a href="../finance/index.html"><span>Finance</span></a><a href="../health/index.html"><span>Health &amp; Fitness</span></a><a href="../math/index.html"><span>Math &amp; Statistics</span></a><a href="../date-time/index.html"><span>Date &amp; Time</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+      <div class="cp-header-actions"><form class="cp-header-search" action="../search/index.html" method="get" role="search"><input class="cp-search-input" type="search" name="q" placeholder="Search calculators…" aria-label="Search calculators"><div class="cp-search-results" role="listbox" hidden></div></form><a class="cp-icon-button" href="../calculators/index.html" aria-label="Browse all calculators">☰</a></div>
+    </div>
+  </header>
+  <nav class="cp-breadcrumb" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../finance/index.html">Finance</a></li><li><a href="../finance/loans-debt/index.html">Loans &amp; Debt</a></li><li><a href="index.html" aria-current="page">Deferred Payment Loan Calculator</a></li></ol></nav>
+  <div class="cp-tool-taxonomy"><a href="../finance/loans-debt/index.html">Loans &amp; Debt</a><a href="../calculators/index.html">All calculators</a></div>
+  <main id="main">
+    <h1 class="page-title">Deferred Payment Loan Calculator</h1>
+    <p style="max-width:980px;margin:12px auto;color:#526277">Estimate the lump sum due at maturity when loan interest accrues but no payments are made during the term.</p>
+    <section class="deferred-tool" aria-label="Deferred payment loan calculator">
+      <div class="deferred-grid">
+        <div class="deferred-panel"><h2>Loan details</h2><p>Enter the amount, term, rate, and compounding basis.</p>
+          <div class="deferred-fields">
+            <div class="deferred-field"><label for="principal">Loan amount ($)</label><input id="principal" type="number" min="0" step="any" value="100000"></div>
+            <div class="deferred-field"><label for="years">Loan term (years)</label><input id="years" type="number" min="0" step="1" value="10"></div>
+            <div class="deferred-field"><label for="months">Additional months</label><input id="months" type="number" min="0" max="11" step="1" value="0"></div>
+            <div class="deferred-field"><label for="rate">Annual interest rate (%)</label><input id="rate" type="number" min="0" step="any" value="6"></div>
+            <div class="deferred-field full"><label for="compound">Compounding</label><select id="compound"><option value="1">Annual (APY)</option><option value="2">Semiannual</option><option value="4">Quarterly</option><option value="12">Monthly (APR)</option></select></div>
+          </div>
+          <div class="deferred-actions"><button class="deferred-calculate" id="calculate" type="button">Calculate</button><button class="deferred-reset" id="reset" type="button">Reset</button></div><div class="deferred-error" id="error" role="alert"></div>
+        </div>
+        <div class="deferred-panel"><h2>Results</h2><div class="deferred-result"><small>Amount due at loan maturity</small><div class="deferred-total" id="maturity">$0.00</div></div>
+          <div class="deferred-stats"><div class="deferred-stat"><span>Original loan</span><strong id="original">—</strong></div><div class="deferred-stat"><span>Total interest accrued</span><strong id="interest">—</strong></div><div class="deferred-stat"><span>Term</span><strong id="term">—</strong></div></div>
+          <div class="deferred-table"><table><thead><tr><th>Year</th><th>Interest accrued</th><th>Balance</th></tr></thead><tbody id="schedule"></tbody></table></div>
+        </div>
+      </div>
+    </section>
+    <article class="deferred-copy">
+      <section><h2>How it works</h2><p>This calculator models a loan with no periodic payments: interest compounds into the balance and the full amount is due at the end of the selected term.</p><div class="deferred-formula">Maturity balance = Principal × (1 + annual rate ÷ compounding periods)^(compounding periods × years)</div><p>For a partial final year, the final balance uses the matching fractional compounding period. The schedule shows annual checkpoints.</p></section>
+      <section><h2>Example</h2><p>A $100,000 loan at 6% compounded annually for 10 years grows to <strong>$179,084.77</strong>, including <strong>$79,084.77</strong> in accrued interest. This is a mathematical estimate, not a lender payoff quote.</p></section>
+      <section><h2>Related calculators</h2><ul><li><a href="../loan-calculator/index.html">Amortized Loan Calculator</a></li><li><a href="../bond-calculator/index.html">Bond Calculator</a> (set the coupon rate to 0% to estimate a zero-coupon bond price)</li></ul></section>
+    </article>
+  </main>
+  <footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
+  <script>
+    const byId=id=>document.getElementById(id);
+    const money=value=>Number.isFinite(value)?new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(value):'—';
+    function calculate(){
+      const principal=Number(byId('principal').value),years=Number(byId('years').value),months=Number(byId('months').value),annualRate=Number(byId('rate').value)/100,frequency=Number(byId('compound').value),termMonths=years*12+months;
+        if(!Number.isFinite(principal)||!Number.isFinite(years)||!Number.isFinite(months)||!Number.isFinite(annualRate)||principal<=0||years<0||months<0||months>11||termMonths<=0||annualRate<0){byId('maturity').textContent='—';byId('original').textContent='—';byId('interest').textContent='—';byId('term').textContent='—';byId('schedule').innerHTML='';byId('error').textContent='Enter a positive loan amount and term, a non-negative rate, and 0–11 additional months.';return}
+      const balanceAt=month=>principal*Math.pow(1+annualRate/frequency,frequency*month/12);
+      const finalBalance=balanceAt(termMonths),rows=[];
+      for(let month=12;month<termMonths;month+=12)rows.push(`<tr><td>${month/12} year${month===12?'':'s'}</td><td>${money(balanceAt(month)-principal)}</td><td>${money(balanceAt(month))}</td></tr>`);
+      rows.push(`<tr><td>${years+(months?` years, ${months} months`:' years')}</td><td>${money(finalBalance-principal)}</td><td>${money(finalBalance)}</td></tr>`);
+      byId('maturity').textContent=money(finalBalance);byId('original').textContent=money(principal);byId('interest').textContent=money(finalBalance-principal);byId('term').textContent=years?`${years} years${months?`, ${months} months`:''}`:`${months} months`;byId('schedule').innerHTML=rows.join('');byId('error').textContent='';
+    }
+    byId('calculate').addEventListener('click',calculate);byId('reset').addEventListener('click',()=>location.reload());['principal','years','months','rate','compound'].forEach(id=>byId(id).addEventListener('input',calculate));calculate();
+  </script>
+  <script defer src="../assets/js/global.js"></script><script defer src="../assets/js/taxonomy.js"></script><script defer src="../assets/js/redesign.js"></script>
+</body>
+</html>

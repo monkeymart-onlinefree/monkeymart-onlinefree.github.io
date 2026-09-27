@@ -1,53 +1,1555 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+<html lang="en">
 
-<title>Hours Calculator – Hours &amp; Minutes Between Two Times | CalcPro</title><meta content="Calculate hours and minutes between two clock times, with an overnight option and decimal-hours output." name="description"/><meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/><link href="../hours-calculator/" rel="canonical"/><meta content="website" property="og:type"/><meta content="Hours Calculator" property="og:title"/><meta content="Calculate hours and minutes between two clock times, with an overnight option and decimal-hours output." property="og:description"/><meta content="#1477ff" name="theme-color"/>
-<style>
-:root{--ink:#0b1933;--muted:#60708a;--line:#dbe8f6;--blue:#0a6ff2;--blue2:#20a5ff;--green:#16b86b;--yellow:#f6b51f;--red:#ef4f58;--shadow:0 18px 45px rgba(25,74,123,.16),inset 0 1px 0 rgba(255,255,255,.95)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 12% 6%,rgba(32,165,255,.18),transparent 28%),radial-gradient(circle at 88% 15%,rgba(35,205,153,.13),transparent 24%),linear-gradient(180deg,#f8fcff,#eef7ff 48%,#f7fbff);line-height:1.65}
-a{color:#0967d8;text-decoration:none}a:hover{text-decoration:underline}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}.topbar{position:sticky;top:0;z-index:20;background:rgba(248,252,255,.8);backdrop-filter:blur(18px);border-bottom:1px solid rgba(196,219,241,.72)}.nav{height:72px;display:flex;align-items:center;gap:28px}.brand{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:850;color:var(--ink)}.brand i{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;color:#fff;font-style:normal;background:linear-gradient(145deg,#27b3ff,#0562d7);box-shadow:0 9px 18px rgba(10,111,242,.28),inset 0 2px 2px rgba(255,255,255,.45)}.navlinks{display:flex;gap:20px;margin-left:18px;font-size:14px;font-weight:700}.navlinks a{color:#20324e}.search{margin-left:auto;background:#fff;border:1px solid #e0ebf6;border-radius:999px;padding:10px 15px;min-width:210px;color:#6d7d93;font-size:13px;box-shadow:0 8px 20px rgba(26,70,112,.08)}
-.hero{padding:28px 0 18px}.breadcrumb{font-size:13px;color:#6c7b91;margin-bottom:18px}.breadcrumb span{margin:0 8px;color:#a1aec0}.hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:28px;align-items:center}h1{font-size:clamp(2.6rem,5vw,4.5rem);line-height:.98;margin:0 0 16px;letter-spacing:-3px}h1 b{color:var(--blue)}.lead{font-size:17px;color:#42546e;max-width:700px;margin:0}.chips{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.chip{background:#fff;border:1px solid #dceafa;border-radius:999px;padding:7px 11px;font-size:12px;font-weight:800;color:#35506f;box-shadow:0 8px 18px rgba(37,86,137,.07)}
-.hero-art{height:270px;position:relative;perspective:900px}.floor{position:absolute;left:9%;right:7%;bottom:12px;height:34px;border-radius:50%;background:rgba(32,75,115,.14);filter:blur(15px)}.obj{position:absolute;box-shadow:var(--shadow)}
-.calc-shell{margin-top:20px;padding:16px;border-radius:32px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.92);box-shadow:0 28px 70px rgba(37,86,137,.15);backdrop-filter:blur(20px)}.calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}.card{background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(244,249,255,.86));border:1px solid rgba(218,231,245,.92);border-radius:24px;padding:22px;box-shadow:var(--shadow)}.card h2{font-size:21px;margin:0 0 4px;letter-spacing:-.5px}.sub{font-size:13px;color:#687990;margin:0 0 15px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}label{font-size:13px;font-weight:800;color:#263a56}.input-wrap{display:flex;align-items:center;gap:8px}input,select,textarea{width:100%;border:1px solid #cddff1;background:#fbfdff;border-radius:12px;padding:11px 12px;font:inherit;color:#152641;box-shadow:inset 0 2px 4px rgba(26,77,123,.05);outline:none}textarea{min-height:100px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:#66b5ff;box-shadow:0 0 0 3px rgba(32,165,255,.12)}.unit{font-size:12px;color:#667890;white-space:nowrap}.hint{font-size:11px;color:#75859a}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;background:#edf5ff;border:1px solid #dceafb;padding:4px;border-radius:15px;margin-bottom:16px}.tab{border:0;background:transparent;padding:9px 12px;border-radius:11px;font-weight:800;color:#334866;cursor:pointer}.tab.active{background:linear-gradient(145deg,#2aa8ff,#0668df);color:#fff;box-shadow:0 9px 17px rgba(8,111,240,.26)}
-.actions{display:grid;grid-template-columns:1.5fr .8fr;gap:10px;margin-top:18px}.btn{border:0;border-radius:14px;padding:13px 14px;font-weight:800;cursor:pointer}.primary{color:#fff;background:linear-gradient(145deg,#25a9ff,#0064dc);box-shadow:0 12px 22px rgba(6,104,221,.28)}.secondary{background:#edf3f9;color:#273a55}.error{color:#b4232b;font-size:12px;margin-top:10px;min-height:18px}
-.result-hero{padding:18px;border-radius:19px;background:linear-gradient(135deg,#edfff7,#eef8ff);position:relative;overflow:hidden}.result-hero:after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;right:-30px;top:-45px;background:radial-gradient(circle,#55d7ff,#0b79ef);opacity:.17}.result-hero small{color:#60728b}.big{font-size:36px;font-weight:900;letter-spacing:-1.8px;line-height:1.1;margin-top:3px;word-break:break-word}.accent{color:var(--green);font-weight:850;font-size:18px}.stats{margin-top:13px;border-radius:16px;background:#fff;border:1px solid #e3edf7;overflow:hidden}.stat{display:flex;justify-content:space-between;gap:12px;padding:10px 12px;border-bottom:1px solid #e8f0f7;font-size:13px}.stat:last-child{border-bottom:0}.stat b{text-align:right}.answerbox{margin:14px 0 0;padding:15px 16px;border-radius:16px;background:#0e2544;color:#fff;box-shadow:0 15px 28px rgba(12,37,68,.18);font-size:13px}.answerbox strong{color:#73d3ff}
-.table-wrap{overflow:auto;border-radius:16px;border:1px solid #dce7f2;margin:14px 0}table{border-collapse:collapse;width:100%;min-width:520px;background:#fff}th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #e7eef5;font-size:13px}th{background:#f1f7fd}.progress{height:14px;border-radius:999px;background:#e7f1fb;overflow:hidden;margin-top:14px}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--green));border-radius:inherit}.course-grid{display:grid;grid-template-columns:1.6fr .8fr 1fr auto;gap:8px;align-items:end;margin-bottom:8px}.remove{width:40px;height:40px;border:0;border-radius:10px;background:#fff0f0;color:#b4232b;font-weight:900;cursor:pointer}
-.hub-search{margin-bottom:18px}.hub-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.hub{padding:18px;border-radius:18px;background:linear-gradient(145deg,#fff,#f4f9ff);border:1px solid #dfeaf5}.hub h3{margin:0 0 8px}.hub a{display:inline-block;margin:4px 8px 4px 0;font-size:13px}.hub[hidden]{display:none}
-.content{padding:38px 0 70px}.content-grid{display:grid;grid-template-columns:1.fr;gap:22px}.article,.toc{background:rgba(255,255,255,.9);border:1px solid #dfeaf6;border-radius:25px;box-shadow:var(--shadow)}.article{padding:30px}.toc{padding:24px;align-self:start;position:sticky;top:94px}.article h2{font-size:28px;line-height:1.2;margin:38px 0 12px;letter-spacing:-.8px}.article h2:first-child{margin-top:0}.article h3{font-size:20px;margin:24px 0 8px}.article p,.article li{color:#42536d}.direct{border-left:5px solid var(--blue);background:#f0f7ff;padding:16px 18px;border-radius:14px;color:#263a56}.formula{font:800 16px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;background:#0d213c;color:#eef8ff;padding:16px;border-radius:15px;overflow:auto}.note{background:#fff9e9;border:1px solid #f5df9c;padding:15px 17px;border-radius:14px;color:#5c4d22}.faq{border-top:1px solid #e4edf6;padding:15px 0}.faq summary{font-weight:800;cursor:pointer}.faq p{margin-bottom:0}.toc h3{margin-top:0}.toc a{display:block;padding:7px 0;color:#34506f;font-size:14px}.sources li{margin:8px 0}footer{padding:28px 0 42px;color:#63748a;font-size:13px;text-align:center}
-@media(max-width:960px){.navlinks,.search{display:none}.hero-grid,.calc-grid,.content-grid{grid-template-columns:1fr}.hero-art{height:235px}.toc{position:static}}
-@media(max-width:620px){.wrap{width:min(100% - 20px,1180px)}.hero{padding-top:18px}.hero-art{transform:scale(.86);transform-origin:center top;margin-bottom:-28px}h1{font-size:43px;letter-spacing:-2px}.calc-shell{padding:8px;border-radius:23px}.card{padding:16px;border-radius:19px}.form-grid,.actions,.hub-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.article{padding:21px}.nav{height:64px}.course-grid{grid-template-columns:1fr 1fr}.course-grid .remove{grid-column:2}}
-/* unique scenes */
-.scene-triangle .tri{right:70px;top:25px;width:280px;height:220px;clip-path:polygon(50% 0,100% 100%,0 100%);background:linear-gradient(145deg,#2aabff,#0867dc);filter:drop-shadow(18px 28px 22px rgba(12,95,180,.22))}.scene-triangle .tri:after{content:"a   b   c";position:absolute;left:75px;top:120px;color:#fff;font-weight:900;letter-spacing:24px}
-.scene-volume .cube{right:95px;top:45px;width:180px;height:180px;border-radius:24px;background:linear-gradient(145deg,#c9eaff,#429fe8);transform:rotateX(14deg) rotateY(-18deg);box-shadow:25px 30px 38px rgba(24,89,150,.2)}.scene-volume .sphere{right:20px;top:120px;width:115px;height:115px;border-radius:50%;background:radial-gradient(circle at 32% 25%,#fff,#84d8c4 42%,#0d8e75 75%)}
-.scene-sd .bars{right:45px;bottom:32px;width:320px;height:190px;display:flex;align-items:flex-end;gap:14px}.scene-sd .bars i{width:35px;border-radius:12px 12px 4px 4px;background:linear-gradient(#49b9ff,#0a6ff2)}.scene-sd .bars i:nth-child(1){height:50px}.scene-sd .bars i:nth-child(2){height:90px}.scene-sd .bars i:nth-child(3){height:155px}.scene-sd .bars i:nth-child(4){height:185px}.scene-sd .bars i:nth-child(5){height:130px}.scene-sd .bars i:nth-child(6){height:70px}
-.scene-rng .dice{right:190px;top:55px;width:125px;height:125px;border-radius:26px;background:linear-gradient(145deg,#fff,#bfdff7);transform:rotate(15deg);display:grid;place-items:center;font-size:52px;color:#0a6ff2;font-weight:900}.scene-rng .orb{right:45px;top:110px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff,#ffd95d 50%,#e0a400);display:grid;place-items:center;font-size:34px;font-weight:900;color:#7b5900}
-.scene-hub .stack{right:65px;top:36px;width:270px;height:190px}.scene-hub .stack i{position:absolute;width:205px;height:120px;border-radius:25px;background:linear-gradient(145deg,#fff,#b9dcfa);border:1px solid #fff}.scene-hub .stack i:nth-child(1){right:0;top:0;transform:rotate(8deg)}.scene-hub .stack i:nth-child(2){right:30px;top:30px;transform:rotate(-4deg);background:linear-gradient(145deg,#d9fff2,#76d4bb)}.scene-hub .stack i:nth-child(3){right:60px;top:60px;background:linear-gradient(145deg,#eaf5ff,#75bffc)}.scene-hub .stack:after{content:"TOOLS";position:absolute;right:98px;top:94px;z-index:3;font-size:28px;font-weight:900;color:#0a6ff2}
-.scene-age .cake{right:105px;top:88px;width:220px;height:110px;border-radius:24px 24px 34px 34px;background:linear-gradient(#7fd6ff,#0c75df)}.scene-age .cake:before{content:"";position:absolute;left:20px;right:20px;top:-28px;height:42px;border-radius:50%;background:#fff}.scene-age .candle{right:205px;top:25px;width:18px;height:75px;border-radius:8px;background:repeating-linear-gradient(180deg,#ff7b96 0 12px,#fff 12px 22px)}.scene-age .candle:before{content:"";position:absolute;left:-6px;top:-23px;width:30px;height:30px;border-radius:50% 50% 50% 0;background:#ffca38;transform:rotate(-45deg)}
-.scene-date .cal{right:75px;top:35px;width:255px;height:200px;border-radius:28px;background:#fff;border:1px solid #dbe8f6;transform:rotate(-5deg)}.scene-date .cal:before{content:"DATE";position:absolute;left:25px;right:25px;top:25px;padding:10px;border-radius:14px;background:#0a6ff2;color:#fff;text-align:center;font-weight:900;letter-spacing:3px}.scene-date .cal:after{content:"+ 30";position:absolute;inset:80px 30px 25px;display:grid;place-items:center;font-size:50px;font-weight:900;color:#183d63}
-.scene-time .clock{right:90px;top:35px;width:220px;height:220px;border-radius:50%;background:#fff;border:15px solid #0d315f;box-shadow:0 26px 45px rgba(17,65,115,.2)}.scene-time .clock:before{content:"";position:absolute;left:96px;top:42px;width:7px;height:65px;background:#0a6ff2;transform-origin:bottom;transform:rotate(35deg);border-radius:6px}.scene-time .clock:after{content:"";position:absolute;left:97px;top:98px;width:70px;height:7px;background:#16b86b;transform-origin:left;transform:rotate(20deg);border-radius:6px}
-.scene-hours .timeline{right:35px;top:78px;width:335px;height:30px;border-radius:15px;background:linear-gradient(90deg,#0a6ff2,#16b86b)}.scene-hours .timeline:before,.scene-hours .timeline:after{content:"";position:absolute;top:-24px;width:76px;height:76px;border-radius:50%;background:#fff;border:10px solid #0e2544}.scene-hours .timeline:before{left:-5px}.scene-hours .timeline:after{right:-5px}.scene-hours .label{right:115px;top:135px;padding:14px 22px;border-radius:18px;background:#fff;font-size:24px;font-weight:900;color:#0a6ff2}
-.scene-gpa .cap{right:55px;top:50px;width:285px;height:170px;clip-path:polygon(50% 0,100% 35%,75% 50%,75% 78%,25% 78%,25% 50%,0 35%);background:linear-gradient(145deg,#1b89ef,#0e315a);filter:drop-shadow(18px 26px 20px rgba(14,60,105,.18))}.scene-gpa .badge{right:150px;top:120px;padding:12px 18px;border-radius:18px;background:#fff;color:#0a6ff2;font-size:28px;font-weight:900}
-</style><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Hours Calculator", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "description": "Calculate hours and minutes between two clock times, with an overnight option and decimal-hours output.", "url": "/hours-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Date & Time", "item": "/date-time/"}, {"@type": "ListItem", "position": 3, "name": "Time & Duration", "item": "/date-time/time-duration/"}, {"@type": "ListItem", "position": 4, "name": "Hours Calculator", "item": "/hours-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What are decimal hours?", "acceptedAnswer": {"@type": "Answer", "text": "Decimal hours express minutes as a fraction of 60; 30 minutes equals 0.50 hour."}}, {"@type": "Question", "name": "Can it calculate an overnight shift?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Enable the next-day option when the end time is earlier than the start time."}}, {"@type": "Question", "name": "Does it calculate wages?", "acceptedAnswer": {"@type": "Answer", "text": "No. This page only measures elapsed time."}}]}]}</script><link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head><body data-cp-category="date-time" data-cp-page-type="Calculator">
-<header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../date-time/index.html">Date &amp; Time</a></li><li><a aria-current="page" href="index.html">Hours Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../date-time/index.html">Browse Date &amp; Time</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main"><h1 class="page-title">Hours Calculator</h1><section class="calc-shell" id="calculator"><div class="calc-grid"><div class="card"><h2>Hours between times</h2><div class="form-grid"><div class="field"><label for="start">Start time</label><input id="start" type="time" value="09:00"/></div><div class="field"><label for="end">End time</label><input id="end" type="time" value="17:30"/></div><div class="field full"><label><input id="overnight" style="width:auto" type="checkbox"/> If end is earlier, treat it as next day</label></div></div><div class="actions"><button class="btn primary" id="calculate">Calculate Hours →</button><button class="btn secondary" id="clear">Reset</button></div><div class="error" id="error"></div></div><div class="card"><div class="result-hero"><small>Elapsed time</small><div class="big" id="elapsed">—</div><div class="accent" id="decimal">—</div></div><div class="stats"><div class="stat"><span>Total minutes</span><b id="mins">—</b></div><div class="stat"><span>Total seconds</span><b id="secs">—</b></div></div></div></div></section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<div class="cp-tool-actions"><button data-cp-print="" type="button">Print / Save PDF</button><span aria-live="polite" class="cp-action-status" role="status"></span></div><section class="content"><div class="wrap content-grid"><article class="article"><section id="what"><h2>What Is an Hours Calculator?</h2><p class="direct"><strong>Answer:</strong> An hours calculator finds the elapsed time between two clock times and can express that interval in hours and minutes, decimal hours, minutes, or seconds.</p></section><section id="how"><h2>How to Use the Hours Calculator</h2><ol><li>Enter the start time.</li><li>Enter the end time.</li><li>If the interval crosses midnight, enable the overnight option.</li><li>Calculate the elapsed hours.</li></ol></section><section id="formula"><h2>Hours Between Times</h2><div class="formula">Elapsed minutes = end clock minutes − start clock minutes
-Decimal hours = elapsed minutes ÷ 60</div></section><section id="example"><h2>Calculation Example</h2><p>From 9:00 AM to 5:30 PM is 8 hours 30 minutes, or 8.50 decimal hours.</p></section><section id="limits"><h2>Assumptions and Limitations</h2><p>This page does not subtract unpaid breaks, overtime rules, or workday policies. Use a time-card/payroll tool when those rules matter.</p></section><section id="faq"><h2>Hours Calculator FAQs</h2><details class="faq"><summary>What are decimal hours?</summary><p>Decimal hours express minutes as a fraction of 60; 30 minutes equals 0.50 hour.</p></details><details class="faq"><summary>Can it calculate an overnight shift?</summary><p>Yes. Enable the next-day option when the end time is earlier than the start time.</p></details><details class="faq"><summary>Does it calculate wages?</summary><p>No. This page only measures elapsed time.</p></details></section><section id="sources"><h2>Sources and Methodology</h2><p>The page logic and explanatory content were cross-checked against the following references.</p><ul class="sources"><li><a href="https://www.calculator.net/hours-calculator.html" rel="noopener" target="_blank">Calculator.net — Hours Calculator</a></li></ul></section></article>
-</div></section>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<details class="cp-data-panel"><summary><span>Calculator Data — exact tool basis</span><small>Date &amp; Time · Calculator</small></summary><div class="cp-data-grid"><div class="cp-data-item wide"><b>Purpose</b><p>Calculate hours and minutes between two clock times, with an overnight option and decimal-hours output.</p></div><div class="cp-data-item wide"><b>Formula / Algorithm Used in Tool</b><p>Elapsed minutes = end clock minutes − start clock minutes; if overnight and end &lt; start, add 1,440 minutes. Decimal hours = elapsed minutes ÷ 60.</p></div><div class="cp-data-item"><b>Required User Inputs</b><p>Start time; End time; If end is earlier, treat it as next day</p></div><div class="cp-data-item"><b>Primary Outputs</b><p>Elapsed time; Total minutes; Total seconds</p></div><div class="cp-data-item wide"><b>Important Assumptions / Limitations</b><p>This page does not subtract unpaid breaks, overtime rules, or workday policies. Use a time-card/payroll tool when those rules matter.</p></div><div class="cp-data-item"><b>Fresh Data Required?</b><p>Conditional</p></div><div class="cp-data-item"><b>Recommended Update Frequency</b><p>When calendar/time-zone rules change</p></div><div class="cp-data-item wide"><b>Current Source URLs in Page</b><p><a href="https://www.calculator.net/hours-calculator.html" rel="nofollow noopener" target="_blank">https://www.calculator.net/hours-calculator.html</a></p></div></div></details><script class="cp-calculator-data" type="application/json">{"index":"33","Batch":"4","Calculator / Page":"Hours Calculator","Slug":"hours-calculator","Site Category (Current)":"Date & Time","Recommended Content Domain":"Date / Time","Page Type":"Calculator","Search Intent / Purpose":"Calculate hours and minutes between two clock times, with an overnight option and decimal-hours output.","Formula / Algorithm Used in Tool":"Elapsed minutes = end clock minutes − start clock minutes; if overnight and end < start, add 1,440 minutes. Decimal hours = elapsed minutes ÷ 60.","Required User Inputs":"Start time; End time; If end is earlier, treat it as next day","Primary Outputs":"Elapsed time; Total minutes; Total seconds","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Start time, End time, If end is earlier, treat it as next day. Explain outputs: Elapsed time, Total minutes, Total seconds. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Calendar convention and date arithmetic rules; time-zone functions require current IANA/browser data.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When calendar/time-zone rules change","Important Assumptions / Limitations":"This page does not subtract unpaid breaks, overtime rules, or workday policies. Use a time-card/payroll tool when those rules matter.","Current Source URLs in Page":"https://www.calculator.net/hours-calculator.html","Implementation Path":"/hours-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Date &amp; Time</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../time-duration-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time Duration Calculator</strong><small>Calculate exact elapsed time between two local date-times in days, hours, minutes,…</small></span></a><a class="cp-related-link" href="../age-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Age Calculator</strong><small>Calculate age between two dates in years, months, and days, plus total days, weeks,…</small></span></a><a class="cp-related-link" href="../time-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time Calculator</strong><small>Add or subtract two time durations in hours, minutes, and seconds and view the norm…</small></span></a><a class="cp-related-link" href="../day-counter/index.html"><span class="cp-related-dot">›</span><span><strong>Day Counter</strong><small>Count calendar days between two dates, with inclusive/exclusive options plus weekda…</small></span></a><a class="cp-related-link" href="../date-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Date Calculator</strong><small>Calculate days between dates or add and subtract years, months, weeks, and days fro…</small></span></a><a class="cp-related-link" href="../marriage-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Marriage Tax Calculator</strong><small>Compare a simplified 2026 federal tax estimate for two people before marriage with…</small></span></a><a class="cp-related-link" href="../time-card-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time Card Calculator</strong><small>Total weekly work hours, unpaid breaks, configurable overtime, and estimated gross…</small></span></a><a class="cp-related-link" href="../time-zone-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time Zone Calculator</strong><small>Convert a date and time between major IANA time zones with browser-supported daylig…</small></span></a></div><a class="cp-side-category" href="../date-time/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script>
-const $=id=>document.getElementById(id);
-const fmt=(n,d=2)=>Number.isFinite(n)?Number(n).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
-const val=id=>parseFloat($(id).value);
-function setErr(m=''){if($('error'))$('error').textContent=m}
-function parseDate(id){const s=$(id).value;if(!s)throw Error('Please enter a date.');const d=new Date(s+'T12:00:00');if(Number.isNaN(d.getTime()))throw Error('Invalid date.');return d}
-function pretty(d){return d.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})}
-function iso(d){return d.toISOString().slice(0,10)}
+    <!-- Primary Meta Tags -->
+<title>Hours Calculator – Find Hours Between Two Clock Times</title>
+<meta name="title" content="Hours Calculator – Find Hours Between Two Clock Times">
+<meta name="description" content="Calculate the time between two clock times in hours and minutes. Handle overnight spans and view total minutes, total seconds, and decimal hours.">
 
-function tm(s){if(!s)throw Error('Enter both clock times.');const [h,m]=s.split(':').map(Number);return h*60+m}
-function calculate(){try{let a=tm($('start').value),b=tm($('end').value);if(b<a&&$('overnight').checked)b+=1440;if(b<a)throw Error('End time is earlier than start time. Enable overnight if it is the next day.');let d=b-a,h=Math.floor(d/60),m=d%60;$('elapsed').textContent=`${h} h ${m} min`;$('decimal').textContent=`${fmt(d/60,2)} decimal hours`;$('mins').textContent=d.toLocaleString();$('secs').textContent=(d*60).toLocaleString();setErr('')}catch(e){setErr(e.message)}}$('calculate').onclick=calculate;$('clear').onclick=()=>location.reload();calculate();
-</script><script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/hours-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/hours-calculator/">
+<meta property="og:title" content="Hours Calculator – Find Hours Between Two Clock Times">
+<meta property="og:description" content="Calculate the time between two clock times in hours and minutes. Handle overnight spans and view total minutes, total seconds, and decimal hours.">
+<meta property="og:site_name" content="Hours Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/hours-calculator/">
+<meta name="twitter:title" content="Hours Calculator – Find Hours Between Two Clock Times">
+<meta name="twitter:description" content="Calculate the time between two clock times in hours and minutes. Handle overnight spans and view total minutes, total seconds, and decimal hours.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        :root {
+            --ink: #0b1933;
+            --muted: #60708a;
+            --line: #dbe8f6;
+            --blue: #0a6ff2;
+            --blue2: #20a5ff;
+            --green: #16b86b;
+            --yellow: #f6b51f;
+            --red: #ef4f58;
+            --shadow: 0 18px 45px rgba(25, 74, 123, .16), inset 0 1px 0 rgba(255, 255, 255, .95)
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at 12% 6%, rgba(32, 165, 255, .18), transparent 28%), radial-gradient(circle at 88% 15%, rgba(35, 205, 153, .13), transparent 24%), linear-gradient(180deg, #f8fcff, #eef7ff 48%, #f7fbff);
+            line-height: 1.65
+        }
+
+        a {
+            color: #0967d8;
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .wrap {
+            width: min(1180px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(248, 252, 255, .8);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(196, 219, 241, .72)
+        }
+
+        .nav {
+            height: 72px;
+            display: flex;
+            align-items: center;
+            gap: 28px
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 23px;
+            font-weight: 850;
+            color: var(--ink)
+        }
+
+        .brand i {
+            width: 38px;
+            height: 38px;
+            display: grid;
+            place-items: center;
+            border-radius: 11px;
+            color: #fff;
+            font-style: normal;
+            background: linear-gradient(145deg, #27b3ff, #0562d7);
+            box-shadow: 0 9px 18px rgba(10, 111, 242, .28), inset 0 2px 2px rgba(255, 255, 255, .45)
+        }
+
+        .navlinks {
+            display: flex;
+            gap: 20px;
+            margin-left: 18px;
+            font-size: 14px;
+            font-weight: 700
+        }
+
+        .navlinks a {
+            color: #20324e
+        }
+
+        .search {
+            margin-left: auto;
+            background: #fff;
+            border: 1px solid #e0ebf6;
+            border-radius: 999px;
+            padding: 10px 15px;
+            min-width: 210px;
+            color: #6d7d93;
+            font-size: 13px;
+            box-shadow: 0 8px 20px rgba(26, 70, 112, .08)
+        }
+
+        .hero {
+            padding: 28px 0 18px
+        }
+
+        .breadcrumb {
+            font-size: 13px;
+            color: #6c7b91;
+            margin-bottom: 18px
+        }
+
+        .breadcrumb span {
+            margin: 0 8px;
+            color: #a1aec0
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.03fr .97fr;
+            gap: 28px;
+            align-items: center
+        }
+
+        h1 {
+            font-size: clamp(2.6rem, 5vw, 4.5rem);
+            line-height: 1.05;
+            margin: 0 auto 18px;
+            text-align: center;
+            letter-spacing: -.06em;
+            font-weight: 900;
+        }
+
+        h1 b {
+            color: var(--blue)
+        }
+
+        .lead {
+            font-size: 17px;
+            color: #42546e;
+            max-width: 700px;
+            margin: 0
+        }
+
+        .chips {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+            margin-top: 18px
+        }
+
+        .chip {
+            background: #fff;
+            border: 1px solid #dceafa;
+            border-radius: 999px;
+            padding: 7px 11px;
+            font-size: 12px;
+            font-weight: 800;
+            color: #35506f;
+            box-shadow: 0 8px 18px rgba(37, 86, 137, .07)
+        }
+
+        .hero-art {
+            height: 270px;
+            position: relative;
+            perspective: 900px
+        }
+
+        .floor {
+            position: absolute;
+            left: 9%;
+            right: 7%;
+            bottom: 12px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(32, 75, 115, .14);
+            filter: blur(15px)
+        }
+
+        .obj {
+            position: absolute;
+            box-shadow: var(--shadow)
+        }
+
+        .calc-shell {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 32px;
+            background: rgba(255, 255, 255, .5);
+            border: 1px solid rgba(255, 255, 255, .92);
+            box-shadow: 0 28px 70px rgba(37, 86, 137, .15);
+            backdrop-filter: blur(20px)
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 16px
+        }
+
+        .card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, .97), rgba(244, 249, 255, .86));
+            border: 1px solid rgba(218, 231, 245, .92);
+            border-radius: 24px;
+            padding: 22px;
+            box-shadow: var(--shadow)
+        }
+
+        .card h2 {
+            font-size: 21px;
+            margin: 0 0 4px;
+            letter-spacing: -.5px
+        }
+
+        .sub {
+            font-size: 13px;
+            color: #687990;
+            margin: 0 0 15px
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 13px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px
+        }
+
+        .field.full {
+            grid-column: 1/-1
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: 800;
+            color: #263a56
+        }
+
+        .input-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid #cddff1;
+            background: #fbfdff;
+            border-radius: 12px;
+            padding: 11px 12px;
+            font: inherit;
+            color: #152641;
+            box-shadow: inset 0 2px 4px rgba(26, 77, 123, .05);
+            outline: none
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #66b5ff;
+            box-shadow: 0 0 0 3px rgba(32, 165, 255, .12)
+        }
+
+        .unit {
+            font-size: 12px;
+            color: #667890;
+            white-space: nowrap
+        }
+
+        .hint {
+            font-size: 11px;
+            color: #75859a
+        }
+
+        .tabs {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            background: #edf5ff;
+            border: 1px solid #dceafb;
+            padding: 4px;
+            border-radius: 15px;
+            margin-bottom: 16px
+        }
+
+        .tab {
+            border: 0;
+            background: transparent;
+            padding: 9px 12px;
+            border-radius: 11px;
+            font-weight: 800;
+            color: #334866;
+            cursor: pointer
+        }
+
+        .tab.active {
+            background: linear-gradient(145deg, #2aa8ff, #0668df);
+            color: #fff;
+            box-shadow: 0 9px 17px rgba(8, 111, 240, .26)
+        }
+
+        .actions {
+            display: grid;
+            grid-template-columns: 1.5fr .8fr;
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 13px 14px;
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .primary {
+            color: #fff;
+            background: linear-gradient(145deg, #25a9ff, #0064dc);
+            box-shadow: 0 12px 22px rgba(6, 104, 221, .28)
+        }
+
+        .secondary {
+            background: #edf3f9;
+            color: #273a55
+        }
+
+        .error {
+            color: #b4232b;
+            font-size: 12px;
+            margin-top: 10px;
+            min-height: 18px
+        }
+
+        .result-hero {
+            padding: 18px;
+            border-radius: 19px;
+            background: linear-gradient(135deg, #edfff7, #eef8ff);
+            position: relative;
+            overflow: hidden
+        }
+
+        .result-hero:after {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            right: -30px;
+            top: -45px;
+            background: radial-gradient(circle, #55d7ff, #0b79ef);
+            opacity: .17
+        }
+
+        .result-hero small {
+            color: #60728b
+        }
+
+        .big {
+            font-size: 36px;
+            font-weight: 900;
+            letter-spacing: -1.8px;
+            line-height: 1.1;
+            margin-top: 3px;
+            word-break: break-word
+        }
+
+        .accent {
+            color: var(--green);
+            font-weight: 850;
+            font-size: 18px
+        }
+
+        .stats {
+            margin-top: 13px;
+            border-radius: 16px;
+            background: #fff;
+            border: 1px solid #e3edf7;
+            overflow: hidden
+        }
+
+        .stat {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px 12px;
+            border-bottom: 1px solid #e8f0f7;
+            font-size: 13px
+        }
+
+        .stat:last-child {
+            border-bottom: 0
+        }
+
+        .stat b {
+            text-align: right
+        }
+
+        .answerbox {
+            margin: 14px 0 0;
+            padding: 15px 16px;
+            border-radius: 16px;
+            background: #0e2544;
+            color: #fff;
+            box-shadow: 0 15px 28px rgba(12, 37, 68, .18);
+            font-size: 13px
+        }
+
+        .answerbox strong {
+            color: #73d3ff
+        }
+
+        .table-wrap {
+            overflow: auto;
+            border-radius: 16px;
+            border: 1px solid #dce7f2;
+            margin: 14px 0
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 520px;
+            background: #fff
+        }
+
+        th,
+        td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #e7eef5;
+            font-size: 13px
+        }
+
+        th {
+            background: #f1f7fd
+        }
+
+        .progress {
+            height: 14px;
+            border-radius: 999px;
+            background: #e7f1fb;
+            overflow: hidden;
+            margin-top: 14px
+        }
+
+        .progress span {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, var(--blue), var(--green));
+            border-radius: inherit
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: 1.6fr .8fr 1fr auto;
+            gap: 8px;
+            align-items: end;
+            margin-bottom: 8px
+        }
+
+        .remove {
+            width: 40px;
+            height: 40px;
+            border: 0;
+            border-radius: 10px;
+            background: #fff0f0;
+            color: #b4232b;
+            font-weight: 900;
+            cursor: pointer
+        }
+
+        .hub-search {
+            margin-bottom: 18px
+        }
+
+        .hub-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px
+        }
+
+        .hub {
+            padding: 18px;
+            border-radius: 18px;
+            background: linear-gradient(145deg, #fff, #f4f9ff);
+            border: 1px solid #dfeaf5
+        }
+
+        .hub h3 {
+            margin: 0 0 8px
+        }
+
+        .hub a {
+            display: inline-block;
+            margin: 4px 8px 4px 0;
+            font-size: 13px
+        }
+
+        .hub[hidden] {
+            display: none
+        }
+
+        .content {
+            padding: 38px 0 70px
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.fr;
+            gap: 22px
+        }
+
+        .article,
+        .toc {
+            background: rgba(255, 255, 255, .9);
+            border: 1px solid #dfeaf6;
+            border-radius: 25px;
+            box-shadow: var(--shadow)
+        }
+
+        .article {
+            padding: 30px
+        }
+
+        .toc {
+            padding: 24px;
+            align-self: start;
+            position: sticky;
+            top: 94px
+        }
+
+        .article h2 {
+            font-size: 28px;
+            line-height: 1.2;
+            margin: 38px 0 12px;
+            letter-spacing: -.8px
+        }
+
+        .article h2:first-child {
+            margin-top: 0
+        }
+
+        .article h3 {
+            font-size: 20px;
+            margin: 24px 0 8px
+        }
+
+        .article p,
+        .article li {
+            color: #42536d
+        }
+
+        .direct {
+            border-left: 5px solid var(--blue);
+            background: #f0f7ff;
+            padding: 16px 18px;
+            border-radius: 14px;
+            color: #263a56
+        }
+
+        .formula {
+            font: 800 16px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: #0d213c;
+            color: #eef8ff;
+            padding: 16px;
+            border-radius: 15px;
+            overflow: auto
+        }
+
+        .note {
+            background: #fff9e9;
+            border: 1px solid #f5df9c;
+            padding: 15px 17px;
+            border-radius: 14px;
+            color: #5c4d22
+        }
+
+        .faq {
+            border-top: 1px solid #e4edf6;
+            padding: 15px 0
+        }
+
+        .faq summary {
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .faq p {
+            margin-bottom: 0
+        }
+
+        .toc h3 {
+            margin-top: 0
+        }
+
+        .toc a {
+            display: block;
+            padding: 7px 0;
+            color: #34506f;
+            font-size: 14px
+        }
+
+        .sources li {
+            margin: 8px 0
+        }
+
+        footer {
+            padding: 28px 0 42px;
+            color: #63748a;
+            font-size: 13px;
+            text-align: center
+        }
+
+        @media(max-width:960px) {
+
+            .navlinks,
+            .search {
+                display: none
+            }
+
+            .hero-grid,
+            .calc-grid,
+            .content-grid {
+                grid-template-columns: 1fr
+            }
+
+            .hero-art {
+                height: 235px
+            }
+
+            .toc {
+                position: static
+            }
+        }
+
+        @media(max-width:620px) {
+            .wrap {
+                width: min(100% - 20px, 1180px)
+            }
+
+            .hero {
+                padding-top: 18px
+            }
+
+            .hero-art {
+                transform: scale(.86);
+                transform-origin: center top;
+                margin-bottom: -28px
+            }
+
+            .calc-shell {
+                padding: 8px;
+                border-radius: 23px
+            }
+
+            .card {
+                padding: 16px;
+                border-radius: 19px
+            }
+
+            .form-grid,
+            .actions,
+            .hub-grid {
+                grid-template-columns: 1fr
+            }
+
+            .field.full {
+                grid-column: auto
+            }
+
+            .article {
+                padding: 21px
+            }
+
+            .nav {
+                height: 64px
+            }
+
+            .course-grid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .course-grid .remove {
+                grid-column: 2
+            }
+        }
+
+        /* unique scenes */
+        .scene-triangle .tri {
+            right: 70px;
+            top: 25px;
+            width: 280px;
+            height: 220px;
+            clip-path: polygon(50% 0, 100% 100%, 0 100%);
+            background: linear-gradient(145deg, #2aabff, #0867dc);
+            filter: drop-shadow(18px 28px 22px rgba(12, 95, 180, .22))
+        }
+
+        .scene-triangle .tri:after {
+            content: "a   b   c";
+            position: absolute;
+            left: 75px;
+            top: 120px;
+            color: #fff;
+            font-weight: 900;
+            letter-spacing: 24px
+        }
+
+        .scene-volume .cube {
+            right: 95px;
+            top: 45px;
+            width: 180px;
+            height: 180px;
+            border-radius: 24px;
+            background: linear-gradient(145deg, #c9eaff, #429fe8);
+            transform: rotateX(14deg) rotateY(-18deg);
+            box-shadow: 25px 30px 38px rgba(24, 89, 150, .2)
+        }
+
+        .scene-volume .sphere {
+            right: 20px;
+            top: 120px;
+            width: 115px;
+            height: 115px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 32% 25%, #fff, #84d8c4 42%, #0d8e75 75%)
+        }
+
+        .scene-sd .bars {
+            right: 45px;
+            bottom: 32px;
+            width: 320px;
+            height: 190px;
+            display: flex;
+            align-items: flex-end;
+            gap: 14px
+        }
+
+        .scene-sd .bars i {
+            width: 35px;
+            border-radius: 12px 12px 4px 4px;
+            background: linear-gradient(#49b9ff, #0a6ff2)
+        }
+
+        .scene-sd .bars i:nth-child(1) {
+            height: 50px
+        }
+
+        .scene-sd .bars i:nth-child(2) {
+            height: 90px
+        }
+
+        .scene-sd .bars i:nth-child(3) {
+            height: 155px
+        }
+
+        .scene-sd .bars i:nth-child(4) {
+            height: 185px
+        }
+
+        .scene-sd .bars i:nth-child(5) {
+            height: 130px
+        }
+
+        .scene-sd .bars i:nth-child(6) {
+            height: 70px
+        }
+
+        .scene-rng .dice {
+            right: 190px;
+            top: 55px;
+            width: 125px;
+            height: 125px;
+            border-radius: 26px;
+            background: linear-gradient(145deg, #fff, #bfdff7);
+            transform: rotate(15deg);
+            display: grid;
+            place-items: center;
+            font-size: 52px;
+            color: #0a6ff2;
+            font-weight: 900
+        }
+
+        .scene-rng .orb {
+            right: 45px;
+            top: 110px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 25%, #fff, #ffd95d 50%, #e0a400);
+            display: grid;
+            place-items: center;
+            font-size: 34px;
+            font-weight: 900;
+            color: #7b5900
+        }
+
+        .scene-hub .stack {
+            right: 65px;
+            top: 36px;
+            width: 270px;
+            height: 190px
+        }
+
+        .scene-hub .stack i {
+            position: absolute;
+            width: 205px;
+            height: 120px;
+            border-radius: 25px;
+            background: linear-gradient(145deg, #fff, #b9dcfa);
+            border: 1px solid #fff
+        }
+
+        .scene-hub .stack i:nth-child(1) {
+            right: 0;
+            top: 0;
+            transform: rotate(8deg)
+        }
+
+        .scene-hub .stack i:nth-child(2) {
+            right: 30px;
+            top: 30px;
+            transform: rotate(-4deg);
+            background: linear-gradient(145deg, #d9fff2, #76d4bb)
+        }
+
+        .scene-hub .stack i:nth-child(3) {
+            right: 60px;
+            top: 60px;
+            background: linear-gradient(145deg, #eaf5ff, #75bffc)
+        }
+
+        .scene-hub .stack:after {
+            content: "TOOLS";
+            position: absolute;
+            right: 98px;
+            top: 94px;
+            z-index: 3;
+            font-size: 28px;
+            font-weight: 900;
+            color: #0a6ff2
+        }
+
+        .scene-age .cake {
+            right: 105px;
+            top: 88px;
+            width: 220px;
+            height: 110px;
+            border-radius: 24px 24px 34px 34px;
+            background: linear-gradient(#7fd6ff, #0c75df)
+        }
+
+        .scene-age .cake:before {
+            content: "";
+            position: absolute;
+            left: 20px;
+            right: 20px;
+            top: -28px;
+            height: 42px;
+            border-radius: 50%;
+            background: #fff
+        }
+
+        .scene-age .candle {
+            right: 205px;
+            top: 25px;
+            width: 18px;
+            height: 75px;
+            border-radius: 8px;
+            background: repeating-linear-gradient(180deg, #ff7b96 0 12px, #fff 12px 22px)
+        }
+
+        .scene-age .candle:before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: -23px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50% 50% 50% 0;
+            background: #ffca38;
+            transform: rotate(-45deg)
+        }
+
+        .scene-date .cal {
+            right: 75px;
+            top: 35px;
+            width: 255px;
+            height: 200px;
+            border-radius: 28px;
+            background: #fff;
+            border: 1px solid #dbe8f6;
+            transform: rotate(-5deg)
+        }
+
+        .scene-date .cal:before {
+            content: "DATE";
+            position: absolute;
+            left: 25px;
+            right: 25px;
+            top: 25px;
+            padding: 10px;
+            border-radius: 14px;
+            background: #0a6ff2;
+            color: #fff;
+            text-align: center;
+            font-weight: 900;
+            letter-spacing: 3px
+        }
+
+        .scene-date .cal:after {
+            content: "+ 30";
+            position: absolute;
+            inset: 80px 30px 25px;
+            display: grid;
+            place-items: center;
+            font-size: 50px;
+            font-weight: 900;
+            color: #183d63
+        }
+
+        .scene-time .clock {
+            right: 90px;
+            top: 35px;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: #fff;
+            border: 15px solid #0d315f;
+            box-shadow: 0 26px 45px rgba(17, 65, 115, .2)
+        }
+
+        .scene-time .clock:before {
+            content: "";
+            position: absolute;
+            left: 96px;
+            top: 42px;
+            width: 7px;
+            height: 65px;
+            background: #0a6ff2;
+            transform-origin: bottom;
+            transform: rotate(35deg);
+            border-radius: 6px
+        }
+
+        .scene-time .clock:after {
+            content: "";
+            position: absolute;
+            left: 97px;
+            top: 98px;
+            width: 70px;
+            height: 7px;
+            background: #16b86b;
+            transform-origin: left;
+            transform: rotate(20deg);
+            border-radius: 6px
+        }
+
+        .scene-hours .timeline {
+            right: 35px;
+            top: 78px;
+            width: 335px;
+            height: 30px;
+            border-radius: 15px;
+            background: linear-gradient(90deg, #0a6ff2, #16b86b)
+        }
+
+        .scene-hours .timeline:before,
+        .scene-hours .timeline:after {
+            content: "";
+            position: absolute;
+            top: -24px;
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            background: #fff;
+            border: 10px solid #0e2544
+        }
+
+        .scene-hours .timeline:before {
+            left: -5px
+        }
+
+        .scene-hours .timeline:after {
+            right: -5px
+        }
+
+        .scene-hours .label {
+            right: 115px;
+            top: 135px;
+            padding: 14px 22px;
+            border-radius: 18px;
+            background: #fff;
+            font-size: 24px;
+            font-weight: 900;
+            color: #0a6ff2
+        }
+
+        .scene-gpa .cap {
+            right: 55px;
+            top: 50px;
+            width: 285px;
+            height: 170px;
+            clip-path: polygon(50% 0, 100% 35%, 75% 50%, 75% 78%, 25% 78%, 25% 50%, 0 35%);
+            background: linear-gradient(145deg, #1b89ef, #0e315a);
+            filter: drop-shadow(18px 26px 20px rgba(14, 60, 105, .18))
+        }
+
+        .scene-gpa .badge {
+            right: 150px;
+            top: 120px;
+            padding: 12px 18px;
+            border-radius: 18px;
+            background: #fff;
+            color: #0a6ff2;
+            font-size: 28px;
+            font-weight: 900
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/hours-calculator/#webapplication",
+      "name": "Hours Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/hours-calculator/",
+      "description": "Calculate the time between two clock times in hours and minutes. Handle overnight spans and view total minutes, total seconds, and decimal hours.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/hours-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Hours Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/hours-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/hours-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate the hours between two times?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Convert each time to total minutes, subtract the start value from the end value, and then convert the difference back into hours and minutes. The Hours Calculator performs these steps automatically."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the calculator handle a period that crosses midnight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If the end time is earlier than the start time, enable the option that treats the end as the next day. The calculator then adds 1,440 minutes, equivalent to 24 hours, to the difference."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How are decimal hours calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Decimal hours equal total elapsed minutes divided by 60. For example: 150 ÷ 60 = 2.5 hours. So 2 hours 30 minutes equals 2.5 decimal hours."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the Hours Calculator subtract breaks?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The calculation measures the difference between the entered start and end clock times. It does not automatically deduct lunch periods, unpaid breaks, or other interruptions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this calculator calculate overtime or pay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Overtime rates, wage rules, break deductions, and payroll policies are outside this calculator's calculation method. Use a time-card or payroll calculator when those factors are required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use it for different time zones?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This calculator does not take named time zones or locations as inputs. Use a Time Zone Calculator when the start and end times are in different time zones."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if the start time and end time are the same?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Under the calculation method, the difference is zero because the end clock minutes equal the start clock minutes. The overnight adjustment is applied only when the end time is earlier than the start time."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="date-time" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../date-time/index.html">Date &amp; Time</a></li>
+            <li><a aria-current="page" href="index.html">Hours Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../date-time/index.html">Browse Date &amp; Time</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Hours Calculator</h1>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="calc-shell" id="calculator">
+                <div class="calc-grid">
+                    <div class="card">
+                        <h2>Hours between times</h2>
+                        <div class="form-grid">
+                            <div class="field"><label for="start">Start time</label><input id="start" type="time"
+                                    value="09:00" /></div>
+                            <div class="field"><label for="end">End time</label><input id="end" type="time"
+                                    value="17:30" /></div>
+                            <div class="field full"><label><input id="overnight" style="width:auto" type="checkbox" />
+                                    If end is earlier, treat it as next day</label></div>
+                        </div>
+                        <div class="actions"><button class="btn primary" id="calculate">Calculate Hours
+                                →</button><button class="btn secondary" id="clear">Reset</button></div>
+                        <div class="error" id="error"></div>
+                    </div>
+                    <div class="card">
+                        <div class="result-hero"><small>Elapsed time</small>
+                            <div class="big" id="elapsed">—</div>
+                            <div class="accent" id="decimal">—</div>
+                        </div>
+                        <div class="stats">
+                            <div class="stat"><span>Total minutes</span><b id="mins">—</b></div>
+                            <div class="stat"><span>Total seconds</span><b id="secs">—</b></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="content">
+                <div class="wrap content-grid">
+                   <article class="article">
+            <section id="what">
+              <h2>What Is the Hours Calculator?</h2>
+              <p class="direct">The Hours Calculator measures the amount of time between two clock times. It is useful for checking the length of an activity, shift, trip, study session, event, or any other time interval that does not require detailed payroll or calendar rules.</p>
+              <p>The calculator can also handle an overnight period by adding one day when the end time is earlier than the start time and the overnight option is enabled.</p>
+            </section>
+            <section id="how">
+              <h2>How to Use the Hours Calculator</h2>
+              <h3>Start Time</h3>
+              <p>Enter the clock time when the period begins. The calculator converts the entered hours and minutes into total minutes from the start of the day.</p>
+              <h3>End Time</h3>
+              <p>Enter the clock time when the period ends. It is converted to total clock minutes in the same way as the start time.</p>
+              <h3>If End Is Earlier, Treat It as Next Day</h3>
+              <p>Enable this option when the time interval crosses midnight.</p>
+              <p>For example, a start time of 9:00 PM and an end time of 2:00 AM normally places the end clock time earlier than the start. With the overnight option enabled, the calculator adds 24 hours to correctly represent the next day.</p>
+            </section>
+            <section id="formula">
+              <h2>Formula / Calculation Method</h2>
+              <h3>Main Formula</h3>
+              <p>First, each clock time is converted to minutes:</p>
+              <div class="formula">S=60Hs+MsS = 60H_s + M_s E=60He+MeE = 60H_e + M_e</div>
+              <p>The initial elapsed time is:</p>
+              <div class="formula">D0=E−SD_0 = E - S</div>
+              <p>If the overnight option is enabled and the end time is earlier than the start time:</p>
+              <div class="formula">D=D0+1440D = D_0 + 1440</div>
+              <p>Otherwise:</p>
+              <div class="formula">D=D0D = D_0</div>
+              <p>There are 1,440 minutes in 24 hours because one hour equals 60 minutes. BIPM and NIST both define the hour as 60 minutes or 3,600 seconds.</p>
+              <h3>Variables</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Symbol</th>
+                    <th>Meaning</th>
+                    <th>Unit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>HsH_s</td>
+                    <td>Hour component of the start time</td>
+                    <td>hours</td>
+                  </tr>
+                  <tr>
+                    <td>MsM_s</td>
+                    <td>Minute component of the start time</td>
+                    <td>minutes</td>
+                  </tr>
+                  <tr>
+                    <td>HeH_e</td>
+                    <td>Hour component of the end time</td>
+                    <td>hours</td>
+                  </tr>
+                  <tr>
+                    <td>MeM_e</td>
+                    <td>Minute component of the end time</td>
+                    <td>minutes</td>
+                  </tr>
+                  <tr>
+                    <td>SS</td>
+                    <td>Start time converted to minutes</td>
+                    <td>minutes</td>
+                  </tr>
+                  <tr>
+                    <td>EE</td>
+                    <td>End time converted to minutes</td>
+                    <td>minutes</td>
+                  </tr>
+                  <tr>
+                    <td>D0D_0</td>
+                    <td>Difference before an overnight adjustment</td>
+                    <td>minutes</td>
+                  </tr>
+                  <tr>
+                    <td>DD</td>
+                    <td>Final elapsed time</td>
+                    <td>minutes</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h3>Calculation Sequence</h3>
+              <ol>
+                <li>Convert the start time to total clock minutes.</li>
+                <li>Convert the end time to total clock minutes.</li>
+                <li>Subtract the start value from the end value.</li>
+                <li>If the end time is earlier and the overnight option is enabled, add 1,440 minutes.</li>
+                <li>Convert the resulting minutes into hours and minutes.</li>
+                <li>Calculate total seconds and decimal hours.</li>
+              </ol>
+              <h3>Elapsed Hours and Minutes</h3>
+              <p>The whole-hour portion is:</p>
+              <div class="formula">Hours=⌊D60⌋\text{Hours} = \left\lfloor\frac{D}{60}\right\rfloor</div>
+              <p>The remaining minutes are:</p>
+              <div class="formula">Minutes=D mod 60\text{Minutes} = D \bmod 60</div>
+              <h3>Total Minutes</h3>
+              <p>The final elapsed-minute value is already represented by:</p>
+              <div class="formula">Total Minutes=D\text{Total Minutes} = D</div>
+              <h3>Total Seconds</h3>
+              <p>Since one minute equals 60 seconds:</p>
+              <div class="formula">Total Seconds=D×60\text{Total Seconds} = D \times 60</div>
+              <h3>Decimal Hours</h3>
+              <p>Decimal hours are calculated by dividing elapsed minutes by 60:</p>
+              <div class="formula">Decimal Hours=D60\text{Decimal Hours} = \frac{D}{60}</div>
+              <p>For example, 4 hours 30 minutes equals:</p>
+              <div class="formula">270÷60=4.5 hours270 \div 60 = 4.5\text{ hours}</div>
+            </section>
+            <section id="example">
+              <h2>Worked Example</h2>
+              <p>Suppose a period starts at <strong>9:45 PM</strong> and ends at <strong>2:15 AM the next day</strong>.</p>
+              <p>The overnight option is enabled.</p>
+              <h3>Inputs</h3>
+              <ul>
+                <li>Start time: 9:45 PM</li>
+                <li>End time: 2:15 AM</li>
+                <li>Treat earlier end time as next day: Yes</li>
+              </ul>
+              <h3>Step 1: Convert the Times to Minutes</h3>
+              <p>Using 24-hour clock values for the calculation:</p>
+              <div class="formula">S=(21×60)+45S = (21 \times 60) + 45 S=1305S = 1305</div>
+              <p>For 2:15 AM:</p>
+              <div class="formula">E=(2×60)+15E = (2 \times 60) + 15 E=135E = 135</div>
+              <h3>Step 2: Find the Initial Difference</h3>
+              <div class="formula">D0=135−1305D_0 = 135 - 1305 D0=−1170D_0 = -1170</div>
+              <p>Because the end time is earlier than the start time and the overnight option is enabled, add 1,440 minutes:</p>
+              <div class="formula">D=−1170+1440D = -1170 + 1440 D=270 minutesD = 270\text{ minutes}</div>
+              <h3>Step 3: Convert the Result</h3>
+              <p>Elapsed time:</p>
+              <div class="formula">270÷60=4 hours with 30 minutes remaining270 \div 60 = 4\text{ hours with }30\text{ minutes remaining}</div>
+              <p>Decimal hours:</p>
+              <div class="formula">270÷60=4.5270 \div 60 = 4.5</div>
+              <p>Total seconds:</p>
+              <div class="formula">270×60=16,200270 \times 60 = 16,200</div>
+              <h3>Final Result</h3>
+              <ul>
+                <li><strong>Elapsed time:</strong> 4 hours 30 minutes</li>
+                <li><strong>Total minutes:</strong> 270 minutes</li>
+                <li><strong>Total seconds:</strong> 16,200 seconds</li>
+                <li><strong>Decimal hours:</strong> 4.5 hours</li>
+              </ul>
+            </section>
+            <section id="results">
+              <h2>Understanding Your Results</h2>
+              <h3>Elapsed Time</h3>
+              <p>Elapsed time shows the difference between the two entered clock times in hours and minutes. This is usually the easiest result to read for everyday time intervals.</p>
+              <h3>Total Minutes</h3>
+              <p>Total minutes expresses the entire interval in minutes instead of separating it into hours and minutes.</p>
+              <p>For example, 2 hours 15 minutes equals 135 total minutes.</p>
+              <h3>Total Seconds</h3>
+              <p>Total seconds converts the elapsed minutes into seconds using 60 seconds per minute.</p>
+              <h3>Decimal Hours</h3>
+              <p>Decimal hours express the duration as a single number. For example, 2 hours 30 minutes becomes 2.5 hours rather than 2:30.</p>
+              <p>Decimal hours can be useful when a duration needs to be used in another calculation.</p>
+            </section>
+            <section id="limits">
+              <h2>Assumptions and Limitations</h2>
+              <p>This calculator treats the entries as clock times and calculates their difference in minutes.</p>
+              <p>When the overnight option is enabled, an earlier end time is treated as occurring exactly one day later by adding 1,440 minutes.</p>
+              <p>The calculator does not subtract unpaid breaks or apply overtime, payroll, scheduling, or workplace policies. A dedicated time-card calculator is more appropriate when those rules matter.</p>
+              <p>It also does not use a date or named time zone, so it is not intended for converting times between locations or handling daylight-saving-time changes between specific dates and zones.</p>
+              <p>Because the calculation is based on clock minutes, it is designed for minute-based time intervals rather than second-level start and end inputs.</p>
+            </section>
+            <section id="faq">
+              <h2>Frequently Asked Questions</h2>
+              <details class="faq">
+                <summary>How do I calculate the hours between two times?</summary>
+                <p>Convert each time to total minutes, subtract the start value from the end value, and then convert the difference back into hours and minutes. The Hours Calculator performs these steps automatically.</p>
+              </details>
+              <details class="faq">
+                <summary>How does the calculator handle a period that crosses midnight?</summary>
+                <p>If the end time is earlier than the start time, enable the option that treats the end as the next day. The calculator then adds 1,440 minutes, equivalent to 24 hours, to the difference.</p>
+              </details>
+              <details class="faq">
+                <summary>How are decimal hours calculated?</summary>
+                <p>Decimal hours equal total elapsed minutes divided by 60.</p>
+                <p>For example:</p>
+                <div class="formula">150÷60=2.5 hours150 \div 60 = 2.5\text{ hours}</div>
+                <p>So 2 hours 30 minutes equals 2.5 decimal hours.</p>
+              </details>
+              <details class="faq">
+                <summary>Does the Hours Calculator subtract breaks?</summary>
+                <p>No. The calculation measures the difference between the entered start and end clock times. It does not automatically deduct lunch periods, unpaid breaks, or other interruptions.</p>
+              </details>
+              <details class="faq">
+                <summary>Does this calculator calculate overtime or pay?</summary>
+                <p>No. Overtime rates, wage rules, break deductions, and payroll policies are outside this calculator's calculation method. Use a time-card or payroll calculator when those factors are required.</p>
+              </details>
+              <details class="faq">
+                <summary>Can I use it for different time zones?</summary>
+                <p>This calculator does not take named time zones or locations as inputs. Use a Time Zone Calculator when the start and end times are in different time zones.</p>
+              </details>
+              <details class="faq">
+                <summary>What if the start time and end time are the same?</summary>
+                <p>Under the calculation method, the difference is zero because the end clock minutes equal the start clock minutes. The overnight adjustment is applied only when the end time is earlier than the start time.</p>
+              </details>
+            </section>
+            <section id="sources">
+              <h2>Sources &amp; Methodology</h2>
+              <h3>Formula / Methodology Sources</h3>
+              <ul class="sources">
+                <li><a href="https://www.bipm.org/en/publications/si-brochure?utm_source=chatgpt.com" rel="noopener" target="_blank">BIPM — SI Brochure</a><br>
+                  Used to verify standard time-unit relationships, including 1 minute = 60 seconds and 1 hour = 60 minutes = 3,600 seconds.</li>
+                <li><a href="https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-5-units-outside-si?utm_source=chatgpt.com" rel="noopener" target="_blank">NIST — Guide to the SI: Units Outside the SI</a><br>
+                  Confirms the accepted relationships between seconds, minutes, hours, and days used in the time conversions.</li>
+              </ul>
+              <p>No live rate, threshold, tax rule, or other external numeric dataset is required for this calculator.</p>
+            </section>
+            <section id="related">
+              <h2>Related Tools</h2>
+              <ul>
+                <li><a href="https://example.com/time-calculator/?utm_source=chatgpt.com">Time Calculator</a> — Add or subtract time durations in hours, minutes, and seconds.</li>
+                <li><a href="https://example.com/time-duration-calculator/?utm_source=chatgpt.com">Time Duration Calculator</a> — Work with time durations and normalized hour, minute, and second results.</li>
+                <li><a href="https://example.com/time-card-calculator/?utm_source=chatgpt.com">Time Card Calculator</a> — Calculate work hours, breaks, overtime, and estimated gross pay.</li>
+                <li><a href="https://example.com/time-zone-calculator/?utm_source=chatgpt.com">Time Zone Calculator</a> — Convert dates and times between supported time zones.</li>
+                <li><a href="https://example.com/date-calculator/?utm_source=chatgpt.com">Date Calculator</a> — Find differences between dates or add and subtract calendar periods.</li>
+                <li><a href="https://example.com/age-calculator/?utm_source=chatgpt.com">Age Calculator</a> — Calculate calendar age and elapsed days, weeks, and hours.</li>
+              </ul>
+            </section>
+          </article>
+                </div>
+            </section>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"33","Batch":"4","Calculator / Page":"Hours Calculator","Slug":"hours-calculator","Site Category (Current)":"Date & Time","Recommended Content Domain":"Date / Time","Page Type":"Calculator","Search Intent / Purpose":"Calculate hours and minutes between two clock times, with an overnight option and decimal-hours output.","Formula / Algorithm Used in Tool":"Elapsed minutes = end clock minutes − start clock minutes; if overnight and end < start, add 1,440 minutes. Decimal hours = elapsed minutes ÷ 60.","Required User Inputs":"Start time; End time; If end is earlier, treat it as next day","Primary Outputs":"Elapsed time; Total minutes; Total seconds","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Start time, End time, If end is earlier, treat it as next day. Explain outputs: Elapsed time, Total minutes, Total seconds. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Calendar convention and date arithmetic rules; time-zone functions require current IANA/browser data.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When calendar/time-zone rules change","Important Assumptions / Limitations":"This page does not subtract unpaid breaks, overtime rules, or workday policies. Use a time-card/payroll tool when those rules matter.","Current Source URLs in Page":"https://www.calculator.net/hours-calculator.html","Implementation Path":"/hours-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Date &amp; Time</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../time-duration-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Time Duration Calculator</strong><small>Calculate
+                            exact elapsed time between two local date-times in days, hours,
+                            minutes,…</small></span></a><a class="cp-related-link"
+                    href="../age-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Age
+                            Calculator</strong><small>Calculate age between two dates in years, months, and days, plus
+                            total days, weeks,…</small></span></a><a class="cp-related-link"
+                    href="../time-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time
+                            Calculator</strong><small>Add or subtract two time durations in hours, minutes, and seconds
+                            and view the norm…</small></span></a><a class="cp-related-link"
+                    href="../day-counter/index.html"><span class="cp-related-dot">›</span><span><strong>Day
+                            Counter</strong><small>Count calendar days between two dates, with inclusive/exclusive
+                            options plus weekda…</small></span></a><a class="cp-related-link"
+                    href="../date-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Date
+                            Calculator</strong><small>Calculate days between dates or add and subtract years, months,
+                            weeks, and days fro…</small></span></a><a class="cp-related-link"
+                    href="../marriage-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Marriage
+                            Tax Calculator</strong><small>Compare a simplified 2026 federal tax estimate for two people
+                            before marriage with…</small></span></a><a class="cp-related-link"
+                    href="../time-card-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time
+                            Card Calculator</strong><small>Total weekly work hours, unpaid breaks, configurable
+                            overtime, and estimated gross…</small></span></a><a class="cp-related-link"
+                    href="../time-zone-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time
+                            Zone Calculator</strong><small>Convert a date and time between major IANA time zones with
+                            browser-supported daylig…</small></span></a></div><a class="cp-side-category"
+                href="../date-time/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const $ = id => document.getElementById(id);
+        const fmt = (n, d = 2) => Number.isFinite(n) ? Number(n).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }) : '—';
+        const val = id => parseFloat($(id).value);
+        function setErr(m = '') { if ($('error')) $('error').textContent = m }
+        function parseDate(id) { const s = $(id).value; if (!s) throw Error('Please enter a date.'); const d = new Date(s + 'T12:00:00'); if (Number.isNaN(d.getTime())) throw Error('Invalid date.'); return d }
+        function pretty(d) { return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) }
+        function iso(d) { return d.toISOString().slice(0, 10) }
+
+        function tm(s) { if (!s) throw Error('Enter both clock times.'); const [h, m] = s.split(':').map(Number); return h * 60 + m }
+        function calculate() { try { let a = tm($('start').value), b = tm($('end').value); if (b < a && $('overnight').checked) b += 1440; if (b < a) throw Error('End time is earlier than start time. Enable overnight if it is the next day.'); let d = b - a, h = Math.floor(d / 60), m = d % 60; $('elapsed').textContent = `${h} h ${m} min`; $('decimal').textContent = `${fmt(d / 60, 2)} decimal hours`; $('mins').textContent = d.toLocaleString(); $('secs').textContent = (d * 60).toLocaleString(); setErr('') } catch (e) { setErr(e.message) } } $('calculate').onclick = calculate; $('clear').onclick = () => location.reload(); calculate();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

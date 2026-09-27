@@ -1,145 +1,1728 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+  <meta charset="utf-8" />
+  <meta content="width=device-width,initial-scale=1" name="viewport" />
+  <meta http-equiv="content-language" content="en">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>Mortgage Calculator – Monthly Payment, Taxes &amp; Interest | CalcPro</title>
-<meta content="Estimate a fixed-rate mortgage payment including principal and interest, property tax, homeowners insurance, and HOA fees." name="description"/>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<link href="../mortgage-calculator/" rel="canonical"/>
-<meta content="website" property="og:type"/><meta content="Mortgage Calculator" property="og:title"/>
-<meta content="Estimate a fixed-rate mortgage payment including principal and interest, property tax, homeowners insurance, and HOA fees." property="og:description"/><meta content="#1477ff" name="theme-color"/>
-<style>
-:root{
-  --ink:#0b1933;--muted:#60708a;--line:#dbe8f6;--blue:#0a6ff2;--blue2:#20a5ff;
-  --green:#16b86b;--yellow:#f6b51f;--red:#ef4f58;--panel:rgba(255,255,255,.82);
-  --shadow:0 18px 45px rgba(25,74,123,.16),inset 0 1px 0 rgba(255,255,255,.95);
+
+  <!-- Primary Meta Tags -->
+<title>Mortgage Calculator – Estimate Monthly Home Payment</title>
+<meta name="title" content="Mortgage Calculator – Estimate Monthly Home Payment">
+<meta name="description" content="Estimate a fixed-rate mortgage payment including principal and interest, property tax, homeowners insurance, HOA fees, loan amount, and total interest.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/mortgage-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/mortgage-calculator/">
+<meta property="og:title" content="Mortgage Calculator – Estimate Monthly Home Payment">
+<meta property="og:description" content="Estimate a fixed-rate mortgage payment including principal and interest, property tax, homeowners insurance, HOA fees, loan amount, and total interest.">
+<meta property="og:site_name" content="Mortgage Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/mortgage-calculator/">
+<meta name="twitter:title" content="Mortgage Calculator – Estimate Monthly Home Payment">
+<meta name="twitter:description" content="Estimate a fixed-rate mortgage payment including principal and interest, property tax, homeowners insurance, HOA fees, loan amount, and total interest.">
+  <meta content="#1477ff" name="theme-color" />
+  <style>
+    :root {
+      --ink: #0b1933;
+      --muted: #60708a;
+      --line: #dbe8f6;
+      --blue: #0a6ff2;
+      --blue2: #20a5ff;
+      --green: #16b86b;
+      --yellow: #f6b51f;
+      --red: #ef4f58;
+      --panel: rgba(255, 255, 255, .82);
+      --shadow: 0 18px 45px rgba(25, 74, 123, .16), inset 0 1px 0 rgba(255, 255, 255, .95);
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at 12% 6%, rgba(32, 165, 255, .18), transparent 28%),
+        radial-gradient(circle at 88% 15%, rgba(35, 205, 153, .12), transparent 24%),
+        linear-gradient(180deg, #f8fcff, #eef7ff 48%, #f7fbff);
+      line-height: 1.65
+    }
+
+    a {
+      color: #0967d8;
+      text-decoration: none
+    }
+
+    a:hover {
+      text-decoration: underline
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: auto
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(248, 252, 255, .8);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(196, 219, 241, .72)
+    }
+
+    .nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      gap: 28px
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 23px;
+      font-weight: 850;
+      color: var(--ink)
+    }
+
+    .brand i {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      color: white;
+      font-style: normal;
+      background: linear-gradient(145deg, #27b3ff, #0562d7);
+      box-shadow: 0 9px 18px rgba(10, 111, 242, .28), inset 0 2px 2px rgba(255, 255, 255, .45)
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 20px;
+      margin-left: 18px;
+      font-size: 14px;
+      font-weight: 700
+    }
+
+    .navlinks a {
+      color: #20324e
+    }
+
+    .search {
+      margin-left: auto;
+      background: #fff;
+      border: 1px solid #e0ebf6;
+      border-radius: 999px;
+      padding: 10px 15px;
+      min-width: 210px;
+      color: #6d7d93;
+      font-size: 13px;
+      box-shadow: 0 8px 20px rgba(26, 70, 112, .08)
+    }
+
+    .hero {
+      padding: 28px 0 18px
+    }
+
+    .breadcrumb {
+      font-size: 13px;
+      color: #6c7b91;
+      margin-bottom: 18px
+    }
+
+    .breadcrumb span {
+      margin: 0 8px;
+      color: #a1aec0
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.03fr .97fr;
+      gap: 28px;
+      align-items: center
+    }
+
+    h1 {
+      font-size: clamp(2.6rem,5vw,4.5rem);
+line-height: 1.05;
+margin: 0 auto 18px;
+text-align: center;
+letter-spacing: -.06em;
+font-weight: 900;
+
+    }
+
+    h1 b {
+      color: var(--blue)
+    }
+
+    .lead {
+      font-size: 17px;
+      color: #42546e;
+      max-width: 700px;
+      margin: 0
+    }
+
+    .chips {
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+      margin-top: 18px
+    }
+
+    .chip {
+      background: #fff;
+      border: 1px solid #dceafa;
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #35506f;
+      box-shadow: 0 8px 18px rgba(37, 86, 137, .07)
+    }
+
+    .hero-art {
+      height: 270px;
+      position: relative;
+      perspective: 900px
+    }
+
+    .floor {
+      position: absolute;
+      left: 10%;
+      right: 7%;
+      bottom: 12px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(32, 75, 115, .14);
+      filter: blur(15px)
+    }
+
+    .obj {
+      position: absolute;
+      box-shadow: var(--shadow)
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, .78);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, .9)
+    }
+
+    .calc-shell {
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 32px;
+      background: rgba(255, 255, 255, .5);
+      border: 1px solid rgba(255, 255, 255, .92);
+      box-shadow: 0 28px 70px rgba(37, 86, 137, .15);
+      backdrop-filter: blur(20px)
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 16px
+    }
+
+    .card {
+      background: linear-gradient(145deg, rgba(255, 255, 255, .97), rgba(244, 249, 255, .86));
+      border: 1px solid rgba(218, 231, 245, .92);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow)
+    }
+
+    .card h2 {
+      font-size: 21px;
+      margin: 0 0 4px;
+      letter-spacing: -.5px
+    }
+
+    .sub {
+      font-size: 13px;
+      color: #687990;
+      margin: 0 0 15px
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px
+    }
+
+    .field.full {
+      grid-column: 1/-1
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 800;
+      color: #263a56
+    }
+
+    .input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    input,
+    select {
+      width: 100%;
+      border: 1px solid #cddff1;
+      background: #fbfdff;
+      border-radius: 12px;
+      padding: 11px 12px;
+      font: inherit;
+      color: #152641;
+      box-shadow: inset 0 2px 4px rgba(26, 77, 123, .05);
+      outline: none
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #66b5ff;
+      box-shadow: 0 0 0 3px rgba(32, 165, 255, .12)
+    }
+
+    .unit {
+      font-size: 12px;
+      color: #667890;
+      white-space: nowrap
+    }
+
+    .check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #42536d
+    }
+
+    .check input {
+      width: auto;
+      accent-color: var(--blue)
+    }
+
+    .tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      background: #edf5ff;
+      border: 1px solid #dceafb;
+      padding: 4px;
+      border-radius: 15px;
+      margin-bottom: 16px
+    }
+
+    .tab {
+      border: 0;
+      background: transparent;
+      padding: 9px 12px;
+      border-radius: 11px;
+      font-weight: 800;
+      color: #334866;
+      cursor: pointer
+    }
+
+    .tab.active {
+      background: linear-gradient(145deg, #2aa8ff, #0668df);
+      color: #fff;
+      box-shadow: 0 9px 17px rgba(8, 111, 240, .26)
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1.5fr .8fr;
+      gap: 10px;
+      margin-top: 18px
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 14px;
+      padding: 13px 14px;
+      font-weight: 800;
+      cursor: pointer
+    }
+
+    .primary {
+      color: #fff;
+      background: linear-gradient(145deg, #25a9ff, #0064dc);
+      box-shadow: 0 12px 22px rgba(6, 104, 221, .28)
+    }
+
+    .secondary {
+      background: #edf3f9;
+      color: #273a55
+    }
+
+    .error {
+      color: #b4232b;
+      font-size: 12px;
+      margin-top: 10px;
+      min-height: 18px
+    }
+
+    .result-hero {
+      padding: 18px;
+      border-radius: 19px;
+      background: linear-gradient(135deg, #edfff7, #eef8ff);
+      position: relative;
+      overflow: hidden
+    }
+
+    .result-hero:after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      right: -30px;
+      top: -45px;
+      background: radial-gradient(circle, #55d7ff, #0b79ef);
+      opacity: .17
+    }
+
+    .result-hero small {
+      color: #60728b
+    }
+
+    .big {
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: -1.8px;
+      line-height: 1.1;
+      margin-top: 3px
+    }
+
+    .accent {
+      color: var(--green);
+      font-weight: 850;
+      font-size: 18px
+    }
+
+    .stats {
+      margin-top: 13px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid #e3edf7;
+      overflow: hidden
+    }
+
+    .stat {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 12px;
+      border-bottom: 1px solid #e8f0f7;
+      font-size: 13px
+    }
+
+    .stat:last-child {
+      border-bottom: 0
+    }
+
+    .stat b {
+      text-align: right
+    }
+
+    .answerbox {
+      margin: 14px 0 0;
+      padding: 15px 16px;
+      border-radius: 16px;
+      background: #0e2544;
+      color: #fff;
+      box-shadow: 0 15px 28px rgba(12, 37, 68, .18);
+      font-size: 13px
+    }
+
+    .answerbox strong {
+      color: #73d3ff
+    }
+
+    .bar {
+      height: 12px;
+      background: #e7f1fb;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 14px
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue2), var(--green));
+      border-radius: inherit
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 12px
+    }
+
+    .mini {
+      padding: 13px;
+      border-radius: 15px;
+      background: #fff;
+      border: 1px solid #e1ecf7
+    }
+
+    .mini small {
+      display: block;
+      color: #718299
+    }
+
+    .mini b {
+      font-size: 16px
+    }
+
+    .schedule {
+      max-height: 300px;
+      overflow: auto;
+      border: 1px solid #e0ebf5;
+      border-radius: 14px;
+      margin-top: 14px
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      min-width: 540px
+    }
+
+    th,
+    td {
+      padding: 10px 12px;
+      text-align: right;
+      border-bottom: 1px solid #e8eff6;
+      font-size: 12px
+    }
+
+    th:first-child,
+    td:first-child {
+      text-align: left
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      background: #eff6fc;
+      z-index: 1
+    }
+
+    .content {
+      padding: 38px 0 70px
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.fr;
+      gap: 22px
+    }
+
+    .article,
+    .toc {
+      background: rgba(255, 255, 255, .9);
+      border: 1px solid #dfeaf6;
+      border-radius: 25px;
+      box-shadow: var(--shadow)
+    }
+
+    .article {
+      padding: 30px
+    }
+
+    .toc {
+      padding: 24px;
+      align-self: start;
+      position: sticky;
+      top: 94px
+    }
+
+    .article h2 {
+      font-size: 28px;
+      line-height: 1.2;
+      margin: 38px 0 12px;
+      letter-spacing: -.8px
+    }
+
+    .article h2:first-child {
+      margin-top: 0
+    }
+
+    .article h3 {
+      font-size: 20px;
+      margin: 24px 0 8px
+    }
+
+    .article p,
+    .article li {
+      color: #42536d
+    }
+
+    .direct {
+      border-left: 5px solid var(--blue);
+      background: #f0f7ff;
+      padding: 16px 18px;
+      border-radius: 14px;
+      color: #263a56
+    }
+
+    .formula {
+      font: 800 16px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace;
+      background: #0d213c;
+      color: #eef8ff;
+      padding: 16px;
+      border-radius: 15px;
+      overflow: auto
+    }
+
+    .note {
+      background: #fff9e9;
+      border: 1px solid #f5df9c;
+      padding: 15px 17px;
+      border-radius: 14px;
+      color: #5c4d22
+    }
+
+    .faq {
+      border-top: 1px solid #e4edf6;
+      padding: 15px 0
+    }
+
+    .faq summary {
+      font-weight: 800;
+      cursor: pointer
+    }
+
+    .faq p {
+      margin-bottom: 0
+    }
+
+    .toc h3 {
+      margin-top: 0
+    }
+
+    .toc a {
+      display: block;
+      padding: 7px 0;
+      color: #34506f;
+      font-size: 14px
+    }
+
+    .sources li {
+      margin: 8px 0
+    }
+
+    footer {
+      padding: 28px 0 42px;
+      color: #63748a;
+      font-size: 13px;
+      text-align: center
+    }
+
+    @media(max-width:960px) {
+
+      .navlinks,
+      .search {
+        display: none
+      }
+
+      .hero-grid,
+      .calc-grid,
+      .content-grid {
+        grid-template-columns: 1fr
+      }
+
+      .hero-art {
+        height: 235px
+      }
+
+      .toc {
+        position: static
+      }
+    }
+
+    @media(max-width:620px) {
+      .wrap {
+        width: min(100% - 20px, 1180px)
+      }
+
+      .hero {
+        padding-top: 18px
+      }
+
+      .hero-art {
+        transform: scale(.86);
+        transform-origin: center top;
+        margin-bottom: -28px
+      }
+
+    
+
+      .calc-shell {
+        padding: 8px;
+        border-radius: 23px
+      }
+
+      .card {
+        padding: 16px;
+        border-radius: 19px
+      }
+
+      .form-grid,
+      .mini-grid,
+      .actions {
+        grid-template-columns: 1fr
+      }
+
+      .field.full {
+        grid-column: auto
+      }
+
+      .article {
+        padding: 21px
+      }
+
+      .nav {
+        height: 64px
+      }
+    }
+
+
+    /* Topic-specific 3D hero scenes */
+    .visual-tvm .cube {
+      width: 90px;
+      height: 90px;
+      border-radius: 21px;
+      background: linear-gradient(145deg, #fff, #bfe1ff);
+      transform: rotateX(12deg) rotateY(-18deg) rotateZ(7deg);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: #0b6fe8;
+      font-size: 20px
+    }
+
+    .visual-tvm .a {
+      right: 210px;
+      top: 72px
+    }
+
+    .visual-tvm .b {
+      right: 102px;
+      top: 35px
+    }
+
+    .visual-tvm .c {
+      right: 28px;
+      top: 112px
+    }
+
+    .visual-tvm .arrow {
+      right: 80px;
+      top: 108px;
+      width: 250px;
+      height: 12px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #21a7ff, #16b86b);
+      transform: rotate(-10deg)
+    }
+
+    .visual-house .house {
+      right: 68px;
+      top: 52px;
+      width: 235px;
+      height: 155px;
+      border-radius: 22px;
+      background: linear-gradient(145deg, #f6fbff, #c9e4fa);
+      transform: rotateY(-12deg) rotateX(7deg);
+      border: 5px solid #fff
+    }
+
+    .visual-house .house:before {
+      content: "";
+      position: absolute;
+      left: 27px;
+      top: -68px;
+      border-left: 88px solid transparent;
+      border-right: 88px solid transparent;
+      border-bottom: 78px solid #178cff;
+      filter: drop-shadow(0 12px 10px rgba(22, 105, 190, .2))
+    }
+
+    .visual-house .door {
+      right: 145px;
+      top: 125px;
+      width: 58px;
+      height: 82px;
+      border-radius: 15px 15px 4px 4px;
+      background: #0d315f
+    }
+
+    .visual-house .key {
+      right: 15px;
+      top: 155px;
+      width: 160px;
+      height: 22px;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #ffe27a, #f3b91f);
+      transform: rotate(-12deg)
+    }
+
+    .visual-house .key:before {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border: 14px solid #f6c72b;
+      border-radius: 50%;
+      left: -38px;
+      top: -28px
+    }
+
+    .visual-loan .paper {
+      right: 80px;
+      top: 34px;
+      width: 215px;
+      height: 185px;
+      border-radius: 22px;
+      background: #fff;
+      transform: rotate(6deg);
+      border: 1px solid #dceafa
+    }
+
+    .visual-loan .paper:before {
+      content: "LOAN\A AGREEMENT";
+      white-space: pre;
+      position: absolute;
+      left: 28px;
+      top: 26px;
+      font-weight: 900;
+      color: #0b6ff2;
+      line-height: 1.25;
+      font-size: 20px
+    }
+
+    .visual-loan .paper:after {
+      content: "";
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 35px;
+      height: 55px;
+      background: repeating-linear-gradient(#dfeaf5 0 6px, transparent 6px 15px)
+    }
+
+    .visual-loan .coin {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 28%, #fff4a6, #f8c62b 55%, #d79b00);
+      border: 6px solid #ffd94d
+    }
+
+    .visual-loan .c1 {
+      right: 24px;
+      bottom: 20px
+    }
+
+    .visual-loan .c2 {
+      right: 265px;
+      bottom: 28px;
+      transform: scale(.78)
+    }
+
+    .visual-car .car {
+      right: 18px;
+      top: 95px;
+      width: 320px;
+      height: 92px;
+      border-radius: 50px 70px 24px 24px;
+      background: linear-gradient(145deg, #24a8ff, #0564dc);
+      transform: rotateY(-8deg);
+      box-shadow: 0 24px 35px rgba(0, 92, 190, .24)
+    }
+
+    .visual-car .car:before {
+      content: "";
+      position: absolute;
+      left: 65px;
+      top: -58px;
+      width: 168px;
+      height: 70px;
+      border-radius: 70px 70px 10px 10px;
+      background: linear-gradient(145deg, #bfe7ff, #73c5fb);
+      border: 8px solid #147fe5
+    }
+
+    .visual-car .wheel {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #dfe7ed 0 26%, #17304b 27% 60%, #081522 61%);
+      bottom: 28px
+    }
+
+    .visual-car .w1 {
+      right: 238px
+    }
+
+    .visual-car .w2 {
+      right: 60px
+    }
+
+    .visual-car .road {
+      right: 0;
+      bottom: 17px;
+      width: 360px;
+      height: 36px;
+      border-radius: 50%;
+      background: #9db0c3;
+      filter: blur(1px)
+    }
+
+    .visual-interest .coin {
+      width: 118px;
+      height: 118px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 32% 25%, #fff8b0, #ffd547 50%, #e3a500 73%);
+      border: 9px solid #ffe76d;
+      display: grid;
+      place-items: center;
+      font-size: 34px;
+      font-weight: 900;
+      color: #9b6800
+    }
+
+    .visual-interest .c1 {
+      right: 175px;
+      top: 46px
+    }
+
+    .visual-interest .c2 {
+      right: 67px;
+      top: 111px;
+      transform: scale(.75)
+    }
+
+    .visual-interest .ring {
+      right: 30px;
+      top: 22px;
+      width: 300px;
+      height: 180px;
+      border: 4px solid rgba(10, 111, 242, .22);
+      border-radius: 50%;
+      transform: rotate(-15deg)
+    }
+
+    .visual-payment .cardpay {
+      right: 82px;
+      top: 55px;
+      width: 250px;
+      height: 155px;
+      border-radius: 24px;
+      background: linear-gradient(145deg, #1ea4ff, #075dce);
+      transform: rotate(-8deg);
+      color: #fff;
+      padding: 28px;
+      font-weight: 900;
+      font-size: 20px
+    }
+
+    .visual-payment .cardpay:before {
+      content: "MONTHLY PAYMENT";
+      display: block;
+      font-size: 11px;
+      letter-spacing: 2px;
+      opacity: .78;
+      margin-bottom: 18px
+    }
+
+    .visual-payment .calendar {
+      right: 28px;
+      bottom: 24px;
+      width: 150px;
+      height: 128px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid #dceafa;
+      transform: rotate(7deg)
+    }
+
+    .visual-payment .calendar:before {
+      content: "12";
+      position: absolute;
+      inset: 25px;
+      display: grid;
+      place-items: center;
+      font-size: 46px;
+      font-weight: 900;
+      color: #0a6ff2
+    }
+
+    .visual-retirement .sun {
+      right: 80px;
+      top: 18px;
+      width: 115px;
+      height: 115px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #fff7aa, #ffc83d 60%, #f2a900);
+      box-shadow: 0 0 45px rgba(255, 194, 32, .35)
+    }
+
+    .visual-retirement .bars {
+      right: 55px;
+      bottom: 30px;
+      width: 300px;
+      height: 150px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-end
+    }
+
+    .visual-retirement .bars i {
+      display: block;
+      width: 48px;
+      border-radius: 15px 15px 6px 6px;
+      background: linear-gradient(#33b9ff, #0a6ff2);
+      box-shadow: 0 14px 25px rgba(10, 111, 242, .18)
+    }
+
+    .visual-retirement .bars i:nth-child(1) {
+      height: 45px
+    }
+
+    .visual-retirement .bars i:nth-child(2) {
+      height: 76px
+    }
+
+    .visual-retirement .bars i:nth-child(3) {
+      height: 105px
+    }
+
+    .visual-retirement .bars i:nth-child(4) {
+      height: 140px
+    }
+
+    .visual-amort .steps3d {
+      right: 28px;
+      bottom: 30px;
+      width: 340px;
+      height: 200px;
+      transform: rotateY(-13deg) rotateX(5deg)
+    }
+
+    .visual-amort .steps3d i {
+      position: absolute;
+      right: 0;
+      height: 42px;
+      border-radius: 12px 0 0 12px;
+      background: linear-gradient(145deg, #cbe8ff, #5eb8ff);
+      box-shadow: 0 13px 18px rgba(30, 105, 170, .15)
+    }
+
+    .visual-amort .steps3d i:nth-child(1) {
+      bottom: 0;
+      width: 330px
+    }
+
+    .visual-amort .steps3d i:nth-child(2) {
+      bottom: 48px;
+      width: 260px
+    }
+
+    .visual-amort .steps3d i:nth-child(3) {
+      bottom: 96px;
+      width: 190px
+    }
+
+    .visual-amort .steps3d i:nth-child(4) {
+      bottom: 144px;
+      width: 120px
+    }
+
+    .visual-amort .tag {
+      right: 245px;
+      top: 18px;
+      width: 115px;
+      padding: 14px;
+      border-radius: 18px;
+      background: #0d2c51;
+      color: #fff;
+      font-weight: 900;
+      text-align: center
+    }
+
+    .visual-invest .chart3d {
+      right: 45px;
+      bottom: 30px;
+      width: 320px;
+      height: 190px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-end;
+      transform: rotateY(-10deg)
+    }
+
+    .visual-invest .chart3d i {
+      width: 52px;
+      border-radius: 14px 14px 5px 5px;
+      background: linear-gradient(#43d8ae, #0a8f72);
+      box-shadow: 12px 15px 20px rgba(9, 114, 91, .18)
+    }
+
+    .visual-invest .chart3d i:nth-child(1) {
+      height: 55px
+    }
+
+    .visual-invest .chart3d i:nth-child(2) {
+      height: 85px
+    }
+
+    .visual-invest .chart3d i:nth-child(3) {
+      height: 126px
+    }
+
+    .visual-invest .chart3d i:nth-child(4) {
+      height: 175px
+    }
+
+    .visual-invest .arrowup {
+      right: 68px;
+      top: 18px;
+      font-size: 74px;
+      color: #0a6ff2;
+      font-weight: 900;
+      transform: rotate(-7deg)
+    }
+
+    .visual-compound .core {
+      right: 130px;
+      top: 70px;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 25%, #fff, #72c9ff 40%, #0868dd 75%);
+      box-shadow: 0 25px 45px rgba(10, 111, 242, .25)
+    }
+
+    .visual-compound .orbit {
+      right: 45px;
+      top: 45px;
+      width: 300px;
+      height: 190px;
+      border-radius: 50%;
+      border: 4px solid rgba(10, 111, 242, .24);
+      transform: rotate(-15deg)
+    }
+
+    .visual-compound .orbit:after {
+      content: "";
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #16b86b;
+      right: 22px;
+      top: 16px;
+      box-shadow: 0 0 0 9px rgba(22, 184, 107, .12)
+    }
+
+    .visual-compound .orbit.o2 {
+      transform: rotate(35deg);
+      border-color: rgba(246, 181, 31, .35)
+    }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/mortgage-calculator/#webapplication",
+      "name": "Mortgage Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/mortgage-calculator/",
+      "description": "Estimate a fixed-rate mortgage payment including principal and interest, property tax, homeowners insurance, HOA fees, loan amount, and total interest.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/mortgage-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Mortgage Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/mortgage-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/mortgage-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is the monthly mortgage payment calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The calculator determines the loan amount from the home price and down payment, converts the annual interest rate to a monthly rate, and applies the standard fixed-rate amortization formula. It then adds the supported estimates for property tax, insurance, and HOA fees."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the calculator include property taxes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The calculator has a property tax input expressed as a percentage per year and converts it into an estimated monthly property-tax amount."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the calculator include homeowners insurance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Enter the annual homeowners insurance amount, and the calculator converts it to a monthly estimate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this mortgage calculator include PMI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. PMI is not one of the calculator's inputs and is not automatically added to the result. Mortgage insurance may apply to some loans, so include that separately when comparing the calculator estimate with a lender's projected payment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are HOA fees part of the mortgage payment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The calculator includes the monthly HOA fee in its overall housing-cost estimate. In practice, HOA dues are usually paid separately from the mortgage servicer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can my lender's payment be different from the calculator result?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A lender may include mortgage insurance, escrow requirements, lender-specific calculations, fees, or other costs that are outside this calculator's inputs. Taxes and insurance can also change over time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a lower interest rate reduce total mortgage interest?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "With the same loan principal and term, a lower fixed interest rate generally produces a lower principal-and-interest payment and less calculated interest over the full loan term. Changing the loan amount or term can also materially change the result."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "Monkey Mart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
 }
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-background:radial-gradient(circle at 12% 6%,rgba(32,165,255,.18),transparent 28%),
-radial-gradient(circle at 88% 15%,rgba(35,205,153,.12),transparent 24%),
-linear-gradient(180deg,#f8fcff,#eef7ff 48%,#f7fbff);line-height:1.65}
-a{color:#0967d8;text-decoration:none}a:hover{text-decoration:underline}
-.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
-.topbar{position:sticky;top:0;z-index:20;background:rgba(248,252,255,.8);backdrop-filter:blur(18px);border-bottom:1px solid rgba(196,219,241,.72)}
-.nav{height:72px;display:flex;align-items:center;gap:28px}.brand{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:850;color:var(--ink)}
-.brand i{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;color:white;font-style:normal;background:linear-gradient(145deg,#27b3ff,#0562d7);box-shadow:0 9px 18px rgba(10,111,242,.28),inset 0 2px 2px rgba(255,255,255,.45)}
-.navlinks{display:flex;gap:20px;margin-left:18px;font-size:14px;font-weight:700}.navlinks a{color:#20324e}.search{margin-left:auto;background:#fff;border:1px solid #e0ebf6;border-radius:999px;padding:10px 15px;min-width:210px;color:#6d7d93;font-size:13px;box-shadow:0 8px 20px rgba(26,70,112,.08)}
-.hero{padding:28px 0 18px}.breadcrumb{font-size:13px;color:#6c7b91;margin-bottom:18px}.breadcrumb span{margin:0 8px;color:#a1aec0}
-.hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:28px;align-items:center}
-h1{font-size:clamp(2.6rem,5vw,4.5rem);line-height:.98;margin:0 0 16px;letter-spacing:-3px}h1 b{color:var(--blue)}
-.lead{font-size:17px;color:#42546e;max-width:700px;margin:0}.chips{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.chip{background:#fff;border:1px solid #dceafa;border-radius:999px;padding:7px 11px;font-size:12px;font-weight:800;color:#35506f;box-shadow:0 8px 18px rgba(37,86,137,.07)}
-.hero-art{height:270px;position:relative;perspective:900px}.floor{position:absolute;left:10%;right:7%;bottom:12px;height:34px;border-radius:50%;background:rgba(32,75,115,.14);filter:blur(15px)}
-.obj{position:absolute;box-shadow:var(--shadow)}.glass{background:rgba(255,255,255,.78);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.9)}
-.calc-shell{margin-top:20px;padding:16px;border-radius:32px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.92);box-shadow:0 28px 70px rgba(37,86,137,.15);backdrop-filter:blur(20px)}
-.calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}.card{background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(244,249,255,.86));border:1px solid rgba(218,231,245,.92);border-radius:24px;padding:22px;box-shadow:var(--shadow)}
-.card h2{font-size:21px;margin:0 0 4px;letter-spacing:-.5px}.sub{font-size:13px;color:#687990;margin:0 0 15px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}
-label{font-size:13px;font-weight:800;color:#263a56}.input-wrap{display:flex;align-items:center;gap:8px}
-input,select{width:100%;border:1px solid #cddff1;background:#fbfdff;border-radius:12px;padding:11px 12px;font:inherit;color:#152641;box-shadow:inset 0 2px 4px rgba(26,77,123,.05);outline:none}
-input:focus,select:focus{border-color:#66b5ff;box-shadow:0 0 0 3px rgba(32,165,255,.12)}.unit{font-size:12px;color:#667890;white-space:nowrap}
-.check{display:flex;align-items:center;gap:8px;font-size:13px;color:#42536d}.check input{width:auto;accent-color:var(--blue)}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;background:#edf5ff;border:1px solid #dceafb;padding:4px;border-radius:15px;margin-bottom:16px}
-.tab{border:0;background:transparent;padding:9px 12px;border-radius:11px;font-weight:800;color:#334866;cursor:pointer}.tab.active{background:linear-gradient(145deg,#2aa8ff,#0668df);color:#fff;box-shadow:0 9px 17px rgba(8,111,240,.26)}
-.actions{display:grid;grid-template-columns:1.5fr .8fr;gap:10px;margin-top:18px}.btn{border:0;border-radius:14px;padding:13px 14px;font-weight:800;cursor:pointer}.primary{color:#fff;background:linear-gradient(145deg,#25a9ff,#0064dc);box-shadow:0 12px 22px rgba(6,104,221,.28)}.secondary{background:#edf3f9;color:#273a55}
-.error{color:#b4232b;font-size:12px;margin-top:10px;min-height:18px}
-.result-hero{padding:18px;border-radius:19px;background:linear-gradient(135deg,#edfff7,#eef8ff);position:relative;overflow:hidden}.result-hero:after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;right:-30px;top:-45px;background:radial-gradient(circle,#55d7ff,#0b79ef);opacity:.17}
-.result-hero small{color:#60728b}.big{font-size:36px;font-weight:900;letter-spacing:-1.8px;line-height:1.1;margin-top:3px}.accent{color:var(--green);font-weight:850;font-size:18px}
-.stats{margin-top:13px;border-radius:16px;background:#fff;border:1px solid #e3edf7;overflow:hidden}.stat{display:flex;justify-content:space-between;gap:12px;padding:10px 12px;border-bottom:1px solid #e8f0f7;font-size:13px}.stat:last-child{border-bottom:0}.stat b{text-align:right}
-.answerbox{margin:14px 0 0;padding:15px 16px;border-radius:16px;background:#0e2544;color:#fff;box-shadow:0 15px 28px rgba(12,37,68,.18);font-size:13px}.answerbox strong{color:#73d3ff}
-.bar{height:12px;background:#e7f1fb;border-radius:999px;overflow:hidden;margin-top:14px}.bar span{display:block;height:100%;background:linear-gradient(90deg,var(--blue2),var(--green));border-radius:inherit}
-.mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}.mini{padding:13px;border-radius:15px;background:#fff;border:1px solid #e1ecf7}.mini small{display:block;color:#718299}.mini b{font-size:16px}
-.schedule{max-height:300px;overflow:auto;border:1px solid #e0ebf5;border-radius:14px;margin-top:14px}table{width:100%;border-collapse:collapse;background:#fff;min-width:540px}th,td{padding:10px 12px;text-align:right;border-bottom:1px solid #e8eff6;font-size:12px}th:first-child,td:first-child{text-align:left}th{position:sticky;top:0;background:#eff6fc;z-index:1}
-.content{padding:38px 0 70px}.content-grid{display:grid;grid-template-columns:1.fr;gap:22px}.article,.toc{background:rgba(255,255,255,.9);border:1px solid #dfeaf6;border-radius:25px;box-shadow:var(--shadow)}
-.article{padding:30px}.toc{padding:24px;align-self:start;position:sticky;top:94px}.article h2{font-size:28px;line-height:1.2;margin:38px 0 12px;letter-spacing:-.8px}.article h2:first-child{margin-top:0}.article h3{font-size:20px;margin:24px 0 8px}.article p,.article li{color:#42536d}.direct{border-left:5px solid var(--blue);background:#f0f7ff;padding:16px 18px;border-radius:14px;color:#263a56}
-.formula{font:800 16px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;background:#0d213c;color:#eef8ff;padding:16px;border-radius:15px;overflow:auto}.note{background:#fff9e9;border:1px solid #f5df9c;padding:15px 17px;border-radius:14px;color:#5c4d22}
-.faq{border-top:1px solid #e4edf6;padding:15px 0}.faq summary{font-weight:800;cursor:pointer}.faq p{margin-bottom:0}.toc h3{margin-top:0}.toc a{display:block;padding:7px 0;color:#34506f;font-size:14px}
-.sources li{margin:8px 0}footer{padding:28px 0 42px;color:#63748a;font-size:13px;text-align:center}
-@media(max-width:960px){.navlinks,.search{display:none}.hero-grid,.calc-grid,.content-grid{grid-template-columns:1fr}.hero-art{height:235px}.toc{position:static}}
-@media(max-width:620px){.wrap{width:min(100% - 20px,1180px)}.hero{padding-top:18px}.hero-art{transform:scale(.86);transform-origin:center top;margin-bottom:-28px}h1{font-size:43px;letter-spacing:-2px}.calc-shell{padding:8px;border-radius:23px}.card{padding:16px;border-radius:19px}.form-grid,.mini-grid,.actions{grid-template-columns:1fr}.field.full{grid-column:auto}.article{padding:21px}.nav{height:64px}}
-
-
-/* Topic-specific 3D hero scenes */
-.visual-tvm .cube{width:90px;height:90px;border-radius:21px;background:linear-gradient(145deg,#fff,#bfe1ff);transform:rotateX(12deg) rotateY(-18deg) rotateZ(7deg);display:grid;place-items:center;font-weight:900;color:#0b6fe8;font-size:20px}
-.visual-tvm .a{right:210px;top:72px}.visual-tvm .b{right:102px;top:35px}.visual-tvm .c{right:28px;top:112px}.visual-tvm .arrow{right:80px;top:108px;width:250px;height:12px;border-radius:10px;background:linear-gradient(90deg,#21a7ff,#16b86b);transform:rotate(-10deg)}
-.visual-house .house{right:68px;top:52px;width:235px;height:155px;border-radius:22px;background:linear-gradient(145deg,#f6fbff,#c9e4fa);transform:rotateY(-12deg) rotateX(7deg);border:5px solid #fff}.visual-house .house:before{content:"";position:absolute;left:27px;top:-68px;border-left:88px solid transparent;border-right:88px solid transparent;border-bottom:78px solid #178cff;filter:drop-shadow(0 12px 10px rgba(22,105,190,.2))}.visual-house .door{right:145px;top:125px;width:58px;height:82px;border-radius:15px 15px 4px 4px;background:#0d315f}.visual-house .key{right:15px;top:155px;width:160px;height:22px;border-radius:20px;background:linear-gradient(145deg,#ffe27a,#f3b91f);transform:rotate(-12deg)}.visual-house .key:before{content:"";position:absolute;width:50px;height:50px;border:14px solid #f6c72b;border-radius:50%;left:-38px;top:-28px}
-.visual-loan .paper{right:80px;top:34px;width:215px;height:185px;border-radius:22px;background:#fff;transform:rotate(6deg);border:1px solid #dceafa}.visual-loan .paper:before{content:"LOAN\A AGREEMENT";white-space:pre;position:absolute;left:28px;top:26px;font-weight:900;color:#0b6ff2;line-height:1.25;font-size:20px}.visual-loan .paper:after{content:"";position:absolute;left:28px;right:28px;bottom:35px;height:55px;background:repeating-linear-gradient(#dfeaf5 0 6px,transparent 6px 15px)}.visual-loan .coin{width:72px;height:72px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#fff4a6,#f8c62b 55%,#d79b00);border:6px solid #ffd94d}.visual-loan .c1{right:24px;bottom:20px}.visual-loan .c2{right:265px;bottom:28px;transform:scale(.78)}
-.visual-car .car{right:18px;top:95px;width:320px;height:92px;border-radius:50px 70px 24px 24px;background:linear-gradient(145deg,#24a8ff,#0564dc);transform:rotateY(-8deg);box-shadow:0 24px 35px rgba(0,92,190,.24)}.visual-car .car:before{content:"";position:absolute;left:65px;top:-58px;width:168px;height:70px;border-radius:70px 70px 10px 10px;background:linear-gradient(145deg,#bfe7ff,#73c5fb);border:8px solid #147fe5}.visual-car .wheel{width:60px;height:60px;border-radius:50%;background:radial-gradient(circle,#dfe7ed 0 26%,#17304b 27% 60%,#081522 61%);bottom:28px}.visual-car .w1{right:238px}.visual-car .w2{right:60px}.visual-car .road{right:0;bottom:17px;width:360px;height:36px;border-radius:50%;background:#9db0c3;filter:blur(1px)}
-.visual-interest .coin{width:118px;height:118px;border-radius:50%;background:radial-gradient(circle at 32% 25%,#fff8b0,#ffd547 50%,#e3a500 73%);border:9px solid #ffe76d;display:grid;place-items:center;font-size:34px;font-weight:900;color:#9b6800}.visual-interest .c1{right:175px;top:46px}.visual-interest .c2{right:67px;top:111px;transform:scale(.75)}.visual-interest .ring{right:30px;top:22px;width:300px;height:180px;border:4px solid rgba(10,111,242,.22);border-radius:50%;transform:rotate(-15deg)}
-.visual-payment .cardpay{right:82px;top:55px;width:250px;height:155px;border-radius:24px;background:linear-gradient(145deg,#1ea4ff,#075dce);transform:rotate(-8deg);color:#fff;padding:28px;font-weight:900;font-size:20px}.visual-payment .cardpay:before{content:"MONTHLY PAYMENT";display:block;font-size:11px;letter-spacing:2px;opacity:.78;margin-bottom:18px}.visual-payment .calendar{right:28px;bottom:24px;width:150px;height:128px;border-radius:20px;background:#fff;border:1px solid #dceafa;transform:rotate(7deg)}.visual-payment .calendar:before{content:"12";position:absolute;inset:25px;display:grid;place-items:center;font-size:46px;font-weight:900;color:#0a6ff2}
-.visual-retirement .sun{right:80px;top:18px;width:115px;height:115px;border-radius:50%;background:radial-gradient(circle,#fff7aa,#ffc83d 60%,#f2a900);box-shadow:0 0 45px rgba(255,194,32,.35)}.visual-retirement .bars{right:55px;bottom:30px;width:300px;height:150px;display:flex;gap:18px;align-items:flex-end}.visual-retirement .bars i{display:block;width:48px;border-radius:15px 15px 6px 6px;background:linear-gradient(#33b9ff,#0a6ff2);box-shadow:0 14px 25px rgba(10,111,242,.18)}.visual-retirement .bars i:nth-child(1){height:45px}.visual-retirement .bars i:nth-child(2){height:76px}.visual-retirement .bars i:nth-child(3){height:105px}.visual-retirement .bars i:nth-child(4){height:140px}
-.visual-amort .steps3d{right:28px;bottom:30px;width:340px;height:200px;transform:rotateY(-13deg) rotateX(5deg)}.visual-amort .steps3d i{position:absolute;right:0;height:42px;border-radius:12px 0 0 12px;background:linear-gradient(145deg,#cbe8ff,#5eb8ff);box-shadow:0 13px 18px rgba(30,105,170,.15)}.visual-amort .steps3d i:nth-child(1){bottom:0;width:330px}.visual-amort .steps3d i:nth-child(2){bottom:48px;width:260px}.visual-amort .steps3d i:nth-child(3){bottom:96px;width:190px}.visual-amort .steps3d i:nth-child(4){bottom:144px;width:120px}.visual-amort .tag{right:245px;top:18px;width:115px;padding:14px;border-radius:18px;background:#0d2c51;color:#fff;font-weight:900;text-align:center}
-.visual-invest .chart3d{right:45px;bottom:30px;width:320px;height:190px;display:flex;gap:20px;align-items:flex-end;transform:rotateY(-10deg)}.visual-invest .chart3d i{width:52px;border-radius:14px 14px 5px 5px;background:linear-gradient(#43d8ae,#0a8f72);box-shadow:12px 15px 20px rgba(9,114,91,.18)}.visual-invest .chart3d i:nth-child(1){height:55px}.visual-invest .chart3d i:nth-child(2){height:85px}.visual-invest .chart3d i:nth-child(3){height:126px}.visual-invest .chart3d i:nth-child(4){height:175px}.visual-invest .arrowup{right:68px;top:18px;font-size:74px;color:#0a6ff2;font-weight:900;transform:rotate(-7deg)}
-.visual-compound .core{right:130px;top:70px;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff,#72c9ff 40%,#0868dd 75%);box-shadow:0 25px 45px rgba(10,111,242,.25)}.visual-compound .orbit{right:45px;top:45px;width:300px;height:190px;border-radius:50%;border:4px solid rgba(10,111,242,.24);transform:rotate(-15deg)}.visual-compound .orbit:after{content:"";position:absolute;width:28px;height:28px;border-radius:50%;background:#16b86b;right:22px;top:16px;box-shadow:0 0 0 9px rgba(22,184,107,.12)}.visual-compound .orbit.o2{transform:rotate(35deg);border-color:rgba(246,181,31,.35)}
-
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Mortgage Calculator", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "description": "Estimate a fixed-rate mortgage payment including principal and interest, property tax, homeowners insurance, and HOA fees.", "url": "/mortgage-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Mortgages & Real Estate", "item": "/finance/mortgages-real-estate/"}, {"@type": "ListItem", "position": 4, "name": "Mortgage Calculator", "item": "/mortgage-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does the mortgage payment include taxes and insurance?", "acceptedAnswer": {"@type": "Answer", "text": "This page can include user-entered property tax and insurance estimates in the monthly total."}}, {"@type": "Question", "name": "What is principal and interest?", "acceptedAnswer": {"@type": "Answer", "text": "Principal repays the amount borrowed. Interest is the lender's charge for providing the loan."}}, {"@type": "Question", "name": "Why can my lender's payment be different?", "acceptedAnswer": {"@type": "Answer", "text": "Actual payments can include mortgage insurance, escrow changes, fees, and other costs not captured by a simple estimate."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body class="" data-cp-category="date-time" data-cp-page-type="Calculator">
-<header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../date-time/index.html">Date &amp; Time</a></li><li><a aria-current="page" href="index.html">Mortgage Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../date-time/index.html">Browse Date &amp; Time</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main"><h1 class="page-title">Mortgage Calculator</h1>
-<section class="calc-shell" id="calculator"><div class="calc-grid">
-<div class="card">
-<h2>Home loan details</h2><p class="sub">Enter the purchase price, down payment, loan term, and estimated recurring housing costs.</p>
-<div class="form-grid">
-<div class="field"><label for="price">Home price ($)</label><input id="price" min="1" type="number" value="400000"/></div>
-<div class="field"><label for="down">Down payment ($)</label><input id="down" min="0" type="number" value="80000"/></div>
-<div class="field"><label for="years">Loan term (years)</label><input id="years" min="1" type="number" value="30"/></div>
-<div class="field"><label for="rate">Interest rate (%)</label><input id="rate" min="0" step=".001" type="number" value="6.5"/></div>
-<div class="field"><label for="tax">Property tax (%/year)</label><input id="tax" min="0" step=".01" type="number" value="1.2"/></div>
-<div class="field"><label for="insurance">Home insurance ($/year)</label><input id="insurance" min="0" type="number" value="1800"/></div>
-<div class="field full"><label for="hoa">HOA fee ($/month)</label><input id="hoa" min="0" type="number" value="0"/></div>
-</div><div class="actions"><button class="btn primary" id="calculate">Calculate →</button><button class="btn secondary" id="clear">Reset</button></div><div class="error" id="error"></div>
-</div>
-<div class="card">
-<div class="result-hero"><small>Estimated monthly housing payment</small><div class="big" id="monthly">$0.00</div><div class="accent">Fixed-rate estimate</div></div>
-<div class="stats"><div class="stat"><span>Principal &amp; interest</span><b id="pi">—</b></div><div class="stat"><span>Property tax</span><b id="taxm">—</b></div><div class="stat"><span>Insurance</span><b id="insm">—</b></div><div class="stat"><span>HOA</span><b id="hoam">—</b></div><div class="stat"><span>Loan amount</span><b id="loan">—</b></div><div class="stat"><span>Total loan interest</span><b id="interest">—</b></div></div>
-<div class="answerbox"><strong>Planning estimate:</strong> <span id="quick">Monthly housing costs can include more than principal and interest.</span></div>
-</div>
-</div></section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<div class="cp-tool-actions"><button data-cp-print="" type="button">Print / Save PDF</button><span aria-live="polite" class="cp-action-status" role="status"></span></div><section class="content"><div class="wrap content-grid"><article class="article">
-<section id="what"><h2>What Is a Mortgage Calculator?</h2><p class="direct"><strong>Answer:</strong> A mortgage calculator estimates the payment on a home loan from the loan amount, interest rate, and term. This version also adds user-entered property tax, homeowners insurance, and HOA costs to estimate a broader monthly housing payment.</p></section>
-<section id="how"><h2>How to Use the Mortgage Calculator</h2><ol><li>Enter the home price and down payment.</li><li>Enter the fixed interest rate and loan term.</li><li>Add estimated annual property tax, insurance, and monthly HOA dues.</li><li>Calculate the estimated monthly payment.</li></ol></section>
-<section id="formula"><h2>Mortgage Payment Formula</h2><p>The standard fixed-rate principal-and-interest payment is:</p><div class="formula">M = P × [r(1 + r)^n] ÷ [(1 + r)^n − 1]</div><p><strong>P</strong> is principal, <strong>r</strong> is the monthly interest rate, and <strong>n</strong> is the number of monthly payments.</p></section>
-<section id="example"><h2>Calculation Example</h2><p>For a $400,000 home with an $80,000 down payment, the financed principal is $320,000. A 30-year fixed loan at 6.5% produces a principal-and-interest payment, then the calculator adds the entered tax, insurance, and HOA estimates.</p></section>
-<section id="limits"><h2>Assumptions and Limitations</h2><p>This is not a lender quote. It does not automatically calculate PMI, escrow adjustments, closing costs, points, changing tax bills, rate changes, or jurisdiction-specific fees.</p></section>
-<section id="faq"><h2>Mortgage Calculator FAQs</h2><details class="faq"><summary>Does the mortgage payment include taxes and insurance?</summary><p>This page can include user-entered property tax and insurance estimates in the monthly total.</p></details>
-<details class="faq"><summary>What is principal and interest?</summary><p>Principal repays the amount borrowed. Interest is the lender's charge for providing the loan.</p></details>
-<details class="faq"><summary>Why can my lender's payment be different?</summary><p>Actual payments can include mortgage insurance, escrow changes, fees, and other costs not captured by a simple estimate.</p></details></section>
-<section id="sources"><h2>Sources and Methodology</h2><p>This page uses standard financial mathematics and the following sources for methodology and context.</p><ul class="sources"><li><a href="https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/" rel="noopener" target="_blank">CFPB — How lenders calculate monthly mortgage payments</a></li>
-<li><a href="https://www.consumerfinance.gov/ask-cfpb/how-does-paying-down-a-mortgage-work-en-1943/" rel="noopener" target="_blank">CFPB — How paying down a mortgage works</a></li>
-<li><a href="https://www.calculator.net/mortgage-calculator.html" rel="noopener" target="_blank">Calculator.net — Mortgage Calculator</a></li></ul>
-<p style="font-size:13px;color:#687990"><strong>Note:</strong> Results are estimates for planning and education. Actual lender, investment, tax, insurance, or account terms can differ.</p></section>
-</article><aside class="toc"><h3>On this page</h3><a href="#calculator">Calculator</a>
-<a href="#what">What it calculates</a>
-<a href="#how">How to use</a>
-<a href="#formula">Formula / method</a>
-<a href="#example">Example</a>
-<a href="#limits">Limitations</a>
-<a href="#faq">FAQs</a>
-<a href="#sources">Sources</a></aside></div></section>
-
-<details class="cp-data-panel"><summary><span>Calculator Data — exact tool basis</span><small>Date &amp; Time · Calculator</small></summary><div class="cp-data-grid"><div class="cp-data-item wide"><b>Purpose</b><p>Estimate a fixed-rate mortgage payment including principal and interest, property tax, homeowners insurance, and HOA fees.</p></div><div class="cp-data-item wide"><b>Formula / Algorithm Used in Tool</b><p>Mortgage Payment Formula: The standard fixed-rate principal-and-interest payment is: M = P × [r(1 + r)^n] ÷ [(1 + r)^n − 1] P is principal, r is the monthly interest rate, and n is the number of monthly payments.</p></div><div class="cp-data-item"><b>Required User Inputs</b><p>Home price ($); Down payment ($); Loan term (years); Interest rate (%); Property tax (%/year); Home insurance ($/year); HOA fee ($/month)</p></div><div class="cp-data-item"><b>Primary Outputs</b><p>Estimated monthly housing payment; Principal &amp; interest; Property tax; Insurance; HOA; Loan amount; Total loan interest</p></div><div class="cp-data-item wide"><b>Important Assumptions / Limitations</b><p>This is not a lender quote. It does not automatically calculate PMI, escrow adjustments, closing costs, points, changing tax bills, rate changes, or jurisdiction-specific fees.</p></div><div class="cp-data-item"><b>Fresh Data Required?</b><p>Conditional</p></div><div class="cp-data-item"><b>Recommended Update Frequency</b><p>When product/rule assumptions change</p></div><div class="cp-data-item wide"><b>Current Source URLs in Page</b><p><a href="https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/" rel="nofollow noopener" target="_blank">https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/</a><br/><a href="https://www.consumerfinance.gov/ask-cfpb/how-does-paying-down-a-mortgage-work-en-1943/" rel="nofollow noopener" target="_blank">https://www.consumerfinance.gov/ask-cfpb/how-does-paying-down-a-mortgage-work-en-1943/</a><br/><a href="https://www.calculator.net/mortgage-calculator.html" rel="nofollow noopener" target="_blank">https://www.calculator.net/mortgage-calculator.html</a></p></div></div></details><script class="cp-calculator-data" type="application/json">{"index":"7","Batch":"1","Calculator / Page":"Mortgage Calculator","Slug":"mortgage-calculator","Site Category (Current)":"Date & Time","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Estimate a fixed-rate mortgage payment including principal and interest, property tax, homeowners insurance, and HOA fees.","Formula / Algorithm Used in Tool":"Mortgage Payment Formula: The standard fixed-rate principal-and-interest payment is: M = P × [r(1 + r)^n] ÷ [(1 + r)^n − 1] P is principal, r is the monthly interest rate, and n is the number of monthly payments.","Required User Inputs":"Home price ($); Down payment ($); Loan term (years); Interest rate (%); Property tax (%/year); Home insurance ($/year); HOA fee ($/month)","Primary Outputs":"Estimated monthly housing payment; Principal & interest; Property tax; Insurance; HOA; Loan amount; Total loan interest","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Home price ($), Down payment ($), Loan term (years), Interest rate (%), Property tax (%/year), Home insurance ($/year), HOA fee ($/month). Explain outputs: Estimated monthly housing payment, Principal & interest, Property tax, Insurance, HOA, Loan amount, Total loan interest. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"This is not a lender quote. It does not automatically calculate PMI, escrow adjustments, closing costs, points, changing tax bills, rate changes, or jurisdiction-specific fees.","Current Source URLs in Page":"https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/ | https://www.consumerfinance.gov/ask-cfpb/how-does-paying-down-a-mortgage-work-en-1943/ | https://www.calculator.net/mortgage-calculator.html","Implementation Path":"/mortgage-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Date &amp; Time</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../mortgage-calculator-for-your-site/index.html"><span class="cp-related-dot">›</span><span><strong>Mortgage Calculator for Your Site</strong><small>Calculate a fixed-rate mortgage payment with optional annual property tax, PMI, and…</small></span></a><a class="cp-related-link" href="../va-mortgage-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>VA Mortgage Calculator</strong><small>Estimate a VA-backed mortgage payment, current VA funding fee, financed loan amount…</small></span></a><a class="cp-related-link" href="../canadian-mortgage-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Canadian mortgage math, with the compounding step included.</strong><small>Estimate Canadian mortgage payments in CAD using the fixed-rate semi-annual compoun…</small></span></a><a class="cp-related-link" href="../mortgage-calculator-uk/index.html"><span class="cp-related-dot">›</span><span><strong>A mortgage view built in pounds, not guesses.</strong><small>Estimate UK mortgage repayment and interest-only payments in pounds, total interest…</small></span></a><a class="cp-related-link" href="../marriage-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Marriage Tax Calculator</strong><small>Compare a simplified 2026 federal tax estimate for two people before marriage with…</small></span></a><a class="cp-related-link" href="../age-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Age Calculator</strong><small>Calculate age between two dates in years, months, and days, plus total days, weeks,…</small></span></a><a class="cp-related-link" href="../date-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Date Calculator</strong><small>Calculate days between dates or add and subtract years, months, weeks, and days fro…</small></span></a><a class="cp-related-link" href="../hours-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Hours Calculator</strong><small>Calculate hours and minutes between two clock times, with an overnight option and d…</small></span></a></div><a class="cp-side-category" href="../date-time/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-const $=id=>document.getElementById(id);
-const money=n=>Number.isFinite(n)?new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(n):'—';
-const number=(n,d=2)=>Number.isFinite(n)?Number(n).toLocaleString('en-US',{maximumFractionDigits:d,minimumFractionDigits:d}):'—';
-function val(id){return parseFloat($(id).value)}
-function err(msg=''){const e=$('error');if(e)e.textContent=msg}
-
-
-function payment(P,r,n){if(r===0)return P/n;return P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1)}
-function calculate(){try{
- const price=val('price'),down=val('down'),years=val('years'),rate=val('rate')/100,tax=val('tax')/100,ins=val('insurance'),hoa=val('hoa');
- if(!(price>0&&down>=0&&down<price&&years>0&&rate>=0&&tax>=0&&ins>=0&&hoa>=0))throw Error('Please check the home price, down payment, term, rate, and costs.');
- const P=price-down,n=years*12,r=rate/12,pi=payment(P,r,n),taxm=price*tax/12,insm=ins/12,total=pi+taxm+insm+hoa,totalInt=pi*n-P;
- $('monthly').textContent=money(total);$('pi').textContent=money(pi);$('taxm').textContent=money(taxm);$('insm').textContent=money(insm);$('hoam').textContent=money(hoa);$('loan').textContent=money(P);$('interest').textContent=money(totalInt);
- $('quick').textContent=`Principal and interest are ${money(pi)} per month; taxes, insurance, and HOA bring the estimate to ${money(total)}.`;err('');
-}catch(e){err(e.message)}}
-$('calculate').onclick=calculate;$('clear').onclick=()=>location.reload();calculate();
 </script>
-<script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+  <link href="../assets/css/global.css" rel="stylesheet" />
+  <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+  <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body class="" data-cp-category="date-time" data-cp-page-type="Calculator">
+  <header class="cp-site-header" data-cp-header="">
+    <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+          class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+      <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+          href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+          href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+          href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+          href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+          href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+          data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+          class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+      <div class="cp-header-actions">
+        <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search">
+          <input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+            placeholder="Search calculators…" type="search" />
+          <div class="cp-search-results" hidden="" role="listbox"></div>
+        </form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a>
+      </div>
+    </div>
+  </header>
+  <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+    <ol>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../date-time/index.html">Date &amp; Time</a></li>
+      <li><a aria-current="page" href="index.html">Mortgage Calculator</a></li>
+    </ol>
+  </nav>
+  <div class="cp-tool-taxonomy"><a href="../date-time/index.html">Browse Date &amp; Time</a><a
+      href="../calculators/index.html">All calculators</a></div>
+  <div class="cp-page-layout">
+    <main id="main">
+      <h1 class="page-title">Mortgage Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+      <section class="calc-shell" id="calculator">
+        <div class="calc-grid">
+          <div class="card">
+            <h2>Home loan details</h2>
+            <p class="sub">Enter the purchase price, down payment, loan term, and estimated recurring housing costs.</p>
+            <div class="form-grid">
+              <div class="field"><label for="price">Home price ($)</label><input id="price" min="1" type="number"
+                  value="400000" /></div>
+              <div class="field"><label for="down">Down payment ($)</label><input id="down" min="0" type="number"
+                  value="80000" /></div>
+              <div class="field"><label for="years">Loan term (years)</label><input id="years" min="1" type="number"
+                  value="30" /></div>
+              <div class="field"><label for="rate">Interest rate (%)</label><input id="rate" min="0" step=".001"
+                  type="number" value="6.5" /></div>
+              <div class="field"><label for="tax">Property tax (%/year)</label><input id="tax" min="0" step=".01"
+                  type="number" value="1.2" /></div>
+              <div class="field"><label for="insurance">Home insurance ($/year)</label><input id="insurance" min="0"
+                  type="number" value="1800" /></div>
+              <div class="field full"><label for="hoa">HOA fee ($/month)</label><input id="hoa" min="0" type="number"
+                  value="0" /></div>
+            </div>
+            <div class="actions"><button class="btn primary" id="calculate">Calculate →</button><button
+                class="btn secondary" id="clear">Reset</button></div>
+            <div class="error" id="error"></div>
+          </div>
+          <div class="card">
+            <div class="result-hero"><small>Estimated monthly housing payment</small>
+              <div class="big" id="monthly">$0.00</div>
+              <div class="accent">Fixed-rate estimate</div>
+            </div>
+            <div class="stats">
+              <div class="stat"><span>Principal &amp; interest</span><b id="pi">—</b></div>
+              <div class="stat"><span>Property tax</span><b id="taxm">—</b></div>
+              <div class="stat"><span>Insurance</span><b id="insm">—</b></div>
+              <div class="stat"><span>HOA</span><b id="hoam">—</b></div>
+              <div class="stat"><span>Loan amount</span><b id="loan">—</b></div>
+              <div class="stat"><span>Total loan interest</span><b id="interest">—</b></div>
+            </div>
+            <div class="answerbox"><strong>Planning estimate:</strong> <span id="quick">Monthly housing costs can
+                include more than principal and interest.</span></div>
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+        <div class="cp-visual-top">
+          <div><span class="cp-visual-kicker">Visual breakdown</span>
+            <h2 id="cp-visual-title">Calculation Graph</h2>
+            <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+          </div><span class="cp-chart-badge">Live view</span>
+        </div>
+        <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+        <div aria-label="Calculation method flow" class="cp-flow">
+          <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+            class="cp-flow-arrow">→</span>
+          <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+            class="cp-flow-arrow">→</span>
+          <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+        </div>
+      </section>
+      <div class="cp-ad-slot cp-ad-wide">
+        <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+      </div>
+      <div class="cp-tool-actions"><button data-cp-print="" type="button">Print / Save PDF</button><span
+          aria-live="polite" class="cp-action-status" role="status"></span></div>
+      <section class="content">
+        <div class="wrap content-grid">
+          <article class="article">
+
+  <p>Use the Loan Calculator to estimate the monthly payment for a fixed-rate amortized loan. Enter the loan amount, annual interest rate, term in years, and any additional months to calculate the required monthly payment.</p>
+
+  <section id="what">
+    <h2>What Is the Loan Calculator?</h2>
+    <p>The Loan Calculator estimates the fixed monthly payment needed to repay a loan over a specified term at a constant annual interest rate.</p>
+
+    <p>It can be used when comparing borrowing scenarios, planning a budget, or checking how changes in the loan amount, interest rate, or repayment period affect the monthly payment. For a typical fixed-rate amortizing loan, the payment is designed to repay the principal and interest by the end of the term.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Loan Calculator</h2>
+
+    <p>Enter the following values:</p>
+
+    <p><strong>Loan Amount ($)</strong><br>
+    Enter the principal amount being borrowed.</p>
+
+    <p><strong>Annual Interest (%)</strong><br>
+    Enter the fixed annual interest rate as a percentage. For example, enter <code>7.5</code> for an annual rate of 7.5%.</p>
+
+    <p><strong>Years</strong><br>
+    Enter the full number of years in the repayment term.</p>
+
+    <p><strong>Additional Months</strong><br>
+    Enter any months remaining beyond the full years. For example, a term of 4 years and 6 months is entered as 4 years and 6 additional months.</p>
+
+    <p>The calculator converts the loan term into total monthly payments and calculates the required monthly payment.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+
+    <p>For a fixed-rate loan with monthly payments, the calculator uses:</p>
+
+    <div class="formula">M=P×r(1+r)n(1+r)n−1M=P\times\frac{r(1+r)^n}{(1+r)^n-1}</div>
+
+    <p>This is the standard fixed-payment amortization formula.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>MM</td>
+          <td>Monthly payment</td>
+          <td>Dollars per month</td>
+        </tr>
+        <tr>
+          <td>PP</td>
+          <td>Loan principal or amount borrowed</td>
+          <td>Dollars</td>
+        </tr>
+        <tr>
+          <td>rr</td>
+          <td>Monthly interest rate</td>
+          <td>Decimal per month</td>
+        </tr>
+        <tr>
+          <td>nn</td>
+          <td>Total number of monthly payments</td>
+          <td>Months</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Monthly Interest Rate</h3>
+
+    <p>The annual percentage rate entered in the calculator is converted to a decimal monthly rate:</p>
+
+    <div class="formula">r=Annual Interest Rate100×12r=\frac{\text{Annual Interest Rate}}{100\times12}</div>
+
+    <p>For example, an annual interest rate of 7.5% becomes:</p>
+
+    <div class="formula">r=7.5100×12=0.00625r=\frac{7.5}{100\times12}=0.00625</div>
+
+    <h3>Total Number of Payments</h3>
+
+    <p>The calculator combines the years and additional months:</p>
+
+    <div class="formula">n=(Years×12)+Additional Monthsn=(\text{Years}\times12)+\text{Additional Months}</div>
+
+    <p>A term of 4 years and 6 months therefore contains:</p>
+
+    <div class="formula">(4×12)+6=54(4\times12)+6=54</div>
+
+    <p>monthly payments.</p>
+
+    <h3>Zero-Interest Loan</h3>
+
+    <p>When the annual interest rate is 0%, the standard formula would involve division by zero. The calculator instead uses:</p>
+
+    <div class="formula">M=PnM=\frac{P}{n}</div>
+
+    <p>The principal is simply divided equally across the total number of payments.</p>
+
+    <h3>Calculation Sequence</h3>
+
+    <ol>
+      <li>Convert the annual interest percentage to a decimal monthly rate.</li>
+      <li>Convert years and additional months into the total number of monthly payments.</li>
+      <li>If the interest rate is greater than zero, apply the fixed loan payment formula.</li>
+      <li>If the interest rate is zero, divide the principal by the number of payments.</li>
+      <li>Return the estimated monthly payment.</li>
+    </ol>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose you borrow <strong>$25,000</strong> at a fixed annual interest rate of <strong>7.5%</strong> for <strong>4 years and 6 months</strong>.</p>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li>Loan amount: $25,000</li>
+      <li>Annual interest rate: 7.5%</li>
+      <li>Years: 4</li>
+      <li>Additional months: 6</li>
+    </ul>
+
+    <h3>Step 1: Calculate the Monthly Rate</h3>
+
+    <div class="formula">r=7.5100×12r=\frac{7.5}{100\times12} r=0.00625r=0.00625</div>
+
+    <h3>Step 2: Calculate the Number of Payments</h3>
+
+    <div class="formula">n=(4×12)+6n=(4\times12)+6 n=54n=54</div>
+
+    <h3>Step 3: Apply the Formula</h3>
+
+    <div class="formula">M=25,000×0.00625(1+0.00625)54(1+0.00625)54−1M=25,000\times \frac{0.00625(1+0.00625)^{54}} {(1+0.00625)^{54}-1}</div>
+
+    <p>Using full precision:</p>
+
+    <div class="formula">(1.00625)54≈1.39996843(1.00625)^{54}\approx1.39996843</div>
+
+    <p>Therefore:</p>
+
+    <div class="formula">M≈546.905832M\approx546.905832</div>
+
+    <h3>Final Result</h3>
+
+    <p>The estimated monthly payment is approximately:</p>
+
+    <div class="formula">$546.91\boxed{\\$546.91}</div>
+
+    <p>The example keeps full precision during the calculation and rounds only the final displayed result.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Monthly Payment</h3>
+
+    <p>The monthly payment is the estimated amount required each month to repay the entered loan amount over the selected term at the entered fixed interest rate.</p>
+
+    <p>With an amortizing loan, each payment generally contains both principal and interest. Earlier payments typically contain a larger interest portion, while more of later payments goes toward principal as the outstanding balance falls.</p>
+
+    <p>The result is an estimate rather than a lender quote. Actual required payments can differ when a loan includes fees, changing interest rates, different payment schedules, lender-specific rounding, missed payments, or other contractual terms.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>This calculator assumes:</p>
+
+    <ul>
+      <li>The interest rate remains fixed for the entire loan term.</li>
+      <li>Payments are made regularly each month.</li>
+      <li>The entered annual interest rate is converted to a monthly rate by dividing it by 12.</li>
+      <li>The repayment term consists of the entered years plus additional months.</li>
+      <li>No loan fees are added to the calculation.</li>
+      <li>No missed or late payments occur.</li>
+      <li>No prepayment penalties are included.</li>
+      <li>The interest rate does not change during the repayment period.</li>
+    </ul>
+
+    <p>The result may therefore differ from an official loan agreement or lender calculation when the actual loan uses different terms, fees, payment timing, or rate rules.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What formula does the Loan Calculator use?</summary>
+      <p>For a fixed-rate loan with a positive interest rate, it uses:</p>
+      <div class="formula">M=P×r(1+r)n(1+r)n−1M=P\times\frac{r(1+r)^n}{(1+r)^n-1}</div>
+      <p>where PP is the loan amount, rr is the monthly interest rate, and nn is the number of monthly payments.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How are years and additional months handled?</summary>
+      <p>The calculator converts both into one total repayment period:</p>
+      <div class="formula">n=(Years×12)+Additional Monthsn=(\text{Years}\times12)+\text{Additional Months}</div>
+      <p>For example, 5 years and 3 months equals 63 monthly payments.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What happens if the interest rate is 0%?</summary>
+      <p>For a zero-interest loan, the monthly payment is calculated by dividing the loan amount by the total number of payments:</p>
+      <div class="formula">M=P/nM=P/n</div>
+    </details>
+
+    <details class="faq">
+      <summary>Why can my lender's payment be different?</summary>
+      <p>A lender may include fees or use terms and calculations that are not part of this calculator. Actual contracts can also involve different payment timing, rounding practices, changing rates, insurance, taxes, or other charges.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does this calculator include loan fees?</summary>
+      <p>No. The calculation assumes no additional loan fees.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can I use it for a variable-rate loan?</summary>
+      <p>The calculation assumes one fixed interest rate for the entire term. A variable or adjustable rate can change over time, so a single fixed-rate calculation may not represent future payments.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does a longer loan term reduce the monthly payment?</summary>
+      <p>With the same principal and fixed interest rate, spreading repayment over more monthly periods generally lowers the required monthly payment. However, extending an amortizing loan can increase the amount of interest paid over the life of the loan.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources & Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://openstax.org/books/contemporary-mathematics/pages/6-8-the-basics-of-loans?utm_source=chatgpt.com" rel="noopener" target="_blank">OpenStax — The Basics of Loans</a><br>
+        Supports the fixed-payment loan formula, conversion of an annual rate to a periodic rate, and calculation of monthly payment periods.
+      </li>
+      <li>
+        <a href="https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/?utm_source=chatgpt.com" rel="noopener" target="_blank">Consumer Financial Protection Bureau — How Do Mortgage Lenders Calculate Monthly Payments?</a><br>
+        Supports how fixed-rate principal-and-interest payments depend on the loan amount, interest rate, and loan term.
+      </li>
+      <li>
+        <a href="https://www.consumerfinance.gov/ask-cfpb/how-does-paying-down-a-mortgage-work-en-1943/?utm_source=chatgpt.com" rel="noopener" target="_blank">Consumer Financial Protection Bureau — How Does Paying Down a Mortgage Work?</a><br>
+        Supports the explanation of principal, interest, fixed payments, and loan amortization.
+      </li>
+    </ul>
+
+    <p>No current government-set interest rate, eligibility threshold, or mandatory fee is required by this calculator because the annual interest rate is supplied by the user.</p>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="https://example.com/payment-calculator/">Payment Calculator</a></li>
+      <li><a href="https://example.com/amortization-calculator/">Amortization Calculator</a></li>
+      <li><a href="https://example.com/auto-loan-calculator/">Auto Loan Calculator</a></li>
+      <li><a href="https://example.com/personal-loan-calculator/">Personal Loan Calculator</a></li>
+      <li><a href="https://example.com/mortgage-calculator/">Mortgage Calculator</a></li>
+      <li><a href="https://example.com/interest-rate-calculator/">Interest Rate Calculator</a></li>
+    </ul>
+  </section>
+</article>
+        </div>
+      </section>
+
+       
+      <script class="cp-calculator-data"
+        type="application/json">{"index":"7","Batch":"1","Calculator / Page":"Mortgage Calculator","Slug":"mortgage-calculator","Site Category (Current)":"Date & Time","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Estimate a fixed-rate mortgage payment including principal and interest, property tax, homeowners insurance, and HOA fees.","Formula / Algorithm Used in Tool":"Mortgage Payment Formula: The standard fixed-rate principal-and-interest payment is: M = P × [r(1 + r)^n] ÷ [(1 + r)^n − 1] P is principal, r is the monthly interest rate, and n is the number of monthly payments.","Required User Inputs":"Home price ($); Down payment ($); Loan term (years); Interest rate (%); Property tax (%/year); Home insurance ($/year); HOA fee ($/month)","Primary Outputs":"Estimated monthly housing payment; Principal & interest; Property tax; Insurance; HOA; Loan amount; Total loan interest","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Home price ($), Down payment ($), Loan term (years), Interest rate (%), Property tax (%/year), Home insurance ($/year), HOA fee ($/month). Explain outputs: Estimated monthly housing payment, Principal & interest, Property tax, Insurance, HOA, Loan amount, Total loan interest. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"This is not a lender quote. It does not automatically calculate PMI, escrow adjustments, closing costs, points, changing tax bills, rate changes, or jurisdiction-specific fees.","Current Source URLs in Page":"https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/ | https://www.consumerfinance.gov/ask-cfpb/how-does-paying-down-a-mortgage-work-en-1943/ | https://www.calculator.net/mortgage-calculator.html","Implementation Path":"/mortgage-calculator/index.html"}</script>
+      <div class="cp-ad-slot cp-ad-wide">
+        <div>Advertisement<small>Responsive lower-page placement</small></div>
+      </div>
+    </main>
+    <aside aria-label="Related calculators" class="cp-related-sidebar">
+      <div class="cp-ad-slot cp-ad-sidebar">
+        <div>Advertisement<small>300 × 250 / responsive</small></div>
+      </div><span class="cp-side-kicker">Related tools</span>
+      <h2>Date &amp; Time</h2>
+      <p>More tools from the same Calculator Data category.</p>
+      <div class="cp-related-list"><a class="cp-related-link"
+          href="../mortgage-calculator-for-your-site/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Mortgage Calculator for Your Site</strong><small>Calculate a
+              fixed-rate mortgage payment with optional annual property tax, PMI, and…</small></span></a><a
+          class="cp-related-link" href="../va-mortgage-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>VA Mortgage Calculator</strong><small>Estimate a VA-backed
+              mortgage payment, current VA funding fee, financed loan amount…</small></span></a><a
+          class="cp-related-link" href="../canadian-mortgage-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Canadian mortgage math, with the compounding step
+              included.</strong><small>Estimate Canadian mortgage payments in CAD using the fixed-rate semi-annual
+              compoun…</small></span></a><a class="cp-related-link" href="../mortgage-calculator-uk/index.html"><span
+            class="cp-related-dot">›</span><span><strong>A mortgage view built in pounds, not
+              guesses.</strong><small>Estimate UK mortgage repayment and interest-only payments in pounds, total
+              interest…</small></span></a><a class="cp-related-link" href="../marriage-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Marriage Tax Calculator</strong><small>Compare a simplified
+              2026 federal tax estimate for two people before marriage with…</small></span></a><a
+          class="cp-related-link" href="../age-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Age Calculator</strong><small>Calculate age between two dates
+              in years, months, and days, plus total days, weeks,…</small></span></a><a class="cp-related-link"
+          href="../date-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Date
+              Calculator</strong><small>Calculate days between dates or add and subtract years, months, weeks, and days
+              fro…</small></span></a><a class="cp-related-link" href="../hours-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Hours Calculator</strong><small>Calculate hours and minutes
+              between two clock times, with an overnight option and d…</small></span></a></div><a
+        class="cp-side-category" href="../date-time/index.html"><span>View category</span><span>→</span></a>
+    </aside>
+  </div>
+  <footer>
+    <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+  </footer>
+  <script>
+    const $ = id => document.getElementById(id);
+    const money = n => Number.isFinite(n) ? new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 }).format(n) : '—';
+    const number = (n, d = 2) => Number.isFinite(n) ? Number(n).toLocaleString('en-US', { maximumFractionDigits: d, minimumFractionDigits: d }) : '—';
+    function val(id) { return parseFloat($(id).value) }
+    function err(msg = '') { const e = $('error'); if (e) e.textContent = msg }
+
+
+    function payment(P, r, n) { if (r === 0) return P / n; return P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1) }
+    function calculate() {
+      try {
+        const price = val('price'), down = val('down'), years = val('years'), rate = val('rate') / 100, tax = val('tax') / 100, ins = val('insurance'), hoa = val('hoa');
+        if (!(price > 0 && down >= 0 && down < price && years > 0 && rate >= 0 && tax >= 0 && ins >= 0 && hoa >= 0)) throw Error('Please check the home price, down payment, term, rate, and costs.');
+        const P = price - down, n = years * 12, r = rate / 12, pi = payment(P, r, n), taxm = price * tax / 12, insm = ins / 12, total = pi + taxm + insm + hoa, totalInt = pi * n - P;
+        $('monthly').textContent = money(total); $('pi').textContent = money(pi); $('taxm').textContent = money(taxm); $('insm').textContent = money(insm); $('hoam').textContent = money(hoa); $('loan').textContent = money(P); $('interest').textContent = money(totalInt);
+        $('quick').textContent = `Principal and interest are ${money(pi)} per month; taxes, insurance, and HOA bring the estimate to ${money(total)}.`; err('');
+      } catch (e) { err(e.message) }
+    }
+    $('calculate').onclick = calculate; $('clear').onclick = () => location.reload(); calculate();
+  </script>
+  <script defer="" src="../assets/js/global.js"></script>
+  <script defer="" src="../assets/js/taxonomy.js"></script>
+  <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

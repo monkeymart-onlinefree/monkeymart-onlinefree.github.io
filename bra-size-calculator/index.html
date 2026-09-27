@@ -1,138 +1,1295 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>Bra Size Calculator | CalcPro</title>
-<meta content="Estimate a starting bra band and cup size from underbust and bust measurements, with US, UK, EU, FR, and AU/NZ size labels." name="description"/>
-<meta content="index,follow" name="robots"/>
-<link href="../bra-size-calculator/" rel="canonical"/>
-<meta content="Bra Size Calculator | CalcPro" property="og:title"/>
-<meta content="Estimate a starting bra band and cup size from underbust and bust measurements, with US, UK, EU, FR, and AU/NZ size labels." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="/bra-size-calculator/" property="og:url"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-:root{--bg:#07111f;--panel:rgba(255,255,255,.09);--panel2:rgba(255,255,255,.06);--text:#f7fbff;--muted:#b8c6d8;--line:rgba(255,255,255,.14);--a:#67e8f9;--b:#34d399;--c:#fbbf24;--danger:#fb7185;--shadow:0 30px 80px rgba(0,0,0,.32)}
-body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
-a{color:var(--a)}button,input,select{font:inherit}
-.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
-.site-nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0;position:relative;z-index:10}
-.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.3px;color:var(--text);text-decoration:none}
-.brand-mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,var(--a),var(--b));display:grid;place-items:center;color:#04111f;box-shadow:inset 0 1px 0 #fff8,0 10px 25px #0004;transform:rotate(-7deg)}
-.nav-links{display:flex;gap:18px;align-items:center}.nav-links a{color:var(--muted);text-decoration:none;font-size:.92rem}.nav-links a:hover{color:var(--text)}
-.breadcrumb{font-size:.9rem;color:var(--muted);margin-bottom:18px}.breadcrumb a{color:inherit;text-decoration:none}
-.hero{position:relative;min-height:440px;padding:48px 0 72px;display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center}
-.hero h1{font-size:clamp(2.5rem,6vw,5.8rem);line-height:.92;letter-spacing:-.055em;margin:0 0 22px;max-width:800px}
-.hero p{font-size:1.08rem;color:var(--muted);max-width:700px;margin:0}
-.kicker{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:7px 12px;margin-bottom:18px;color:var(--a);font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
-.scene{min-height:330px;position:relative;perspective:900px;filter:drop-shadow(0 30px 40px #0005)}
-.orb{position:absolute;border-radius:50%;filter:blur(1px);opacity:.9}
-.calc-shell{margin-top:-25px;position:relative;z-index:4}
-.calculator{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);gap:24px;align-items:stretch}
-.card{background:linear-gradient(180deg,var(--panel),rgba(255,255,255,.045));border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.1);backdrop-filter:blur(18px)}
-.form-card{padding:28px}.result-card{padding:28px;position:relative;overflow:hidden}
-.result-card:after{content:"";position:absolute;inset:auto -80px -100px auto;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,var(--a),transparent 70%);opacity:.12}
-.section-title{font-size:1.35rem;margin:0 0 7px}.subtle{color:var(--muted);font-size:.92rem;margin:0 0 20px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
-label{font-weight:750;font-size:.88rem;color:#e8f0f8}
-input,select{width:100%;border:1px solid var(--line);background:rgba(4,10,20,.48);color:var(--text);border-radius:14px;padding:12px 13px;outline:none;box-shadow:inset 0 1px 8px #0003}
-input:focus,select:focus{border-color:var(--a);box-shadow:0 0 0 3px color-mix(in srgb,var(--a) 22%,transparent)}
-option{color:#111}
-.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:900;cursor:pointer;transition:.2s;box-shadow:0 12px 24px #0003}
-.btn-primary{background:linear-gradient(135deg,var(--a),var(--b));color:#04111a}.btn-secondary{background:rgba(255,255,255,.08);color:var(--text);border:1px solid var(--line)}
-.btn:hover{transform:translateY(-2px)}
-.error{display:none;color:#fff;background:color-mix(in srgb,var(--danger) 26%,transparent);border:1px solid color-mix(in srgb,var(--danger) 52%,transparent);padding:11px 13px;border-radius:13px;margin-top:15px;font-size:.9rem}.error.show{display:block}
-.result-big{font-size:clamp(2.2rem,5vw,4.2rem);font-weight:950;line-height:1;letter-spacing:-.04em;margin:10px 0 12px;color:var(--a);word-break:break-word}
-.metric-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}.metric{padding:14px;border-radius:17px;background:rgba(255,255,255,.055);border:1px solid var(--line)}.metric b{display:block;font-size:1.08rem}.metric span{font-size:.78rem;color:var(--muted)}
-.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line);font-size:.78rem;color:var(--muted)}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tab{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);padding:8px 12px;border-radius:999px;cursor:pointer;font-weight:800}.tab.active{background:var(--a);color:#06111c;border-color:transparent}
-.tab-panel{display:none}.tab-panel.active{display:block}
-.table-wrap{overflow:auto;border-radius:16px;border:1px solid var(--line);margin-top:16px}table{border-collapse:collapse;width:100%;min-width:520px;background:rgba(2,8,16,.28)}th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;font-size:.88rem}th{color:var(--a);background:rgba(255,255,255,.045)}
-.content{padding:80px 0}.content-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:32px}.article{background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:30px;padding:34px}.article h2{font-size:1.8rem;line-height:1.2;margin:38px 0 12px}.article h2:first-child{margin-top:0}.article h3{margin-top:24px}.article p,.article li{color:#c8d3df}.article code{background:#0004;padding:3px 6px;border-radius:6px}
-.aside{position:sticky;top:20px;height:max-content;padding:22px}.aside h3{margin-top:0}.aside a{display:block;color:var(--muted);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--line)}.aside a:hover{color:var(--text)}
-.faq details{border-top:1px solid var(--line);padding:15px 0}.faq summary{font-weight:850;cursor:pointer}.faq p{margin-bottom:0}
-.source-list a{overflow-wrap:anywhere}
-footer{border-top:1px solid var(--line);padding:32px 0 50px;color:var(--muted);font-size:.9rem}
-.small{font-size:.82rem;color:var(--muted)}
-.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.pill{padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.055);border:1px solid var(--line);font-size:.78rem}
-.rangebar{height:11px;border-radius:999px;background:rgba(255,255,255,.09);overflow:hidden;margin-top:14px}.rangebar>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--b),var(--c));transition:.4s}
-@media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:28px}.scene{min-height:250px}.calculator,.content-grid{grid-template-columns:1fr}.aside{position:relative}.hero h1{font-size:clamp(2.7rem,12vw,5.2rem)}}
-@media(max-width:620px){.wrap{width:min(100% - 20px,1180px)}.nav-links{display:none}.grid,.grid3,.metric-row{grid-template-columns:1fr}.form-card,.result-card,.article{padding:20px}.hero{padding-bottom:46px}.content{padding:55px 0}}
+    <!-- Primary Meta Tags -->
+<title>Bra Size Calculator – Estimate Band &amp; Cup Size Online</title>
+<meta name="title" content="Bra Size Calculator – Estimate Band &amp; Cup Size Online">
+<meta name="description" content="Use the Bra Size Calculator to estimate band and cup size from snug underbust and full bust measurements in inches or centimeters, with US and UK labels.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/bra-size-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/bra-size-calculator/">
+<meta property="og:title" content="Bra Size Calculator – Estimate Band &amp; Cup Size Online">
+<meta property="og:description" content="Use the Bra Size Calculator to estimate band and cup size from snug underbust and full bust measurements in inches or centimeters, with US and UK labels.">
+<meta property="og:site_name" content="Bra Size Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/bra-size-calculator/">
+<meta name="twitter:title" content="Bra Size Calculator – Estimate Band &amp; Cup Size Online">
+<meta name="twitter:description" content="Use the Bra Size Calculator to estimate band and cup size from snug underbust and full bust measurements in inches or centimeters, with US and UK labels.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        :root {
+            --bg: #07111f;
+            --panel: rgba(255, 255, 255, .09);
+            --panel2: rgba(255, 255, 255, .06);
+            --text: #f7fbff;
+            --muted: #b8c6d8;
+            --line: rgba(255, 255, 255, .14);
+            --a: #67e8f9;
+            --b: #34d399;
+            --c: #fbbf24;
+            --danger: #fb7185;
+            --shadow: 0 30px 80px rgba(0, 0, 0, .32)
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+            overflow-x: hidden
+        }
+
+        a {
+            color: var(--a)
+        }
+
+        button,
+        input,
+        select {
+            font: inherit
+        }
+
+        .wrap {
+            width: min(1180px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .site-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 0;
+            position: relative;
+            z-index: 10
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 900;
+            letter-spacing: .3px;
+            color: var(--text);
+            text-decoration: none
+        }
+
+        .brand-mark {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: linear-gradient(145deg, var(--a), var(--b));
+            display: grid;
+            place-items: center;
+            color: #04111f;
+            box-shadow: inset 0 1px 0 #fff8, 0 10px 25px #0004;
+            transform: rotate(-7deg)
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            align-items: center
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: .92rem
+        }
+
+        .nav-links a:hover {
+            color: var(--text)
+        }
+
+        .breadcrumb {
+            font-size: .9rem;
+            color: var(--muted);
+            margin-bottom: 18px
+        }
+
+        .breadcrumb a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .hero {
+            position: relative;
+            min-height: 440px;
+            padding: 48px 0 72px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 42px;
+            align-items: center
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5.8rem);
+            line-height: .92;
+            letter-spacing: -.055em;
+            margin: 0 0 22px;
+            max-width: 800px
+        }
+
+        .hero p {
+            font-size: 1.08rem;
+            color: var(--muted);
+            max-width: 700px;
+            margin: 0
+        }
+
+        .kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--line);
+            background: var(--panel2);
+            border-radius: 999px;
+            padding: 7px 12px;
+            margin-bottom: 18px;
+            color: var(--a);
+            font-weight: 800;
+            font-size: .8rem;
+            letter-spacing: .08em;
+            text-transform: uppercase
+        }
+
+        .scene {
+            min-height: 330px;
+            position: relative;
+            perspective: 900px;
+            filter: drop-shadow(0 30px 40px #0005)
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(1px);
+            opacity: .9
+        }
+
+        .calc-shell {
+            margin-top: -25px;
+            position: relative;
+            z-index: 4
+        }
+
+        .calculator {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(300px, .9fr);
+            gap: 24px;
+            align-items: stretch
+        }
+
+        .card {
+            background: linear-gradient(180deg, var(--panel), rgba(255, 255, 255, .045));
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, .1);
+            backdrop-filter: blur(18px)
+        }
+
+        .form-card {
+            padding: 28px
+        }
+
+        .result-card {
+            padding: 28px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .result-card:after {
+            content: "";
+            position: absolute;
+            inset: auto -80px -100px auto;
+            width: 230px;
+            height: 230px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--a), transparent 70%);
+            opacity: .12
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            margin: 0 0 7px
+        }
+
+        .subtle {
+            color: var(--muted);
+            font-size: .92rem;
+            margin: 0 0 20px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px
+        }
+
+        .grid3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px
+        }
+
+        .field.full {
+            grid-column: 1/-1
+        }
+
+        label {
+            font-weight: 750;
+            font-size: .88rem;
+            color: #e8f0f8
+        }
+
+        input,
+        select {
+            width: 100%;
+            border: 1px solid var(--line);
+            background: rgba(4, 10, 20, .48);
+            color: var(--text);
+            border-radius: 14px;
+            padding: 12px 13px;
+            outline: none;
+            box-shadow: inset 0 1px 8px #0003
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--a);
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--a) 22%, transparent)
+        }
+
+        option {
+            color: #111
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: .2s;
+            box-shadow: 0 12px 24px #0003
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--a), var(--b));
+            color: #04111a
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, .08);
+            color: var(--text);
+            border: 1px solid var(--line)
+        }
+
+        .btn:hover {
+            transform: translateY(-2px)
+        }
+
+        .error {
+            display: none;
+            color: #fff;
+            background: color-mix(in srgb, var(--danger) 26%, transparent);
+            border: 1px solid color-mix(in srgb, var(--danger) 52%, transparent);
+            padding: 11px 13px;
+            border-radius: 13px;
+            margin-top: 15px;
+            font-size: .9rem
+        }
+
+        .error.show {
+            display: block
+        }
+
+        .result-big {
+            font-size: clamp(2.2rem, 5vw, 4.2rem);
+            font-weight: 950;
+            line-height: 1;
+            letter-spacing: -.04em;
+            margin: 10px 0 12px;
+            color: var(--a);
+            word-break: break-word
+        }
+
+        .metric-row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 18px
+        }
+
+        .metric {
+            padding: 14px;
+            border-radius: 17px;
+            background: rgba(255, 255, 255, .055);
+            border: 1px solid var(--line)
+        }
+
+        .metric b {
+            display: block;
+            font-size: 1.08rem
+        }
+
+        .metric span {
+            font-size: .78rem;
+            color: var(--muted)
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 9px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid var(--line);
+            font-size: .78rem;
+            color: var(--muted)
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 18px
+        }
+
+        .tab {
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .04);
+            color: var(--muted);
+            padding: 8px 12px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 800
+        }
+
+        .tab.active {
+            background: var(--a);
+            color: #06111c;
+            border-color: transparent
+        }
+
+        .tab-panel {
+            display: none
+        }
+
+        .tab-panel.active {
+            display: block
+        }
+
+        .table-wrap {
+            overflow: auto;
+            border-radius: 16px;
+            border: 1px solid var(--line);
+            margin-top: 16px
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 520px;
+            background: rgba(2, 8, 16, .28)
+        }
+
+        th,
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--line);
+            text-align: left;
+            font-size: .88rem
+        }
+
+        th {
+            color: var(--a);
+            background: rgba(255, 255, 255, .045)
+        }
+
+        .content {
+            padding: 80px 0
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns:1fr;
+            gap: 32px
+        }
+
+        .article {
+            background: rgba(255, 255, 255, .035);
+            border: 1px solid var(--line);
+            border-radius: 30px;
+            padding: 34px
+        }
+
+        .article h2 {
+            font-size: 1.8rem;
+            line-height: 1.2;
+            margin: 38px 0 12px
+        }
+
+        .article h2:first-child {
+            margin-top: 0
+        }
+
+        .article h3 {
+            margin-top: 24px
+        }
+
+        .article p,
+        .article li {
+            color: #c8d3df
+        }
+
+        .article code {
+            background: #0004;
+            padding: 3px 6px;
+            border-radius: 6px
+        }
+
+        .aside {
+            position: sticky;
+            top: 20px;
+            height: max-content;
+            padding: 22px
+        }
+
+        .aside h3 {
+            margin-top: 0
+        }
+
+        .aside a {
+            display: block;
+            color: var(--muted);
+            text-decoration: none;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .aside a:hover {
+            color: var(--text)
+        }
+
+        .faq details {
+            border-top: 1px solid var(--line);
+            padding: 15px 0
+        }
+
+        .faq summary {
+            font-weight: 850;
+            cursor: pointer
+        }
+
+        .faq p {
+            margin-bottom: 0
+        }
+
+        .source-list a {
+            overflow-wrap: anywhere
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 32px 0 50px;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .small {
+            font-size: .82rem;
+            color: var(--muted)
+        }
+
+        .pill-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 14px
+        }
+
+        .pill {
+            padding: 7px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .055);
+            border: 1px solid var(--line);
+            font-size: .78rem
+        }
+
+        .rangebar {
+            height: 11px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .09);
+            overflow: hidden;
+            margin-top: 14px
+        }
+
+        .rangebar>span {
+            display: block;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--a), var(--b), var(--c));
+            transition: .4s
+        }
+
+        @media(max-width:900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 28px
+            }
+
+            .scene {
+                min-height: 250px
+            }
+
+            .calculator,
+            .content-grid {
+                grid-template-columns: 1fr
+            }
+
+            .aside {
+                position: relative
+            }
+
+            .hero h1 {
+                font-size: clamp(2.7rem, 12vw, 5.2rem)
+            }
+        }
+
+        @media(max-width:620px) {
+            .wrap {
+                width: min(100% - 20px, 1180px)
+            }
+
+            .nav-links {
+                display: none
+            }
+
+            .grid,
+            .grid3,
+            .metric-row {
+                grid-template-columns: 1fr
+            }
+
+            .form-card,
+            .result-card,
+            .article {
+                padding: 20px
+            }
+
+            .hero {
+                padding-bottom: 46px
+            }
+
+            .content {
+                padding: 55px 0
+            }
+        }
 
 
-body{--bg:#24121f;--panel:rgba(68,36,60,.72);--panel2:rgba(117,61,99,.3);--a:#ffb5d0;--b:#e7b9ff;--c:#ffd9a1;background:radial-gradient(circle at 75% 8%,#ed89b629,transparent 30%),linear-gradient(#24121f,#32172c)}
-.bra-size-calculator .hero{grid-template-columns:1.fr}.tape{position:absolute;left:5%;right:3%;top:90px;height:82px;border-radius:40px;background:linear-gradient(#ffd77b,#e8aa4a);transform:rotate(-12deg) rotateY(13deg);box-shadow:0 35px 55px #0006;overflow:hidden}.tape:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 20px,#6b481f 21px 23px,transparent 24px 40px)}.ribbon{position:absolute;width:190px;height:190px;border:32px solid #d96b98;border-radius:50%;right:17%;top:40px;transform:rotate(25deg);box-shadow:inset 12px -12px 25px #6d284e66,0 30px 50px #0005}.ribbon:after{content:"";position:absolute;width:150px;height:32px;background:#d96b98;right:-95px;bottom:-23px;transform:rotate(35deg);border-radius:20px}
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/bra-size-calculator/#app", "name": "Bra Size Calculator", "url": "/bra-size-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Estimate a starting bra band and cup size from underbust and bust measurements, with US, UK, EU, FR, and AU/NZ size labels."}, {"@type": "BreadcrumbList", "@id": "/bra-size-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Lifestyle & Other", "item": "/other/"}, {"@type": "ListItem", "position": 3, "name": "Body & Clothing", "item": "/other/body-clothing/"}, {"@type": "ListItem", "position": 4, "name": "Bra Size Calculator", "item": "/bra-size-calculator/"}]}, {"@type": "FAQPage", "@id": "/bra-size-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "Is a calculated bra size guaranteed to fit?", "acceptedAnswer": {"@type": "Answer", "text": "No. It is a measurement-based starting point. Brand patterns, cup shape, fabric, and personal comfort can change the best fit."}}, {"@type": "Question", "name": "Why do US and UK cup labels differ?", "acceptedAnswer": {"@type": "Answer", "text": "The cup-letter sequences diverge above D, so the same body measurements can have different labels across sizing systems."}}, {"@type": "Question", "name": "Should I add four inches to my underbust?", "acceptedAnswer": {"@type": "Answer", "text": "Sizing methods vary. This calculator uses a direct-band starting method rather than automatically adding four inches; always compare with the brand's own chart."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/><link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body class="bra-size-calculator" data-cp-category="other" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../other/index.html">Other Tools</a></li><li><a aria-current="page" href="index.html">Bra Size Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../other/index.html">Browse Other Tools</a><a href="../calculators/index.html">All calculators</a></div><header>
-<div class="wrap">
+        body {
+            --bg: #24121f;
+            --panel: rgba(68, 36, 60, .72);
+            --panel2: rgba(117, 61, 99, .3);
+            --a: #ffb5d0;
+            --b: #e7b9ff;
+            --c: #ffd9a1;
+            background: radial-gradient(circle at 75% 8%, #ed89b629, transparent 30%), linear-gradient(#24121f, #32172c)
+        }
 
-</div>
-</header>
-<div class="cp-page-layout"><main id="main"><h1 class="page-title">Bra Size Calculator</h1>
-<div class="cp-tool-actions"><button data-cp-print="" type="button">Print / Save PDF</button><span aria-live="polite" class="cp-action-status" role="status"></span></div><section class="calc-shell" id="calculator">
-<div class="wrap calculator">
-<div class="card form-card">
-<h2 class="section-title">Measurement-based starting size</h2><p class="subtle">Use a snug underbust and full-bust measurement. Brand charts can differ.</p>
-<div class="grid">
-<div class="field"><label for="bUnit">Measurement unit</label><select id="bUnit"><option value="in">Inches</option><option value="cm">Centimeters</option></select></div>
-<div class="field"><label for="bRegion">Sizing system</label><select id="bRegion"><option value="us">US</option><option value="uk">UK</option><option value="eu">EU</option><option value="fr">France / Belgium / Spain</option><option value="au">Australia / New Zealand</option></select></div>
-<div class="field"><label for="under">Snug underbust</label><input id="under" min="20" step=".1" type="number" value="32"/></div>
-<div class="field"><label for="bust">Full bust</label><input id="bust" min="20" step=".1" type="number" value="36"/></div>
-</div><div class="actions"><button class="btn btn-primary" id="bGo">Estimate bra size</button></div><div class="error" id="bErr"></div>
-</div>
-<aside aria-live="polite" class="card result-card">
-<span class="badge">Starting size estimate</span><div class="result-big" id="bBig">—</div><p class="subtle" id="bText">Use the result as a starting point and check the brand's own size chart.</p>
-<div class="metric-row"><div class="metric"><span>US / UK band</span><b id="bBand">—</b></div><div class="metric"><span>Bust-band difference</span><b id="bDiff">—</b></div><div class="metric"><span>US cup label</span><b id="bUS">—</b></div><div class="metric"><span>UK cup label</span><b id="bUK">—</b></div></div>
-</aside>
-</div>
-</section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<section class="content" id="guide">
-<div class="wrap content-grid">
-<article class="article">
-<h2>What Is a Bra Size Calculator?</h2>
-<p>A bra size calculator uses an underbust measurement to estimate a band and the difference between full bust and band to estimate a cup. The result is a starting point for fitting, not a universal guarantee, because brands and sizing systems differ.</p>
-<h2>How to Measure</h2>
-<p>Measure the underbust snugly around the ribcage directly beneath the bust. Measure the full bust around the fullest part without compressing tissue. Keep the tape level and use the same unit for both measurements.</p>
-<h2>How Cup Size Is Estimated</h2>
-<p>A common starting chart treats roughly 1 inch of bust-to-band difference as A, 2 inches as B, 3 inches as C, and 4 inches as D. Cup labels above D diverge between U.S., U.K., and European systems.</p>
-<h2>Limitations and Fit Check</h2>
-<p>Bra sizing is not globally standardized. A good fit also depends on cup shape, wire width, fabric stretch, and brand construction. The band should sit level, and the cups should contain tissue without obvious spilling or gaping.</p>
-<h2 id="faq">Frequently Asked Questions</h2>
-<div class="faq"><details><summary>Is a calculated bra size guaranteed to fit?</summary><p>No. It is a measurement-based starting point. Brand patterns, cup shape, fabric, and personal comfort can change the best fit.</p></details><details><summary>Why do US and UK cup labels differ?</summary><p>The cup-letter sequences diverge above D, so the same body measurements can have different labels across sizing systems.</p></details><details><summary>Should I add four inches to my underbust?</summary><p>Sizing methods vary. This calculator uses a direct-band starting method rather than automatically adding four inches; always compare with the brand's own chart.</p></details></div>
-<h2>Sources and Methodology</h2>
-<p>The calculator logic and explanatory content were cross-checked against the following references. Estimates are separated from official data where applicable.</p>
-<ul class="source-list"><li><a href="https://www.calculator.net/bra-size-calculator.html" rel="noopener noreferrer">Calculator.net Bra Size Calculator</a></li><li><a href="https://bracalc.com/bra-size-chart" rel="noopener noreferrer">BraCalc sizing chart and measurement method</a></li><li><a href="https://www.noobintimates.com/guides/bra-size-guide" rel="noopener noreferrer">NOOB Intimates measurement guide</a></li></ul>
-</article>
-<aside class="card aside">
-<h3>On this page</h3>
-<a href="#calculator">Calculator</a>
-<a href="#guide">How it works</a>
-<a href="#faq">FAQs</a>
-<p class="small">Educational calculator. For regulated financial, tax, medical, engineering, or network changes, verify the result against the relevant professional or official source.</p>
-</aside>
-</div>
-</section>
+        .bra-size-calculator .hero {
+            grid-template-columns: 1.fr
+        }
 
-<details class="cp-data-panel"><summary><span>Calculator Data — exact tool basis</span><small>Other Tools · Calculator</small></summary><div class="cp-data-grid"><div class="cp-data-item wide"><b>Purpose</b><p>Estimate a starting bra band and cup size from underbust and bust measurements, with US, UK, EU, FR, and AU/NZ size labels.</p></div><div class="cp-data-item wide"><b>Formula / Algorithm Used in Tool</b><p>Band = nearest even inch to snug underbust (implementation clamps 28–52). Cup difference = full bust (in) − band; cup index ≈ round(difference). Region labels map that index to US/UK/EU/FR/AU sequences.</p></div><div class="cp-data-item"><b>Required User Inputs</b><p>Measurement unit; Sizing system; Snug underbust; Full bust</p></div><div class="cp-data-item"><b>Primary Outputs</b><p>US / UK band; Bust-band difference; US cup label; UK cup label</p></div><div class="cp-data-item wide"><b>Important Assumptions / Limitations</b><p>Bra sizing is not globally standardized. A good fit also depends on cup shape, wire width, fabric stretch, and brand construction. The band should sit level, and the cups should contain tissue without obvious spilling or gaping.</p></div><div class="cp-data-item"><b>Fresh Data Required?</b><p>Conditional</p></div><div class="cp-data-item"><b>Recommended Update Frequency</b><p>When clinical/exercise guidance changes</p></div><div class="cp-data-item wide"><b>Current Source URLs in Page</b><p><a href="https://www.calculator.net/bra-size-calculator.html" rel="nofollow noopener" target="_blank">https://www.calculator.net/bra-size-calculator.html</a><br/><a href="https://bracalc.com/bra-size-chart" rel="nofollow noopener" target="_blank">https://bracalc.com/bra-size-chart</a><br/><a href="https://www.noobintimates.com/guides/bra-size-guide" rel="nofollow noopener" target="_blank">https://www.noobintimates.com/guides/bra-size-guide</a></p></div></div></details><script class="cp-calculator-data" type="application/json">{"index":"40","Batch":"5","Calculator / Page":"Bra Size Calculator","Slug":"bra-size-calculator","Site Category (Current)":"Other Tools","Recommended Content Domain":"Health / Fitness / Nutrition","Page Type":"Calculator","Search Intent / Purpose":"Estimate a starting bra band and cup size from underbust and bust measurements, with US, UK, EU, FR, and AU/NZ size labels.","Formula / Algorithm Used in Tool":"Band = nearest even inch to snug underbust (implementation clamps 28–52). Cup difference = full bust (in) − band; cup index ≈ round(difference). Region labels map that index to US/UK/EU/FR/AU sequences.","Required User Inputs":"Measurement unit; Sizing system; Snug underbust; Full bust","Primary Outputs":"US / UK band; Bust-band difference; US cup label; UK cup label","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Measurement unit, Sizing system, Snug underbust, Full bust. Explain outputs: US / UK band, Bust-band difference, US cup label, UK cup label. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Authoritative formula source, population/age/sex applicability, units, cutoffs/reference ranges and limitations; avoid diagnostic claims.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When clinical/exercise guidance changes","Important Assumptions / Limitations":"Bra sizing is not globally standardized. A good fit also depends on cup shape, wire width, fabric stretch, and brand construction. The band should sit level, and the cups should contain tissue without obvious spilling or gaping.","Current Source URLs in Page":"https://www.calculator.net/bra-size-calculator.html | https://bracalc.com/bra-size-chart | https://www.noobintimates.com/guides/bra-size-guide","Implementation Path":"/bra-size-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Other Tools</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../height-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Height Calculator</strong><small>Estimate a child's adult height from parental height using the mid-parental method…</small></span></a><a class="cp-related-link" href="../love-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Love Calculator</strong><small>Generate a repeatable, just-for-fun name match percentage with a transparent entert…</small></span></a><a class="cp-related-link" href="../tip-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Tip Calculator</strong><small>Calculate tip amount, total bill, and per-person split with custom or quick-select…</small></span></a><a class="cp-related-link" href="../golf-handicap-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Golf Handicap Calculator</strong><small>Calculate Course Handicap and estimate a base Handicap Index using current World Ha…</small></span></a><a class="cp-related-link" href="../dew-point-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Dew Point Calculator</strong><small>Calculate dew point from air temperature and relative humidity using a NOAA/NCEP sa…</small></span></a><a class="cp-related-link" href="../heat-index-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Heat Index Calculator</strong><small>Calculate heat index from air temperature and relative humidity using the National…</small></span></a><a class="cp-related-link" href="../wind-chill-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Wind Chill Calculator</strong><small>Calculate National Weather Service wind chill from air temperature and wind speed w…</small></span></a><a class="cp-related-link" href="../other-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Other Calculators</strong><small>Browse and filter CalcPro utility calculators for date and time, construction, meas…</small></span></a></div><a class="cp-side-category" href="../other/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-const usC=["AA","A","B","C","D","DD","DDD/F","G","H","I","J","K","L","M","N"];
-const ukC=["AA","A","B","C","D","DD","E","F","FF","G","GG","H","HH","J","JJ"];
-const euC=["AA","A","B","C","D","E","F","G","H","I","J","K","L","M","N"];
-function evenBand(x){let n=Math.round(x);if(n%2)n+=1;return Math.max(28,Math.min(52,n))}
-bGo.onclick=()=>{bErr.classList.remove('show');let u=+under.value,bu=+bust.value;if(bUnit.value==="cm"){u/=2.54;bu/=2.54}if(!(u>0&&bu>u)){bErr.textContent="Bust should be greater than underbust and both measurements must be valid.";bErr.classList.add('show');return}let band=evenBand(u),diff=bu-band,idx=Math.round(diff);idx=Math.max(0,Math.min(usC.length-1,idx));let cupUS=usC[idx],cupUK=ukC[Math.min(idx,ukC.length-1)],cupEU=euC[Math.min(idx,euC.length-1)],display="";
-if(bRegion.value==="us")display=band+cupUS;if(bRegion.value==="uk")display=band+cupUK;if(bRegion.value==="eu")display=(band*2.5-10).toFixed(0)+cupEU;if(bRegion.value==="fr")display=(band*2.5+5).toFixed(0)+cupEU;if(bRegion.value==="au")display=(band-22)+cupUK;
-bBig.textContent=display;bBand.textContent=band;bDiff.textContent=diff.toFixed(1)+" in";bUS.textContent=cupUS;bUK.textContent=cupUK;bText.textContent="Estimated starting size. Cup progression and band fit vary by brand, style, fabric, and sizing method.";};
+        .tape {
+            position: absolute;
+            left: 5%;
+            right: 3%;
+            top: 90px;
+            height: 82px;
+            border-radius: 40px;
+            background: linear-gradient(#ffd77b, #e8aa4a);
+            transform: rotate(-12deg) rotateY(13deg);
+            box-shadow: 0 35px 55px #0006;
+            overflow: hidden
+        }
+
+        .tape:before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(90deg, transparent 0 20px, #6b481f 21px 23px, transparent 24px 40px)
+        }
+
+        .ribbon {
+            position: absolute;
+            width: 190px;
+            height: 190px;
+            border: 32px solid #d96b98;
+            border-radius: 50%;
+            right: 17%;
+            top: 40px;
+            transform: rotate(25deg);
+            box-shadow: inset 12px -12px 25px #6d284e66, 0 30px 50px #0005
+        }
+
+        .ribbon:after {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 32px;
+            background: #d96b98;
+            right: -95px;
+            bottom: -23px;
+            transform: rotate(35deg);
+            border-radius: 20px
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/bra-size-calculator/#webapplication",
+      "name": "Bra Size Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/bra-size-calculator/",
+      "description": "Use the Bra Size Calculator to estimate band and cup size from snug underbust and full bust measurements in inches or centimeters, with US and UK labels.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/bra-size-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Bra Size Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/bra-size-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/bra-size-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What measurements do I need for the Bra Size Calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You need a snug underbust measurement taken directly beneath the bust and a full bust measurement taken around the fullest part of the bust. Both measurements should use the same unit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I enter measurements in centimeters?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The calculator accepts the selected measurement unit. Centimeter measurements are converted to inches before the inch-based band and cup calculations are applied."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is the calculated band different from my exact underbust measurement?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The tool rounds the snug underbust measurement to the nearest even-inch band. It then limits that band to the calculator's supported range of 28–52."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can the same bra size fit differently between brands?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A size label does not fully describe the shape or construction of a bra. Manufacturers can use different cup shapes, wire widths, materials, and sizing conventions. International clothing standards also distinguish body-size designation from the measurements chosen by garment designers and manufacturers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I do if the cups spill or gape?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Spilling can indicate that the cup is too small or that its shape does not suit you. Gaping may indicate a cup that is too large or a mismatch between the bra's shape and your body. The band should also remain level and comfortably snug."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do US and UK cup sizes sometimes have different letters?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Different regional sizing systems use different cup-label sequences. The calculator first derives a measurement-based cup index and then maps that index to the appropriate regional label."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a calculated bra size guaranteed to fit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The result is a useful starting point for trying bras. Actual fit should also be checked using the band position, cup containment, wire placement, and overall comfort because measurement formulas alone cannot account for every body or bra design."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script><script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body class="bra-size-calculator" data-cp-category="other" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../other/index.html">Other Tools</a></li>
+            <li><a aria-current="page" href="index.html">Bra Size Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../other/index.html">Browse Other Tools</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <header>
+        <div class="wrap">
+
+        </div>
+    </header>
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Bra Size Calculator</h1>
+            <section class="calc-shell" id="calculator">
+                <div class="wrap calculator">
+                    <div class="card form-card">
+                        <h2 class="section-title">Measurement-based starting size</h2>
+                        <p class="subtle">Use a snug underbust and full-bust measurement. Brand charts can differ.</p>
+                        <div class="grid">
+                            <div class="field"><label for="bUnit">Measurement unit</label><select id="bUnit">
+                                    <option value="in">Inches</option>
+                                    <option value="cm">Centimeters</option>
+                                </select></div>
+                            <div class="field"><label for="bRegion">Sizing system</label><select id="bRegion">
+                                    <option value="us">US</option>
+                                    <option value="uk">UK</option>
+                                    <option value="eu">EU</option>
+                                    <option value="fr">France / Belgium / Spain</option>
+                                    <option value="au">Australia / New Zealand</option>
+                                </select></div>
+                            <div class="field"><label for="under">Snug underbust</label><input id="under" min="20"
+                                    step=".1" type="number" value="32" /></div>
+                            <div class="field"><label for="bust">Full bust</label><input id="bust" min="20" step=".1"
+                                    type="number" value="36" /></div>
+                        </div>
+                        <div class="actions"><button class="btn btn-primary" id="bGo">Estimate bra size</button></div>
+                        <div class="error" id="bErr"></div>
+                    </div>
+                    <aside aria-live="polite" class="card result-card">
+                        <span class="badge">Starting size estimate</span>
+                        <div class="result-big" id="bBig">—</div>
+                        <p class="subtle" id="bText">Use the result as a starting point and check the brand's own size
+                            chart.</p>
+                        <div class="metric-row">
+                            <div class="metric"><span>US / UK band</span><b id="bBand">—</b></div>
+                            <div class="metric"><span>Bust-band difference</span><b id="bDiff">—</b></div>
+                            <div class="metric"><span>US cup label</span><b id="bUS">—</b></div>
+                            <div class="metric"><span>UK cup label</span><b id="bUK">—</b></div>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="content" id="guide">
+                <div class="wrap content-grid">
+                  <article class="article">
+ 
+  <p>The Bra Size Calculator estimates a starting bra band and cup size from your <strong>snug underbust</strong> and <strong>full bust</strong> measurements. Enter your measurements in inches or centimeters, choose a sizing system, and the calculator determines the rounded band size, bust-to-band difference, and corresponding cup label.</p>
+
+  <section id="what">
+    <h2>What Is the Bra Size Calculator?</h2>
+
+    <p>The Bra Size Calculator is a measurement-based tool for estimating a starting bra size. It uses the circumference directly beneath the bust for the band calculation and the circumference around the fullest part of the bust for the cup calculation.</p>
+
+    <p>The calculator supports regional sizing labels including <strong>US, UK, EU, FR, and AU/NZ</strong>. Because bra sizing is not completely standardized between countries, brands, and bra designs, the result should be treated as a starting size rather than a guaranteed fit. Research has also found that measurement-based sizing can differ from a professionally assessed best fit.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Bra Size Calculator</h2>
+
+    <h3>1. Select the Measurement Unit</h3>
+
+    <p>Choose the unit used for your measurements:</p>
+
+    <ul>
+      <li><strong>Inches</strong></li>
+      <li><strong>Centimeters</strong></li>
+    </ul>
+
+    <p>The calculator's band and cup calculation is based on inch measurements. When centimeters are selected, the measurements are converted to inches before the sizing calculation.</p>
+
+    <h3>2. Select the Sizing System</h3>
+
+    <p>Choose the regional sizing system you want to use. The calculator can map the calculated size to <strong>US, UK, EU, FR, and AU/NZ</strong> sizing labels.</p>
+
+    <p>Cup lettering and band labels can differ between regions, even when the underlying body measurements are the same.</p>
+
+    <h3>3. Enter Your Snug Underbust</h3>
+
+    <p>Measure around your torso directly beneath the breasts. Keep the measuring tape level and comfortably snug.</p>
+
+    <p>This measurement is used to determine the calculator's band size. Clothing-measurement standards emphasize consistent body-measurement methods because clothing size designations are based on body dimensions rather than finished garment dimensions.</p>
+
+    <h3>4. Enter Your Full Bust</h3>
+
+    <p>Measure around the fullest part of your bust while keeping the tape level. The tape should follow the body without significantly compressing the bust.</p>
+
+    <p>The calculator compares this measurement with the calculated band size to estimate the cup index. Similar bust and underbust measurements are also used by commercial bra-sizing systems.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <p>The calculator first determines an even-numbered band size and then uses the difference between the full bust measurement and that band to estimate the cup size.</p>
+
+    <h3>Main Formula</h3>
+
+    <p>Let:</p>
+
+    <ul>
+      <li><strong>U</strong> = snug underbust measurement in inches</li>
+      <li><strong>B</strong> = full bust measurement in inches</li>
+      <li><strong>Band</strong> = calculated band size</li>
+      <li><strong>D</strong> = bust-to-band difference in inches</li>
+      <li><strong>C</strong> = rounded cup index</li>
+    </ul>
+
+    <p>The implemented band calculation is:</p>
+
+    <div class="formula"><strong>Band = clamp(28, 52, nearest_even(U))</strong></div>
+
+    <p>The bust-to-band difference is:</p>
+
+    <div class="formula"><strong>D = B − Band</strong></div>
+
+    <p>The cup index is based on the rounded difference:</p>
+
+    <div class="formula"><strong>C ≈ round(D)</strong></div>
+
+    <p>The resulting cup index is then mapped to the applicable regional cup-label sequence.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th><strong>Symbol</strong></th>
+          <th><strong>Meaning</strong></th>
+          <th><strong>Unit</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>U</td>
+          <td>Snug underbust circumference</td>
+          <td>inches</td>
+        </tr>
+        <tr>
+          <td>B</td>
+          <td>Full bust circumference</td>
+          <td>inches</td>
+        </tr>
+        <tr>
+          <td>Band</td>
+          <td>Rounded and limited band size</td>
+          <td>US/UK band number</td>
+        </tr>
+        <tr>
+          <td>D</td>
+          <td>Difference between bust and band</td>
+          <td>inches</td>
+        </tr>
+        <tr>
+          <td>C</td>
+          <td>Rounded cup index used for label lookup</td>
+          <td>index</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Unit Conversion</h3>
+
+    <p>When measurements are entered in centimeters:</p>
+
+    <div class="formula"><strong>Measurement in inches = Measurement in centimeters ÷ 2.54</strong></div>
+
+    <p>The converted measurements are then processed using the same inch-based algorithm.</p>
+
+    <h3>Calculation Sequence</h3>
+
+    <ol>
+      <li>Convert centimeter measurements to inches when necessary.</li>
+      <li>Take the snug underbust measurement.</li>
+      <li>Round it to the nearest even-inch band value.</li>
+      <li>Limit the calculated band to the implemented <strong>28–52</strong> range.</li>
+      <li>Subtract the calculated band from the full bust measurement.</li>
+      <li>Round the resulting difference to obtain the cup index.</li>
+      <li>Map that index to the relevant regional cup label.</li>
+    </ol>
+
+    <h3>Band Size Calculation</h3>
+
+    <p>The calculator does not use the raw underbust number directly as the final band. It selects the nearest even-inch band.</p>
+
+    <p>For example, an underbust measurement of <strong>33.6 inches</strong> is closest to a <strong>34-inch band</strong>.</p>
+
+    <p>The implemented band output is also limited to:</p>
+
+    <p><strong>Minimum band: 28</strong><br>
+    <strong>Maximum band: 52</strong></p>
+
+    <h3>Cup Size Calculation</h3>
+
+    <p>After the band is established:</p>
+
+    <div class="formula"><strong>Bust-band difference = Full bust − calculated band</strong></div>
+
+    <p>The difference is then rounded and used as the cup index.</p>
+
+    <p>For common US/UK sizing, for example, a 4-inch bust-to-band difference corresponds to a D cup in the reference sizing table. Regional cup sequences begin to differ at some larger cup sizes, so the same index may not always use the same letters in every system.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Assume the following measurements:</p>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li>Measurement unit: <strong>Inches</strong></li>
+      <li>Sizing system: <strong>US</strong></li>
+      <li>Snug underbust: <strong>33.6 in</strong></li>
+      <li>Full bust: <strong>38.0 in</strong></li>
+    </ul>
+
+    <h3>Step 1: Calculate the Band</h3>
+
+    <p>The nearest even band to 33.6 inches is:</p>
+
+    <p><strong>Band = 34</strong></p>
+
+    <p>This value is already within the calculator's 28–52 band range, so no further adjustment is required.</p>
+
+    <h3>Step 2: Calculate the Bust-Band Difference</h3>
+
+    <p><strong>D = B − Band</strong></p>
+
+    <p><strong>D = 38.0 − 34</strong></p>
+
+    <p><strong>D = 4.0 inches</strong></p>
+
+    <h3>Step 3: Determine the Cup Index</h3>
+
+    <p><strong>C ≈ round(4.0)</strong></p>
+
+    <p><strong>C = 4</strong></p>
+
+    <p>A 4-inch difference maps to a <strong>D cup</strong> in both the US and UK reference sequences at this point in the sizing scale.</p>
+
+    <h3>Final Result</h3>
+
+    <p><strong>Band size: 34</strong><br>
+    <strong>Bust-band difference: 4.0 inches</strong><br>
+    <strong>US cup label: D</strong><br>
+    <strong>UK cup label: D</strong></p>
+
+    <p>The estimated starting size is therefore <strong>34D</strong>.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>US / UK Band</h3>
+
+    <p>The band result is the even-numbered band produced from your snug underbust measurement after the calculator's rounding and 28–52 range limit are applied.</p>
+
+    <p>It is not simply your exact underbust measurement.</p>
+
+    <h3>Bust-Band Difference</h3>
+
+    <p>This is the difference between your full bust measurement and the <strong>calculated band</strong>, not the original raw underbust measurement.</p>
+
+    <p>This value is used to determine the cup index.</p>
+
+    <h3>US Cup Label</h3>
+
+    <p>The US cup result converts the calculated cup index into the US cup-letter sequence.</p>
+
+    <p>Cup labels are not universally interchangeable between countries or manufacturers.</p>
+
+    <h3>UK Cup Label</h3>
+
+    <p>The UK result uses the UK cup-letter sequence. US and UK cup labels match at some sizes but can diverge higher in the sequence.</p>
+
+    <p>For that reason, check the sizing system when comparing bras from different regions.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The Bra Size Calculator provides a <strong>starting-size estimate</strong>, not a guarantee that every bra carrying that label will fit.</p>
+
+    <p>Bra sizing is not globally standardized. Garment construction, cup shape, wire width, fabric stretch, breast shape, and differences between manufacturers can all affect actual fit. ISO sizing standards also distinguish body measurements from the dimensions and design choices used in finished garments.</p>
+
+    <p>The calculator also uses rounding. Measurements close to a band or cup rounding boundary can therefore produce a different result after a relatively small measurement change.</p>
+
+    <p>The implemented band calculation is limited to <strong>28 through 52</strong>. If the calculated value would fall outside that range, the calculator uses the applicable boundary rather than producing a smaller or larger band. This can make the result less useful for someone whose actual size falls beyond the calculator's supported range.</p>
+
+    <p>Measurement-based sizing alone cannot evaluate how a specific bra fits your body. Research comparing traditional measurements with professional fitting criteria found meaningful differences between measurement-derived sizes and assessed best fit.</p>
+
+    <p>A well-fitting band should generally stay level rather than ride upward, while the cups should contain the bust without obvious spilling or gaping. These fit checks can help determine whether you should try a nearby size or a different bra shape.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What measurements do I need for the Bra Size Calculator?</summary>
+      <p>You need a <strong>snug underbust measurement</strong> taken directly beneath the bust and a <strong>full bust measurement</strong> taken around the fullest part of the bust. Both measurements should use the same unit.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can I enter measurements in centimeters?</summary>
+      <p>Yes. The calculator accepts the selected measurement unit. Centimeter measurements are converted to inches before the inch-based band and cup calculations are applied.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why is the calculated band different from my exact underbust measurement?</summary>
+      <p>The tool rounds the snug underbust measurement to the nearest even-inch band. It then limits that band to the calculator's supported range of 28–52.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why can the same bra size fit differently between brands?</summary>
+      <p>A size label does not fully describe the shape or construction of a bra. Manufacturers can use different cup shapes, wire widths, materials, and sizing conventions. International clothing standards also distinguish body-size designation from the measurements chosen by garment designers and manufacturers.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What should I do if the cups spill or gape?</summary>
+      <p>Spilling can indicate that the cup is too small or that its shape does not suit you. Gaping may indicate a cup that is too large or a mismatch between the bra's shape and your body. The band should also remain level and comfortably snug.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why do US and UK cup sizes sometimes have different letters?</summary>
+      <p>Different regional sizing systems use different cup-label sequences. The calculator first derives a measurement-based cup index and then maps that index to the appropriate regional label.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is a calculated bra size guaranteed to fit?</summary>
+      <p>No. The result is a useful starting point for trying bras. Actual fit should also be checked using the band position, cup containment, wire placement, and overall comfort because measurement formulas alone cannot account for every body or bra design.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li><a href="https://www.calculator.net/bra-size-calculator.html?utm_source=chatgpt.com" rel="noopener" target="_blank">Calculator.net — Bra Size Calculator</a><br>
+      Used to verify bust and band measurement terminology, the bust-minus-band cup concept, regional band differences, and US/UK cup-label reference information.</li>
+      <li><a href="https://www.iso.org/standard/61686.html?utm_source=chatgpt.com" rel="noopener" target="_blank">ISO 8559-1:2017 — Anthropometric Definitions for Body Measurement</a><br>
+      Provides standardized principles for anthropometric measurements used in clothing development and size designation. ISO lists this edition as current after review in 2026.</li>
+      <li><a href="https://www.iso.org/standard/85590.html?utm_source=chatgpt.com" rel="noopener" target="_blank">ISO 8559-2:2025 — Primary and Secondary Dimension Indicators</a><br>
+      Provides the current international framework for clothing size designation based on body measurements.</li>
+      <li><a href="https://pubmed.ncbi.nlm.nih.gov/22397508/?utm_source=chatgpt.com" rel="noopener" target="_blank">PubMed — Evaluation of Professional Bra Fitting Criteria</a><br>
+      Supports the limitation that traditional measurement-based sizing may differ from a professionally assessed best fit.</li>
+      <li><a href="https://wacoal-america.com/pages/bra-fit-calculator?utm_source=chatgpt.com" rel="noopener" target="_blank">Wacoal — Bra Fit Calculator</a><br>
+      Used to cross-check practical underbust and full-bust measurement guidance.</li>
+    </ul>
+  </section>
+
+  <section id="related-tools">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/body-type-calculator/?utm_source=chatgpt.com">Body Type Calculator</a></li>
+      <li><a href="https://example.com/height-calculator/?utm_source=chatgpt.com">Height Calculator</a></li>
+      <li><a href="https://example.com/weight-calculator/?utm_source=chatgpt.com">Weight Calculator</a></li>
+      <li><a href="https://example.com/healthy-weight-calculator/?utm_source=chatgpt.com">Healthy Weight Calculator</a></li>
+      <li><a href="https://example.com/bmi-calculator/?utm_source=chatgpt.com">BMI Calculator</a></li>
+    </ul>
+  </section>
+</article>
+                    <aside class="card aside">
+                        <h3>On this page</h3>
+                        <a href="#calculator">Calculator</a>
+                        <a href="#guide">How it works</a>
+                        <a href="#faq">FAQs</a>
+                        <p class="small">Educational calculator. For regulated financial, tax, medical, engineering, or
+                            network changes, verify the result against the relevant professional or official source.</p>
+                    </aside>
+                </div>
+            </section>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"40","Batch":"5","Calculator / Page":"Bra Size Calculator","Slug":"bra-size-calculator","Site Category (Current)":"Other Tools","Recommended Content Domain":"Health / Fitness / Nutrition","Page Type":"Calculator","Search Intent / Purpose":"Estimate a starting bra band and cup size from underbust and bust measurements, with US, UK, EU, FR, and AU/NZ size labels.","Formula / Algorithm Used in Tool":"Band = nearest even inch to snug underbust (implementation clamps 28–52). Cup difference = full bust (in) − band; cup index ≈ round(difference). Region labels map that index to US/UK/EU/FR/AU sequences.","Required User Inputs":"Measurement unit; Sizing system; Snug underbust; Full bust","Primary Outputs":"US / UK band; Bust-band difference; US cup label; UK cup label","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Measurement unit, Sizing system, Snug underbust, Full bust. Explain outputs: US / UK band, Bust-band difference, US cup label, UK cup label. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Authoritative formula source, population/age/sex applicability, units, cutoffs/reference ranges and limitations; avoid diagnostic claims.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When clinical/exercise guidance changes","Important Assumptions / Limitations":"Bra sizing is not globally standardized. A good fit also depends on cup shape, wire width, fabric stretch, and brand construction. The band should sit level, and the cups should contain tissue without obvious spilling or gaping.","Current Source URLs in Page":"https://www.calculator.net/bra-size-calculator.html | https://bracalc.com/bra-size-chart | https://www.noobintimates.com/guides/bra-size-guide","Implementation Path":"/bra-size-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Other Tools</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../height-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Height Calculator</strong><small>Estimate a child's
+                            adult height from parental height using the mid-parental method…</small></span></a><a
+                    class="cp-related-link" href="../love-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Love Calculator</strong><small>Generate a
+                            repeatable, just-for-fun name match percentage with a transparent
+                            entert…</small></span></a><a class="cp-related-link"
+                    href="../tip-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Tip
+                            Calculator</strong><small>Calculate tip amount, total bill, and per-person split with custom
+                            or quick-select…</small></span></a><a class="cp-related-link"
+                    href="../golf-handicap-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Golf Handicap Calculator</strong><small>Calculate
+                            Course Handicap and estimate a base Handicap Index using current World
+                            Ha…</small></span></a><a class="cp-related-link"
+                    href="../dew-point-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Dew
+                            Point Calculator</strong><small>Calculate dew point from air temperature and relative
+                            humidity using a NOAA/NCEP sa…</small></span></a><a class="cp-related-link"
+                    href="../heat-index-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Heat
+                            Index Calculator</strong><small>Calculate heat index from air temperature and relative
+                            humidity using the National…</small></span></a><a class="cp-related-link"
+                    href="../wind-chill-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Wind
+                            Chill Calculator</strong><small>Calculate National Weather Service wind chill from air
+                            temperature and wind speed w…</small></span></a><a class="cp-related-link"
+                    href="../other-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Other
+                            Calculators</strong><small>Browse and filter CalcPro utility calculators for date and time,
+                            construction, meas…</small></span></a></div><a class="cp-side-category"
+                href="../other/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const usC = ["AA", "A", "B", "C", "D", "DD", "DDD/F", "G", "H", "I", "J", "K", "L", "M", "N"];
+        const ukC = ["AA", "A", "B", "C", "D", "DD", "E", "F", "FF", "G", "GG", "H", "HH", "J", "JJ"];
+        const euC = ["AA", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N"];
+        function evenBand(x) { let n = Math.round(x); if (n % 2) n += 1; return Math.max(28, Math.min(52, n)) }
+        bGo.onclick = () => {
+            bErr.classList.remove('show'); let u = +under.value, bu = +bust.value; if (bUnit.value === "cm") { u /= 2.54; bu /= 2.54 } if (!(u > 0 && bu > u)) { bErr.textContent = "Bust should be greater than underbust and both measurements must be valid."; bErr.classList.add('show'); return } let band = evenBand(u), diff = bu - band, idx = Math.round(diff); idx = Math.max(0, Math.min(usC.length - 1, idx)); let cupUS = usC[idx], cupUK = ukC[Math.min(idx, ukC.length - 1)], cupEU = euC[Math.min(idx, euC.length - 1)], display = "";
+            if (bRegion.value === "us") display = band + cupUS; if (bRegion.value === "uk") display = band + cupUK; if (bRegion.value === "eu") display = (band * 2.5 - 10).toFixed(0) + cupEU; if (bRegion.value === "fr") display = (band * 2.5 + 5).toFixed(0) + cupEU; if (bRegion.value === "au") display = (band - 22) + cupUK;
+            bBig.textContent = display; bBand.textContent = band; bDiff.textContent = diff.toFixed(1) + " in"; bUS.textContent = cupUS; bUK.textContent = cupUK; bText.textContent = "Estimated starting size. Cup progression and band fit vary by brand, style, fabric, and sizing method.";
+        };
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
 </html>

@@ -1,90 +1,1798 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+<html lang="en">
 
-<title>Salary Calculator 2026 – Gross Pay, Federal Tax &amp; Take-Home | CalcPro</title><meta content="Estimate 2026 U.S. annual and per-paycheck take-home pay using gross salary, pre-tax deductions, federal income tax, Social Security, Medicare, and a user-entered state/local rate." name="description"/><meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
-<link href="../salary-calculator/" rel="canonical"/><meta content="website" property="og:type"/><meta content="Salary Calculator" property="og:title"/><meta content="Estimate 2026 U.S. annual and per-paycheck take-home pay using gross salary, pre-tax deductions, federal income tax, Social Security, Medicare, and a user-entered state/local rate." property="og:description"/><meta content="#1477ff" name="theme-color"/>
-<style>
-:root{--ink:#0b1933;--muted:#60708a;--line:#dbe8f6;--blue:#0a6ff2;--blue2:#20a5ff;--green:#16b86b;--yellow:#f6b51f;--red:#ef4f58;--shadow:0 18px 45px rgba(25,74,123,.16),inset 0 1px 0 rgba(255,255,255,.95)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 12% 6%,rgba(32,165,255,.18),transparent 28%),radial-gradient(circle at 88% 15%,rgba(35,205,153,.13),transparent 24%),linear-gradient(180deg,#f8fcff,#eef7ff 48%,#f7fbff);line-height:1.65}
-a{color:#0967d8;text-decoration:none}a:hover{text-decoration:underline}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}.topbar{position:sticky;top:0;z-index:20;background:rgba(248,252,255,.8);backdrop-filter:blur(18px);border-bottom:1px solid rgba(196,219,241,.72)}
-.nav{height:72px;display:flex;align-items:center;gap:28px}.brand{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:850;color:var(--ink)}.brand i{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;color:#fff;font-style:normal;background:linear-gradient(145deg,#27b3ff,#0562d7);box-shadow:0 9px 18px rgba(10,111,242,.28),inset 0 2px 2px rgba(255,255,255,.45)}
-.navlinks{display:flex;gap:20px;margin-left:18px;font-size:14px;font-weight:700}.navlinks a{color:#20324e}.search{margin-left:auto;background:#fff;border:1px solid #e0ebf6;border-radius:999px;padding:10px 15px;min-width:210px;color:#6d7d93;font-size:13px;box-shadow:0 8px 20px rgba(26,70,112,.08)}
-.hero{padding:28px 0 18px}.breadcrumb{font-size:13px;color:#6c7b91;margin-bottom:18px}.breadcrumb span{margin:0 8px;color:#a1aec0}.hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:28px;align-items:center}
-h1{font-size:clamp(2.6rem,5vw,4.5rem);line-height:.98;margin:0 0 16px;letter-spacing:-3px}h1 b{color:var(--blue)}.lead{font-size:17px;color:#42546e;max-width:700px;margin:0}.chips{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.chip{background:#fff;border:1px solid #dceafa;border-radius:999px;padding:7px 11px;font-size:12px;font-weight:800;color:#35506f;box-shadow:0 8px 18px rgba(37,86,137,.07)}
-.hero-art{height:270px;position:relative;perspective:900px}.floor{position:absolute;left:9%;right:7%;bottom:12px;height:34px;border-radius:50%;background:rgba(32,75,115,.14);filter:blur(15px)}.obj{position:absolute;box-shadow:var(--shadow)}
-.calc-shell{margin-top:20px;padding:16px;border-radius:32px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.92);box-shadow:0 28px 70px rgba(37,86,137,.15);backdrop-filter:blur(20px)}.calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}
-.card{background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(244,249,255,.86));border:1px solid rgba(218,231,245,.92);border-radius:24px;padding:22px;box-shadow:var(--shadow)}.card h2{font-size:21px;margin:0 0 4px;letter-spacing:-.5px}.sub{font-size:13px;color:#687990;margin:0 0 15px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}label{font-size:13px;font-weight:800;color:#263a56}.input-wrap{display:flex;align-items:center;gap:8px}
-input,select{width:100%;border:1px solid #cddff1;background:#fbfdff;border-radius:12px;padding:11px 12px;font:inherit;color:#152641;box-shadow:inset 0 2px 4px rgba(26,77,123,.05);outline:none}input:focus,select:focus{border-color:#66b5ff;box-shadow:0 0 0 3px rgba(32,165,255,.12)}
-.radios{display:flex;gap:16px;flex-wrap:wrap}.radio{display:flex;align-items:center;gap:7px;font-size:13px}.radio input{width:auto;accent-color:#1685f5}.unit{font-size:12px;color:#667890;white-space:nowrap}.hint{font-size:11px;color:#75859a}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;background:#edf5ff;border:1px solid #dceafb;padding:4px;border-radius:15px;margin-bottom:16px}.tab{border:0;background:transparent;padding:9px 12px;border-radius:11px;font-weight:800;color:#334866;cursor:pointer}.tab.active{background:linear-gradient(145deg,#2aa8ff,#0668df);color:#fff;box-shadow:0 9px 17px rgba(8,111,240,.26)}
-.actions{display:grid;grid-template-columns:1.5fr .8fr;gap:10px;margin-top:18px}.btn{border:0;border-radius:14px;padding:13px 14px;font-weight:800;cursor:pointer}.primary{color:#fff;background:linear-gradient(145deg,#25a9ff,#0064dc);box-shadow:0 12px 22px rgba(6,104,221,.28)}.secondary{background:#edf3f9;color:#273a55}.error{color:#b4232b;font-size:12px;margin-top:10px;min-height:18px}
-.result-hero{padding:18px;border-radius:19px;background:linear-gradient(135deg,#edfff7,#eef8ff);position:relative;overflow:hidden}.result-hero:after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;right:-30px;top:-45px;background:radial-gradient(circle,#55d7ff,#0b79ef);opacity:.17}.result-hero small{color:#60728b}.big{font-size:36px;font-weight:900;letter-spacing:-1.8px;line-height:1.1;margin-top:3px}.accent{color:var(--green);font-weight:850;font-size:18px}
-.stats{margin-top:13px;border-radius:16px;background:#fff;border:1px solid #e3edf7;overflow:hidden}.stat{display:flex;justify-content:space-between;gap:12px;padding:10px 12px;border-bottom:1px solid #e8f0f7;font-size:13px}.stat:last-child{border-bottom:0}.stat b{text-align:right}
-.answerbox{margin:14px 0 0;padding:15px 16px;border-radius:16px;background:#0e2544;color:#fff;box-shadow:0 15px 28px rgba(12,37,68,.18);font-size:13px}.answerbox strong{color:#73d3ff}
-.gauge{height:20px;border-radius:999px;background:linear-gradient(90deg,#2b92f2 0 25%,#1cc477 25% 50%,#f7c338 50% 72%,#ef555c 72%);position:relative;box-shadow:inset 0 2px 4px rgba(0,0,0,.08);margin-top:16px}.pointer{position:absolute;top:-8px;width:4px;height:36px;border-radius:4px;background:#14243a;left:40%;box-shadow:0 0 0 3px rgba(255,255,255,.8);transition:.35s}
-.mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}.mini{padding:13px;border-radius:15px;background:#fff;border:1px solid #e1ecf7}.mini small{display:block;color:#718299}.mini b{font-size:16px}.ringbox{display:grid;place-items:center;margin:15px 0}.ring{width:170px;height:170px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--blue) 0 45%,var(--green) 45% 75%,var(--yellow) 75%);box-shadow:0 18px 30px rgba(24,88,150,.14)}.ring:after{content:"";width:112px;height:112px;border-radius:50%;background:#fff;position:absolute}.ring strong{position:relative;z-index:2;font-size:26px}
-.content{padding:38px 0 70px}.content-grid{display:grid;grid-template-columns:1.fr;gap:22px}.article,.toc{background:rgba(255,255,255,.9);border:1px solid #dfeaf6;border-radius:25px;box-shadow:var(--shadow)}.article{padding:30px}.toc{padding:24px;align-self:start;position:sticky;top:94px}.article h2{font-size:28px;line-height:1.2;margin:38px 0 12px;letter-spacing:-.8px}.article h2:first-child{margin-top:0}.article h3{font-size:20px;margin:24px 0 8px}.article p,.article li{color:#42536d}.direct{border-left:5px solid var(--blue);background:#f0f7ff;padding:16px 18px;border-radius:14px;color:#263a56}.formula{font:800 16px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;background:#0d213c;color:#eef8ff;padding:16px;border-radius:15px;overflow:auto}.note{background:#fff9e9;border:1px solid #f5df9c;padding:15px 17px;border-radius:14px;color:#5c4d22}
-.table-wrap{overflow:auto;border-radius:16px;border:1px solid #dce7f2;margin:14px 0}table{border-collapse:collapse;width:100%;min-width:520px;background:#fff}th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #e7eef5;font-size:13px}th{background:#f1f7fd}.faq{border-top:1px solid #e4edf6;padding:15px 0}.faq summary{font-weight:800;cursor:pointer}.faq p{margin-bottom:0}.toc h3{margin-top:0}.toc a{display:block;padding:7px 0;color:#34506f;font-size:14px}.sources li{margin:8px 0}footer{padding:28px 0 42px;color:#63748a;font-size:13px;text-align:center}
-@media(max-width:960px){.navlinks,.search{display:none}.hero-grid,.calc-grid,.content-grid{grid-template-columns:1fr}.hero-art{height:235px}.toc{position:static}}
-@media(max-width:620px){.wrap{width:min(100% - 20px,1180px)}.hero{padding-top:18px}.hero-art{transform:scale(.86);transform-origin:center top;margin-bottom:-28px}h1{font-size:43px;letter-spacing:-2px}.calc-shell{padding:8px;border-radius:23px}.card{padding:16px;border-radius:19px}.form-grid,.mini-grid,.actions{grid-template-columns:1fr}.field.full{grid-column:auto}.article{padding:21px}.nav{height:64px}}
-/* 3D scenes */
-.scene-salary .wallet{right:58px;top:64px;width:285px;height:155px;border-radius:28px;background:linear-gradient(145deg,#0d6ee8,#29b3ff);transform:rotate(-7deg);box-shadow:24px 30px 42px rgba(10,92,184,.24)}.scene-salary .wallet:before{content:"PAYCHECK";position:absolute;left:30px;top:28px;color:#fff;font-size:18px;font-weight:900;letter-spacing:2px}.scene-salary .wallet:after{content:"$";position:absolute;right:34px;bottom:22px;color:rgba(255,255,255,.9);font-size:68px;font-weight:900}.scene-salary .slip{right:220px;top:30px;width:125px;height:165px;border-radius:14px;background:#fff;transform:rotate(9deg);border:1px solid #e0ebf7}.scene-salary .slip:after{content:"GROSS\A TAX\A NET";white-space:pre;position:absolute;inset:25px;font-weight:850;line-height:2.5;color:#44617f}
-.scene-401k .vault{right:75px;top:48px;width:235px;height:190px;border-radius:32px;background:linear-gradient(145deg,#e8f6ff,#9fcff3);border:7px solid #fff;transform:rotateY(-12deg)}.scene-401k .vault:before{content:"";position:absolute;width:100px;height:100px;border-radius:50%;left:60px;top:38px;background:radial-gradient(circle,#fff 0 14%,#1c8dea 15% 22%,#dceaf6 23% 46%,#0d315f 47%);box-shadow:0 10px 20px rgba(22,64,110,.18)}.scene-401k .coin{right:22px;bottom:18px;width:98px;height:98px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff9b8,#ffd442 55%,#dda500);border:8px solid #ffe770;display:grid;place-items:center;font-weight:900;font-size:24px;color:#8a6200}
-.scene-rate .dial{right:100px;top:35px;width:235px;height:235px;border-radius:50%;background:radial-gradient(circle,#fff 0 49%,#dbeafa 50% 63%,#0d75df 64%);box-shadow:0 25px 45px rgba(20,85,150,.2)}.scene-rate .dial:before{content:"%";position:absolute;inset:0;display:grid;place-items:center;font-size:76px;font-weight:900;color:#0b6ff2}.scene-rate .needle{right:214px;top:70px;width:6px;height:92px;border-radius:5px;background:#ef4f58;transform-origin:bottom;transform:rotate(35deg)}
-.scene-tax .receipt{right:92px;top:25px;width:220px;height:215px;border-radius:20px;background:#fff;transform:rotate(-5deg);border:1px solid #dbe8f6}.scene-tax .receipt:before{content:"SUBTOTAL   $100\A TAX          $8\A TOTAL       $108";white-space:pre;position:absolute;left:30px;top:48px;font:800 16px/2 ui-monospace;color:#294766}.scene-tax .badge{right:25px;bottom:35px;width:120px;height:120px;border-radius:30px;background:linear-gradient(145deg,#28b3ff,#0967db);transform:rotate(10deg);display:grid;place-items:center;color:#fff;font-size:42px;font-weight:900}
-.scene-health .body{right:140px;top:28px;width:115px;height:210px;border-radius:58px 58px 42px 42px;background:linear-gradient(145deg,#8de4dc,#1da7c5);box-shadow:18px 25px 35px rgba(0,118,142,.2)}.scene-health .body:before{content:"";position:absolute;left:24px;top:-55px;width:68px;height:68px;border-radius:50%;background:linear-gradient(145deg,#a8eff0,#40bdd1)}.scene-health .pulse{right:20px;top:95px;width:345px;height:4px;background:#fff;box-shadow:0 0 0 2px rgba(10,111,242,.08)}.scene-health .pulse:after{content:"⌁";position:absolute;left:110px;top:-66px;color:#0a6ff2;font-size:100px;font-weight:900;transform:rotate(10deg)}
-.scene-bmi .scale{right:75px;top:50px;width:250px;height:175px;border-radius:36px;background:linear-gradient(145deg,#eff8ff,#c9dced);border:6px solid #f8fcff;transform:rotateY(-11deg) rotateX(8deg) rotateZ(-4deg)}.scene-bmi .scale:before{content:"22.7";position:absolute;left:45px;right:45px;bottom:32px;padding:13px;border-radius:16px;background:#0e2544;color:#73d3ff;text-align:center;font-weight:900;font-size:25px}.scene-bmi .tape{right:15px;top:145px;width:340px;height:28px;border-radius:10px;background:repeating-linear-gradient(90deg,#ffd53d 0 17px,#f7c629 17px 18px);transform:rotate(12deg)}
-.scene-calorie .flame{right:130px;top:28px;width:145px;height:205px;background:linear-gradient(145deg,#ffdc4b,#ff724f);border-radius:70% 30% 60% 40%/70% 50% 50% 30%;transform:rotate(42deg);box-shadow:0 24px 45px rgba(242,117,56,.23)}.scene-calorie .flame:after{content:"kcal";position:absolute;inset:0;display:grid;place-items:center;transform:rotate(-42deg);font-size:31px;font-weight:900;color:#fff}.scene-calorie .plate{right:30px;bottom:18px;width:330px;height:58px;border-radius:50%;background:linear-gradient(#e6f2fb,#b5cee1);box-shadow:0 12px 20px rgba(30,70,110,.15)}
-.scene-fat .tapeorb{right:85px;top:35px;width:225px;height:225px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#fff,#8fd7ff 42%,#0872df 76%);box-shadow:0 28px 50px rgba(10,111,242,.22)}.scene-fat .tapeorb:before{content:"BODY\A FAT";white-space:pre;position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#fff;font-weight:900;letter-spacing:3px}.scene-fat .belt{right:20px;top:118px;width:350px;height:30px;border-radius:9px;background:repeating-linear-gradient(90deg,#ffe263 0 16px,#f4c92d 16px 18px);transform:rotate(-12deg)}
-.scene-bmr .core{right:115px;top:40px;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle,#fff 0 18%,#79d8ff 19% 45%,#0a6ff2 46% 68%,#0c315d 69%);box-shadow:0 25px 50px rgba(10,111,242,.25)}.scene-bmr .orbit{right:45px;top:90px;width:330px;height:100px;border:4px solid rgba(22,184,107,.35);border-radius:50%;transform:rotate(-18deg)}.scene-bmr .orbit:after{content:"";position:absolute;width:24px;height:24px;border-radius:50%;right:18px;top:5px;background:#16b86b}
-.scene-macro .plate{right:70px;top:30px;width:245px;height:245px;border-radius:50%;background:conic-gradient(#0a6ff2 0 45%,#16b86b 45% 70%,#f6b51f 70%);box-shadow:0 28px 48px rgba(26,76,123,.18);border:12px solid #fff}.scene-macro .plate:after{content:"MACROS";position:absolute;inset:55px;border-radius:50%;background:#f8fcff;display:grid;place-items:center;font-size:22px;font-weight:900;color:#173653}.scene-macro .cube{right:22px;bottom:22px;width:90px;height:90px;border-radius:22px;background:linear-gradient(145deg,#fff,#bfe0f7);transform:rotate(12deg);display:grid;place-items:center;font-weight:900;color:#0a6ff2}
-</style><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Salary Calculator", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "description": "Estimate 2026 U.S. annual and per-paycheck take-home pay using gross salary, pre-tax deductions, federal income tax, Social Security, Medicare, and a user-entered state/local rate.", "url": "/salary-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Taxes & Paycheck", "item": "/finance/taxes-paycheck/"}, {"@type": "ListItem", "position": 4, "name": "Salary Calculator", "item": "/salary-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Are the 2026 federal brackets current?", "acceptedAnswer": {"@type": "Answer", "text": "The page uses IRS-published 2026 standard deductions and tax-rate thresholds current when this calculator was prepared."}}, {"@type": "Question", "name": "Does this equal my exact paycheck withholding?", "acceptedAnswer": {"@type": "Answer", "text": "No. Actual withholding depends on Form W-4 information, payroll timing, benefits, credits, and other factors."}}, {"@type": "Question", "name": "What FICA rates are used?", "acceptedAnswer": {"@type": "Answer", "text": "The employee Social Security rate is 6.2% up to the 2026 wage base, and Medicare is 1.45% with additional Medicare withholding above the applicable wage threshold used here."}}]}]}</script><link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head><body data-cp-category="finance" data-cp-page-type="Calculator">
-<header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../finance/index.html">Finance</a></li><li><a aria-current="page" href="index.html">Salary Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main"><h1 class="page-title">Salary Calculator</h1><section class="calc-shell" id="calculator"><div class="calc-grid"><div class="card"><h2>2026 U.S. salary estimate</h2><p class="sub">Federal calculation uses the 2026 standard deduction and tax brackets. State/local tax is a user-entered simplified rate.</p>
-<div class="form-grid"><div class="field"><label for="salary">Annual salary ($)</label><input id="salary" min="0" type="number" value="85000"/></div>
-<div class="field"><label for="status">Filing status</label><select id="status"><option value="single">Single</option><option value="mfj">Married filing jointly</option><option value="hoh">Head of household</option></select></div>
-<div class="field"><label for="pretax">Pre-tax deductions ($/year)</label><input id="pretax" min="0" type="number" value="5000"/></div>
-<div class="field"><label for="state">State/local tax estimate (%)</label><input id="state" max="20" min="0" step=".01" type="number" value="0"/></div>
-<div class="field full"><label for="periods">Pay periods per year</label><select id="periods"><option value="12">12 — Monthly</option><option value="24">24 — Semi-monthly</option><option selected="" value="26">26 — Biweekly</option><option value="52">52 — Weekly</option></select></div></div>
-<div class="actions"><button class="btn primary" id="calculate">Calculate Take-Home →</button><button class="btn secondary" id="clear">Reset</button></div><div class="error" id="error"></div></div><div class="card"><div class="result-hero"><small>Estimated take-home pay</small><div class="big" id="netAnnual">$0.00</div><div class="accent" id="netPeriod">— per paycheck</div></div>
-<div class="stats"><div class="stat"><span>Federal income tax</span><b id="fed">—</b></div><div class="stat"><span>Social Security</span><b id="ss">—</b></div><div class="stat"><span>Medicare</span><b id="med">—</b></div><div class="stat"><span>State/local estimate</span><b id="st">—</b></div><div class="stat"><span>Total estimated taxes</span><b id="taxes">—</b></div><div class="stat"><span>Gross per paycheck</span><b id="grossPeriod">—</b></div></div>
-<div class="answerbox"><strong>2026 assumptions:</strong> standard deduction, no credits/itemizing, simplified state/local rate, and annualized tax estimate.</div></div></div></section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<div class="cp-tool-actions"><button data-cp-print="" type="button">Print / Save PDF</button><span aria-live="polite" class="cp-action-status" role="status"></span></div><section class="content"><div class="wrap content-grid"><article class="article">
-<section id="what"><h2>What Is a Salary Calculator?</h2><p class="direct"><strong>Answer:</strong> A salary calculator converts annual gross pay into an estimated take-home amount after selected deductions and taxes. This page is configured as a simplified U.S. 2026 annual tax estimate.</p></section>
-<section id="how"><h2>How to Use the Salary Calculator</h2><ol><li>Enter annual salary and filing status.</li><li>Add annual pre-tax deductions.</li><li>Optionally enter a simplified state/local income-tax rate.</li><li>Select pay frequency to see an estimated paycheck amount.</li></ol></section>
-<section id="formula"><h2>2026 Salary Calculation Method</h2><p>Estimated federal taxable income equals salary minus entered pre-tax deductions and the 2026 standard deduction. Federal tax is calculated progressively using the 2026 brackets. Employee Social Security is 6.2% up to the 2026 wage base of $184,500, and Medicare is 1.45%, with an additional 0.9% withholding above $200,000 of wages.</p></section>
-<section id="example"><h2>Calculation Example</h2><p>For an $85,000 salary, the calculator subtracts entered pre-tax deductions and the standard deduction before applying the progressive federal brackets, then adds FICA and any user-entered state/local estimate.</p></section>
-<section id="limits"><h2>Assumptions and Limitations</h2><p>This is not a payroll withholding engine or tax return. It omits tax credits, itemized deductions, special deductions, benefits, employer payroll details, state-specific brackets, local rules, and many withholding adjustments.</p></section>
-<section id="faq"><h2>Salary Calculator FAQs</h2><details class="faq"><summary>Are the 2026 federal brackets current?</summary><p>The page uses IRS-published 2026 standard deductions and tax-rate thresholds current when this calculator was prepared.</p></details><details class="faq"><summary>Does this equal my exact paycheck withholding?</summary><p>No. Actual withholding depends on Form W-4 information, payroll timing, benefits, credits, and other factors.</p></details><details class="faq"><summary>What FICA rates are used?</summary><p>The employee Social Security rate is 6.2% up to the 2026 wage base, and Medicare is 1.45% with additional Medicare withholding above the applicable wage threshold used here.</p></details></section>
-<section id="sources"><h2>Sources and Methodology</h2><p>The calculator and page content were cross-checked against the following sources.</p><ul class="sources"><li><a href="https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill" rel="noopener" target="_blank">IRS — 2026 tax inflation adjustments</a></li><li><a href="https://www.irs.gov/publications/p15" rel="noopener" target="_blank">IRS Publication 15 (2026)</a></li><li><a href="https://www.ssa.gov/OACT/COLA/cbb.html" rel="noopener" target="_blank">SSA — 2026 contribution and benefit base</a></li></ul><p style="font-size:13px;color:#687990"><strong>Important:</strong> Results are estimates for education and planning and do not replace personalized financial, tax, nutrition, or medical advice.</p></section>
-</article></div></section>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<details class="cp-data-panel"><summary><span>Calculator Data — exact tool basis</span><small>Finance · Calculator</small></summary><div class="cp-data-grid"><div class="cp-data-item wide"><b>Purpose</b><p>Estimate 2026 U.S. annual and per-paycheck take-home pay using gross salary, pre-tax deductions, federal income tax, Social Security, Medicare, and a user-entered state/local rate.</p></div><div class="cp-data-item wide"><b>Formula / Algorithm Used in Tool</b><p>2026 Salary Calculation Method: Estimated federal taxable income equals salary minus entered pre-tax deductions and the 2026 standard deduction. Federal tax is calculated progressively using the 2026 brackets. Employee Social Security is 6.2% up to the 2026 wage base of $184,500, and Medicare is 1.45%, with an additional 0.9% withholding above $200,000 of wages.</p></div><div class="cp-data-item"><b>Required User Inputs</b><p>Annual salary ($); Filing status; Pre-tax deductions ($/year); State/local tax estimate (%); Pay periods per year</p></div><div class="cp-data-item"><b>Primary Outputs</b><p>Estimated take-home pay; Federal income tax; Social Security; Medicare; State/local estimate; Total estimated taxes; Gross per paycheck</p></div><div class="cp-data-item wide"><b>Important Assumptions / Limitations</b><p>This is not a payroll withholding engine or tax return. It omits tax credits, itemized deductions, special deductions, benefits, employer payroll details, state-specific brackets, local rules, and many withholding adjustments.</p></div><div class="cp-data-item"><b>Fresh Data Required?</b><p>Yes</p></div><div class="cp-data-item"><b>Recommended Update Frequency</b><p>At least annually / whenever rules change</p></div><div class="cp-data-item wide"><b>Current Source URLs in Page</b><p><a href="https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill" rel="nofollow noopener" target="_blank">https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill</a><br/><a href="https://www.irs.gov/publications/p15" rel="nofollow noopener" target="_blank">https://www.irs.gov/publications/p15</a><br/><a href="https://www.ssa.gov/OACT/COLA/cbb.html" rel="nofollow noopener" target="_blank">https://www.ssa.gov/OACT/COLA/cbb.html</a></p></div></div></details><script class="cp-calculator-data" type="application/json">{"index":"18","Batch":"2","Calculator / Page":"Salary Calculator","Slug":"salary-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Estimate 2026 U.S. annual and per-paycheck take-home pay using gross salary, pre-tax deductions, federal income tax, Social Security, Medicare, and a user-entered state/local rate.","Formula / Algorithm Used in Tool":"2026 Salary Calculation Method: Estimated federal taxable income equals salary minus entered pre-tax deductions and the 2026 standard deduction. Federal tax is calculated progressively using the 2026 brackets. Employee Social Security is 6.2% up to the 2026 wage base of $184,500, and Medicare is 1.45%, with an additional 0.9% withholding above $200,000 of wages.","Required User Inputs":"Annual salary ($); Filing status; Pre-tax deductions ($/year); State/local tax estimate (%); Pay periods per year","Primary Outputs":"Estimated take-home pay; Federal income tax; Social Security; Medicare; State/local estimate; Total estimated taxes; Gross per paycheck","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Annual salary ($), Filing status, Pre-tax deductions ($/year), State/local tax estimate (%), Pay periods per year. Explain outputs: Estimated take-home pay, Federal income tax, Social Security, Medicare, State/local estimate, Total estimated taxes, Gross per paycheck. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Current official thresholds, limits, eligibility rules, effective tax year/date and authoritative government source.","Fresh Data Required?":"Yes","Recommended Update Frequency":"At least annually / whenever rules change","Important Assumptions / Limitations":"This is not a payroll withholding engine or tax return. It omits tax credits, itemized deductions, special deductions, benefits, employer payroll details, state-specific brackets, local rules, and many withholding adjustments.","Current Source URLs in Page":"https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill | https://www.irs.gov/publications/p15 | https://www.ssa.gov/OACT/COLA/cbb.html","Implementation Path":"/salary-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Finance</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../tax-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>2026 Federal Income Tax Calculator</strong><small>Estimate 2026 U.S. federal ordinary income tax using IRS tax brackets and standard…</small></span></a><a class="cp-related-link" href="../take-home-pay-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Take Home Pay Calculator</strong><small>Estimate 2026 U.S. take-home pay using federal tax brackets, standard or custom ded…</small></span></a><a class="cp-related-link" href="../estate-tax-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Estate Tax Calculator</strong><small>Estimate a simplified 2026 U.S. federal estate tax using estate assets, deductible…</small></span></a><a class="cp-related-link" href="../social-security-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Social Security Calculator</strong><small>Estimate U.S. Social Security retirement benefits by claim age using SSA early-reti…</small></span></a><a class="cp-related-link" href="../inflation-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Inflation Calculator</strong><small>Compare U.S. dollar purchasing power with CPI-U data or project inflation forward a…</small></span></a><a class="cp-related-link" href="../vat-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>VAT Calculator</strong><small>Add VAT to a net price or remove VAT from a gross price using a custom rate, with t…</small></span></a><a class="cp-related-link" href="../auto-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Auto Loan Calculator</strong><small>Estimate a car loan payment using vehicle price, down payment, trade-in, tax, fees,…</small></span></a><a class="cp-related-link" href="../interest-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Interest Calculator</strong><small>Calculate compound interest with an initial balance, monthly contributions, annual…</small></span></a></div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script>
-const $=id=>document.getElementById(id);
-const money=n=>Number.isFinite(n)?new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(n):'—';
-const fmt=(n,d=1)=>Number.isFinite(n)?Number(n).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
-const val=id=>parseFloat($(id).value);
-function setErr(m=''){if($('error'))$('error').textContent=m}
+    <!-- Primary Meta Tags -->
+<title>Salary Calculator 2026 – Estimate Take-Home Pay</title>
+<meta name="title" content="Salary Calculator 2026 – Estimate Take-Home Pay">
+<meta name="description" content="Estimate 2026 U.S. take-home pay from annual salary, filing status, pre-tax deductions, federal taxes, FICA, state/local tax rate, and pay frequency.">
 
-const brackets={
-single:[[12400,.10],[50400,.12],[105700,.22],[201775,.24],[256225,.32],[640600,.35],[Infinity,.37]],
-mfj:[[24800,.10],[100800,.12],[211400,.22],[403550,.24],[512450,.32],[768700,.35],[Infinity,.37]],
-hoh:[[17700,.10],[67450,.12],[105700,.22],[201750,.24],[256200,.32],[640600,.35],[Infinity,.37]]
-};
-const deduction={single:16100,mfj:32200,hoh:24150};
-function incomeTax(taxable,arr){let tax=0,prev=0;for(const [cap,rate] of arr){if(taxable<=prev)break;let amt=Math.min(taxable,cap)-prev;tax+=amt*rate;prev=cap}return tax}
-function calculate(){try{
- const salary=val('salary'),status=$('status').value,pretax=val('pretax'),stateRate=val('state')/100,periods=val('periods');
- if(!(salary>=0&&pretax>=0&&pretax<=salary&&stateRate>=0&&periods>0))throw Error('Check salary, deductions, tax rate, and pay frequency.');
- const taxable=Math.max(0,salary-pretax-deduction[status]),fed=incomeTax(taxable,brackets[status]);
- const ss=Math.min(salary,184500)*.062,med=salary*.0145 + Math.max(0,salary-200000)*.009;
- const state=Math.max(0,salary-pretax)*stateRate,total=fed+ss+med+state,net=salary-pretax-total;
- $('netAnnual').textContent=money(net);$('netPeriod').textContent=`${money(net/periods)} per paycheck`;$('fed').textContent=money(fed);$('ss').textContent=money(ss);$('med').textContent=money(med);$('st').textContent=money(state);$('taxes').textContent=money(total);$('grossPeriod').textContent=money(salary/periods);setErr('');
-}catch(e){setErr(e.message)}}
-$('calculate').onclick=calculate;$('clear').onclick=()=>location.reload();calculate();
-</script><script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/salary-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/salary-calculator/">
+<meta property="og:title" content="Salary Calculator 2026 – Estimate Take-Home Pay">
+<meta property="og:description" content="Estimate 2026 U.S. take-home pay from annual salary, filing status, pre-tax deductions, federal taxes, FICA, state/local tax rate, and pay frequency.">
+<meta property="og:site_name" content="Salary Calculator 2026">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/salary-calculator/">
+<meta name="twitter:title" content="Salary Calculator 2026 – Estimate Take-Home Pay">
+<meta name="twitter:description" content="Estimate 2026 U.S. take-home pay from annual salary, filing status, pre-tax deductions, federal taxes, FICA, state/local tax rate, and pay frequency.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        :root {
+            --ink: #0b1933;
+            --muted: #60708a;
+            --line: #dbe8f6;
+            --blue: #0a6ff2;
+            --blue2: #20a5ff;
+            --green: #16b86b;
+            --yellow: #f6b51f;
+            --red: #ef4f58;
+            --shadow: 0 18px 45px rgba(25, 74, 123, .16), inset 0 1px 0 rgba(255, 255, 255, .95)
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at 12% 6%, rgba(32, 165, 255, .18), transparent 28%), radial-gradient(circle at 88% 15%, rgba(35, 205, 153, .13), transparent 24%), linear-gradient(180deg, #f8fcff, #eef7ff 48%, #f7fbff);
+            line-height: 1.65
+        }
+
+        a {
+            color: #0967d8;
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .wrap {
+            width: min(1180px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(248, 252, 255, .8);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(196, 219, 241, .72)
+        }
+
+        .nav {
+            height: 72px;
+            display: flex;
+            align-items: center;
+            gap: 28px
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 23px;
+            font-weight: 850;
+            color: var(--ink)
+        }
+
+        .brand i {
+            width: 38px;
+            height: 38px;
+            display: grid;
+            place-items: center;
+            border-radius: 11px;
+            color: #fff;
+            font-style: normal;
+            background: linear-gradient(145deg, #27b3ff, #0562d7);
+            box-shadow: 0 9px 18px rgba(10, 111, 242, .28), inset 0 2px 2px rgba(255, 255, 255, .45)
+        }
+
+        .navlinks {
+            display: flex;
+            gap: 20px;
+            margin-left: 18px;
+            font-size: 14px;
+            font-weight: 700
+        }
+
+        .navlinks a {
+            color: #20324e
+        }
+
+        .search {
+            margin-left: auto;
+            background: #fff;
+            border: 1px solid #e0ebf6;
+            border-radius: 999px;
+            padding: 10px 15px;
+            min-width: 210px;
+            color: #6d7d93;
+            font-size: 13px;
+            box-shadow: 0 8px 20px rgba(26, 70, 112, .08)
+        }
+
+        .hero {
+            padding: 28px 0 18px
+        }
+
+        .breadcrumb {
+            font-size: 13px;
+            color: #6c7b91;
+            margin-bottom: 18px
+        }
+
+        .breadcrumb span {
+            margin: 0 8px;
+            color: #a1aec0
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.03fr .97fr;
+            gap: 28px;
+            align-items: center
+        }
+
+        h1 {
+            font-size: clamp(2.6rem, 5vw, 4.5rem);
+            line-height: 1.05;
+            margin: 0 auto 18px;
+            text-align: center;
+            letter-spacing: -.06em;
+            font-weight: 900;
+        }
+
+        h1 b {
+            color: var(--blue)
+        }
+
+        .lead {
+            font-size: 17px;
+            color: #42546e;
+            max-width: 700px;
+            margin: 0
+        }
+
+        .chips {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+            margin-top: 18px
+        }
+
+        .chip {
+            background: #fff;
+            border: 1px solid #dceafa;
+            border-radius: 999px;
+            padding: 7px 11px;
+            font-size: 12px;
+            font-weight: 800;
+            color: #35506f;
+            box-shadow: 0 8px 18px rgba(37, 86, 137, .07)
+        }
+
+        .hero-art {
+            height: 270px;
+            position: relative;
+            perspective: 900px
+        }
+
+        .floor {
+            position: absolute;
+            left: 9%;
+            right: 7%;
+            bottom: 12px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(32, 75, 115, .14);
+            filter: blur(15px)
+        }
+
+        .obj {
+            position: absolute;
+            box-shadow: var(--shadow)
+        }
+
+        .calc-shell {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 32px;
+            background: rgba(255, 255, 255, .5);
+            border: 1px solid rgba(255, 255, 255, .92);
+            box-shadow: 0 28px 70px rgba(37, 86, 137, .15);
+            backdrop-filter: blur(20px)
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 16px
+        }
+
+        .card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, .97), rgba(244, 249, 255, .86));
+            border: 1px solid rgba(218, 231, 245, .92);
+            border-radius: 24px;
+            padding: 22px;
+            box-shadow: var(--shadow)
+        }
+
+        .card h2 {
+            font-size: 21px;
+            margin: 0 0 4px;
+            letter-spacing: -.5px
+        }
+
+        .sub {
+            font-size: 13px;
+            color: #687990;
+            margin: 0 0 15px
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 13px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px
+        }
+
+        .field.full {
+            grid-column: 1/-1
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: 800;
+            color: #263a56
+        }
+
+        .input-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        input,
+        select {
+            width: 100%;
+            border: 1px solid #cddff1;
+            background: #fbfdff;
+            border-radius: 12px;
+            padding: 11px 12px;
+            font: inherit;
+            color: #152641;
+            box-shadow: inset 0 2px 4px rgba(26, 77, 123, .05);
+            outline: none
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #66b5ff;
+            box-shadow: 0 0 0 3px rgba(32, 165, 255, .12)
+        }
+
+        .radios {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap
+        }
+
+        .radio {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 13px
+        }
+
+        .radio input {
+            width: auto;
+            accent-color: #1685f5
+        }
+
+        .unit {
+            font-size: 12px;
+            color: #667890;
+            white-space: nowrap
+        }
+
+        .hint {
+            font-size: 11px;
+            color: #75859a
+        }
+
+        .tabs {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            background: #edf5ff;
+            border: 1px solid #dceafb;
+            padding: 4px;
+            border-radius: 15px;
+            margin-bottom: 16px
+        }
+
+        .tab {
+            border: 0;
+            background: transparent;
+            padding: 9px 12px;
+            border-radius: 11px;
+            font-weight: 800;
+            color: #334866;
+            cursor: pointer
+        }
+
+        .tab.active {
+            background: linear-gradient(145deg, #2aa8ff, #0668df);
+            color: #fff;
+            box-shadow: 0 9px 17px rgba(8, 111, 240, .26)
+        }
+
+        .actions {
+            display: grid;
+            grid-template-columns: 1.5fr .8fr;
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 13px 14px;
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .primary {
+            color: #fff;
+            background: linear-gradient(145deg, #25a9ff, #0064dc);
+            box-shadow: 0 12px 22px rgba(6, 104, 221, .28)
+        }
+
+        .secondary {
+            background: #edf3f9;
+            color: #273a55
+        }
+
+        .error {
+            color: #b4232b;
+            font-size: 12px;
+            margin-top: 10px;
+            min-height: 18px
+        }
+
+        .result-hero {
+            padding: 18px;
+            border-radius: 19px;
+            background: linear-gradient(135deg, #edfff7, #eef8ff);
+            position: relative;
+            overflow: hidden
+        }
+
+        .result-hero:after {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            right: -30px;
+            top: -45px;
+            background: radial-gradient(circle, #55d7ff, #0b79ef);
+            opacity: .17
+        }
+
+        .result-hero small {
+            color: #60728b
+        }
+
+        .big {
+            font-size: 36px;
+            font-weight: 900;
+            letter-spacing: -1.8px;
+            line-height: 1.1;
+            margin-top: 3px
+        }
+
+        .accent {
+            color: var(--green);
+            font-weight: 850;
+            font-size: 18px
+        }
+
+        .stats {
+            margin-top: 13px;
+            border-radius: 16px;
+            background: #fff;
+            border: 1px solid #e3edf7;
+            overflow: hidden
+        }
+
+        .stat {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px 12px;
+            border-bottom: 1px solid #e8f0f7;
+            font-size: 13px
+        }
+
+        .stat:last-child {
+            border-bottom: 0
+        }
+
+        .stat b {
+            text-align: right
+        }
+
+        .answerbox {
+            margin: 14px 0 0;
+            padding: 15px 16px;
+            border-radius: 16px;
+            background: #0e2544;
+            color: #fff;
+            box-shadow: 0 15px 28px rgba(12, 37, 68, .18);
+            font-size: 13px
+        }
+
+        .answerbox strong {
+            color: #73d3ff
+        }
+
+        .gauge {
+            height: 20px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #2b92f2 0 25%, #1cc477 25% 50%, #f7c338 50% 72%, #ef555c 72%);
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, .08);
+            margin-top: 16px
+        }
+
+        .pointer {
+            position: absolute;
+            top: -8px;
+            width: 4px;
+            height: 36px;
+            border-radius: 4px;
+            background: #14243a;
+            left: 40%;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, .8);
+            transition: .35s
+        }
+
+        .mini-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 12px
+        }
+
+        .mini {
+            padding: 13px;
+            border-radius: 15px;
+            background: #fff;
+            border: 1px solid #e1ecf7
+        }
+
+        .mini small {
+            display: block;
+            color: #718299
+        }
+
+        .mini b {
+            font-size: 16px
+        }
+
+        .ringbox {
+            display: grid;
+            place-items: center;
+            margin: 15px 0
+        }
+
+        .ring {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: conic-gradient(var(--blue) 0 45%, var(--green) 45% 75%, var(--yellow) 75%);
+            box-shadow: 0 18px 30px rgba(24, 88, 150, .14)
+        }
+
+        .ring:after {
+            content: "";
+            width: 112px;
+            height: 112px;
+            border-radius: 50%;
+            background: #fff;
+            position: absolute
+        }
+
+        .ring strong {
+            position: relative;
+            z-index: 2;
+            font-size: 26px
+        }
+
+        .content {
+            padding: 38px 0 70px
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.fr;
+            gap: 22px
+        }
+
+        .article,
+        .toc {
+            background: rgba(255, 255, 255, .9);
+            border: 1px solid #dfeaf6;
+            border-radius: 25px;
+            box-shadow: var(--shadow)
+        }
+
+        .article {
+            padding: 30px
+        }
+
+        .toc {
+            padding: 24px;
+            align-self: start;
+            position: sticky;
+            top: 94px
+        }
+
+        .article h2 {
+            font-size: 28px;
+            line-height: 1.2;
+            margin: 38px 0 12px;
+            letter-spacing: -.8px
+        }
+
+        .article h2:first-child {
+            margin-top: 0
+        }
+
+        .article h3 {
+            font-size: 20px;
+            margin: 24px 0 8px
+        }
+
+        .article p,
+        .article li {
+            color: #42536d
+        }
+
+        .direct {
+            border-left: 5px solid var(--blue);
+            background: #f0f7ff;
+            padding: 16px 18px;
+            border-radius: 14px;
+            color: #263a56
+        }
+
+        .formula {
+            font: 800 16px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: #0d213c;
+            color: #eef8ff;
+            padding: 16px;
+            border-radius: 15px;
+            overflow: auto
+        }
+
+        .note {
+            background: #fff9e9;
+            border: 1px solid #f5df9c;
+            padding: 15px 17px;
+            border-radius: 14px;
+            color: #5c4d22
+        }
+
+        .table-wrap {
+            overflow: auto;
+            border-radius: 16px;
+            border: 1px solid #dce7f2;
+            margin: 14px 0
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 520px;
+            background: #fff
+        }
+
+        th,
+        td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #e7eef5;
+            font-size: 13px
+        }
+
+        th {
+            background: #f1f7fd
+        }
+
+        .faq {
+            border-top: 1px solid #e4edf6;
+            padding: 15px 0
+        }
+
+        .faq summary {
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .faq p {
+            margin-bottom: 0
+        }
+
+        .toc h3 {
+            margin-top: 0
+        }
+
+        .toc a {
+            display: block;
+            padding: 7px 0;
+            color: #34506f;
+            font-size: 14px
+        }
+
+        .sources li {
+            margin: 8px 0
+        }
+
+        footer {
+            padding: 28px 0 42px;
+            color: #63748a;
+            font-size: 13px;
+            text-align: center
+        }
+
+        @media(max-width:960px) {
+
+            .navlinks,
+            .search {
+                display: none
+            }
+
+            .hero-grid,
+            .calc-grid,
+            .content-grid {
+                grid-template-columns: 1fr
+            }
+
+            .hero-art {
+                height: 235px
+            }
+
+            .toc {
+                position: static
+            }
+        }
+
+        @media(max-width:620px) {
+            .wrap {
+                width: min(100% - 20px, 1180px)
+            }
+
+            .hero {
+                padding-top: 18px
+            }
+
+            .hero-art {
+                transform: scale(.86);
+                transform-origin: center top;
+                margin-bottom: -28px
+            }
+
+            .calc-shell {
+                padding: 8px;
+                border-radius: 23px
+            }
+
+            .card {
+                padding: 16px;
+                border-radius: 19px
+            }
+
+            .form-grid,
+            .mini-grid,
+            .actions {
+                grid-template-columns: 1fr
+            }
+
+            .field.full {
+                grid-column: auto
+            }
+
+            .article {
+                padding: 21px
+            }
+
+            .nav {
+                height: 64px
+            }
+        }
+
+        /* 3D scenes */
+        .scene-salary .wallet {
+            right: 58px;
+            top: 64px;
+            width: 285px;
+            height: 155px;
+            border-radius: 28px;
+            background: linear-gradient(145deg, #0d6ee8, #29b3ff);
+            transform: rotate(-7deg);
+            box-shadow: 24px 30px 42px rgba(10, 92, 184, .24)
+        }
+
+        .scene-salary .wallet:before {
+            content: "PAYCHECK";
+            position: absolute;
+            left: 30px;
+            top: 28px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 900;
+            letter-spacing: 2px
+        }
+
+        .scene-salary .wallet:after {
+            content: "$";
+            position: absolute;
+            right: 34px;
+            bottom: 22px;
+            color: rgba(255, 255, 255, .9);
+            font-size: 68px;
+            font-weight: 900
+        }
+
+        .scene-salary .slip {
+            right: 220px;
+            top: 30px;
+            width: 125px;
+            height: 165px;
+            border-radius: 14px;
+            background: #fff;
+            transform: rotate(9deg);
+            border: 1px solid #e0ebf7
+        }
+
+        .scene-salary .slip:after {
+            content: "GROSS\A TAX\A NET";
+            white-space: pre;
+            position: absolute;
+            inset: 25px;
+            font-weight: 850;
+            line-height: 2.5;
+            color: #44617f
+        }
+
+        .scene-401k .vault {
+            right: 75px;
+            top: 48px;
+            width: 235px;
+            height: 190px;
+            border-radius: 32px;
+            background: linear-gradient(145deg, #e8f6ff, #9fcff3);
+            border: 7px solid #fff;
+            transform: rotateY(-12deg)
+        }
+
+        .scene-401k .vault:before {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            left: 60px;
+            top: 38px;
+            background: radial-gradient(circle, #fff 0 14%, #1c8dea 15% 22%, #dceaf6 23% 46%, #0d315f 47%);
+            box-shadow: 0 10px 20px rgba(22, 64, 110, .18)
+        }
+
+        .scene-401k .coin {
+            right: 22px;
+            bottom: 18px;
+            width: 98px;
+            height: 98px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 25%, #fff9b8, #ffd442 55%, #dda500);
+            border: 8px solid #ffe770;
+            display: grid;
+            place-items: center;
+            font-weight: 900;
+            font-size: 24px;
+            color: #8a6200
+        }
+
+        .scene-rate .dial {
+            right: 100px;
+            top: 35px;
+            width: 235px;
+            height: 235px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #fff 0 49%, #dbeafa 50% 63%, #0d75df 64%);
+            box-shadow: 0 25px 45px rgba(20, 85, 150, .2)
+        }
+
+        .scene-rate .dial:before {
+            content: "%";
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            font-size: 76px;
+            font-weight: 900;
+            color: #0b6ff2
+        }
+
+        .scene-rate .needle {
+            right: 214px;
+            top: 70px;
+            width: 6px;
+            height: 92px;
+            border-radius: 5px;
+            background: #ef4f58;
+            transform-origin: bottom;
+            transform: rotate(35deg)
+        }
+
+        .scene-tax .receipt {
+            right: 92px;
+            top: 25px;
+            width: 220px;
+            height: 215px;
+            border-radius: 20px;
+            background: #fff;
+            transform: rotate(-5deg);
+            border: 1px solid #dbe8f6
+        }
+
+        .scene-tax .receipt:before {
+            content: "SUBTOTAL   $100\A TAX          $8\A TOTAL       $108";
+            white-space: pre;
+            position: absolute;
+            left: 30px;
+            top: 48px;
+            font: 800 16px/2 ui-monospace;
+            color: #294766
+        }
+
+        .scene-tax .badge {
+            right: 25px;
+            bottom: 35px;
+            width: 120px;
+            height: 120px;
+            border-radius: 30px;
+            background: linear-gradient(145deg, #28b3ff, #0967db);
+            transform: rotate(10deg);
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-size: 42px;
+            font-weight: 900
+        }
+
+        .scene-health .body {
+            right: 140px;
+            top: 28px;
+            width: 115px;
+            height: 210px;
+            border-radius: 58px 58px 42px 42px;
+            background: linear-gradient(145deg, #8de4dc, #1da7c5);
+            box-shadow: 18px 25px 35px rgba(0, 118, 142, .2)
+        }
+
+        .scene-health .body:before {
+            content: "";
+            position: absolute;
+            left: 24px;
+            top: -55px;
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #a8eff0, #40bdd1)
+        }
+
+        .scene-health .pulse {
+            right: 20px;
+            top: 95px;
+            width: 345px;
+            height: 4px;
+            background: #fff;
+            box-shadow: 0 0 0 2px rgba(10, 111, 242, .08)
+        }
+
+        .scene-health .pulse:after {
+            content: "⌁";
+            position: absolute;
+            left: 110px;
+            top: -66px;
+            color: #0a6ff2;
+            font-size: 100px;
+            font-weight: 900;
+            transform: rotate(10deg)
+        }
+
+        .scene-bmi .scale {
+            right: 75px;
+            top: 50px;
+            width: 250px;
+            height: 175px;
+            border-radius: 36px;
+            background: linear-gradient(145deg, #eff8ff, #c9dced);
+            border: 6px solid #f8fcff;
+            transform: rotateY(-11deg) rotateX(8deg) rotateZ(-4deg)
+        }
+
+        .scene-bmi .scale:before {
+            content: "22.7";
+            position: absolute;
+            left: 45px;
+            right: 45px;
+            bottom: 32px;
+            padding: 13px;
+            border-radius: 16px;
+            background: #0e2544;
+            color: #73d3ff;
+            text-align: center;
+            font-weight: 900;
+            font-size: 25px
+        }
+
+        .scene-bmi .tape {
+            right: 15px;
+            top: 145px;
+            width: 340px;
+            height: 28px;
+            border-radius: 10px;
+            background: repeating-linear-gradient(90deg, #ffd53d 0 17px, #f7c629 17px 18px);
+            transform: rotate(12deg)
+        }
+
+        .scene-calorie .flame {
+            right: 130px;
+            top: 28px;
+            width: 145px;
+            height: 205px;
+            background: linear-gradient(145deg, #ffdc4b, #ff724f);
+            border-radius: 70% 30% 60% 40%/70% 50% 50% 30%;
+            transform: rotate(42deg);
+            box-shadow: 0 24px 45px rgba(242, 117, 56, .23)
+        }
+
+        .scene-calorie .flame:after {
+            content: "kcal";
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            transform: rotate(-42deg);
+            font-size: 31px;
+            font-weight: 900;
+            color: #fff
+        }
+
+        .scene-calorie .plate {
+            right: 30px;
+            bottom: 18px;
+            width: 330px;
+            height: 58px;
+            border-radius: 50%;
+            background: linear-gradient(#e6f2fb, #b5cee1);
+            box-shadow: 0 12px 20px rgba(30, 70, 110, .15)
+        }
+
+        .scene-fat .tapeorb {
+            right: 85px;
+            top: 35px;
+            width: 225px;
+            height: 225px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 28%, #fff, #8fd7ff 42%, #0872df 76%);
+            box-shadow: 0 28px 50px rgba(10, 111, 242, .22)
+        }
+
+        .scene-fat .tapeorb:before {
+            content: "BODY\A FAT";
+            white-space: pre;
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            color: #fff;
+            font-weight: 900;
+            letter-spacing: 3px
+        }
+
+        .scene-fat .belt {
+            right: 20px;
+            top: 118px;
+            width: 350px;
+            height: 30px;
+            border-radius: 9px;
+            background: repeating-linear-gradient(90deg, #ffe263 0 16px, #f4c92d 16px 18px);
+            transform: rotate(-12deg)
+        }
+
+        .scene-bmr .core {
+            right: 115px;
+            top: 40px;
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #fff 0 18%, #79d8ff 19% 45%, #0a6ff2 46% 68%, #0c315d 69%);
+            box-shadow: 0 25px 50px rgba(10, 111, 242, .25)
+        }
+
+        .scene-bmr .orbit {
+            right: 45px;
+            top: 90px;
+            width: 330px;
+            height: 100px;
+            border: 4px solid rgba(22, 184, 107, .35);
+            border-radius: 50%;
+            transform: rotate(-18deg)
+        }
+
+        .scene-bmr .orbit:after {
+            content: "";
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            right: 18px;
+            top: 5px;
+            background: #16b86b
+        }
+
+        .scene-macro .plate {
+            right: 70px;
+            top: 30px;
+            width: 245px;
+            height: 245px;
+            border-radius: 50%;
+            background: conic-gradient(#0a6ff2 0 45%, #16b86b 45% 70%, #f6b51f 70%);
+            box-shadow: 0 28px 48px rgba(26, 76, 123, .18);
+            border: 12px solid #fff
+        }
+
+        .scene-macro .plate:after {
+            content: "MACROS";
+            position: absolute;
+            inset: 55px;
+            border-radius: 50%;
+            background: #f8fcff;
+            display: grid;
+            place-items: center;
+            font-size: 22px;
+            font-weight: 900;
+            color: #173653
+        }
+
+        .scene-macro .cube {
+            right: 22px;
+            bottom: 22px;
+            width: 90px;
+            height: 90px;
+            border-radius: 22px;
+            background: linear-gradient(145deg, #fff, #bfe0f7);
+            transform: rotate(12deg);
+            display: grid;
+            place-items: center;
+            font-weight: 900;
+            color: #0a6ff2
+        }
+    </style>
+    <script type="application/ld+json"> { "@context": "https://schema.org", "@graph": [ { "@type": "WebApplication", "@id": "https://monkeymart-onlinefree.github.io/salary-calculator/#webapplication", "name": "Salary Calculator", "url": "https://monkeymart-onlinefree.github.io/salary-calculator/", "description": "Estimate 2026 U.S. take-home pay from annual salary, filing status, pre-tax deductions, federal taxes, FICA, state/local tax rate, and pay frequency.", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "browserRequirements": "Requires a modern web browser", "isAccessibleForFree": true, "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } }, { "@type": "BreadcrumbList", "@id": "https://monkeymart-onlinefree.github.io/salary-calculator/#breadcrumb", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://monkeymart-onlinefree.github.io/" }, { "@type": "ListItem", "position": 2, "name": "Salary Calculator", "item": "https://monkeymart-onlinefree.github.io/salary-calculator/" } ] }, { "@type": "FAQPage", "@id": "https://monkeymart-onlinefree.github.io/salary-calculator/#faq", "mainEntity": [ { "@type": "Question", "name": "Does this Salary Calculator use 2026 tax brackets?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The calculator estimates federal income tax using the 2026 federal tax brackets and the standard deduction associated with the applicable filing status. The IRS states that the 2026 individual marginal rates are 10%, 12%, 22%, 24%, 32%, 35%, and 37%." } }, { "@type": "Question", "name": "How are pre-tax deductions handled?", "acceptedAnswer": { "@type": "Answer", "text": "The calculator subtracts the entered annual pre-tax deduction amount when estimating federal taxable income. The calculation is: Annual Salary − Pre-Tax Deductions − Standard Deduction. The Formula Map does not support treating every possible benefit or payroll deduction as identical, so actual payroll treatment may differ." } }, { "@type": "Question", "name": "Why can my actual paycheck be different from the calculator result?", "acceptedAnswer": { "@type": "Answer", "text": "Real payroll withholding can depend on Form W-4 information, tax credits, benefits, payroll timing, other income, employer payroll settings, and state or local tax rules. The calculator uses a simplified annual planning method rather than duplicating a payroll system." } }, { "@type": "Question", "name": "Is Social Security tax charged on my entire salary?", "acceptedAnswer": { "@type": "Answer", "text": "Only up to the annual Social Security wage base. For 2026, employees pay 6.2% on covered wages up to $184,500. Earnings above that limit are not subject to the employee Social Security portion for the year." } }, { "@type": "Question", "name": "Does Medicare have the same wage limit as Social Security?", "acceptedAnswer": { "@type": "Answer", "text": "No. The regular 1.45% employee Medicare tax has no wage-base limit. The calculator also includes an additional 0.9% withholding calculation for wages above $200,000." } }, { "@type": "Question", "name": "Does the state/local percentage calculate my exact state income tax?", "acceptedAnswer": { "@type": "Answer", "text": "No. It is a user-entered planning estimate. Actual state and local taxes may use progressive brackets, deductions, credits, exemptions, different taxable-income definitions, and local rules." } }, { "@type": "Question", "name": "Is estimated take-home pay the same as a tax return result?", "acceptedAnswer": { "@type": "Answer", "text": "No. This calculator estimates salary-related taxes and take-home pay using its defined inputs. It does not calculate a complete federal or state tax return, refund, tax credits, itemized deductions, or every payroll adjustment." } } ] }, { "@type": "WebSite", "@id": "https://monkeymart-onlinefree.github.io/salary-calculator/#website", "url": "https://monkeymart-onlinefree.github.io/", "name": "MonkeyMart Online Free", "inLanguage": "en-US" } ] } </script>
+ 
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="finance" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../finance/index.html">Finance</a></li>
+            <li><a aria-current="page" href="index.html">Salary Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Salary Calculator</h1>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="calc-shell" id="calculator">
+                <div class="calc-grid">
+                    <div class="card">
+                        <h2>2026 U.S. salary estimate</h2>
+                        <p class="sub">Federal calculation uses the 2026 standard deduction and tax brackets.
+                            State/local tax is a user-entered simplified rate.</p>
+                        <div class="form-grid">
+                            <div class="field"><label for="salary">Annual salary ($)</label><input id="salary" min="0"
+                                    type="number" value="85000" /></div>
+                            <div class="field"><label for="status">Filing status</label><select id="status">
+                                    <option value="single">Single</option>
+                                    <option value="mfj">Married filing jointly</option>
+                                    <option value="hoh">Head of household</option>
+                                </select></div>
+                            <div class="field"><label for="pretax">Pre-tax deductions ($/year)</label><input id="pretax"
+                                    min="0" type="number" value="5000" /></div>
+                            <div class="field"><label for="state">State/local tax estimate (%)</label><input id="state"
+                                    max="20" min="0" step=".01" type="number" value="0" /></div>
+                            <div class="field full"><label for="periods">Pay periods per year</label><select
+                                    id="periods">
+                                    <option value="12">12 — Monthly</option>
+                                    <option value="24">24 — Semi-monthly</option>
+                                    <option selected="" value="26">26 — Biweekly</option>
+                                    <option value="52">52 — Weekly</option>
+                                </select></div>
+                        </div>
+                        <div class="actions"><button class="btn primary" id="calculate">Calculate Take-Home
+                                →</button><button class="btn secondary" id="clear">Reset</button></div>
+                        <div class="error" id="error"></div>
+                    </div>
+                    <div class="card">
+                        <div class="result-hero"><small>Estimated take-home pay</small>
+                            <div class="big" id="netAnnual">$0.00</div>
+                            <div class="accent" id="netPeriod">— per paycheck</div>
+                        </div>
+                        <div class="stats">
+                            <div class="stat"><span>Federal income tax</span><b id="fed">—</b></div>
+                            <div class="stat"><span>Social Security</span><b id="ss">—</b></div>
+                            <div class="stat"><span>Medicare</span><b id="med">—</b></div>
+                            <div class="stat"><span>State/local estimate</span><b id="st">—</b></div>
+                            <div class="stat"><span>Total estimated taxes</span><b id="taxes">—</b></div>
+                            <div class="stat"><span>Gross per paycheck</span><b id="grossPeriod">—</b></div>
+                        </div>
+                        <div class="answerbox"><strong>2026 assumptions:</strong> standard deduction, no
+                            credits/itemizing, simplified state/local rate, and annualized tax estimate.</div>
+                    </div>
+                </div>
+            </section>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="content">
+                <div class="wrap content-grid">
+                    <article class="article">
+ 
+  <p>The Salary Calculator estimates your 2026 U.S. take-home pay from annual salary, filing status, pre-tax deductions, federal income tax, Social Security, Medicare, and a state/local tax percentage you enter. It also uses your number of pay periods to show how your annual salary relates to each paycheck.</p>
+
+  <section id="what">
+    <h2>What Is the Salary Calculator?</h2>
+
+    <p>The Salary Calculator is a planning tool for estimating how much of an annual salary may remain after major federal payroll and income taxes and entered deductions.</p>
+
+    <p>It uses 2026 federal tax rules, including the applicable standard deduction and progressive federal income tax brackets. It also estimates employee Social Security and Medicare taxes and includes a user-entered state/local tax estimate.</p>
+
+    <p>The calculator is useful for comparing job offers, reviewing a salary change, estimating annual take-home income, or understanding how taxes and deductions affect gross pay.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Salary Calculator</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Input</th>
+          <th>What to Enter</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Annual salary ($)</td>
+          <td>Your gross annual salary before taxes and deductions.</td>
+        </tr>
+        <tr>
+          <td>Filing status</td>
+          <td>Select the filing status available in the calculator. This determines the 2026 standard deduction and federal tax bracket schedule used in the estimate.</td>
+        </tr>
+        <tr>
+          <td>Pre-tax deductions ($/year)</td>
+          <td>Enter the annual amount of deductions that the calculator subtracts before estimating federal taxable income.</td>
+        </tr>
+        <tr>
+          <td>State/local tax estimate (%)</td>
+          <td>Enter a percentage to represent your estimated state and local income taxes. The calculator does not automatically determine a jurisdiction-specific tax rate.</td>
+        </tr>
+        <tr>
+          <td>Pay periods per year</td>
+          <td>Enter the number of pay periods used to divide your annual salary into paycheck amounts.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+
+    <p>The calculator first estimates federal taxable income:</p>
+
+    <div class="formula">Federal Taxable Income = max(0, Annual Salary − Pre-Tax Deductions − 2026 Standard Deduction)</div>
+
+    <p>Federal income tax is then calculated progressively using the 2026 federal income tax brackets for the selected filing status.</p>
+
+    <p>In general:</p>
+
+    <div class="formula">Federal Income Tax = Sum of the taxable amount within each bracket × that bracket's tax rate</div>
+
+    <p>Only the income falling within a bracket is taxed at that bracket's rate. Moving into a higher bracket does not cause all taxable income to be taxed at the higher rate.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>S</td>
+          <td>Annual gross salary</td>
+          <td>Dollars per year</td>
+        </tr>
+        <tr>
+          <td>D</td>
+          <td>Entered pre-tax deductions</td>
+          <td>Dollars per year</td>
+        </tr>
+        <tr>
+          <td>SD</td>
+          <td>2026 standard deduction for the applicable filing status</td>
+          <td>Dollars</td>
+        </tr>
+        <tr>
+          <td>TI</td>
+          <td>Estimated federal taxable income</td>
+          <td>Dollars</td>
+        </tr>
+        <tr>
+          <td>F</td>
+          <td>Estimated federal income tax</td>
+          <td>Dollars</td>
+        </tr>
+        <tr>
+          <td>SS</td>
+          <td>Estimated employee Social Security tax</td>
+          <td>Dollars</td>
+        </tr>
+        <tr>
+          <td>M</td>
+          <td>Estimated Medicare tax</td>
+          <td>Dollars</td>
+        </tr>
+        <tr>
+          <td>N</td>
+          <td>Pay periods per year</td>
+          <td>Pay periods</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Calculation Sequence</h3>
+
+    <p><strong>Step 1: Estimate federal taxable income</strong></p>
+
+    <p>The calculator subtracts the entered pre-tax deductions and applicable 2026 standard deduction from annual salary.</p>
+
+    <div class="formula">TI = max(0, S − D − SD)</div>
+
+    <p><strong>Step 2: Calculate federal income tax</strong></p>
+
+    <p>The taxable income is divided across the applicable 2026 tax brackets. Each portion is multiplied by its marginal tax rate and the bracket amounts are added together.</p>
+
+    <p>The 2026 individual federal rates are 10%, 12%, 22%, 24%, 32%, 35%, and 37%, with income thresholds depending on filing status.</p>
+
+    <p><strong>Step 3: Calculate Social Security tax</strong></p>
+
+    <p>For 2026, the employee Social Security rate is 6.2% and the wage base is $184,500:</p>
+
+    <div class="formula">SS = 0.062 × min(S, $184,500)</div>
+
+    <p>The maximum employee Social Security tax under this calculation is therefore $11,439 for 2026.</p>
+
+    <p><strong>Step 4: Calculate Medicare tax</strong></p>
+
+    <p>The regular employee Medicare rate is 1.45%, with no annual Medicare wage-base limit. The calculator also applies an additional 0.9% withholding above $200,000 of wages:</p>
+
+    <div class="formula">M = (0.0145 × S) + [0.009 × max(0, S − $200,000)]</div>
+
+    <p>The $200,000 figure is the employer Additional Medicare Tax withholding threshold. Actual Additional Medicare Tax liability on an individual tax return can depend on filing status.</p>
+
+    <p><strong>Step 5: Include the state/local estimate</strong></p>
+
+    <p>The calculator uses the state/local percentage entered by the user to produce a planning estimate. State and local tax systems can use different brackets, deductions, exemptions, taxable-income definitions, and local rules, so this input should not be treated as a complete state tax calculation.</p>
+
+    <p><strong>Step 6: Estimate total taxes and take-home pay</strong></p>
+
+    <p>The federal income tax, Social Security tax, Medicare tax, and state/local estimate are combined into the calculator's total estimated taxes. The resulting tax estimate and entered pre-tax deductions are used to estimate the portion of annual salary remaining as take-home pay.</p>
+
+    <h3>Gross Per Paycheck</h3>
+
+    <p>The gross paycheck amount is based on the annual salary and number of pay periods:</p>
+
+    <div class="formula">Gross Per Paycheck = Annual Salary ÷ Pay Periods Per Year</div>
+
+    <p>This is a gross amount before the taxes and deductions included in the calculator.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Assume an employee enters an <strong>$80,000 annual salary</strong>, uses <strong>Single</strong> filing status for this example, enters <strong>$0 in pre-tax deductions</strong>, uses a <strong>0% state/local estimate</strong>, and enters <strong>26 pay periods per year</strong>.</p>
+
+    <p>For tax year 2026, the IRS standard deduction for a single filer is $16,100.</p>
+
+    <h3>Inputs</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Input</th>
+          <th>Example Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Annual salary</td>
+          <td>$80,000</td>
+        </tr>
+        <tr>
+          <td>Filing status used for example</td>
+          <td>Single</td>
+        </tr>
+        <tr>
+          <td>Pre-tax deductions</td>
+          <td>$0</td>
+        </tr>
+        <tr>
+          <td>State/local tax estimate</td>
+          <td>0%</td>
+        </tr>
+        <tr>
+          <td>Pay periods</td>
+          <td>26</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Step 1: Federal Taxable Income</h3>
+
+    <div class="formula">Taxable Income = $80,000 − $0 − $16,100</div>
+
+    <div class="formula">Taxable Income = $63,900</div>
+
+    <h3>Step 2: Federal Income Tax</h3>
+
+    <p>For a single filer in 2026, the first $12,400 of taxable income is taxed at 10%, income from $12,400 to $50,400 is taxed at 12%, and the remaining portion of this example falls in the 22% bracket.</p>
+
+    <p>First bracket:</p>
+
+    <div class="formula">$12,400 × 10% = $1,240</div>
+
+    <p>Second bracket:</p>
+
+    <div class="formula">($50,400 − $12,400) × 12% = $4,560</div>
+
+    <p>Remaining taxable income:</p>
+
+    <div class="formula">($63,900 − $50,400) × 22% = $2,970</div>
+
+    <p>Estimated federal income tax:</p>
+
+    <div class="formula">$1,240 + $4,560 + $2,970 = $8,770</div>
+
+    <h3>Step 3: Social Security and Medicare</h3>
+
+    <p>Social Security:</p>
+
+    <div class="formula">$80,000 × 6.2% = $4,960</div>
+
+    <p>Regular Medicare:</p>
+
+    <div class="formula">$80,000 × 1.45% = $1,160</div>
+
+    <p>The salary is below the calculator's $200,000 Additional Medicare Tax withholding threshold, so no additional 0.9% amount applies.</p>
+
+    <h3>Final Result</h3>
+
+    <p>With a 0% state/local estimate in this example:</p>
+
+    <div class="formula">Total Estimated Taxes = $8,770 + $4,960 + $1,160 = $14,890</div>
+
+    <p>With no entered pre-tax deductions:</p>
+
+    <div class="formula">Estimated Take-Home Pay = $80,000 − $14,890 = $65,110 per year</div>
+
+    <p>Gross pay per paycheck:</p>
+
+    <div class="formula">$80,000 ÷ 26 = $3,076.92</div>
+
+    <p>These figures are planning estimates. Actual payroll withholding can differ because of Form W-4 information, benefits, credits, payroll procedures, other income, and state or local rules.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Result</th>
+          <th>What It Means</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Estimated take-home pay</td>
+          <td>The estimated amount remaining after the deductions and tax components modeled by the calculator.</td>
+        </tr>
+        <tr>
+          <td>Federal income tax</td>
+          <td>Estimated 2026 federal income tax calculated progressively from estimated taxable income.</td>
+        </tr>
+        <tr>
+          <td>Social Security</td>
+          <td>Employee Social Security tax calculated at 6.2% up to the 2026 wage base used by the tool.</td>
+        </tr>
+        <tr>
+          <td>Medicare</td>
+          <td>Employee Medicare tax, including the calculator's additional 0.9% withholding calculation above $200,000 of wages.</td>
+        </tr>
+        <tr>
+          <td>State/local estimate</td>
+          <td>A simplified estimate based on the percentage entered by the user rather than a complete jurisdiction-specific tax calculation.</td>
+        </tr>
+        <tr>
+          <td>Total estimated taxes</td>
+          <td>The combined federal income tax, Social Security, Medicare, and state/local amounts estimated by the tool.</td>
+        </tr>
+        <tr>
+          <td>Gross per paycheck</td>
+          <td>Annual salary divided across the entered number of pay periods before modeled taxes and deductions.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>This Salary Calculator is an estimation tool rather than a payroll withholding system or tax-return calculator. It uses the entered annual salary, pre-tax deductions, filing status, state/local percentage, and pay-period count with the calculator's 2026 federal calculation method.</p>
+
+    <p>It does not model every tax credit, itemized deduction, special deduction, employee benefit, employer payroll adjustment, Form W-4 entry, state-specific tax bracket, local tax rule, or other payroll adjustment.</p>
+
+    <p>The federal taxable-income calculation uses the 2026 standard deduction rather than comparing the standard deduction with a user's itemized deductions.</p>
+
+    <p>The state/local input is intentionally simplified. Actual state and local income taxes vary significantly by jurisdiction and may not be accurately represented by a single percentage.</p>
+
+    <p>The calculator's additional 0.9% Medicare calculation uses the $200,000 employer withholding threshold. The amount ultimately owed for Additional Medicare Tax can differ because tax-return thresholds depend on filing status.</p>
+
+    <p>Results should therefore be used for budgeting and comparison rather than as tax, legal, payroll, or financial advice.</p>
+  </section>
+
+  <section id="current-data">
+    <h2>Current Rules / Data</h2>
+
+    <p>The following federal values apply to <strong>tax year 2026</strong> and are used to support the calculator's methodology.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>2026 Rule</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Standard deduction — Single / Married Filing Separately</td>
+          <td>$16,100</td>
+        </tr>
+        <tr>
+          <td>Standard deduction — Married Filing Jointly / Qualifying Surviving Spouse</td>
+          <td>$32,200</td>
+        </tr>
+        <tr>
+          <td>Standard deduction — Head of Household</td>
+          <td>$24,150</td>
+        </tr>
+        <tr>
+          <td>Federal marginal tax rates</td>
+          <td>10%, 12%, 22%, 24%, 32%, 35%, 37%</td>
+        </tr>
+        <tr>
+          <td>Employee Social Security rate</td>
+          <td>6.2%</td>
+        </tr>
+        <tr>
+          <td>2026 Social Security wage base</td>
+          <td>$184,500</td>
+        </tr>
+        <tr>
+          <td>Employee Medicare rate</td>
+          <td>1.45%</td>
+        </tr>
+        <tr>
+          <td>Additional Medicare withholding rate</td>
+          <td>0.9%</td>
+        </tr>
+        <tr>
+          <td>Employer withholding threshold for Additional Medicare Tax</td>
+          <td>Wages above $200,000</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The IRS published the 2026 standard deductions and federal tax-rate schedules for tax year 2026, while the IRS and Social Security Administration confirm the 2026 payroll-tax rates and $184,500 Social Security wage base.</p>
+
+    <p>No universal state/local tax rate is included because that value is entered by the user and applicable rules vary by location.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>Does this Salary Calculator use 2026 tax brackets?</summary>
+      <p>Yes. The calculator estimates federal income tax using the 2026 federal tax brackets and the standard deduction associated with the applicable filing status. The IRS states that the 2026 individual marginal rates are 10%, 12%, 22%, 24%, 32%, 35%, and 37%.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How are pre-tax deductions handled?</summary>
+      <p>The calculator subtracts the entered annual pre-tax deduction amount when estimating federal taxable income. The calculation is:</p>
+      <div class="formula">Annual Salary − Pre-Tax Deductions − Standard Deduction</div>
+      <p>The Formula Map does not support treating every possible benefit or payroll deduction as identical, so actual payroll treatment may differ.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why can my actual paycheck be different from the calculator result?</summary>
+      <p>Real payroll withholding can depend on Form W-4 information, tax credits, benefits, payroll timing, other income, employer payroll settings, and state or local tax rules. The calculator uses a simplified annual planning method rather than duplicating a payroll system.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is Social Security tax charged on my entire salary?</summary>
+      <p>Only up to the annual Social Security wage base. For 2026, employees pay 6.2% on covered wages up to $184,500. Earnings above that limit are not subject to the employee Social Security portion for the year.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does Medicare have the same wage limit as Social Security?</summary>
+      <p>No. The regular 1.45% employee Medicare tax has no wage-base limit. The calculator also includes an additional 0.9% withholding calculation for wages above $200,000.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does the state/local percentage calculate my exact state income tax?</summary>
+      <p>No. It is a user-entered planning estimate. Actual state and local taxes may use progressive brackets, deductions, credits, exemptions, different taxable-income definitions, and local rules.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is estimated take-home pay the same as a tax return result?</summary>
+      <p>No. This calculator estimates salary-related taxes and take-home pay using its defined inputs. It does not calculate a complete federal or state tax return, refund, tax credits, itemized deductions, or every payroll adjustment.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th>What It Supports</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://www.irs.gov/publications/p505?utm_source=chatgpt.com" rel="noopener" target="_blank">IRS — Publication 505 (2026), Tax Withholding and Estimated Tax</a></td>
+          <td>2026 federal tax-rate schedules and standard-deduction information used to verify the progressive federal calculation.</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.irs.gov/publications/p15?utm_source=chatgpt.com" rel="noopener" target="_blank">IRS — Publication 15 (2026), Employer's Tax Guide</a></td>
+          <td>2026 Social Security and Medicare employee rates, Social Security wage base, and Additional Medicare Tax withholding rules.</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.ssa.gov/oact/COLA/cbb.html?utm_source=chatgpt.com" rel="noopener" target="_blank">Social Security Administration — Contribution and Benefit Base</a></td>
+          <td>Confirms the $184,500 Social Security contribution and benefit base for 2026.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Current Data / Rule Sources</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th>Applicable Data</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill?utm_source=chatgpt.com" rel="noopener" target="_blank">IRS — Tax Year 2026 Inflation Adjustments</a></td>
+          <td>Official tax year 2026 standard deductions and federal income-tax threshold adjustments.</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.irs.gov/taxtopics/tc751?utm_source=chatgpt.com" rel="noopener" target="_blank">IRS — Topic No. 751, Social Security and Medicare Withholding Rates</a></td>
+          <td>Confirms employee payroll-tax rates and explains the $200,000 Additional Medicare Tax employer withholding threshold.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/take-home-pay-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Take Home Pay Calculator</a></li>
+      <li><a href="https://example.com/tax-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">2026 Federal Income Tax Calculator</a></li>
+      <li><a href="https://example.com/401k-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">401(k) Calculator</a></li>
+      <li><a href="https://example.com/retirement-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Retirement Calculator</a></li>
+      <li><a href="https://example.com/commission-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Commission Calculator</a></li>
+      <li><a href="https://example.com/time-card-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Time Card Calculator</a></li>
+    </ul>
+  </section>
+</article>
+                </div>
+            </section>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"18","Batch":"2","Calculator / Page":"Salary Calculator","Slug":"salary-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Estimate 2026 U.S. annual and per-paycheck take-home pay using gross salary, pre-tax deductions, federal income tax, Social Security, Medicare, and a user-entered state/local rate.","Formula / Algorithm Used in Tool":"2026 Salary Calculation Method: Estimated federal taxable income equals salary minus entered pre-tax deductions and the 2026 standard deduction. Federal tax is calculated progressively using the 2026 brackets. Employee Social Security is 6.2% up to the 2026 wage base of $184,500, and Medicare is 1.45%, with an additional 0.9% withholding above $200,000 of wages.","Required User Inputs":"Annual salary ($); Filing status; Pre-tax deductions ($/year); State/local tax estimate (%); Pay periods per year","Primary Outputs":"Estimated take-home pay; Federal income tax; Social Security; Medicare; State/local estimate; Total estimated taxes; Gross per paycheck","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Annual salary ($), Filing status, Pre-tax deductions ($/year), State/local tax estimate (%), Pay periods per year. Explain outputs: Estimated take-home pay, Federal income tax, Social Security, Medicare, State/local estimate, Total estimated taxes, Gross per paycheck. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Current official thresholds, limits, eligibility rules, effective tax year/date and authoritative government source.","Fresh Data Required?":"Yes","Recommended Update Frequency":"At least annually / whenever rules change","Important Assumptions / Limitations":"This is not a payroll withholding engine or tax return. It omits tax credits, itemized deductions, special deductions, benefits, employer payroll details, state-specific brackets, local rules, and many withholding adjustments.","Current Source URLs in Page":"https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill | https://www.irs.gov/publications/p15 | https://www.ssa.gov/OACT/COLA/cbb.html","Implementation Path":"/salary-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Finance</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../tax-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>2026 Federal Income Tax
+                            Calculator</strong><small>Estimate 2026 U.S. federal ordinary income tax using IRS tax
+                            brackets and standard…</small></span></a><a class="cp-related-link"
+                    href="../take-home-pay-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Take Home Pay Calculator</strong><small>Estimate
+                            2026 U.S. take-home pay using federal tax brackets, standard or custom
+                            ded…</small></span></a><a class="cp-related-link"
+                    href="../estate-tax-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Estate
+                            Tax Calculator</strong><small>Estimate a simplified 2026 U.S. federal estate tax using
+                            estate assets, deductible…</small></span></a><a class="cp-related-link"
+                    href="../social-security-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Social Security Calculator</strong><small>Estimate
+                            U.S. Social Security retirement benefits by claim age using SSA
+                            early-reti…</small></span></a><a class="cp-related-link"
+                    href="../inflation-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Inflation Calculator</strong><small>Compare U.S.
+                            dollar purchasing power with CPI-U data or project inflation forward a…</small></span></a><a
+                    class="cp-related-link" href="../vat-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>VAT Calculator</strong><small>Add VAT to a net
+                            price or remove VAT from a gross price using a custom rate, with t…</small></span></a><a
+                    class="cp-related-link" href="../auto-loan-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Auto Loan Calculator</strong><small>Estimate a car
+                            loan payment using vehicle price, down payment, trade-in, tax, fees,…</small></span></a><a
+                    class="cp-related-link" href="../interest-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Interest Calculator</strong><small>Calculate
+                            compound interest with an initial balance, monthly contributions, annual…</small></span></a>
+            </div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const $ = id => document.getElementById(id);
+        const money = n => Number.isFinite(n) ? new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 }).format(n) : '—';
+        const fmt = (n, d = 1) => Number.isFinite(n) ? Number(n).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }) : '—';
+        const val = id => parseFloat($(id).value);
+        function setErr(m = '') { if ($('error')) $('error').textContent = m }
+
+        const brackets = {
+            single: [[12400, .10], [50400, .12], [105700, .22], [201775, .24], [256225, .32], [640600, .35], [Infinity, .37]],
+            mfj: [[24800, .10], [100800, .12], [211400, .22], [403550, .24], [512450, .32], [768700, .35], [Infinity, .37]],
+            hoh: [[17700, .10], [67450, .12], [105700, .22], [201750, .24], [256200, .32], [640600, .35], [Infinity, .37]]
+        };
+        const deduction = { single: 16100, mfj: 32200, hoh: 24150 };
+        function incomeTax(taxable, arr) { let tax = 0, prev = 0; for (const [cap, rate] of arr) { if (taxable <= prev) break; let amt = Math.min(taxable, cap) - prev; tax += amt * rate; prev = cap } return tax }
+        function calculate() {
+            try {
+                const salary = val('salary'), status = $('status').value, pretax = val('pretax'), stateRate = val('state') / 100, periods = val('periods');
+                if (!(salary >= 0 && pretax >= 0 && pretax <= salary && stateRate >= 0 && periods > 0)) throw Error('Check salary, deductions, tax rate, and pay frequency.');
+                const taxable = Math.max(0, salary - pretax - deduction[status]), fed = incomeTax(taxable, brackets[status]);
+                const ss = Math.min(salary, 184500) * .062, med = salary * .0145 + Math.max(0, salary - 200000) * .009;
+                const state = Math.max(0, salary - pretax) * stateRate, total = fed + ss + med + state, net = salary - pretax - total;
+                $('netAnnual').textContent = money(net); $('netPeriod').textContent = `${money(net / periods)} per paycheck`; $('fed').textContent = money(fed); $('ss').textContent = money(ss); $('med').textContent = money(med); $('st').textContent = money(state); $('taxes').textContent = money(total); $('grossPeriod').textContent = money(salary / periods); setErr('');
+            } catch (e) { setErr(e.message) }
+        }
+        $('calculate').onclick = calculate; $('clear').onclick = () => location.reload(); calculate();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

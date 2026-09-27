@@ -1,77 +1,1675 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+<html lang="en">
 
-<title>Calorie Calculator – BMR, Maintenance Calories &amp; Goals | CalcPro</title><meta content="Estimate adult BMR with the Mifflin-St Jeor equation and calculate activity-adjusted maintenance calories plus adjustable weight-change calorie targets." name="description"/><meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
-<link href="../calorie-calculator/" rel="canonical"/><meta content="website" property="og:type"/><meta content="Calorie Calculator" property="og:title"/><meta content="Estimate adult BMR with the Mifflin-St Jeor equation and calculate activity-adjusted maintenance calories plus adjustable weight-change calorie targets." property="og:description"/><meta content="#1477ff" name="theme-color"/>
-<style>
-:root{--ink:#0b1933;--muted:#60708a;--line:#dbe8f6;--blue:#0a6ff2;--blue2:#20a5ff;--green:#16b86b;--yellow:#f6b51f;--red:#ef4f58;--shadow:0 18px 45px rgba(25,74,123,.16),inset 0 1px 0 rgba(255,255,255,.95)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 12% 6%,rgba(32,165,255,.18),transparent 28%),radial-gradient(circle at 88% 15%,rgba(35,205,153,.13),transparent 24%),linear-gradient(180deg,#f8fcff,#eef7ff 48%,#f7fbff);line-height:1.65}
-a{color:#0967d8;text-decoration:none}a:hover{text-decoration:underline}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}.topbar{position:sticky;top:0;z-index:20;background:rgba(248,252,255,.8);backdrop-filter:blur(18px);border-bottom:1px solid rgba(196,219,241,.72)}
-.nav{height:72px;display:flex;align-items:center;gap:28px}.brand{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:850;color:var(--ink)}.brand i{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;color:#fff;font-style:normal;background:linear-gradient(145deg,#27b3ff,#0562d7);box-shadow:0 9px 18px rgba(10,111,242,.28),inset 0 2px 2px rgba(255,255,255,.45)}
-.navlinks{display:flex;gap:20px;margin-left:18px;font-size:14px;font-weight:700}.navlinks a{color:#20324e}.search{margin-left:auto;background:#fff;border:1px solid #e0ebf6;border-radius:999px;padding:10px 15px;min-width:210px;color:#6d7d93;font-size:13px;box-shadow:0 8px 20px rgba(26,70,112,.08)}
-.hero{padding:28px 0 18px}.breadcrumb{font-size:13px;color:#6c7b91;margin-bottom:18px}.breadcrumb span{margin:0 8px;color:#a1aec0}.hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:28px;align-items:center}
-h1{font-size:clamp(2.6rem,5vw,4.5rem);line-height:.98;margin:0 0 16px;letter-spacing:-3px}h1 b{color:var(--blue)}.lead{font-size:17px;color:#42546e;max-width:700px;margin:0}.chips{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.chip{background:#fff;border:1px solid #dceafa;border-radius:999px;padding:7px 11px;font-size:12px;font-weight:800;color:#35506f;box-shadow:0 8px 18px rgba(37,86,137,.07)}
-.hero-art{height:270px;position:relative;perspective:900px}.floor{position:absolute;left:9%;right:7%;bottom:12px;height:34px;border-radius:50%;background:rgba(32,75,115,.14);filter:blur(15px)}.obj{position:absolute;box-shadow:var(--shadow)}
-.calc-shell{margin-top:20px;padding:16px;border-radius:32px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.92);box-shadow:0 28px 70px rgba(37,86,137,.15);backdrop-filter:blur(20px)}.calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}
-.card{background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(244,249,255,.86));border:1px solid rgba(218,231,245,.92);border-radius:24px;padding:22px;box-shadow:var(--shadow)}.card h2{font-size:21px;margin:0 0 4px;letter-spacing:-.5px}.sub{font-size:13px;color:#687990;margin:0 0 15px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}label{font-size:13px;font-weight:800;color:#263a56}.input-wrap{display:flex;align-items:center;gap:8px}
-input,select{width:100%;border:1px solid #cddff1;background:#fbfdff;border-radius:12px;padding:11px 12px;font:inherit;color:#152641;box-shadow:inset 0 2px 4px rgba(26,77,123,.05);outline:none}input:focus,select:focus{border-color:#66b5ff;box-shadow:0 0 0 3px rgba(32,165,255,.12)}
-.radios{display:flex;gap:16px;flex-wrap:wrap}.radio{display:flex;align-items:center;gap:7px;font-size:13px}.radio input{width:auto;accent-color:#1685f5}.unit{font-size:12px;color:#667890;white-space:nowrap}.hint{font-size:11px;color:#75859a}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;background:#edf5ff;border:1px solid #dceafb;padding:4px;border-radius:15px;margin-bottom:16px}.tab{border:0;background:transparent;padding:9px 12px;border-radius:11px;font-weight:800;color:#334866;cursor:pointer}.tab.active{background:linear-gradient(145deg,#2aa8ff,#0668df);color:#fff;box-shadow:0 9px 17px rgba(8,111,240,.26)}
-.actions{display:grid;grid-template-columns:1.5fr .8fr;gap:10px;margin-top:18px}.btn{border:0;border-radius:14px;padding:13px 14px;font-weight:800;cursor:pointer}.primary{color:#fff;background:linear-gradient(145deg,#25a9ff,#0064dc);box-shadow:0 12px 22px rgba(6,104,221,.28)}.secondary{background:#edf3f9;color:#273a55}.error{color:#b4232b;font-size:12px;margin-top:10px;min-height:18px}
-.result-hero{padding:18px;border-radius:19px;background:linear-gradient(135deg,#edfff7,#eef8ff);position:relative;overflow:hidden}.result-hero:after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;right:-30px;top:-45px;background:radial-gradient(circle,#55d7ff,#0b79ef);opacity:.17}.result-hero small{color:#60728b}.big{font-size:36px;font-weight:900;letter-spacing:-1.8px;line-height:1.1;margin-top:3px}.accent{color:var(--green);font-weight:850;font-size:18px}
-.stats{margin-top:13px;border-radius:16px;background:#fff;border:1px solid #e3edf7;overflow:hidden}.stat{display:flex;justify-content:space-between;gap:12px;padding:10px 12px;border-bottom:1px solid #e8f0f7;font-size:13px}.stat:last-child{border-bottom:0}.stat b{text-align:right}
-.answerbox{margin:14px 0 0;padding:15px 16px;border-radius:16px;background:#0e2544;color:#fff;box-shadow:0 15px 28px rgba(12,37,68,.18);font-size:13px}.answerbox strong{color:#73d3ff}
-.gauge{height:20px;border-radius:999px;background:linear-gradient(90deg,#2b92f2 0 25%,#1cc477 25% 50%,#f7c338 50% 72%,#ef555c 72%);position:relative;box-shadow:inset 0 2px 4px rgba(0,0,0,.08);margin-top:16px}.pointer{position:absolute;top:-8px;width:4px;height:36px;border-radius:4px;background:#14243a;left:40%;box-shadow:0 0 0 3px rgba(255,255,255,.8);transition:.35s}
-.mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}.mini{padding:13px;border-radius:15px;background:#fff;border:1px solid #e1ecf7}.mini small{display:block;color:#718299}.mini b{font-size:16px}.ringbox{display:grid;place-items:center;margin:15px 0}.ring{width:170px;height:170px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--blue) 0 45%,var(--green) 45% 75%,var(--yellow) 75%);box-shadow:0 18px 30px rgba(24,88,150,.14)}.ring:after{content:"";width:112px;height:112px;border-radius:50%;background:#fff;position:absolute}.ring strong{position:relative;z-index:2;font-size:26px}
-.content{padding:38px 0 70px}.content-grid{display:grid;grid-template-columns:1.fr;gap:22px}.article,.toc{background:rgba(255,255,255,.9);border:1px solid #dfeaf6;border-radius:25px;box-shadow:var(--shadow)}.article{padding:30px}.toc{padding:24px;align-self:start;position:sticky;top:94px}.article h2{font-size:28px;line-height:1.2;margin:38px 0 12px;letter-spacing:-.8px}.article h2:first-child{margin-top:0}.article h3{font-size:20px;margin:24px 0 8px}.article p,.article li{color:#42536d}.direct{border-left:5px solid var(--blue);background:#f0f7ff;padding:16px 18px;border-radius:14px;color:#263a56}.formula{font:800 16px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;background:#0d213c;color:#eef8ff;padding:16px;border-radius:15px;overflow:auto}.note{background:#fff9e9;border:1px solid #f5df9c;padding:15px 17px;border-radius:14px;color:#5c4d22}
-.table-wrap{overflow:auto;border-radius:16px;border:1px solid #dce7f2;margin:14px 0}table{border-collapse:collapse;width:100%;min-width:520px;background:#fff}th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #e7eef5;font-size:13px}th{background:#f1f7fd}.faq{border-top:1px solid #e4edf6;padding:15px 0}.faq summary{font-weight:800;cursor:pointer}.faq p{margin-bottom:0}.toc h3{margin-top:0}.toc a{display:block;padding:7px 0;color:#34506f;font-size:14px}.sources li{margin:8px 0}footer{padding:28px 0 42px;color:#63748a;font-size:13px;text-align:center}
-@media(max-width:960px){.navlinks,.search{display:none}.hero-grid,.calc-grid,.content-grid{grid-template-columns:1fr}.hero-art{height:235px}.toc{position:static}}
-@media(max-width:620px){.wrap{width:min(100% - 20px,1180px)}.hero{padding-top:18px}.hero-art{transform:scale(.86);transform-origin:center top;margin-bottom:-28px}h1{font-size:43px;letter-spacing:-2px}.calc-shell{padding:8px;border-radius:23px}.card{padding:16px;border-radius:19px}.form-grid,.mini-grid,.actions{grid-template-columns:1fr}.field.full{grid-column:auto}.article{padding:21px}.nav{height:64px}}
-/* 3D scenes */
-.scene-salary .wallet{right:58px;top:64px;width:285px;height:155px;border-radius:28px;background:linear-gradient(145deg,#0d6ee8,#29b3ff);transform:rotate(-7deg);box-shadow:24px 30px 42px rgba(10,92,184,.24)}.scene-salary .wallet:before{content:"PAYCHECK";position:absolute;left:30px;top:28px;color:#fff;font-size:18px;font-weight:900;letter-spacing:2px}.scene-salary .wallet:after{content:"$";position:absolute;right:34px;bottom:22px;color:rgba(255,255,255,.9);font-size:68px;font-weight:900}.scene-salary .slip{right:220px;top:30px;width:125px;height:165px;border-radius:14px;background:#fff;transform:rotate(9deg);border:1px solid #e0ebf7}.scene-salary .slip:after{content:"GROSS\A TAX\A NET";white-space:pre;position:absolute;inset:25px;font-weight:850;line-height:2.5;color:#44617f}
-.scene-401k .vault{right:75px;top:48px;width:235px;height:190px;border-radius:32px;background:linear-gradient(145deg,#e8f6ff,#9fcff3);border:7px solid #fff;transform:rotateY(-12deg)}.scene-401k .vault:before{content:"";position:absolute;width:100px;height:100px;border-radius:50%;left:60px;top:38px;background:radial-gradient(circle,#fff 0 14%,#1c8dea 15% 22%,#dceaf6 23% 46%,#0d315f 47%);box-shadow:0 10px 20px rgba(22,64,110,.18)}.scene-401k .coin{right:22px;bottom:18px;width:98px;height:98px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff9b8,#ffd442 55%,#dda500);border:8px solid #ffe770;display:grid;place-items:center;font-weight:900;font-size:24px;color:#8a6200}
-.scene-rate .dial{right:100px;top:35px;width:235px;height:235px;border-radius:50%;background:radial-gradient(circle,#fff 0 49%,#dbeafa 50% 63%,#0d75df 64%);box-shadow:0 25px 45px rgba(20,85,150,.2)}.scene-rate .dial:before{content:"%";position:absolute;inset:0;display:grid;place-items:center;font-size:76px;font-weight:900;color:#0b6ff2}.scene-rate .needle{right:214px;top:70px;width:6px;height:92px;border-radius:5px;background:#ef4f58;transform-origin:bottom;transform:rotate(35deg)}
-.scene-tax .receipt{right:92px;top:25px;width:220px;height:215px;border-radius:20px;background:#fff;transform:rotate(-5deg);border:1px solid #dbe8f6}.scene-tax .receipt:before{content:"SUBTOTAL   $100\A TAX          $8\A TOTAL       $108";white-space:pre;position:absolute;left:30px;top:48px;font:800 16px/2 ui-monospace;color:#294766}.scene-tax .badge{right:25px;bottom:35px;width:120px;height:120px;border-radius:30px;background:linear-gradient(145deg,#28b3ff,#0967db);transform:rotate(10deg);display:grid;place-items:center;color:#fff;font-size:42px;font-weight:900}
-.scene-health .body{right:140px;top:28px;width:115px;height:210px;border-radius:58px 58px 42px 42px;background:linear-gradient(145deg,#8de4dc,#1da7c5);box-shadow:18px 25px 35px rgba(0,118,142,.2)}.scene-health .body:before{content:"";position:absolute;left:24px;top:-55px;width:68px;height:68px;border-radius:50%;background:linear-gradient(145deg,#a8eff0,#40bdd1)}.scene-health .pulse{right:20px;top:95px;width:345px;height:4px;background:#fff;box-shadow:0 0 0 2px rgba(10,111,242,.08)}.scene-health .pulse:after{content:"⌁";position:absolute;left:110px;top:-66px;color:#0a6ff2;font-size:100px;font-weight:900;transform:rotate(10deg)}
-.scene-bmi .scale{right:75px;top:50px;width:250px;height:175px;border-radius:36px;background:linear-gradient(145deg,#eff8ff,#c9dced);border:6px solid #f8fcff;transform:rotateY(-11deg) rotateX(8deg) rotateZ(-4deg)}.scene-bmi .scale:before{content:"22.7";position:absolute;left:45px;right:45px;bottom:32px;padding:13px;border-radius:16px;background:#0e2544;color:#73d3ff;text-align:center;font-weight:900;font-size:25px}.scene-bmi .tape{right:15px;top:145px;width:340px;height:28px;border-radius:10px;background:repeating-linear-gradient(90deg,#ffd53d 0 17px,#f7c629 17px 18px);transform:rotate(12deg)}
-.scene-calorie .flame{right:130px;top:28px;width:145px;height:205px;background:linear-gradient(145deg,#ffdc4b,#ff724f);border-radius:70% 30% 60% 40%/70% 50% 50% 30%;transform:rotate(42deg);box-shadow:0 24px 45px rgba(242,117,56,.23)}.scene-calorie .flame:after{content:"kcal";position:absolute;inset:0;display:grid;place-items:center;transform:rotate(-42deg);font-size:31px;font-weight:900;color:#fff}.scene-calorie .plate{right:30px;bottom:18px;width:330px;height:58px;border-radius:50%;background:linear-gradient(#e6f2fb,#b5cee1);box-shadow:0 12px 20px rgba(30,70,110,.15)}
-.scene-fat .tapeorb{right:85px;top:35px;width:225px;height:225px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#fff,#8fd7ff 42%,#0872df 76%);box-shadow:0 28px 50px rgba(10,111,242,.22)}.scene-fat .tapeorb:before{content:"BODY\A FAT";white-space:pre;position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#fff;font-weight:900;letter-spacing:3px}.scene-fat .belt{right:20px;top:118px;width:350px;height:30px;border-radius:9px;background:repeating-linear-gradient(90deg,#ffe263 0 16px,#f4c92d 16px 18px);transform:rotate(-12deg)}
-.scene-bmr .core{right:115px;top:40px;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle,#fff 0 18%,#79d8ff 19% 45%,#0a6ff2 46% 68%,#0c315d 69%);box-shadow:0 25px 50px rgba(10,111,242,.25)}.scene-bmr .orbit{right:45px;top:90px;width:330px;height:100px;border:4px solid rgba(22,184,107,.35);border-radius:50%;transform:rotate(-18deg)}.scene-bmr .orbit:after{content:"";position:absolute;width:24px;height:24px;border-radius:50%;right:18px;top:5px;background:#16b86b}
-.scene-macro .plate{right:70px;top:30px;width:245px;height:245px;border-radius:50%;background:conic-gradient(#0a6ff2 0 45%,#16b86b 45% 70%,#f6b51f 70%);box-shadow:0 28px 48px rgba(26,76,123,.18);border:12px solid #fff}.scene-macro .plate:after{content:"MACROS";position:absolute;inset:55px;border-radius:50%;background:#f8fcff;display:grid;place-items:center;font-size:22px;font-weight:900;color:#173653}.scene-macro .cube{right:22px;bottom:22px;width:90px;height:90px;border-radius:22px;background:linear-gradient(145deg,#fff,#bfe0f7);transform:rotate(12deg);display:grid;place-items:center;font-weight:900;color:#0a6ff2}
-</style><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Calorie Calculator", "applicationCategory": "HealthApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "description": "Estimate adult BMR with the Mifflin-St Jeor equation and calculate activity-adjusted maintenance calories plus adjustable weight-change calorie targets.", "url": "/calorie-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Health & Fitness", "item": "/health/"}, {"@type": "ListItem", "position": 3, "name": "Calories & Nutrition", "item": "/health/calories-nutrition/"}, {"@type": "ListItem", "position": 4, "name": "Calorie Calculator", "item": "/calorie-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is maintenance calories?", "acceptedAnswer": {"@type": "Answer", "text": "Maintenance calories are an estimate of energy intake that would match total energy expenditure and therefore tend to maintain body weight over time."}}, {"@type": "Question", "name": "Is BMR the same as total daily calories?", "acceptedAnswer": {"@type": "Answer", "text": "No. BMR estimates resting energy needs; total daily needs also include physical activity and other components of energy expenditure."}}, {"@type": "Question", "name": "Is a 500-calorie deficit required?", "acceptedAnswer": {"@type": "Answer", "text": "No. This calculator lets you choose the adjustment. Individual weight-management plans should consider health, sustainability, and professional guidance when appropriate."}}]}]}</script><link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head><body data-cp-category="health" data-cp-page-type="Calculator">
-<header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../health/index.html">Health &amp; Fitness</a></li><li><a aria-current="page" href="index.html">Calorie Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../health/index.html">Browse Health &amp; Fitness</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main"><h1 class="page-title">Calorie Calculator</h1><section class="calc-shell" id="calculator"><div class="calc-grid"><div class="card"><h2>Daily calorie estimate</h2><p class="sub">For non-pregnant adults. Goal adjustments are user-selected planning estimates.</p><div class="form-grid"><div class="field"><label for="sex">Sex used by equation</label><select id="sex"><option value="male">Male</option><option value="female">Female</option></select></div>
-<div class="field"><label for="age">Age (years)</label><input id="age" max="100" min="18" type="number" value="30"/></div>
-<div class="field"><label for="weight">Weight (kg)</label><input id="weight" max="400" min="20" step=".1" type="number" value="70"/></div>
-<div class="field"><label for="height">Height (cm)</label><input id="height" max="250" min="90" step=".1" type="number" value="175"/></div>
-<div class="field"><label for="activity">Activity factor</label><select id="activity"><option value="1.2">Sedentary (1.20)</option><option value="1.375">Light (1.375)</option><option selected="" value="1.55">Moderate (1.55)</option><option value="1.725">Very active (1.725)</option><option value="1.9">Extra active (1.90)</option></select></div>
-<div class="field"><label for="adjust">Daily goal adjustment (kcal)</label><input id="adjust" step="50" type="number" value="-500"/><span class="hint">Example: -500 deficit, +300 surplus, 0 maintenance</span></div></div>
-<div class="actions"><button class="btn primary" id="calculate">Calculate Calories →</button><button class="btn secondary" id="clear">Reset</button></div><div class="error" id="error"></div></div><div class="card"><div class="result-hero"><small>Estimated maintenance calories</small><div class="big" id="maint">0 kcal</div><div class="accent" id="goal">— goal</div></div>
-<div class="stats"><div class="stat"><span>Estimated BMR</span><b id="bmr">—</b></div><div class="stat"><span>Goal calories</span><b id="goalCal">—</b></div><div class="stat"><span>Activity factor</span><b id="act">—</b></div></div><div class="answerbox"><strong>Energy needs vary:</strong> equations and activity factors estimate needs; real maintenance intake may differ.</div></div></div></section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<div class="cp-tool-actions"><button data-cp-print="" type="button">Print / Save PDF</button><span aria-live="polite" class="cp-action-status" role="status"></span></div><section class="content"><div class="wrap content-grid"><article class="article">
-<section id="what"><h2>What Is a Calorie Calculator?</h2><p class="direct"><strong>Answer:</strong> A calorie calculator estimates daily energy needs. This page first predicts resting energy expenditure with the Mifflin–St Jeor equation, then multiplies it by a selected activity factor to approximate maintenance calories.</p></section>
-<section id="how"><h2>How to Use the Calorie Calculator</h2><ol><li>Enter sex, age, weight, and height.</li><li>Select an activity factor that best represents your typical activity.</li><li>Enter an optional calorie adjustment for a planning target.</li><li>Review BMR, maintenance calories, and the adjusted target.</li></ol></section>
-<section id="formula"><h2>Mifflin–St Jeor Calorie Formula</h2><div class="formula">Men: REE = 10W + 6.25H − 5A + 5
-Women: REE = 10W + 6.25H − 5A − 161
-Estimated maintenance ≈ REE × activity factor</div></section>
-<section id="example"><h2>Calculation Example</h2><p>For a 30-year-old, 70 kg, 175 cm male, the Mifflin–St Jeor equation estimates resting energy expenditure first. Multiplying by 1.55 gives a moderate-activity maintenance estimate.</p></section>
-<section id="limits"><h2>Assumptions and Limitations</h2><p>Activity multipliers are approximate, resting-energy equations have prediction error, and calorie needs can change with activity, body composition, health status, adaptation, pregnancy, medications, and other factors.</p></section>
-<section id="faq"><h2>Calorie Calculator FAQs</h2><details class="faq"><summary>What is maintenance calories?</summary><p>Maintenance calories are an estimate of energy intake that would match total energy expenditure and therefore tend to maintain body weight over time.</p></details><details class="faq"><summary>Is BMR the same as total daily calories?</summary><p>No. BMR estimates resting energy needs; total daily needs also include physical activity and other components of energy expenditure.</p></details><details class="faq"><summary>Is a 500-calorie deficit required?</summary><p>No. This calculator lets you choose the adjustment. Individual weight-management plans should consider health, sustainability, and professional guidance when appropriate.</p></details></section>
-<section id="sources"><h2>Sources and Methodology</h2><p>The calculator and page content were cross-checked against the following sources.</p><ul class="sources"><li><a href="https://pubmed.ncbi.nlm.nih.gov/2305711/" rel="noopener" target="_blank">PubMed — Mifflin-St Jeor equation</a></li><li><a href="https://www.calculator.net/calorie-calculator.html" rel="noopener" target="_blank">Calculator.net — Calorie Calculator</a></li><li><a href="https://www.nhlbi.nih.gov/health/dash/following-dash" rel="noopener" target="_blank">NHLBI — DASH calorie needs</a></li></ul><p style="font-size:13px;color:#687990"><strong>Important:</strong> Results are estimates for education and planning and do not replace personalized financial, tax, nutrition, or medical advice.</p></section>
-</article></div></section>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<details class="cp-data-panel"><summary><span>Calculator Data — exact tool basis</span><small>Health &amp; Fitness · Calculator</small></summary><div class="cp-data-grid"><div class="cp-data-item wide"><b>Purpose</b><p>Estimate adult BMR with the Mifflin-St Jeor equation and calculate activity-adjusted maintenance calories plus adjustable weight-change calorie targets.</p></div><div class="cp-data-item wide"><b>Formula / Algorithm Used in Tool</b><p>Mifflin–St Jeor Calorie Formula: Men: REE = 10W + 6.25H − 5A + 5 Women: REE = 10W + 6.25H − 5A − 161 Estimated maintenance ≈ REE × activity factor</p></div><div class="cp-data-item"><b>Required User Inputs</b><p>Sex used by equation; Age (years); Weight (kg); Height (cm); Activity factor; Daily goal adjustment (kcal)</p></div><div class="cp-data-item"><b>Primary Outputs</b><p>Estimated maintenance calories; Estimated BMR; Goal calories; Activity factor</p></div><div class="cp-data-item wide"><b>Important Assumptions / Limitations</b><p>Activity multipliers are approximate, resting-energy equations have prediction error, and calorie needs can change with activity, body composition, health status, adaptation, pregnancy, medications, and other factors.</p></div><div class="cp-data-item"><b>Fresh Data Required?</b><p>Conditional</p></div><div class="cp-data-item"><b>Recommended Update Frequency</b><p>When clinical/exercise guidance changes</p></div><div class="cp-data-item wide"><b>Current Source URLs in Page</b><p><a href="https://pubmed.ncbi.nlm.nih.gov/2305711/" rel="nofollow noopener" target="_blank">https://pubmed.ncbi.nlm.nih.gov/2305711/</a><br/><a href="https://www.calculator.net/calorie-calculator.html" rel="nofollow noopener" target="_blank">https://www.calculator.net/calorie-calculator.html</a><br/><a href="https://www.nhlbi.nih.gov/health/dash/following-dash" rel="nofollow noopener" target="_blank">https://www.nhlbi.nih.gov/health/dash/following-dash</a></p></div></div></details><script class="cp-calculator-data" type="application/json">{"index":"14","Batch":"2","Calculator / Page":"Calorie Calculator","Slug":"calorie-calculator","Site Category (Current)":"Health & Fitness","Recommended Content Domain":"Health / Fitness / Nutrition","Page Type":"Calculator","Search Intent / Purpose":"Estimate adult BMR with the Mifflin-St Jeor equation and calculate activity-adjusted maintenance calories plus adjustable weight-change calorie targets.","Formula / Algorithm Used in Tool":"Mifflin–St Jeor Calorie Formula: Men: REE = 10W + 6.25H − 5A + 5 Women: REE = 10W + 6.25H − 5A − 161 Estimated maintenance ≈ REE × activity factor","Required User Inputs":"Sex used by equation; Age (years); Weight (kg); Height (cm); Activity factor; Daily goal adjustment (kcal)","Primary Outputs":"Estimated maintenance calories; Estimated BMR; Goal calories; Activity factor","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Sex used by equation, Age (years), Weight (kg), Height (cm), Activity factor, Daily goal adjustment (kcal). Explain outputs: Estimated maintenance calories, Estimated BMR, Goal calories, Activity factor. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Authoritative formula source, population/age/sex applicability, units, cutoffs/reference ranges and limitations; avoid diagnostic claims.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When clinical/exercise guidance changes","Important Assumptions / Limitations":"Activity multipliers are approximate, resting-energy equations have prediction error, and calorie needs can change with activity, body composition, health status, adaptation, pregnancy, medications, and other factors.","Current Source URLs in Page":"https://pubmed.ncbi.nlm.nih.gov/2305711/ | https://www.calculator.net/calorie-calculator.html | https://www.nhlbi.nih.gov/health/dash/following-dash","Implementation Path":"/calorie-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Health &amp; Fitness</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../bmr-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>BMR Calculator</strong><small>Estimate basal metabolic rate with the Mifflin-St Jeor equation and compare activit…</small></span></a><a class="cp-related-link" href="../protein-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Protein Calculator</strong><small>Estimate daily protein targets from body weight and activity, with the adult RDA an…</small></span></a><a class="cp-related-link" href="../ideal-weight-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Ideal Weight Calculator</strong><small>Compare common ideal body weight formulas including Devine, Robinson, Miller, and H…</small></span></a><a class="cp-related-link" href="../calories-burned-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Calories Burned Calculator</strong><small>Estimate exercise calories from activity MET value, body weight, and duration using…</small></span></a><a class="cp-related-link" href="../carbohydrate-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Carbohydrate Calculator</strong><small>Estimate daily carbohydrate grams from calorie needs using the adult AMDR of 45%–65…</small></span></a><a class="cp-related-link" href="../overweight-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>See where weight and height meet on the adult BMI scale.</strong><small>Calculate adult BMI and see the CDC weight-status category plus the standard BMI 18…</small></span></a><a class="cp-related-link" href="../bmi-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>BMI Calculator</strong><small>Calculate adult Body Mass Index from height and weight, see the CDC BMI category, h…</small></span></a><a class="cp-related-link" href="../fitness-and-health-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fitness &amp; Health Calculator</strong><small>Calculate adult BMI, Mifflin-St Jeor BMR, estimated maintenance calories, healthy-w…</small></span></a></div><a class="cp-side-category" href="../health/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script>
-const $=id=>document.getElementById(id);
-const money=n=>Number.isFinite(n)?new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(n):'—';
-const fmt=(n,d=1)=>Number.isFinite(n)?Number(n).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
-const val=id=>parseFloat($(id).value);
-function setErr(m=''){if($('error'))$('error').textContent=m}
+    <!-- Primary Meta Tags -->
+<title>Calorie Calculator – BMR &amp; Maintenance Calories</title>
+<meta name="title" content="Calorie Calculator – BMR &amp; Maintenance Calories">
+<meta name="description" content="Estimate daily calorie needs using the Mifflin-St Jeor equation. See BMR, activity-adjusted maintenance calories, activity factor, and goal calories.">
 
-function calculate(){try{const sex=$('sex').value,age=val('age'),w=val('weight'),h=val('height'),a=val('activity'),adj=val('adjust');if(!(age>=18&&w>0&&h>0&&a>0&&Number.isFinite(adj)))throw Error('Check age, height, weight, activity, and adjustment.');const bmr=10*w+6.25*h-5*age+(sex==='male'?5:-161),maint=bmr*a,goal=maint+adj;$('maint').textContent=`${Math.round(maint)} kcal/day`;$('bmr').textContent=`${Math.round(bmr)} kcal/day`;$('goalCal').textContent=`${Math.round(goal)} kcal/day`;$('act').textContent=fmt(a,3);$('goal').textContent=adj===0?'Maintenance target':adj<0?`${Math.abs(adj)} kcal/day deficit`:`${adj} kcal/day surplus`;setErr('')}catch(e){setErr(e.message)}}
-$('calculate').onclick=calculate;$('clear').onclick=()=>location.reload();calculate();
-</script><script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/calorie-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/calorie-calculator/">
+<meta property="og:title" content="Calorie Calculator – BMR &amp; Maintenance Calories">
+<meta property="og:description" content="Estimate daily calorie needs using the Mifflin-St Jeor equation. See BMR, activity-adjusted maintenance calories, activity factor, and goal calories.">
+<meta property="og:site_name" content="Calorie Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/calorie-calculator/">
+<meta name="twitter:title" content="Calorie Calculator – BMR &amp; Maintenance Calories">
+<meta name="twitter:description" content="Estimate daily calorie needs using the Mifflin-St Jeor equation. See BMR, activity-adjusted maintenance calories, activity factor, and goal calories.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        :root {
+            --ink: #0b1933;
+            --muted: #60708a;
+            --line: #dbe8f6;
+            --blue: #0a6ff2;
+            --blue2: #20a5ff;
+            --green: #16b86b;
+            --yellow: #f6b51f;
+            --red: #ef4f58;
+            --shadow: 0 18px 45px rgba(25, 74, 123, .16), inset 0 1px 0 rgba(255, 255, 255, .95)
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at 12% 6%, rgba(32, 165, 255, .18), transparent 28%), radial-gradient(circle at 88% 15%, rgba(35, 205, 153, .13), transparent 24%), linear-gradient(180deg, #f8fcff, #eef7ff 48%, #f7fbff);
+            line-height: 1.65
+        }
+
+        a {
+            color: #0967d8;
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .wrap {
+            width: min(1180px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(248, 252, 255, .8);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(196, 219, 241, .72)
+        }
+
+        .nav {
+            height: 72px;
+            display: flex;
+            align-items: center;
+            gap: 28px
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 23px;
+            font-weight: 850;
+            color: var(--ink)
+        }
+
+        .brand i {
+            width: 38px;
+            height: 38px;
+            display: grid;
+            place-items: center;
+            border-radius: 11px;
+            color: #fff;
+            font-style: normal;
+            background: linear-gradient(145deg, #27b3ff, #0562d7);
+            box-shadow: 0 9px 18px rgba(10, 111, 242, .28), inset 0 2px 2px rgba(255, 255, 255, .45)
+        }
+
+        .navlinks {
+            display: flex;
+            gap: 20px;
+            margin-left: 18px;
+            font-size: 14px;
+            font-weight: 700
+        }
+
+        .navlinks a {
+            color: #20324e
+        }
+
+        .search {
+            margin-left: auto;
+            background: #fff;
+            border: 1px solid #e0ebf6;
+            border-radius: 999px;
+            padding: 10px 15px;
+            min-width: 210px;
+            color: #6d7d93;
+            font-size: 13px;
+            box-shadow: 0 8px 20px rgba(26, 70, 112, .08)
+        }
+
+        .hero {
+            padding: 28px 0 18px
+        }
+
+        .breadcrumb {
+            font-size: 13px;
+            color: #6c7b91;
+            margin-bottom: 18px
+        }
+
+        .breadcrumb span {
+            margin: 0 8px;
+            color: #a1aec0
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.03fr .97fr;
+            gap: 28px;
+            align-items: center
+        }
+
+        h1 {
+           font-size: clamp(2.6rem,5vw,4.5rem);
+line-height: 1.05;
+margin: 0 auto 18px;
+text-align: center;
+letter-spacing: -.06em;
+font-weight: 900;
+        }
+
+        h1 b {
+            color: var(--blue)
+        }
+
+        .lead {
+            font-size: 17px;
+            color: #42546e;
+            max-width: 700px;
+            margin: 0
+        }
+
+        .chips {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+            margin-top: 18px
+        }
+
+        .chip {
+            background: #fff;
+            border: 1px solid #dceafa;
+            border-radius: 999px;
+            padding: 7px 11px;
+            font-size: 12px;
+            font-weight: 800;
+            color: #35506f;
+            box-shadow: 0 8px 18px rgba(37, 86, 137, .07)
+        }
+
+        .hero-art {
+            height: 270px;
+            position: relative;
+            perspective: 900px
+        }
+
+        .floor {
+            position: absolute;
+            left: 9%;
+            right: 7%;
+            bottom: 12px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(32, 75, 115, .14);
+            filter: blur(15px)
+        }
+
+        .obj {
+            position: absolute;
+            box-shadow: var(--shadow)
+        }
+
+        .calc-shell {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 32px;
+            background: rgba(255, 255, 255, .5);
+            border: 1px solid rgba(255, 255, 255, .92);
+            box-shadow: 0 28px 70px rgba(37, 86, 137, .15);
+            backdrop-filter: blur(20px)
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 16px
+        }
+
+        .card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, .97), rgba(244, 249, 255, .86));
+            border: 1px solid rgba(218, 231, 245, .92);
+            border-radius: 24px;
+            padding: 22px;
+            box-shadow: var(--shadow)
+        }
+
+        .card h2 {
+            font-size: 21px;
+            margin: 0 0 4px;
+            letter-spacing: -.5px
+        }
+
+        .sub {
+            font-size: 13px;
+            color: #687990;
+            margin: 0 0 15px
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 13px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px
+        }
+
+        .field.full {
+            grid-column: 1/-1
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: 800;
+            color: #263a56
+        }
+
+        .input-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        input,
+        select {
+            width: 100%;
+            border: 1px solid #cddff1;
+            background: #fbfdff;
+            border-radius: 12px;
+            padding: 11px 12px;
+            font: inherit;
+            color: #152641;
+            box-shadow: inset 0 2px 4px rgba(26, 77, 123, .05);
+            outline: none
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #66b5ff;
+            box-shadow: 0 0 0 3px rgba(32, 165, 255, .12)
+        }
+
+        .radios {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap
+        }
+
+        .radio {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 13px
+        }
+
+        .radio input {
+            width: auto;
+            accent-color: #1685f5
+        }
+
+        .unit {
+            font-size: 12px;
+            color: #667890;
+            white-space: nowrap
+        }
+
+        .hint {
+            font-size: 11px;
+            color: #75859a
+        }
+
+        .tabs {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            background: #edf5ff;
+            border: 1px solid #dceafb;
+            padding: 4px;
+            border-radius: 15px;
+            margin-bottom: 16px
+        }
+
+        .tab {
+            border: 0;
+            background: transparent;
+            padding: 9px 12px;
+            border-radius: 11px;
+            font-weight: 800;
+            color: #334866;
+            cursor: pointer
+        }
+
+        .tab.active {
+            background: linear-gradient(145deg, #2aa8ff, #0668df);
+            color: #fff;
+            box-shadow: 0 9px 17px rgba(8, 111, 240, .26)
+        }
+
+        .actions {
+            display: grid;
+            grid-template-columns: 1.5fr .8fr;
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 13px 14px;
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .primary {
+            color: #fff;
+            background: linear-gradient(145deg, #25a9ff, #0064dc);
+            box-shadow: 0 12px 22px rgba(6, 104, 221, .28)
+        }
+
+        .secondary {
+            background: #edf3f9;
+            color: #273a55
+        }
+
+        .error {
+            color: #b4232b;
+            font-size: 12px;
+            margin-top: 10px;
+            min-height: 18px
+        }
+
+        .result-hero {
+            padding: 18px;
+            border-radius: 19px;
+            background: linear-gradient(135deg, #edfff7, #eef8ff);
+            position: relative;
+            overflow: hidden
+        }
+
+        .result-hero:after {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            right: -30px;
+            top: -45px;
+            background: radial-gradient(circle, #55d7ff, #0b79ef);
+            opacity: .17
+        }
+
+        .result-hero small {
+            color: #60728b
+        }
+
+        .big {
+            font-size: 36px;
+            font-weight: 900;
+            letter-spacing: -1.8px;
+            line-height: 1.1;
+            margin-top: 3px
+        }
+
+        .accent {
+            color: var(--green);
+            font-weight: 850;
+            font-size: 18px
+        }
+
+        .stats {
+            margin-top: 13px;
+            border-radius: 16px;
+            background: #fff;
+            border: 1px solid #e3edf7;
+            overflow: hidden
+        }
+
+        .stat {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px 12px;
+            border-bottom: 1px solid #e8f0f7;
+            font-size: 13px
+        }
+
+        .stat:last-child {
+            border-bottom: 0
+        }
+
+        .stat b {
+            text-align: right
+        }
+
+        .answerbox {
+            margin: 14px 0 0;
+            padding: 15px 16px;
+            border-radius: 16px;
+            background: #0e2544;
+            color: #fff;
+            box-shadow: 0 15px 28px rgba(12, 37, 68, .18);
+            font-size: 13px
+        }
+
+        .answerbox strong {
+            color: #73d3ff
+        }
+
+        .gauge {
+            height: 20px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #2b92f2 0 25%, #1cc477 25% 50%, #f7c338 50% 72%, #ef555c 72%);
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, .08);
+            margin-top: 16px
+        }
+
+        .pointer {
+            position: absolute;
+            top: -8px;
+            width: 4px;
+            height: 36px;
+            border-radius: 4px;
+            background: #14243a;
+            left: 40%;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, .8);
+            transition: .35s
+        }
+
+        .mini-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 12px
+        }
+
+        .mini {
+            padding: 13px;
+            border-radius: 15px;
+            background: #fff;
+            border: 1px solid #e1ecf7
+        }
+
+        .mini small {
+            display: block;
+            color: #718299
+        }
+
+        .mini b {
+            font-size: 16px
+        }
+
+        .ringbox {
+            display: grid;
+            place-items: center;
+            margin: 15px 0
+        }
+
+        .ring {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: conic-gradient(var(--blue) 0 45%, var(--green) 45% 75%, var(--yellow) 75%);
+            box-shadow: 0 18px 30px rgba(24, 88, 150, .14)
+        }
+
+        .ring:after {
+            content: "";
+            width: 112px;
+            height: 112px;
+            border-radius: 50%;
+            background: #fff;
+            position: absolute
+        }
+
+        .ring strong {
+            position: relative;
+            z-index: 2;
+            font-size: 26px
+        }
+
+        .content {
+            padding: 38px 0 70px
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.fr;
+            gap: 22px
+        }
+
+        .article,
+        .toc {
+            background: rgba(255, 255, 255, .9);
+            border: 1px solid #dfeaf6;
+            border-radius: 25px;
+            box-shadow: var(--shadow)
+        }
+
+        .article {
+            padding: 30px
+        }
+
+        .toc {
+            padding: 24px;
+            align-self: start;
+            position: sticky;
+            top: 94px
+        }
+
+        .article h2 {
+            font-size: 28px;
+            line-height: 1.2;
+            margin: 38px 0 12px;
+            letter-spacing: -.8px
+        }
+
+        .article h2:first-child {
+            margin-top: 0
+        }
+
+        .article h3 {
+            font-size: 20px;
+            margin: 24px 0 8px
+        }
+
+        .article p,
+        .article li {
+            color: #42536d
+        }
+
+        .direct {
+            border-left: 5px solid var(--blue);
+            background: #f0f7ff;
+            padding: 16px 18px;
+            border-radius: 14px;
+            color: #263a56
+        }
+
+        .formula {
+            font: 800 16px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: #0d213c;
+            color: #eef8ff;
+            padding: 16px;
+            border-radius: 15px;
+            overflow: auto
+        }
+
+        .note {
+            background: #fff9e9;
+            border: 1px solid #f5df9c;
+            padding: 15px 17px;
+            border-radius: 14px;
+            color: #5c4d22
+        }
+
+        .table-wrap {
+            overflow: auto;
+            border-radius: 16px;
+            border: 1px solid #dce7f2;
+            margin: 14px 0
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 520px;
+            background: #fff
+        }
+
+        th,
+        td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #e7eef5;
+            font-size: 13px
+        }
+
+        th {
+            background: #f1f7fd
+        }
+
+        .faq {
+            border-top: 1px solid #e4edf6;
+            padding: 15px 0
+        }
+
+        .faq summary {
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .faq p {
+            margin-bottom: 0
+        }
+
+        .toc h3 {
+            margin-top: 0
+        }
+
+        .toc a {
+            display: block;
+            padding: 7px 0;
+            color: #34506f;
+            font-size: 14px
+        }
+
+        .sources li {
+            margin: 8px 0
+        }
+
+        footer {
+            padding: 28px 0 42px;
+            color: #63748a;
+            font-size: 13px;
+            text-align: center
+        }
+
+        @media(max-width:960px) {
+
+            .navlinks,
+            .search {
+                display: none
+            }
+
+            .hero-grid,
+            .calc-grid,
+            .content-grid {
+                grid-template-columns: 1fr
+            }
+
+            .hero-art {
+                height: 235px
+            }
+
+            .toc {
+                position: static
+            }
+        }
+
+        @media(max-width:620px) {
+            .wrap {
+                width: min(100% - 20px, 1180px)
+            }
+
+            .hero {
+                padding-top: 18px
+            }
+
+            .hero-art {
+                transform: scale(.86);
+                transform-origin: center top;
+                margin-bottom: -28px
+            }
+ 
+
+            .calc-shell {
+                padding: 8px;
+                border-radius: 23px
+            }
+
+            .card {
+                padding: 16px;
+                border-radius: 19px
+            }
+
+            .form-grid,
+            .mini-grid,
+            .actions {
+                grid-template-columns: 1fr
+            }
+
+            .field.full {
+                grid-column: auto
+            }
+
+            .article {
+                padding: 21px
+            }
+
+            .nav {
+                height: 64px
+            }
+        }
+
+        /* 3D scenes */
+        .scene-salary .wallet {
+            right: 58px;
+            top: 64px;
+            width: 285px;
+            height: 155px;
+            border-radius: 28px;
+            background: linear-gradient(145deg, #0d6ee8, #29b3ff);
+            transform: rotate(-7deg);
+            box-shadow: 24px 30px 42px rgba(10, 92, 184, .24)
+        }
+
+        .scene-salary .wallet:before {
+            content: "PAYCHECK";
+            position: absolute;
+            left: 30px;
+            top: 28px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 900;
+            letter-spacing: 2px
+        }
+
+        .scene-salary .wallet:after {
+            content: "$";
+            position: absolute;
+            right: 34px;
+            bottom: 22px;
+            color: rgba(255, 255, 255, .9);
+            font-size: 68px;
+            font-weight: 900
+        }
+
+        .scene-salary .slip {
+            right: 220px;
+            top: 30px;
+            width: 125px;
+            height: 165px;
+            border-radius: 14px;
+            background: #fff;
+            transform: rotate(9deg);
+            border: 1px solid #e0ebf7
+        }
+
+        .scene-salary .slip:after {
+            content: "GROSS\A TAX\A NET";
+            white-space: pre;
+            position: absolute;
+            inset: 25px;
+            font-weight: 850;
+            line-height: 2.5;
+            color: #44617f
+        }
+
+        .scene-401k .vault {
+            right: 75px;
+            top: 48px;
+            width: 235px;
+            height: 190px;
+            border-radius: 32px;
+            background: linear-gradient(145deg, #e8f6ff, #9fcff3);
+            border: 7px solid #fff;
+            transform: rotateY(-12deg)
+        }
+
+        .scene-401k .vault:before {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            left: 60px;
+            top: 38px;
+            background: radial-gradient(circle, #fff 0 14%, #1c8dea 15% 22%, #dceaf6 23% 46%, #0d315f 47%);
+            box-shadow: 0 10px 20px rgba(22, 64, 110, .18)
+        }
+
+        .scene-401k .coin {
+            right: 22px;
+            bottom: 18px;
+            width: 98px;
+            height: 98px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 25%, #fff9b8, #ffd442 55%, #dda500);
+            border: 8px solid #ffe770;
+            display: grid;
+            place-items: center;
+            font-weight: 900;
+            font-size: 24px;
+            color: #8a6200
+        }
+
+        .scene-rate .dial {
+            right: 100px;
+            top: 35px;
+            width: 235px;
+            height: 235px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #fff 0 49%, #dbeafa 50% 63%, #0d75df 64%);
+            box-shadow: 0 25px 45px rgba(20, 85, 150, .2)
+        }
+
+        .scene-rate .dial:before {
+            content: "%";
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            font-size: 76px;
+            font-weight: 900;
+            color: #0b6ff2
+        }
+
+        .scene-rate .needle {
+            right: 214px;
+            top: 70px;
+            width: 6px;
+            height: 92px;
+            border-radius: 5px;
+            background: #ef4f58;
+            transform-origin: bottom;
+            transform: rotate(35deg)
+        }
+
+        .scene-tax .receipt {
+            right: 92px;
+            top: 25px;
+            width: 220px;
+            height: 215px;
+            border-radius: 20px;
+            background: #fff;
+            transform: rotate(-5deg);
+            border: 1px solid #dbe8f6
+        }
+
+        .scene-tax .receipt:before {
+            content: "SUBTOTAL   $100\A TAX          $8\A TOTAL       $108";
+            white-space: pre;
+            position: absolute;
+            left: 30px;
+            top: 48px;
+            font: 800 16px/2 ui-monospace;
+            color: #294766
+        }
+
+        .scene-tax .badge {
+            right: 25px;
+            bottom: 35px;
+            width: 120px;
+            height: 120px;
+            border-radius: 30px;
+            background: linear-gradient(145deg, #28b3ff, #0967db);
+            transform: rotate(10deg);
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-size: 42px;
+            font-weight: 900
+        }
+
+        .scene-health .body {
+            right: 140px;
+            top: 28px;
+            width: 115px;
+            height: 210px;
+            border-radius: 58px 58px 42px 42px;
+            background: linear-gradient(145deg, #8de4dc, #1da7c5);
+            box-shadow: 18px 25px 35px rgba(0, 118, 142, .2)
+        }
+
+        .scene-health .body:before {
+            content: "";
+            position: absolute;
+            left: 24px;
+            top: -55px;
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #a8eff0, #40bdd1)
+        }
+
+        .scene-health .pulse {
+            right: 20px;
+            top: 95px;
+            width: 345px;
+            height: 4px;
+            background: #fff;
+            box-shadow: 0 0 0 2px rgba(10, 111, 242, .08)
+        }
+
+        .scene-health .pulse:after {
+            content: "⌁";
+            position: absolute;
+            left: 110px;
+            top: -66px;
+            color: #0a6ff2;
+            font-size: 100px;
+            font-weight: 900;
+            transform: rotate(10deg)
+        }
+
+        .scene-bmi .scale {
+            right: 75px;
+            top: 50px;
+            width: 250px;
+            height: 175px;
+            border-radius: 36px;
+            background: linear-gradient(145deg, #eff8ff, #c9dced);
+            border: 6px solid #f8fcff;
+            transform: rotateY(-11deg) rotateX(8deg) rotateZ(-4deg)
+        }
+
+        .scene-bmi .scale:before {
+            content: "22.7";
+            position: absolute;
+            left: 45px;
+            right: 45px;
+            bottom: 32px;
+            padding: 13px;
+            border-radius: 16px;
+            background: #0e2544;
+            color: #73d3ff;
+            text-align: center;
+            font-weight: 900;
+            font-size: 25px
+        }
+
+        .scene-bmi .tape {
+            right: 15px;
+            top: 145px;
+            width: 340px;
+            height: 28px;
+            border-radius: 10px;
+            background: repeating-linear-gradient(90deg, #ffd53d 0 17px, #f7c629 17px 18px);
+            transform: rotate(12deg)
+        }
+
+        .scene-calorie .flame {
+            right: 130px;
+            top: 28px;
+            width: 145px;
+            height: 205px;
+            background: linear-gradient(145deg, #ffdc4b, #ff724f);
+            border-radius: 70% 30% 60% 40%/70% 50% 50% 30%;
+            transform: rotate(42deg);
+            box-shadow: 0 24px 45px rgba(242, 117, 56, .23)
+        }
+
+        .scene-calorie .flame:after {
+            content: "kcal";
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            transform: rotate(-42deg);
+            font-size: 31px;
+            font-weight: 900;
+            color: #fff
+        }
+
+        .scene-calorie .plate {
+            right: 30px;
+            bottom: 18px;
+            width: 330px;
+            height: 58px;
+            border-radius: 50%;
+            background: linear-gradient(#e6f2fb, #b5cee1);
+            box-shadow: 0 12px 20px rgba(30, 70, 110, .15)
+        }
+
+        .scene-fat .tapeorb {
+            right: 85px;
+            top: 35px;
+            width: 225px;
+            height: 225px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 28%, #fff, #8fd7ff 42%, #0872df 76%);
+            box-shadow: 0 28px 50px rgba(10, 111, 242, .22)
+        }
+
+        .scene-fat .tapeorb:before {
+            content: "BODY\A FAT";
+            white-space: pre;
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            color: #fff;
+            font-weight: 900;
+            letter-spacing: 3px
+        }
+
+        .scene-fat .belt {
+            right: 20px;
+            top: 118px;
+            width: 350px;
+            height: 30px;
+            border-radius: 9px;
+            background: repeating-linear-gradient(90deg, #ffe263 0 16px, #f4c92d 16px 18px);
+            transform: rotate(-12deg)
+        }
+
+        .scene-bmr .core {
+            right: 115px;
+            top: 40px;
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #fff 0 18%, #79d8ff 19% 45%, #0a6ff2 46% 68%, #0c315d 69%);
+            box-shadow: 0 25px 50px rgba(10, 111, 242, .25)
+        }
+
+        .scene-bmr .orbit {
+            right: 45px;
+            top: 90px;
+            width: 330px;
+            height: 100px;
+            border: 4px solid rgba(22, 184, 107, .35);
+            border-radius: 50%;
+            transform: rotate(-18deg)
+        }
+
+        .scene-bmr .orbit:after {
+            content: "";
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            right: 18px;
+            top: 5px;
+            background: #16b86b
+        }
+
+        .scene-macro .plate {
+            right: 70px;
+            top: 30px;
+            width: 245px;
+            height: 245px;
+            border-radius: 50%;
+            background: conic-gradient(#0a6ff2 0 45%, #16b86b 45% 70%, #f6b51f 70%);
+            box-shadow: 0 28px 48px rgba(26, 76, 123, .18);
+            border: 12px solid #fff
+        }
+
+        .scene-macro .plate:after {
+            content: "MACROS";
+            position: absolute;
+            inset: 55px;
+            border-radius: 50%;
+            background: #f8fcff;
+            display: grid;
+            place-items: center;
+            font-size: 22px;
+            font-weight: 900;
+            color: #173653
+        }
+
+        .scene-macro .cube {
+            right: 22px;
+            bottom: 22px;
+            width: 90px;
+            height: 90px;
+            border-radius: 22px;
+            background: linear-gradient(145deg, #fff, #bfe0f7);
+            transform: rotate(12deg);
+            display: grid;
+            place-items: center;
+            font-weight: 900;
+            color: #0a6ff2
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/calorie-calculator/#webapplication",
+      "name": "Calorie Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/calorie-calculator/",
+      "description": "Estimate daily calorie needs using the Mifflin-St Jeor equation. See BMR, activity-adjusted maintenance calories, activity factor, and goal calories.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/calorie-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Calorie Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/calorie-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/calorie-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What formula does the Calorie Calculator use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It uses the Mifflin-St Jeor equation to estimate resting energy from weight, height, age, and sex. The resulting estimate is then multiplied by the activity factor to calculate estimated maintenance calories."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between BMR and maintenance calories?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The calculator's estimated BMR/resting energy represents calories used at rest. Maintenance calories include an additional adjustment for activity, so they are calculated by multiplying resting energy by the activity factor."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does activity level affect calorie needs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Physical activity increases energy expenditure. NIDDK notes that people who are more physically active generally require more calories than people who are less active."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the daily goal adjustment do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is an additional calorie input used by the calculator when generating the Goal Calories result. It allows the maintenance estimate to be adjusted for a user's planning goal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate is the calorie estimate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It should be treated as an estimate. Mifflin-St Jeor is a predictive equation based on population data, while an individual's actual energy expenditure may be different. Direct metabolic measurements and changes observed over time can produce different results."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why might my actual calorie needs differ from the result?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Actual calorie requirements can vary because of physical activity, body composition, health status, medications, metabolic adaptation, and other individual factors. Changes in body weight or activity can also change energy requirements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can children or pregnant people use this result?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Mifflin-St Jeor equation was originally developed using healthy adults aged 19–78 years. General adult calorie estimates should not be substituted for age-specific pediatric guidance or individualized pregnancy and breastfeeding nutrition advice."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "Monkey Mart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="health" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../health/index.html">Health &amp; Fitness</a></li>
+            <li><a aria-current="page" href="index.html">Calorie Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../health/index.html">Browse Health &amp; Fitness</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Calorie Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+            <section class="calc-shell" id="calculator">
+                <div class="calc-grid">
+                    <div class="card">
+                        <h2>Daily calorie estimate</h2>
+                        <p class="sub">For non-pregnant adults. Goal adjustments are user-selected planning estimates.
+                        </p>
+                        <div class="form-grid">
+                            <div class="field"><label for="sex">Sex used by equation</label><select id="sex">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select></div>
+                            <div class="field"><label for="age">Age (years)</label><input id="age" max="100" min="18"
+                                    type="number" value="30" /></div>
+                            <div class="field"><label for="weight">Weight (kg)</label><input id="weight" max="400"
+                                    min="20" step=".1" type="number" value="70" /></div>
+                            <div class="field"><label for="height">Height (cm)</label><input id="height" max="250"
+                                    min="90" step=".1" type="number" value="175" /></div>
+                            <div class="field"><label for="activity">Activity factor</label><select id="activity">
+                                    <option value="1.2">Sedentary (1.20)</option>
+                                    <option value="1.375">Light (1.375)</option>
+                                    <option selected="" value="1.55">Moderate (1.55)</option>
+                                    <option value="1.725">Very active (1.725)</option>
+                                    <option value="1.9">Extra active (1.90)</option>
+                                </select></div>
+                            <div class="field"><label for="adjust">Daily goal adjustment (kcal)</label><input
+                                    id="adjust" step="50" type="number" value="-500" /><span class="hint">Example: -500
+                                    deficit, +300 surplus, 0 maintenance</span></div>
+                        </div>
+                        <div class="actions"><button class="btn primary" id="calculate">Calculate Calories
+                                →</button><button class="btn secondary" id="clear">Reset</button></div>
+                        <div class="error" id="error"></div>
+                    </div>
+                    <div class="card">
+                        <div class="result-hero"><small>Estimated maintenance calories</small>
+                            <div class="big" id="maint">0 kcal</div>
+                            <div class="accent" id="goal">— goal</div>
+                        </div>
+                        <div class="stats">
+                            <div class="stat"><span>Estimated BMR</span><b id="bmr">—</b></div>
+                            <div class="stat"><span>Goal calories</span><b id="goalCal">—</b></div>
+                            <div class="stat"><span>Activity factor</span><b id="act">—</b></div>
+                        </div>
+                        <div class="answerbox"><strong>Energy needs vary:</strong> equations and activity factors
+                            estimate needs; real maintenance intake may differ.</div>
+                    </div>
+                </div>
+            </section>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            
+            <section class="content">
+                <div class="wrap content-grid">
+                    <article class="article"> 
+  <p>The Calorie Calculator estimates your daily calorie needs from your sex, age, weight, height, and activity factor. It first estimates resting energy using the Mifflin-St Jeor equation, then calculates activity-adjusted maintenance calories and displays a goal-calorie estimate based on your daily goal adjustment.</p>
+
+  <section id="what">
+    <h2>What Is the Calorie Calculator?</h2>
+
+    <p>The Calorie Calculator is an adult energy-needs estimation tool. It calculates estimated BMR or resting energy, adjusts that estimate for activity, and provides an estimated number of calories needed per day to maintain body weight.</p>
+
+    <p>You can also enter a daily calorie adjustment to produce a goal-calorie estimate for planning purposes. The result is an estimate rather than a measured metabolic rate or individualized nutrition prescription.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Calorie Calculator</h2>
+
+    <p>Enter the following information in the calculator:</p>
+
+    <ol>
+      <li>Sex used by equation: Select the sex used for the Mifflin-St Jeor equation. The equation uses a different constant for men and women.</li>
+      <li>Age: Enter your age in years.</li>
+      <li>Weight: Enter your body weight in kilograms (kg).</li>
+      <li>Height: Enter your height in centimeters (cm).</li>
+      <li>Activity factor: Enter or select the activity multiplier used to adjust resting energy to estimated daily maintenance calories.</li>
+      <li>Daily goal adjustment: Enter the calorie adjustment, in kilocalories (kcal), used by the calculator to determine the goal-calorie result.</li>
+    </ol>
+
+    <p>The available specification does not define separate minimum or maximum input limits, so no unsupported ranges are stated here.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+
+    <p>The calculator uses the Mifflin-St Jeor equation to estimate resting energy expenditure.</p>
+
+    <p>For men:</p>
+
+    <div class="formula">REE = 10W + 6.25H − 5A + 5</div>
+
+    <p>For women:</p>
+
+    <div class="formula">REE = 10W + 6.25H − 5A − 161</div>
+
+    <p>The original Mifflin-St Jeor research developed the equation from 498 healthy men and women and used weight, height, age, and sex to predict resting energy expenditure.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Variable</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>REE</td>
+          <td>Estimated resting energy expenditure, displayed by the calculator as estimated BMR/resting energy</td>
+          <td>kcal/day</td>
+        </tr>
+        <tr>
+          <td>W</td>
+          <td>Body weight</td>
+          <td>kg</td>
+        </tr>
+        <tr>
+          <td>H</td>
+          <td>Height</td>
+          <td>cm</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>Age</td>
+          <td>years</td>
+        </tr>
+        <tr>
+          <td>F</td>
+          <td>Activity factor</td>
+          <td>multiplier</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Estimated Maintenance Calories</h3>
+
+    <p>After calculating resting energy, the calculator applies the activity factor:</p>
+
+    <div class="formula">Estimated Maintenance Calories = REE × Activity Factor</div>
+
+    <p>For example, if estimated resting energy is 1,700 kcal/day and the activity factor is 1.20:</p>
+
+    <div class="formula">1,700 × 1.20 = 2,040 kcal/day</div>
+
+    <p>This is an activity-adjusted estimate rather than a direct measurement of daily energy expenditure.</p>
+
+    <h3>Goal Calories</h3>
+
+    <p>The calculator also reports Goal Calories using the daily goal adjustment entered by the user.</p>
+
+    <p>The available calculator specification identifies the daily goal adjustment as an input and goal calories as an output but does not define the exact secondary arithmetic rule. Therefore, a separate goal-calorie equation is not stated here rather than assuming an unsupported calculation.</p>
+
+    <h3>Calculation Sequence</h3>
+
+    <ol>
+      <li>Read sex, age, weight, and height.</li>
+      <li>Apply the appropriate Mifflin-St Jeor equation.</li>
+      <li>Calculate estimated resting energy/BMR in kcal per day.</li>
+      <li>Multiply resting energy by the entered activity factor.</li>
+      <li>Display estimated maintenance calories and the activity factor.</li>
+      <li>Use the entered daily goal adjustment to generate the calculator's goal-calorie result.</li>
+    </ol>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose a 30-year-old man enters:</p>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li>Sex used by equation: Male</li>
+      <li>Age: 30 years</li>
+      <li>Weight: 80 kg</li>
+      <li>Height: 180 cm</li>
+      <li>Activity factor: 1.20</li>
+      <li>Daily goal adjustment: 0 kcal</li>
+    </ul>
+
+    <h3>Step 1: Calculate Resting Energy</h3>
+
+    <div class="formula">REE = 10W + 6.25H − 5A + 5</div>
+
+    <p>Substitute the example values:</p>
+
+    <div class="formula">REE = (10 × 80) + (6.25 × 180) − (5 × 30) + 5</div>
+
+    <div class="formula">REE = 800 + 1,125 − 150 + 5</div>
+
+    <div class="formula">REE = 1,780 kcal/day</div>
+
+    <h3>Step 2: Calculate Maintenance Calories</h3>
+
+    <div class="formula">Maintenance Calories = 1,780 × 1.20</div>
+
+    <div class="formula">Maintenance Calories = 2,136 kcal/day</div>
+
+    <h3>Step 3: Goal Adjustment</h3>
+
+    <p>The example uses a daily goal adjustment of 0 kcal, so no calorie adjustment is being requested in this example.</p>
+
+    <h3>Final Result</h3>
+
+    <ul>
+      <li>Estimated BMR / resting energy: 1,780 kcal/day</li>
+      <li>Estimated maintenance calories: 2,136 kcal/day</li>
+      <li>Activity factor: 1.20</li>
+      <li>Goal calories with a zero adjustment: 2,136 kcal/day</li>
+    </ul>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Estimated BMR</h3>
+
+    <p>Estimated BMR represents the calculator's estimate of the energy your body uses at rest. The underlying Mifflin-St Jeor study describes this measure as resting energy expenditure.</p>
+
+    <p>It is a predicted value, not a direct metabolic measurement.</p>
+
+    <h3>Estimated Maintenance Calories</h3>
+
+    <p>Maintenance calories are the estimated daily calories required after accounting for the activity factor:</p>
+
+    <div class="formula">Resting energy × activity factor</div>
+
+    <p>Eating exactly this amount does not guarantee that body weight will remain unchanged because actual energy expenditure varies between individuals.</p>
+
+    <h3>Goal Calories</h3>
+
+    <p>Goal calories provide an adjusted daily calorie figure based on the goal adjustment entered into the calculator. Treat the result as a planning estimate rather than an individualized medical or diet prescription.</p>
+
+    <h3>Activity Factor</h3>
+
+    <p>The activity factor is the multiplier applied to resting energy. Because a single multiplier simplifies real-world movement, exercise, work, and daily activity, it should be treated as an approximation.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The Mifflin-St Jeor equation is a predictive equation rather than a direct measurement of metabolism. The original study included 498 healthy subjects aged 19 to 78 years, including both normal-weight and obese adults. Estimates for people outside the characteristics studied may have additional uncertainty.</p>
+
+    <p>Activity factors are also approximations. Two people with the same age, height, weight, and selected activity factor may have different actual calorie requirements because of differences in body composition, exercise, daily movement, health status, medications, environment, and metabolic adaptation.</p>
+
+    <p>Calorie needs can also change over time as body weight and activity change. NIDDK notes that daily calorie needs can depend on factors including age, weight, height, metabolism, sex, and physical activity.</p>
+
+    <p>This calculator is intended for general adult estimation and should not be treated as a diagnosis or individualized medical advice. Pregnancy and breastfeeding can require different energy planning; for example, NIDDK's adult Body Weight Planner specifically excludes pregnant and breastfeeding users.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What formula does the Calorie Calculator use?</summary>
+      <p>It uses the Mifflin-St Jeor equation to estimate resting energy from weight, height, age, and sex. The resulting estimate is then multiplied by the activity factor to calculate estimated maintenance calories.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What is the difference between BMR and maintenance calories?</summary>
+      <p>The calculator's estimated BMR/resting energy represents calories used at rest. Maintenance calories include an additional adjustment for activity, so they are calculated by multiplying resting energy by the activity factor.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why does activity level affect calorie needs?</summary>
+      <p>Physical activity increases energy expenditure. NIDDK notes that people who are more physically active generally require more calories than people who are less active.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What does the daily goal adjustment do?</summary>
+      <p>It is an additional calorie input used by the calculator when generating the Goal Calories result. It allows the maintenance estimate to be adjusted for a user's planning goal.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How accurate is the calorie estimate?</summary>
+      <p>It should be treated as an estimate. Mifflin-St Jeor is a predictive equation based on population data, while an individual's actual energy expenditure may be different. Direct metabolic measurements and changes observed over time can produce different results.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why might my actual calorie needs differ from the result?</summary>
+      <p>Actual calorie requirements can vary because of physical activity, body composition, health status, medications, metabolic adaptation, and other individual factors. Changes in body weight or activity can also change energy requirements.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can children or pregnant people use this result?</summary>
+      <p>The Mifflin-St Jeor equation was originally developed using healthy adults aged 19–78 years. General adult calorie estimates should not be substituted for age-specific pediatric guidance or individualized pregnancy and breastfeeding nutrition advice.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li><a href="https://pubmed.ncbi.nlm.nih.gov/2305711/?utm_source=chatgpt.com" rel="noopener" target="_blank">Mifflin et al. — A New Predictive Equation for Resting Energy Expenditure in Healthy Individuals<br></a>Original published research supporting the Mifflin-St Jeor resting energy equation, its variables, study population, and units.</li>
+      <li><a href="https://www.niddk.nih.gov/health-information/weight-management/body-weight-planner?utm_source=chatgpt.com" rel="noopener" target="_blank">NIDDK — About the Body Weight Planner<br></a>Provides NIH guidance on calorie and physical-activity planning and important adult-use limitations.</li>
+      <li><a href="https://www.niddk.nih.gov/health-information/weight-management/just-enough-food-portions?utm_source=chatgpt.com" rel="noopener" target="_blank">NIDDK — Food Portions: Choosing Just Enough for You<br></a>Supports the role of age, weight, height, metabolism, sex, and physical activity in determining calorie needs.</li>
+    </ul>
+
+    <p>No fixed current tax rate, clinical threshold, government limit, or other time-sensitive external value is required by this calculator's implemented calculation.</p>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/bmr-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">BMR Calculator</a></li>
+      <li><a href="https://example.com/bmi-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">BMI Calculator</a></li>
+      <li><a href="https://example.com/macro-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Macro Calculator</a></li>
+      <li><a href="https://example.com/body-fat-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Body Fat Calculator</a></li>
+      <li><a href="https://example.com/ideal-weight-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Ideal Weight Calculator</a></li>
+      <li><a href="https://example.com/fitness-and-health-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Fitness &amp; Health Calculator</a></li>
+    </ul>
+  </section>
+</article>
+                </div>
+            </section>
+
+            
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"14","Batch":"2","Calculator / Page":"Calorie Calculator","Slug":"calorie-calculator","Site Category (Current)":"Health & Fitness","Recommended Content Domain":"Health / Fitness / Nutrition","Page Type":"Calculator","Search Intent / Purpose":"Estimate adult BMR with the Mifflin-St Jeor equation and calculate activity-adjusted maintenance calories plus adjustable weight-change calorie targets.","Formula / Algorithm Used in Tool":"Mifflin–St Jeor Calorie Formula: Men: REE = 10W + 6.25H − 5A + 5 Women: REE = 10W + 6.25H − 5A − 161 Estimated maintenance ≈ REE × activity factor","Required User Inputs":"Sex used by equation; Age (years); Weight (kg); Height (cm); Activity factor; Daily goal adjustment (kcal)","Primary Outputs":"Estimated maintenance calories; Estimated BMR; Goal calories; Activity factor","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Sex used by equation, Age (years), Weight (kg), Height (cm), Activity factor, Daily goal adjustment (kcal). Explain outputs: Estimated maintenance calories, Estimated BMR, Goal calories, Activity factor. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Authoritative formula source, population/age/sex applicability, units, cutoffs/reference ranges and limitations; avoid diagnostic claims.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When clinical/exercise guidance changes","Important Assumptions / Limitations":"Activity multipliers are approximate, resting-energy equations have prediction error, and calorie needs can change with activity, body composition, health status, adaptation, pregnancy, medications, and other factors.","Current Source URLs in Page":"https://pubmed.ncbi.nlm.nih.gov/2305711/ | https://www.calculator.net/calorie-calculator.html | https://www.nhlbi.nih.gov/health/dash/following-dash","Implementation Path":"/calorie-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Health &amp; Fitness</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../bmr-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>BMR Calculator</strong><small>Estimate basal
+                            metabolic rate with the Mifflin-St Jeor equation and compare activit…</small></span></a><a
+                    class="cp-related-link" href="../protein-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Protein Calculator</strong><small>Estimate daily
+                            protein targets from body weight and activity, with the adult RDA an…</small></span></a><a
+                    class="cp-related-link" href="../ideal-weight-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Ideal Weight Calculator</strong><small>Compare
+                            common ideal body weight formulas including Devine, Robinson, Miller, and
+                            H…</small></span></a><a class="cp-related-link"
+                    href="../calories-burned-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Calories Burned Calculator</strong><small>Estimate
+                            exercise calories from activity MET value, body weight, and duration
+                            using…</small></span></a><a class="cp-related-link"
+                    href="../carbohydrate-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Carbohydrate Calculator</strong><small>Estimate
+                            daily carbohydrate grams from calorie needs using the adult AMDR of
+                            45%–65…</small></span></a><a class="cp-related-link"
+                    href="../overweight-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>See
+                            where weight and height meet on the adult BMI scale.</strong><small>Calculate adult BMI and
+                            see the CDC weight-status category plus the standard BMI 18…</small></span></a><a
+                    class="cp-related-link" href="../bmi-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>BMI Calculator</strong><small>Calculate adult Body
+                            Mass Index from height and weight, see the CDC BMI category, h…</small></span></a><a
+                    class="cp-related-link" href="../fitness-and-health-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Fitness &amp; Health
+                            Calculator</strong><small>Calculate adult BMI, Mifflin-St Jeor BMR, estimated maintenance
+                            calories, healthy-w…</small></span></a></div><a class="cp-side-category"
+                href="../health/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const $ = id => document.getElementById(id);
+        const money = n => Number.isFinite(n) ? new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 }).format(n) : '—';
+        const fmt = (n, d = 1) => Number.isFinite(n) ? Number(n).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }) : '—';
+        const val = id => parseFloat($(id).value);
+        function setErr(m = '') { if ($('error')) $('error').textContent = m }
+
+        function calculate() { try { const sex = $('sex').value, age = val('age'), w = val('weight'), h = val('height'), a = val('activity'), adj = val('adjust'); if (!(age >= 18 && w > 0 && h > 0 && a > 0 && Number.isFinite(adj))) throw Error('Check age, height, weight, activity, and adjustment.'); const bmr = 10 * w + 6.25 * h - 5 * age + (sex === 'male' ? 5 : -161), maint = bmr * a, goal = maint + adj; $('maint').textContent = `${Math.round(maint)} kcal/day`; $('bmr').textContent = `${Math.round(bmr)} kcal/day`; $('goalCal').textContent = `${Math.round(goal)} kcal/day`; $('act').textContent = fmt(a, 3); $('goal').textContent = adj === 0 ? 'Maintenance target' : adj < 0 ? `${Math.abs(adj)} kcal/day deficit` : `${adj} kcal/day surplus`; setErr('') } catch (e) { setErr(e.message) } }
+        $('calculate').onclick = calculate; $('clear').onclick = () => location.reload(); calculate();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

@@ -1,53 +1,1650 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+<html lang="en">
 
-<title>Age Calculator – Years, Months, Days &amp; Next Birthday | CalcPro</title><meta content="Calculate age between two dates in years, months, and days, plus total days, weeks, hours, and time until the next birthday." name="description"/><meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/><link href="../age-calculator/" rel="canonical"/><meta content="website" property="og:type"/><meta content="Age Calculator" property="og:title"/><meta content="Calculate age between two dates in years, months, and days, plus total days, weeks, hours, and time until the next birthday." property="og:description"/><meta content="#1477ff" name="theme-color"/>
-<style>
-:root{--ink:#0b1933;--muted:#60708a;--line:#dbe8f6;--blue:#0a6ff2;--blue2:#20a5ff;--green:#16b86b;--yellow:#f6b51f;--red:#ef4f58;--shadow:0 18px 45px rgba(25,74,123,.16),inset 0 1px 0 rgba(255,255,255,.95)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 12% 6%,rgba(32,165,255,.18),transparent 28%),radial-gradient(circle at 88% 15%,rgba(35,205,153,.13),transparent 24%),linear-gradient(180deg,#f8fcff,#eef7ff 48%,#f7fbff);line-height:1.65}
-a{color:#0967d8;text-decoration:none}a:hover{text-decoration:underline}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}.topbar{position:sticky;top:0;z-index:20;background:rgba(248,252,255,.8);backdrop-filter:blur(18px);border-bottom:1px solid rgba(196,219,241,.72)}.nav{height:72px;display:flex;align-items:center;gap:28px}.brand{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:850;color:var(--ink)}.brand i{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;color:#fff;font-style:normal;background:linear-gradient(145deg,#27b3ff,#0562d7);box-shadow:0 9px 18px rgba(10,111,242,.28),inset 0 2px 2px rgba(255,255,255,.45)}.navlinks{display:flex;gap:20px;margin-left:18px;font-size:14px;font-weight:700}.navlinks a{color:#20324e}.search{margin-left:auto;background:#fff;border:1px solid #e0ebf6;border-radius:999px;padding:10px 15px;min-width:210px;color:#6d7d93;font-size:13px;box-shadow:0 8px 20px rgba(26,70,112,.08)}
-.hero{padding:28px 0 18px}.breadcrumb{font-size:13px;color:#6c7b91;margin-bottom:18px}.breadcrumb span{margin:0 8px;color:#a1aec0}.hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:28px;align-items:center}h1{font-size:clamp(2.6rem,5vw,4.5rem);line-height:.98;margin:0 0 16px;letter-spacing:-3px}h1 b{color:var(--blue)}.lead{font-size:17px;color:#42546e;max-width:700px;margin:0}.chips{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.chip{background:#fff;border:1px solid #dceafa;border-radius:999px;padding:7px 11px;font-size:12px;font-weight:800;color:#35506f;box-shadow:0 8px 18px rgba(37,86,137,.07)}
-.hero-art{height:270px;position:relative;perspective:900px}.floor{position:absolute;left:9%;right:7%;bottom:12px;height:34px;border-radius:50%;background:rgba(32,75,115,.14);filter:blur(15px)}.obj{position:absolute;box-shadow:var(--shadow)}
-.calc-shell{margin-top:20px;padding:16px;border-radius:32px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.92);box-shadow:0 28px 70px rgba(37,86,137,.15);backdrop-filter:blur(20px)}.calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}.card{background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(244,249,255,.86));border:1px solid rgba(218,231,245,.92);border-radius:24px;padding:22px;box-shadow:var(--shadow)}.card h2{font-size:21px;margin:0 0 4px;letter-spacing:-.5px}.sub{font-size:13px;color:#687990;margin:0 0 15px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}label{font-size:13px;font-weight:800;color:#263a56}.input-wrap{display:flex;align-items:center;gap:8px}input,select,textarea{width:100%;border:1px solid #cddff1;background:#fbfdff;border-radius:12px;padding:11px 12px;font:inherit;color:#152641;box-shadow:inset 0 2px 4px rgba(26,77,123,.05);outline:none}textarea{min-height:100px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:#66b5ff;box-shadow:0 0 0 3px rgba(32,165,255,.12)}.unit{font-size:12px;color:#667890;white-space:nowrap}.hint{font-size:11px;color:#75859a}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;background:#edf5ff;border:1px solid #dceafb;padding:4px;border-radius:15px;margin-bottom:16px}.tab{border:0;background:transparent;padding:9px 12px;border-radius:11px;font-weight:800;color:#334866;cursor:pointer}.tab.active{background:linear-gradient(145deg,#2aa8ff,#0668df);color:#fff;box-shadow:0 9px 17px rgba(8,111,240,.26)}
-.actions{display:grid;grid-template-columns:1.5fr .8fr;gap:10px;margin-top:18px}.btn{border:0;border-radius:14px;padding:13px 14px;font-weight:800;cursor:pointer}.primary{color:#fff;background:linear-gradient(145deg,#25a9ff,#0064dc);box-shadow:0 12px 22px rgba(6,104,221,.28)}.secondary{background:#edf3f9;color:#273a55}.error{color:#b4232b;font-size:12px;margin-top:10px;min-height:18px}
-.result-hero{padding:18px;border-radius:19px;background:linear-gradient(135deg,#edfff7,#eef8ff);position:relative;overflow:hidden}.result-hero:after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;right:-30px;top:-45px;background:radial-gradient(circle,#55d7ff,#0b79ef);opacity:.17}.result-hero small{color:#60728b}.big{font-size:36px;font-weight:900;letter-spacing:-1.8px;line-height:1.1;margin-top:3px;word-break:break-word}.accent{color:var(--green);font-weight:850;font-size:18px}.stats{margin-top:13px;border-radius:16px;background:#fff;border:1px solid #e3edf7;overflow:hidden}.stat{display:flex;justify-content:space-between;gap:12px;padding:10px 12px;border-bottom:1px solid #e8f0f7;font-size:13px}.stat:last-child{border-bottom:0}.stat b{text-align:right}.answerbox{margin:14px 0 0;padding:15px 16px;border-radius:16px;background:#0e2544;color:#fff;box-shadow:0 15px 28px rgba(12,37,68,.18);font-size:13px}.answerbox strong{color:#73d3ff}
-.table-wrap{overflow:auto;border-radius:16px;border:1px solid #dce7f2;margin:14px 0}table{border-collapse:collapse;width:100%;min-width:520px;background:#fff}th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #e7eef5;font-size:13px}th{background:#f1f7fd}.progress{height:14px;border-radius:999px;background:#e7f1fb;overflow:hidden;margin-top:14px}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--green));border-radius:inherit}.course-grid{display:grid;grid-template-columns:1.6fr .8fr 1fr auto;gap:8px;align-items:end;margin-bottom:8px}.remove{width:40px;height:40px;border:0;border-radius:10px;background:#fff0f0;color:#b4232b;font-weight:900;cursor:pointer}
-.hub-search{margin-bottom:18px}.hub-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.hub{padding:18px;border-radius:18px;background:linear-gradient(145deg,#fff,#f4f9ff);border:1px solid #dfeaf5}.hub h3{margin:0 0 8px}.hub a{display:inline-block;margin:4px 8px 4px 0;font-size:13px}.hub[hidden]{display:none}
-.content{padding:38px 0 70px}.content-grid{display:grid;grid-template-columns:1.fr;gap:22px}.article,.toc{background:rgba(255,255,255,.9);border:1px solid #dfeaf6;border-radius:25px;box-shadow:var(--shadow)}.article{padding:30px}.toc{padding:24px;align-self:start;position:sticky;top:94px}.article h2{font-size:28px;line-height:1.2;margin:38px 0 12px;letter-spacing:-.8px}.article h2:first-child{margin-top:0}.article h3{font-size:20px;margin:24px 0 8px}.article p,.article li{color:#42536d}.direct{border-left:5px solid var(--blue);background:#f0f7ff;padding:16px 18px;border-radius:14px;color:#263a56}.formula{font:800 16px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;background:#0d213c;color:#eef8ff;padding:16px;border-radius:15px;overflow:auto}.note{background:#fff9e9;border:1px solid #f5df9c;padding:15px 17px;border-radius:14px;color:#5c4d22}.faq{border-top:1px solid #e4edf6;padding:15px 0}.faq summary{font-weight:800;cursor:pointer}.faq p{margin-bottom:0}.toc h3{margin-top:0}.toc a{display:block;padding:7px 0;color:#34506f;font-size:14px}.sources li{margin:8px 0}footer{padding:28px 0 42px;color:#63748a;font-size:13px;text-align:center}
-@media(max-width:960px){.navlinks,.search{display:none}.hero-grid,.calc-grid,.content-grid{grid-template-columns:1fr}.hero-art{height:235px}.toc{position:static}}
-@media(max-width:620px){.wrap{width:min(100% - 20px,1180px)}.hero{padding-top:18px}.hero-art{transform:scale(.86);transform-origin:center top;margin-bottom:-28px}h1{font-size:43px;letter-spacing:-2px}.calc-shell{padding:8px;border-radius:23px}.card{padding:16px;border-radius:19px}.form-grid,.actions,.hub-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.article{padding:21px}.nav{height:64px}.course-grid{grid-template-columns:1fr 1fr}.course-grid .remove{grid-column:2}}
-/* unique scenes */
-.scene-triangle .tri{right:70px;top:25px;width:280px;height:220px;clip-path:polygon(50% 0,100% 100%,0 100%);background:linear-gradient(145deg,#2aabff,#0867dc);filter:drop-shadow(18px 28px 22px rgba(12,95,180,.22))}.scene-triangle .tri:after{content:"a   b   c";position:absolute;left:75px;top:120px;color:#fff;font-weight:900;letter-spacing:24px}
-.scene-volume .cube{right:95px;top:45px;width:180px;height:180px;border-radius:24px;background:linear-gradient(145deg,#c9eaff,#429fe8);transform:rotateX(14deg) rotateY(-18deg);box-shadow:25px 30px 38px rgba(24,89,150,.2)}.scene-volume .sphere{right:20px;top:120px;width:115px;height:115px;border-radius:50%;background:radial-gradient(circle at 32% 25%,#fff,#84d8c4 42%,#0d8e75 75%)}
-.scene-sd .bars{right:45px;bottom:32px;width:320px;height:190px;display:flex;align-items:flex-end;gap:14px}.scene-sd .bars i{width:35px;border-radius:12px 12px 4px 4px;background:linear-gradient(#49b9ff,#0a6ff2)}.scene-sd .bars i:nth-child(1){height:50px}.scene-sd .bars i:nth-child(2){height:90px}.scene-sd .bars i:nth-child(3){height:155px}.scene-sd .bars i:nth-child(4){height:185px}.scene-sd .bars i:nth-child(5){height:130px}.scene-sd .bars i:nth-child(6){height:70px}
-.scene-rng .dice{right:190px;top:55px;width:125px;height:125px;border-radius:26px;background:linear-gradient(145deg,#fff,#bfdff7);transform:rotate(15deg);display:grid;place-items:center;font-size:52px;color:#0a6ff2;font-weight:900}.scene-rng .orb{right:45px;top:110px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff,#ffd95d 50%,#e0a400);display:grid;place-items:center;font-size:34px;font-weight:900;color:#7b5900}
-.scene-hub .stack{right:65px;top:36px;width:270px;height:190px}.scene-hub .stack i{position:absolute;width:205px;height:120px;border-radius:25px;background:linear-gradient(145deg,#fff,#b9dcfa);border:1px solid #fff}.scene-hub .stack i:nth-child(1){right:0;top:0;transform:rotate(8deg)}.scene-hub .stack i:nth-child(2){right:30px;top:30px;transform:rotate(-4deg);background:linear-gradient(145deg,#d9fff2,#76d4bb)}.scene-hub .stack i:nth-child(3){right:60px;top:60px;background:linear-gradient(145deg,#eaf5ff,#75bffc)}.scene-hub .stack:after{content:"TOOLS";position:absolute;right:98px;top:94px;z-index:3;font-size:28px;font-weight:900;color:#0a6ff2}
-.scene-age .cake{right:105px;top:88px;width:220px;height:110px;border-radius:24px 24px 34px 34px;background:linear-gradient(#7fd6ff,#0c75df)}.scene-age .cake:before{content:"";position:absolute;left:20px;right:20px;top:-28px;height:42px;border-radius:50%;background:#fff}.scene-age .candle{right:205px;top:25px;width:18px;height:75px;border-radius:8px;background:repeating-linear-gradient(180deg,#ff7b96 0 12px,#fff 12px 22px)}.scene-age .candle:before{content:"";position:absolute;left:-6px;top:-23px;width:30px;height:30px;border-radius:50% 50% 50% 0;background:#ffca38;transform:rotate(-45deg)}
-.scene-date .cal{right:75px;top:35px;width:255px;height:200px;border-radius:28px;background:#fff;border:1px solid #dbe8f6;transform:rotate(-5deg)}.scene-date .cal:before{content:"DATE";position:absolute;left:25px;right:25px;top:25px;padding:10px;border-radius:14px;background:#0a6ff2;color:#fff;text-align:center;font-weight:900;letter-spacing:3px}.scene-date .cal:after{content:"+ 30";position:absolute;inset:80px 30px 25px;display:grid;place-items:center;font-size:50px;font-weight:900;color:#183d63}
-.scene-time .clock{right:90px;top:35px;width:220px;height:220px;border-radius:50%;background:#fff;border:15px solid #0d315f;box-shadow:0 26px 45px rgba(17,65,115,.2)}.scene-time .clock:before{content:"";position:absolute;left:96px;top:42px;width:7px;height:65px;background:#0a6ff2;transform-origin:bottom;transform:rotate(35deg);border-radius:6px}.scene-time .clock:after{content:"";position:absolute;left:97px;top:98px;width:70px;height:7px;background:#16b86b;transform-origin:left;transform:rotate(20deg);border-radius:6px}
-.scene-hours .timeline{right:35px;top:78px;width:335px;height:30px;border-radius:15px;background:linear-gradient(90deg,#0a6ff2,#16b86b)}.scene-hours .timeline:before,.scene-hours .timeline:after{content:"";position:absolute;top:-24px;width:76px;height:76px;border-radius:50%;background:#fff;border:10px solid #0e2544}.scene-hours .timeline:before{left:-5px}.scene-hours .timeline:after{right:-5px}.scene-hours .label{right:115px;top:135px;padding:14px 22px;border-radius:18px;background:#fff;font-size:24px;font-weight:900;color:#0a6ff2}
-.scene-gpa .cap{right:55px;top:50px;width:285px;height:170px;clip-path:polygon(50% 0,100% 35%,75% 50%,75% 78%,25% 78%,25% 50%,0 35%);background:linear-gradient(145deg,#1b89ef,#0e315a);filter:drop-shadow(18px 26px 20px rgba(14,60,105,.18))}.scene-gpa .badge{right:150px;top:120px;padding:12px 18px;border-radius:18px;background:#fff;color:#0a6ff2;font-size:28px;font-weight:900}
-</style><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Age Calculator", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "description": "Calculate age between two dates in years, months, and days, plus total days, weeks, hours, and time until the next birthday.", "url": "/age-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Date & Time", "item": "/date-time/"}, {"@type": "ListItem", "position": 3, "name": "Dates & Calendars", "item": "/date-time/dates-calendars/"}, {"@type": "ListItem", "position": 4, "name": "Age Calculator", "item": "/age-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does age increase on the birthday?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, in the common age system used by this calculator."}}, {"@type": "Question", "name": "Can I calculate age at a past date?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, as long as the target date is not before the birth date."}}, {"@type": "Question", "name": "Why can month/day intervals be tricky?", "acceptedAnswer": {"@type": "Answer", "text": "Months have unequal lengths, so calendar interval calculations need a defined borrowing convention."}}]}]}</script><link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head><body data-cp-category="date-time" data-cp-page-type="Calculator">
-<header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../date-time/index.html">Date &amp; Time</a></li><li><a aria-current="page" href="index.html">Age Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../date-time/index.html">Browse Date &amp; Time</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main"><h1 class="page-title">Age Calculator</h1><section class="calc-shell" id="calculator"><div class="calc-grid"><div class="card"><h2>Age between two dates</h2><div class="form-grid"><div class="field"><label for="dob">Date of birth</label><input id="dob" type="date" value="2000-01-15"/></div><div class="field"><label for="target">Age at date</label><input id="target" type="date"/></div></div><div class="actions"><button class="btn primary" id="calculate">Calculate Age →</button><button class="btn secondary" id="clear">Reset</button></div><div class="error" id="error"></div></div><div class="card"><div class="result-hero"><small>Calendar age</small><div class="big" id="age">—</div><div class="accent" id="next">—</div></div><div class="stats"><div class="stat"><span>Total days</span><b id="days">—</b></div><div class="stat"><span>Total weeks</span><b id="weeks">—</b></div><div class="stat"><span>Total hours</span><b id="hours">—</b></div><div class="stat"><span>Next birthday</span><b id="birthday">—</b></div></div></div></div></section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<div class="cp-tool-actions"><button data-cp-print="" type="button">Print / Save PDF</button><span aria-live="polite" class="cp-action-status" role="status"></span></div><section class="content"><div class="wrap content-grid"><article class="article"><section id="what"><h2>What Is an Age Calculator?</h2><p class="direct"><strong>Answer:</strong> An age calculator finds the calendar interval between a date of birth and another date. In the common age system, age increases on the birthday.</p></section><section id="how"><h2>How to Use the Age Calculator</h2><ol><li>Enter the date of birth.</li><li>Choose the date at which age should be calculated.</li><li>Calculate the calendar age.</li><li>Review total days and the next birthday.</li></ol></section><section id="formula"><h2>Calendar Age Method</h2><p>Years, months, and days are counted as calendar units rather than treating every month as the same number of days. Total elapsed days are calculated separately from the date difference.</p></section><section id="example"><h2>Calculation Example</h2><p>A person born January 15, 2000 is 26 years old on January 15, 2026; before that birthday in 2026, their completed age is 25.</p></section><section id="limits"><h2>Assumptions and Limitations</h2><p>Month-end dates can be represented in more than one reasonable way because calendar months have different lengths. This implementation borrows days from the preceding target month when needed.</p></section><section id="faq"><h2>Age Calculator FAQs</h2><details class="faq"><summary>Does age increase on the birthday?</summary><p>Yes, in the common age system used by this calculator.</p></details><details class="faq"><summary>Can I calculate age at a past date?</summary><p>Yes, as long as the target date is not before the birth date.</p></details><details class="faq"><summary>Why can month/day intervals be tricky?</summary><p>Months have unequal lengths, so calendar interval calculations need a defined borrowing convention.</p></details></section><section id="sources"><h2>Sources and Methodology</h2><p>The page logic and explanatory content were cross-checked against the following references.</p><ul class="sources"><li><a href="https://www.calculator.net/age-calculator.html" rel="noopener" target="_blank">Calculator.net — Age Calculator</a></li></ul></section></article>
-</div></section>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<details class="cp-data-panel"><summary><span>Calculator Data — exact tool basis</span><small>Date &amp; Time · Calculator</small></summary><div class="cp-data-grid"><div class="cp-data-item wide"><b>Purpose</b><p>Calculate age between two dates in years, months, and days, plus total days, weeks, hours, and time until the next birthday.</p></div><div class="cp-data-item wide"><b>Formula / Algorithm Used in Tool</b><p>Calendar Age Method: Years, months, and days are counted as calendar units rather than treating every month as the same number of days. Total elapsed days are calculated separately from the date difference.</p></div><div class="cp-data-item"><b>Required User Inputs</b><p>Date of birth; Age at date</p></div><div class="cp-data-item"><b>Primary Outputs</b><p>Calendar age; Total days; Total weeks; Total hours; Next birthday</p></div><div class="cp-data-item wide"><b>Important Assumptions / Limitations</b><p>Month-end dates can be represented in more than one reasonable way because calendar months have different lengths. This implementation borrows days from the preceding target month when needed.</p></div><div class="cp-data-item"><b>Fresh Data Required?</b><p>Conditional</p></div><div class="cp-data-item"><b>Recommended Update Frequency</b><p>When calendar/time-zone rules change</p></div><div class="cp-data-item wide"><b>Current Source URLs in Page</b><p><a href="https://www.calculator.net/age-calculator.html" rel="nofollow noopener" target="_blank">https://www.calculator.net/age-calculator.html</a></p></div></div></details><script class="cp-calculator-data" type="application/json">{"index":"30","Batch":"4","Calculator / Page":"Age Calculator","Slug":"age-calculator","Site Category (Current)":"Date & Time","Recommended Content Domain":"Date / Time","Page Type":"Calculator","Search Intent / Purpose":"Calculate age between two dates in years, months, and days, plus total days, weeks, hours, and time until the next birthday.","Formula / Algorithm Used in Tool":"Calendar Age Method: Years, months, and days are counted as calendar units rather than treating every month as the same number of days. Total elapsed days are calculated separately from the date difference.","Required User Inputs":"Date of birth; Age at date","Primary Outputs":"Calendar age; Total days; Total weeks; Total hours; Next birthday","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Date of birth, Age at date. Explain outputs: Calendar age, Total days, Total weeks, Total hours, Next birthday. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Calendar convention and date arithmetic rules; time-zone functions require current IANA/browser data.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When calendar/time-zone rules change","Important Assumptions / Limitations":"Month-end dates can be represented in more than one reasonable way because calendar months have different lengths. This implementation borrows days from the preceding target month when needed.","Current Source URLs in Page":"https://www.calculator.net/age-calculator.html","Implementation Path":"/age-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Date &amp; Time</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../time-duration-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time Duration Calculator</strong><small>Calculate exact elapsed time between two local date-times in days, hours, minutes,…</small></span></a><a class="cp-related-link" href="../date-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Date Calculator</strong><small>Calculate days between dates or add and subtract years, months, weeks, and days fro…</small></span></a><a class="cp-related-link" href="../time-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time Calculator</strong><small>Add or subtract two time durations in hours, minutes, and seconds and view the norm…</small></span></a><a class="cp-related-link" href="../day-counter/index.html"><span class="cp-related-dot">›</span><span><strong>Day Counter</strong><small>Count calendar days between two dates, with inclusive/exclusive options plus weekda…</small></span></a><a class="cp-related-link" href="../hours-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Hours Calculator</strong><small>Calculate hours and minutes between two clock times, with an overnight option and d…</small></span></a><a class="cp-related-link" href="../time-card-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time Card Calculator</strong><small>Total weekly work hours, unpaid breaks, configurable overtime, and estimated gross…</small></span></a><a class="cp-related-link" href="../time-zone-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time Zone Calculator</strong><small>Convert a date and time between major IANA time zones with browser-supported daylig…</small></span></a><a class="cp-related-link" href="../mileage-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Mileage Calculator</strong><small>Calculate trip mileage from odometer readings and estimate driving time, fuel use,…</small></span></a></div><a class="cp-side-category" href="../date-time/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script>
-const $=id=>document.getElementById(id);
-const fmt=(n,d=2)=>Number.isFinite(n)?Number(n).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
-const val=id=>parseFloat($(id).value);
-function setErr(m=''){if($('error'))$('error').textContent=m}
-function parseDate(id){const s=$(id).value;if(!s)throw Error('Please enter a date.');const d=new Date(s+'T12:00:00');if(Number.isNaN(d.getTime()))throw Error('Invalid date.');return d}
-function pretty(d){return d.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})}
-function iso(d){return d.toISOString().slice(0,10)}
+    <!-- Primary Meta Tags -->
+<title>Age Calculator – Calculate Exact Age Between Two Dates</title>
+<meta name="title" content="Age Calculator – Calculate Exact Age Between Two Dates">
+<meta name="description" content="Calculate age between two dates in years, months, and days. See total days, weeks, hours, and the date and time remaining until the next birthday.">
 
-(function(){$('target').value=iso(new Date())})();
-function ymd(start,end){let y=end.getFullYear()-start.getFullYear(),m=end.getMonth()-start.getMonth(),d=end.getDate()-start.getDate();if(d<0){m--;const prev=new Date(end.getFullYear(),end.getMonth(),0);d+=prev.getDate()}if(m<0){y--;m+=12}return [y,m,d]}
-function calculate(){try{const dob=parseDate('dob'),target=parseDate('target');if(target<dob)throw Error('Target date must be on or after the birth date.');const [y,m,d]=ymd(dob,target),total=Math.floor((target-dob)/86400000);let nb=new Date(target.getFullYear(),dob.getMonth(),dob.getDate(),12);if(nb<target)nb=new Date(target.getFullYear()+1,dob.getMonth(),dob.getDate(),12);const until=Math.max(0,Math.round((nb-target)/86400000));$('age').textContent=`${y} years, ${m} months, ${d} days`;$('next').textContent=`${until} days until next birthday`;$('days').textContent=total.toLocaleString();$('weeks').textContent=fmt(total/7,2);$('hours').textContent=(total*24).toLocaleString();$('birthday').textContent=pretty(nb);setErr('')}catch(e){setErr(e.message)}}$('calculate').onclick=calculate;$('clear').onclick=()=>location.reload();calculate();
-</script><script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/age-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/age-calculator/">
+<meta property="og:title" content="Age Calculator – Calculate Exact Age Between Two Dates">
+<meta property="og:description" content="Calculate age between two dates in years, months, and days. See total days, weeks, hours, and the date and time remaining until the next birthday.">
+<meta property="og:site_name" content="Age Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/age-calculator/">
+<meta name="twitter:title" content="Age Calculator – Calculate Exact Age Between Two Dates">
+<meta name="twitter:description" content="Calculate age between two dates in years, months, and days. See total days, weeks, hours, and the date and time remaining until the next birthday.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        :root {
+            --ink: #0b1933;
+            --muted: #60708a;
+            --line: #dbe8f6;
+            --blue: #0a6ff2;
+            --blue2: #20a5ff;
+            --green: #16b86b;
+            --yellow: #f6b51f;
+            --red: #ef4f58;
+            --shadow: 0 18px 45px rgba(25, 74, 123, .16), inset 0 1px 0 rgba(255, 255, 255, .95)
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at 12% 6%, rgba(32, 165, 255, .18), transparent 28%), radial-gradient(circle at 88% 15%, rgba(35, 205, 153, .13), transparent 24%), linear-gradient(180deg, #f8fcff, #eef7ff 48%, #f7fbff);
+            line-height: 1.65
+        }
+
+        a {
+            color: #0967d8;
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .wrap {
+            width: min(1180px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(248, 252, 255, .8);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(196, 219, 241, .72)
+        }
+
+        .nav {
+            height: 72px;
+            display: flex;
+            align-items: center;
+            gap: 28px
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 23px;
+            font-weight: 850;
+            color: var(--ink)
+        }
+
+        .brand i {
+            width: 38px;
+            height: 38px;
+            display: grid;
+            place-items: center;
+            border-radius: 11px;
+            color: #fff;
+            font-style: normal;
+            background: linear-gradient(145deg, #27b3ff, #0562d7);
+            box-shadow: 0 9px 18px rgba(10, 111, 242, .28), inset 0 2px 2px rgba(255, 255, 255, .45)
+        }
+
+        .navlinks {
+            display: flex;
+            gap: 20px;
+            margin-left: 18px;
+            font-size: 14px;
+            font-weight: 700
+        }
+
+        .navlinks a {
+            color: #20324e
+        }
+
+        .search {
+            margin-left: auto;
+            background: #fff;
+            border: 1px solid #e0ebf6;
+            border-radius: 999px;
+            padding: 10px 15px;
+            min-width: 210px;
+            color: #6d7d93;
+            font-size: 13px;
+            box-shadow: 0 8px 20px rgba(26, 70, 112, .08)
+        }
+
+        .hero {
+            padding: 28px 0 18px
+        }
+
+        .breadcrumb {
+            font-size: 13px;
+            color: #6c7b91;
+            margin-bottom: 18px
+        }
+
+        .breadcrumb span {
+            margin: 0 8px;
+            color: #a1aec0
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.03fr .97fr;
+            gap: 28px;
+            align-items: center
+        }
+
+        h1 {
+            font-size: clamp(2.6rem, 5vw, 4.5rem);
+            line-height: 1.05;
+            margin: 0 auto 18px;
+            text-align: center;
+            letter-spacing: -.06em;
+            font-weight: 900;
+        }
+
+        h1 b {
+            color: var(--blue)
+        }
+
+        .lead {
+            font-size: 17px;
+            color: #42546e;
+            max-width: 700px;
+            margin: 0
+        }
+
+        .chips {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+            margin-top: 18px
+        }
+
+        .chip {
+            background: #fff;
+            border: 1px solid #dceafa;
+            border-radius: 999px;
+            padding: 7px 11px;
+            font-size: 12px;
+            font-weight: 800;
+            color: #35506f;
+            box-shadow: 0 8px 18px rgba(37, 86, 137, .07)
+        }
+
+        .hero-art {
+            height: 270px;
+            position: relative;
+            perspective: 900px
+        }
+
+        .floor {
+            position: absolute;
+            left: 9%;
+            right: 7%;
+            bottom: 12px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(32, 75, 115, .14);
+            filter: blur(15px)
+        }
+
+        .obj {
+            position: absolute;
+            box-shadow: var(--shadow)
+        }
+
+        .calc-shell {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 32px;
+            background: rgba(255, 255, 255, .5);
+            border: 1px solid rgba(255, 255, 255, .92);
+            box-shadow: 0 28px 70px rgba(37, 86, 137, .15);
+            backdrop-filter: blur(20px)
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 16px
+        }
+
+        .card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, .97), rgba(244, 249, 255, .86));
+            border: 1px solid rgba(218, 231, 245, .92);
+            border-radius: 24px;
+            padding: 22px;
+            box-shadow: var(--shadow)
+        }
+
+        .card h2 {
+            font-size: 21px;
+            margin: 0 0 4px;
+            letter-spacing: -.5px
+        }
+
+        .sub {
+            font-size: 13px;
+            color: #687990;
+            margin: 0 0 15px
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 13px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px
+        }
+
+        .field.full {
+            grid-column: 1/-1
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: 800;
+            color: #263a56
+        }
+
+        .input-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid #cddff1;
+            background: #fbfdff;
+            border-radius: 12px;
+            padding: 11px 12px;
+            font: inherit;
+            color: #152641;
+            box-shadow: inset 0 2px 4px rgba(26, 77, 123, .05);
+            outline: none
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #66b5ff;
+            box-shadow: 0 0 0 3px rgba(32, 165, 255, .12)
+        }
+
+        .unit {
+            font-size: 12px;
+            color: #667890;
+            white-space: nowrap
+        }
+
+        .hint {
+            font-size: 11px;
+            color: #75859a
+        }
+
+        .tabs {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            background: #edf5ff;
+            border: 1px solid #dceafb;
+            padding: 4px;
+            border-radius: 15px;
+            margin-bottom: 16px
+        }
+
+        .tab {
+            border: 0;
+            background: transparent;
+            padding: 9px 12px;
+            border-radius: 11px;
+            font-weight: 800;
+            color: #334866;
+            cursor: pointer
+        }
+
+        .tab.active {
+            background: linear-gradient(145deg, #2aa8ff, #0668df);
+            color: #fff;
+            box-shadow: 0 9px 17px rgba(8, 111, 240, .26)
+        }
+
+        .actions {
+            display: grid;
+            grid-template-columns: 1.5fr .8fr;
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 13px 14px;
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .primary {
+            color: #fff;
+            background: linear-gradient(145deg, #25a9ff, #0064dc);
+            box-shadow: 0 12px 22px rgba(6, 104, 221, .28)
+        }
+
+        .secondary {
+            background: #edf3f9;
+            color: #273a55
+        }
+
+        .error {
+            color: #b4232b;
+            font-size: 12px;
+            margin-top: 10px;
+            min-height: 18px
+        }
+
+        .result-hero {
+            padding: 18px;
+            border-radius: 19px;
+            background: linear-gradient(135deg, #edfff7, #eef8ff);
+            position: relative;
+            overflow: hidden
+        }
+
+        .result-hero:after {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            right: -30px;
+            top: -45px;
+            background: radial-gradient(circle, #55d7ff, #0b79ef);
+            opacity: .17
+        }
+
+        .result-hero small {
+            color: #60728b
+        }
+
+        .big {
+            font-size: 36px;
+            font-weight: 900;
+            letter-spacing: -1.8px;
+            line-height: 1.1;
+            margin-top: 3px;
+            word-break: break-word
+        }
+
+        .accent {
+            color: var(--green);
+            font-weight: 850;
+            font-size: 18px
+        }
+
+        .stats {
+            margin-top: 13px;
+            border-radius: 16px;
+            background: #fff;
+            border: 1px solid #e3edf7;
+            overflow: hidden
+        }
+
+        .stat {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px 12px;
+            border-bottom: 1px solid #e8f0f7;
+            font-size: 13px
+        }
+
+        .stat:last-child {
+            border-bottom: 0
+        }
+
+        .stat b {
+            text-align: right
+        }
+
+        .answerbox {
+            margin: 14px 0 0;
+            padding: 15px 16px;
+            border-radius: 16px;
+            background: #0e2544;
+            color: #fff;
+            box-shadow: 0 15px 28px rgba(12, 37, 68, .18);
+            font-size: 13px
+        }
+
+        .answerbox strong {
+            color: #73d3ff
+        }
+
+        .table-wrap {
+            overflow: auto;
+            border-radius: 16px;
+            border: 1px solid #dce7f2;
+            margin: 14px 0
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 520px;
+            background: #fff
+        }
+
+        th,
+        td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #e7eef5;
+            font-size: 13px
+        }
+
+        th {
+            background: #f1f7fd
+        }
+
+        .progress {
+            height: 14px;
+            border-radius: 999px;
+            background: #e7f1fb;
+            overflow: hidden;
+            margin-top: 14px
+        }
+
+        .progress span {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, var(--blue), var(--green));
+            border-radius: inherit
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: 1.6fr .8fr 1fr auto;
+            gap: 8px;
+            align-items: end;
+            margin-bottom: 8px
+        }
+
+        .remove {
+            width: 40px;
+            height: 40px;
+            border: 0;
+            border-radius: 10px;
+            background: #fff0f0;
+            color: #b4232b;
+            font-weight: 900;
+            cursor: pointer
+        }
+
+        .hub-search {
+            margin-bottom: 18px
+        }
+
+        .hub-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px
+        }
+
+        .hub {
+            padding: 18px;
+            border-radius: 18px;
+            background: linear-gradient(145deg, #fff, #f4f9ff);
+            border: 1px solid #dfeaf5
+        }
+
+        .hub h3 {
+            margin: 0 0 8px
+        }
+
+        .hub a {
+            display: inline-block;
+            margin: 4px 8px 4px 0;
+            font-size: 13px
+        }
+
+        .hub[hidden] {
+            display: none
+        }
+
+        .content {
+            padding: 38px 0 70px
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.fr;
+            gap: 22px
+        }
+
+        .article,
+        .toc {
+            background: rgba(255, 255, 255, .9);
+            border: 1px solid #dfeaf6;
+            border-radius: 25px;
+            box-shadow: var(--shadow)
+        }
+
+        .article {
+            padding: 30px
+        }
+
+        .toc {
+            padding: 24px;
+            align-self: start;
+            position: sticky;
+            top: 94px
+        }
+
+        .article h2 {
+            font-size: 28px;
+            line-height: 1.2;
+            margin: 38px 0 12px;
+            letter-spacing: -.8px
+        }
+
+        .article h2:first-child {
+            margin-top: 0
+        }
+
+        .article h3 {
+            font-size: 20px;
+            margin: 24px 0 8px
+        }
+
+        .article p,
+        .article li {
+            color: #42536d
+        }
+
+        .direct {
+            border-left: 5px solid var(--blue);
+            background: #f0f7ff;
+            padding: 16px 18px;
+            border-radius: 14px;
+            color: #263a56
+        }
+
+        .formula {
+            font: 800 16px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: #0d213c;
+            color: #eef8ff;
+            padding: 16px;
+            border-radius: 15px;
+            overflow: auto
+        }
+
+        .note {
+            background: #fff9e9;
+            border: 1px solid #f5df9c;
+            padding: 15px 17px;
+            border-radius: 14px;
+            color: #5c4d22
+        }
+
+        .faq {
+            border-top: 1px solid #e4edf6;
+            padding: 15px 0
+        }
+
+        .faq summary {
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .faq p {
+            margin-bottom: 0
+        }
+
+        .toc h3 {
+            margin-top: 0
+        }
+
+        .toc a {
+            display: block;
+            padding: 7px 0;
+            color: #34506f;
+            font-size: 14px
+        }
+
+        .sources li {
+            margin: 8px 0
+        }
+
+        footer {
+            padding: 28px 0 42px;
+            color: #63748a;
+            font-size: 13px;
+            text-align: center
+        }
+
+        @media(max-width:960px) {
+
+            .navlinks,
+            .search {
+                display: none
+            }
+
+            .hero-grid,
+            .calc-grid,
+            .content-grid {
+                grid-template-columns: 1fr
+            }
+
+            .hero-art {
+                height: 235px
+            }
+
+            .toc {
+                position: static
+            }
+        }
+
+        @media(max-width:620px) {
+            .wrap {
+                width: min(100% - 20px, 1180px)
+            }
+
+            .hero {
+                padding-top: 18px
+            }
+
+            .hero-art {
+                transform: scale(.86);
+                transform-origin: center top;
+                margin-bottom: -28px
+            }
+
+            .calc-shell {
+                padding: 8px;
+                border-radius: 23px
+            }
+
+            .card {
+                padding: 16px;
+                border-radius: 19px
+            }
+
+            .form-grid,
+            .actions,
+            .hub-grid {
+                grid-template-columns: 1fr
+            }
+
+            .field.full {
+                grid-column: auto
+            }
+
+            .article {
+                padding: 21px
+            }
+
+            .nav {
+                height: 64px
+            }
+
+            .course-grid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .course-grid .remove {
+                grid-column: 2
+            }
+        }
+
+        /* unique scenes */
+        .scene-triangle .tri {
+            right: 70px;
+            top: 25px;
+            width: 280px;
+            height: 220px;
+            clip-path: polygon(50% 0, 100% 100%, 0 100%);
+            background: linear-gradient(145deg, #2aabff, #0867dc);
+            filter: drop-shadow(18px 28px 22px rgba(12, 95, 180, .22))
+        }
+
+        .scene-triangle .tri:after {
+            content: "a   b   c";
+            position: absolute;
+            left: 75px;
+            top: 120px;
+            color: #fff;
+            font-weight: 900;
+            letter-spacing: 24px
+        }
+
+        .scene-volume .cube {
+            right: 95px;
+            top: 45px;
+            width: 180px;
+            height: 180px;
+            border-radius: 24px;
+            background: linear-gradient(145deg, #c9eaff, #429fe8);
+            transform: rotateX(14deg) rotateY(-18deg);
+            box-shadow: 25px 30px 38px rgba(24, 89, 150, .2)
+        }
+
+        .scene-volume .sphere {
+            right: 20px;
+            top: 120px;
+            width: 115px;
+            height: 115px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 32% 25%, #fff, #84d8c4 42%, #0d8e75 75%)
+        }
+
+        .scene-sd .bars {
+            right: 45px;
+            bottom: 32px;
+            width: 320px;
+            height: 190px;
+            display: flex;
+            align-items: flex-end;
+            gap: 14px
+        }
+
+        .scene-sd .bars i {
+            width: 35px;
+            border-radius: 12px 12px 4px 4px;
+            background: linear-gradient(#49b9ff, #0a6ff2)
+        }
+
+        .scene-sd .bars i:nth-child(1) {
+            height: 50px
+        }
+
+        .scene-sd .bars i:nth-child(2) {
+            height: 90px
+        }
+
+        .scene-sd .bars i:nth-child(3) {
+            height: 155px
+        }
+
+        .scene-sd .bars i:nth-child(4) {
+            height: 185px
+        }
+
+        .scene-sd .bars i:nth-child(5) {
+            height: 130px
+        }
+
+        .scene-sd .bars i:nth-child(6) {
+            height: 70px
+        }
+
+        .scene-rng .dice {
+            right: 190px;
+            top: 55px;
+            width: 125px;
+            height: 125px;
+            border-radius: 26px;
+            background: linear-gradient(145deg, #fff, #bfdff7);
+            transform: rotate(15deg);
+            display: grid;
+            place-items: center;
+            font-size: 52px;
+            color: #0a6ff2;
+            font-weight: 900
+        }
+
+        .scene-rng .orb {
+            right: 45px;
+            top: 110px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 25%, #fff, #ffd95d 50%, #e0a400);
+            display: grid;
+            place-items: center;
+            font-size: 34px;
+            font-weight: 900;
+            color: #7b5900
+        }
+
+        .scene-hub .stack {
+            right: 65px;
+            top: 36px;
+            width: 270px;
+            height: 190px
+        }
+
+        .scene-hub .stack i {
+            position: absolute;
+            width: 205px;
+            height: 120px;
+            border-radius: 25px;
+            background: linear-gradient(145deg, #fff, #b9dcfa);
+            border: 1px solid #fff
+        }
+
+        .scene-hub .stack i:nth-child(1) {
+            right: 0;
+            top: 0;
+            transform: rotate(8deg)
+        }
+
+        .scene-hub .stack i:nth-child(2) {
+            right: 30px;
+            top: 30px;
+            transform: rotate(-4deg);
+            background: linear-gradient(145deg, #d9fff2, #76d4bb)
+        }
+
+        .scene-hub .stack i:nth-child(3) {
+            right: 60px;
+            top: 60px;
+            background: linear-gradient(145deg, #eaf5ff, #75bffc)
+        }
+
+        .scene-hub .stack:after {
+            content: "TOOLS";
+            position: absolute;
+            right: 98px;
+            top: 94px;
+            z-index: 3;
+            font-size: 28px;
+            font-weight: 900;
+            color: #0a6ff2
+        }
+
+        .scene-age .cake {
+            right: 105px;
+            top: 88px;
+            width: 220px;
+            height: 110px;
+            border-radius: 24px 24px 34px 34px;
+            background: linear-gradient(#7fd6ff, #0c75df)
+        }
+
+        .scene-age .cake:before {
+            content: "";
+            position: absolute;
+            left: 20px;
+            right: 20px;
+            top: -28px;
+            height: 42px;
+            border-radius: 50%;
+            background: #fff
+        }
+
+        .scene-age .candle {
+            right: 205px;
+            top: 25px;
+            width: 18px;
+            height: 75px;
+            border-radius: 8px;
+            background: repeating-linear-gradient(180deg, #ff7b96 0 12px, #fff 12px 22px)
+        }
+
+        .scene-age .candle:before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: -23px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50% 50% 50% 0;
+            background: #ffca38;
+            transform: rotate(-45deg)
+        }
+
+        .scene-date .cal {
+            right: 75px;
+            top: 35px;
+            width: 255px;
+            height: 200px;
+            border-radius: 28px;
+            background: #fff;
+            border: 1px solid #dbe8f6;
+            transform: rotate(-5deg)
+        }
+
+        .scene-date .cal:before {
+            content: "DATE";
+            position: absolute;
+            left: 25px;
+            right: 25px;
+            top: 25px;
+            padding: 10px;
+            border-radius: 14px;
+            background: #0a6ff2;
+            color: #fff;
+            text-align: center;
+            font-weight: 900;
+            letter-spacing: 3px
+        }
+
+        .scene-date .cal:after {
+            content: "+ 30";
+            position: absolute;
+            inset: 80px 30px 25px;
+            display: grid;
+            place-items: center;
+            font-size: 50px;
+            font-weight: 900;
+            color: #183d63
+        }
+
+        .scene-time .clock {
+            right: 90px;
+            top: 35px;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: #fff;
+            border: 15px solid #0d315f;
+            box-shadow: 0 26px 45px rgba(17, 65, 115, .2)
+        }
+
+        .scene-time .clock:before {
+            content: "";
+            position: absolute;
+            left: 96px;
+            top: 42px;
+            width: 7px;
+            height: 65px;
+            background: #0a6ff2;
+            transform-origin: bottom;
+            transform: rotate(35deg);
+            border-radius: 6px
+        }
+
+        .scene-time .clock:after {
+            content: "";
+            position: absolute;
+            left: 97px;
+            top: 98px;
+            width: 70px;
+            height: 7px;
+            background: #16b86b;
+            transform-origin: left;
+            transform: rotate(20deg);
+            border-radius: 6px
+        }
+
+        .scene-hours .timeline {
+            right: 35px;
+            top: 78px;
+            width: 335px;
+            height: 30px;
+            border-radius: 15px;
+            background: linear-gradient(90deg, #0a6ff2, #16b86b)
+        }
+
+        .scene-hours .timeline:before,
+        .scene-hours .timeline:after {
+            content: "";
+            position: absolute;
+            top: -24px;
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            background: #fff;
+            border: 10px solid #0e2544
+        }
+
+        .scene-hours .timeline:before {
+            left: -5px
+        }
+
+        .scene-hours .timeline:after {
+            right: -5px
+        }
+
+        .scene-hours .label {
+            right: 115px;
+            top: 135px;
+            padding: 14px 22px;
+            border-radius: 18px;
+            background: #fff;
+            font-size: 24px;
+            font-weight: 900;
+            color: #0a6ff2
+        }
+
+        .scene-gpa .cap {
+            right: 55px;
+            top: 50px;
+            width: 285px;
+            height: 170px;
+            clip-path: polygon(50% 0, 100% 35%, 75% 50%, 75% 78%, 25% 78%, 25% 50%, 0 35%);
+            background: linear-gradient(145deg, #1b89ef, #0e315a);
+            filter: drop-shadow(18px 26px 20px rgba(14, 60, 105, .18))
+        }
+
+        .scene-gpa .badge {
+            right: 150px;
+            top: 120px;
+            padding: 12px 18px;
+            border-radius: 18px;
+            background: #fff;
+            color: #0a6ff2;
+            font-size: 28px;
+            font-weight: 900
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/age-calculator/#webapplication",
+      "name": "Age Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/age-calculator/",
+      "description": "Calculate age between two dates in years, months, and days. See total days, weeks, hours, and the date and time remaining until the next birthday.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/age-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Age Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/age-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/age-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does the Age Calculator calculate age?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It counts complete calendar years, then complete calendar months, and then the remaining days between the Date of Birth and Age at Date. Total elapsed days are calculated separately."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why not divide the number of days by 365?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A fixed 365-day division does not reproduce calendar age correctly in every case because calendar years and months have different lengths. Calendar age preserves actual year, month, and day boundaries."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can month-end age calculations be confusing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Months do not all end on the same day number. For example, February can end on the 28th or 29th, while March ends on the 31st. Different valid conventions can therefore describe some month-end intervals differently."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the calculator account for leap years?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Calendar-date arithmetic uses the actual dates in the calendar rather than treating every year as exactly 365 days. Leap days can therefore affect the total elapsed-day result."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between calendar age and total days?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Calendar age divides the interval into years, months, and days. Total Days expresses the entire interval as one continuous number of elapsed days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Total Hours use my exact birth time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The available input is a Date of Birth, not a birth date and time. Total Hours therefore represents the date-based elapsed period rather than the exact time since a recorded birth timestamp."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I calculate my age on another date?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Enter your Date of Birth and use the required past or future date in the Age at Date field. The result will represent the age between those two dates."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="date-time" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../date-time/index.html">Date &amp; Time</a></li>
+            <li><a aria-current="page" href="index.html">Age Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../date-time/index.html">Browse Date &amp; Time</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Age Calculator</h1>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="calc-shell" id="calculator">
+                <div class="calc-grid">
+                    <div class="card">
+                        <h2>Age between two dates</h2>
+                        <div class="form-grid">
+                            <div class="field"><label for="dob">Date of birth</label><input id="dob" type="date"
+                                    value="2000-01-15" /></div>
+                            <div class="field"><label for="target">Age at date</label><input id="target" type="date" />
+                            </div>
+                        </div>
+                        <div class="actions"><button class="btn primary" id="calculate">Calculate Age →</button><button
+                                class="btn secondary" id="clear">Reset</button></div>
+                        <div class="error" id="error"></div>
+                    </div>
+                    <div class="card">
+                        <div class="result-hero"><small>Calendar age</small>
+                            <div class="big" id="age">—</div>
+                            <div class="accent" id="next">—</div>
+                        </div>
+                        <div class="stats">
+                            <div class="stat"><span>Total days</span><b id="days">—</b></div>
+                            <div class="stat"><span>Total weeks</span><b id="weeks">—</b></div>
+                            <div class="stat"><span>Total hours</span><b id="hours">—</b></div>
+                            <div class="stat"><span>Next birthday</span><b id="birthday">—</b></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="content">
+                <div class="wrap content-grid">
+                    
+
+<article class="article">
+ 
+  <p>The Age Calculator finds the age or elapsed calendar time between a <strong>Date of Birth</strong> and an <strong>Age at Date</strong>. It shows the result in years, months, and days, along with total days, weeks, hours, and the next birthday.</p>
+
+  <section id="what">
+    <h2>What Is the Age Calculator?</h2>
+    <p>The Age Calculator measures how much calendar time has passed between two dates. Instead of assuming every month has the same number of days, it counts complete calendar years, months, and remaining days.</p>
+
+    <p>You can use it to check your current age, find your age on a past or future date, calculate total elapsed days, or see when your next birthday occurs.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Age Calculator</h2>
+
+    <h3>Date of Birth</h3>
+
+    <p>Enter the starting date used for the age calculation. For a person's age, this is their birth date.</p>
+
+    <h3>Age at Date</h3>
+
+    <p>Enter the date on which you want the age calculated. Use today's date for a current-age calculation, or enter another date to calculate age at that point in time.</p>
+
+    <p>After both dates are entered, the calculator returns the calendar age and supporting elapsed-time results.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+
+    <p>Age is calculated using <strong>calendar years, calendar months, and calendar days</strong> rather than converting the complete interval into a fixed number of 365-day years or 30-day months.</p>
+
+    <p>The result can be expressed as:</p>
+
+    <div class="formula"><strong>Calendar Age = Y years + M months + D days</strong></div>
+
+    <p>where the components represent complete calendar units between the two entered dates.</p>
+
+    <p>This approach is important because months have different lengths. Month-end calculations can also have more than one reasonable representation; this method uses the approach in which days are borrowed from the preceding target month when required. Similar month-end ambiguity is documented for age calculations using dates such as February 28 through March 31.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th><strong>Symbol</strong></th>
+          <th><strong>Meaning</strong></th>
+          <th><strong>Unit</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>B</strong></td>
+          <td>Date of Birth</td>
+          <td>Calendar date</td>
+        </tr>
+        <tr>
+          <td><strong>A</strong></td>
+          <td>Age at Date</td>
+          <td>Calendar date</td>
+        </tr>
+        <tr>
+          <td><strong>Y</strong></td>
+          <td>Complete years</td>
+          <td>Years</td>
+        </tr>
+        <tr>
+          <td><strong>M</strong></td>
+          <td>Remaining complete months</td>
+          <td>Months</td>
+        </tr>
+        <tr>
+          <td><strong>D</strong></td>
+          <td>Remaining calendar days</td>
+          <td>Days</td>
+        </tr>
+        <tr>
+          <td><strong>E</strong></td>
+          <td>Total elapsed days between B and A</td>
+          <td>Days</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Calculation Sequence</h3>
+
+    <ol>
+      <li>Start with the Date of Birth and Age at Date.</li>
+      <li>Count the complete calendar years between the two dates.</li>
+      <li>Count the remaining complete calendar months.</li>
+      <li>Count the remaining calendar days.</li>
+      <li>If the day component requires adjustment, days are borrowed from the preceding target month.</li>
+      <li>Calculate the total elapsed days separately from the years-months-days result.</li>
+      <li>Express the elapsed-day total in weeks and hours.</li>
+      <li>Identify the next occurrence of the birth month and day after the selected Age at Date.</li>
+    </ol>
+
+    <p>Because this is calendar arithmetic, the years-months-days result should not be recreated by simply dividing total days by 365 or months by 30.</p>
+
+    <h3>Total Days</h3>
+
+    <p>The calculator separately measures the elapsed calendar days between the two entered dates:</p>
+
+    <div class="formula"><strong>Total Days = Age at Date − Date of Birth</strong></div>
+
+    <p>This value is independent of the displayed years, months, and days breakdown.</p>
+
+    <h3>Total Weeks</h3>
+
+    <p>The elapsed-day total can be expressed in weeks:</p>
+
+    <div class="formula"><strong>Total Weeks = Total Days ÷ 7</strong></div>
+
+    <p>A fractional result represents additional days beyond the completed weeks.</p>
+
+    <h3>Total Hours</h3>
+
+    <p>For the calculator's date-based elapsed-time conversion:</p>
+
+    <div class="formula"><strong>Total Hours = Total Days × 24</strong></div>
+
+    <p>Because the inputs contain dates rather than exact birth times, this should be understood as a date-based hour total rather than a timestamp-level age from the exact hour and minute of birth.</p>
+
+    <h3>Next Birthday</h3>
+
+    <p>The calculator identifies the next calendar occurrence of the birth month and day relative to the selected Age at Date. The remaining interval to that date provides the time until the next birthday.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose the following dates are entered.</p>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li><strong>Date of Birth:</strong> January 15, 2000</li>
+      <li><strong>Age at Date:</strong> June 20, 2025</li>
+    </ul>
+
+    <h3>Step 1: Count Complete Years</h3>
+
+    <p>From January 15, 2000 to January 15, 2025:</p>
+
+    <p><strong>25 complete years</strong></p>
+
+    <h3>Step 2: Count Complete Months</h3>
+
+    <p>From January 15, 2025 to June 15, 2025:</p>
+
+    <p><strong>5 complete months</strong></p>
+
+    <h3>Step 3: Count Remaining Days</h3>
+
+    <p>From June 15 to June 20:</p>
+
+    <p><strong>5 days</strong></p>
+
+    <p>Therefore:</p>
+
+    <p><strong>Calendar Age = 25 years, 5 months, 5 days</strong></p>
+
+    <p>The elapsed-day calculation is performed separately:</p>
+
+    <p><strong>Total Days = 9,288 days</strong></p>
+
+    <p>Then:</p>
+
+    <p><strong>Total Weeks = 9,288 ÷ 7 = 1,326.857... weeks</strong></p>
+
+    <p><strong>Total Hours = 9,288 × 24 = 222,912 hours</strong></p>
+
+    <p>The next birthday is:</p>
+
+    <p><strong>January 15, 2026</strong></p>
+
+    <p>From June 20, 2025, that birthday is <strong>209 days away</strong>.</p>
+
+    <h3>Final Result</h3>
+
+    <p>For this example, the calculated calendar age is:</p>
+
+    <p><strong>25 years, 5 months, 5 days</strong></p>
+
+    <p>Supporting results are <strong>9,288 total days</strong>, approximately <strong>1,326.86 weeks</strong>, and <strong>222,912 hours</strong>.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Calendar Age</h3>
+
+    <p>Calendar Age is the main result. It separates the interval into complete years, complete months, and remaining days while respecting the actual lengths of calendar months.</p>
+
+    <h3>Total Days</h3>
+
+    <p>Total Days shows the complete date-to-date interval as days. It is useful when you need one continuous unit instead of a years-months-days breakdown.</p>
+
+    <h3>Total Weeks</h3>
+
+    <p>Total Weeks expresses the same elapsed period in seven-day units. It may include a decimal because the number of elapsed days may not divide evenly by seven.</p>
+
+    <h3>Total Hours</h3>
+
+    <p>Total Hours converts the date-based elapsed-day total into hours. Since the calculator does not request a birth time or target time, it is not intended to measure age from an exact time-of-day timestamp.</p>
+
+    <h3>Next Birthday</h3>
+
+    <p>Next Birthday shows the upcoming calendar birthday after the selected Age at Date, helping you see when the next yearly birthday occurs.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>Calendar months do not have equal lengths, so age cannot always be represented uniquely by using simple fixed-length month conversions. Month-end dates are especially important: depending on the convention used, the same pair of dates can sometimes produce more than one reasonable months-and-days representation. This calculator uses a method that borrows days from the preceding target month when required.</p>
+
+    <p>The calendar age and total elapsed days are separate calculations. For example, a calendar age of one year does not always equal exactly 365 days because calendar years can have different numbers of days.</p>
+
+    <p>The calculator accepts dates rather than exact times. Its hour result therefore represents the date-based elapsed interval and should not be treated as the exact number of hours since a person's recorded time of birth.</p>
+
+    <p>Browser date functions can depend on the host environment's calendar and local time-zone rules. ECMAScript's time-zone-aware date handling uses local political time rules and is designed to work with IANA Time Zone Database information.</p>
+  </section>
+
+  <section id="current-data">
+    <h2>Current Browser and Time-Zone Data</h2>
+
+    <p>This calculator does not require a changing interest rate, legal threshold, or yearly financial limit. However, browser time-zone data can change when governments alter local clock rules.</p>
+
+    <p>As of <strong>September 24, 2026</strong>, the latest IANA Time Zone Database release identified during verification is <strong>2026b</strong>, released on <strong>April 22, 2026</strong>.</p>
+
+    <p>For ordinary date-of-birth calculations, the main result remains based on calendar dates rather than a user-selected named time zone.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>How does the Age Calculator calculate age?</summary>
+      <p>It counts complete calendar years, then complete calendar months, and then the remaining days between the Date of Birth and Age at Date. Total elapsed days are calculated separately.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why not divide the number of days by 365?</summary>
+      <p>A fixed 365-day division does not reproduce calendar age correctly in every case because calendar years and months have different lengths. Calendar age preserves actual year, month, and day boundaries.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why can month-end age calculations be confusing?</summary>
+      <p>Months do not all end on the same day number. For example, February can end on the 28th or 29th, while March ends on the 31st. Different valid conventions can therefore describe some month-end intervals differently.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does the calculator account for leap years?</summary>
+      <p>Calendar-date arithmetic uses the actual dates in the calendar rather than treating every year as exactly 365 days. Leap days can therefore affect the total elapsed-day result.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What is the difference between calendar age and total days?</summary>
+      <p>Calendar age divides the interval into years, months, and days. Total Days expresses the entire interval as one continuous number of elapsed days.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does Total Hours use my exact birth time?</summary>
+      <p>No. The available input is a Date of Birth, not a birth date and time. Total Hours therefore represents the date-based elapsed period rather than the exact time since a recorded birth timestamp.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can I calculate my age on another date?</summary>
+      <p>Yes. Enter your Date of Birth and use the required past or future date in the Age at Date field. The result will represent the age between those two dates.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://www.calculator.net/age-calculator.html" rel="noopener" target="_blank">Calculator.net — Age Calculator</a><br>
+        Used to verify the calendar-age convention and the treatment of month-end ambiguity.
+      </li>
+      <li>
+        <a href="https://tc39.es/ecma262/2026/multipage/numbers-and-dates.html?utm_source=chatgpt.com" rel="noopener" target="_blank">ECMAScript 2026 Language Specification — Numbers and Dates</a><br>
+        Used to verify browser Date behavior and local time-zone handling.
+      </li>
+    </ul>
+
+    <h3>Current Data / Rule Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://www.iana.org/time-zones/releases/2026b?utm_source=chatgpt.com" rel="noopener" target="_blank">IANA — Time Zone Database Release 2026b</a><br>
+        Used to verify the current IANA Time Zone Database release as of September 24, 2026.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related-tools">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/date-calculator/">Date Calculator</a> — Calculate the difference between dates or add and subtract calendar years, months, weeks, and days.</li>
+      <li><a href="https://example.com/day-counter/">Day Counter</a> — Count calendar days between two dates with weekday and weekend totals.</li>
+      <li><a href="https://example.com/day-of-the-week-calculator/">Day of the Week Calculator</a> — Find the weekday, ISO week number, day of year, and leap-year status for a date.</li>
+      <li><a href="https://example.com/time-duration-calculator/">Time Duration Calculator</a> — Calculate elapsed time between two date-and-time values.</li>
+      <li><a href="https://example.com/time-zone-calculator/">Time Zone Calculator</a> — Convert dates and times between supported time zones.</li>
+    </ul>
+  </section>
+</article>
+                </div>
+            </section>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"30","Batch":"4","Calculator / Page":"Age Calculator","Slug":"age-calculator","Site Category (Current)":"Date & Time","Recommended Content Domain":"Date / Time","Page Type":"Calculator","Search Intent / Purpose":"Calculate age between two dates in years, months, and days, plus total days, weeks, hours, and time until the next birthday.","Formula / Algorithm Used in Tool":"Calendar Age Method: Years, months, and days are counted as calendar units rather than treating every month as the same number of days. Total elapsed days are calculated separately from the date difference.","Required User Inputs":"Date of birth; Age at date","Primary Outputs":"Calendar age; Total days; Total weeks; Total hours; Next birthday","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Date of birth, Age at date. Explain outputs: Calendar age, Total days, Total weeks, Total hours, Next birthday. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Calendar convention and date arithmetic rules; time-zone functions require current IANA/browser data.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When calendar/time-zone rules change","Important Assumptions / Limitations":"Month-end dates can be represented in more than one reasonable way because calendar months have different lengths. This implementation borrows days from the preceding target month when needed.","Current Source URLs in Page":"https://www.calculator.net/age-calculator.html","Implementation Path":"/age-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Date &amp; Time</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../time-duration-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Time Duration Calculator</strong><small>Calculate
+                            exact elapsed time between two local date-times in days, hours,
+                            minutes,…</small></span></a><a class="cp-related-link"
+                    href="../date-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Date
+                            Calculator</strong><small>Calculate days between dates or add and subtract years, months,
+                            weeks, and days fro…</small></span></a><a class="cp-related-link"
+                    href="../time-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time
+                            Calculator</strong><small>Add or subtract two time durations in hours, minutes, and seconds
+                            and view the norm…</small></span></a><a class="cp-related-link"
+                    href="../day-counter/index.html"><span class="cp-related-dot">›</span><span><strong>Day
+                            Counter</strong><small>Count calendar days between two dates, with inclusive/exclusive
+                            options plus weekda…</small></span></a><a class="cp-related-link"
+                    href="../hours-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Hours
+                            Calculator</strong><small>Calculate hours and minutes between two clock times, with an
+                            overnight option and d…</small></span></a><a class="cp-related-link"
+                    href="../time-card-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time
+                            Card Calculator</strong><small>Total weekly work hours, unpaid breaks, configurable
+                            overtime, and estimated gross…</small></span></a><a class="cp-related-link"
+                    href="../time-zone-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time
+                            Zone Calculator</strong><small>Convert a date and time between major IANA time zones with
+                            browser-supported daylig…</small></span></a><a class="cp-related-link"
+                    href="../mileage-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Mileage
+                            Calculator</strong><small>Calculate trip mileage from odometer readings and estimate driving
+                            time, fuel use,…</small></span></a></div><a class="cp-side-category"
+                href="../date-time/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const $ = id => document.getElementById(id);
+        const fmt = (n, d = 2) => Number.isFinite(n) ? Number(n).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }) : '—';
+        const val = id => parseFloat($(id).value);
+        function setErr(m = '') { if ($('error')) $('error').textContent = m }
+        function parseDate(id) { const s = $(id).value; if (!s) throw Error('Please enter a date.'); const d = new Date(s + 'T12:00:00'); if (Number.isNaN(d.getTime())) throw Error('Invalid date.'); return d }
+        function pretty(d) { return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) }
+        function iso(d) { return d.toISOString().slice(0, 10) }
+
+        (function () { $('target').value = iso(new Date()) })();
+        function ymd(start, end) { let y = end.getFullYear() - start.getFullYear(), m = end.getMonth() - start.getMonth(), d = end.getDate() - start.getDate(); if (d < 0) { m--; const prev = new Date(end.getFullYear(), end.getMonth(), 0); d += prev.getDate() } if (m < 0) { y--; m += 12 } return [y, m, d] }
+        function calculate() { try { const dob = parseDate('dob'), target = parseDate('target'); if (target < dob) throw Error('Target date must be on or after the birth date.'); const [y, m, d] = ymd(dob, target), total = Math.floor((target - dob) / 86400000); let nb = new Date(target.getFullYear(), dob.getMonth(), dob.getDate(), 12); if (nb < target) nb = new Date(target.getFullYear() + 1, dob.getMonth(), dob.getDate(), 12); const until = Math.max(0, Math.round((nb - target) / 86400000)); $('age').textContent = `${y} years, ${m} months, ${d} days`; $('next').textContent = `${until} days until next birthday`; $('days').textContent = total.toLocaleString(); $('weeks').textContent = fmt(total / 7, 2); $('hours').textContent = (total * 24).toLocaleString(); $('birthday').textContent = pretty(nb); setErr('') } catch (e) { setErr(e.message) } } $('calculate').onclick = calculate; $('clear').onclick = () => location.reload(); calculate();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>
