@@ -1,63 +1,969 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<title>Percent Error Calculator | CalcPro</title>
-<meta content="Calculate percent error, absolute error, relative error, and signed error from observed and accepted values." name="description"/>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="index,follow" name="robots"/>
-<link href="../percent-error-calculator/" rel="canonical"/>
-<meta content="website" property="og:type"/>
-<meta content="Percent Error Calculator" property="og:title"/>
-<meta content="Calculate percent error, absolute error, relative error, and signed error from observed and accepted values." property="og:description"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}
-a{color:inherit}button,input,select{font:inherit}button{cursor:pointer}.wrap{width:min(1160px,92vw);margin:auto}.crumbs{font-size:.88rem;opacity:.78;margin-bottom:18px}h1,h2,h3{line-height:1.15;margin:0 0 14px}h1{font-size:clamp(2.3rem,5vw,4.9rem);letter-spacing:-.045em}h2{font-size:clamp(1.6rem,3vw,2.25rem);letter-spacing:-.025em}h3{font-size:1.1rem}p{margin:0 0 14px}.muted{opacity:.74}label{font-weight:750;font-size:.92rem;display:block;margin-bottom:7px}input,select{width:100%;padding:13px 14px;border-radius:14px;border:1px solid var(--line);background:var(--field);color:var(--ink);outline:none}input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.btn{border:0;border-radius:14px;padding:13px 18px;font-weight:800;box-shadow:var(--btnshadow)}.primary{background:var(--accent);color:var(--onaccent)}.secondary{background:var(--soft);color:var(--ink);border:1px solid var(--line)}.error{min-height:24px;color:var(--danger);font-weight:700;margin-top:10px}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--formula);border:1px solid var(--line);padding:14px 16px;border-radius:16px;overflow:auto}.result-main{font-size:clamp(1.9rem,4vw,3.2rem);font-weight:900;letter-spacing:-.04em;word-break:break-word}.result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.result-chip{padding:12px 13px;border-radius:14px;background:var(--soft);border:1px solid var(--line)}.result-chip b{display:block;font-size:.8rem;opacity:.65;margin-bottom:2px}.content{padding:72px 0 40px}.article-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}article section{margin-bottom:38px}aside{position:sticky;top:18px}.toc,.sourcebox{border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow);border-radius:24px;padding:20px}.toc a{display:block;text-decoration:none;padding:6px 0;opacity:.78}.toc a:hover{opacity:1}ul,ol{padding-left:22px}table{width:100%;border-collapse:collapse;border-radius:18px;overflow:hidden}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left}th{background:var(--soft)}footer{padding:36px 0 50px;opacity:.7;font-size:.9rem}.sr{position:absolute;left:-9999px}
-@media(max-width:860px){.article-grid{grid-template-columns:1fr}aside{position:static}.result-grid{grid-template-columns:1fr}}
-</style>
-<style>
-:root{--bg:#fbf8ff;--ink:#251733;--panel:#fff;--field:#fff;--soft:#f5edff;--formula:#fff8e9;--line:#e8dff2;--accent:#7028a8;--onaccent:#fff;--focus:#7028a81d;--danger:#b42318;--shadow:0 24px 70px #30144618;--btnshadow:0 12px 25px #4a1a7624;}
+   <meta charset="utf-8" />
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<meta http-equiv="content-language" content="en">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
 
-.pe-hero{padding:54px 0 115px;background:radial-gradient(circle at 80% 20%,#ffcf70 0 8%,transparent 25%),linear-gradient(135deg,#251447,#4b1c77 52%,#8b3b67);color:white;overflow:hidden}.pe-hero-grid{display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:40px}.eyebrow{display:inline-block;padding:7px 11px;border:1px solid #ffffff45;border-radius:999px;font-size:.78rem;font-weight:800;letter-spacing:.15em;margin-bottom:14px}.pe-orbit{width:300px;height:300px;margin:auto;position:relative;transform:rotate(-7deg);perspective:800px}.target{position:absolute;inset:65px;border-radius:50%;display:grid;place-items:center;font-size:6rem;font-weight:900;background:linear-gradient(145deg,#ffd878,#ff8c6b);color:#3b164c;box-shadow:inset -20px -20px 40px #ab3d6b55,0 35px 60px #18082b80;transform:translateZ(30px)}.pe-orbit i{position:absolute;border:2px solid #ffffff55;border-radius:50%;inset:20px}.pe-orbit .o2{inset:0;transform:rotateX(65deg)}.pe-orbit .o3{inset:35px;transform:rotateY(65deg)}.pe-calc{margin-top:-72px}.pe-stage{display:grid;grid-template-columns:1fr;gap:18px}.pe-card,.pe-result{padding:28px;border-radius:30px;background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow)}.pe-result{background:linear-gradient(145deg,#fff6e6,#f3e8ff)}.pe-result>span{font-weight:800;opacity:.6}.fields.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:760px){.pe-hero-grid,.pe-stage,.fields.two{grid-template-columns:1fr}.pe-orbit{width:230px;height:230px}.target{font-size:4rem;inset:50px}}
 
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/percent-error-calculator/#app", "name": "Percent Error Calculator", "url": "/percent-error-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate percent error, absolute error, relative error, and signed error from observed and accepted values."}, {"@type": "BreadcrumbList", "@id": "/percent-error-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Math & Statistics", "item": "/math/"}, {"@type": "ListItem", "position": 3, "name": "Percentages & Error", "item": "/math/percentages-error/"}, {"@type": "ListItem", "position": 4, "name": "Percent Error Calculator", "item": "/percent-error-calculator/"}]}, {"@type": "FAQPage", "@id": "/percent-error-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "What is percent error?", "acceptedAnswer": {"@type": "Answer", "text": "Percent error expresses the size of the absolute difference between an observed value and an accepted or reference value as a percentage of the absolute reference value."}}, {"@type": "Question", "name": "Can percent error be negative?", "acceptedAnswer": {"@type": "Answer", "text": "The conventional percent-error magnitude uses an absolute value, so it is nonnegative. A signed relative error can be positive or negative and indicates direction."}}, {"@type": "Question", "name": "What if the accepted value is zero?", "acceptedAnswer": {"@type": "Answer", "text": "Relative and percent error are undefined when the reference value is zero because the formula divides by the reference value. Use absolute error instead."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body data-cp-category="math" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../math/index.html">Math &amp; Statistics</a></li><li><a aria-current="page" href="index.html">Percent Error Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a href="../calculators/index.html">All calculators</a></div><header>
-<div class="pe-hero"><div class="wrap pe-hero-grid">
-<div><nav class="crumbs">Home / Math / Percent Error Calculator</nav><span class="eyebrow">MEASUREMENT LAB</span><h1>Percent Error Calculator</h1><p>Compare an observed value with an accepted value and instantly see absolute error, signed error, relative error, and percent error.</p></div>
-<div aria-hidden="true" class="pe-orbit"><div class="target">%</div><i class="o1"></i><i class="o2"></i><i class="o3"></i></div>
-</div></div></header>
-<div class="cp-page-layout"><main id="main"><h1 class="page-title">Percent Error Calculator</h1>
-<section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="pe-calc"><div class="wrap pe-stage">
-<div class="pe-card"><h2>Enter the two values</h2><div class="fields two"><div><label for="observed">Observed / experimental value</label><input id="observed" step="any" type="number" value="95"/></div><div><label for="accepted">Accepted / reference value</label><input id="accepted" step="any" type="number" value="100"/></div></div><div class="actions"><button class="btn primary" onclick="calcPercentError()">Calculate Error</button><button class="btn secondary" onclick="resetPE()">Reset</button></div><div class="error" id="peErr" role="alert"></div></div>
-<div class="pe-result"><span>Percent error</span><div class="result-main" id="peMain">5%</div><div class="result-grid"><div class="result-chip"><b>Absolute error</b><span id="peAbs">5</span></div><div class="result-chip"><b>Signed error</b><span id="peSigned">-5</span></div><div class="result-chip"><b>Relative error</b><span id="peRel">0.05</span></div><div class="result-chip"><b>Signed relative error</b><span id="peAcc">-5%</span></div></div></div>
-</div></section>
-<div class="content"><div class="wrap article-grid">
-<article>
-<section id="about"><h2>What Is a Percent Error Calculator?</h2><p>A percent error calculator measures how far an observed or experimental value is from an accepted reference value relative to that reference. It is useful in laboratory work, calibration checks, engineering comparisons, and classroom calculations where the magnitude of the error matters.</p></section>
-<section id="use"><h2>How to Use the Percent Error Calculator</h2><ol><li>Enter the observed or experimental value.</li><li>Enter the accepted or reference value.</li><li>Select <strong>Calculate Error</strong>. The result panel shows the percent error plus supporting error measures.</li></ol></section>
-<section id="formula"><h2>Percent Error Formula</h2><div class="formula">Percent error = |observed − accepted| / |accepted| × 100%</div><p>NIST defines absolute error as the magnitude of the difference between an approximation and the reference quantity, and relative error as absolute error divided by the magnitude of the reference value. Percent error is that relative error expressed as a percentage.</p></section>
-<section id="example"><h2>Calculation Example</h2><p>If the observed value is 95 and the accepted value is 100, the absolute error is 5. Dividing 5 by 100 gives 0.05, so the percent error is <strong>5%</strong>.</p></section>
-<section id="limits"><h2>Limitations</h2><p>Percent error is undefined when the accepted value is zero. It also describes disagreement with a reference value, not measurement uncertainty, repeatability, or statistical significance. For metrology work, error and uncertainty should not be treated as identical concepts.</p></section>
-<section id="faq"><h2>Frequently Asked Questions</h2><h3>What is the difference between absolute and percent error?</h3><p>Absolute error is expressed in the same units as the measured quantity. Percent error scales that difference by the accepted value, which makes comparisons across different magnitudes easier.</p><h3>Should the denominator use the observed or accepted value?</h3><p>For the standard percent-error calculation used here, the denominator is the absolute accepted or reference value. Other fields may use different relative-difference conventions, so always match the formula to the context.</p></section>
-<section id="sources"><h2>Sources and Methodology</h2><ul><li><a href="https://dlmf.nist.gov/3.1" rel="noopener" target="_blank">NIST Digital Library of Mathematical Functions — Error Measures</a></li><li><a href="https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-appendix-d1-terminology" rel="noopener" target="_blank">NIST Technical Note 1297 — Measurement Error Terminology</a></li></ul><p class="muted">Method: the calculator uses absolute reference-based relative error, multiplied by 100 for percentage form.</p></section></article>
-<aside><div class="toc"><h3>On this page</h3>
-<a href="#about">What it calculates</a><a href="#use">How to use it</a><a href="#formula">Formula</a>
-<a href="#example">Example</a><a href="#limits">Limitations</a><a href="#faq">FAQs</a><a href="#sources">Sources</a>
-</div></aside>
-</div></div>
+<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+<!-- Primary Meta Tags -->
+<title>Percent Error Calculator – Formula &amp; Relative Error</title>
+<meta name="title" content="Percent Error Calculator – Formula &amp; Relative Error">
+<meta name="description" content="Calculate percent error from observed and accepted values, plus absolute error, relative error, and signed error for a clear numerical comparison.">
 
-<script class="cp-calculator-data" type="application/json">{"index":"136","Batch":"14","Calculator / Page":"Percent Error Calculator","Slug":"percent-error-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Calculate percent error, absolute error, relative error, and signed error from observed and accepted values.","Formula / Algorithm Used in Tool":"Percent Error Formula: Percent error = |observed − accepted| / |accepted| × 100% NIST defines absolute error as the magnitude of the difference between an approximation and the reference quantity, and relative error as absolute error divided by the magnitude of the reference value. Percent error is that relative error expressed as a percentage.","Required User Inputs":"Observed / experimental value; Accepted / reference value","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Observed / experimental value, Accepted / reference value. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"Percent error is undefined when the accepted value is zero. It also describes disagreement with a reference value, not measurement uncertainty, repeatability, or statistical significance. For metrology work, error and uncertainty should not be treated as identical concepts.","Current Source URLs in Page":"https://dlmf.nist.gov/3.1 | https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-appendix-d1-terminology","Implementation Path":"/percent-error-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Math &amp; Statistics</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../percent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Percent Calculator</strong><small>Calculate a percentage of a number, find what percent one value is of another, calc…</small></span></a><a class="cp-related-link" href="../standard-deviation-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Standard Deviation Calculator</strong><small>Calculate sample or population standard deviation, variance, mean, sum, count, stan…</small></span></a><a class="cp-related-link" href="../sample-size-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Sample Size Calculator</strong><small>Estimate sample size for a population proportion using confidence level, margin of…</small></span></a><a class="cp-related-link" href="../rounding-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Rounding Calculator</strong><small>Round a number to decimal places or common place values. Free, fast and responsive…</small></span></a><a class="cp-related-link" href="../percent-off-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Turn the discount tag into the price you actually pay.</strong><small>Calculate percent off, final sale price, amount saved, effective discount, and a se…</small></span></a><a class="cp-related-link" href="../p-value-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>P-Value Calculator</strong><small>Calculate left-tail, right-tail, center, between, or two-tail p-values from a z-sco…</small></span></a><a class="cp-related-link" href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the simplified fraction, m…</small></span></a><a class="cp-related-link" href="../math-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Math Calculator</strong><small>Perform basic arithmetic with addition, subtraction, multiplication, division, pare…</small></span></a></div><a class="cp-side-category" href="../math/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-const fmt=n=>Number.isFinite(n)?(Math.abs(n)>=1e9|| (Math.abs(n)>0&&Math.abs(n)<1e-6)?n.toExponential(6):parseFloat(n.toFixed(10)).toString()):"—";
-function calcPercentError(){const o=Number(document.getElementById('observed').value),a=Number(document.getElementById('accepted').value),e=document.getElementById('peErr');e.textContent='';if(!Number.isFinite(o)||!Number.isFinite(a)){e.textContent='Enter valid numeric values.';return}const ab=Math.abs(o-a),signed=o-a;document.getElementById('peAbs').textContent=fmt(ab);document.getElementById('peSigned').textContent=fmt(signed);if(a===0){document.getElementById('peMain').textContent='Undefined';document.getElementById('peRel').textContent='Undefined';document.getElementById('peAcc').textContent='Undefined';e.textContent='Percent error is undefined when the accepted value is zero.';return}const rel=ab/Math.abs(a),pct=rel*100;document.getElementById('peMain').textContent=fmt(pct)+'%';document.getElementById('peRel').textContent=fmt(rel);document.getElementById('peAcc').textContent=fmt((signed/Math.abs(a))*100)+'%'}
-function resetPE(){observed.value=95;accepted.value=100;calcPercentError()}calcPercentError();
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/percent-error-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/percent-error-calculator/">
+<meta property="og:title" content="Percent Error Calculator – Formula &amp; Relative Error">
+<meta property="og:description" content="Calculate percent error from observed and accepted values, plus absolute error, relative error, and signed error for a clear numerical comparison.">
+<meta property="og:site_name" content="Percent Error Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/percent-error-calculator/">
+<meta name="twitter:title" content="Percent Error Calculator – Formula &amp; Relative Error">
+<meta name="twitter:description" content="Calculate percent error from observed and accepted values, plus absolute error, relative error, and signed error for a clear numerical comparison.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.65
+        }
+
+        a {
+            color: inherit
+        }
+
+        button,
+        input,
+        select {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        .wrap {
+            width: min(1160px, 92vw);
+            margin: auto
+        }
+
+        .crumbs {
+            font-size: .88rem;
+            opacity: .78;
+            margin-bottom: 18px
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.15;
+            margin: 0 0 14px
+        }
+
+        h1 {
+            font-size: clamp(2.3rem, 5vw, 4.9rem);
+            letter-spacing: -.045em
+        }
+
+        h2 {
+            font-size: clamp(1.6rem, 3vw, 2.25rem);
+            letter-spacing: -.025em
+        }
+
+        h3 {
+            font-size: 1.1rem
+        }
+
+        p {
+            margin: 0 0 14px
+        }
+
+        .muted {
+            opacity: .74
+        }
+
+        label {
+            font-weight: 750;
+            font-size: .92rem;
+            display: block;
+            margin-bottom: 7px
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 13px 14px;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            background: var(--field);
+            color: var(--ink);
+            outline: none
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--focus)
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 13px 18px;
+            font-weight: 800;
+            box-shadow: var(--btnshadow)
+        }
+
+        .primary {
+            background: var(--accent);
+            color: var(--onaccent)
+        }
+
+        .secondary {
+            background: var(--soft);
+            color: var(--ink);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            min-height: 24px;
+            color: var(--danger);
+            font-weight: 700;
+            margin-top: 10px
+        }
+
+        .formula {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: var(--formula);
+            border: 1px solid var(--line);
+            padding: 14px 16px;
+            border-radius: 16px;
+            overflow: auto
+        }
+
+        .result-main {
+            font-size: clamp(1.9rem, 4vw, 3.2rem);
+            font-weight: 900;
+            letter-spacing: -.04em;
+            word-break: break-word
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 14px
+        }
+
+        .result-chip {
+            padding: 12px 13px;
+            border-radius: 14px;
+            background: var(--soft);
+            border: 1px solid var(--line)
+        }
+
+        .result-chip b {
+            display: block;
+            font-size: .8rem;
+            opacity: .65;
+            margin-bottom: 2px
+        }
+
+        .content {
+            padding: 72px 0 40px
+        }
+
+        .article-grid {
+            display: grid;
+            gap: 28px;
+            align-items: start
+        }
+
+        article section {
+            margin-bottom: 38px
+        }
+
+        aside {
+            position: sticky;
+            top: 18px
+        }
+
+        .toc,
+        .sourcebox {
+            border: 1px solid var(--line);
+            background: var(--panel);
+            box-shadow: var(--shadow);
+            border-radius: 24px;
+            padding: 20px
+        }
+
+        .toc a {
+            display: block;
+            text-decoration: none;
+            padding: 6px 0;
+            opacity: .78
+        }
+
+        .toc a:hover {
+            opacity: 1
+        }
+
+        ul,
+        ol {
+            padding-left: 22px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 18px;
+            overflow: hidden
+        }
+
+        th,
+        td {
+            padding: 11px;
+            border-bottom: 1px solid var(--line);
+            text-align: left
+        }
+
+        th {
+            background: var(--soft)
+        }
+
+        footer {
+            padding: 36px 0 50px;
+            opacity: .7;
+            font-size: .9rem
+        }
+
+        .sr {
+            position: absolute;
+            left: -9999px
+        }
+
+        @media(max-width:860px) {
+            .article-grid {
+                grid-template-columns: 1fr
+            }
+
+            aside {
+                position: static
+            }
+
+            .result-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+    <style>
+        :root {
+            --bg: #fbf8ff;
+            --ink: #251733;
+            --panel: #fff;
+            --field: #fff;
+            --soft: #f5edff;
+            --formula: #fff8e9;
+            --line: #e8dff2;
+            --accent: #7028a8;
+            --onaccent: #fff;
+            --focus: #7028a81d;
+            --danger: #b42318;
+            --shadow: 0 24px 70px #30144618;
+            --btnshadow: 0 12px 25px #4a1a7624;
+        }
+
+        .pe-hero {
+            padding: 54px 0 115px;
+            background: radial-gradient(circle at 80% 20%, #ffcf70 0 8%, transparent 25%), linear-gradient(135deg, #251447, #4b1c77 52%, #8b3b67);
+            color: white;
+            overflow: hidden
+        }
+
+        .pe-hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            align-items: center;
+            gap: 40px
+        }
+
+        .eyebrow {
+            display: inline-block;
+            padding: 7px 11px;
+            border: 1px solid #ffffff45;
+            border-radius: 999px;
+            font-size: .78rem;
+            font-weight: 800;
+            letter-spacing: .15em;
+            margin-bottom: 14px
+        }
+
+        .pe-orbit {
+            width: 300px;
+            height: 300px;
+            margin: auto;
+            position: relative;
+            transform: rotate(-7deg);
+            perspective: 800px
+        }
+
+        .target {
+            position: absolute;
+            inset: 65px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 6rem;
+            font-weight: 900;
+            background: linear-gradient(145deg, #ffd878, #ff8c6b);
+            color: #3b164c;
+            box-shadow: inset -20px -20px 40px #ab3d6b55, 0 35px 60px #18082b80;
+            transform: translateZ(30px)
+        }
+
+        .pe-orbit i {
+            position: absolute;
+            border: 2px solid #ffffff55;
+            border-radius: 50%;
+            inset: 20px
+        }
+
+        .pe-orbit .o2 {
+            inset: 0;
+            transform: rotateX(65deg)
+        }
+
+        .pe-orbit .o3 {
+            inset: 35px;
+            transform: rotateY(65deg)
+        }
+
+        .pe-calc {
+            margin-top: -72px
+        }
+
+        .pe-stage {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px
+        }
+
+        .pe-card,
+        .pe-result {
+            padding: 28px;
+            border-radius: 30px;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow)
+        }
+
+        .pe-result {
+            background: linear-gradient(145deg, #fff6e6, #f3e8ff)
+        }
+
+        .pe-result>span {
+            font-weight: 800;
+            opacity: .6
+        }
+
+        .fields.two {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px
+        }
+
+        @media(max-width:760px) {
+
+            .pe-hero-grid,
+            .pe-stage,
+            .fields.two {
+                grid-template-columns: 1fr
+            }
+
+            .pe-orbit {
+                width: 230px;
+                height: 230px
+            }
+
+            .target {
+                font-size: 4rem;
+                inset: 50px
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/percent-error-calculator/#webapplication",
+      "name": "Percent Error Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/percent-error-calculator/",
+      "description": "Calculate percent error from observed and accepted values, plus absolute error, relative error, and signed error for a clear numerical comparison.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/percent-error-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Percent Error Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/percent-error-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/percent-error-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the formula for percent error?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The formula is: Percent Error = |Observed − Accepted| ÷ |Accepted| × 100%. First calculate the absolute difference, divide it by the magnitude of the accepted value, and then multiply by 100."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can percent error be negative?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not with this formula. The absolute difference and absolute accepted value are used, so percent error is non-negative. The separate signed error can be positive or negative."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a percent error of 0% mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A percent error of 0% means the observed value and accepted value are equal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if the accepted value is zero?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Percent error and relative error are undefined because their formulas require division by the absolute value of the accepted value. Division by zero is not defined. Signed error and absolute difference can still be determined independently."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between absolute error and percent error?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolute error gives the size of the difference in the original unit: Absolute Error = |Observed − Accepted|. Percent error compares that difference with the accepted value: Percent Error = Absolute Error ÷ |Accepted| × 100%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between relative error and percent error?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Relative error is expressed as a decimal or ratio. Percent error is the same relative error multiplied by 100 and expressed as a percentage. For example, a relative error of 0.08 equals a percent error of 8%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is percent error the same as measurement uncertainty?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Percent error compares an observed value with a reference value. Measurement uncertainty describes uncertainty associated with a measurement result and is a separate metrology concept."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="math" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../math/index.html">Math &amp; Statistics</a></li>
+            <li><a aria-current="page" href="index.html">Percent Error Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a
+            href="../calculators/index.html">All calculators</a></div>
+     
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Percent Error Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="pe-calc">
+                <div class="wrap pe-stage">
+                    <div class="pe-card">
+                        <h2>Enter the two values</h2>
+                        <div class="fields two">
+                            <div><label for="observed">Observed / experimental value</label><input id="observed"
+                                    step="any" type="number" value="95" /></div>
+                            <div><label for="accepted">Accepted / reference value</label><input id="accepted" step="any"
+                                    type="number" value="100" /></div>
+                        </div>
+                        <div class="actions"><button class="btn primary" onclick="calcPercentError()">Calculate
+                                Error</button><button class="btn secondary" onclick="resetPE()">Reset</button></div>
+                        <div class="error" id="peErr" role="alert"></div>
+                    </div>
+                    <div class="pe-result"><span>Percent error</span>
+                        <div class="result-main" id="peMain">5%</div>
+                        <div class="result-grid">
+                            <div class="result-chip"><b>Absolute error</b><span id="peAbs">5</span></div>
+                            <div class="result-chip"><b>Signed error</b><span id="peSigned">-5</span></div>
+                            <div class="result-chip"><b>Relative error</b><span id="peRel">0.05</span></div>
+                            <div class="result-chip"><b>Signed relative error</b><span id="peAcc">-5%</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="content">
+                <div class="wrap article-grid">
+                   <article class="article">
+ 
+  <p>Use the Percent Error Calculator to compare an <strong>observed or experimental value</strong> with an <strong>accepted or reference value</strong>. It calculates percent error and supporting values including absolute error, relative error, and signed error.</p>
+
+  <section id="what">
+    <h2>What Is the Percent Error Calculator?</h2>
+
+    <p>The Percent Error Calculator measures how far an observed value differs from an accepted value relative to the size of that accepted value.</p>
+
+    <p>It is useful when comparing an experimental measurement, estimate, calculated result, or approximation with a known reference value. Percent error expresses the size of the difference as a percentage, while the supporting error values show the difference in other forms.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Percent Error Calculator</h2>
+
+    <p>Enter the two values used for the comparison:</p>
+
+    <ol>
+      <li><strong>Observed / Experimental Value:</strong> Enter the value you measured, calculated, estimated, or observed.</li>
+      <li><strong>Accepted / Reference Value:</strong> Enter the value being used as the reference for the comparison.</li>
+    </ol>
+
+    <p>Both values should represent the same quantity and use compatible units.</p>
+
+    <p>The calculator then determines the signed error, absolute error, relative error, and percent error.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+
+    <p>The percent error formula is:</p>
+
+    <div class="formula">Percent Error = |Observed − Accepted| ÷ |Accepted| × 100%</div>
+
+    <p>Equivalently:</p>
+
+    <div class="formula">Percent Error = Relative Error × 100%</div>
+
+    <p>NIST defines absolute error as the magnitude of the difference between an approximation and its reference value, and relative error as absolute error divided by the magnitude of the reference value.</p>
+
+    <h3>Variables</h3>
+
+    <ul>
+      <li><strong>Observed (O):</strong> The experimental, measured, calculated, or estimated value.</li>
+      <li><strong>Accepted (A):</strong> The reference value used for comparison.</li>
+      <li><strong>| |:</strong> Absolute value, which makes the enclosed result non-negative.</li>
+      <li><strong>Percent Error:</strong> Relative error expressed as a percentage.</li>
+    </ul>
+
+    <p>The observed and accepted values should use the same unit. Signed and absolute error retain that unit, while relative error is dimensionless and percent error is expressed as a percentage.</p>
+
+    <h3>Calculation Sequence</h3>
+
+    <p>The calculator uses the two entered values in the following sequence:</p>
+
+    <ol>
+      <li>Find the signed difference between the observed and accepted values.</li>
+      <li>Take the absolute value of that difference to determine absolute error.</li>
+      <li>Divide the absolute error by the absolute value of the accepted value.</li>
+      <li>Multiply the relative error by 100 to express it as percent error.</li>
+    </ol>
+
+    <h3>Signed Error</h3>
+
+    <p>The signed error is:</p>
+
+    <div class="formula">Signed Error = Observed − Accepted</div>
+
+    <p>A positive result means the observed value is above the accepted value. A negative result means it is below the accepted value.</p>
+
+    <p>NIST measurement terminology defines error as a measurement result minus the value of the measurand, supporting this signed-difference convention when a reference value is used for comparison.</p>
+
+    <h3>Absolute Error</h3>
+
+    <p>Absolute error removes the sign from the difference:</p>
+
+    <div class="formula">Absolute Error = |Observed − Accepted|</div>
+
+    <p>NIST's DLMF gives the corresponding absolute-error definition as the magnitude of the difference between an approximation and the reference value.</p>
+
+    <h3>Relative Error</h3>
+
+    <p>Relative error compares the absolute error with the magnitude of the accepted value:</p>
+
+    <div class="formula">Relative Error = |Observed − Accepted| ÷ |Accepted|</div>
+
+    <p>Relative error has no unit because the units in the numerator and denominator cancel. The accepted value must be nonzero for relative error to be defined.</p>
+
+    <h3>Percent Error</h3>
+
+    <p>Percent error converts relative error to percentage form:</p>
+
+    <div class="formula">Percent Error = Relative Error × 100%</div>
+
+    <p>This shows the error relative to the accepted value on a percentage scale.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose the observed value is <strong>47.5</strong> and the accepted value is <strong>50</strong>.</p>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li>Observed value = 47.5</li>
+      <li>Accepted value = 50</li>
+    </ul>
+
+    <h3>Step 1: Calculate Signed Error</h3>
+
+    <div class="formula">Signed Error = 47.5 − 50</div>
+
+    <div class="formula">Signed Error = −2.5</div>
+
+    <h3>Step 2: Calculate Absolute Error</h3>
+
+    <div class="formula">Absolute Error = |−2.5|</div>
+
+    <div class="formula">Absolute Error = 2.5</div>
+
+    <h3>Step 3: Calculate Relative Error</h3>
+
+    <div class="formula">Relative Error = 2.5 ÷ |50|</div>
+
+    <div class="formula">Relative Error = 0.05</div>
+
+    <h3>Step 4: Calculate Percent Error</h3>
+
+    <div class="formula">Percent Error = 0.05 × 100%</div>
+
+    <h3>Final Result</h3>
+
+    <div class="formula">Percent Error = 5%</div>
+
+    <p>The observed value is therefore 5% away from the accepted value. Because the signed error is negative, the observed value is lower than the accepted value.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Percent Error</h3>
+
+    <p>Percent error shows the size of the difference relative to the accepted value. A result of <strong>5%</strong>, for example, means the absolute difference is equal to 5% of the magnitude of the accepted value.</p>
+
+    <p>Percent error uses an absolute difference, so its result is non-negative.</p>
+
+    <h3>Absolute Error</h3>
+
+    <p>Absolute error shows the size of the difference in the same unit as the original values.</p>
+
+    <p>If two lengths differ by 2 cm, for example, the absolute error is 2 cm.</p>
+
+    <h3>Relative Error</h3>
+
+    <p>Relative error expresses the error as a proportion of the accepted value rather than as a percentage.</p>
+
+    <p>For example:</p>
+
+    <div class="formula">Relative error = 0.05</div>
+
+    <p>is equivalent to:</p>
+
+    <div class="formula">Percent error = 5%</div>
+
+    <h3>Signed Error</h3>
+
+    <p>Signed error preserves the direction of the difference.</p>
+
+    <ul>
+      <li>Positive signed error: observed value is greater than the accepted value.</li>
+      <li>Negative signed error: observed value is less than the accepted value.</li>
+      <li>Zero signed error: both values are equal.</li>
+    </ul>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The observed and accepted values should describe the same quantity and use compatible units.</p>
+
+    <p>The <strong>accepted value cannot be zero when calculating relative error or percent error</strong>, because the formula requires division by the magnitude of the accepted value. NIST similarly defines relative error only when the reference value is nonzero.</p>
+
+    <p>If the observed value equals the accepted value, the signed error, absolute error, relative error, and percent error are all zero.</p>
+
+    <p>Percent error measures disagreement with a reference value. It does not by itself measure measurement uncertainty, repeatability, precision, or statistical significance. NIST distinguishes measurement error from measurement uncertainty and notes that measurement error may be unknown even when uncertainty can be evaluated.</p>
+
+    <p>When checking calculations manually, keep sufficient decimal precision until the final step to avoid differences caused by early rounding.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What is the formula for percent error?</summary>
+
+      <p>The formula is:</p>
+
+      <div class="formula">Percent Error = |Observed − Accepted| ÷ |Accepted| × 100%</div>
+
+      <p>First calculate the absolute difference, divide it by the magnitude of the accepted value, and then multiply by 100.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can percent error be negative?</summary>
+
+      <p>Not with this formula. The absolute difference and absolute accepted value are used, so percent error is non-negative.</p>
+
+      <p>The separate signed error can be positive or negative.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What does a percent error of 0% mean?</summary>
+
+      <p>A percent error of 0% means the observed value and accepted value are equal.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What happens if the accepted value is zero?</summary>
+
+      <p>Percent error and relative error are undefined because their formulas require division by the absolute value of the accepted value. Division by zero is not defined.</p>
+
+      <p>Signed error and absolute difference can still be determined independently.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What is the difference between absolute error and percent error?</summary>
+
+      <p>Absolute error gives the size of the difference in the original unit:</p>
+
+      <div class="formula">Absolute Error = |Observed − Accepted|</div>
+
+      <p>Percent error compares that difference with the accepted value:</p>
+
+      <div class="formula">Percent Error = Absolute Error ÷ |Accepted| × 100%</div>
+    </details>
+
+    <details class="faq">
+      <summary>What is the difference between relative error and percent error?</summary>
+
+      <p>Relative error is expressed as a decimal or ratio. Percent error is the same relative error multiplied by 100 and expressed as a percentage.</p>
+
+      <p>For example, a relative error of <strong>0.08</strong> equals a percent error of <strong>8%</strong>.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is percent error the same as measurement uncertainty?</summary>
+
+      <p>No. Percent error compares an observed value with a reference value. Measurement uncertainty describes uncertainty associated with a measurement result and is a separate metrology concept.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <strong>NIST Digital Library of Mathematical Functions — §3.1(v) Error Measures</strong><br>
+        Defines absolute error and relative error and specifies that relative error requires a nonzero reference value.<br>
+        <a href="https://dlmf.nist.gov/3.1?utm_source=chatgpt.com" rel="noopener" target="_blank">NIST DLMF — Error Measures</a>
+      </li>
+      <li>
+        <strong>NIST Technical Note 1297 — Appendix D1: Terminology</strong><br>
+        Provides measurement-error terminology and explains the distinction between measurement error and measurement uncertainty.<br>
+        <a href="https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-appendix-d1-terminology?utm_source=chatgpt.com" rel="noopener" target="_blank">NIST TN 1297 — Appendix D1 Terminology</a>
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/percent-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Percent Calculator</a></li>
+      <li><a href="https://example.com/standard-deviation-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Standard Deviation Calculator</a></li>
+      <li><a href="https://example.com/statistics-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Statistics Calculator</a></li>
+      <li><a href="https://example.com/average-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Average Calculator</a></li>
+      <li><a href="https://example.com/ratio-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Ratio Calculator</a></li>
+      <li><a href="https://example.com/scientific-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Scientific Calculator</a></li>
+    </ul>
+  </section>
+</article>
+                </div>
+            </div>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"136","Batch":"14","Calculator / Page":"Percent Error Calculator","Slug":"percent-error-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Calculate percent error, absolute error, relative error, and signed error from observed and accepted values.","Formula / Algorithm Used in Tool":"Percent Error Formula: Percent error = |observed − accepted| / |accepted| × 100% NIST defines absolute error as the magnitude of the difference between an approximation and the reference quantity, and relative error as absolute error divided by the magnitude of the reference value. Percent error is that relative error expressed as a percentage.","Required User Inputs":"Observed / experimental value; Accepted / reference value","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Observed / experimental value, Accepted / reference value. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"Percent error is undefined when the accepted value is zero. It also describes disagreement with a reference value, not measurement uncertainty, repeatability, or statistical significance. For metrology work, error and uncertainty should not be treated as identical concepts.","Current Source URLs in Page":"https://dlmf.nist.gov/3.1 | https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-appendix-d1-terminology","Implementation Path":"/percent-error-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Math &amp; Statistics</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../percent-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Percent Calculator</strong><small>Calculate a
+                            percentage of a number, find what percent one value is of another,
+                            calc…</small></span></a><a class="cp-related-link"
+                    href="../standard-deviation-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Standard Deviation
+                            Calculator</strong><small>Calculate sample or population standard deviation, variance, mean,
+                            sum, count, stan…</small></span></a><a class="cp-related-link"
+                    href="../sample-size-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Sample Size Calculator</strong><small>Estimate
+                            sample size for a population proportion using confidence level, margin
+                            of…</small></span></a><a class="cp-related-link"
+                    href="../rounding-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Rounding
+                            Calculator</strong><small>Round a number to decimal places or common place values. Free,
+                            fast and responsive…</small></span></a><a class="cp-related-link"
+                    href="../percent-off-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Turn
+                            the discount tag into the price you actually pay.</strong><small>Calculate percent off,
+                            final sale price, amount saved, effective discount, and a se…</small></span></a><a
+                    class="cp-related-link" href="../p-value-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>P-Value Calculator</strong><small>Calculate
+                            left-tail, right-tail, center, between, or two-tail p-values from a
+                            z-sco…</small></span></a><a class="cp-related-link"
+                    href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction
+                            Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the
+                            simplified fraction, m…</small></span></a><a class="cp-related-link"
+                    href="../math-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Math
+                            Calculator</strong><small>Perform basic arithmetic with addition, subtraction,
+                            multiplication, division, pare…</small></span></a></div><a class="cp-side-category"
+                href="../math/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const fmt = n => Number.isFinite(n) ? (Math.abs(n) >= 1e9 || (Math.abs(n) > 0 && Math.abs(n) < 1e-6) ? n.toExponential(6) : parseFloat(n.toFixed(10)).toString()) : "—";
+        function calcPercentError() { const o = Number(document.getElementById('observed').value), a = Number(document.getElementById('accepted').value), e = document.getElementById('peErr'); e.textContent = ''; if (!Number.isFinite(o) || !Number.isFinite(a)) { e.textContent = 'Enter valid numeric values.'; return } const ab = Math.abs(o - a), signed = o - a; document.getElementById('peAbs').textContent = fmt(ab); document.getElementById('peSigned').textContent = fmt(signed); if (a === 0) { document.getElementById('peMain').textContent = 'Undefined'; document.getElementById('peRel').textContent = 'Undefined'; document.getElementById('peAcc').textContent = 'Undefined'; e.textContent = 'Percent error is undefined when the accepted value is zero.'; return } const rel = ab / Math.abs(a), pct = rel * 100; document.getElementById('peMain').textContent = fmt(pct) + '%'; document.getElementById('peRel').textContent = fmt(rel); document.getElementById('peAcc').textContent = fmt((signed / Math.abs(a)) * 100) + '%' }
+        function resetPE() { observed.value = 95; accepted.value = 100; calcPercentError() } calcPercentError();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

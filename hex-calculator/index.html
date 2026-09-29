@@ -1,50 +1,964 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<title>Hex Calculator | CalcPro</title>
-<meta content="Perform exact hexadecimal integer arithmetic and convert results to decimal and binary." name="description"/>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="index,follow" name="robots"/>
-<link href="../hex-calculator/" rel="canonical"/>
-<meta content="website" property="og:type"/>
-<meta content="Hex Calculator" property="og:title"/>
-<meta content="Perform exact hexadecimal integer arithmetic and convert results to decimal and binary." property="og:description"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}
-a{color:inherit}button,input,select{font:inherit}button{cursor:pointer}.wrap{width:min(1160px,92vw);margin:auto}.crumbs{font-size:.88rem;opacity:.78;margin-bottom:18px}h1,h2,h3{line-height:1.15;margin:0 0 14px}h1{font-size:clamp(2.3rem,5vw,4.9rem);letter-spacing:-.045em}h2{font-size:clamp(1.6rem,3vw,2.25rem);letter-spacing:-.025em}h3{font-size:1.1rem}p{margin:0 0 14px}.muted{opacity:.74}label{font-weight:750;font-size:.92rem;display:block;margin-bottom:7px}input,select{width:100%;padding:13px 14px;border-radius:14px;border:1px solid var(--line);background:var(--field);color:var(--ink);outline:none}input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.btn{border:0;border-radius:14px;padding:13px 18px;font-weight:800;box-shadow:var(--btnshadow)}.primary{background:var(--accent);color:var(--onaccent)}.secondary{background:var(--soft);color:var(--ink);border:1px solid var(--line)}.error{min-height:24px;color:var(--danger);font-weight:700;margin-top:10px}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--formula);border:1px solid var(--line);padding:14px 16px;border-radius:16px;overflow:auto}.result-main{font-size:clamp(1.9rem,4vw,3.2rem);font-weight:900;letter-spacing:-.04em;word-break:break-word}.result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.result-chip{padding:12px 13px;border-radius:14px;background:var(--soft);border:1px solid var(--line)}.result-chip b{display:block;font-size:.8rem;opacity:.65;margin-bottom:2px}.content{padding:72px 0 40px}.article-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}article section{margin-bottom:38px}aside{position:sticky;top:18px}.toc,.sourcebox{border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow);border-radius:24px;padding:20px}.toc a{display:block;text-decoration:none;padding:6px 0;opacity:.78}.toc a:hover{opacity:1}ul,ol{padding-left:22px}table{width:100%;border-collapse:collapse;border-radius:18px;overflow:hidden}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left}th{background:var(--soft)}footer{padding:36px 0 50px;opacity:.7;font-size:.9rem}.sr{position:absolute;left:-9999px}
-@media(max-width:860px){.article-grid{grid-template-columns:1fr}aside{position:static}.result-grid{grid-template-columns:1fr}}
-</style>
-<style>
-:root{--bg:#fff7ef;--ink:#2b1c18;--panel:#fffdf9;--field:#fff;--soft:#fff0df;--formula:#fff4e4;--line:#efd8c5;--accent:#d84a1b;--onaccent:#fff;--focus:#d84a1b1c;--danger:#b42318;--shadow:0 32px 80px #6127121a;--btnshadow:0 12px 28px #d84a1b24;}
+   <meta charset="utf-8" />
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<meta http-equiv="content-language" content="en">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
 
-.hex-hero{padding:54px 0 105px;background:linear-gradient(145deg,#fff1df,#ffd0ad 45%,#ff9b72);overflow:hidden}.hex-grid{display:grid;grid-template-columns:1fr 380px;align-items:center}.chip{display:inline-block;border:1px solid #b548222c;background:#fff9;padding:6px 10px;border-radius:10px;font-size:.75rem;font-weight:900;letter-spacing:.15em}.hex-stack{height:250px;position:relative;perspective:900px}.hex-stack b{position:absolute;width:120px;height:120px;border-radius:22px;background:linear-gradient(145deg,#fffaf2,#f7b57d);display:grid;place-items:center;font-size:3rem;box-shadow:inset -10px -10px 25px #a9441f28,0 30px 50px #8f3d1f2a;border:1px solid #fff;transform:rotate(-9deg)}.hex-stack b:nth-child(1){right:170px;top:65px}.hex-stack b:nth-child(2){right:70px;top:25px;transform:rotate(10deg) translateZ(30px)}.hex-stack b:nth-child(3){right:5px;top:115px;transform:rotate(-3deg) translateZ(60px);font-size:2rem}.hex-zone{margin-top:-55px}.hex-board{display:grid;grid-template-columns:1fr 1fr;border-radius:38px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}.hex-form,.hex-result{padding:30px;background:var(--panel)}.hex-result{background:#2d1812;color:#fff}.hex-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}.hex-strips{display:grid;gap:9px;margin-top:20px}.hex-strips span{display:flex;justify-content:space-between;padding:12px;border-radius:12px;background:#ffffff12}.hex-strips b{word-break:break-all;text-align:right;margin-left:15px}@media(max-width:760px){.hex-grid,.hex-board,.hex-pair{grid-template-columns:1fr}.hex-stack{height:190px}}
 
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/hex-calculator/#app", "name": "Hex Calculator", "url": "/hex-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Perform exact hexadecimal integer arithmetic and convert results to decimal and binary."}, {"@type": "BreadcrumbList", "@id": "/hex-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Math & Statistics", "item": "/math/"}, {"@type": "ListItem", "position": 3, "name": "Number Theory & Number Systems", "item": "/math/number-theory-number-systems/"}, {"@type": "ListItem", "position": 4, "name": "Hex Calculator", "item": "/hex-calculator/"}]}, {"@type": "FAQPage", "@id": "/hex-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "What is hexadecimal?", "acceptedAnswer": {"@type": "Answer", "text": "Hexadecimal is a base-16 positional number system using 0–9 and A–F."}}, {"@type": "Question", "name": "How do hex and binary relate?", "acceptedAnswer": {"@type": "Answer", "text": "Each hex digit corresponds to four binary bits because 16 equals 2 to the fourth power."}}, {"@type": "Question", "name": "Does this calculator support hex fractions?", "acceptedAnswer": {"@type": "Answer", "text": "No. It is designed for exact signed integer arithmetic."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body data-cp-category="math" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../math/index.html">Math &amp; Statistics</a></li><li><a aria-current="page" href="index.html">Hex Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a href="../calculators/index.html">All calculators</a></div><header><div class="hex-hero"><div class="wrap hex-grid"><div><nav class="crumbs">Home / Technical Math / Hex Calculator</nav><span class="chip">BASE 16 WORKBENCH</span><h1>Hex Calculator</h1><p>Calculate with hexadecimal integers and instantly translate the result into decimal and binary.</p></div><div aria-hidden="true" class="hex-stack"><b>F</b><b>A</b><b>16</b></div></div></div></header>
-<div class="cp-page-layout"><main id="main-content"><h1 class="page-title">Hex Calculator</h1>
-<section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="hex-zone"><div class="wrap hex-board"><div class="hex-form"><h2>Hex arithmetic</h2><div class="hex-pair"><div><label for="a">Hex A</label><input id="a" value="A"/></div><div><label for="b">Hex B</label><input id="b" value="5"/></div></div><label for="op">Operation</label><select id="op"><option value="+">Add</option><option value="-">Subtract</option><option value="*">Multiply</option><option value="/">Divide</option></select><div class="actions"><button class="btn primary" onclick="calcBase()">Calculate</button><button class="btn secondary" onclick="resetBase()">Reset</button></div><div class="error" id="err"></div></div><div class="hex-result"><small>HEX RESULT</small><div class="result-main" id="main">F</div><div class="hex-strips"><span>Decimal <b id="dec">15</b></span><span>Binary <b id="other">1111</b></span><span>Remainder <b id="rem">0</b></span></div></div></div></section>
-<div class="content"><div class="wrap article-grid">
-<article><section id="about"><h2>What Is a Hex Calculator?</h2><p>A hexadecimal calculator performs integer arithmetic in base 16. Hex uses digits 0–9 plus A–F for values 10–15. It is widely used as a compact representation of binary values in computing.</p></section><section id="use"><h2>How to Use the Hex Calculator</h2><ol><li>Enter two hexadecimal integers using 0–9 and A–F.</li><li>Choose the arithmetic operation.</li><li>Calculate to see hexadecimal, decimal, and binary results.</li></ol></section><section id="formula"><h2>How Hexadecimal Place Value Works</h2><div class="formula">dₙ…d₂d₁d₀ = Σ dᵢ × 16ⁱ</div><p>Since 16 = 2⁴, every hexadecimal digit corresponds exactly to four binary bits. A through F represent decimal 10 through 15.</p></section><section id="example"><h2>Calculation Example</h2><p>A₁₆ is 10 in decimal. A₁₆ + 5₁₆ = 15₁₀, which is <strong>F₁₆</strong> and 1111₂.</p></section><section id="limits"><h2>Limitations</h2><p>The calculator handles signed integers, not fractional hexadecimal values or raw memory encodings. Division returns an integer quotient and remainder.</p></section><section id="faq"><h2>Frequently Asked Questions</h2><h3>What values do A–F represent?</h3><p>A, B, C, D, E, and F represent decimal values 10, 11, 12, 13, 14, and 15.</p><h3>Why does one hex digit equal four bits?</h3><p>Four bits can represent 16 different values, from 0000 through 1111, which matches the 16 symbols used by hexadecimal.</p></section><section id="sources"><h2>Sources and Methodology</h2><ul><li><a href="https://www.cs.uni.edu/~schafer/cohort26/FCCS/lessons/week1/topic1b/t1b_r3_hex.html" rel="noopener" target="_blank">University of Northern Iowa — Hexadecimal and Binary</a></li><li><a href="https://nob.cs.ucdavis.edu/classes/ecs036a-2019-01/handouts/bases.html" rel="noopener" target="_blank">UC Davis Computer Science — Number Bases</a></li></ul></section></article>
-<aside><div class="toc"><h3>On this page</h3>
-<a href="#about">What it calculates</a><a href="#use">How to use it</a><a href="#formula">Formula</a>
-<a href="#example">Example</a><a href="#limits">Limitations</a><a href="#faq">FAQs</a><a href="#sources">Sources</a>
-</div></aside>
-</div></div>
+<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+<!-- Primary Meta Tags -->
+<title>Hex Calculator – Hexadecimal Arithmetic &amp; Conversion</title>
+<meta name="title" content="Hex Calculator – Hexadecimal Arithmetic &amp; Conversion">
+<meta name="description" content="Use the Hex Calculator for exact hexadecimal integer arithmetic and view results in hex, decimal, and binary, with quotient and remainder for division.">
 
-<script class="cp-calculator-data" type="application/json">{"index":"134","Batch":"14","Calculator / Page":"Hex Calculator","Slug":"hex-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Perform exact hexadecimal integer arithmetic and convert results to decimal and binary.","Formula / Algorithm Used in Tool":"How Hexadecimal Place Value Works: dₙ…d₂d₁d₀ = Σ dᵢ × 16ⁱ Since 16 = 2⁴, every hexadecimal digit corresponds exactly to four binary bits. A through F represent decimal 10 through 15.","Required User Inputs":"Hex A; Hex B; Operation","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Hex A, Hex B, Operation. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"The calculator handles signed integers, not fractional hexadecimal values or raw memory encodings. Division returns an integer quotient and remainder.","Current Source URLs in Page":"https://www.cs.uni.edu/~schafer/cohort26/FCCS/lessons/week1/topic1b/t1b_r3_hex.html | https://nob.cs.ucdavis.edu/classes/ecs036a-2019-01/handouts/bases.html","Implementation Path":"/hex-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Math &amp; Statistics</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../binary-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Binary Calculator</strong><small>Perform exact binary integer arithmetic and convert results to decimal and hexadeci…</small></span></a><a class="cp-related-link" href="../big-number-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Big Number Calculator</strong><small>Perform exact integer arithmetic with very large whole numbers. Free, fast and resp…</small></span></a><a class="cp-related-link" href="../math-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Math Calculator</strong><small>Perform basic arithmetic with addition, subtraction, multiplication, division, pare…</small></span></a><a class="cp-related-link" href="../factor-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Factor Calculator</strong><small>Find positive factors and prime factorization of an integer. Free, fast and respons…</small></span></a><a class="cp-related-link" href="../rounding-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Rounding Calculator</strong><small>Round a number to decimal places or common place values. Free, fast and responsive…</small></span></a><a class="cp-related-link" href="../scientific-notation-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Scientific Notation Calculator</strong><small>Convert ordinary numbers to scientific notation and back. Free, fast and responsive…</small></span></a><a class="cp-related-link" href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the simplified fraction, m…</small></span></a><a class="cp-related-link" href="../number-sequence-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Number Sequence Calculator</strong><small>Calculate arithmetic, geometric, and Fibonacci sequence terms, previews, and finite…</small></span></a></div><a class="cp-side-category" href="../math/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-function parseVal(s){s=s.trim();if(!/^-?[0-9a-fA-F]+$/.test(s))throw new Error('Use hexadecimal digits 0–9 and A–F, with an optional leading minus sign.');let neg=s[0]=='-';if(neg)s=s.slice(1);let v=0n;for(const ch of s.toUpperCase()){const d=BigInt(parseInt(ch,16));v=v*16n+d}return neg?-v:v}
-function repr(v,radix){return (v<0n?'-':'')+(v<0n?-v:v).toString(radix).toUpperCase()}
-function calcBase(){err.textContent='';try{const x=parseVal(a.value),y=parseVal(b.value);let r,q=0n;if(op.value==='+')r=x+y;else if(op.value==='-')r=x-y;else if(op.value==='*')r=x*y;else{if(y===0n)throw new Error('Division by zero is undefined.');r=x/y;q=x%y}main.textContent=repr(r,16);dec.textContent=r.toString();other.textContent=repr(r,2);rem.textContent=op.value==='/'?repr(q,16):'0'}catch(e){err.textContent=e.message;main.textContent=dec.textContent=other.textContent=rem.textContent='—'}}
-function resetBase(){a.value='A';b.value='5';op.value='+';calcBase()}calcBase();
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/hex-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/hex-calculator/">
+<meta property="og:title" content="Hex Calculator – Hexadecimal Arithmetic &amp; Conversion">
+<meta property="og:description" content="Use the Hex Calculator for exact hexadecimal integer arithmetic and view results in hex, decimal, and binary, with quotient and remainder for division.">
+<meta property="og:site_name" content="Hex Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/hex-calculator/">
+<meta name="twitter:title" content="Hex Calculator – Hexadecimal Arithmetic &amp; Conversion">
+<meta name="twitter:description" content="Use the Hex Calculator for exact hexadecimal integer arithmetic and view results in hex, decimal, and binary, with quotient and remainder for division.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.65
+        }
+
+        a {
+            color: inherit
+        }
+
+        button,
+        input,
+        select {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        .wrap {
+            width: min(1160px, 92vw);
+            margin: auto
+        }
+
+        .crumbs {
+            font-size: .88rem;
+            opacity: .78;
+            margin-bottom: 18px
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.15;
+            margin: 0 0 14px
+        }
+
+        h1 {
+            font-size: clamp(2.3rem, 5vw, 4.9rem);
+            letter-spacing: -.045em
+        }
+
+        h2 {
+            font-size: clamp(1.6rem, 3vw, 2.25rem);
+            letter-spacing: -.025em
+        }
+
+        h3 {
+            font-size: 1.1rem
+        }
+
+        p {
+            margin: 0 0 14px
+        }
+
+        .muted {
+            opacity: .74
+        }
+
+        label {
+            font-weight: 750;
+            font-size: .92rem;
+            display: block;
+            margin-bottom: 7px
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 13px 14px;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            background: var(--field);
+            color: var(--ink);
+            outline: none
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--focus)
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 13px 18px;
+            font-weight: 800;
+            box-shadow: var(--btnshadow)
+        }
+
+        .primary {
+            background: var(--accent);
+            color: var(--onaccent)
+        }
+
+        .secondary {
+            background: var(--soft);
+            color: var(--ink);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            min-height: 24px;
+            color: var(--danger);
+            font-weight: 700;
+            margin-top: 10px
+        }
+
+        .formula {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: var(--formula);
+            border: 1px solid var(--line);
+            padding: 14px 16px;
+            border-radius: 16px;
+            overflow: auto
+        }
+
+        .result-main {
+            font-size: clamp(1.9rem, 4vw, 3.2rem);
+            font-weight: 900;
+            letter-spacing: -.04em;
+            word-break: break-word
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 14px
+        }
+
+        .result-chip {
+            padding: 12px 13px;
+            border-radius: 14px;
+            background: var(--soft);
+            border: 1px solid var(--line)
+        }
+
+        .result-chip b {
+            display: block;
+            font-size: .8rem;
+            opacity: .65;
+            margin-bottom: 2px
+        }
+
+        .content {
+            padding: 72px 0 40px
+        }
+
+        .article-grid {
+            display: grid;
+             gap: 28px;
+            align-items: start
+        }
+
+        article section {
+            margin-bottom: 38px
+        }
+
+        aside {
+            position: sticky;
+            top: 18px
+        }
+
+        .toc,
+        .sourcebox {
+            border: 1px solid var(--line);
+            background: var(--panel);
+            box-shadow: var(--shadow);
+            border-radius: 24px;
+            padding: 20px
+        }
+
+        .toc a {
+            display: block;
+            text-decoration: none;
+            padding: 6px 0;
+            opacity: .78
+        }
+
+        .toc a:hover {
+            opacity: 1
+        }
+
+        ul,
+        ol {
+            padding-left: 22px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 18px;
+            overflow: hidden
+        }
+
+        th,
+        td {
+            padding: 11px;
+            border-bottom: 1px solid var(--line);
+            text-align: left
+        }
+
+        th {
+            background: var(--soft)
+        }
+
+        footer {
+            padding: 36px 0 50px;
+            opacity: .7;
+            font-size: .9rem
+        }
+
+        .sr {
+            position: absolute;
+            left: -9999px
+        }
+
+        @media(max-width:860px) {
+            .article-grid {
+                grid-template-columns: 1fr
+            }
+
+            aside {
+                position: static
+            }
+
+            .result-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+    <style>
+        :root {
+            --bg: #fff7ef;
+            --ink: #2b1c18;
+            --panel: #fffdf9;
+            --field: #fff;
+            --soft: #fff0df;
+            --formula: #fff4e4;
+            --line: #efd8c5;
+            --accent: #d84a1b;
+            --onaccent: #fff;
+            --focus: #d84a1b1c;
+            --danger: #b42318;
+            --shadow: 0 32px 80px #6127121a;
+            --btnshadow: 0 12px 28px #d84a1b24;
+        }
+
+        .hex-hero {
+            padding: 54px 0 105px;
+            background: linear-gradient(145deg, #fff1df, #ffd0ad 45%, #ff9b72);
+            overflow: hidden
+        }
+
+        .hex-grid {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            align-items: center
+        }
+
+        .chip {
+            display: inline-block;
+            border: 1px solid #b548222c;
+            background: #fff9;
+            padding: 6px 10px;
+            border-radius: 10px;
+            font-size: .75rem;
+            font-weight: 900;
+            letter-spacing: .15em
+        }
+
+        .hex-stack {
+            height: 250px;
+            position: relative;
+            perspective: 900px
+        }
+
+        .hex-stack b {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 22px;
+            background: linear-gradient(145deg, #fffaf2, #f7b57d);
+            display: grid;
+            place-items: center;
+            font-size: 3rem;
+            box-shadow: inset -10px -10px 25px #a9441f28, 0 30px 50px #8f3d1f2a;
+            border: 1px solid #fff;
+            transform: rotate(-9deg)
+        }
+
+        .hex-stack b:nth-child(1) {
+            right: 170px;
+            top: 65px
+        }
+
+        .hex-stack b:nth-child(2) {
+            right: 70px;
+            top: 25px;
+            transform: rotate(10deg) translateZ(30px)
+        }
+
+        .hex-stack b:nth-child(3) {
+            right: 5px;
+            top: 115px;
+            transform: rotate(-3deg) translateZ(60px);
+            font-size: 2rem
+        }
+
+        .hex-zone {
+            margin-top: -55px
+        }
+
+        .hex-board {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-radius: 38px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--line)
+        }
+
+        .hex-form,
+        .hex-result {
+            padding: 30px;
+            background: var(--panel)
+        }
+
+        .hex-result {
+            background: #2d1812;
+            color: #fff
+        }
+
+        .hex-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px
+        }
+
+        .hex-strips {
+            display: grid;
+            gap: 9px;
+            margin-top: 20px
+        }
+
+        .hex-strips span {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px;
+            border-radius: 12px;
+            background: #ffffff12
+        }
+
+        .hex-strips b {
+            word-break: break-all;
+            text-align: right;
+            margin-left: 15px
+        }
+
+        @media(max-width:760px) {
+
+            .hex-grid,
+            .hex-board,
+            .hex-pair {
+                grid-template-columns: 1fr
+            }
+
+            .hex-stack {
+                height: 190px
+            }
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/hex-calculator/#webapplication",
+      "name": "Hex Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/hex-calculator/",
+      "description": "Use the Hex Calculator for exact hexadecimal integer arithmetic and view results in hex, decimal, and binary, with quotient and remainder for division.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/hex-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Hex Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/hex-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/hex-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What digits can be used in a hexadecimal number?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hexadecimal uses 0–9 plus A–F. The letters represent decimal values 10 through 15."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is hexadecimal called base 16?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Each position represents a power of 16. The rightmost digit represents 16⁰, the next represents 16¹, then 16², and so on."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does one hexadecimal digit equal four binary bits?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because 16 = 2⁴. Four binary digits can represent 16 possible values, from decimal 0 through 15, which exactly matches one hexadecimal digit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the calculator support negative hexadecimal numbers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The calculator handles signed integers, so its calculation model includes positive and negative integer values."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I calculate hexadecimal fractions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This calculator is intended for integers rather than fractional hexadecimal values."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does hexadecimal division work in this calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Division produces an integer quotient and a remainder. It does not return a fractional hexadecimal result."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the decimal and binary values different results?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. They are different representations of the same calculated integer. The numerical value stays the same while the number base changes."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="math" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../math/index.html">Math &amp; Statistics</a></li>
+            <li><a aria-current="page" href="index.html">Hex Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a
+            href="../calculators/index.html">All calculators</a></div>
+     
+    <div class="cp-page-layout">
+        <main id="main-content">
+            <h1 class="page-title">Hex Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="hex-zone">
+                <div class="wrap hex-board">
+                    <div class="hex-form">
+                        <h2>Hex arithmetic</h2>
+                        <div class="hex-pair">
+                            <div><label for="a">Hex A</label><input id="a" value="A" /></div>
+                            <div><label for="b">Hex B</label><input id="b" value="5" /></div>
+                        </div><label for="op">Operation</label><select id="op">
+                            <option value="+">Add</option>
+                            <option value="-">Subtract</option>
+                            <option value="*">Multiply</option>
+                            <option value="/">Divide</option>
+                        </select>
+                        <div class="actions"><button class="btn primary" onclick="calcBase()">Calculate</button><button
+                                class="btn secondary" onclick="resetBase()">Reset</button></div>
+                        <div class="error" id="err"></div>
+                    </div>
+                    <div class="hex-result"><small>HEX RESULT</small>
+                        <div class="result-main" id="main">F</div>
+                        <div class="hex-strips"><span>Decimal <b id="dec">15</b></span><span>Binary <b
+                                    id="other">1111</b></span><span>Remainder <b id="rem">0</b></span></div>
+                    </div>
+                </div>
+            </section>
+            <div class="content">
+                <div class="wrap article-grid">
+                   
+ 
+<article class="article">
+ 
+
+  <p>The Hex Calculator performs exact arithmetic with signed hexadecimal integers. Enter two hex values, select an operation, and the calculator returns the calculated integer result with equivalent decimal and binary values.</p>
+
+  <section id="what">
+    <h2>What Is the Hex Calculator?</h2>
+
+    <p>A Hex Calculator is a base-16 arithmetic tool for working with hexadecimal integers. It is useful when you need to calculate with hex values or view the same integer in hexadecimal, decimal, and binary form.</p>
+
+    <p>Hexadecimal uses 16 digit values: <code>0–9</code> and <code>A–F</code>, where <code>A = 10</code>, <code>B = 11</code>, through <code>F = 15</code>.</p>
+
+    <p>This calculator works with signed integers. It is not designed for hexadecimal fractions or raw memory encodings.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Hex Calculator</h2>
+
+    <ol>
+      <li><strong>Hex A:</strong> Enter the first signed hexadecimal integer using hexadecimal digits.</li>
+      <li><strong>Hex B:</strong> Enter the second signed hexadecimal integer.</li>
+      <li><strong>Operation:</strong> Select the available arithmetic operation you want to apply to the two values.</li>
+      <li>Calculate to see the hexadecimal result and its supporting decimal and binary representations.</li>
+    </ol>
+
+    <p>For division, the calculator uses integer division and returns a quotient and remainder rather than a fractional hexadecimal result.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+
+    <p>A hexadecimal number is evaluated using powers of 16:</p>
+
+    <div class="formula"><strong>dₙ…d₂d₁d₀ = Σ dᵢ × 16ⁱ</strong></div>
+
+    <p>For example:</p>
+
+    <div class="formula"><strong>2F₁₆ = 2 × 16¹ + 15 × 16⁰</strong></div>
+
+    <div class="formula"><strong>2F₁₆ = 32 + 15 = 47₁₀</strong></div>
+
+    <p>This is the standard positional-number method for converting a base-16 value to its numerical value.</p>
+
+    <h3>Variables</h3>
+
+    <ul>
+      <li><strong>dᵢ</strong> = the numerical value of the hexadecimal digit at position <code>i</code></li>
+      <li><strong>i</strong> = the digit position, starting with <code>0</code> at the rightmost digit</li>
+      <li><strong>16ⁱ</strong> = the hexadecimal place value</li>
+      <li><strong>Σ</strong> = the sum of all digit-place products</li>
+    </ul>
+
+    <p>Hexadecimal digit values are:</p>
+
+    <pre><code>0–9 = 0–9
+A = 10
+B = 11
+C = 12
+D = 13
+E = 14
+F = 15</code></pre>
+
+    <h3>Calculation Sequence</h3>
+
+    <ol>
+      <li>Read Hex A as a signed base-16 integer.</li>
+      <li>Read Hex B as a signed base-16 integer.</li>
+      <li>Interpret each hexadecimal digit according to its power-of-16 position.</li>
+      <li>Apply the selected integer arithmetic operation.</li>
+      <li>Express the calculated integer result in hexadecimal.</li>
+      <li>Convert the same result to decimal and binary.</li>
+      <li>For division, return the integer quotient and remainder.</li>
+    </ol>
+
+    <h3>Decimal Conversion</h3>
+
+    <p>The decimal value is obtained from the hexadecimal place-value formula:</p>
+
+    <div class="formula"><strong>Decimal value = Σ dᵢ × 16ⁱ</strong></div>
+
+    <p>For example:</p>
+
+    <div class="formula"><strong>3A₁₆ = 3 × 16 + 10 = 58₁₀</strong></div>
+
+    <h3>Binary Conversion</h3>
+
+    <p>Hexadecimal and binary have an exact relationship because:</p>
+
+    <div class="formula"><strong>16 = 2⁴</strong></div>
+
+    <p>This means every hexadecimal digit corresponds to four binary bits. For example:</p>
+
+    <ul>
+      <li>
+        <pre><code>A₁₆ = 1010₂</code></pre>
+      </li>
+    </ul>
+
+    <ol>
+      <li>
+        <pre><code>F₁₆ = 1111₂</code></pre>
+      </li>
+    </ol>
+
+    <p>This direct four-bit relationship between hexadecimal and binary is documented by computer-science teaching materials from UC Davis.</p>
+
+    <h3>Integer Division</h3>
+
+    <p>Division in this calculator does not produce a hexadecimal fraction. It returns an integer quotient together with the remainder.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose you want to divide hexadecimal <code>2F</code> by hexadecimal <code>A</code>.</p>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li>Hex A: <code>2F</code></li>
+      <li>Hex B: <code>A</code></li>
+      <li>Operation: Division</li>
+    </ul>
+
+    <h3>Step 1: Convert the Values</h3>
+
+    <p>For <code>2F</code>:</p>
+
+    <div class="formula"><strong>2F₁₆ = 2 × 16¹ + 15 × 16⁰</strong></div>
+
+    <div class="formula"><strong>= 32 + 15</strong></div>
+
+    <div class="formula"><strong>= 47₁₀</strong></div>
+
+    <p>For <code>A</code>:</p>
+
+    <div class="formula"><strong>A₁₆ = 10₁₀</strong></div>
+
+    <h3>Step 2: Perform Integer Division</h3>
+
+    <div class="formula"><strong>47 ÷ 10 = 4 with remainder 7</strong></div>
+
+    <h3>Step 3: Express the Results in Other Bases</h3>
+
+    <p>Quotient:</p>
+
+    <ul>
+      <li>Hexadecimal: <code>4</code></li>
+      <li>Decimal: <code>4</code></li>
+      <li>Binary: <code>100</code></li>
+    </ul>
+
+    <p>Remainder:</p>
+
+    <ul>
+      <li>Hexadecimal: <code>7</code></li>
+      <li>Decimal: <code>7</code></li>
+      <li>Binary: <code>111</code></li>
+    </ul>
+
+    <h3>Final Result</h3>
+
+    <div class="formula"><strong>Quotient = 4</strong></div>
+
+    <div class="formula"><strong>Remainder = 7</strong></div>
+
+    <p>The example remains an integer calculation throughout, so no fractional rounding is required.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Hexadecimal Result</h3>
+
+    <p>The hexadecimal result represents the calculated integer in base 16 using digits <code>0–9</code> and <code>A–F</code>.</p>
+
+    <h3>Decimal Result</h3>
+
+    <p>The decimal value shows the same result in the familiar base-10 number system. It does not represent a separate calculation.</p>
+
+    <h3>Binary Result</h3>
+
+    <p>The binary value represents the same integer in base 2 using only <code>0</code> and <code>1</code>.</p>
+
+    <h3>Quotient and Remainder</h3>
+
+    <p>When division is selected, the quotient is the whole-number division result. Any amount left after the integer division is shown as the remainder instead of being converted into a hexadecimal fraction.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The Hex Calculator is designed for <strong>signed integer arithmetic</strong>.</p>
+
+    <p>It does not calculate fractional hexadecimal values. If a division does not produce an exact whole number, the tool returns an integer quotient and remainder.</p>
+
+    <p>The calculator also does not interpret hexadecimal input as raw memory data. A hex value used as a number should not automatically be treated as a floating-point value, memory address, character encoding, or another low-level data representation.</p>
+
+    <p>Because the calculations use integer values, normal fractional rounding is not part of the calculation method.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What digits can be used in a hexadecimal number?</summary>
+      <p>Hexadecimal uses <code>0–9</code> plus <code>A–F</code>. The letters represent decimal values 10 through 15.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why is hexadecimal called base 16?</summary>
+      <p>Each position represents a power of 16. The rightmost digit represents <code>16⁰</code>, the next represents <code>16¹</code>, then <code>16²</code>, and so on.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why does one hexadecimal digit equal four binary bits?</summary>
+      <p>Because <code>16 = 2⁴</code>. Four binary digits can represent 16 possible values, from decimal 0 through 15, which exactly matches one hexadecimal digit.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does the calculator support negative hexadecimal numbers?</summary>
+      <p>Yes. The calculator handles signed integers, so its calculation model includes positive and negative integer values.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can I calculate hexadecimal fractions?</summary>
+      <p>No. This calculator is intended for integers rather than fractional hexadecimal values.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How does hexadecimal division work in this calculator?</summary>
+      <p>Division produces an integer quotient and a remainder. It does not return a fractional hexadecimal result.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Are the decimal and binary values different results?</summary>
+      <p>No. They are different representations of the same calculated integer. The numerical value stays the same while the number base changes.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://nob.cs.ucdavis.edu/classes/ecs036a-2019-01/handouts/bases.html?utm_source=chatgpt.com" rel="noopener" target="_blank">UC Davis — Binary, Decimal, Hexadecimal, and All That</a>
+        <p>Supports hexadecimal positional notation, the <code>A–F</code> digit values, and the exact four-bit relationship between hexadecimal and binary.</p>
+      </li>
+
+      <li>
+        <a href="https://math.oxford.emory.edu/site/math125/bases/?utm_source=chatgpt.com" rel="noopener" target="_blank">Emory Mathematics — Numbers in Different Bases</a>
+        <p>Supports the general positional-number formula and its application to base-16 hexadecimal values.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/binary-calculator/?utm_source=chatgpt.com">Binary Calculator</a></li>
+      <li><a href="https://example.com/big-number-calculator/?utm_source=chatgpt.com">Big Number Calculator</a></li>
+      <li><a href="https://example.com/long-division-calculator/?utm_source=chatgpt.com">Long Division Calculator</a></li>
+      <li><a href="https://example.com/math-calculator/?utm_source=chatgpt.com">Math Calculator</a></li>
+      <li><a href="https://example.com/scientific-calculator/?utm_source=chatgpt.com">Scientific Calculator</a></li>
+    </ul>
+  </section>
+</article>
+
+
+
+                </div>
+            </div>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"134","Batch":"14","Calculator / Page":"Hex Calculator","Slug":"hex-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Perform exact hexadecimal integer arithmetic and convert results to decimal and binary.","Formula / Algorithm Used in Tool":"How Hexadecimal Place Value Works: dₙ…d₂d₁d₀ = Σ dᵢ × 16ⁱ Since 16 = 2⁴, every hexadecimal digit corresponds exactly to four binary bits. A through F represent decimal 10 through 15.","Required User Inputs":"Hex A; Hex B; Operation","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Hex A, Hex B, Operation. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"The calculator handles signed integers, not fractional hexadecimal values or raw memory encodings. Division returns an integer quotient and remainder.","Current Source URLs in Page":"https://www.cs.uni.edu/~schafer/cohort26/FCCS/lessons/week1/topic1b/t1b_r3_hex.html | https://nob.cs.ucdavis.edu/classes/ecs036a-2019-01/handouts/bases.html","Implementation Path":"/hex-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Math &amp; Statistics</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../binary-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Binary Calculator</strong><small>Perform exact
+                            binary integer arithmetic and convert results to decimal and hexadeci…</small></span></a><a
+                    class="cp-related-link" href="../big-number-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Big Number Calculator</strong><small>Perform exact
+                            integer arithmetic with very large whole numbers. Free, fast and resp…</small></span></a><a
+                    class="cp-related-link" href="../math-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Math Calculator</strong><small>Perform basic
+                            arithmetic with addition, subtraction, multiplication, division, pare…</small></span></a><a
+                    class="cp-related-link" href="../factor-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Factor Calculator</strong><small>Find positive
+                            factors and prime factorization of an integer. Free, fast and respons…</small></span></a><a
+                    class="cp-related-link" href="../rounding-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Rounding Calculator</strong><small>Round a number
+                            to decimal places or common place values. Free, fast and responsive…</small></span></a><a
+                    class="cp-related-link" href="../scientific-notation-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Scientific Notation
+                            Calculator</strong><small>Convert ordinary numbers to scientific notation and back. Free,
+                            fast and responsive…</small></span></a><a class="cp-related-link"
+                    href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction
+                            Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the
+                            simplified fraction, m…</small></span></a><a class="cp-related-link"
+                    href="../number-sequence-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Number Sequence Calculator</strong><small>Calculate
+                            arithmetic, geometric, and Fibonacci sequence terms, previews, and
+                            finite…</small></span></a></div><a class="cp-side-category"
+                href="../math/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        function parseVal(s) { s = s.trim(); if (!/^-?[0-9a-fA-F]+$/.test(s)) throw new Error('Use hexadecimal digits 0–9 and A–F, with an optional leading minus sign.'); let neg = s[0] == '-'; if (neg) s = s.slice(1); let v = 0n; for (const ch of s.toUpperCase()) { const d = BigInt(parseInt(ch, 16)); v = v * 16n + d } return neg ? -v : v }
+        function repr(v, radix) { return (v < 0n ? '-' : '') + (v < 0n ? -v : v).toString(radix).toUpperCase() }
+        function calcBase() { err.textContent = ''; try { const x = parseVal(a.value), y = parseVal(b.value); let r, q = 0n; if (op.value === '+') r = x + y; else if (op.value === '-') r = x - y; else if (op.value === '*') r = x * y; else { if (y === 0n) throw new Error('Division by zero is undefined.'); r = x / y; q = x % y } main.textContent = repr(r, 16); dec.textContent = r.toString(); other.textContent = repr(r, 2); rem.textContent = op.value === '/' ? repr(q, 16) : '0' } catch (e) { err.textContent = e.message; main.textContent = dec.textContent = other.textContent = rem.textContent = '—' } }
+        function resetBase() { a.value = 'A'; b.value = '5'; op.value = '+'; calcBase() } calcBase();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

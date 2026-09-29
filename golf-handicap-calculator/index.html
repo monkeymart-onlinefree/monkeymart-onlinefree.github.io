@@ -1,94 +1,931 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>Golf Handicap Calculator – Free Accurate Online Calculator | CalcPro</title>
-<meta content="Calculate Course Handicap and estimate a base Handicap Index using current World Handicap System formulas." name="description"/>
-<meta content="index,follow" name="robots"/>
-<link href="../golf-handicap-calculator/" rel="canonical"/>
-<meta content="Golf Handicap Calculator | CalcPro" property="og:title"/>
-<meta content="Calculate Course Handicap and estimate a base Handicap Index using current World Handicap System formulas." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="/golf-handicap-calculator/" property="og:url"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
-button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
-.wrap{width:min(1160px,calc(100% - 32px));margin:auto}
-.crumbs{font-size:.9rem;opacity:.78;margin-bottom:14px}.crumbs a{text-decoration:none}
-.card{border-radius:24px}.field label{display:block;font-weight:700;font-size:.9rem;margin-bottom:7px}
-.field input,.field select,.field textarea{width:100%;border:1px solid rgba(127,127,127,.28);border-radius:14px;padding:12px 13px;background:rgba(255,255,255,.84);color:#151515;outline:none}
-.field input:focus,.field select:focus,.field textarea:focus{box-shadow:0 0 0 4px rgba(89,130,246,.15)}
-.btns{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:800}
-.btn.secondary{background:transparent;border:1px solid currentColor;opacity:.78}
-.error{min-height:22px;margin-top:10px;font-weight:700;color:#b42318}
-.result-title{font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;font-weight:900;opacity:.72}
-.result-main{font-size:clamp(2rem,6vw,4rem);line-height:1;font-weight:950;letter-spacing:-.05em;margin:8px 0 14px}
-.statgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.stat{border-radius:16px;padding:12px;background:rgba(255,255,255,.12)}
-.stat b{display:block;font-size:1.05rem}.stat span{font-size:.8rem;opacity:.75}
-.content{padding:66px 0}.prose{max-width:860px;margin:auto}.prose h2{font-size:clamp(1.5rem,3vw,2rem);line-height:1.2;margin:42px 0 12px}.prose h3{margin:28px 0 8px}.prose p,.prose li{color:var(--muted,#4c5564)}
-.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;padding:15px 17px;border-radius:16px;background:var(--soft,#f3f4f6);overflow:auto}
-.note{border-left:4px solid var(--accent,#4f46e5);padding:12px 16px;background:var(--soft,#f6f7fb);border-radius:0 14px 14px 0}
-.table-wrap{overflow:auto;border-radius:18px;border:1px solid rgba(127,127,127,.18)}table{width:100%;border-collapse:collapse;min-width:560px}th,td{text-align:left;padding:11px 13px;border-bottom:1px solid rgba(127,127,127,.15)}th{background:var(--soft,#f5f5f5)}
-.faq details{border:1px solid rgba(127,127,127,.18);border-radius:16px;margin:10px 0;padding:12px 15px;background:#fff}.faq summary{font-weight:800;cursor:pointer}
-.sources a{word-break:break-word}.footer{padding:28px 0;border-top:1px solid rgba(127,127,127,.18);font-size:.88rem;opacity:.75}
-.sr{position:absolute;left:-10000px}
-@media(max-width:780px){.statgrid{grid-template-columns:1fr}.content{padding:46px 0}.wrap{width:min(100% - 22px,1160px)}}
+    <!-- Primary Meta Tags -->
+    <title>Golf Handicap Calculator – Course Handicap &amp; Index</title>
+    <meta name="title" content="Golf Handicap Calculator – Course Handicap &amp; Index">
+    <meta name="description"
+        content="Calculate Course Handicap from Handicap Index, Slope Rating, Course Rating and par, plus estimate a base Handicap Index from 3–20 Score Differentials.">
 
-:root{--accent:#d7ef58;--muted:#4d6657;--soft:#edf6e8}body{background:#f5f7ee;color:#193226}.golf-hero{padding:26px 0 78px;background:linear-gradient(170deg,#dff0ce 0 48%,#b5d993 48% 64%,#88b869 64%);overflow:hidden}.golf-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:25px;align-items:center}.golf-grid h1{font-size:clamp(3rem,7vw,6.2rem);line-height:.9;letter-spacing:-.06em;margin:10px 0}.green{height:340px;position:relative}.hill{position:absolute;inset:110px 0 0;border-radius:50% 50% 0 0/28% 28% 0 0;background:linear-gradient(#5fa355,#2f7b40);box-shadow:inset 0 20px 30px #fff2}.flag{position:absolute;left:56%;top:28px;width:5px;height:215px;background:#f1f1df}.flag:before{content:"";position:absolute;left:4px;top:0;border-top:28px solid transparent;border-bottom:28px solid transparent;border-left:78px solid #f66a45}.hole{position:absolute;left:52%;top:230px;width:48px;height:15px;border-radius:50%;background:#183821;box-shadow:inset 0 3px 6px #000}.ball{position:absolute;left:35%;top:245px;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 32% 27%,#fff,#d9ddd7);box-shadow:0 8px 12px #173b2444}
-.golf-shell{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:-48px;position:relative}.scorecard{background:#fff;border-radius:24px;padding:26px;box-shadow:0 30px 80px #315f3230;border-top:7px solid #183f2b}.scorecard .btn{background:#1e5e3b;color:#fff}.handicap-result{background:#163f2b;color:#fff;border-radius:24px;padding:28px;box-shadow:0 30px 80px #315f3230}.tabs{display:flex;gap:7px;margin-bottom:14px}.tabs button{flex:1;border:1px solid #c9d9c8;background:#eff6ed;border-radius:12px;padding:9px;font-weight:800}.tabs button.active{background:#173f2b;color:white}.diffs{min-height:110px}
-@media(max-width:780px){.golf-grid,.golf-shell{grid-template-columns:1fr}.green{height:260px}}
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Golf Handicap Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate Course Handicap and estimate a base Handicap Index using current World Handicap System formulas.", "url": "/golf-handicap-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Lifestyle & Other", "item": "/other/"}, {"@type": "ListItem", "position": 3, "name": "Sports & Recreation", "item": "/other/sports-recreation/"}, {"@type": "ListItem", "position": 4, "name": "Golf Handicap Calculator", "item": "/golf-handicap-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the current Course Handicap formula?", "acceptedAnswer": {"@type": "Answer", "text": "For an 18-hole round under the World Handicap System, Course Handicap = Handicap Index × (Slope Rating ÷ 113) + (Course Rating − par)."}}, {"@type": "Question", "name": "How many scores are needed for a Handicap Index?", "acceptedAnswer": {"@type": "Answer", "text": "Under the current USGA World Handicap System, an initial Handicap Index can be calculated with as few as three 18-hole Score Differentials, including eligible combinations created from 9-hole scores."}}, {"@type": "Question", "name": "Why can an official Handicap Index differ from this estimate?", "acceptedAnswer": {"@type": "Answer", "text": "Official systems can apply safeguards such as exceptional score reductions, soft/hard caps, committee adjustments, and current 9-hole expected-score processing. This page estimates the base calculation from supplied differentials."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body data-cp-category="other" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../other/index.html">Other Tools</a></li><li><a aria-current="page" href="index.html">Golf Handicap Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../other/index.html">Browse Other Tools</a><a href="../calculators/index.html">All calculators</a></div><header>
-<nav class="wrap" style="padding-top:18px"><div class="crumbs"><a href="../index.html">Home</a> / Golf Handicap Calculator</div></nav>
+    <!-- Canonical -->
+    <link rel="canonical" href="https://monkeymart-onlinefree.github.io/golf-handicap-calculator/">
 
-</header>
-<div class="cp-page-layout"><main id="main"><h1 class="page-title">Golf Handicap Calculator</h1>
-<section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="wrap golf-shell"><div class="scorecard"><div class="tabs"><button class="active" id="gTabCourse" onclick="gTab('course')">Course Handicap</button><button id="gTabIndex" onclick="gTab('index')">Handicap Index</button></div>
-<div id="gCourse"><div class="field"><label>Handicap Index</label><input id="gIndex" step=".1" type="number" value="12.4"/></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"><div class="field"><label>Slope Rating</label><input id="gSlope" type="number" value="125"/></div><div class="field"><label>Course Rating</label><input id="gRating" step=".1" type="number" value="71.4"/></div><div class="field"><label>Par</label><input id="gPar" type="number" value="72"/></div></div><button class="btn" onclick="calcGolfCourse()">Calculate</button></div>
-<div id="gIndexBox" style="display:none"><div class="field"><label>Score Differentials (3–20, comma separated)</label><textarea class="diffs" id="gDiffs">12.1, 14.3, 11.8, 15.2, 10.9, 13.4, 12.7, 16.0</textarea></div><button class="btn" onclick="calcGolfIndex()">Estimate index</button></div><div class="error" id="gErr"></div></div>
-<div class="handicap-result"><div class="result-title">Result</div><div class="result-main" id="gMain">13</div><div id="gSub">Course Handicap</div><div class="statgrid" style="margin-top:18px"><div class="stat"><span>Standard slope</span><b>113</b></div><div class="stat"><span>System</span><b>WHS 2024+</b></div></div></div></section>
-<!--CONTENT-->
-<h2>What Is a Golf Handicap Calculator?</h2><p>This page provides two related tools. Course Handicap converts a player's Handicap Index to the strokes applicable to a specific course and tees. The Handicap Index estimator uses the lowest recent Score Differentials according to the World Handicap System table for 3–20 differentials.</p>
-<h2>Course Handicap Formula</h2><div class="formula">Course Handicap = Handicap Index × (Slope Rating ÷ 113) + (Course Rating − Par)</div>
-<p>USGA identifies 113 as the standard Slope Rating used in this calculation. The final rounding depends on how the handicap is being applied; this calculator displays the nearest whole Course Handicap for a practical estimate.</p>
-<h2>Score Differential Formula</h2><div class="formula">Score Differential = (113 ÷ Slope Rating) × (Adjusted Gross Score − Course Rating − PCC)</div>
-<h2>Handicap Index from Fewer Than 20 Scores</h2><p>Current WHS rules use the lowest 1–7 differentials when there are fewer than 20, with adjustments at 3, 4, and 6 scores. At 20, the lowest 8 are averaged. The official Handicap Index can also be affected by safeguards such as caps and exceptional-score reductions.</p>
-<div class="note"><strong>Not an official handicap service:</strong> use an authorized WHS service for posting scores and an official Handicap Index. This page is for calculation and learning.</div>
-<!--FAQ-->
-<section class="content"><article class="wrap prose">
-<h2>What Is a Golf Handicap Calculator?</h2><p>This page provides two related tools. Course Handicap converts a player's Handicap Index to the strokes applicable to a specific course and tees. The Handicap Index estimator uses the lowest recent Score Differentials according to the World Handicap System table for 3–20 differentials.</p>
-<h2>Course Handicap Formula</h2><div class="formula">Course Handicap = Handicap Index × (Slope Rating ÷ 113) + (Course Rating − Par)</div>
-<p>USGA identifies 113 as the standard Slope Rating used in this calculation. The final rounding depends on how the handicap is being applied; this calculator displays the nearest whole Course Handicap for a practical estimate.</p>
-<h2>Score Differential Formula</h2><div class="formula">Score Differential = (113 ÷ Slope Rating) × (Adjusted Gross Score − Course Rating − PCC)</div>
-<h2>Handicap Index from Fewer Than 20 Scores</h2><p>Current WHS rules use the lowest 1–7 differentials when there are fewer than 20, with adjustments at 3, 4, and 6 scores. At 20, the lowest 8 are averaged. The official Handicap Index can also be affected by safeguards such as caps and exceptional-score reductions.</p>
-<div class="note"><strong>Not an official handicap service:</strong> use an authorized WHS service for posting scores and an official Handicap Index. This page is for calculation and learning.</div>
-<h2 id="faq">Frequently Asked Questions</h2>
-<div class="faq"><details><summary>What is the current Course Handicap formula?</summary><p>For an 18-hole round under the World Handicap System, Course Handicap = Handicap Index × (Slope Rating ÷ 113) + (Course Rating − par).</p></details>
-<details><summary>How many scores are needed for a Handicap Index?</summary><p>Under the current USGA World Handicap System, an initial Handicap Index can be calculated with as few as three 18-hole Score Differentials, including eligible combinations created from 9-hole scores.</p></details>
-<details><summary>Why can an official Handicap Index differ from this estimate?</summary><p>Official systems can apply safeguards such as exceptional score reductions, soft/hard caps, committee adjustments, and current 9-hole expected-score processing. This page estimates the base calculation from supplied differentials.</p></details></div>
-<h2>Sources and Methodology</h2>
-<div class="sources"><p><strong>USGA Rules of Handicapping:</strong> current Course Handicap formula and fewer-than-20 table. <a href="https://www.usga.org/content/usga/home-page/handicapping/world-handicap-system/topics/course-handicap-and-playing-handicap.html" rel="nofollow">Course Handicap</a> · <a href="https://www.usga.org/content/usga/home-page/handicapping/roh/Content/rules/5%202a%20For%20Fewer%20Than%2020%20Scores.htm" rel="nofollow">Handicap Index table</a>.</p><p><strong>USGA:</strong> Score Differential formula includes PCC. <a href="https://www.usga.org/handicapping/roh/Content/rules/5%201a%20Calculation%20of%20a%20Score%20Differential18Hole.htm" rel="nofollow">Rule 5.1a</a>.</p></div>
-</article></section>
+    <!-- Facebook / Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://monkeymart-onlinefree.github.io/golf-handicap-calculator/">
+    <meta property="og:title" content="Golf Handicap Calculator – Course Handicap &amp; Index">
+    <meta property="og:description"
+        content="Calculate Course Handicap from Handicap Index, Slope Rating, Course Rating and par, plus estimate a base Handicap Index from 3–20 Score Differentials.">
+    <meta property="og:site_name" content="Golf Handicap Calculator">
 
-<script class="cp-calculator-data" type="application/json">{"index":"180","Batch":"19","Calculator / Page":"Golf Handicap Calculator","Slug":"golf-handicap-calculator","Site Category (Current)":"Other Tools","Recommended Content Domain":"Other Tools","Page Type":"Calculator","Search Intent / Purpose":"Calculate Course Handicap and estimate a base Handicap Index using current World Handicap System formulas.","Formula / Algorithm Used in Tool":"Score Differential Formula: Score Differential = (113 ÷ Slope Rating) × (Adjusted Gross Score − Course Rating − PCC)","Required User Inputs":"Handicap Index; Slope Rating; Course Rating; Par; Score Differentials (3–20, comma separated)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Handicap Index, Slope Rating, Course Rating, Par, Score Differentials (3–20, comma separated). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Current World Handicap System rules, score differential logic, caps/adjustments if implemented.","Fresh Data Required?":"Yes","Recommended Update Frequency":"When WHS rules change","Important Assumptions / Limitations":"Not an official handicap service: use an authorized WHS service for posting scores and an official Handicap Index. This page is for calculation and learning.","Current Source URLs in Page":"https://www.usga.org/content/usga/home-page/handicapping/world-handicap-system/topics/course-handicap-and-playing-handicap.html | https://www.usga.org/content/usga/home-page/handicapping/roh/Content/rules/5%202a%20For%20Fewer%20Than%2020%20Scores.htm | https://www.usga.org/handicapping/roh/Content/rules/5%201a%20Calculation%20of%20a%20Score%20Differential18Hole.htm","Implementation Path":"/golf-handicap-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Other Tools</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../heat-index-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Heat Index Calculator</strong><small>Calculate heat index from air temperature and relative humidity using the National…</small></span></a><a class="cp-related-link" href="../height-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Height Calculator</strong><small>Estimate a child's adult height from parental height using the mid-parental method…</small></span></a><a class="cp-related-link" href="../dew-point-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Dew Point Calculator</strong><small>Calculate dew point from air temperature and relative humidity using a NOAA/NCEP sa…</small></span></a><a class="cp-related-link" href="../love-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Love Calculator</strong><small>Generate a repeatable, just-for-fun name match percentage with a transparent entert…</small></span></a><a class="cp-related-link" href="../tip-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Tip Calculator</strong><small>Calculate tip amount, total bill, and per-person split with custom or quick-select…</small></span></a><a class="cp-related-link" href="../wind-chill-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Wind Chill Calculator</strong><small>Calculate National Weather Service wind chill from air temperature and wind speed w…</small></span></a><a class="cp-related-link" href="../about-us/index.html"><span class="cp-related-dot">›</span><span><strong>Useful math should be visible, not mysterious.</strong><small>Learn how CalcPro creates practical calculators with clear formulas, source methodo…</small></span></a><a class="cp-related-link" href="../other-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Other Calculators</strong><small>Browse and filter CalcPro utility calculators for date and time, construction, meas…</small></span></a></div><a class="cp-side-category" href="../other/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-function gTab(t){gTabCourse.classList.toggle("active",t==="course");gTabIndex.classList.toggle("active",t==="index");gCourse.style.display=t==="course"?"block":"none";gIndexBox.style.display=t==="index"?"block":"none";gErr.textContent=""}
-function roundHalfUp(n){return Math.sign(n)*Math.floor(Math.abs(n)+.5)}
-function calcGolfCourse(){gErr.textContent="";let i=+gIndex.value,s=+gSlope.value,r=+gRating.value,p=+gPar.value;if(!Number.isFinite(i)||!(s>0)||!Number.isFinite(r)||!(p>0)){gErr.textContent="Enter valid Handicap Index, Slope, Course Rating, and Par.";return}let raw=i*(s/113)+(r-p);gMain.textContent=roundHalfUp(raw);gSub.textContent=`Course Handicap (unrounded ${raw.toFixed(2)})`}
-function rule(n){if(n===3)return[1,-2];if(n===4)return[1,-1];if(n===5)return[1,0];if(n===6)return[2,-1];if(n<=8)return[2,0];if(n<=11)return[3,0];if(n<=14)return[4,0];if(n<=16)return[5,0];if(n<=18)return[6,0];if(n===19)return[7,0];return[8,0]}
-function calcGolfIndex(){gErr.textContent="";let a=gDiffs.value.split(/[\s,;]+/).filter(Boolean).map(Number);if(a.some(x=>!Number.isFinite(x))||a.length<3||a.length>20){gErr.textContent="Enter between 3 and 20 valid Score Differentials.";return}a.sort((x,y)=>x-y);let[k,adj]=rule(a.length),used=a.slice(0,k),avg=used.reduce((x,y)=>x+y,0)/k+adj,hi=Math.min(54,Math.round(avg*10)/10);gMain.textContent=hi.toFixed(1);gSub.textContent=`Estimated base Handicap Index • using lowest ${k}${adj?` • adjustment ${adj}`:""}`}
-calcGolfCourse();
+    <!-- X / Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/golf-handicap-calculator/">
+    <meta name="twitter:title" content="Golf Handicap Calculator – Course Handicap &amp; Index">
+    <meta name="twitter:description"
+        content="Calculate Course Handicap from Handicap Index, Slope Rating, Course Rating and par, plus estimate a base Handicap Index from 3–20 Score Differentials.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        a {
+            color: inherit
+        }
+
+        .wrap {
+            width: min(1160px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .crumbs {
+            font-size: .9rem;
+            opacity: .78;
+            margin-bottom: 14px
+        }
+
+        .crumbs a {
+            text-decoration: none
+        }
+
+        .card {
+            border-radius: 24px
+        }
+
+        .field label {
+            display: block;
+            font-weight: 700;
+            font-size: .9rem;
+            margin-bottom: 7px
+        }
+
+        .field input,
+        .field select,
+        .field textarea {
+            width: 100%;
+            border: 1px solid rgba(127, 127, 127, .28);
+            border-radius: 14px;
+            padding: 12px 13px;
+            background: rgba(255, 255, 255, .84);
+            color: #151515;
+            outline: none
+        }
+
+        .field input:focus,
+        .field select:focus,
+        .field textarea:focus {
+            box-shadow: 0 0 0 4px rgba(89, 130, 246, .15)
+        }
+
+        .btns {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-weight: 800
+        }
+
+        .btn.secondary {
+            background: transparent;
+            border: 1px solid currentColor;
+            opacity: .78
+        }
+
+        .error {
+            min-height: 22px;
+            margin-top: 10px;
+            font-weight: 700;
+            color: #b42318
+        }
+
+        .result-title {
+            font-size: .82rem;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            font-weight: 900;
+            opacity: .72
+        }
+
+        .result-main {
+            font-size: clamp(2rem, 6vw, 4rem);
+            line-height: 1;
+            font-weight: 950;
+            letter-spacing: -.05em;
+            margin: 8px 0 14px
+        }
+
+        .statgrid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px
+        }
+
+        .stat {
+            border-radius: 16px;
+            padding: 12px;
+            background: rgba(255, 255, 255, .12)
+        }
+
+        .stat b {
+            display: block;
+            font-size: 1.05rem
+        }
+
+        .stat span {
+            font-size: .8rem;
+            opacity: .75
+        }
+
+        .content {
+            padding: 66px 0
+        }
+
+        .prose {
+            max-width: 860px;
+            margin: auto
+        }
+
+        .prose h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            line-height: 1.2;
+            margin: 42px 0 12px
+        }
+
+        .prose h3 {
+            margin: 28px 0 8px
+        }
+
+        .prose p,
+        .prose li {
+            color: var(--muted, #4c5564)
+        }
+
+        .formula {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            padding: 15px 17px;
+            border-radius: 16px;
+            background: var(--soft, #f3f4f6);
+            overflow: auto
+        }
+
+        .note {
+            border-left: 4px solid var(--accent, #4f46e5);
+            padding: 12px 16px;
+            background: var(--soft, #f6f7fb);
+            border-radius: 0 14px 14px 0
+        }
+
+        .table-wrap {
+            overflow: auto;
+            border-radius: 18px;
+            border: 1px solid rgba(127, 127, 127, .18)
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 560px
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 11px 13px;
+            border-bottom: 1px solid rgba(127, 127, 127, .15)
+        }
+
+        th {
+            background: var(--soft, #f5f5f5)
+        }
+
+        .faq details {
+            border: 1px solid rgba(127, 127, 127, .18);
+            border-radius: 16px;
+            margin: 10px 0;
+            padding: 12px 15px;
+            background: #fff
+        }
+
+        .faq summary {
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .sources a {
+            word-break: break-word
+        }
+
+        .footer {
+            padding: 28px 0;
+            border-top: 1px solid rgba(127, 127, 127, .18);
+            font-size: .88rem;
+            opacity: .75
+        }
+
+        .sr {
+            position: absolute;
+            left: -10000px
+        }
+
+        @media(max-width:780px) {
+            .statgrid {
+                grid-template-columns: 1fr
+            }
+
+            .content {
+                padding: 46px 0
+            }
+
+            .wrap {
+                width: min(100% - 22px, 1160px)
+            }
+        }
+
+        :root {
+            --accent: #d7ef58;
+            --muted: #4d6657;
+            --soft: #edf6e8
+        }
+
+        body {
+            background: #f5f7ee;
+            color: #193226
+        }
+
+        .golf-hero {
+            padding: 26px 0 78px;
+            background: linear-gradient(170deg, #dff0ce 0 48%, #b5d993 48% 64%, #88b869 64%);
+            overflow: hidden
+        }
+
+        .golf-grid {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 25px;
+            align-items: center
+        }
+
+        .golf-grid h1 {
+            font-size: clamp(3rem, 7vw, 6.2rem);
+            line-height: .9;
+            letter-spacing: -.06em;
+            margin: 10px 0
+        }
+
+        .green {
+            height: 340px;
+            position: relative
+        }
+
+        .hill {
+            position: absolute;
+            inset: 110px 0 0;
+            border-radius: 50% 50% 0 0/28% 28% 0 0;
+            background: linear-gradient(#5fa355, #2f7b40);
+            box-shadow: inset 0 20px 30px #fff2
+        }
+
+        .flag {
+            position: absolute;
+            left: 56%;
+            top: 28px;
+            width: 5px;
+            height: 215px;
+            background: #f1f1df
+        }
+
+        .flag:before {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 0;
+            border-top: 28px solid transparent;
+            border-bottom: 28px solid transparent;
+            border-left: 78px solid #f66a45
+        }
+
+        .hole {
+            position: absolute;
+            left: 52%;
+            top: 230px;
+            width: 48px;
+            height: 15px;
+            border-radius: 50%;
+            background: #183821;
+            box-shadow: inset 0 3px 6px #000
+        }
+
+        .ball {
+            position: absolute;
+            left: 35%;
+            top: 245px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 32% 27%, #fff, #d9ddd7);
+            box-shadow: 0 8px 12px #173b2444
+        }
+
+        .golf-shell {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-top: -48px;
+            position: relative
+        }
+
+        .scorecard {
+            background: #fff;
+            border-radius: 24px;
+            padding: 26px;
+            box-shadow: 0 30px 80px #315f3230;
+            border-top: 7px solid #183f2b
+        }
+
+        .scorecard .btn {
+            background: #1e5e3b;
+            color: #fff
+        }
+
+        .handicap-result {
+            background: #163f2b;
+            color: #fff;
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 30px 80px #315f3230
+        }
+
+        .tabs {
+            display: flex;
+            gap: 7px;
+            margin-bottom: 14px
+        }
+
+        .tabs button {
+            flex: 1;
+            border: 1px solid #c9d9c8;
+            background: #eff6ed;
+            border-radius: 12px;
+            padding: 9px;
+            font-weight: 800
+        }
+
+        .tabs button.active {
+            background: #173f2b;
+            color: white
+        }
+
+        .diffs {
+            min-height: 110px
+        }
+
+        @media(max-width:780px) {
+
+            .golf-grid,
+            .golf-shell {
+                grid-template-columns: 1fr
+            }
+
+            .green {
+                height: 260px
+            }
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/golf-handicap-calculator/#webapplication",
+      "name": "Golf Handicap Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/golf-handicap-calculator/",
+      "description": "Calculate Course Handicap from Handicap Index, Slope Rating, Course Rating and par, plus estimate a base Handicap Index from 3–20 Score Differentials.",
+      "applicationCategory": "SportsApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/golf-handicap-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Golf Handicap Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/golf-handicap-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/golf-handicap-calculator/#faq",
+      "mainEntity": []
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart OnlineFree",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="other" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../other/index.html">Other Tools</a></li>
+            <li><a aria-current="page" href="index.html">Golf Handicap Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../other/index.html">Browse Other Tools</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <header>
+        <nav class="wrap" style="padding-top:18px">
+            <div class="crumbs"><a href="../index.html">Home</a> / Golf Handicap Calculator</div>
+        </nav>
+
+    </header>
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Golf Handicap Calculator</h1>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="wrap golf-shell">
+                <div class="scorecard">
+                    <div class="tabs"><button class="active" id="gTabCourse" onclick="gTab('course')">Course
+                            Handicap</button><button id="gTabIndex" onclick="gTab('index')">Handicap Index</button>
+                    </div>
+                    <div id="gCourse">
+                        <div class="field"><label>Handicap Index</label><input id="gIndex" step=".1" type="number"
+                                value="12.4" /></div>
+                        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+                            <div class="field"><label>Slope Rating</label><input id="gSlope" type="number"
+                                    value="125" /></div>
+                            <div class="field"><label>Course Rating</label><input id="gRating" step=".1" type="number"
+                                    value="71.4" /></div>
+                            <div class="field"><label>Par</label><input id="gPar" type="number" value="72" /></div>
+                        </div><button class="btn" onclick="calcGolfCourse()">Calculate</button>
+                    </div>
+                    <div id="gIndexBox" style="display:none">
+                        <div class="field"><label>Score Differentials (3–20, comma separated)</label><textarea
+                                class="diffs" id="gDiffs">12.1, 14.3, 11.8, 15.2, 10.9, 13.4, 12.7, 16.0</textarea>
+                        </div><button class="btn" onclick="calcGolfIndex()">Estimate index</button>
+                    </div>
+                    <div class="error" id="gErr"></div>
+                </div>
+                <div class="handicap-result">
+                    <div class="result-title">Result</div>
+                    <div class="result-main" id="gMain">13</div>
+                    <div id="gSub">Course Handicap</div>
+                    <div class="statgrid" style="margin-top:18px">
+                        <div class="stat"><span>Standard slope</span><b>113</b></div>
+                        <div class="stat"><span>System</span><b>WHS 2024+</b></div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="content">
+               
+
+<article class="article">
+
+ 
+  <p>The Golf Handicap Calculator calculates a Course Handicap from your Handicap Index, Slope Rating, Course Rating, and par. It can also estimate a base Handicap Index from 3–20 entered Score Differentials using the applicable World Handicap System calculation table.</p>
+
+  <section id="what">
+    <h2>What Is the Golf Handicap Calculator?</h2>
+    <p>A golf handicap helps adjust a golfer's demonstrated ability for the difficulty of a particular course and set of tees.</p>
+
+    <p>This calculator has two main purposes:</p>
+    <ul>
+      <li>Calculate a Course Handicap for a specific course or tee.</li>
+      <li>Estimate a base Handicap Index from 3–20 Score Differentials.</li>
+    </ul>
+
+    <p>A Course Handicap represents the number of handicap strokes associated with a specific course and tees. The official calculation uses Handicap Index, Slope Rating, Course Rating, and par.</p>
+
+    <p>The Handicap Index estimate uses the lowest differentials from the scoring record, with the number used depending on how many Score Differentials are entered.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Golf Handicap Calculator</h2>
+
+    <h3>Handicap Index</h3>
+    <p>Enter your current Handicap Index. This value represents demonstrated playing ability and is used to calculate your Course Handicap.</p>
+
+    <h3>Slope Rating</h3>
+    <p>Enter the Slope Rating for the specific course and tees you are playing. Slope Rating represents the relative difficulty of the course for non-scratch players compared with scratch players.</p>
+
+    <h3>Course Rating</h3>
+    <p>Enter the Course Rating for the selected tees. Course Rating represents the expected difficulty of the course for a scratch player under normal conditions.</p>
+
+    <h3>Par</h3>
+    <p>Enter the par for the course or tees being used. Par is included because the Course Handicap calculation adjusts for the difference between Course Rating and par.</p>
+
+    <h3>Score Differentials</h3>
+    <p>Enter between 3 and 20 Score Differentials, separated by commas.</p>
+
+    <p>For example:</p>
+    <div class="formula">10.8, 11.2, 11.9, 12.1, 12.7, 13.1, 13.4, 14.0</div>
+
+    <p>These values are used to estimate a base Handicap Index according to the number of differentials entered.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Course Handicap Formula</h3>
+    <p>For an 18-hole Course Handicap, the calculation is:</p>
+
+    <div class="formula">Course Handicap = Handicap Index × (Slope Rating ÷ 113) + (Course Rating − Par)</div>
+
+    <p>This is the current USGA Course Handicap formula.</p>
+
+    <h3>Variables</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Variable</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Handicap Index</td>
+          <td>Measure of demonstrated playing ability</td>
+          <td>Strokes</td>
+        </tr>
+        <tr>
+          <td>Slope Rating</td>
+          <td>Relative course difficulty</td>
+          <td>Rating value</td>
+        </tr>
+        <tr>
+          <td>113</td>
+          <td>Standard Slope Rating used in the formula</td>
+          <td>Rating value</td>
+        </tr>
+        <tr>
+          <td>Course Rating</td>
+          <td>Course difficulty for a scratch player</td>
+          <td>Strokes</td>
+        </tr>
+        <tr>
+          <td>Par</td>
+          <td>Par for the selected tees</td>
+          <td>Strokes</td>
+        </tr>
+        <tr>
+          <td>Course Handicap</td>
+          <td>Handicap adjusted for the course and tees</td>
+          <td>Strokes</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Score Differential Formula</h3>
+    <p>The World Handicap System calculates an 18-hole Score Differential using:</p>
+
+    <div class="formula">Score Differential = (113 ÷ Slope Rating) × (Adjusted Gross Score − Course Rating − PCC)</div>
+
+    <p>where:</p>
+    <ul>
+      <li><strong>Adjusted Gross Score</strong> is the score used for handicap purposes.</li>
+      <li><strong>Course Rating</strong> represents course difficulty for a scratch player.</li>
+      <li><strong>Slope Rating</strong> adjusts for relative course difficulty.</li>
+      <li><strong>PCC</strong> is the Playing Conditions Calculation adjustment.</li>
+    </ul>
+
+    <p>Under the current USGA rule, PCC can range from <strong>−1.0 to +3.0</strong>.</p>
+
+    <p>This CalcPro calculator asks you to enter existing Score Differentials rather than Adjusted Gross Score or PCC, so this formula explains how those differential values are determined rather than adding extra calculator inputs.</p>
+
+    <h3>Estimating a Base Handicap Index</h3>
+    <p>The number of Score Differentials used depends on how many are available:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Differentials Entered</th>
+          <th>Differentials Used</th>
+          <th>Adjustment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>3</td>
+          <td>Lowest 1</td>
+          <td>−2.0</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Lowest 1</td>
+          <td>−1.0</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Lowest 1</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Average of lowest 2</td>
+          <td>−1.0</td>
+        </tr>
+        <tr>
+          <td>7–8</td>
+          <td>Average of lowest 2</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>9–11</td>
+          <td>Average of lowest 3</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>12–14</td>
+          <td>Average of lowest 4</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>15–16</td>
+          <td>Average of lowest 5</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>17–18</td>
+          <td>Average of lowest 6</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>19</td>
+          <td>Average of lowest 7</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>20</td>
+          <td>Average of lowest 8</td>
+          <td>0</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>For fewer than 20 Score Differentials, the applicable adjustment is added after averaging the selected lowest differentials. The result is rounded to the nearest tenth. With 20 differentials, the lowest eight are averaged before any other applicable official safeguards are considered.</p>
+
+    <h3>Calculation Sequence</h3>
+    <ol>
+      <li>Read the Handicap Index, Slope Rating, Course Rating, and par.</li>
+      <li>Apply the Course Handicap formula.</li>
+      <li>Count the entered Score Differentials.</li>
+      <li>Select the required number of lowest differentials.</li>
+      <li>Average those selected values.</li>
+      <li>Apply the adjustment required for 3–6 differentials where applicable.</li>
+      <li>Round the estimated base Handicap Index to the nearest tenth.</li>
+    </ol>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <h3>Inputs</h3>
+    <p>Suppose a golfer enters:</p>
+    <ul>
+      <li>Handicap Index: <strong>12.4</strong></li>
+      <li>Slope Rating: <strong>125</strong></li>
+      <li>Course Rating: <strong>71.8</strong></li>
+      <li>Par: <strong>72</strong></li>
+      <li>Score Differentials: <strong>10.8, 11.2, 11.9, 12.1, 12.7, 13.1, 13.4, 14.0</strong></li>
+    </ul>
+
+    <h3>Step 1: Calculate Course Handicap</h3>
+    <div class="formula">Course Handicap = 12.4 × (125 ÷ 113) + (71.8 − 72)</div>
+
+    <p>First:</p>
+    <div class="formula">125 ÷ 113 = 1.1061947</div>
+
+    <p>Then:</p>
+    <div class="formula">12.4 × 1.1061947 = 13.7168</div>
+
+    <p>Course Rating adjustment:</p>
+    <div class="formula">71.8 − 72 = −0.2</div>
+
+    <p>Therefore:</p>
+    <div class="formula">13.7168 − 0.2 = 13.5168</div>
+
+    <h3>Course Handicap Result</h3>
+    <p>The calculated value is approximately <strong>13.52</strong>, which is <strong>14 strokes</strong> when expressed as a whole-number Course Handicap.</p>
+
+    <p>USGA rules retain the unrounded Course Handicap for some subsequent Playing Handicap calculations, while whole-number rounding is used in applicable Course Handicap uses.</p>
+
+    <h3>Step 2: Estimate the Base Handicap Index</h3>
+    <p>There are <strong>8 Score Differentials</strong>.</p>
+
+    <p>For 7–8 differentials, the lowest <strong>2</strong> are used with no additional adjustment.</p>
+
+    <p>Lowest two:</p>
+    <div class="formula">10.8 and 11.2</div>
+
+    <p>Average:</p>
+    <div class="formula">(10.8 + 11.2) ÷ 2 = 11.0</div>
+
+    <h3>Final Result</h3>
+    <ul>
+      <li><strong>Course Handicap: 14</strong></li>
+      <li><strong>Estimated Base Handicap Index: 11.0</strong></li>
+    </ul>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Course Handicap</h3>
+    <p>The Course Handicap adjusts a Handicap Index for the difficulty and par of the specific tees being played.</p>
+
+    <p>A higher Slope Rating generally increases the handicap adjustment for a player with a positive numerical Handicap Index, while the difference between Course Rating and par can increase or decrease the result.</p>
+
+    <h3>Estimated Base Handicap Index</h3>
+    <p>The base Handicap Index estimate is derived from the lowest Score Differentials in the entered list.</p>
+
+    <p>It should not automatically be treated as an official Handicap Index. Official handicap records may include safeguards and adjustments that require information not entered into this calculator.</p>
+
+    <h3>Score Differentials</h3>
+    <p>Score Differentials make scores from courses of different difficulty more comparable. A lower Score Differential generally represents a better performance relative to the course and playing conditions.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>This calculator is intended for calculation and educational purposes. It is not an official handicap-posting service and does not establish or maintain an official Handicap Index.</p>
+
+    <p>The Course Handicap calculation depends on the accuracy of the Handicap Index, Slope Rating, Course Rating, and par entered.</p>
+
+    <p>The Handicap Index section uses only the 3–20 Score Differentials supplied by the user.</p>
+
+    <p>Official Handicap Index calculations can include additional safeguards. For players with 20 scores and an established Low Handicap Index, the WHS soft cap begins when the newly calculated value is more than 3.0 strokes above the Low Handicap Index, while the hard cap limits the increase to 5.0 strokes above it.</p>
+
+    <p>Exceptional scores may also trigger reductions.</p>
+  </section>
+
+</article>
+
+
+            </section>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"180","Batch":"19","Calculator / Page":"Golf Handicap Calculator","Slug":"golf-handicap-calculator","Site Category (Current)":"Other Tools","Recommended Content Domain":"Other Tools","Page Type":"Calculator","Search Intent / Purpose":"Calculate Course Handicap and estimate a base Handicap Index using current World Handicap System formulas.","Formula / Algorithm Used in Tool":"Score Differential Formula: Score Differential = (113 ÷ Slope Rating) × (Adjusted Gross Score − Course Rating − PCC)","Required User Inputs":"Handicap Index; Slope Rating; Course Rating; Par; Score Differentials (3–20, comma separated)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Handicap Index, Slope Rating, Course Rating, Par, Score Differentials (3–20, comma separated). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Current World Handicap System rules, score differential logic, caps/adjustments if implemented.","Fresh Data Required?":"Yes","Recommended Update Frequency":"When WHS rules change","Important Assumptions / Limitations":"Not an official handicap service: use an authorized WHS service for posting scores and an official Handicap Index. This page is for calculation and learning.","Current Source URLs in Page":"https://www.usga.org/content/usga/home-page/handicapping/world-handicap-system/topics/course-handicap-and-playing-handicap.html | https://www.usga.org/content/usga/home-page/handicapping/roh/Content/rules/5%202a%20For%20Fewer%20Than%2020%20Scores.htm | https://www.usga.org/handicapping/roh/Content/rules/5%201a%20Calculation%20of%20a%20Score%20Differential18Hole.htm","Implementation Path":"/golf-handicap-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Other Tools</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../heat-index-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Heat Index Calculator</strong><small>Calculate heat
+                            index from air temperature and relative humidity using the National…</small></span></a><a
+                    class="cp-related-link" href="../height-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Height Calculator</strong><small>Estimate a child's
+                            adult height from parental height using the mid-parental method…</small></span></a><a
+                    class="cp-related-link" href="../dew-point-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Dew Point Calculator</strong><small>Calculate dew
+                            point from air temperature and relative humidity using a NOAA/NCEP sa…</small></span></a><a
+                    class="cp-related-link" href="../love-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Love Calculator</strong><small>Generate a
+                            repeatable, just-for-fun name match percentage with a transparent
+                            entert…</small></span></a><a class="cp-related-link"
+                    href="../tip-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Tip
+                            Calculator</strong><small>Calculate tip amount, total bill, and per-person split with custom
+                            or quick-select…</small></span></a><a class="cp-related-link"
+                    href="../wind-chill-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Wind
+                            Chill Calculator</strong><small>Calculate National Weather Service wind chill from air
+                            temperature and wind speed w…</small></span></a><a class="cp-related-link"
+                    href="../about-us/index.html"><span class="cp-related-dot">›</span><span><strong>Useful math should
+                            be visible, not mysterious.</strong><small>Learn how CalcPro creates practical calculators
+                            with clear formulas, source methodo…</small></span></a><a class="cp-related-link"
+                    href="../other-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Other
+                            Calculators</strong><small>Browse and filter CalcPro utility calculators for date and time,
+                            construction, meas…</small></span></a></div><a class="cp-side-category"
+                href="../other/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        function gTab(t) { gTabCourse.classList.toggle("active", t === "course"); gTabIndex.classList.toggle("active", t === "index"); gCourse.style.display = t === "course" ? "block" : "none"; gIndexBox.style.display = t === "index" ? "block" : "none"; gErr.textContent = "" }
+        function roundHalfUp(n) { return Math.sign(n) * Math.floor(Math.abs(n) + .5) }
+        function calcGolfCourse() { gErr.textContent = ""; let i = +gIndex.value, s = +gSlope.value, r = +gRating.value, p = +gPar.value; if (!Number.isFinite(i) || !(s > 0) || !Number.isFinite(r) || !(p > 0)) { gErr.textContent = "Enter valid Handicap Index, Slope, Course Rating, and Par."; return } let raw = i * (s / 113) + (r - p); gMain.textContent = roundHalfUp(raw); gSub.textContent = `Course Handicap (unrounded ${raw.toFixed(2)})` }
+        function rule(n) { if (n === 3) return [1, -2]; if (n === 4) return [1, -1]; if (n === 5) return [1, 0]; if (n === 6) return [2, -1]; if (n <= 8) return [2, 0]; if (n <= 11) return [3, 0]; if (n <= 14) return [4, 0]; if (n <= 16) return [5, 0]; if (n <= 18) return [6, 0]; if (n === 19) return [7, 0]; return [8, 0] }
+        function calcGolfIndex() { gErr.textContent = ""; let a = gDiffs.value.split(/[\s,;]+/).filter(Boolean).map(Number); if (a.some(x => !Number.isFinite(x)) || a.length < 3 || a.length > 20) { gErr.textContent = "Enter between 3 and 20 valid Score Differentials."; return } a.sort((x, y) => x - y); let [k, adj] = rule(a.length), used = a.slice(0, k), avg = used.reduce((x, y) => x + y, 0) / k + adj, hi = Math.min(54, Math.round(avg * 10) / 10); gMain.textContent = hi.toFixed(1); gSub.textContent = `Estimated base Handicap Index • using lowest ${k}${adj ? ` • adjustment ${adj}` : ""}` }
+        calcGolfCourse();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

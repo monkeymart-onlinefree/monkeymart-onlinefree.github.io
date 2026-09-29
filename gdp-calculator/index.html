@@ -1,107 +1,1125 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>GDP Calculator | CalcPro</title>
-<meta content="Calculate gross domestic product using the expenditure approach: consumption + investment + government spending + exports − imports." name="description"/>
-<meta content="index,follow" name="robots"/>
-<link href="../gdp-calculator/" rel="canonical"/>
-<meta content="GDP Calculator | CalcPro" property="og:title"/>
-<meta content="Calculate gross domestic product using the expenditure approach: consumption + investment + government spending + exports − imports." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="/gdp-calculator/" property="og:url"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>:root{--bg:#061b16;--text:#effdf8;--muted:#a5c9ba;--bodyText:#c2ddd2;--accent:#fbbf24;--accentText:#241a02;--accentShadow:#fbbf2438;--hero:linear-gradient(135deg,#06241d,#0b3b2f 55%,#173b2f);--heroText:#c6ded5;--panel:#0a2b22e6;--article:#08261e;--input:#061e18;--result:linear-gradient(135deg,#12392e,#071f19);--mini:#0f3128;--chip:#ffffff0d;--code:#071f19;--line:#6ee7b722;--lineStrong:#6ee7b744;--focus:#fbbf2430;--shadow:0 32px 85px #0008;--softShadow:0 18px 48px #0006}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.62}
-a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
-.container{width:min(1180px,calc(100% - 32px));margin:auto}
-.sitebar{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:16px}.brand{font-weight:900;letter-spacing:-.04em;font-size:1.25rem}.brand span{color:var(--accent)}
-.crumbs{font-size:.9rem;color:var(--muted);margin:12px 0 0}.crumbs a{color:inherit}
-.hero{position:relative;overflow:hidden;margin:12px auto 30px;border-radius:32px;padding:clamp(28px,5vw,70px);background:var(--hero);box-shadow:var(--shadow);border:1px solid var(--line);isolation:isolate}
-.hero h1{font-size:clamp(2.35rem,5.7vw,5.2rem);line-height:.96;letter-spacing:-.065em;margin:12px 0 20px;max-width:800px}.hero p{font-size:clamp(1rem,1.5vw,1.18rem);max-width:720px;color:var(--heroText,var(--muted));margin:0}
-.eyebrow{display:inline-flex;gap:8px;align-items:center;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.76rem;padding:8px 12px;border-radius:99px;background:var(--chip);border:1px solid var(--line)}
-.hero-art{position:absolute;right:3%;top:50%;transform:translateY(-50%);width:min(34vw,360px);height:min(34vw,360px);pointer-events:none;opacity:.96}
-.calc-zone{margin:0 auto 34px}.calc-shell{position:relative;background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:28px;padding:clamp(20px,3vw,34px);backdrop-filter:blur(14px)}
-.calc-title{margin:0 0 5px;font-size:1.5rem;letter-spacing:-.03em}.calc-note{margin:0 0 22px;color:var(--muted)}
-.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
-label{font-size:.9rem;font-weight:750}.input-row{display:flex;gap:8px}input,select,textarea,button{font:inherit}
-input,select,textarea{width:100%;border:1px solid var(--lineStrong);background:var(--input);color:var(--text);border-radius:14px;padding:13px 14px;outline:none;transition:.2s}
-input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}
-.unit{max-width:122px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-button{border:0;border-radius:14px;padding:13px 18px;font-weight:850;cursor:pointer;transition:transform .18s,box-shadow .18s}
-button:hover{transform:translateY(-2px)}.primary{background:var(--accent);color:var(--accentText,#fff);box-shadow:0 10px 25px var(--accentShadow)}.secondary{background:var(--chip);color:var(--text);border:1px solid var(--line)}
-.error{min-height:24px;margin-top:12px;color:#c33;font-weight:700}.result{margin-top:24px;padding:24px;border-radius:24px;background:var(--result);border:1px solid var(--line);position:relative;overflow:hidden}
-.result .big{font-size:clamp(2rem,5vw,3.7rem);font-weight:950;letter-spacing:-.055em;line-height:1;margin:.25rem 0}.result .sub{color:var(--muted)}
-.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.stat{background:var(--mini);border:1px solid var(--line);border-radius:16px;padding:14px}.stat b{display:block;font-size:1.13rem}
-.content-grid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:28px;align-items:start}.article{background:var(--article);border:1px solid var(--line);box-shadow:var(--softShadow);border-radius:28px;padding:clamp(22px,4vw,42px)}
-.article h2{font-size:clamp(1.55rem,3vw,2.2rem);line-height:1.1;letter-spacing:-.035em;margin:2.2rem 0 .7rem}.article h2:first-child{margin-top:0}.article h3{margin:1.5rem 0 .5rem}.article p,.article li{color:var(--bodyText)}
-.aside{position:sticky;top:18px;background:var(--panel);border:1px solid var(--line);box-shadow:var(--softShadow);border-radius:22px;padding:20px}.aside h3{margin-top:0}.aside ul{padding-left:18px;margin-bottom:0}
-.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--code);padding:16px;border-radius:16px;overflow:auto;border:1px solid var(--line);font-weight:750}
-.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px}table{width:100%;border-collapse:collapse;min-width:560px}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line)}th{background:var(--chip)}
-.faq details{border-top:1px solid var(--line);padding:14px 0}.faq summary{font-weight:850;cursor:pointer}.sources li{margin:.45rem 0}
-.footer{padding:34px 0 50px;color:var(--muted);font-size:.9rem}
-.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.pill{padding:7px 11px;border-radius:999px;background:var(--chip);border:1px solid var(--line);font-size:.82rem;font-weight:750}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.tab{padding:9px 13px;border-radius:12px;background:var(--chip);border:1px solid var(--line);font-weight:800;cursor:pointer}.tab.active{background:var(--accent);color:var(--accentText,#fff)}
-.hidden{display:none!important}
-@media(max-width:860px){.content-grid{grid-template-columns:1fr}.aside{position:static}.hero-art{opacity:.28;width:250px;height:250px}.hero h1{max-width:95%}}
-@media(max-width:650px){.container{width:min(100% - 20px,1180px)}.hero{border-radius:22px;padding:26px 20px}.calc-shell,.article{border-radius:22px;padding:20px}.form-grid,.stat-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.input-row{flex-direction:column}.unit{max-width:none}.hero-art{right:-60px}}
-.theme-gdp .hero{border-radius:18px 18px 90px 18px}.theme-gdp .calc-shell{border-radius:18px}.theme-gdp .result{border-top:6px solid #fbbf24}.bars{position:absolute;inset:14%;display:flex;align-items:flex-end;gap:16px;padding:22px;border-bottom:3px solid #6ee7b7}.bars i{display:block;flex:1;background:linear-gradient(#fbbf24,#10b981);border-radius:10px 10px 2px 2px;box-shadow:8px 9px 0 #0003}.bars i:nth-child(1){height:32%}.bars i:nth-child(2){height:54%}.bars i:nth-child(3){height:72%}.bars i:nth-child(4){height:88%}.bars i:nth-child(5){height:64%}</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "GDP Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate gross domestic product using the expenditure approach: consumption + investment + government spending + exports − imports.", "url": "/gdp-calculator/", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Business & Economics", "item": "/finance/business-economics/"}, {"@type": "ListItem", "position": 4, "name": "GDP Calculator", "item": "/gdp-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the expenditure formula for GDP?", "acceptedAnswer": {"@type": "Answer", "text": "GDP = C + I + G + X − M, where C is consumption, I is investment, G is government spending, X is exports, and M is imports."}}, {"@type": "Question", "name": "Why are imports subtracted from GDP?", "acceptedAnswer": {"@type": "Answer", "text": "Imports can be included in consumption, investment, or government spending but were produced abroad. Subtracting imports removes that foreign production from domestic GDP."}}, {"@type": "Question", "name": "Does this calculate real GDP or nominal GDP?", "acceptedAnswer": {"@type": "Answer", "text": "It calculates an expenditure total from the monetary values entered. Whether the result is nominal or real depends on whether your inputs are current-price values or consistently inflation-adjusted values."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body class="theme-gdp" data-cp-category="finance" data-cp-page-type="Calculator">
-<header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header><nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../finance/index.html">Finance</a></li><li><a aria-current="page" href="index.html">GDP Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main"><h1 class="page-title">GDP Calculator</h1>
+   <!-- Primary Meta Tags -->
+<title>GDP Calculator – Calculate GDP Using C + I + G + X − M</title>
+<meta name="title" content="GDP Calculator – Calculate GDP Using C + I + G + X − M">
+<meta name="description" content="Calculate GDP with the expenditure approach using consumption, investment, government spending, exports, and imports, with a clear formula and example.">
 
-<section aria-labelledby="calculator-heading" class="container calc-zone">
-<div class="calc-shell">
-<h2 class="calc-title" id="calculator-heading">GDP Calculator</h2>
-<p class="calc-note">Calculate GDP with the expenditure approach: C + I + G + X − M.</p>
-<div class="form-grid">
-<div class="field"><label for="c">Consumption (C)</label><input id="c" step="any" type="number" value="100"/></div>
-<div class="field"><label for="i">Investment (I)</label><input id="i" step="any" type="number" value="30"/></div>
-<div class="field"><label for="g">Government spending (G)</label><input id="g" step="any" type="number" value="40"/></div>
-<div class="field"><label for="x">Exports (X)</label><input id="x" step="any" type="number" value="20"/></div>
-<div class="field"><label for="m">Imports (M)</label><input id="m" step="any" type="number" value="10"/></div>
-<div class="field"><label for="unitLabel">Display unit</label><select id="unitLabel"><option value="billion">billion currency units</option><option value="million">million currency units</option><option value="units">currency units</option></select></div>
-</div>
-<div class="actions"><button class="primary" id="calcBtn">Calculate GDP</button><button class="secondary" id="resetBtn">Reset</button></div><div class="error" id="error" role="alert"></div>
-<div class="result"><span class="sub">Gross domestic product</span><div class="big" id="gdp">180.00</div><div class="stat-grid"><div class="stat"><span>Domestic demand C+I+G</span><b id="domestic">170.00</b></div><div class="stat"><span>Net exports X−M</span><b id="nx">10.00</b></div><div class="stat"><span>Unit</span><b id="uout">billion</b></div></div></div>
-</div>
-</section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<section class="container content-grid">
-<article class="article">
-<h2>What Is a GDP Calculator?</h2><p>This GDP calculator uses the expenditure approach to estimate gross domestic product from consumption, investment, government spending, exports, and imports. The U.S. Bureau of Economic Analysis describes this widely used formula as C + I + G + X − M.</p>
-<h2>GDP Formula</h2><div class="formula">GDP = C + I + G + X − M</div><p>C represents consumption; I represents investment; G represents government consumption and investment; X is exports; and M is imports. Exports add domestically produced output sold abroad, while imports are subtracted so foreign-produced output is not counted as domestic production.</p>
-<h3>Example</h3><p>If C = 100, I = 30, G = 40, X = 20, and M = 10, then GDP = 100 + 30 + 40 + 20 − 10 = 180 in the same monetary units used for every input.</p>
-<h2>Nominal vs. Real GDP</h2><p>This arithmetic does not itself adjust for inflation. If all components are measured at current prices, the total is nominal. Real GDP requires a consistent inflation-adjusted measurement framework, normally produced by a national statistical agency.</p>
-<h2>Limitations</h2><p>National accounts involve detailed definitions, source data, seasonal adjustment, revisions, statistical discrepancies, and chain-type quantity measures that a simple calculator cannot reproduce. Use official statistical releases for reported GDP.</p>
-<h2 id="faq">Frequently Asked Questions</h2>
-<div class="faq"><details><summary>What is the expenditure formula for GDP?</summary><p>GDP = C + I + G + X − M, where C is consumption, I is investment, G is government spending, X is exports, and M is imports.</p></details>
-<details><summary>Why are imports subtracted from GDP?</summary><p>Imports can be included in consumption, investment, or government spending but were produced abroad. Subtracting imports removes that foreign production from domestic GDP.</p></details>
-<details><summary>Does this calculate real GDP or nominal GDP?</summary><p>It calculates an expenditure total from the monetary values entered. Whether the result is nominal or real depends on whether your inputs are current-price values or consistently inflation-adjusted values.</p></details></div>
-<h2>Sources and Methodology</h2>
-<p>CalcPro uses the formulas and assumptions described above. References below were used to cross-check the calculator method and terminology. Results are estimates unless a definition or unit conversion is mathematically exact.</p>
-<ul class="sources"><li><a href="https://www.bea.gov/index.php/news/blog/2025-06-03/expenditures-approach-measuring-gdp" rel="noopener noreferrer">U.S. Bureau of Economic Analysis — Expenditures Approach</a> — authoritative explanation of C + I + G + X − M.</li>
-<li><a href="https://www.bea.gov/help/glossary/gross-domestic-product-gdp" rel="noopener noreferrer">BEA GDP Glossary</a> — definition of GDP and component relationship.</li>
-<li><a href="https://www.calculator.net/gdp-calculator.html" rel="noopener noreferrer">Calculator.net GDP Calculator</a> — cross-check of calculator intent.</li></ul>
-</article>
-<aside class="aside">
-<h3>Quick reference</h3>
-<div class="formula">GDP = C + I + G + X − M</div><div class="pills"><span class="pill">consumption</span><span class="pill">investment</span><span class="pill">net exports</span></div>
-</aside>
-</section>
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/gdp-calculator/">
 
-<script class="cp-calculator-data" type="application/json">{"index":"163","Batch":"17","Calculator / Page":"GDP Calculator","Slug":"gdp-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Calculate gross domestic product using the expenditure approach: consumption + investment + government spending + exports − imports.","Formula / Algorithm Used in Tool":"GDP Formula: GDP = C + I + G + X − M C represents consumption; I represents investment; G represents government consumption and investment; X is exports; and M is imports. Exports add domestically produced output sold abroad, while imports are subtracted so foreign-produced output is not counted as domestic production.","Required User Inputs":"Consumption (C); Investment (I); Government spending (G); Exports (X); Imports (M); Display unit","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Consumption (C), Investment (I), Government spending (G), Exports (X), Imports (M), Display unit. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"National accounts involve detailed definitions, source data, seasonal adjustment, revisions, statistical discrepancies, and chain-type quantity measures that a simple calculator cannot reproduce. Use official statistical releases for reported GDP.","Current Source URLs in Page":"https://www.bea.gov/index.php/news/blog/2025-06-03/expenditures-approach-measuring-gdp | https://www.bea.gov/help/glossary/gross-domestic-product-gdp | https://www.calculator.net/gdp-calculator.html","Implementation Path":"/gdp-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Finance</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../401k-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>401(k) Calculator</strong><small>Project a 401(k) balance using salary, contribution percentage, employer match, sal…</small></span></a><a class="cp-related-link" href="../salary-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Salary Calculator</strong><small>Estimate 2026 U.S. annual and per-paycheck take-home pay using gross salary, pre-ta…</small></span></a><a class="cp-related-link" href="../annuity-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Annuity Calculator</strong><small>Estimate the accumulation value of an annuity-style investment using starting princ…</small></span></a><a class="cp-related-link" href="../mutual-fund-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Mutual Fund Calculator</strong><small>Project mutual fund growth using starting investment, monthly contributions, assume…</small></span></a><a class="cp-related-link" href="../vat-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>VAT Calculator</strong><small>Add VAT to a net price or remove VAT from a gross price using a custom rate, with t…</small></span></a><a class="cp-related-link" href="../rent-vs-buy-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Rent vs Buy Calculator</strong><small>Compare renting versus buying using mortgage amortization, home appreciation, rent…</small></span></a><a class="cp-related-link" href="../auto-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Auto Loan Calculator</strong><small>Estimate a car loan payment using vehicle price, down payment, trade-in, tax, fees,…</small></span></a><a class="cp-related-link" href="../investment-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Investment Calculator</strong><small>Project an investment balance from a starting amount, monthly contributions, time h…</small></span></a></div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/gdp-calculator/">
+<meta property="og:title" content="GDP Calculator – Calculate GDP Using C + I + G + X − M">
+<meta property="og:description" content="Calculate GDP with the expenditure approach using consumption, investment, government spending, exports, and imports, with a clear formula and example.">
+<meta property="og:site_name" content="GDP Calculator">
 
-const $=id=>document.getElementById(id);function run(){let vals=["c","i","g","x","m"].map(k=>+$(k).value);if(vals.some(Number.isNaN)){$("error").textContent="Enter numeric values for all GDP components.";return}let [c,i,g,x,m]=vals,dom=c+i+g,nx=x-m,total=dom+nx;$("error").textContent="";$("gdp").textContent=total.toLocaleString(undefined,{maximumFractionDigits:2});$("domestic").textContent=dom.toLocaleString(undefined,{maximumFractionDigits:2});$("nx").textContent=nx.toLocaleString(undefined,{maximumFractionDigits:2});$("uout").textContent=$("unitLabel").value}
-$("calcBtn").onclick=run;$("unitLabel").onchange=run;$("resetBtn").onclick=()=>location.reload();run();
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/gdp-calculator/">
+<meta name="twitter:title" content="GDP Calculator – Calculate GDP Using C + I + G + X − M">
+<meta name="twitter:description" content="Calculate GDP with the expenditure approach using consumption, investment, government spending, exports, and imports, with a clear formula and example.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        :root {
+            --bg: #061b16;
+            --text: #effdf8;
+            --muted: #a5c9ba;
+            --bodyText: #c2ddd2;
+            --accent: #fbbf24;
+            --accentText: #241a02;
+            --accentShadow: #fbbf2438;
+            --hero: linear-gradient(135deg, #06241d, #0b3b2f 55%, #173b2f);
+            --heroText: #c6ded5;
+            --panel: #0a2b22e6;
+            --article: #08261e;
+            --input: #061e18;
+            --result: linear-gradient(135deg, #12392e, #071f19);
+            --mini: #0f3128;
+            --chip: #ffffff0d;
+            --code: #071f19;
+            --line: #6ee7b722;
+            --lineStrong: #6ee7b744;
+            --focus: #fbbf2430;
+            --shadow: 0 32px 85px #0008;
+            --softShadow: 0 18px 48px #0006
+        }
 
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.62
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .sitebar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            gap: 16px
+        }
+
+        .brand {
+            font-weight: 900;
+            letter-spacing: -.04em;
+            font-size: 1.25rem
+        }
+
+        .brand span {
+            color: var(--accent)
+        }
+
+        .crumbs {
+            font-size: .9rem;
+            color: var(--muted);
+            margin: 12px 0 0
+        }
+
+        .crumbs a {
+            color: inherit
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            margin: 12px auto 30px;
+            border-radius: 32px;
+            padding: clamp(28px, 5vw, 70px);
+            background: var(--hero);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--line);
+            isolation: isolate
+        }
+
+        .hero h1 {
+            font-size: clamp(2.35rem, 5.7vw, 5.2rem);
+            line-height: .96;
+            letter-spacing: -.065em;
+            margin: 12px 0 20px;
+            max-width: 800px
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 1.5vw, 1.18rem);
+            max-width: 720px;
+            color: var(--heroText, var(--muted));
+            margin: 0
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            font-size: .76rem;
+            padding: 8px 12px;
+            border-radius: 99px;
+            background: var(--chip);
+            border: 1px solid var(--line)
+        }
+
+        .hero-art {
+            position: absolute;
+            right: 3%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: min(34vw, 360px);
+            height: min(34vw, 360px);
+            pointer-events: none;
+            opacity: .96
+        }
+
+        .calc-zone {
+            margin: 0 auto 34px
+        }
+
+        .calc-shell {
+            position: relative;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            border-radius: 28px;
+            padding: clamp(20px, 3vw, 34px);
+            backdrop-filter: blur(14px)
+        }
+
+        .calc-title {
+            margin: 0 0 5px;
+            font-size: 1.5rem;
+            letter-spacing: -.03em
+        }
+
+        .calc-note {
+            margin: 0 0 22px;
+            color: var(--muted)
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px
+        }
+
+        .field.full {
+            grid-column: 1/-1
+        }
+
+        label {
+            font-size: .9rem;
+            font-weight: 750
+        }
+
+        .input-row {
+            display: flex;
+            gap: 8px
+        }
+
+        input,
+        select,
+        textarea,
+        button {
+            font: inherit
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--lineStrong);
+            background: var(--input);
+            color: var(--text);
+            border-radius: 14px;
+            padding: 13px 14px;
+            outline: none;
+            transition: .2s
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--focus)
+        }
+
+        .unit {
+            max-width: 122px
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px
+        }
+
+        button {
+            border: 0;
+            border-radius: 14px;
+            padding: 13px 18px;
+            font-weight: 850;
+            cursor: pointer;
+            transition: transform .18s, box-shadow .18s
+        }
+
+        button:hover {
+            transform: translateY(-2px)
+        }
+
+        .primary {
+            background: var(--accent);
+            color: var(--accentText, #fff);
+            box-shadow: 0 10px 25px var(--accentShadow)
+        }
+
+        .secondary {
+            background: var(--chip);
+            color: var(--text);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            min-height: 24px;
+            margin-top: 12px;
+            color: #c33;
+            font-weight: 700
+        }
+
+        .result {
+            margin-top: 24px;
+            padding: 24px;
+            border-radius: 24px;
+            background: var(--result);
+            border: 1px solid var(--line);
+            position: relative;
+            overflow: hidden
+        }
+
+        .result .big {
+            font-size: clamp(2rem, 5vw, 3.7rem);
+            font-weight: 950;
+            letter-spacing: -.055em;
+            line-height: 1;
+            margin: .25rem 0
+        }
+
+        .result .sub {
+            color: var(--muted)
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .stat {
+            background: var(--mini);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 14px
+        }
+
+        .stat b {
+            display: block;
+            font-size: 1.13rem
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 290px;
+            gap: 28px;
+            align-items: start
+        }
+
+        .article {
+            background: var(--article);
+            border: 1px solid var(--line);
+            box-shadow: var(--softShadow);
+            border-radius: 28px;
+            padding: clamp(22px, 4vw, 42px)
+        }
+
+        .article h2 {
+            font-size: clamp(1.55rem, 3vw, 2.2rem);
+            line-height: 1.1;
+            letter-spacing: -.035em;
+            margin: 2.2rem 0 .7rem
+        }
+
+        .article h2:first-child {
+            margin-top: 0
+        }
+
+        .article h3 {
+            margin: 1.5rem 0 .5rem
+        }
+
+        .article p,
+        .article li {
+            color: var(--bodyText)
+        }
+
+        .aside {
+            position: sticky;
+            top: 18px;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--softShadow);
+            border-radius: 22px;
+            padding: 20px
+        }
+
+        .aside h3 {
+            margin-top: 0
+        }
+
+        .aside ul {
+            padding-left: 18px;
+            margin-bottom: 0
+        }
+
+        .formula {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: var(--code);
+            padding: 16px;
+            border-radius: 16px;
+            overflow: auto;
+            border: 1px solid var(--line);
+            font-weight: 750
+        }
+
+        .table-wrap {
+            overflow: auto;
+            border: 1px solid var(--line);
+            border-radius: 18px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 560px
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--line)
+        }
+
+        th {
+            background: var(--chip)
+        }
+
+        .faq details {
+            border-top: 1px solid var(--line);
+            padding: 14px 0
+        }
+
+        .faq summary {
+            font-weight: 850;
+            cursor: pointer
+        }
+
+        .sources li {
+            margin: .45rem 0
+        }
+
+        .footer {
+            padding: 34px 0 50px;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 16px
+        }
+
+        .pill {
+            padding: 7px 11px;
+            border-radius: 999px;
+            background: var(--chip);
+            border: 1px solid var(--line);
+            font-size: .82rem;
+            font-weight: 750
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 0 0 18px
+        }
+
+        .tab {
+            padding: 9px 13px;
+            border-radius: 12px;
+            background: var(--chip);
+            border: 1px solid var(--line);
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .tab.active {
+            background: var(--accent);
+            color: var(--accentText, #fff)
+        }
+
+        .hidden {
+            display: none !important
+        }
+
+        @media(max-width:860px) {
+            .content-grid {
+                grid-template-columns: 1fr
+            }
+
+            .aside {
+                position: static
+            }
+
+            .hero-art {
+                opacity: .28;
+                width: 250px;
+                height: 250px
+            }
+
+            .hero h1 {
+                max-width: 95%
+            }
+        }
+
+        @media(max-width:650px) {
+            .container {
+                width: min(100% - 20px, 1180px)
+            }
+
+            .hero {
+                border-radius: 22px;
+                padding: 26px 20px
+            }
+
+            .calc-shell,
+            .article {
+                border-radius: 22px;
+                padding: 20px
+            }
+
+            .form-grid,
+            .stat-grid {
+                grid-template-columns: 1fr
+            }
+
+            .field.full {
+                grid-column: auto
+            }
+
+            .input-row {
+                flex-direction: column
+            }
+
+            .unit {
+                max-width: none
+            }
+
+            .hero-art {
+                right: -60px
+            }
+        }
+
+        .theme-gdp .hero {
+            border-radius: 18px 18px 90px 18px
+        }
+
+        .theme-gdp .calc-shell {
+            border-radius: 18px
+        }
+
+        .theme-gdp .result {
+            border-top: 6px solid #fbbf24
+        }
+
+        .bars {
+            position: absolute;
+            inset: 14%;
+            display: flex;
+            align-items: flex-end;
+            gap: 16px;
+            padding: 22px;
+            border-bottom: 3px solid #6ee7b7
+        }
+
+        .bars i {
+            display: block;
+            flex: 1;
+            background: linear-gradient(#fbbf24, #10b981);
+            border-radius: 10px 10px 2px 2px;
+            box-shadow: 8px 9px 0 #0003
+        }
+
+        .bars i:nth-child(1) {
+            height: 32%
+        }
+
+        .bars i:nth-child(2) {
+            height: 54%
+        }
+
+        .bars i:nth-child(3) {
+            height: 72%
+        }
+
+        .bars i:nth-child(4) {
+            height: 88%
+        }
+
+        .bars i:nth-child(5) {
+            height: 64%
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/gdp-calculator/#webapplication",
+      "name": "GDP Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/gdp-calculator/",
+      "description": "Calculate GDP with the expenditure approach using consumption, investment, government spending, exports, and imports, with a clear formula and example.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/gdp-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "GDP Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/gdp-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/gdp-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why are imports subtracted when calculating GDP?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Imports are produced outside the domestic economy. Because imported products may already appear within consumption, investment, or government spending, imports are subtracted to prevent foreign production from being included in domestic GDP."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does C stand for in the GDP formula?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "C represents consumption. In BEA's U.S. national accounts, the corresponding component is personal consumption expenditures."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does I represent?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "I represents investment. In official U.S. GDP accounting, BEA uses gross private domestic investment, which includes private fixed investment and changes in private inventories."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does G represent?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "G represents the government component of the expenditure calculation. In BEA's GDP framework, this is government consumption expenditures and gross investment rather than simply every type of government payment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this calculator calculate real GDP?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not automatically. The calculator combines the values entered using the expenditure formula. It does not contain a separate inflation adjustment or GDP deflator input, so any real-versus-nominal distinction depends on the data supplied."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I enter exports that are smaller than imports?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. If imports are larger than exports, X − M is negative, so net exports reduce the calculated GDP relative to C + I + G."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will this result exactly match official GDP statistics?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not necessarily. Official GDP estimates use extensive economic source data, national-accounting definitions, seasonal adjustments, revisions, and other statistical procedures. This calculator only performs the specified expenditure formula."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body class="theme-gdp" data-cp-category="finance" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../finance/index.html">Finance</a></li>
+            <li><a aria-current="page" href="index.html">GDP Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">GDP Calculator</h1>
+
+            <section aria-labelledby="calculator-heading" class="container calc-zone">
+                <div class="calc-shell">
+                    <h2 class="calc-title" id="calculator-heading">GDP Calculator</h2>
+                    <p class="calc-note">Calculate GDP with the expenditure approach: C + I + G + X − M.</p>
+                    <div class="form-grid">
+                        <div class="field"><label for="c">Consumption (C)</label><input id="c" step="any" type="number"
+                                value="100" /></div>
+                        <div class="field"><label for="i">Investment (I)</label><input id="i" step="any" type="number"
+                                value="30" /></div>
+                        <div class="field"><label for="g">Government spending (G)</label><input id="g" step="any"
+                                type="number" value="40" /></div>
+                        <div class="field"><label for="x">Exports (X)</label><input id="x" step="any" type="number"
+                                value="20" /></div>
+                        <div class="field"><label for="m">Imports (M)</label><input id="m" step="any" type="number"
+                                value="10" /></div>
+                        <div class="field"><label for="unitLabel">Display unit</label><select id="unitLabel">
+                                <option value="billion">billion currency units</option>
+                                <option value="million">million currency units</option>
+                                <option value="units">currency units</option>
+                            </select></div>
+                    </div>
+                    <div class="actions"><button class="primary" id="calcBtn">Calculate GDP</button><button
+                            class="secondary" id="resetBtn">Reset</button></div>
+                    <div class="error" id="error" role="alert"></div>
+                    <div class="result"><span class="sub">Gross domestic product</span>
+                        <div class="big" id="gdp">180.00</div>
+                        <div class="stat-grid">
+                            <div class="stat"><span>Domestic demand C+I+G</span><b id="domestic">170.00</b></div>
+                            <div class="stat"><span>Net exports X−M</span><b id="nx">10.00</b></div>
+                            <div class="stat"><span>Unit</span><b id="uout">billion</b></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="container content-grid">
+                
+
+<article class="article">
+
+ 
+
+  <p>Use the GDP Calculator to calculate gross domestic product with the expenditure approach. Enter consumption, investment, government spending, exports, and imports to calculate GDP using the formula <strong>GDP = C + I + G + X − M</strong>.</p>
+
+  <section id="what">
+    <h2>What Is the GDP Calculator?</h2>
+
+    <p>The GDP Calculator estimates gross domestic product from five expenditure components: consumption, investment, government spending, exports, and imports.</p>
+
+    <p>Under the expenditure approach, GDP represents final domestic production measured through spending. The U.S. Bureau of Economic Analysis (BEA) describes GDP as the sum of personal consumption expenditures, gross private domestic investment, government consumption expenditures and gross investment, and net exports.</p>
+
+    <p>This calculator is useful when you already have the expenditure components and want to combine them using the standard GDP identity. It is an arithmetic tool and does not reproduce the full national-accounting process used by official statistical agencies.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the GDP Calculator</h2>
+
+    <p>Enter each component using a consistent monetary unit and measurement period.</p>
+
+    <ol>
+      <li><strong>Consumption (C):</strong> Enter spending represented by the consumption component.</li>
+      <li><strong>Investment (I):</strong> Enter the investment component.</li>
+      <li><strong>Government spending (G):</strong> Enter the government spending component used in the GDP calculation.</li>
+      <li><strong>Exports (X):</strong> Enter the value of exports.</li>
+      <li><strong>Imports (M):</strong> Enter the value of imports.</li>
+      <li><strong>Display unit:</strong> Select the unit used to display the entered values and calculated GDP.</li>
+    </ol>
+
+    <p>All five monetary components should use the same scale. For example, do not enter one value in millions and another in billions without converting them first.</p>
+
+    <p>For official U.S. national accounts, BEA uses personal consumption expenditures for consumption, gross private domestic investment for investment, and government consumption expenditures and gross investment for the government component.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+
+    <p>The calculator uses the expenditure approach:</p>
+
+    <div class="formula"><strong>GDP = C + I + G + X − M</strong></div>
+
+    <p>BEA describes this approach as adding consumption, investment, government expenditures, and exports, then subtracting imports.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Variable</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GDP</td>
+          <td>Gross domestic product</td>
+          <td>Selected monetary unit</td>
+        </tr>
+        <tr>
+          <td>C</td>
+          <td>Consumption</td>
+          <td>Same monetary unit</td>
+        </tr>
+        <tr>
+          <td>I</td>
+          <td>Investment</td>
+          <td>Same monetary unit</td>
+        </tr>
+        <tr>
+          <td>G</td>
+          <td>Government spending</td>
+          <td>Same monetary unit</td>
+        </tr>
+        <tr>
+          <td>X</td>
+          <td>Exports</td>
+          <td>Same monetary unit</td>
+        </tr>
+        <tr>
+          <td>M</td>
+          <td>Imports</td>
+          <td>Same monetary unit</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Calculation Sequence</h3>
+
+    <ol>
+      <li>Take the entered consumption value.</li>
+      <li>Add investment.</li>
+      <li>Add government spending.</li>
+      <li>Add exports.</li>
+      <li>Subtract imports.</li>
+      <li>Present the final GDP in the selected display unit.</li>
+    </ol>
+
+    <p>Imports are subtracted because spending categories can include imported products. Subtracting imports prevents foreign-produced goods and services from being counted as domestic production.</p>
+
+    <h3>Net Exports in the Formula</h3>
+
+    <p>Exports and imports can also be viewed together as:</p>
+
+    <div class="formula"><strong>Net Exports = X − M</strong></div>
+
+    <p>The GDP equation can therefore be written as:</p>
+
+    <div class="formula"><strong>GDP = C + I + G + Net Exports</strong></div>
+
+    <p>This is simply another way of expressing the same expenditure calculation.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>The following example is illustrative and does not represent the GDP of a particular country.</p>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li>Consumption (C) = 20,000</li>
+      <li>Investment (I) = 5,000</li>
+      <li>Government spending (G) = 6,000</li>
+      <li>Exports (X) = 3,000</li>
+      <li>Imports (M) = 4,000</li>
+    </ul>
+
+    <p>All values use the same monetary unit.</p>
+
+    <h3>Step 1</h3>
+
+    <p>Insert the values into the formula:</p>
+
+    <div class="formula"><strong>GDP = 20,000 + 5,000 + 6,000 + 3,000 − 4,000</strong></div>
+
+    <h3>Step 2</h3>
+
+    <p>Add consumption, investment, government spending, and exports:</p>
+
+    <div class="formula"><strong>20,000 + 5,000 + 6,000 + 3,000 = 34,000</strong></div>
+
+    <h3>Step 3</h3>
+
+    <p>Subtract imports:</p>
+
+    <div class="formula"><strong>34,000 − 4,000 = 30,000</strong></div>
+
+    <h3>Final Result</h3>
+
+    <div class="formula"><strong>GDP = 30,000</strong></div>
+
+    <p>The calculated gross domestic product is <strong>30,000 in the selected monetary unit</strong>.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p>The main result is the GDP calculated from the five values you entered.</p>
+
+    <p>A larger calculated value means the combined expenditure components, after subtracting imports, produce a larger GDP figure. The result should always be interpreted using the same currency scale and accounting period as the inputs.</p>
+
+    <p>The calculation itself does not determine whether the values represent nominal GDP, real GDP, quarterly GDP, or annual GDP. That depends on the type and period of the data entered.</p>
+
+    <p>The calculator also does not independently adjust values for inflation because no price index or GDP deflator is part of its calculation.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>This calculator provides a simplified expenditure-based GDP calculation. Important limitations include:</p>
+
+    <ul>
+      <li>All inputs should refer to the same accounting period.</li>
+      <li>All monetary values should use a consistent unit and valuation basis.</li>
+      <li>The calculator applies the arithmetic identity <strong>C + I + G + X − M</strong>.</li>
+      <li>It does not perform seasonal adjustment.</li>
+      <li>It does not calculate chain-type quantity measures.</li>
+      <li>It does not reproduce source-data estimation or statistical adjustments performed by national statistical agencies.</li>
+      <li>It does not account for later revisions to official economic data.</li>
+      <li>The result should not be treated as a replacement for officially published GDP statistics.</li>
+    </ul>
+
+    <p>Official national accounts involve detailed classifications, source data, estimation procedures, and revisions that cannot be reproduced by a simple five-input calculator.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>Why are imports subtracted when calculating GDP?</summary>
+      <p>Imports are produced outside the domestic economy. Because imported products may already appear within consumption, investment, or government spending, imports are subtracted to prevent foreign production from being included in domestic GDP.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What does C stand for in the GDP formula?</summary>
+      <p><strong>C</strong> represents consumption. In BEA's U.S. national accounts, the corresponding component is personal consumption expenditures.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What does I represent?</summary>
+      <p><strong>I</strong> represents investment. In official U.S. GDP accounting, BEA uses gross private domestic investment, which includes private fixed investment and changes in private inventories.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What does G represent?</summary>
+      <p><strong>G</strong> represents the government component of the expenditure calculation. In BEA's GDP framework, this is government consumption expenditures and gross investment rather than simply every type of government payment.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does this calculator calculate real GDP?</summary>
+      <p>Not automatically. The calculator combines the values entered using the expenditure formula. It does not contain a separate inflation adjustment or GDP deflator input, so any real-versus-nominal distinction depends on the data supplied.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can I enter exports that are smaller than imports?</summary>
+      <p>Yes. If imports are larger than exports, <strong>X − M</strong> is negative, so net exports reduce the calculated GDP relative to C + I + G.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Will this result exactly match official GDP statistics?</summary>
+      <p>Not necessarily. Official GDP estimates use extensive economic source data, national-accounting definitions, seasonal adjustments, revisions, and other statistical procedures. This calculator only performs the specified expenditure formula.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <strong>U.S. Bureau of Economic Analysis — The Expenditures Approach to Measuring GDP</strong><br>
+        Explains the <strong>C + I + G + X − M</strong> expenditure approach and why imports are subtracted.<br>
+        <a href="https://www.bea.gov/index.php/news/blog/2025-06-03/expenditures-approach-measuring-gdp?utm_source=chatgpt.com" rel="noopener" target="_blank">BEA — The Expenditures Approach to Measuring GDP</a>
+      </li>
+
+      <li>
+        <strong>U.S. Bureau of Economic Analysis — Gross Domestic Product (GDP) Glossary</strong><br>
+        Defines GDP and its main expenditure components.<br>
+        <a href="https://www.bea.gov/help/glossary/gross-domestic-product-gdp?utm_source=chatgpt.com" rel="noopener" target="_blank">BEA — Gross Domestic Product (GDP)</a>
+      </li>
+
+      <li>
+        <strong>U.S. Bureau of Economic Analysis — Expenditures Approach Glossary</strong><br>
+        Defines GDP as final expenditures plus exports less imports.<br>
+        <a href="https://www.bea.gov/help/glossary/expenditures-approach?utm_source=chatgpt.com" rel="noopener" target="_blank">BEA — Expenditures Approach</a>
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/inflation-calculator/">Inflation Calculator</a></li>
+      <li><a href="https://example.com/percent-calculator/">Percent Calculator</a></li>
+      <li><a href="https://example.com/currency-calculator/">Currency Calculator</a></li>
+      <li><a href="https://example.com/statistics-calculator/">Statistics Calculator</a></li>
+      <li><a href="https://example.com/finance-calculator/">Finance Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+
+            </section>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"163","Batch":"17","Calculator / Page":"GDP Calculator","Slug":"gdp-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Calculate gross domestic product using the expenditure approach: consumption + investment + government spending + exports − imports.","Formula / Algorithm Used in Tool":"GDP Formula: GDP = C + I + G + X − M C represents consumption; I represents investment; G represents government consumption and investment; X is exports; and M is imports. Exports add domestically produced output sold abroad, while imports are subtracted so foreign-produced output is not counted as domestic production.","Required User Inputs":"Consumption (C); Investment (I); Government spending (G); Exports (X); Imports (M); Display unit","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Consumption (C), Investment (I), Government spending (G), Exports (X), Imports (M), Display unit. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"National accounts involve detailed definitions, source data, seasonal adjustment, revisions, statistical discrepancies, and chain-type quantity measures that a simple calculator cannot reproduce. Use official statistical releases for reported GDP.","Current Source URLs in Page":"https://www.bea.gov/index.php/news/blog/2025-06-03/expenditures-approach-measuring-gdp | https://www.bea.gov/help/glossary/gross-domestic-product-gdp | https://www.calculator.net/gdp-calculator.html","Implementation Path":"/gdp-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Finance</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../401k-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>401(k) Calculator</strong><small>Project a 401(k)
+                            balance using salary, contribution percentage, employer match, sal…</small></span></a><a
+                    class="cp-related-link" href="../salary-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Salary Calculator</strong><small>Estimate 2026 U.S.
+                            annual and per-paycheck take-home pay using gross salary, pre-ta…</small></span></a><a
+                    class="cp-related-link" href="../annuity-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Annuity Calculator</strong><small>Estimate the
+                            accumulation value of an annuity-style investment using starting princ…</small></span></a><a
+                    class="cp-related-link" href="../mutual-fund-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Mutual Fund Calculator</strong><small>Project
+                            mutual fund growth using starting investment, monthly contributions,
+                            assume…</small></span></a><a class="cp-related-link"
+                    href="../vat-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>VAT
+                            Calculator</strong><small>Add VAT to a net price or remove VAT from a gross price using a
+                            custom rate, with t…</small></span></a><a class="cp-related-link"
+                    href="../rent-vs-buy-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Rent
+                            vs Buy Calculator</strong><small>Compare renting versus buying using mortgage amortization,
+                            home appreciation, rent…</small></span></a><a class="cp-related-link"
+                    href="../auto-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Auto
+                            Loan Calculator</strong><small>Estimate a car loan payment using vehicle price, down
+                            payment, trade-in, tax, fees,…</small></span></a><a class="cp-related-link"
+                    href="../investment-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Investment Calculator</strong><small>Project an
+                            investment balance from a starting amount, monthly contributions, time h…</small></span></a>
+            </div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+
+        const $ = id => document.getElementById(id); function run() { let vals = ["c", "i", "g", "x", "m"].map(k => +$(k).value); if (vals.some(Number.isNaN)) { $("error").textContent = "Enter numeric values for all GDP components."; return } let [c, i, g, x, m] = vals, dom = c + i + g, nx = x - m, total = dom + nx; $("error").textContent = ""; $("gdp").textContent = total.toLocaleString(undefined, { maximumFractionDigits: 2 }); $("domestic").textContent = dom.toLocaleString(undefined, { maximumFractionDigits: 2 }); $("nx").textContent = nx.toLocaleString(undefined, { maximumFractionDigits: 2 }); $("uout").textContent = $("unitLabel").value }
+        $("calcBtn").onclick = run; $("unitLabel").onchange = run; $("resetBtn").onclick = () => location.reload(); run();
+
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

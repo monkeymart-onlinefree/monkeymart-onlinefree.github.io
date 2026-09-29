@@ -1,88 +1,1055 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>Tile Calculator – Free Accurate Online Calculator | CalcPro</title>
-<meta content="Estimate tile quantity, rows, columns, waste, boxes, and optional cost for a rectangular surface." name="description"/>
-<meta content="index,follow" name="robots"/>
-<link href="../tile-calculator/" rel="canonical"/>
-<meta content="Tile Calculator | CalcPro" property="og:title"/>
-<meta content="Estimate tile quantity, rows, columns, waste, boxes, and optional cost for a rectangular surface." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="/tile-calculator/" property="og:url"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
-button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
-.wrap{width:min(1160px,calc(100% - 32px));margin:auto}
-.crumbs{font-size:.9rem;opacity:.78;margin-bottom:14px}.crumbs a{text-decoration:none}
-.card{border-radius:24px}.field label{display:block;font-weight:700;font-size:.9rem;margin-bottom:7px}
-.field input,.field select,.field textarea{width:100%;border:1px solid rgba(127,127,127,.28);border-radius:14px;padding:12px 13px;background:rgba(255,255,255,.84);color:#151515;outline:none}
-.field input:focus,.field select:focus,.field textarea:focus{box-shadow:0 0 0 4px rgba(89,130,246,.15)}
-.btns{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:800}
-.btn.secondary{background:transparent;border:1px solid currentColor;opacity:.78}
-.error{min-height:22px;margin-top:10px;font-weight:700;color:#b42318}
-.result-title{font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;font-weight:900;opacity:.72}
-.result-main{font-size:clamp(2rem,6vw,4rem);line-height:1;font-weight:950;letter-spacing:-.05em;margin:8px 0 14px}
-.statgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.stat{border-radius:16px;padding:12px;background:rgba(255,255,255,.12)}
-.stat b{display:block;font-size:1.05rem}.stat span{font-size:.8rem;opacity:.75}
-.content{padding:66px 0}.prose{max-width:860px;margin:auto}.prose h2{font-size:clamp(1.5rem,3vw,2rem);line-height:1.2;margin:42px 0 12px}.prose h3{margin:28px 0 8px}.prose p,.prose li{color:var(--muted,#4c5564)}
-.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;padding:15px 17px;border-radius:16px;background:var(--soft,#f3f4f6);overflow:auto}
-.note{border-left:4px solid var(--accent,#4f46e5);padding:12px 16px;background:var(--soft,#f6f7fb);border-radius:0 14px 14px 0}
-.table-wrap{overflow:auto;border-radius:18px;border:1px solid rgba(127,127,127,.18)}table{width:100%;border-collapse:collapse;min-width:560px}th,td{text-align:left;padding:11px 13px;border-bottom:1px solid rgba(127,127,127,.15)}th{background:var(--soft,#f5f5f5)}
-.faq details{border:1px solid rgba(127,127,127,.18);border-radius:16px;margin:10px 0;padding:12px 15px;background:#fff}.faq summary{font-weight:800;cursor:pointer}
-.sources a{word-break:break-word}.footer{padding:28px 0;border-top:1px solid rgba(127,127,127,.18);font-size:.88rem;opacity:.75}
-.sr{position:absolute;left:-10000px}
-@media(max-width:780px){.statgrid{grid-template-columns:1fr}.content{padding:46px 0}.wrap{width:min(100% - 22px,1160px)}}
+    <!-- Primary Meta Tags -->
+<title>Tile Calculator – Estimate Tiles, Boxes &amp; Cost</title>
+<meta name="title" content="Tile Calculator – Estimate Tiles, Boxes &amp; Cost">
+<meta name="description" content="Calculate how many tiles and boxes you need for a rectangular floor or wall using tile size, grout spacing, surface dimensions, and waste allowance.">
 
-:root{--accent:#c66d45;--muted:#6d625d;--soft:#f6ebe5}body{background:#fbf7f2;color:#352b27}.tile-hero{padding:26px 0 80px;background:linear-gradient(125deg,#f8e9df,#fff8ef 55%,#ead1c2);overflow:hidden}.tile-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:30px;align-items:center}.tile-grid h1{font-size:clamp(3rem,7vw,6rem);line-height:.9;letter-spacing:-.06em;margin:10px 0}.mosaic{height:360px;display:grid;grid-template-columns:repeat(5,65px);grid-auto-rows:65px;gap:9px;align-content:center;justify-content:center;transform:rotateX(58deg) rotateZ(-38deg);transform-style:preserve-3d;filter:drop-shadow(0 28px 18px #81584530)}.tile{border-radius:12px;background:linear-gradient(135deg,#fff5ea,#d9916c);box-shadow:8px 8px 0 #b85f3c,14px 18px 16px #6b3d2f28}.tile:nth-child(3n){background:linear-gradient(135deg,#e9c5ad,#b96744)}.tile:nth-child(4n){background:linear-gradient(135deg,#fff,#e8d4c7)}
-.tile-shell{margin-top:-48px;position:relative}.tile-card{background:#fff;border-radius:30px;padding:26px;box-shadow:0 32px 85px #89554028;display:grid;grid-template-columns:1.2fr .8fr;gap:20px}.tile-form .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.tile-form .btn{background:#b75e3c;color:#fff}.tile-result{border-radius:24px;background:linear-gradient(145deg,#8e4934,#c46d4b);color:#fff;padding:28px}.pattern{margin-top:20px;display:grid;grid-template-columns:repeat(6,1fr);gap:4px}.pattern i{aspect-ratio:1;background:#fff3;border:1px solid #fff4;border-radius:3px}
-@media(max-width:780px){.tile-grid,.tile-card,.tile-form .grid{grid-template-columns:1fr}.mosaic{height:280px;grid-template-columns:repeat(5,48px);grid-auto-rows:48px}}
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Tile Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Estimate tile quantity, rows, columns, waste, boxes, and optional cost for a rectangular surface.", "url": "/tile-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Construction & Home", "item": "/construction/"}, {"@type": "ListItem", "position": 3, "name": "Building & Remodeling", "item": "/construction/building-remodeling/"}, {"@type": "ListItem", "position": 4, "name": "Tile Calculator", "item": "/tile-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I calculate how many tiles I need?", "acceptedAnswer": {"@type": "Answer", "text": "For a simple rectangular grid, divide each surface dimension by the repeating tile-plus-grout module, round up to whole rows and columns, multiply them, then add your chosen waste allowance."}}, {"@type": "Question", "name": "Should I include grout gap in a tile calculation?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. A positive grout joint increases the repeating module spacing between tiles. The exact layout near edges can still require cuts, so waste should be considered separately."}}, {"@type": "Question", "name": "Why do herringbone and diagonal layouts need more tile?", "acceptedAnswer": {"@type": "Answer", "text": "Angled or offset layouts create more edge cuts and offcuts than a simple straight grid, so practical waste is often higher."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body data-cp-category="engineering" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../engineering/index.html">Engineering &amp; Construction</a></li><li><a aria-current="page" href="index.html">Tile Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../engineering/index.html">Browse Engineering &amp; Construction</a><a href="../calculators/index.html">All calculators</a></div><header>
-<nav class="wrap" style="padding-top:18px"><div class="crumbs"><a href="../index.html">Home</a> / Tile Calculator</div></nav>
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/tile-calculator/">
 
-</header>
-<div class="cp-page-layout"><main id="main"><h1 class="page-title">Tile Calculator</h1>
-<section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="wrap tile-shell"><div class="tile-card"><div class="tile-form"><h2>Tile and surface dimensions</h2><div class="grid"><div class="field"><label>Tile length (in)</label><input id="tlL" step="any" type="number" value="12"/></div><div class="field"><label>Tile width (in)</label><input id="tlW" step="any" type="number" value="12"/></div><div class="field"><label>Surface length (ft)</label><input id="tlSL" step="any" type="number" value="10"/></div><div class="field"><label>Surface width (ft)</label><input id="tlSW" step="any" type="number" value="10"/></div><div class="field"><label>Grout gap (in)</label><input id="tlGap" step="any" type="number" value=".125"/></div><div class="field"><label>Waste allowance (%)</label><input id="tlWaste" step="any" type="number" value="10"/></div><div class="field"><label>Tiles per box</label><input id="tlBox" step="1" type="number" value="12"/></div><div class="field"><label>Price per box (optional)</label><input id="tlPrice" step="any" type="number" value="28"/></div></div><div class="btns"><button class="btn" onclick="calcTile()">Estimate tiles</button><button class="btn secondary" onclick="resetTile()">Reset</button></div><div class="error" id="tlErr"></div></div>
-<div class="tile-result"><div class="result-title">Tiles including waste</div><div class="result-main" id="tlMain">121</div><div class="statgrid"><div class="stat"><span>Base grid</span><b id="tlGrid">10 × 10</b></div><div class="stat"><span>Surface area</span><b id="tlArea">100 ft²</b></div><div class="stat"><span>Boxes to buy</span><b id="tlBoxes">11</b></div><div class="stat"><span>Estimated box cost</span><b id="tlCost">$308</b></div></div><div class="pattern"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div></section>
-<!--CONTENT-->
-<h2>What Is a Tile Calculator?</h2><p>A tile calculator estimates how many whole tiles are needed to cover a rectangular surface. This version uses the actual surface dimensions, tile dimensions, grout joint, a user-selected waste allowance, and optional packaging information.</p>
-<h2>How the Tile Count Is Calculated</h2><div class="formula">columns = ceil((surface length + grout gap) ÷ (tile length + grout gap))<br/>rows = ceil((surface width + grout gap) ÷ (tile width + grout gap))<br/>tiles = rows × columns</div>
-<p>The calculator then increases the tile count by your waste percentage and rounds up to a whole tile. If tiles per box are supplied, it also rounds up to a whole number of boxes.</p>
-<h2>Grout Joint and Layout</h2><p>Grout joints create spacing between neighboring tiles. The chosen joint affects the repeating module across the field, but edge cuts, pattern alignment, niches, obstacles, and irregular walls can still change the real quantity.</p>
-<h2>Waste Allowance</h2><p>Straight layouts usually create less cut waste than running bond, diagonal, or herringbone patterns. Instead of forcing one default as universally correct, this calculator lets you set the waste allowance to suit the project.</p>
-<div class="note">Measure the actual installation area and check the tile manufacturer's caliber, joint, and installation guidance before ordering.</div>
-<!--FAQ-->
-<section class="content"><article class="wrap prose">
-<h2>What Is a Tile Calculator?</h2><p>A tile calculator estimates how many whole tiles are needed to cover a rectangular surface. This version uses the actual surface dimensions, tile dimensions, grout joint, a user-selected waste allowance, and optional packaging information.</p>
-<h2>How the Tile Count Is Calculated</h2><div class="formula">columns = ceil((surface length + grout gap) ÷ (tile length + grout gap))<br/>rows = ceil((surface width + grout gap) ÷ (tile width + grout gap))<br/>tiles = rows × columns</div>
-<p>The calculator then increases the tile count by your waste percentage and rounds up to a whole tile. If tiles per box are supplied, it also rounds up to a whole number of boxes.</p>
-<h2>Grout Joint and Layout</h2><p>Grout joints create spacing between neighboring tiles. The chosen joint affects the repeating module across the field, but edge cuts, pattern alignment, niches, obstacles, and irregular walls can still change the real quantity.</p>
-<h2>Waste Allowance</h2><p>Straight layouts usually create less cut waste than running bond, diagonal, or herringbone patterns. Instead of forcing one default as universally correct, this calculator lets you set the waste allowance to suit the project.</p>
-<div class="note">Measure the actual installation area and check the tile manufacturer's caliber, joint, and installation guidance before ordering.</div>
-<h2 id="faq">Frequently Asked Questions</h2>
-<div class="faq"><details><summary>How do I calculate how many tiles I need?</summary><p>For a simple rectangular grid, divide each surface dimension by the repeating tile-plus-grout module, round up to whole rows and columns, multiply them, then add your chosen waste allowance.</p></details>
-<details><summary>Should I include grout gap in a tile calculation?</summary><p>Yes. A positive grout joint increases the repeating module spacing between tiles. The exact layout near edges can still require cuts, so waste should be considered separately.</p></details>
-<details><summary>Why do herringbone and diagonal layouts need more tile?</summary><p>Angled or offset layouts create more edge cuts and offcuts than a simple straight grid, so practical waste is often higher.</p></details></div>
-<h2>Sources and Methodology</h2>
-<div class="sources"><p><strong>Calculator.net:</strong> Tile Calculator reviewed for tile dimensions, area, grout gap, boxes, pricing, and layout considerations.</p><p><strong>Methodology:</strong> rectangular grid counting uses whole rows and columns plus a separate user-controlled waste allowance so cut loss is not hidden inside the geometry.</p></div>
-</article></section>
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/tile-calculator/">
+<meta property="og:title" content="Tile Calculator – Estimate Tiles, Boxes &amp; Cost">
+<meta property="og:description" content="Calculate how many tiles and boxes you need for a rectangular floor or wall using tile size, grout spacing, surface dimensions, and waste allowance.">
+<meta property="og:site_name" content="Tile Calculator">
 
-<script class="cp-calculator-data" type="application/json">{"index":"187","Batch":"19","Calculator / Page":"Tile Calculator","Slug":"tile-calculator","Site Category (Current)":"Engineering & Construction","Recommended Content Domain":"Engineering / Construction","Page Type":"Calculator","Search Intent / Purpose":"Estimate tile quantity, rows, columns, waste, boxes, and optional cost for a rectangular surface.","Formula / Algorithm Used in Tool":"How the Tile Count Is Calculated: columns = ceil((surface length + grout gap) ÷ (tile length + grout gap)) rows = ceil((surface width + grout gap) ÷ (tile width + grout gap)) tiles = rows × columns The calculator then increases the tile count by your waste percentage and rounds up to a whole tile. If tiles per box are supplied, it also rounds up to a whole number of boxes.","Required User Inputs":"Tile length (in); Tile width (in); Surface length (ft); Surface width (ft); Grout gap (in); Waste allowance (%); Tiles per box; Price per box (optional)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Tile length (in), Tile width (in), Surface length (ft), Surface width (ft), Grout gap (in), Waste allowance (%), Tiles per box, Price per box (optional). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Exact engineering/geometry formula, units, standards; document any default density, waste factor, safety factor or material assumption.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When standards/default factors change","Important Assumptions / Limitations":"Measure the actual installation area and check the tile manufacturer's caliber, joint, and installation guidance before ordering.","Current Source URLs in Page":"Source names may be present in page text; no external URL embedded.","Implementation Path":"/tile-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Engineering &amp; Construction</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../roofing-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Roofing Calculator</strong><small>Estimate pitched roof area, roofing squares, bundle quantity, waste, and optional m…</small></span></a><a class="cp-related-link" href="../concrete-calculator-for-your-site/index.html"><span class="cp-related-dot">›</span><span><strong>Concrete Calculator for Your Site</strong><small>Calculate concrete volume for rectangular slabs, round columns, and circular tubes…</small></span></a><a class="cp-related-link" href="../electricity-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Electricity Calculator</strong><small>Estimate appliance electricity use in kWh and daily, monthly, and yearly energy cos…</small></span></a><a class="cp-related-link" href="../concrete-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Concrete Calculator</strong><small>Calculate concrete volume for slabs, round columns, or tubes, convert to cubic yard…</small></span></a><a class="cp-related-link" href="../fuel-cost-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fuel Cost Calculator</strong><small>Estimate trip fuel use and fuel cost from distance, fuel efficiency, and gas or die…</small></span></a><a class="cp-related-link" href="../gravel-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Gravel Calculator</strong><small>Calculate gravel volume from length, width, and depth, with optional supplier densi…</small></span></a><a class="cp-related-link" href="../btu-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>BTU Calculator</strong><small>Estimate room air-conditioner cooling capacity in BTU per hour using ENERGY STAR ro…</small></span></a><a class="cp-related-link" href="../horsepower-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Horsepower Calculator</strong><small>Calculate mechanical horsepower from torque and RPM, or convert between hp, kilowat…</small></span></a></div><a class="cp-side-category" href="../engineering/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-function calcTile(){tlErr.textContent="";let L=+tlL.value,W=+tlW.value,SL=+tlSL.value*12,SW=+tlSW.value*12,g=+tlGap.value,wa=+tlWaste.value,b=+tlBox.value,p=+tlPrice.value;if(!(L>0&&W>0&&SL>0&&SW>0&&L+g>0&&W+g>0&&wa>=0&&b>0)){tlErr.textContent="Enter positive tile/surface dimensions and box size, with valid grout gap and waste.";return}let cols=Math.ceil((SL+g)/(L+g)),rows=Math.ceil((SW+g)/(W+g)),base=cols*rows,total=Math.ceil(base*(1+wa/100)),boxes=Math.ceil(total/b),area=SL*SW/144;tlMain.textContent=total.toLocaleString();tlGrid.textContent=`${cols} × ${rows} = ${base}`;tlArea.textContent=area.toFixed(2).replace(/\.00$/,"")+" ft²";tlBoxes.textContent=boxes;tlCost.textContent=p>=0?"$"+(boxes*p).toLocaleString(undefined,{maximumFractionDigits:2}):"—"}
-function resetTile(){[tlL,tlW,tlSL,tlSW,tlGap,tlWaste,tlBox,tlPrice].forEach((x,i)=>x.value=[12,12,10,10,.125,10,12,28][i]);calcTile()}calcTile();
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/tile-calculator/">
+<meta name="twitter:title" content="Tile Calculator – Estimate Tiles, Boxes &amp; Cost">
+<meta name="twitter:description" content="Calculate how many tiles and boxes you need for a rectangular floor or wall using tile size, grout spacing, surface dimensions, and waste allowance.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        a {
+            color: inherit
+        }
+
+        .wrap {
+            width: min(1160px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .crumbs {
+            font-size: .9rem;
+            opacity: .78;
+            margin-bottom: 14px
+        }
+
+        .crumbs a {
+            text-decoration: none
+        }
+
+        .card {
+            border-radius: 24px
+        }
+
+        .field label {
+            display: block;
+            font-weight: 700;
+            font-size: .9rem;
+            margin-bottom: 7px
+        }
+
+        .field input,
+        .field select,
+        .field textarea {
+            width: 100%;
+            border: 1px solid rgba(127, 127, 127, .28);
+            border-radius: 14px;
+            padding: 12px 13px;
+            background: rgba(255, 255, 255, .84);
+            color: #151515;
+            outline: none
+        }
+
+        .field input:focus,
+        .field select:focus,
+        .field textarea:focus {
+            box-shadow: 0 0 0 4px rgba(89, 130, 246, .15)
+        }
+
+        .btns {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-weight: 800
+        }
+
+        .btn.secondary {
+            background: transparent;
+            border: 1px solid currentColor;
+            opacity: .78
+        }
+
+        .error {
+            min-height: 22px;
+            margin-top: 10px;
+            font-weight: 700;
+            color: #b42318
+        }
+
+        .result-title {
+            font-size: .82rem;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            font-weight: 900;
+            opacity: .72
+        }
+
+        .result-main {
+            font-size: clamp(2rem, 6vw, 4rem);
+            line-height: 1;
+            font-weight: 950;
+            letter-spacing: -.05em;
+            margin: 8px 0 14px
+        }
+
+        .statgrid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px
+        }
+
+        .stat {
+            border-radius: 16px;
+            padding: 12px;
+            background: rgba(255, 255, 255, .12)
+        }
+
+        .stat b {
+            display: block;
+            font-size: 1.05rem
+        }
+
+        .stat span {
+            font-size: .8rem;
+            opacity: .75
+        }
+
+        .content {
+            padding: 66px 0
+        }
+
+        .prose {
+            max-width: 860px;
+            margin: auto
+        }
+
+        .prose h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            line-height: 1.2;
+            margin: 42px 0 12px
+        }
+
+        .prose h3 {
+            margin: 28px 0 8px
+        }
+
+        .prose p,
+        .prose li {
+            color: var(--muted, #4c5564)
+        }
+
+        .formula {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            padding: 15px 17px;
+            border-radius: 16px;
+            background: var(--soft, #f3f4f6);
+            overflow: auto
+        }
+
+        .note {
+            border-left: 4px solid var(--accent, #4f46e5);
+            padding: 12px 16px;
+            background: var(--soft, #f6f7fb);
+            border-radius: 0 14px 14px 0
+        }
+
+        .table-wrap {
+            overflow: auto;
+            border-radius: 18px;
+            border: 1px solid rgba(127, 127, 127, .18)
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 560px
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 11px 13px;
+            border-bottom: 1px solid rgba(127, 127, 127, .15)
+        }
+
+        th {
+            background: var(--soft, #f5f5f5)
+        }
+
+        .faq details {
+            border: 1px solid rgba(127, 127, 127, .18);
+            border-radius: 16px;
+            margin: 10px 0;
+            padding: 12px 15px;
+            background: #fff
+        }
+
+        .faq summary {
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .sources a {
+            word-break: break-word
+        }
+
+        .footer {
+            padding: 28px 0;
+            border-top: 1px solid rgba(127, 127, 127, .18);
+            font-size: .88rem;
+            opacity: .75
+        }
+
+        .sr {
+            position: absolute;
+            left: -10000px
+        }
+
+        @media(max-width:780px) {
+            .statgrid {
+                grid-template-columns: 1fr
+            }
+
+            .content {
+                padding: 46px 0
+            }
+
+            .wrap {
+                width: min(100% - 22px, 1160px)
+            }
+        }
+
+        :root {
+            --accent: #c66d45;
+            --muted: #6d625d;
+            --soft: #f6ebe5
+        }
+
+        body {
+            background: #fbf7f2;
+            color: #352b27
+        }
+
+        .tile-hero {
+            padding: 26px 0 80px;
+            background: linear-gradient(125deg, #f8e9df, #fff8ef 55%, #ead1c2);
+            overflow: hidden
+        }
+
+        .tile-grid {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: 30px;
+            align-items: center
+        }
+
+        .tile-grid h1 {
+            font-size: clamp(3rem, 7vw, 6rem);
+            line-height: .9;
+            letter-spacing: -.06em;
+            margin: 10px 0
+        }
+
+        .mosaic {
+            height: 360px;
+            display: grid;
+            grid-template-columns: repeat(5, 65px);
+            grid-auto-rows: 65px;
+            gap: 9px;
+            align-content: center;
+            justify-content: center;
+            transform: rotateX(58deg) rotateZ(-38deg);
+            transform-style: preserve-3d;
+            filter: drop-shadow(0 28px 18px #81584530)
+        }
+
+        .tile {
+            border-radius: 12px;
+            background: linear-gradient(135deg, #fff5ea, #d9916c);
+            box-shadow: 8px 8px 0 #b85f3c, 14px 18px 16px #6b3d2f28
+        }
+
+        .tile:nth-child(3n) {
+            background: linear-gradient(135deg, #e9c5ad, #b96744)
+        }
+
+        .tile:nth-child(4n) {
+            background: linear-gradient(135deg, #fff, #e8d4c7)
+        }
+
+        .tile-shell {
+            margin-top: -48px;
+            position: relative
+        }
+
+        .tile-card {
+            background: #fff;
+            border-radius: 30px;
+            padding: 26px;
+            box-shadow: 0 32px 85px #89554028;
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 20px
+        }
+
+        .tile-form .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px
+        }
+
+        .tile-form .btn {
+            background: #b75e3c;
+            color: #fff
+        }
+
+        .tile-result {
+            border-radius: 24px;
+            background: linear-gradient(145deg, #8e4934, #c46d4b);
+            color: #fff;
+            padding: 28px
+        }
+
+        .pattern {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 4px
+        }
+
+        .pattern i {
+            aspect-ratio: 1;
+            background: #fff3;
+            border: 1px solid #fff4;
+            border-radius: 3px
+        }
+
+        @media(max-width:780px) {
+
+            .tile-grid,
+            .tile-card,
+            .tile-form .grid {
+                grid-template-columns: 1fr
+            }
+
+            .mosaic {
+                height: 280px;
+                grid-template-columns: repeat(5, 48px);
+                grid-auto-rows: 48px
+            }
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/tile-calculator/#webapplication",
+      "name": "Tile Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/tile-calculator/",
+      "description": "Calculate how many tiles and boxes you need for a rectangular floor or wall using tile size, grout spacing, surface dimensions, and waste allowance.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/tile-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tile Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/tile-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/tile-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does the Tile Calculator include grout spacing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The calculator includes the entered grout gap in its row-and-column formulas. This helps account for spacing between adjacent tiles when estimating the required quantity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I calculate tiles for both floors and walls?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The calculator can estimate tiles for either application when the installation surface is rectangular and you enter the appropriate length and width."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is the calculated tile quantity rounded upward?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A fractional row or column still requires material to cover the remaining surface. The calculator therefore rounds each layout direction upward before multiplying them together."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What waste percentage should I enter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Enter a waste percentage suitable for your installation layout. The required allowance depends on tile dimensions, cutting requirements, installation pattern, and the complexity of the surface. A layout with numerous cuts or obstacles may require a different allowance from a straightforward rectangular installation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the calculator account for tiles that can be reused after cutting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The formula estimates full tile positions using rounded rows and columns. It does not individually calculate whether leftover pieces from one position can be reused elsewhere. Actual material consumption may therefore differ from the estimate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why might I need more tiles than the calculated installation quantity?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The box quantity is rounded upward because tiles are purchased in complete boxes. For example, if you require 88 tiles but each box contains 12, purchasing 8 boxes provides 96 tiles."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the Tile Calculator estimate installation labor and other materials?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The calculator focuses on tile quantity, waste, box requirements, and optional box pricing. It does not provide a complete construction estimate covering labor, adhesive, grout, surface preparation, or other installation expenses."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart OnlineFree",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="engineering" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../engineering/index.html">Engineering &amp; Construction</a></li>
+            <li><a aria-current="page" href="index.html">Tile Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../engineering/index.html">Browse Engineering &amp; Construction</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <header>
+        <nav class="wrap" style="padding-top:18px">
+            <div class="crumbs"><a href="../index.html">Home</a> / Tile Calculator</div>
+        </nav>
+
+    </header>
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Tile Calculator</h1>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="wrap tile-shell">
+                <div class="tile-card">
+                    <div class="tile-form">
+                        <h2>Tile and surface dimensions</h2>
+                        <div class="grid">
+                            <div class="field"><label>Tile length (in)</label><input id="tlL" step="any" type="number"
+                                    value="12" /></div>
+                            <div class="field"><label>Tile width (in)</label><input id="tlW" step="any" type="number"
+                                    value="12" /></div>
+                            <div class="field"><label>Surface length (ft)</label><input id="tlSL" step="any"
+                                    type="number" value="10" /></div>
+                            <div class="field"><label>Surface width (ft)</label><input id="tlSW" step="any"
+                                    type="number" value="10" /></div>
+                            <div class="field"><label>Grout gap (in)</label><input id="tlGap" step="any" type="number"
+                                    value=".125" /></div>
+                            <div class="field"><label>Waste allowance (%)</label><input id="tlWaste" step="any"
+                                    type="number" value="10" /></div>
+                            <div class="field"><label>Tiles per box</label><input id="tlBox" step="1" type="number"
+                                    value="12" /></div>
+                            <div class="field"><label>Price per box (optional)</label><input id="tlPrice" step="any"
+                                    type="number" value="28" /></div>
+                        </div>
+                        <div class="btns"><button class="btn" onclick="calcTile()">Estimate tiles</button><button
+                                class="btn secondary" onclick="resetTile()">Reset</button></div>
+                        <div class="error" id="tlErr"></div>
+                    </div>
+                    <div class="tile-result">
+                        <div class="result-title">Tiles including waste</div>
+                        <div class="result-main" id="tlMain">121</div>
+                        <div class="statgrid">
+                            <div class="stat"><span>Base grid</span><b id="tlGrid">10 × 10</b></div>
+                            <div class="stat"><span>Surface area</span><b id="tlArea">100 ft²</b></div>
+                            <div class="stat"><span>Boxes to buy</span><b id="tlBoxes">11</b></div>
+                            <div class="stat"><span>Estimated box cost</span><b id="tlCost">$308</b></div>
+                        </div>
+                        <div class="pattern">
+                            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+             
+            <section class="content">
+                
+
+<article class="article">
+
+ 
+
+  <p>Use the Tile Calculator to estimate how many tiles you need to cover a rectangular floor or wall. Enter the tile dimensions, surface measurements, grout gap, and waste allowance to calculate the required tile quantity and number of boxes, with an optional cost estimate.</p>
+
+  <section id="what">
+    <h2>What Is the Tile Calculator?</h2>
+
+    <p class="direct"><strong>Answer:</strong> The Tile Calculator is a construction planning tool that estimates the number of tiles needed to cover a rectangular surface.</p>
+
+    <p>It calculates how many tile rows and columns fit within the measured area, accounts for grout spacing, and adds a percentage allowance for waste.</p>
+
+    <p>The calculator also helps estimate the number of boxes required based on the tiles supplied per box.</p>
+
+    <p>It is useful for planning bathroom renovations, kitchen flooring, wall tiling, and other rectangular tile installation projects before purchasing materials.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Tile Calculator</h2>
+
+    <p>Enter the following measurements and purchasing details:</p>
+
+    <ol>
+      <li><strong>Tile Length (in):</strong> Enter the length of one tile in inches.</li>
+      <li><strong>Tile Width (in):</strong> Enter the width of one tile in inches.</li>
+      <li><strong>Surface Length (ft):</strong> Enter the total length of the installation area in feet.</li>
+      <li><strong>Surface Width (ft):</strong> Enter the total width of the installation area in feet.</li>
+      <li><strong>Grout Gap (in):</strong> Enter the planned spacing between adjacent tiles in inches.</li>
+      <li><strong>Waste Allowance (%):</strong> Enter the percentage of additional tiles you want to allow for cutting, breakage, and installation waste.</li>
+      <li><strong>Tiles per Box:</strong> Enter the number of individual tiles supplied in one box.</li>
+      <li><strong>Price per Box (Optional):</strong> Enter the price of one tile box if you want to include a material cost estimate.</li>
+    </ol>
+
+    <p>Use consistent measurements and check the actual tile dimensions before calculating.</p>
+
+    <p>The calculator converts the surface dimensions from feet to inches before determining the required tile layout.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Tile Calculator Formula / Calculation Method</h2>
+
+    <p>The Tile Calculator uses a row-and-column calculation rather than simply dividing the total surface area by the area of one tile.</p>
+
+    <p>This method accounts for tile dimensions, grout spacing, and the number of whole tiles required along each direction.</p>
+
+    <h3>Main Formula</h3>
+
+    <p>First, convert the surface dimensions into inches:</p>
+
+    <div class="formula">Ls=Lf12</div>
+
+    <div class="formula">Ws=Wf12</div>
+
+    <p>Then calculate the required columns and rows:</p>
+
+    <div class="formula">\[ \text{Columns}= \left\lceil\frac{L_s+G}{L_t+G}\right\rceil \]</div>
+
+    <div class="formula">\[ \text{Rows}= \left\lceil\frac{W_s+G}{W_t+G}\right\rceil \]</div>
+
+    <p>The initial tile quantity is:</p>
+
+    <div class="formula">\[ N=\text{Rows}\times\text{Columns} \]</div>
+
+    <p>The ceiling symbol (⌈ ⌉) means rounding upward to the nearest whole number.</p>
+
+    <p>This ensures that a partially covered final row or column is counted as requiring another tile.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Lf</td><td>Surface length</td><td>Feet</td></tr>
+        <tr><td>Wf</td><td>Surface width</td><td>Feet</td></tr>
+        <tr><td>Ls</td><td>Converted surface length</td><td>Inches</td></tr>
+        <tr><td>Ws</td><td>Converted surface width</td><td>Inches</td></tr>
+        <tr><td>Lt</td><td>Tile length</td><td>Inches</td></tr>
+        <tr><td>Wt</td><td>Tile width</td><td>Inches</td></tr>
+        <tr><td>G</td><td>Grout gap</td><td>Inches</td></tr>
+        <tr><td>N</td><td>Initial tile quantity</td><td>Tiles</td></tr>
+        <tr><td>P</td><td>Waste allowance</td><td>Percentage</td></tr>
+        <tr><td>B</td><td>Tiles supplied per box</td><td>Tiles</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Calculation Sequence</h3>
+
+    <p>The calculator processes the measurements in the following order:</p>
+
+    <ol>
+      <li>Converts the surface length and width from feet into inches.</li>
+      <li>Adds the grout gap to the surface and tile dimensions as specified in the row-and-column formulas.</li>
+      <li>Calculates the number of tile columns and rounds upward.</li>
+      <li>Calculates the number of tile rows and rounds upward.</li>
+      <li>Multiplies the rows by the columns to determine the initial tile quantity.</li>
+      <li>Applies the entered waste percentage and rounds the adjusted quantity upward.</li>
+      <li>Converts the required tile quantity into whole boxes when tiles-per-box information is available.</li>
+    </ol>
+
+    <h3>Waste Allowance Calculation</h3>
+
+    <p>The initial tile quantity is increased using the entered waste percentage.</p>
+
+    <div class="formula">\[ N_w=\left\lceil N\times\left(1+\frac{P}{100}\right)\right\rceil \]</div>
+
+    <p>Where:</p>
+
+    <ul>
+      <li>Nw = Total tiles including waste</li>
+      <li>N = Initial tile quantity</li>
+      <li>P = Waste allowance percentage</li>
+    </ul>
+
+    <p>The adjusted result is rounded upward because tiles are counted in whole units.</p>
+
+    <h3>Number of Boxes Required</h3>
+
+    <p>When the number of tiles per box is supplied, the calculator determines how many complete boxes are needed.</p>
+
+    <div class="formula">\[ \text{Boxes}=\left\lceil\frac{N_w}{B}\right\rceil \]</div>
+
+    <p>The result is rounded upward to a whole box.</p>
+
+    <p>For example, if an installation requires 88 tiles and each box contains 12 tiles, the required purchase quantity is 8 complete boxes.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose you want to tile a rectangular room measuring 10 feet by 8 feet using 12-inch square tiles.</p>
+
+    <p>The planned grout gap is 1/8 inch, and you want to include a 10% waste allowance.</p>
+
+    <h3>Inputs</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Input</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Tile Length</td><td>12 inches</td></tr>
+        <tr><td>Tile Width</td><td>12 inches</td></tr>
+        <tr><td>Surface Length</td><td>10 feet</td></tr>
+        <tr><td>Surface Width</td><td>8 feet</td></tr>
+        <tr><td>Grout Gap</td><td>0.125 inches</td></tr>
+        <tr><td>Waste Allowance</td><td>10%</td></tr>
+        <tr><td>Tiles per Box</td><td>12</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Step 1: Convert Surface Dimensions</h3>
+
+    <p>Convert both surface measurements into inches.</p>
+
+    <div class="formula">1012=120inches</div>
+
+    <div class="formula">812=96inches</div>
+
+    <p>The installation area measures 120 inches by 96 inches.</p>
+
+    <h3>Step 2: Calculate Columns</h3>
+
+    <p>Apply the tile length and grout spacing:</p>
+
+    <div class="formula">\[ \text{Columns}= \left\lceil\frac{120+0.125}{12+0.125}\right\rceil \]</div>
+
+    <div class="formula">\[ =\lceil9.9072...\rceil=10 \]</div>
+
+    <p>The installation requires 10 tile columns.</p>
+
+    <h3>Step 3: Calculate Rows</h3>
+
+    <div class="formula">\[ \text{Rows}= \left\lceil\frac{96+0.125}{12+0.125}\right\rceil \]</div>
+
+    <div class="formula">\[ =\lceil7.9278...\rceil=8 \]</div>
+
+    <p>The installation requires 8 tile rows.</p>
+
+    <h3>Step 4: Calculate Initial Tile Quantity</h3>
+
+    <div class="formula">N=108=80</div>
+
+    <p>The initial requirement is 80 tiles.</p>
+
+    <h3>Step 5: Add Waste Allowance</h3>
+
+    <p>Apply the 10% waste allowance:</p>
+
+    <div class="formula">\[ N_w=\left\lceil80\times1.10\right\rceil \]</div>
+
+    <div class="formula">Nw=88tiles</div>
+
+    <h3>Step 6: Calculate Required Boxes</h3>
+
+    <p>Each box contains 12 tiles.</p>
+
+    <div class="formula">\[ \text{Boxes}=\left\lceil\frac{88}{12}\right\rceil \]</div>
+
+    <div class="formula">\[ =\lceil7.333...\rceil=8 \]</div>
+
+    <h3>Final Result</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Result</th>
+          <th>Calculated Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Tile Columns</td><td>10</td></tr>
+        <tr><td>Tile Rows</td><td>8</td></tr>
+        <tr><td>Initial Tile Quantity</td><td>80 tiles</td></tr>
+        <tr><td>Waste Allowance</td><td>10%</td></tr>
+        <tr><td>Tiles Including Waste</td><td>88 tiles</td></tr>
+        <tr><td>Required Boxes</td><td>8 boxes</td></tr>
+        <tr><td>Total Tiles Purchased</td><td>96 tiles</td></tr>
+      </tbody>
+    </table>
+
+    <p>For this example, you should plan to purchase 8 boxes containing 96 tiles to meet the calculated requirement of 88 tiles, including the selected waste allowance.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p>The Tile Calculator provides an estimated material requirement based on the measurements and purchasing information entered.</p>
+
+    <h3>Initial Tile Quantity</h3>
+
+    <p>This is the number of tiles calculated from the required rows and columns before adding the waste allowance.</p>
+
+    <p>It represents the basic layout requirement for the rectangular surface.</p>
+
+    <h3>Tiles Including Waste</h3>
+
+    <p>This result includes the additional percentage entered for cutting losses, accidental breakage, and other installation waste.</p>
+
+    <p>It is the adjusted quantity used when planning the tile purchase.</p>
+
+    <h3>Required Boxes</h3>
+
+    <p>The box result indicates how many complete boxes are needed to supply the calculated tile quantity.</p>
+
+    <p>Because the calculator rounds upward, the total number of tiles purchased may exceed the estimated installation requirement.</p>
+
+    <h3>Optional Cost Estimate</h3>
+
+    <p>Entering a price per box allows the purchasing estimate to include tile material cost.</p>
+
+    <p>This is a planning estimate rather than a complete installation quotation.</p>
+
+    <p>Additional expenses, including adhesive, grout, preparation materials, delivery, and labor, should be considered separately.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The calculator provides a rectangular layout estimate and should be used alongside actual installation measurements.</p>
+
+    <p>Important considerations include:</p>
+
+    <ul>
+      <li><strong>Rectangular Surfaces:</strong> The calculation uses a surface length and width. Irregular layouts may require separate measurements.</li>
+      <li><strong>Tile Orientation:</strong> The tile length is matched with the surface length, and the tile width is matched with the surface width.</li>
+      <li><strong>Consistent Dimensions:</strong> The calculation assumes the entered tile dimensions represent the tiles being installed.</li>
+      <li><strong>Grout Spacing:</strong> The entered grout gap is included in the row-and-column calculations. It should reflect the intended installation spacing.</li>
+      <li><strong>Whole-Tile Rounding:</strong> Rows, columns, waste-adjusted quantities, and required boxes are rounded upward as applicable.</li>
+      <li><strong>Waste Allowance:</strong> The additional tile percentage is selected by the user rather than automatically determined from the complexity of the installation.</li>
+      <li><strong>Tile Reuse:</strong> The estimate does not model individual cut-piece placement or optimize the reuse of offcuts.</li>
+      <li><strong>Actual Product Measurements:</strong> Nominal tile sizes may differ from the dimensions of the supplied product.</li>
+    </ul>
+
+    <p>Before purchasing, measure the actual installation area and check the tile manufacturer's dimensional, grout-joint, and installation guidance.</p>
+
+    <p>The Tile Council of North America's installation guidance also addresses grout joint sizing, installation patterns, and other construction requirements that may affect the finished layout.</p>
+
+    <p>Tile Council of North America</p>
+
+    <p>+1</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>1. Does the Tile Calculator include grout spacing?</summary>
+      <p>Yes. The calculator includes the entered grout gap in its row-and-column formulas. This helps account for spacing between adjacent tiles when estimating the required quantity.</p>
+    </details>
+
+    <details class="faq">
+      <summary>2. Can I calculate tiles for both floors and walls?</summary>
+      <p>Yes. The calculator can estimate tiles for either application when the installation surface is rectangular and you enter the appropriate length and width.</p>
+    </details>
+
+    <details class="faq">
+      <summary>3. Why is the calculated tile quantity rounded upward?</summary>
+      <p>A fractional row or column still requires material to cover the remaining surface. The calculator therefore rounds each layout direction upward before multiplying them together.</p>
+    </details>
+
+    <details class="faq">
+      <summary>4. What waste percentage should I enter?</summary>
+      <p>Enter a waste percentage suitable for your installation layout. The required allowance depends on tile dimensions, cutting requirements, installation pattern, and the complexity of the surface.</p>
+      <p>A layout with numerous cuts or obstacles may require a different allowance from a straightforward rectangular installation.</p>
+    </details>
+
+    <details class="faq">
+      <summary>5. Does the calculator account for tiles that can be reused after cutting?</summary>
+      <p>The formula estimates full tile positions using rounded rows and columns. It does not individually calculate whether leftover pieces from one position can be reused elsewhere.</p>
+      <p>Actual material consumption may therefore differ from the estimate.</p>
+    </details>
+
+    <details class="faq">
+      <summary>6. Why might I need more tiles than the calculated installation quantity?</summary>
+      <p>The box quantity is rounded upward because tiles are purchased in complete boxes.</p>
+      <p>For example, if you require 88 tiles but each box contains 12, purchasing 8 boxes provides 96 tiles.</p>
+    </details>
+
+    <details class="faq">
+      <summary>7. Does the Tile Calculator estimate installation labor and other materials?</summary>
+      <p>The calculator focuses on tile quantity, waste, box requirements, and optional box pricing.</p>
+      <p>It does not provide a complete construction estimate covering labor, adhesive, grout, surface preparation, or other installation expenses.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <p>The calculator uses a geometric row-and-column method with grout spacing, upward rounding, and a user-selected waste allowance.</p>
+
+    <p>The following industry resources provide supporting information about tile installation measurements and planning considerations.</p>
+
+    <ul class="sources">
+      <li>
+        <a href="https://tcnatile.com/products/publications/proflex2026/" rel="noopener" target="_blank">Tile Council of North America — 2026 TCNA Handbook for Ceramic, Glass, and Stone Tile Installation</a>
+        Provides recognized industry guidance on tile installation methods, substrate preparation, grout joint sizes, and installation patterns.
+      </li>
+
+      <li>
+        <a href="https://www.ceramictilefoundation.org/blog/how-to-evaluate-finished-tile-installation" rel="noopener" target="_blank">Ceramic Tile Education Foundation — How to Evaluate a Finished Tile Installation</a>
+        Explains ANSI installation requirements, tile dimensional variation, and grout joint considerations.
+      </li>
+
+      <li>
+        <a href="https://www.custombuildingproducts.com/wp-content/uploads/2021/09/tb87-grout-joint-width.pdf" rel="noopener" target="_blank">CUSTOM Building Products — Grout Joint Width: What Is the Right Size?</a>
+        Provides technical guidance on selecting appropriate grout joint widths and accounting for variations in actual tile dimensions.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/area-calculator/">Area Calculator</a></li>
+      <li><a href="https://example.com/square-footage-calculator/">Square Footage Calculator</a></li>
+      <li><a href="https://example.com/concrete-calculator/">Concrete Calculator</a></li>
+      <li><a href="https://example.com/volume-calculator/">Volume Calculator</a></li>
+      <li><a href="https://example.com/conversion-calculator/">Conversion Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+            </section>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"187","Batch":"19","Calculator / Page":"Tile Calculator","Slug":"tile-calculator","Site Category (Current)":"Engineering & Construction","Recommended Content Domain":"Engineering / Construction","Page Type":"Calculator","Search Intent / Purpose":"Estimate tile quantity, rows, columns, waste, boxes, and optional cost for a rectangular surface.","Formula / Algorithm Used in Tool":"How the Tile Count Is Calculated: columns = ceil((surface length + grout gap) ÷ (tile length + grout gap)) rows = ceil((surface width + grout gap) ÷ (tile width + grout gap)) tiles = rows × columns The calculator then increases the tile count by your waste percentage and rounds up to a whole tile. If tiles per box are supplied, it also rounds up to a whole number of boxes.","Required User Inputs":"Tile length (in); Tile width (in); Surface length (ft); Surface width (ft); Grout gap (in); Waste allowance (%); Tiles per box; Price per box (optional)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Tile length (in), Tile width (in), Surface length (ft), Surface width (ft), Grout gap (in), Waste allowance (%), Tiles per box, Price per box (optional). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Exact engineering/geometry formula, units, standards; document any default density, waste factor, safety factor or material assumption.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When standards/default factors change","Important Assumptions / Limitations":"Measure the actual installation area and check the tile manufacturer's caliber, joint, and installation guidance before ordering.","Current Source URLs in Page":"Source names may be present in page text; no external URL embedded.","Implementation Path":"/tile-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Engineering &amp; Construction</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../roofing-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Roofing Calculator</strong><small>Estimate pitched
+                            roof area, roofing squares, bundle quantity, waste, and optional m…</small></span></a><a
+                    class="cp-related-link" href="../concrete-calculator-for-your-site/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Concrete Calculator for Your
+                            Site</strong><small>Calculate concrete volume for rectangular slabs, round columns, and
+                            circular tubes…</small></span></a><a class="cp-related-link"
+                    href="../electricity-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Electricity Calculator</strong><small>Estimate
+                            appliance electricity use in kWh and daily, monthly, and yearly energy
+                            cos…</small></span></a><a class="cp-related-link"
+                    href="../concrete-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Concrete
+                            Calculator</strong><small>Calculate concrete volume for slabs, round columns, or tubes,
+                            convert to cubic yard…</small></span></a><a class="cp-related-link"
+                    href="../fuel-cost-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fuel
+                            Cost Calculator</strong><small>Estimate trip fuel use and fuel cost from distance, fuel
+                            efficiency, and gas or die…</small></span></a><a class="cp-related-link"
+                    href="../gravel-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Gravel
+                            Calculator</strong><small>Calculate gravel volume from length, width, and depth, with
+                            optional supplier densi…</small></span></a><a class="cp-related-link"
+                    href="../btu-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>BTU
+                            Calculator</strong><small>Estimate room air-conditioner cooling capacity in BTU per hour
+                            using ENERGY STAR ro…</small></span></a><a class="cp-related-link"
+                    href="../horsepower-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Horsepower Calculator</strong><small>Calculate
+                            mechanical horsepower from torque and RPM, or convert between hp,
+                            kilowat…</small></span></a></div><a class="cp-side-category"
+                href="../engineering/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        function calcTile() { tlErr.textContent = ""; let L = +tlL.value, W = +tlW.value, SL = +tlSL.value * 12, SW = +tlSW.value * 12, g = +tlGap.value, wa = +tlWaste.value, b = +tlBox.value, p = +tlPrice.value; if (!(L > 0 && W > 0 && SL > 0 && SW > 0 && L + g > 0 && W + g > 0 && wa >= 0 && b > 0)) { tlErr.textContent = "Enter positive tile/surface dimensions and box size, with valid grout gap and waste."; return } let cols = Math.ceil((SL + g) / (L + g)), rows = Math.ceil((SW + g) / (W + g)), base = cols * rows, total = Math.ceil(base * (1 + wa / 100)), boxes = Math.ceil(total / b), area = SL * SW / 144; tlMain.textContent = total.toLocaleString(); tlGrid.textContent = `${cols} × ${rows} = ${base}`; tlArea.textContent = area.toFixed(2).replace(/\.00$/, "") + " ft²"; tlBoxes.textContent = boxes; tlCost.textContent = p >= 0 ? "$" + (boxes * p).toLocaleString(undefined, { maximumFractionDigits: 2 }) : "—" }
+        function resetTile() { [tlL, tlW, tlSL, tlSW, tlGap, tlWaste, tlBox, tlPrice].forEach((x, i) => x.value = [12, 12, 10, 10, .125, 10, 12, 28][i]); calcTile() } calcTile();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

@@ -1,80 +1,1212 @@
 <!DOCTYPE html>
 
 <html lang="en-US">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>Circle Calculator | CalcPro</title>
-<meta content="Calculate radius, diameter, circumference, and area of a circle from any one known measurement." name="description"/>
-<meta content="index,follow" name="robots"/>
-<link href="../circle-calculator/" rel="canonical"/>
-<meta content="Circle Calculator | CalcPro" property="og:title"/>
-<meta content="Calculate radius, diameter, circumference, and area of a circle from any one known measurement." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="/circle-calculator/" property="og:url"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
-:root{--max:1180px}a{color:inherit}.wrap{width:min(var(--max),calc(100% - 32px));margin:auto}.sitebar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:18px}.brand{font-weight:900;letter-spacing:-.04em;font-size:1.25rem;text-decoration:none}.brand span{color:var(--accent)}.topnav{display:flex;gap:10px;flex-wrap:wrap}.topnav a{text-decoration:none;font-size:.9rem;padding:9px 12px;border-radius:999px;background:var(--glass);border:1px solid var(--line)}
-.breadcrumb{font-size:.85rem;opacity:.78;margin-bottom:14px}.breadcrumb a{text-decoration:none}.hero{position:relative;overflow:hidden}.hero h1{font-size:clamp(2.35rem,5vw,5rem);line-height:.98;letter-spacing:-.065em;margin:0 0 18px;max-width:860px}.hero p{font-size:clamp(1rem,1.8vw,1.18rem);max-width:720px;margin:0;color:var(--muted)}
-.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:var(--glass);border:1px solid var(--line);font-size:.82rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:18px}
-main{padding-bottom:60px}.calc-shell{position:relative;margin-top:-28px;z-index:4}.panel{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-.calc-card{border-radius:30px;padding:clamp(20px,4vw,38px)}.calc-title{font-size:1.45rem;font-weight:900;letter-spacing:-.03em;margin:0 0 6px}.calc-sub{margin:0 0 24px;color:var(--muted)}
-label{display:block;font-weight:800;font-size:.9rem;margin-bottom:7px}.field{margin-bottom:15px}.input,select,textarea{width:100%;border:1px solid var(--input-line);background:var(--input-bg);color:var(--text);border-radius:16px;padding:14px 15px;font:inherit;outline:none;transition:.2s}textarea{min-height:126px;resize:vertical}.input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}
-.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.btn{appearance:none;border:0;border-radius:16px;padding:13px 18px;font-weight:900;font:inherit;cursor:pointer;transition:.18s;box-shadow:0 8px 18px rgba(0,0,0,.12)}.btn:hover{transform:translateY(-2px)}.btn.primary{background:var(--accent);color:var(--accentText)}.btn.secondary{background:var(--button2);color:var(--text);border:1px solid var(--line)}
-.error{display:none;margin-top:14px;padding:11px 13px;border-radius:14px;background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.22);color:#b91c1c;font-weight:700}.error.show{display:block}
-.result-card{border-radius:26px;padding:24px;background:var(--result-bg);border:1px solid var(--line);position:relative;overflow:hidden}.result-kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;font-weight:900;color:var(--muted)}.result-big{font-size:clamp(2rem,5vw,4rem);font-weight:950;letter-spacing:-.06em;line-height:1.02;margin:8px 0 6px;word-break:break-word}.muted{color:var(--muted)}.metric-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.metric{padding:13px;border-radius:16px;background:var(--metric-bg);border:1px solid var(--line)}.metric b{display:block;font-size:.8rem;color:var(--muted);margin-bottom:2px}.metric span{font-size:1.08rem;font-weight:900;word-break:break-word}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.tab{border:1px solid var(--line);background:var(--button2);color:var(--text);border-radius:999px;padding:9px 13px;font-weight:850;cursor:pointer}.tab.active{background:var(--accent);color:var(--accentText);border-color:transparent}
-.content{padding-top:70px}.article-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:32px;align-items:start}.article{min-width:0}.article h2{font-size:clamp(1.55rem,2.7vw,2.25rem);letter-spacing:-.04em;margin:44px 0 12px}.article h3{font-size:1.18rem;margin:28px 0 8px}.article p,.article li{color:var(--bodyText)}.formula{padding:18px 20px;border-radius:18px;background:var(--formula-bg);border:1px solid var(--line);font-weight:850;overflow:auto}.aside{position:sticky;top:18px;border-radius:24px;padding:20px}.aside h3{margin:0 0 10px}.aside a{display:block;text-decoration:none;padding:8px 0;border-bottom:1px solid var(--line);font-size:.92rem}.faq details{border:1px solid var(--line);background:var(--panel);border-radius:18px;padding:14px 16px;margin:10px 0}.faq summary{font-weight:900;cursor:pointer}.sources a{word-break:break-word}
-footer{border-top:1px solid var(--line);padding:28px 0 38px;color:var(--muted);font-size:.9rem}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-@media(max-width:860px){.article-grid{grid-template-columns:1fr}.aside{position:relative}.row3{grid-template-columns:1fr}.calc-shell{margin-top:-10px}}@media(max-width:620px){.row,.metric-grid{grid-template-columns:1fr}.topnav{display:none}.sitebar{padding:14px 0}.calc-card{border-radius:24px}.wrap{width:min(var(--max),calc(100% - 22px))}}
+  <!-- Primary Meta Tags -->
+<title>Circle Calculator – Radius, Diameter, Area &amp; Circumference</title>
+<meta name="title" content="Circle Calculator – Radius, Diameter, Area &amp; Circumference">
+<meta name="description" content="Use this circle calculator to find radius, diameter, circumference, and area from any one known circle measurement using standard circle formulas.">
 
-:root{--bg:#fff5f4;--text:#421b25;--muted:#8b5f68;--bodyText:#69434c;--panel:rgba(255,253,253,.92);--glass:#ffe7e6;--line:#efcfd1;--accent:#ef5b72;--accentText:#fff;--input-bg:#fffdfd;--input-line:#e9c4c8;--focus:rgba(239,91,114,.14);--button2:#ffe8ea;--result-bg:linear-gradient(145deg,#ffe0e5,#fff8f8);--metric-bg:#fff9f9;--formula-bg:#ffe6e9;--shadow:0 28px 70px rgba(135,48,66,.13)}
-.hero{padding:42px 0 120px;background:radial-gradient(circle at 78% 42%,#ffd3da 0 20%,transparent 20.3%),linear-gradient(135deg,#fff7f7,#ffe4e7)}.hero-layout{display:grid;grid-template-columns:1fr .9fr;align-items:center;gap:36px}.circle-art{height:340px;display:grid;place-items:center;position:relative}.disc{width:240px;height:240px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0 10%,#ffb7c3 28%,#ef5b72 65%,#bb3650 100%);box-shadow:inset -28px -30px 50px rgba(89,21,37,.18),0 35px 60px rgba(195,61,87,.22);position:relative}.disc:before{content:"r";position:absolute;left:50%;top:50%;width:44%;height:3px;background:white;transform-origin:left center;transform:rotate(-30deg);color:#fff}.disc:after{content:"π";position:absolute;inset:0;display:grid;place-items:center;font-weight:950;font-size:4rem;color:rgba(255,255,255,.9)}.circle-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px}.ring-result{width:200px;height:200px;border-radius:50%;border:22px solid #ef5b72;display:grid;place-items:center;margin:8px auto 18px;box-shadow:inset 0 0 0 8px #ffd4db,0 18px 40px rgba(190,62,88,.17)}@media(max-width:780px){.hero-layout,.circle-layout{grid-template-columns:1fr}.circle-art{height:260px}.disc{width:190px;height:190px}}
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Circle Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate radius, diameter, circumference, and area of a circle from any one known measurement.", "url": "/circle-calculator/", "browserRequirements": "Requires JavaScript"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Math & Statistics", "item": "/math/"}, {"@type": "ListItem", "position": 3, "name": "Geometry", "item": "/math/geometry/"}, {"@type": "ListItem", "position": 4, "name": "Circle Calculator", "item": "/circle-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do you find a circle's diameter from radius?", "acceptedAnswer": {"@type": "Answer", "text": "Multiply the radius by 2: d = 2r."}}, {"@type": "Question", "name": "How do you find circumference from diameter?", "acceptedAnswer": {"@type": "Answer", "text": "Multiply the diameter by π: C = πd."}}, {"@type": "Question", "name": "How do you find radius from area?", "acceptedAnswer": {"@type": "Answer", "text": "Divide the area by π and take the square root: r = √(A/π)."}}, {"@type": "Question", "name": "Does the unit selector convert measurements?", "acceptedAnswer": {"@type": "Answer", "text": "No. It labels the output. Enter the input in the desired unit."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/><link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body data-cp-category="math" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../math/index.html">Math &amp; Statistics</a></li><li><a aria-current="page" href="index.html">Circle Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a href="../calculators/index.html">All calculators</a></div><header class="hero">
-<div class="wrap">
-<nav aria-label="Primary navigation" class="sitebar"><a class="brand" href="#">Calc<span>Pro</span></a><div class="topnav"><a href="#calculator">Calculator</a><a href="#guide">Guide</a><a href="#faq">FAQ</a></div></nav>
-<div class="hero-layout">
-<div><div class="breadcrumb"><a href="#">Home</a> / <a href="#">Math</a> / Circle Calculator</div><div class="pill">CalcPro · Statistics + Geometry</div><h1>Circle Calculator</h1><p>Start with one circle measurement and reveal the rest — radius, diameter, circumference, and area.</p></div>
-<div aria-hidden="true" class="circle-art"><div class="disc"></div></div>
-</div>
-</div>
-</header>
-<div class="cp-page-layout"><main id="main"><h1 class="page-title">Circle Calculator</h1>
-<div class="wrap calc-shell" id="calculator"><section class="panel calc-card"><h2 class="calc-title">Circle Calculator</h2><p class="calc-sub">Calculate radius, diameter, circumference, and area of a circle from any one known measurement.</p>
-<div class="circle-layout">
-<section>
-<div class="field"><label for="unit">Length unit label</label><select id="unit"><option>units</option><option>mm</option><option>cm</option><option>m</option><option>in</option><option>ft</option></select></div>
-<div class="row"><div class="field"><label for="r">Radius (r)</label><input class="input circle-in" id="r" min="0" step="any" type="number" value="5"/></div><div class="field"><label for="d">Diameter (d)</label><input class="input circle-in" id="d" min="0" placeholder="Leave blank" step="any" type="number"/></div></div>
-<div class="row"><div class="field"><label for="c">Circumference (C)</label><input class="input circle-in" id="c" min="0" placeholder="Leave blank" step="any" type="number"/></div><div class="field"><label for="a">Area (A)</label><input class="input circle-in" id="a" min="0" placeholder="Leave blank" step="any" type="number"/></div></div>
-<p class="muted">Enter exactly one known positive value.</p><div class="buttons"><button class="btn primary" id="calcBtn">Calculate circle</button><button class="btn secondary" id="resetBtn">Reset</button></div><div class="error" id="error"></div>
-</section>
-<section aria-live="polite" class="result-card"><div class="ring-result"><div><div class="result-kicker">Radius</div><div id="rr" style="font-size:2rem;font-weight:950">—</div></div></div><div class="metric-grid"><div class="metric"><b>Diameter</b><span id="rd">—</span></div><div class="metric"><b>Circumference</b><span id="rc">—</span></div><div class="metric"><b>Area</b><span id="ra">—</span></div><div class="metric"><b>π used</b><span>Math.PI</span></div></div></section>
-</div>
-</section></div><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<div class="wrap content" id="guide">
-<div class="article-grid">
-<article class="article">
-<section id="s1"><h2>What Is a Circle Calculator?</h2><p>A circle calculator finds radius, diameter, circumference, and area from any one known circle measurement. Because these quantities are linked by π, one positive value is enough to determine the others.</p></section><section id="s2"><h2>How to Use the Circle Calculator</h2><p>Enter exactly one known measurement: radius, diameter, circumference, or area. Leave the other fields blank and select Calculate Circle. The unit menu labels the length and squared-area outputs; it does not convert between units.</p></section><section id="s3"><h2>Circle Formulas</h2><div class="formula">Diameter d = 2r. Circumference C = 2πr = πd. Area A = πr². If area is known, radius is √(A/π).</div></section><section id="s4"><h2>Calculation Example</h2><p>For radius r = 5, diameter = 10, circumference = 10π ≈ 31.4159, and area = 25π ≈ 78.5398.</p></section><section id="s5"><h2>Understanding π</h2><p>Pi is the constant ratio of a circle's circumference to its diameter. The calculator uses the JavaScript Math.PI value rather than a short decimal such as 3.14.</p></section><section id="s6"><h2>Limitations</h2><p>The formulas apply to ideal Euclidean circles. The unit selector only labels outputs, so enter the known quantity in the unit you want the length results to use.</p></section>
-<section class="faq" id="faq"><h2>Frequently Asked Questions</h2><details><summary>How do you find a circle's diameter from radius?</summary><p>Multiply the radius by 2: d = 2r.</p></details><details><summary>How do you find circumference from diameter?</summary><p>Multiply the diameter by π: C = πd.</p></details><details><summary>How do you find radius from area?</summary><p>Divide the area by π and take the square root: r = √(A/π).</p></details><details><summary>Does the unit selector convert measurements?</summary><p>No. It labels the output. Enter the input in the desired unit.</p></details></section>
-<section class="sources" id="sources"><h2>Sources and Methodology</h2><p>Formulas and calculator behavior were cross-checked against the sources below. Page copy and visual design are original. Results are computed locally in your browser.</p><ul><li><a href="https://www.calculator.net/circle-calculator.html" rel="noopener" target="_blank">Calculator.net Circle Calculator</a></li><li><a href="https://openstax.org/books/prealgebra-2e/pages/c-geometric-formulas" rel="noopener" target="_blank">OpenStax – Geometric Formulas</a></li></ul></section>
-</article>
-<aside class="aside panel"><h3>On this page</h3><a href="#s1">What Is a Circle Calculator?</a><a href="#s2">How to Use the Circle Calculator</a><a href="#s3">Circle Formulas</a><a href="#s4">Calculation Example</a><a href="#s5">Understanding π</a><a href="#s6">Limitations</a><a href="#faq">Frequently Asked Questions</a><a href="#sources">Sources &amp; Methodology</a></aside>
-</div>
-</div>
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/circle-calculator/">
 
-<script class="cp-calculator-data" type="application/json">{"index":"140","Batch":"15","Calculator / Page":"Circle Calculator","Slug":"circle-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Calculate radius, diameter, circumference, and area of a circle from any one known measurement.","Formula / Algorithm Used in Tool":"Circle Formulas: Diameter d = 2r. Circumference C = 2πr = πd. Area A = πr². If area is known, radius is √(A/π).","Required User Inputs":"Length unit label; Radius (r); Diameter (d); Circumference (C); Area (A)","Primary Outputs":"Math.PI","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Length unit label, Radius (r), Diameter (d), Circumference (C), Area (A). Explain outputs: Math.PI. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"The formulas apply to ideal Euclidean circles. The unit selector only labels outputs, so enter the known quantity in the unit you want the length results to use.","Current Source URLs in Page":"https://www.calculator.net/circle-calculator.html | https://openstax.org/books/prealgebra-2e/pages/c-geometric-formulas","Implementation Path":"/circle-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Math &amp; Statistics</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../percent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Percent Calculator</strong><small>Calculate a percentage of a number, find what percent one value is of another, calc…</small></span></a><a class="cp-related-link" href="../random-number-generator/index.html"><span class="cp-related-dot">›</span><span><strong>Random Number Generator</strong><small>Generate one or many random integers or decimals between custom limits, with option…</small></span></a><a class="cp-related-link" href="../triangle-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Triangle Calculator</strong><small>Solve triangles from SSS, SAS, or ASA/AAS inputs and calculate missing sides, angle…</small></span></a><a class="cp-related-link" href="../area-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Area Calculator</strong><small>Calculate the area of rectangles, squares, triangles, circles, parallelograms, trap…</small></span></a><a class="cp-related-link" href="../exponent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Exponent Calculator</strong><small>Calculate a number raised to any valid real exponent and view the result in standar…</small></span></a><a class="cp-related-link" href="../log-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Log Calculator</strong><small>Calculate logarithms in any valid real base and compare natural log, common log, an…</small></span></a><a class="cp-related-link" href="../confidence-interval-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Confidence Interval Calculator</strong><small>Calculate a two-sided confidence interval for a mean using a t interval for sample…</small></span></a><a class="cp-related-link" href="../distance-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Distance Calculator</strong><small>Calculate distance between two points in 2D, 3D, or between latitude-longitude coor…</small></span></a></div><a class="cp-side-category" href="../math/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-const $=id=>document.getElementById(id),fmt=n=>Number.isFinite(n)?Number(n.toPrecision(12)).toString():'—';
-function render(){const ids=['r','d','c','a'],raw=ids.map(id=>$(id).value.trim()),filled=raw.map((v,i)=>v!==''?i:-1).filter(i=>i>=0),e=$('error');e.classList.remove('show');if(filled.length!==1){e.textContent='Enter exactly one known value and leave the other three blank.';e.classList.add('show');return}const i=filled[0],v=+raw[i];if(!Number.isFinite(v)||v<=0){e.textContent='The known value must be greater than 0.';e.classList.add('show');return}let r=i===0?v:i===1?v/2:i===2?v/(2*Math.PI):Math.sqrt(v/Math.PI),d=2*r,c=2*Math.PI*r,a=Math.PI*r*r,u=$('unit').value,au=u==='units'?'square units':u+'²',lu=u;$('rr').textContent=fmt(r)+' '+lu;$('rd').textContent=fmt(d)+' '+lu;$('rc').textContent=fmt(c)+' '+lu;$('ra').textContent=fmt(a)+' '+au}
-$('calcBtn').onclick=render;$('unit').onchange=render;$('resetBtn').onclick=()=>{['r','d','c','a'].forEach(id=>$(id).value='');$('r').value=5;$('unit').value='units';render()};render();
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/circle-calculator/">
+<meta property="og:title" content="Circle Calculator – Radius, Diameter, Area &amp; Circumference">
+<meta property="og:description" content="Use this circle calculator to find radius, diameter, circumference, and area from any one known circle measurement using standard circle formulas.">
+<meta property="og:site_name" content="Circle Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/circle-calculator/">
+<meta name="twitter:title" content="Circle Calculator – Radius, Diameter, Area &amp; Circumference">
+<meta name="twitter:description" content="Use this circle calculator to find radius, diameter, circumference, and area from any one known circle measurement using standard circle formulas.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65
+        }
+
+        :root {
+            --max: 1180px
+        }
+
+        a {
+            color: inherit
+        }
+
+        .wrap {
+            width: min(var(--max), calc(100% - 32px));
+            margin: auto
+        }
+
+        .sitebar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            gap: 18px
+        }
+
+        .brand {
+            font-weight: 900;
+            letter-spacing: -.04em;
+            font-size: 1.25rem;
+            text-decoration: none
+        }
+
+        .brand span {
+            color: var(--accent)
+        }
+
+        .topnav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .topnav a {
+            text-decoration: none;
+            font-size: .9rem;
+            padding: 9px 12px;
+            border-radius: 999px;
+            background: var(--glass);
+            border: 1px solid var(--line)
+        }
+
+        .breadcrumb {
+            font-size: .85rem;
+            opacity: .78;
+            margin-bottom: 14px
+        }
+
+        .breadcrumb a {
+            text-decoration: none
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero h1 {
+            font-size: clamp(2.35rem, 5vw, 5rem);
+            line-height: .98;
+            letter-spacing: -.065em;
+            margin: 0 0 18px;
+            max-width: 860px
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 1.8vw, 1.18rem);
+            max-width: 720px;
+            margin: 0;
+            color: var(--muted)
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: var(--glass);
+            border: 1px solid var(--line);
+            font-size: .82rem;
+            font-weight: 800;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            margin-bottom: 18px
+        }
+
+        main {
+            padding-bottom: 60px
+        }
+
+        .calc-shell {
+            position: relative;
+             z-index: 4
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px)
+        }
+
+        .calc-card {
+            border-radius: 30px;
+            padding: clamp(20px, 4vw, 38px)
+        }
+
+        .calc-title {
+            font-size: 1.45rem;
+            font-weight: 900;
+            letter-spacing: -.03em;
+            margin: 0 0 6px
+        }
+
+        .calc-sub {
+            margin: 0 0 24px;
+            color: var(--muted)
+        }
+
+        label {
+            display: block;
+            font-weight: 800;
+            font-size: .9rem;
+            margin-bottom: 7px
+        }
+
+        .field {
+            margin-bottom: 15px
+        }
+
+        .input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--input-line);
+            background: var(--input-bg);
+            color: var(--text);
+            border-radius: 16px;
+            padding: 14px 15px;
+            font: inherit;
+            outline: none;
+            transition: .2s
+        }
+
+        textarea {
+            min-height: 126px;
+            resize: vertical
+        }
+
+        .input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--focus)
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .row3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .btn {
+            appearance: none;
+            border: 0;
+            border-radius: 16px;
+            padding: 13px 18px;
+            font-weight: 900;
+            font: inherit;
+            cursor: pointer;
+            transition: .18s;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, .12)
+        }
+
+        .btn:hover {
+            transform: translateY(-2px)
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            color: var(--accentText)
+        }
+
+        .btn.secondary {
+            background: var(--button2);
+            color: var(--text);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            display: none;
+            margin-top: 14px;
+            padding: 11px 13px;
+            border-radius: 14px;
+            background: rgba(220, 38, 38, .1);
+            border: 1px solid rgba(220, 38, 38, .22);
+            color: #b91c1c;
+            font-weight: 700
+        }
+
+        .error.show {
+            display: block
+        }
+
+        .result-card {
+            border-radius: 26px;
+            padding: 24px;
+            background: var(--result-bg);
+            border: 1px solid var(--line);
+            position: relative;
+            overflow: hidden
+        }
+
+        .result-kicker {
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            font-weight: 900;
+            color: var(--muted)
+        }
+
+        .result-big {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 950;
+            letter-spacing: -.06em;
+            line-height: 1.02;
+            margin: 8px 0 6px;
+            word-break: break-word
+        }
+
+        .muted {
+            color: var(--muted)
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 14px
+        }
+
+        .metric {
+            padding: 13px;
+            border-radius: 16px;
+            background: var(--metric-bg);
+            border: 1px solid var(--line)
+        }
+
+        .metric b {
+            display: block;
+            font-size: .8rem;
+            color: var(--muted);
+            margin-bottom: 2px
+        }
+
+        .metric span {
+            font-size: 1.08rem;
+            font-weight: 900;
+            word-break: break-word
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 0 0 18px
+        }
+
+        .tab {
+            border: 1px solid var(--line);
+            background: var(--button2);
+            color: var(--text);
+            border-radius: 999px;
+            padding: 9px 13px;
+            font-weight: 850;
+            cursor: pointer
+        }
+
+        .tab.active {
+            background: var(--accent);
+            color: var(--accentText);
+            border-color: transparent
+        }
+
+        .content {
+            padding-top: 70px
+        }
+
+        .article-grid {
+            display: grid;
+             gap: 32px;
+            align-items: start
+        }
+
+        .article {
+            min-width: 0
+        }
+
+        .article h2 {
+            font-size: clamp(1.55rem, 2.7vw, 2.25rem);
+            letter-spacing: -.04em;
+            margin: 44px 0 12px
+        }
+
+        .article h3 {
+            font-size: 1.18rem;
+            margin: 28px 0 8px
+        }
+
+        .article p,
+        .article li {
+            color: var(--bodyText)
+        }
+
+        .formula {
+            padding: 18px 20px;
+            border-radius: 18px;
+            background: var(--formula-bg);
+            border: 1px solid var(--line);
+            font-weight: 850;
+            overflow: auto
+        }
+
+        .aside {
+            position: sticky;
+            top: 18px;
+            border-radius: 24px;
+            padding: 20px
+        }
+
+        .aside h3 {
+            margin: 0 0 10px
+        }
+
+        .aside a {
+            display: block;
+            text-decoration: none;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--line);
+            font-size: .92rem
+        }
+
+        .faq details {
+            border: 1px solid var(--line);
+            background: var(--panel);
+            border-radius: 18px;
+            padding: 14px 16px;
+            margin: 10px 0
+        }
+
+        .faq summary {
+            font-weight: 900;
+            cursor: pointer
+        }
+
+        .sources a {
+            word-break: break-word
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 28px 0 38px;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0
+        }
+
+        @media(max-width:860px) {
+            .article-grid {
+                grid-template-columns: 1fr
+            }
+
+            .aside {
+                position: relative
+            }
+
+            .row3 {
+                grid-template-columns: 1fr
+            }
+
+            .calc-shell {
+                margin-top: -10px
+            }
+        }
+
+        @media(max-width:620px) {
+
+            .row,
+            .metric-grid {
+                grid-template-columns: 1fr
+            }
+
+            .topnav {
+                display: none
+            }
+
+            .sitebar {
+                padding: 14px 0
+            }
+
+            .calc-card {
+                border-radius: 24px
+            }
+
+            .wrap {
+                width: min(var(--max), calc(100% - 22px))
+            }
+        }
+
+        :root {
+            --bg: #fff5f4;
+            --text: #421b25;
+            --muted: #8b5f68;
+            --bodyText: #69434c;
+            --panel: rgba(255, 253, 253, .92);
+            --glass: #ffe7e6;
+            --line: #efcfd1;
+            --accent: #ef5b72;
+            --accentText: #fff;
+            --input-bg: #fffdfd;
+            --input-line: #e9c4c8;
+            --focus: rgba(239, 91, 114, .14);
+            --button2: #ffe8ea;
+            --result-bg: linear-gradient(145deg, #ffe0e5, #fff8f8);
+            --metric-bg: #fff9f9;
+            --formula-bg: #ffe6e9;
+            --shadow: 0 28px 70px rgba(135, 48, 66, .13)
+        }
+
+        .hero {
+            padding: 42px 0 120px;
+            background: radial-gradient(circle at 78% 42%, #ffd3da 0 20%, transparent 20.3%), linear-gradient(135deg, #fff7f7, #ffe4e7)
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1fr .9fr;
+            align-items: center;
+            gap: 36px
+        }
+
+        .circle-art {
+            height: 340px;
+            display: grid;
+            place-items: center;
+            position: relative
+        }
+
+        .disc {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 30%, #fff 0 10%, #ffb7c3 28%, #ef5b72 65%, #bb3650 100%);
+            box-shadow: inset -28px -30px 50px rgba(89, 21, 37, .18), 0 35px 60px rgba(195, 61, 87, .22);
+            position: relative
+        }
+
+        .disc:before {
+            content: "r";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 44%;
+            height: 3px;
+            background: white;
+            transform-origin: left center;
+            transform: rotate(-30deg);
+            color: #fff
+        }
+
+        .disc:after {
+            content: "π";
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            font-weight: 950;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, .9)
+        }
+
+        .circle-layout {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: 24px
+        }
+
+        .ring-result {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 22px solid #ef5b72;
+            display: grid;
+            place-items: center;
+            margin: 8px auto 18px;
+            box-shadow: inset 0 0 0 8px #ffd4db, 0 18px 40px rgba(190, 62, 88, .17)
+        }
+
+        @media(max-width:780px) {
+
+            .hero-layout,
+            .circle-layout {
+                grid-template-columns: 1fr
+            }
+
+            .circle-art {
+                height: 260px
+            }
+
+            .disc {
+                width: 190px;
+                height: 190px
+            }
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/circle-calculator/#webapplication",
+      "name": "Circle Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/circle-calculator/",
+      "description": "Use this circle calculator to find radius, diameter, circumference, and area from any one known circle measurement using standard circle formulas.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/circle-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Circle Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/circle-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/circle-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I calculate a circle from only one measurement?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A radius, diameter, circumference, or area is enough to determine the other main circle measurements because all four values are mathematically related."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I find the radius from the diameter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Divide the diameter by 2: r = d ÷ 2. A diameter of 20 cm therefore gives a radius of 10 cm."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I find the radius from circumference?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Divide the circumference by 2π: r = C ÷ (2π)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I find the radius from area?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use: r = √(A ÷ π). This reverses the area formula A = πr²."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is area shown in square units?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Area measures two-dimensional space. If the radius is measured in meters, the resulting area is expressed in square meters (m²)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does changing the unit automatically convert my measurement?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The unit option is used as a label for the calculation. Enter the known measurement in the same unit you want used for the resulting length values."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can my result differ slightly from a manually calculated answer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Calculations involving π can contain many decimal places. Results can differ slightly depending on how many decimal places are retained or how the final value is rounded."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart OnlineFree",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script><script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="math" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../math/index.html">Math &amp; Statistics</a></li>
+            <li><a aria-current="page" href="index.html">Circle Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a
+            href="../calculators/index.html">All calculators</a></div>
+     
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Circle Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+            <div class="wrap calc-shell" id="calculator">
+                <section class="panel calc-card">
+                    <h2 class="calc-title">Circle Calculator</h2>
+                    <p class="calc-sub">Calculate radius, diameter, circumference, and area of a circle from any one
+                        known measurement.</p>
+                    <div class="circle-layout">
+                        <section>
+                            <div class="field"><label for="unit">Length unit label</label><select id="unit">
+                                    <option>units</option>
+                                    <option>mm</option>
+                                    <option>cm</option>
+                                    <option>m</option>
+                                    <option>in</option>
+                                    <option>ft</option>
+                                </select></div>
+                            <div class="row">
+                                <div class="field"><label for="r">Radius (r)</label><input class="input circle-in"
+                                        id="r" min="0" step="any" type="number" value="5" /></div>
+                                <div class="field"><label for="d">Diameter (d)</label><input class="input circle-in"
+                                        id="d" min="0" placeholder="Leave blank" step="any" type="number" /></div>
+                            </div>
+                            <div class="row">
+                                <div class="field"><label for="c">Circumference (C)</label><input
+                                        class="input circle-in" id="c" min="0" placeholder="Leave blank" step="any"
+                                        type="number" /></div>
+                                <div class="field"><label for="a">Area (A)</label><input class="input circle-in" id="a"
+                                        min="0" placeholder="Leave blank" step="any" type="number" /></div>
+                            </div>
+                            <p class="muted">Enter exactly one known positive value.</p>
+                            <div class="buttons"><button class="btn primary" id="calcBtn">Calculate
+                                    circle</button><button class="btn secondary" id="resetBtn">Reset</button></div>
+                            <div class="error" id="error"></div>
+                        </section>
+                        <section aria-live="polite" class="result-card">
+                            <div class="ring-result">
+                                <div>
+                                    <div class="result-kicker">Radius</div>
+                                    <div id="rr" style="font-size:2rem;font-weight:950">—</div>
+                                </div>
+                            </div>
+                            <div class="metric-grid">
+                                <div class="metric"><b>Diameter</b><span id="rd">—</span></div>
+                                <div class="metric"><b>Circumference</b><span id="rc">—</span></div>
+                                <div class="metric"><b>Area</b><span id="ra">—</span></div>
+                                <div class="metric"><b>π used</b><span>Math.PI</span></div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <div class="wrap content" id="guide">
+                <div class="article-grid">
+                     
+
+<article class="article">
+
+ 
+
+  <p>Use the Circle Calculator to find a circle’s <strong>radius, diameter, circumference, and area</strong> from any one known measurement. Enter the known value, select the length unit label, and the calculator uses standard circle formulas to determine the remaining measurements.</p>
+
+  <section id="what">
+    <h2>What Is the Circle Calculator?</h2>
+
+    <p class="direct">The Circle Calculator is a geometry tool for calculating the main measurements of a circle. You can start with the radius, diameter, circumference, or area and calculate the other values.</p>
+
+    <p>It is useful for geometry problems, construction measurements, design work, school assignments, and other situations where you know one circle measurement but need the others.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Circle Calculator</h2>
+
+    <p>Enter one known circle measurement and select the unit you are using.</p>
+
+    <ul>
+      <li><strong>Length Unit Label:</strong> Select or enter the unit associated with your measurements. The unit setting labels the results; it does not convert the entered value between different measurement systems.</li>
+      <li><strong>Radius (r):</strong> Enter the distance from the center of the circle to its edge.</li>
+      <li><strong>Diameter (d):</strong> Enter the distance across the circle through its center.</li>
+      <li><strong>Circumference (C):</strong> Enter the distance around the circle.</li>
+      <li><strong>Area (A):</strong> Enter the amount of two-dimensional space inside the circle.</li>
+    </ul>
+
+    <p>Radius, diameter, and circumference use regular length units such as cm, m, or in. Area uses the corresponding square unit, such as cm², m², or in².</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <p>The calculator first determines the circle's radius from the known measurement. It then uses that radius to calculate the diameter, circumference, and area.</p>
+
+    <h3>Main Formulas</h3>
+
+    <p><strong>Diameter</strong></p>
+
+    <div class="formula">d = 2r</div>
+
+    <p><strong>Circumference</strong></p>
+
+    <div class="formula">C = 2πr</div>
+
+    <p>or:</p>
+
+    <div class="formula">C = πd</div>
+
+    <p><strong>Area</strong></p>
+
+    <div class="formula">A = πr²</div>
+
+    <p>These are the standard geometric relationships between a circle's radius, diameter, circumference, and area.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>r</td>
+          <td>Radius</td>
+          <td>Length unit</td>
+        </tr>
+        <tr>
+          <td>d</td>
+          <td>Diameter</td>
+          <td>Length unit</td>
+        </tr>
+        <tr>
+          <td>C</td>
+          <td>Circumference</td>
+          <td>Length unit</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>Area</td>
+          <td>Square length unit</td>
+        </tr>
+        <tr>
+          <td>π</td>
+          <td>Pi, the circle constant</td>
+          <td>No unit</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>π represents the constant relationship between a circle's circumference and diameter.</p>
+
+    <h3>Calculation Sequence</h3>
+
+    <p>The calculation depends on which measurement is known.</p>
+
+    <p><strong>If radius is known:</strong></p>
+
+    <div class="formula">r = entered radius</div>
+
+    <p><strong>If diameter is known:</strong></p>
+
+    <div class="formula">r = d ÷ 2</div>
+
+    <p><strong>If circumference is known:</strong></p>
+
+    <div class="formula">r = C ÷ (2π)</div>
+
+    <p><strong>If area is known:</strong></p>
+
+    <div class="formula">r = √(A ÷ π)</div>
+
+    <p>After finding the radius, the calculator determines the remaining measurements:</p>
+
+    <div class="formula">d = 2r</div>
+
+    <div class="formula">C = 2πr</div>
+
+    <div class="formula">A = πr²</div>
+
+    <h3>Diameter Calculation</h3>
+
+    <p>The diameter is twice the radius:</p>
+
+    <div class="formula">d = 2r</div>
+
+    <p>For example, a radius of 5 cm gives:</p>
+
+    <div class="formula">d = 2 × 5 = 10 cm</div>
+
+    <h3>Circumference Calculation</h3>
+
+    <p>Circumference is the distance around the circle:</p>
+
+    <div class="formula">C = 2πr</div>
+
+    <p>It can also be calculated directly from diameter:</p>
+
+    <div class="formula">C = πd</div>
+
+    <h3>Area Calculation</h3>
+
+    <p>The area inside a circle is:</p>
+
+    <div class="formula">A = πr²</div>
+
+    <p>Because area is two-dimensional, the result is expressed in square units.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose a circle has a <strong>radius of 5 cm</strong>.</p>
+
+    <h3>Inputs</h3>
+
+    <p>Radius:</p>
+
+    <div class="formula">r = 5 cm</div>
+
+    <p>Length unit:</p>
+
+    <p>cm</p>
+
+    <h3>Step 1: Calculate Diameter</h3>
+
+    <div class="formula">d = 2r</div>
+
+    <div class="formula">d = 2 × 5</div>
+
+    <div class="formula">d = 10 cm</div>
+
+    <h3>Step 2: Calculate Circumference</h3>
+
+    <div class="formula">C = 2πr</div>
+
+    <div class="formula">C = 2 × π × 5</div>
+
+    <div class="formula">C = 10π</div>
+
+    <div class="formula">C ≈ 31.4159 cm</div>
+
+    <h3>Step 3: Calculate Area</h3>
+
+    <div class="formula">A = πr²</div>
+
+    <div class="formula">A = π × 5²</div>
+
+    <div class="formula">A = 25π</div>
+
+    <div class="formula">A ≈ 78.5398 cm²</div>
+
+    <h3>Final Result</h3>
+
+    <p>For a circle with a radius of 5 cm:</p>
+
+    <ul>
+      <li><strong>Radius:</strong> 5 cm</li>
+      <li><strong>Diameter:</strong> 10 cm</li>
+      <li><strong>Circumference:</strong> approximately 31.4159 cm</li>
+      <li><strong>Area:</strong> approximately 78.5398 cm²</li>
+    </ul>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p><strong>Radius</strong> shows the distance from the center of the circle to its outer edge.</p>
+
+    <p><strong>Diameter</strong> is the full distance across the circle through its center and is always twice the radius.</p>
+
+    <p><strong>Circumference</strong> represents the total distance around the outside edge of the circle.</p>
+
+    <p><strong>Area</strong> represents the amount of flat space enclosed by the circle. Area results use square units rather than regular length units.</p>
+
+    <p>Small differences may appear when results are rounded because calculations involving π generally produce non-terminating decimal values.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The calculator uses formulas for an ideal circle in Euclidean geometry.</p>
+
+    <p>Measurements should use a consistent unit. If the radius is entered in centimeters, for example, diameter and circumference are also interpreted in centimeters, while area is expressed in square centimeters.</p>
+
+    <p>The unit control labels the results but does not automatically convert a value from one measurement system to another.</p>
+
+    <p>Negative radius, diameter, circumference, or area values do not represent ordinary circle measurements.</p>
+
+    <p>Displayed decimal results may be rounded, so a rounded value can differ slightly from a calculation that keeps more decimal places.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>Can I calculate a circle from only one measurement?</summary>
+      <p>Yes. A radius, diameter, circumference, or area is enough to determine the other main circle measurements because all four values are mathematically related.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How do I find the radius from the diameter?</summary>
+
+      <p>Divide the diameter by 2:</p>
+
+      <div class="formula">r = d ÷ 2</div>
+
+      <p>A diameter of 20 cm therefore gives a radius of 10 cm.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How do I find the radius from circumference?</summary>
+
+      <p>Divide the circumference by 2π:</p>
+
+      <div class="formula">r = C ÷ (2π)</div>
+    </details>
+
+    <details class="faq">
+      <summary>How do I find the radius from area?</summary>
+
+      <p>Use:</p>
+
+      <div class="formula">r = √(A ÷ π)</div>
+
+      <p>This reverses the area formula A = πr².</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why is area shown in square units?</summary>
+      <p>Area measures two-dimensional space. If the radius is measured in meters, the resulting area is expressed in square meters (m²).</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does changing the unit automatically convert my measurement?</summary>
+      <p>No. The unit option is used as a label for the calculation. Enter the known measurement in the same unit you want used for the resulting length values.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why can my result differ slightly from a manually calculated answer?</summary>
+      <p>Calculations involving π can contain many decimal places. Results can differ slightly depending on how many decimal places are retained or how the final value is rounded.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://openstax.org/books/prealgebra-2e/pages/c-geometric-formulas?utm_source=chatgpt.com" rel="noopener" target="_blank">OpenStax — Geometric Formulas</a><br>
+        Verifies the standard formulas C = 2πr, C = πd, and A = πr².
+      </li>
+
+      <li>
+        <a href="https://openstax.org/books/contemporary-mathematics/pages/10-4-polygons-perimeter-and-circumference?utm_source=chatgpt.com" rel="noopener" target="_blank">OpenStax — Polygons, Perimeter, and Circumference</a><br>
+        Supports the radius, diameter, circumference, and π relationships used in circle calculations.
+      </li>
+
+      <li>
+        <a href="https://www.calculator.net/circle-calculator.html" rel="noopener" target="_blank">Calculator.net — Circle Calculator</a><br>
+        Used as a secondary reference for the common radius, diameter, circumference, and area input structure.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/area-calculator/?utm_source=chatgpt.com">Area Calculator</a></li>
+      <li><a href="https://example.com/distance-calculator/?utm_source=chatgpt.com">Distance Calculator</a></li>
+      <li><a href="https://example.com/surface-area-calculator/?utm_source=chatgpt.com">Surface Area Calculator</a></li>
+      <li><a href="https://example.com/pythagorean-theorem-calculator/?utm_source=chatgpt.com">Pythagorean Theorem Calculator</a></li>
+      <li><a href="https://example.com/right-triangle-calculator/?utm_source=chatgpt.com">Right Triangle Calculator</a></li>
+      <li><a href="https://example.com/volume-calculator/?utm_source=chatgpt.com">Volume Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+
+                </div>
+            </div>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"140","Batch":"15","Calculator / Page":"Circle Calculator","Slug":"circle-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Calculate radius, diameter, circumference, and area of a circle from any one known measurement.","Formula / Algorithm Used in Tool":"Circle Formulas: Diameter d = 2r. Circumference C = 2πr = πd. Area A = πr². If area is known, radius is √(A/π).","Required User Inputs":"Length unit label; Radius (r); Diameter (d); Circumference (C); Area (A)","Primary Outputs":"Math.PI","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Length unit label, Radius (r), Diameter (d), Circumference (C), Area (A). Explain outputs: Math.PI. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"The formulas apply to ideal Euclidean circles. The unit selector only labels outputs, so enter the known quantity in the unit you want the length results to use.","Current Source URLs in Page":"https://www.calculator.net/circle-calculator.html | https://openstax.org/books/prealgebra-2e/pages/c-geometric-formulas","Implementation Path":"/circle-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Math &amp; Statistics</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../percent-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Percent Calculator</strong><small>Calculate a
+                            percentage of a number, find what percent one value is of another,
+                            calc…</small></span></a><a class="cp-related-link"
+                    href="../random-number-generator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Random Number Generator</strong><small>Generate one
+                            or many random integers or decimals between custom limits, with option…</small></span></a><a
+                    class="cp-related-link" href="../triangle-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Triangle Calculator</strong><small>Solve triangles
+                            from SSS, SAS, or ASA/AAS inputs and calculate missing sides, angle…</small></span></a><a
+                    class="cp-related-link" href="../area-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Area Calculator</strong><small>Calculate the area
+                            of rectangles, squares, triangles, circles, parallelograms, trap…</small></span></a><a
+                    class="cp-related-link" href="../exponent-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Exponent Calculator</strong><small>Calculate a
+                            number raised to any valid real exponent and view the result in
+                            standar…</small></span></a><a class="cp-related-link"
+                    href="../log-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Log
+                            Calculator</strong><small>Calculate logarithms in any valid real base and compare natural
+                            log, common log, an…</small></span></a><a class="cp-related-link"
+                    href="../confidence-interval-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Confidence Interval
+                            Calculator</strong><small>Calculate a two-sided confidence interval for a mean using a t
+                            interval for sample…</small></span></a><a class="cp-related-link"
+                    href="../distance-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Distance
+                            Calculator</strong><small>Calculate distance between two points in 2D, 3D, or between
+                            latitude-longitude coor…</small></span></a></div><a class="cp-side-category"
+                href="../math/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const $ = id => document.getElementById(id), fmt = n => Number.isFinite(n) ? Number(n.toPrecision(12)).toString() : '—';
+        function render() { const ids = ['r', 'd', 'c', 'a'], raw = ids.map(id => $(id).value.trim()), filled = raw.map((v, i) => v !== '' ? i : -1).filter(i => i >= 0), e = $('error'); e.classList.remove('show'); if (filled.length !== 1) { e.textContent = 'Enter exactly one known value and leave the other three blank.'; e.classList.add('show'); return } const i = filled[0], v = +raw[i]; if (!Number.isFinite(v) || v <= 0) { e.textContent = 'The known value must be greater than 0.'; e.classList.add('show'); return } let r = i === 0 ? v : i === 1 ? v / 2 : i === 2 ? v / (2 * Math.PI) : Math.sqrt(v / Math.PI), d = 2 * r, c = 2 * Math.PI * r, a = Math.PI * r * r, u = $('unit').value, au = u === 'units' ? 'square units' : u + '²', lu = u; $('rr').textContent = fmt(r) + ' ' + lu; $('rd').textContent = fmt(d) + ' ' + lu; $('rc').textContent = fmt(c) + ' ' + lu; $('ra').textContent = fmt(a) + ' ' + au }
+        $('calcBtn').onclick = render; $('unit').onchange = render; $('resetBtn').onclick = () => { ['r', 'd', 'c', 'a'].forEach(id => $(id).value = ''); $('r').value = 5; $('unit').value = 'units'; render() }; render();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

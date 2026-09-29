@@ -1,19 +1,1231 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
-<title>Auto Lease Calculator | CalcPro</title><meta content="Estimate a monthly car lease payment from capitalized cost, residual value, lease term, APR-equivalent money factor, and tax." name="description"/><meta content="index,follow" name="robots"/><link href="../auto-lease-calculator/" rel="canonical"/><meta content="Auto Lease Calculator | CalcPro" property="og:title"/><meta content="Estimate a monthly car lease payment from capitalized cost, residual value, lease term, APR-equivalent money factor, and tax." property="og:description"/><meta content="website" property="og:type"/><meta content="/auto-lease-calculator/" property="og:url"/><meta content="#1477ff" name="theme-color"/><style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.6}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}.crumb{font-size:.9rem;color:var(--muted);padding:18px 0}.hero{position:relative;overflow:hidden;border-radius:34px;background:var(--hero);box-shadow:0 30px 80px rgba(0,0,0,.18);padding:clamp(28px,5vw,64px);min-height:340px;display:grid;grid-template-columns:1.fr;gap:34px;align-items:center}.hero h1{font-size:clamp(2.2rem,5vw,4.6rem);line-height:1.02;margin:.15em 0 .3em;letter-spacing:-.04em}.hero p{font-size:1.08rem;max-width:720px;color:var(--hero-muted)}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.08);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}.visual{min-height:240px;position:relative;display:grid;place-items:center}.orb,.tile,.coin,.ring,.cube{position:absolute;filter:drop-shadow(0 18px 22px rgba(0,0,0,.24))}.orb{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff9 0 8%,transparent 9%),linear-gradient(145deg,var(--accent2),var(--accent));box-shadow:inset -18px -24px 36px #0003}.ring{width:190px;height:190px;border:28px solid var(--accent);border-radius:50%;transform:rotateX(62deg) rotateZ(-12deg);opacity:.9}.tile{width:190px;height:118px;border-radius:24px;background:linear-gradient(145deg,#ffffff22,#ffffff08);border:1px solid #ffffff35;backdrop-filter:blur(12px);transform:rotate(-8deg) skewY(4deg);display:grid;place-items:center;font-weight:800;font-size:2rem}.coin{width:78px;height:78px;border-radius:50%;background:linear-gradient(145deg,#fff7aa,#e6a800);border:8px solid #ffd14b;display:grid;place-items:center;color:#5d3c00;font-weight:900}.cube{width:94px;height:94px;border-radius:20px;background:linear-gradient(145deg,var(--accent),var(--accent2));transform:rotate(26deg);box-shadow:inset -16px -16px 24px #0002}.main-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(300px,.88fr);gap:28px;margin:34px auto}.panel{background:var(--panel);border:1px solid var(--panel-line);border-radius:28px;box-shadow:0 20px 48px rgba(0,0,0,.1);padding:clamp(20px,3vw,32px)}.panel h2{margin-top:0}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}label{font-weight:700;font-size:.92rem}.hint{font-size:.78rem;color:var(--muted)}input,select,textarea{width:100%;border:1px solid var(--input-line);background:var(--input);color:var(--text);border-radius:14px;padding:12px 13px;font:inherit;outline:none;box-shadow:inset 0 2px 10px rgba(0,0,0,.04)}input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:800;cursor:pointer}.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--button-text);box-shadow:0 12px 25px color-mix(in srgb,var(--accent) 28%,transparent)}.btn.ghost{background:var(--input);color:var(--text);border:1px solid var(--input-line)}.error{display:none;margin-top:12px;padding:11px 13px;border-radius:12px;background:#ffefef;color:#9c1c1c;font-weight:700}.results{position:sticky;top:18px;align-self:start}.result-hero{border-radius:24px;padding:22px;background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 16%,var(--panel)),color-mix(in srgb,var(--accent2) 10%,var(--panel)));border:1px solid color-mix(in srgb,var(--accent) 24%,var(--panel-line));margin-bottom:16px}.result-label{font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800}.result-big{font-size:clamp(2rem,4vw,3.4rem);font-weight:900;letter-spacing:-.04em;margin-top:4px}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{padding:14px;border-radius:16px;background:var(--soft);border:1px solid var(--panel-line)}.stat b{display:block;font-size:1.05rem}.stat span{font-size:.78rem;color:var(--muted)}.bar{height:12px;background:var(--soft);border-radius:999px;overflow:hidden;margin:8px 0}.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:inherit}.table-wrap{overflow:auto;margin-top:16px;border-radius:16px;border:1px solid var(--panel-line)}table{width:100%;border-collapse:collapse;min-width:560px}th,td{padding:10px 12px;border-bottom:1px solid var(--panel-line);text-align:right;font-size:.88rem}th:first-child,td:first-child{text-align:left}th{background:var(--soft);position:sticky;top:0}article.content{margin:40px auto 72px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:32px}.copy{background:var(--panel);border:1px solid var(--panel-line);border-radius:30px;padding:clamp(24px,4vw,46px);box-shadow:0 18px 50px rgba(0,0,0,.07)}.copy h2{font-size:clamp(1.45rem,3vw,2.25rem);margin-top:1.7em;letter-spacing:-.02em}.copy h2:first-child{margin-top:0}.copy h3{margin-top:1.4em}.copy p,.copy li{color:var(--copy)}.copy code{background:var(--soft);padding:2px 7px;border-radius:8px}.toc{position:sticky;top:20px;align-self:start;background:var(--panel);border:1px solid var(--panel-line);border-radius:22px;padding:20px}.toc strong{display:block;margin-bottom:8px}.toc a{display:block;padding:5px 0;color:var(--muted)}.callout{padding:16px 18px;border-left:4px solid var(--accent);background:var(--soft);border-radius:12px;margin:18px 0}.faq details{border-top:1px solid var(--panel-line);padding:14px 0}.faq summary{font-weight:800;cursor:pointer}.sources li{margin:8px 0}footer{padding:30px 0 50px;color:var(--muted);text-align:center}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.tab{padding:9px 12px;border-radius:12px;border:1px solid var(--input-line);background:var(--input);cursor:pointer;font-weight:800}.tab.active{background:var(--accent);color:var(--button-text);border-color:transparent}.hidden{display:none!important}.badge{display:inline-block;padding:4px 9px;border-radius:999px;background:var(--soft);font-size:.76rem;font-weight:800;color:var(--muted)}.switchline{display:flex;gap:10px;align-items:center}.switchline input{width:auto}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.mini-note{font-size:.82rem;color:var(--muted);margin-top:10px}
-@media(max-width:860px){.hero,.main-grid,article.content{grid-template-columns:1fr}.visual{min-height:180px}.results,.toc{position:static}.toc{display:none}}@media(max-width:560px){.wrap{width:min(100% - 20px,1180px)}.hero{border-radius:24px;padding:24px 20px}.panel{border-radius:22px;padding:18px}.form-grid,.stats,.three{grid-template-columns:1fr}.field.full{grid-column:auto}.result-big{font-size:2.25rem}}
+<html lang="en">
 
-:root{--bg:#e9edf1;--text:#17202a;--copy:#3f4c58;--muted:#687684;--panel:#f9fbfc;--panel-line:#ced7df;--soft:#edf2f6;--input:#ffffff;--input-line:#c5d0d9;--accent:#1f6f8b;--accent2:#6aa84f;--button-text:#fff;--hero:linear-gradient(135deg,#16232d,#203b46 55%,#264e44);--hero-muted:#d3e3e7;--line:#ffffff28}.hero{border-radius:26px}.visual:before{content:'';position:absolute;width:230px;height:74px;background:linear-gradient(#95c7d7,#1f6f8b);border-radius:46px 60px 22px 22px;bottom:58px;box-shadow:0 20px 35px #0006}.visual:after{content:'';position:absolute;width:150px;height:68px;background:#8fc2d1;clip-path:polygon(20% 100%,36% 15%,78% 15%,100% 100%);bottom:113px}.visual .coin{bottom:35px;left:28%}.visual .orb{width:54px;height:54px;bottom:42px;right:25%;background:#111;border:8px solid #444}
-</style><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Auto Lease Calculator", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "description": "Estimate a monthly car lease payment from capitalized cost, residual value, lease term, APR-equivalent money factor, and tax.", "url": "/auto-lease-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Auto Finance", "item": "/finance/auto-finance/"}, {"@type": "ListItem", "position": 4, "name": "Auto Lease Calculator", "item": "/auto-lease-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I convert APR to a money factor?", "acceptedAnswer": {"@type": "Answer", "text": "A common approximation is APR as a percent divided by 2400. For example, 6% ÷ 2400 = 0.0025. A lessor may quote the money factor directly, and contract terms control."}}, {"@type": "Question", "name": "Why does residual value matter so much?", "acceptedAnswer": {"@type": "Answer", "text": "The payment largely covers the vehicle’s expected depreciation during the lease. A higher residual value means less depreciation is being paid for over the lease term, all else equal."}}, {"@type": "Question", "name": "Is a down payment on a lease always a good idea?", "acceptedAnswer": {"@type": "Answer", "text": "A capitalized-cost reduction can lower monthly payments, but it also puts more cash at risk upfront. The financial effect depends on the contract, insurance settlement terms, and your preference for upfront versus monthly cost."}}]}]}</script><link href="../assets/css/global.css" rel="stylesheet"/><link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head><body data-cp-category="finance" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../finance/index.html">Finance</a></li><li><a aria-current="page" href="index.html">Auto Lease Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a href="../calculators/index.html">All calculators</a></div>
-<div class="cp-page-layout"><main class="wrap" id="main"><h1 class="page-title">Auto Lease Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="main-grid"><section class="panel"><h2>Monthly Auto Lease</h2><div class="form-grid"><div class="field"><label for="autoPrice">Agreed vehicle price</label><input id="autoPrice" min="0" type="number" value="50000"/></div><div class="field"><label for="leaseMonths">Lease term (months)</label><input id="leaseMonths" min="1" type="number" value="36"/></div><div class="field"><label for="leaseDown">Down payment / cap reduction</label><input id="leaseDown" min="0" type="number" value="8000"/></div><div class="field"><label for="leaseTrade">Trade-in credit</label><input id="leaseTrade" min="0" type="number" value="5000"/></div><div class="field"><label for="leaseApr">Lease APR equivalent (%)</label><input id="leaseApr" min="0" step="0.01" type="number" value="6"/></div><div class="field"><label for="residual">Residual value</label><input id="residual" min="0" type="number" value="25000"/></div><div class="field full"><label for="leaseTax">Sales tax on monthly payment (%)</label><input id="leaseTax" min="0" step="0.01" type="number" value="6"/></div></div><div class="error" id="error"></div><div class="actions"><button class="btn primary" onclick="calcLease()">Calculate Lease</button><button class="btn ghost" onclick="resetLease()">Reset</button></div></section><aside class="panel results"><div class="result-hero"><div class="result-label">Estimated monthly lease payment</div><div class="result-big" id="leasePay">$0.00</div></div><div class="stats"><div class="stat"><span>Adjusted cap cost</span><b id="capOut">$0.00</b></div><div class="stat"><span>Monthly depreciation</span><b id="depOut">$0.00</b></div><div class="stat"><span>Monthly finance charge</span><b id="finOut">$0.00</b></div><div class="stat"><span>Monthly tax</span><b id="taxLeaseOut">$0.00</b></div><div class="stat"><span>Money factor</span><b id="mfOut">—</b></div><div class="stat"><span>Total scheduled payments</span><b id="leaseTotal">$0.00</b></div></div></aside></section><article class="content"><div class="copy"><h2 id="how">What Is an Auto Lease Calculator?</h2><p>An auto lease calculator estimates the monthly lease payment from the adjusted capitalized cost, residual value, lease term, financing charge, and tax. It is designed for understanding the mechanics of a standard closed-end vehicle lease estimate.</p><h2 id="formula">Auto Lease Formula</h2><p>Monthly depreciation is <code>(adjusted cap cost − residual value) ÷ months</code>. A common lease finance charge is <code>(adjusted cap cost + residual value) × money factor</code>. When APR is stated as a percentage, an approximate money factor is <code>APR ÷ 2400</code>.</p><h2 id="example">Example</h2><p>For a $50,000 negotiated price with $8,000 down, $5,000 trade credit, a $25,000 residual, 36 months, 6% APR-equivalent, and 6% tax, the adjusted cap cost is $37,000. The model then adds depreciation, rent charge, and monthly tax.</p><h2>Key Lease Terms</h2><p><strong>Capitalized cost</strong> is the amount used as the starting lease value after negotiated adjustments. <strong>Residual value</strong> is the contractual estimate of end-of-lease value. <strong>Money factor</strong> is the lease financing factor used to calculate the rent charge.</p><h2 id="limits">Limitations</h2><p>Real leases may treat acquisition fees, taxes, rebates, security deposits, first payments, mileage, negative equity, and incentives differently. The CFPB also requires specific lease disclosures. Use the lessor’s actual disclosure form for final payment figures.</p><section class="faq" id="faq"><h2>Frequently Asked Questions</h2><details><summary>How do I convert APR to a money factor?</summary><p>A common approximation is APR as a percent divided by 2400. For example, 6% ÷ 2400 = 0.0025. A lessor may quote the money factor directly, and contract terms control.</p></details><details><summary>Why does residual value matter so much?</summary><p>The payment largely covers the vehicle’s expected depreciation during the lease. A higher residual value means less depreciation is being paid for over the lease term, all else equal.</p></details><details><summary>Is a down payment on a lease always a good idea?</summary><p>A capitalized-cost reduction can lower monthly payments, but it also puts more cash at risk upfront. The financial effect depends on the contract, insurance settlement terms, and your preference for upfront versus monthly cost.</p></details></section><section class="sources" id="sources"><h2>Sources and Methodology</h2><p>The calculator logic is implemented locally in your browser. Formulas and terminology were cross-checked against the references below. Estimates can differ from lender, tax-authority, plan-administrator, or contract calculations because real-world rules may add timing, rounding, eligibility, fees, or jurisdiction-specific treatment.</p><ul><li><a href="https://www.consumerfinance.gov/ask-cfpb/what-should-i-know-about-leasing-versus-buying-a-car-en-815/" rel="noopener" target="_blank">CFPB — Leasing vs buying a car</a></li><li><a href="https://www.consumerfinance.gov/rules-policy/regulations/1013/4/" rel="noopener" target="_blank">CFPB Regulation M lease disclosures</a></li><li><a href="https://www.calculator.net/auto-lease-calculator.html" rel="noopener" target="_blank">Calculator.net — Auto Lease Calculator</a></li></ul></section></div></article>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <!-- Primary Meta Tags -->
+    <title>Auto Lease Calculator – Estimate Monthly Lease Payment</title>
+    <meta name="title" content="Auto Lease Calculator – Estimate Monthly Lease Payment">
+    <meta name="description"
+        content="Estimate your monthly car lease payment using vehicle price, lease term, cap reduction, trade-in credit, APR equivalent, residual value, and sales tax.">
 
-<script class="cp-calculator-data" type="application/json">{"index":"80","Batch":"9","Calculator / Page":"Auto Lease Calculator","Slug":"auto-lease-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Estimate a monthly car lease payment from capitalized cost, residual value, lease term, APR-equivalent money factor, and tax.","Formula / Algorithm Used in Tool":"Auto Lease Formula: Monthly depreciation is (adjusted cap cost − residual value) ÷ months . A common lease finance charge is (adjusted cap cost + residual value) × money factor . When APR is stated as a percentage, an approximate money factor is APR ÷ 2400 .","Required User Inputs":"Agreed vehicle price; Lease term (months); Down payment / cap reduction; Trade-in credit; Lease APR equivalent (%); Residual value; Sales tax on monthly payment (%)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Agreed vehicle price, Lease term (months), Down payment / cap reduction, Trade-in credit, Lease APR equivalent (%), Residual value, Sales tax on monthly payment (%). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"Real leases may treat acquisition fees, taxes, rebates, security deposits, first payments, mileage, negative equity, and incentives differently. The CFPB also requires specific lease disclosures. Use the lessor’s actual disclosure form for final payment figures. Frequently Asked Questions How do I convert APR to a money factor? A common approximation is APR as a percent divided by 2400. For example, 6% ÷ 2400 = 0.0025. A lessor may quote the money factor directly, and contract terms control. Why does residual value matter so much? The payment largely covers the vehicle’s expected depreciation during the lease. A higher residual value means less depreciation is being paid for over the lease term, all else equal. Is a down payment on a lease always a good idea? A capitalized-cost reduction can lower monthly payments, but it also puts more cash at risk upfront. The financial effect depends on the contract, insurance settlement terms, and your preference for upfront versus monthly cost. Sources and Methodology The calculator logic is implemented locally in your browser. Formulas and terminology were cross-checked against the references below. Estimates can differ from lender, tax-authority, plan-administrator, or contract calculations because real-world rules may add timing, rounding","Current Source URLs in Page":"https://www.consumerfinance.gov/ask-cfpb/what-should-i-know-about-leasing-versus-buying-a-car-en-815/ | https://www.consumerfinance.gov/rules-policy/regulations/1013/4/ | https://www.calculator.net/auto-lease-calculator.html","Implementation Path":"/auto-lease-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Finance</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../lease-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Lease Calculator</strong><small>Calculate a level monthly lease payment from asset value, residual value, term, and…</small></span></a><a class="cp-related-link" href="../auto-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Auto Loan Calculator</strong><small>Estimate a car loan payment using vehicle price, down payment, trade-in, tax, fees,…</small></span></a><a class="cp-related-link" href="../boat-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Boat Loan Calculator</strong><small>Estimate a boat loan payment, amount financed, tax, trade-in equity, total interest…</small></span></a><a class="cp-related-link" href="../personal-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Personal Loan Calculator</strong><small>Calculate personal loan monthly payment, total interest, origination fee, net proce…</small></span></a><a class="cp-related-link" href="../payment-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Payment Calculator</strong><small>Calculate a monthly loan payment for a fixed term or estimate how long a loan takes…</small></span></a><a class="cp-related-link" href="../interest-rate-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Interest Rate Calculator</strong><small>Estimate the nominal annual interest rate implied by a loan amount, fixed monthly p…</small></span></a><a class="cp-related-link" href="../finance-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Finance Calculator</strong><small>Solve time-value-of-money variables including future value, present value, payment,…</small></span></a><a class="cp-related-link" href="../credit-card-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Credit Card Calculator</strong><small>Estimate a single credit card payoff time, required monthly payment, total interest…</small></span></a></div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script>
-const $=s=>document.querySelector(s);const n=id=>Number(document.getElementById(id).value);const money=(v,c='$')=>c+Number(v).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});const pct=v=>Number(v).toFixed(2)+'%';
-function err(msg){const e=$('#error');e.textContent=msg;e.style.display='block'}function clearErr(){const e=$('#error');e.style.display='none';e.textContent=''}
+    <!-- Canonical -->
+    <link rel="canonical" href="https://monkeymart-onlinefree.github.io/auto-lease-calculator/">
 
-function calcLease(){clearErr();const p=n('autoPrice'),m=n('leaseMonths'),d=n('leaseDown'),tr=n('leaseTrade'),apr=n('leaseApr'),rv=n('residual'),tax=n('leaseTax')/100;if([p,m,d,tr,apr,rv,tax].some(x=>!Number.isFinite(x))||p<=0||m<=0||[d,tr,apr,rv,tax].some(x=>x<0))return err('Enter valid non-negative values and a term above zero.');const cap=p-d-tr;if(cap<=0||rv>p*1.5)return err('Adjusted capitalized cost must be positive and residual value must be reasonable.');const dep=(cap-rv)/m;if(dep<0)return err('Residual value cannot exceed adjusted capitalized cost in this simplified model.');const mf=(apr/100)/24;const finance=(cap+rv)*mf;const pre=dep+finance;const tx=pre*tax;const pay=pre+tx;document.getElementById('leasePay').textContent=money(pay);document.getElementById('capOut').textContent=money(cap);document.getElementById('depOut').textContent=money(dep);document.getElementById('finOut').textContent=money(finance);document.getElementById('taxLeaseOut').textContent=money(tx);document.getElementById('mfOut').textContent=mf.toFixed(6);document.getElementById('leaseTotal').textContent=money(pay*m)}function resetLease(){const v={autoPrice:50000,leaseMonths:36,leaseDown:8000,leaseTrade:5000,leaseApr:6,residual:25000,leaseTax:6};Object.entries(v).forEach(([k,x])=>document.getElementById(k).value=x);calcLease()}calcLease();
-</script><script defer="" src="../assets/js/global.js"></script><script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+    <!-- Facebook / Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://monkeymart-onlinefree.github.io/auto-lease-calculator/">
+    <meta property="og:title" content="Auto Lease Calculator – Estimate Monthly Lease Payment">
+    <meta property="og:description"
+        content="Estimate your monthly car lease payment using vehicle price, lease term, cap reduction, trade-in credit, APR equivalent, residual value, and sales tax.">
+    <meta property="og:site_name" content="Auto Lease Calculator">
+
+    <!-- X / Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/auto-lease-calculator/">
+    <meta name="twitter:title" content="Auto Lease Calculator – Estimate Monthly Lease Payment">
+    <meta name="twitter:description"
+        content="Estimate your monthly car lease payment using vehicle price, lease term, cap reduction, trade-in credit, APR equivalent, residual value, and sales tax.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .wrap {
+            width: min(1180px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .crumb {
+            font-size: .9rem;
+            color: var(--muted);
+            padding: 18px 0
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            border-radius: 34px;
+            background: var(--hero);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, .18);
+            padding: clamp(28px, 5vw, 64px);
+            min-height: 340px;
+            display: grid;
+            grid-template-columns: 1.fr;
+            gap: 34px;
+            align-items: center
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 4.6rem);
+            line-height: 1.02;
+            margin: .15em 0 .3em;
+            letter-spacing: -.04em
+        }
+
+        .hero p {
+            font-size: 1.08rem;
+            max-width: 720px;
+            color: var(--hero-muted)
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            padding: 7px 11px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .08);
+            font-size: .78rem;
+            letter-spacing: .08em;
+            text-transform: uppercase
+        }
+
+        .visual {
+            min-height: 240px;
+            position: relative;
+            display: grid;
+            place-items: center
+        }
+
+        .orb,
+        .tile,
+        .coin,
+        .ring,
+        .cube {
+            position: absolute;
+            filter: drop-shadow(0 18px 22px rgba(0, 0, 0, .24))
+        }
+
+        .orb {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 25%, #fff9 0 8%, transparent 9%), linear-gradient(145deg, var(--accent2), var(--accent));
+            box-shadow: inset -18px -24px 36px #0003
+        }
+
+        .ring {
+            width: 190px;
+            height: 190px;
+            border: 28px solid var(--accent);
+            border-radius: 50%;
+            transform: rotateX(62deg) rotateZ(-12deg);
+            opacity: .9
+        }
+
+        .tile {
+            width: 190px;
+            height: 118px;
+            border-radius: 24px;
+            background: linear-gradient(145deg, #ffffff22, #ffffff08);
+            border: 1px solid #ffffff35;
+            backdrop-filter: blur(12px);
+            transform: rotate(-8deg) skewY(4deg);
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            font-size: 2rem
+        }
+
+        .coin {
+            width: 78px;
+            height: 78px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #fff7aa, #e6a800);
+            border: 8px solid #ffd14b;
+            display: grid;
+            place-items: center;
+            color: #5d3c00;
+            font-weight: 900
+        }
+
+        .cube {
+            width: 94px;
+            height: 94px;
+            border-radius: 20px;
+            background: linear-gradient(145deg, var(--accent), var(--accent2));
+            transform: rotate(26deg);
+            box-shadow: inset -16px -16px 24px #0002
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.12fr) minmax(300px, .88fr);
+            gap: 28px;
+            margin: 34px auto
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--panel-line);
+            border-radius: 28px;
+            box-shadow: 0 20px 48px rgba(0, 0, 0, .1);
+            padding: clamp(20px, 3vw, 32px)
+        }
+
+        .panel h2 {
+            margin-top: 0
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px
+        }
+
+        .field.full {
+            grid-column: 1/-1
+        }
+
+        label {
+            font-weight: 700;
+            font-size: .92rem
+        }
+
+        .hint {
+            font-size: .78rem;
+            color: var(--muted)
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--input-line);
+            background: var(--input);
+            color: var(--text);
+            border-radius: 14px;
+            padding: 12px 13px;
+            font: inherit;
+            outline: none;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, .04)
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent)
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 18px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .btn.primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: var(--button-text);
+            box-shadow: 0 12px 25px color-mix(in srgb, var(--accent) 28%, transparent)
+        }
+
+        .btn.ghost {
+            background: var(--input);
+            color: var(--text);
+            border: 1px solid var(--input-line)
+        }
+
+        .error {
+            display: none;
+            margin-top: 12px;
+            padding: 11px 13px;
+            border-radius: 12px;
+            background: #ffefef;
+            color: #9c1c1c;
+            font-weight: 700
+        }
+
+        .results {
+            position: sticky;
+            top: 18px;
+            align-self: start
+        }
+
+        .result-hero {
+            border-radius: 24px;
+            padding: 22px;
+            background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 16%, var(--panel)), color-mix(in srgb, var(--accent2) 10%, var(--panel)));
+            border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--panel-line));
+            margin-bottom: 16px
+        }
+
+        .result-label {
+            font-size: .82rem;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: var(--muted);
+            font-weight: 800
+        }
+
+        .result-big {
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            font-weight: 900;
+            letter-spacing: -.04em;
+            margin-top: 4px
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px
+        }
+
+        .stat {
+            padding: 14px;
+            border-radius: 16px;
+            background: var(--soft);
+            border: 1px solid var(--panel-line)
+        }
+
+        .stat b {
+            display: block;
+            font-size: 1.05rem
+        }
+
+        .stat span {
+            font-size: .78rem;
+            color: var(--muted)
+        }
+
+        .bar {
+            height: 12px;
+            background: var(--soft);
+            border-radius: 999px;
+            overflow: hidden;
+            margin: 8px 0
+        }
+
+        .bar>i {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            border-radius: inherit
+        }
+
+        .table-wrap {
+            overflow: auto;
+            margin-top: 16px;
+            border-radius: 16px;
+            border: 1px solid var(--panel-line)
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 560px
+        }
+
+        th,
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--panel-line);
+            text-align: right;
+            font-size: .88rem
+        }
+
+        th:first-child,
+        td:first-child {
+            text-align: left
+        }
+
+        th {
+            background: var(--soft);
+            position: sticky;
+            top: 0
+        }
+
+        article.content {
+            margin: 40px auto 72px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 300px;
+            gap: 32px
+        }
+
+        .copy {
+            background: var(--panel);
+            border: 1px solid var(--panel-line);
+            border-radius: 30px;
+            padding: clamp(24px, 4vw, 46px);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, .07)
+        }
+
+        .copy h2 {
+            font-size: clamp(1.45rem, 3vw, 2.25rem);
+            margin-top: 1.7em;
+            letter-spacing: -.02em
+        }
+
+        .copy h2:first-child {
+            margin-top: 0
+        }
+
+        .copy h3 {
+            margin-top: 1.4em
+        }
+
+        .copy p,
+        .copy li {
+            color: var(--copy)
+        }
+
+        .copy code {
+            background: var(--soft);
+            padding: 2px 7px;
+            border-radius: 8px
+        }
+
+        .toc {
+            position: sticky;
+            top: 20px;
+            align-self: start;
+            background: var(--panel);
+            border: 1px solid var(--panel-line);
+            border-radius: 22px;
+            padding: 20px
+        }
+
+        .toc strong {
+            display: block;
+            margin-bottom: 8px
+        }
+
+        .toc a {
+            display: block;
+            padding: 5px 0;
+            color: var(--muted)
+        }
+
+        .callout {
+            padding: 16px 18px;
+            border-left: 4px solid var(--accent);
+            background: var(--soft);
+            border-radius: 12px;
+            margin: 18px 0
+        }
+
+        .faq details {
+            border-top: 1px solid var(--panel-line);
+            padding: 14px 0
+        }
+
+        .faq summary {
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .sources li {
+            margin: 8px 0
+        }
+
+        footer {
+            padding: 30px 0 50px;
+            color: var(--muted);
+            text-align: center
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 16px
+        }
+
+        .tab {
+            padding: 9px 12px;
+            border-radius: 12px;
+            border: 1px solid var(--input-line);
+            background: var(--input);
+            cursor: pointer;
+            font-weight: 800
+        }
+
+        .tab.active {
+            background: var(--accent);
+            color: var(--button-text);
+            border-color: transparent
+        }
+
+        .hidden {
+            display: none !important
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 9px;
+            border-radius: 999px;
+            background: var(--soft);
+            font-size: .76rem;
+            font-weight: 800;
+            color: var(--muted)
+        }
+
+        .switchline {
+            display: flex;
+            gap: 10px;
+            align-items: center
+        }
+
+        .switchline input {
+            width: auto
+        }
+
+        .three {
+            grid-template-columns: repeat(3, minmax(0, 1fr))
+        }
+
+        .mini-note {
+            font-size: .82rem;
+            color: var(--muted);
+            margin-top: 10px
+        }
+
+        @media(max-width:860px) {
+
+            .hero,
+            .main-grid,
+            article.content {
+                grid-template-columns: 1fr
+            }
+
+            .visual {
+                min-height: 180px
+            }
+
+            .results,
+            .toc {
+                position: static
+            }
+
+            .toc {
+                display: none
+            }
+        }
+
+        @media(max-width:560px) {
+            .wrap {
+                width: min(100% - 20px, 1180px)
+            }
+
+            .hero {
+                border-radius: 24px;
+                padding: 24px 20px
+            }
+
+            .panel {
+                border-radius: 22px;
+                padding: 18px
+            }
+
+            .form-grid,
+            .stats,
+            .three {
+                grid-template-columns: 1fr
+            }
+
+            .field.full {
+                grid-column: auto
+            }
+
+            .result-big {
+                font-size: 2.25rem
+            }
+        }
+
+        :root {
+            --bg: #e9edf1;
+            --text: #17202a;
+            --copy: #3f4c58;
+            --muted: #687684;
+            --panel: #f9fbfc;
+            --panel-line: #ced7df;
+            --soft: #edf2f6;
+            --input: #ffffff;
+            --input-line: #c5d0d9;
+            --accent: #1f6f8b;
+            --accent2: #6aa84f;
+            --button-text: #fff;
+            --hero: linear-gradient(135deg, #16232d, #203b46 55%, #264e44);
+            --hero-muted: #d3e3e7;
+            --line: #ffffff28
+        }
+
+        .hero {
+            border-radius: 26px
+        }
+
+        .visual:before {
+            content: '';
+            position: absolute;
+            width: 230px;
+            height: 74px;
+            background: linear-gradient(#95c7d7, #1f6f8b);
+            border-radius: 46px 60px 22px 22px;
+            bottom: 58px;
+            box-shadow: 0 20px 35px #0006
+        }
+
+        .visual:after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 68px;
+            background: #8fc2d1;
+            clip-path: polygon(20% 100%, 36% 15%, 78% 15%, 100% 100%);
+            bottom: 113px
+        }
+
+        .visual .coin {
+            bottom: 35px;
+            left: 28%
+        }
+
+        .visual .orb {
+            width: 54px;
+            height: 54px;
+            bottom: 42px;
+            right: 25%;
+            background: #111;
+            border: 8px solid #444
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/auto-lease-calculator/#webapplication",
+      "name": "Auto Lease Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/auto-lease-calculator/",
+      "description": "Estimate your monthly car lease payment using vehicle price, lease term, cap reduction, trade-in credit, APR equivalent, residual value, and sales tax.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/auto-lease-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Auto Lease Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/auto-lease-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/auto-lease-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is an auto lease payment calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This calculator estimates monthly depreciation by subtracting the residual value from the adjusted capitalized cost and dividing by the lease term. It then adds a finance charge based on the estimated money factor and applies the entered monthly-payment sales tax."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I convert lease APR to a money factor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When APR is entered as a percentage, this calculator uses the common approximation: Money Factor = APR / 2400. For example, 6% ÷ 2400 = 0.0025. A lease provider may quote a money factor directly, so the actual contract figures should control."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does residual value affect the monthly payment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Residual value represents the vehicle's expected value at the end of the lease. A larger residual value reduces the amount of depreciation that must be covered during the lease term, assuming the other inputs remain unchanged. CFPB lease disclosures also identify residual value as a value used in calculating the base periodic payment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a larger down payment lower the estimated lease payment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Under this calculator's method, yes. A larger capitalized-cost reduction lowers the adjusted capitalized cost, which reduces the depreciation portion of the calculation. It also requires more cash upfront, so monthly payment alone should not be used to compare the total cost of competing leases."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the calculator include all lease fees?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It calculates from the listed vehicle price, lease term, down payment or cap reduction, trade-in credit, APR equivalent, residual value, and monthly-payment tax rate. Actual leases may contain additional fees or credits that change the final payment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why might the dealer's lease payment be different?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A dealer or lessor may use additional acquisition fees, rebates, incentives, capitalized taxes, prior-balance amounts, different tax rules, contract-specific money factors, or rounding conventions. The official lease disclosure should be used for the final contractual figures."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this calculator calculate mileage or end-of-lease charges?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Mileage limits, excess-mileage charges, wear-and-tear charges, disposition charges, purchase-option amounts, and early-termination charges are separate lease terms and are not calculated from the listed inputs."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="finance" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../finance/index.html">Finance</a></li>
+            <li><a aria-current="page" href="index.html">Auto Lease Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main class="wrap" id="main">
+            <h1 class="page-title">Auto Lease Calculator</h1>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="main-grid">
+                <section class="panel">
+                    <h2>Monthly Auto Lease</h2>
+                    <div class="form-grid">
+                        <div class="field"><label for="autoPrice">Agreed vehicle price</label><input id="autoPrice"
+                                min="0" type="number" value="50000" /></div>
+                        <div class="field"><label for="leaseMonths">Lease term (months)</label><input id="leaseMonths"
+                                min="1" type="number" value="36" /></div>
+                        <div class="field"><label for="leaseDown">Down payment / cap reduction</label><input
+                                id="leaseDown" min="0" type="number" value="8000" /></div>
+                        <div class="field"><label for="leaseTrade">Trade-in credit</label><input id="leaseTrade" min="0"
+                                type="number" value="5000" /></div>
+                        <div class="field"><label for="leaseApr">Lease APR equivalent (%)</label><input id="leaseApr"
+                                min="0" step="0.01" type="number" value="6" /></div>
+                        <div class="field"><label for="residual">Residual value</label><input id="residual" min="0"
+                                type="number" value="25000" /></div>
+                        <div class="field full"><label for="leaseTax">Sales tax on monthly payment (%)</label><input
+                                id="leaseTax" min="0" step="0.01" type="number" value="6" /></div>
+                    </div>
+                    <div class="error" id="error"></div>
+                    <div class="actions"><button class="btn primary" onclick="calcLease()">Calculate
+                            Lease</button><button class="btn ghost" onclick="resetLease()">Reset</button></div>
+                </section>
+                <aside class="panel results">
+                    <div class="result-hero">
+                        <div class="result-label">Estimated monthly lease payment</div>
+                        <div class="result-big" id="leasePay">$0.00</div>
+                    </div>
+                    <div class="stats">
+                        <div class="stat"><span>Adjusted cap cost</span><b id="capOut">$0.00</b></div>
+                        <div class="stat"><span>Monthly depreciation</span><b id="depOut">$0.00</b></div>
+                        <div class="stat"><span>Monthly finance charge</span><b id="finOut">$0.00</b></div>
+                        <div class="stat"><span>Monthly tax</span><b id="taxLeaseOut">$0.00</b></div>
+                        <div class="stat"><span>Money factor</span><b id="mfOut">—</b></div>
+                        <div class="stat"><span>Total scheduled payments</span><b id="leaseTotal">$0.00</b></div>
+                    </div>
+                </aside>
+            </section>
+             
+
+
+<article class="article">
+<p>The Auto Lease Calculator estimates a monthly car lease payment from the agreed vehicle price, lease term, upfront reductions, APR-equivalent financing rate, residual value, and sales tax. It separates the estimated payment into depreciation, finance charge, and tax components.</p>
+
+  <section id="what">
+    <h2>What Is the Auto Lease Calculator?</h2>
+
+    <p class="direct">An auto lease calculator estimates how much you may pay each month to lease a vehicle rather than finance its full purchase price.</p>
+
+    <p>A standard lease payment mainly reflects the vehicle's expected depreciation during the lease plus a finance or rent charge. The CFPB explains that lease payments generally cover depreciation during the lease term along with rental charges, taxes, and applicable fees.</p>
+
+    <p>This calculator is useful when comparing lease offers or testing how changes in vehicle price, residual value, lease term, upfront reductions, or financing rate affect the estimated monthly payment.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Auto Lease Calculator</h2>
+
+    <ol>
+      <li><strong>Agreed vehicle price:</strong> Enter the negotiated vehicle value used for the lease calculation. <strong>Lease term:</strong> Enter the number of months in the lease. <strong>Down payment / cap reduction:</strong> Enter the amount paid upfront that reduces the capitalized cost. <strong>Trade-in credit:</strong> Enter the trade-in amount applied toward reducing the lease cost. <strong>Lease APR equivalent:</strong> Enter the annual percentage rate equivalent used to estimate the lease money factor. <strong>Residual value:</strong> Enter the vehicle's estimated value at the end of the lease in the same monetary unit as the vehicle price. <strong>Sales tax on monthly payment:</strong> Enter the percentage of tax applied to the estimated monthly lease payment.</li>
+    </ol>
+
+    <p>The CFPB defines a capitalized cost reduction as an amount that reduces the gross capitalized cost and notes that it may include cash payments, rebates, noncash credits, and net trade-in allowances.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+
+    <p>The calculation begins with the adjusted capitalized cost:</p>
+
+    <div class="formula">C=V−D−TC = V - D - T</div>
+
+    <p>Monthly depreciation is:</p>
+
+    <div class="formula">Depreciation=C−RnDepreciation = \frac{C-R}{n}</div>
+
+    <p>When the financing input is entered as an APR-equivalent percentage, the approximate money factor is:</p>
+
+    <div class="formula">MF=APR2400MF = \frac{APR}{2400}</div>
+
+    <p>The monthly finance charge is:</p>
+
+    <div class="formula">Finance Charge=(C+R)×MFFinance\ Charge = (C+R)\times MF</div>
+
+    <p>The estimated monthly payment before tax is:</p>
+
+    <div class="formula">Base Payment=Depreciation+Finance ChargeBase\ Payment = Depreciation + Finance\ Charge</div>
+
+    <p>Because this calculator accepts sales tax on the monthly payment:</p>
+
+    <div class="formula">Monthly Tax=Base Payment×s100Monthly\ Tax = Base\ Payment\times\frac{s}{100}</div>
+
+    <p>The estimated monthly lease payment is:</p>
+
+    <div class="formula">Monthly Payment=Base Payment+Monthly TaxMonthly\ Payment = Base\ Payment + Monthly\ Tax</div>
+
+    <p>The APR-to-money-factor conversion of APR as a percentage divided by 2400 is a commonly used approximation for lease calculations.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>VV</td>
+          <td>Agreed vehicle price</td>
+          <td>Monetary amount</td>
+        </tr>
+        <tr>
+          <td>DD</td>
+          <td>Down payment / capitalized cost reduction</td>
+          <td>Monetary amount</td>
+        </tr>
+        <tr>
+          <td>TT</td>
+          <td>Trade-in credit</td>
+          <td>Monetary amount</td>
+        </tr>
+        <tr>
+          <td>CC</td>
+          <td>Adjusted capitalized cost</td>
+          <td>Monetary amount</td>
+        </tr>
+        <tr>
+          <td>RR</td>
+          <td>Residual value at lease end</td>
+          <td>Monetary amount</td>
+        </tr>
+        <tr>
+          <td>nn</td>
+          <td>Lease term</td>
+          <td>Months</td>
+        </tr>
+        <tr>
+          <td>APRAPR</td>
+          <td>APR-equivalent lease rate</td>
+          <td>Percent</td>
+        </tr>
+        <tr>
+          <td>MFMF</td>
+          <td>Approximate money factor</td>
+          <td>Decimal factor</td>
+        </tr>
+        <tr>
+          <td>ss</td>
+          <td>Sales tax on monthly payment</td>
+          <td>Percent</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Calculation Sequence</h3>
+
+    <p>The calculator first reduces the agreed vehicle price by the entered down payment and trade-in credit to estimate the adjusted capitalized cost. It then subtracts the residual value and spreads the resulting depreciation across the lease term.</p>
+
+    <p>Next, the APR-equivalent percentage is converted to an approximate money factor. The money factor is applied to the sum of the adjusted capitalized cost and residual value to estimate the monthly finance charge.</p>
+
+    <p>Monthly depreciation and the finance charge are added to produce the pre-tax payment. The entered monthly-payment sales tax is then applied to obtain the estimated monthly lease payment.</p>
+
+    <h3>Adjusted Capitalized Cost</h3>
+
+    <div class="formula">Adjusted Cap Cost=Vehicle Price−Down Payment−Trade-in CreditAdjusted\ Cap\ Cost = Vehicle\ Price-Down\ Payment-Trade\text{-}in\ Credit</div>
+
+    <p>Under Regulation M, adjusted capitalized cost is the amount used in calculating the base periodic payment after capitalized-cost reductions are deducted.</p>
+
+    <h3>Monthly Depreciation</h3>
+
+    <div class="formula">Monthly Depreciation=Adjusted Cap Cost−Residual ValueLease MonthsMonthly\ Depreciation=\frac{Adjusted\ Cap\ Cost-Residual\ Value}{Lease\ Months}</div>
+
+    <p>Residual value is the vehicle value expected at the end of the lease and is an important part of determining depreciation.</p>
+
+    <h3>Monthly Finance Charge</h3>
+
+    <div class="formula">Monthly Finance Charge=(Adjusted Cap Cost+Residual Value)×Money FactorMonthly\ Finance\ Charge=(Adjusted\ Cap\ Cost+Residual\ Value)\times Money\ Factor</div>
+
+    <p>This represents the financing component added to the depreciation portion of the estimated payment.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Assume an agreed vehicle price of <strong>40,000</strong>,a<strong>36-month</strong>lease,a<strong>2,000</strong> down payment, <strong>1,000</strong>trade-incredit,a<strong>6%APRequivalent</strong>,a<strong>24,000</strong> residual value, and <strong>8%</strong> sales tax on the monthly payment.</p>
+
+    <h3>Inputs</h3>
+
+    <p>Vehicle price = $40,000; lease term = 36 months; down payment = $2,000; trade-in credit = $1,000; APR equivalent = 6%; residual value = $24,000; sales tax = 8%.</p>
+
+    <h3>Step 1: Calculate Adjusted Capitalized Cost</h3>
+
+    <div class="formula">C=40,000−2,000−1,000=37,000C=40,000-2,000-1,000=37,000</div>
+
+    <h3>Step 2: Calculate Monthly Depreciation</h3>
+
+    <div class="formula">37,000−24,00036=13,00036=361.1111\frac{37,000-24,000}{36} = \frac{13,000}{36} = 361.1111</div>
+
+    <p>Monthly depreciation is approximately <strong>$361.11</strong>.</p>
+
+    <h3>Step 3: Convert APR to Money Factor</h3>
+
+    <div class="formula">MF=62400=0.0025MF=\frac{6}{2400}=0.0025</div>
+
+    <h3>Step 4: Calculate the Finance Charge</h3>
+
+    <div class="formula">(37,000+24,000)×0.0025=61,000×0.0025=152.50(37,000+24,000)\times0.0025 = 61,000\times0.0025 = 152.50</div>
+
+    <p>Monthly finance charge = <strong>$152.50</strong>.</p>
+
+    <h3>Step 5: Calculate the Pre-Tax Payment</h3>
+
+    <div class="formula">361.1111+152.50=513.6111361.1111+152.50=513.6111</div>
+
+    <p>Pre-tax monthly payment is approximately <strong>$513.61</strong>.</p>
+
+    <h3>Step 6: Calculate Monthly Tax</h3>
+
+    <div class="formula">513.6111×0.08=41.0889513.6111\times0.08=41.0889</div>
+
+    <p>Estimated monthly tax is approximately <strong>$41.09</strong>.</p>
+
+    <h3>Final Result</h3>
+
+    <div class="formula">513.6111+41.0889=554.70513.6111+41.0889=554.70</div>
+
+    <p>The estimated monthly lease payment is <strong>$554.70</strong>.</p>
+
+    <p>Actual lease documents can produce a different payment when additional fees, rebates, taxes, prior balances, or contract-specific calculations are included.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p>The main result is the estimated monthly lease payment based on the values entered.</p>
+
+    <p><strong>Adjusted capitalized cost</strong> represents the vehicle amount used for the lease calculation after the entered down payment and trade-in credit reduce the agreed vehicle price.</p>
+
+    <p><strong>Monthly depreciation</strong> represents the portion of the calculated vehicle value loss allocated to one lease month.</p>
+
+    <p><strong>Finance charge</strong> represents the financing or rent component calculated using the APR-equivalent money factor.</p>
+
+    <p><strong>Pre-tax monthly payment</strong> combines monthly depreciation and the finance charge.</p>
+
+    <p><strong>Monthly tax</strong> applies the entered sales-tax percentage to the pre-tax payment.</p>
+
+    <p>These figures are estimates for comparison and planning. Your lessor's lease disclosure and signed contract determine the actual amounts you must pay.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The calculator uses the entered agreed vehicle price as the starting capitalized amount and reduces it using the entered down payment and trade-in credit. It assumes the entered residual value is already available as a monetary amount and applies the APR-equivalent money-factor approximation shown above.</p>
+
+    <p>Real vehicle leases may also include acquisition fees, registration or title charges, security deposits, rebates, manufacturer incentives, first payments, prior-loan or lease balances, mileage provisions, disposition charges, and other contract-specific amounts. These items are not automatically included unless represented by one of the calculator's listed inputs.</p>
+
+    <p>Tax treatment also varies by jurisdiction. This calculator specifically applies the entered sales-tax rate to the monthly payment; some jurisdictions may calculate vehicle lease taxes differently.</p>
+
+    <p>Mileage limits, excess-mileage charges, excessive-wear charges, purchase-option costs, and early-termination charges are not determined by this calculation. CFPB guidance notes that vehicle leases can include mileage restrictions, wear charges, end-of-lease fees, and potentially significant early-termination costs.</p>
+
+    <p>The result should therefore be treated as an estimate rather than a replacement for the lessor's official lease disclosure.</p>
+  </section>
+
+  <section id="current">
+    <h2>Current Rules / Data</h2>
+
+    <p>As of <strong>September 24, 2026</strong>, the CFPB lists the current version of Regulation M, 12 CFR Part 1013, as most recently amended on <strong>January 1, 2026</strong>. Regulation M covers disclosures for applicable consumer leases.</p>
+
+    <p>For covered motor-vehicle leases, the disclosure rules address items including the amount due at signing or delivery, gross capitalized cost, capitalized cost reduction, adjusted capitalized cost, residual value, depreciation and amortized amounts, and the rent charge.</p>
+
+    <p>This calculator does not replace those required disclosures or determine whether a particular lease transaction is covered by Regulation M.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>How is an auto lease payment calculated?</summary>
+      <p>This calculator estimates monthly depreciation by subtracting the residual value from the adjusted capitalized cost and dividing by the lease term. It then adds a finance charge based on the estimated money factor and applies the entered monthly-payment sales tax.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How do I convert lease APR to a money factor?</summary>
+
+      <p>When APR is entered as a percentage, this calculator uses the common approximation:</p>
+
+      <div class="formula">Money Factor=APR2400Money\ Factor=\frac{APR}{2400}</div>
+
+      <p>For example, 6% ÷ 2400 = 0.0025. A lease provider may quote a money factor directly, so the actual contract figures should control.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why does residual value affect the monthly payment?</summary>
+      <p>Residual value represents the vehicle's expected value at the end of the lease. A larger residual value reduces the amount of depreciation that must be covered during the lease term, assuming the other inputs remain unchanged. CFPB lease disclosures also identify residual value as a value used in calculating the base periodic payment.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does a larger down payment lower the estimated lease payment?</summary>
+      <p>Under this calculator's method, yes. A larger capitalized-cost reduction lowers the adjusted capitalized cost, which reduces the depreciation portion of the calculation. It also requires more cash upfront, so monthly payment alone should not be used to compare the total cost of competing leases.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does the calculator include all lease fees?</summary>
+      <p>No. It calculates from the listed vehicle price, lease term, down payment or cap reduction, trade-in credit, APR equivalent, residual value, and monthly-payment tax rate. Actual leases may contain additional fees or credits that change the final payment.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why might the dealer's lease payment be different?</summary>
+      <p>A dealer or lessor may use additional acquisition fees, rebates, incentives, capitalized taxes, prior-balance amounts, different tax rules, contract-specific money factors, or rounding conventions. The official lease disclosure should be used for the final contractual figures.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does this calculator calculate mileage or end-of-lease charges?</summary>
+      <p>No. Mileage limits, excess-mileage charges, wear-and-tear charges, disposition charges, purchase-option amounts, and early-termination charges are separate lease terms and are not calculated from the listed inputs.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://www.consumerfinance.gov/ask-cfpb/what-should-i-know-about-leasing-versus-buying-a-car-en-815/?utm_source=chatgpt.com" rel="noopener" target="_blank">Consumer Financial Protection Bureau — Leasing Versus Buying a Car</a><br>
+        Used to verify how depreciation, residual value, lease terms, rental charges, mileage provisions, and other common vehicle-lease components work.
+      </li>
+
+      <li>
+        <a href="https://www.consumerfinance.gov/rules-policy/regulations/1013/4/?utm_source=chatgpt.com" rel="noopener" target="_blank">CFPB Regulation M § 1013.4 — Content of Disclosures</a><br>
+        Used to verify definitions and disclosure treatment for gross capitalized cost, capitalized cost reduction, adjusted capitalized cost, residual value, depreciation, and rent charges.
+      </li>
+
+      <li>
+        <a href="https://www.calculator.net/auto-lease-calculator.html?utm_source=chatgpt.com" rel="noopener" target="_blank">Calculator.net — Auto Lease Calculator</a><br>
+        Used as a secondary cross-check for the common APR-to-money-factor approximation used in lease-payment estimates.
+      </li>
+    </ul>
+
+    <h3>Current Data / Rule Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://www.consumerfinance.gov/rules-policy/regulations/1013/?utm_source=chatgpt.com" rel="noopener" target="_blank">Consumer Financial Protection Bureau — 12 CFR Part 1013, Regulation M</a><br>
+        Used to verify the current Regulation M version and its January 1, 2026 amendment date.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <p>For financing comparisons, use the<a href="https://example.com/auto-loan-calculator/?utm_source=chatgpt.com"> Auto Loan Calculator</a> to estimate vehicle-loan costs. The<a href="https://example.com/loan-calculator/?utm_source=chatgpt.com"> Loan Calculator</a> and<a href="https://example.com/payment-calculator/?utm_source=chatgpt.com"> Payment Calculator</a> can help compare repayment structures, while the<a href="https://example.com/interest-rate-calculator/?utm_source=chatgpt.com"> Interest Rate Calculator</a> helps evaluate financing rates. For broader time-value-of-money calculations, use the<a href="https://example.com/financial-calculator/?utm_source=chatgpt.com"> Financial Calculator</a>.</p>
+  </section>
+
+</article>
+
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"80","Batch":"9","Calculator / Page":"Auto Lease Calculator","Slug":"auto-lease-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Estimate a monthly car lease payment from capitalized cost, residual value, lease term, APR-equivalent money factor, and tax.","Formula / Algorithm Used in Tool":"Auto Lease Formula: Monthly depreciation is (adjusted cap cost − residual value) ÷ months . A common lease finance charge is (adjusted cap cost + residual value) × money factor . When APR is stated as a percentage, an approximate money factor is APR ÷ 2400 .","Required User Inputs":"Agreed vehicle price; Lease term (months); Down payment / cap reduction; Trade-in credit; Lease APR equivalent (%); Residual value; Sales tax on monthly payment (%)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Agreed vehicle price, Lease term (months), Down payment / cap reduction, Trade-in credit, Lease APR equivalent (%), Residual value, Sales tax on monthly payment (%). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"Real leases may treat acquisition fees, taxes, rebates, security deposits, first payments, mileage, negative equity, and incentives differently. The CFPB also requires specific lease disclosures. Use the lessor’s actual disclosure form for final payment figures. Frequently Asked Questions How do I convert APR to a money factor? A common approximation is APR as a percent divided by 2400. For example, 6% ÷ 2400 = 0.0025. A lessor may quote the money factor directly, and contract terms control. Why does residual value matter so much? The payment largely covers the vehicle’s expected depreciation during the lease. A higher residual value means less depreciation is being paid for over the lease term, all else equal. Is a down payment on a lease always a good idea? A capitalized-cost reduction can lower monthly payments, but it also puts more cash at risk upfront. The financial effect depends on the contract, insurance settlement terms, and your preference for upfront versus monthly cost. Sources and Methodology The calculator logic is implemented locally in your browser. Formulas and terminology were cross-checked against the references below. Estimates can differ from lender, tax-authority, plan-administrator, or contract calculations because real-world rules may add timing, rounding","Current Source URLs in Page":"https://www.consumerfinance.gov/ask-cfpb/what-should-i-know-about-leasing-versus-buying-a-car-en-815/ | https://www.consumerfinance.gov/rules-policy/regulations/1013/4/ | https://www.calculator.net/auto-lease-calculator.html","Implementation Path":"/auto-lease-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Finance</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../lease-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Lease Calculator</strong><small>Calculate a level
+                            monthly lease payment from asset value, residual value, term, and…</small></span></a><a
+                    class="cp-related-link" href="../auto-loan-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Auto Loan Calculator</strong><small>Estimate a car
+                            loan payment using vehicle price, down payment, trade-in, tax, fees,…</small></span></a><a
+                    class="cp-related-link" href="../boat-loan-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Boat Loan Calculator</strong><small>Estimate a boat
+                            loan payment, amount financed, tax, trade-in equity, total interest…</small></span></a><a
+                    class="cp-related-link" href="../personal-loan-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Personal Loan Calculator</strong><small>Calculate
+                            personal loan monthly payment, total interest, origination fee, net
+                            proce…</small></span></a><a class="cp-related-link"
+                    href="../payment-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Payment
+                            Calculator</strong><small>Calculate a monthly loan payment for a fixed term or estimate how
+                            long a loan takes…</small></span></a><a class="cp-related-link"
+                    href="../interest-rate-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Interest Rate Calculator</strong><small>Estimate
+                            the nominal annual interest rate implied by a loan amount, fixed monthly
+                            p…</small></span></a><a class="cp-related-link"
+                    href="../finance-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Finance
+                            Calculator</strong><small>Solve time-value-of-money variables including future value,
+                            present value, payment,…</small></span></a><a class="cp-related-link"
+                    href="../credit-card-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Credit Card Calculator</strong><small>Estimate a
+                            single credit card payoff time, required monthly payment, total interest…</small></span></a>
+            </div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const $ = s => document.querySelector(s); const n = id => Number(document.getElementById(id).value); const money = (v, c = '$') => c + Number(v).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }); const pct = v => Number(v).toFixed(2) + '%';
+        function err(msg) { const e = $('#error'); e.textContent = msg; e.style.display = 'block' } function clearErr() { const e = $('#error'); e.style.display = 'none'; e.textContent = '' }
+
+        function calcLease() { clearErr(); const p = n('autoPrice'), m = n('leaseMonths'), d = n('leaseDown'), tr = n('leaseTrade'), apr = n('leaseApr'), rv = n('residual'), tax = n('leaseTax') / 100; if ([p, m, d, tr, apr, rv, tax].some(x => !Number.isFinite(x)) || p <= 0 || m <= 0 || [d, tr, apr, rv, tax].some(x => x < 0)) return err('Enter valid non-negative values and a term above zero.'); const cap = p - d - tr; if (cap <= 0 || rv > p * 1.5) return err('Adjusted capitalized cost must be positive and residual value must be reasonable.'); const dep = (cap - rv) / m; if (dep < 0) return err('Residual value cannot exceed adjusted capitalized cost in this simplified model.'); const mf = (apr / 100) / 24; const finance = (cap + rv) * mf; const pre = dep + finance; const tx = pre * tax; const pay = pre + tx; document.getElementById('leasePay').textContent = money(pay); document.getElementById('capOut').textContent = money(cap); document.getElementById('depOut').textContent = money(dep); document.getElementById('finOut').textContent = money(finance); document.getElementById('taxLeaseOut').textContent = money(tx); document.getElementById('mfOut').textContent = mf.toFixed(6); document.getElementById('leaseTotal').textContent = money(pay * m) } function resetLease() { const v = { autoPrice: 50000, leaseMonths: 36, leaseDown: 8000, leaseTrade: 5000, leaseApr: 6, residual: 25000, leaseTax: 6 }; Object.entries(v).forEach(([k, x]) => document.getElementById(k).value = x); calcLease() } calcLease();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

@@ -1,49 +1,1029 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<title>Log Calculator | CalcPro</title>
-<meta content="Calculate logarithms in any valid real base and compare natural log, common log, and exponential verification." name="description"/>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="index,follow" name="robots"/>
-<link href="../log-calculator/" rel="canonical"/>
-<meta content="website" property="og:type"/>
-<meta content="Log Calculator" property="og:title"/>
-<meta content="Calculate logarithms in any valid real base and compare natural log, common log, and exponential verification." property="og:description"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}
-a{color:inherit}button,input,select{font:inherit}button{cursor:pointer}.wrap{width:min(1160px,92vw);margin:auto}.crumbs{font-size:.88rem;opacity:.78;margin-bottom:18px}h1,h2,h3{line-height:1.15;margin:0 0 14px}h1{font-size:clamp(2.3rem,5vw,4.9rem);letter-spacing:-.045em}h2{font-size:clamp(1.6rem,3vw,2.25rem);letter-spacing:-.025em}h3{font-size:1.1rem}p{margin:0 0 14px}.muted{opacity:.74}label{font-weight:750;font-size:.92rem;display:block;margin-bottom:7px}input,select{width:100%;padding:13px 14px;border-radius:14px;border:1px solid var(--line);background:var(--field);color:var(--ink);outline:none}input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.btn{border:0;border-radius:14px;padding:13px 18px;font-weight:800;box-shadow:var(--btnshadow)}.primary{background:var(--accent);color:var(--onaccent)}.secondary{background:var(--soft);color:var(--ink);border:1px solid var(--line)}.error{min-height:24px;color:var(--danger);font-weight:700;margin-top:10px}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--formula);border:1px solid var(--line);padding:14px 16px;border-radius:16px;overflow:auto}.result-main{font-size:clamp(1.9rem,4vw,3.2rem);font-weight:900;letter-spacing:-.04em;word-break:break-word}.result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.result-chip{padding:12px 13px;border-radius:14px;background:var(--soft);border:1px solid var(--line)}.result-chip b{display:block;font-size:.8rem;opacity:.65;margin-bottom:2px}.content{padding:72px 0 40px}.article-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}article section{margin-bottom:38px}aside{position:sticky;top:18px}.toc,.sourcebox{border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow);border-radius:24px;padding:20px}.toc a{display:block;text-decoration:none;padding:6px 0;opacity:.78}.toc a:hover{opacity:1}ul,ol{padding-left:22px}table{width:100%;border-collapse:collapse;border-radius:18px;overflow:hidden}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left}th{background:var(--soft)}footer{padding:36px 0 50px;opacity:.7;font-size:.9rem}.sr{position:absolute;left:-9999px}
-@media(max-width:860px){.article-grid{grid-template-columns:1fr}aside{position:static}.result-grid{grid-template-columns:1fr}}
-</style>
-<style>
-:root{--bg:#fffdf5;--ink:#3a2b18;--panel:#fff;--field:#fffdf7;--soft:#fff5d8;--formula:#fff3cd;--line:#eadcbb;--accent:#a45a17;--onaccent:#fff;--focus:#a45a171b;--danger:#b42318;--shadow:0 30px 80px #7f50171d;--btnshadow:0 12px 28px #a45a1726;}
+   <meta charset="utf-8" />
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<meta http-equiv="content-language" content="en">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
 
-.log-hero{padding:54px 0 135px;background:linear-gradient(120deg,#fff9da,#ffea91 40%,#f7b44a);overflow:hidden}.log-wrap{text-align:center}.log-letter{width:280px;height:150px;margin:18px auto -15px;position:relative;font-family:Georgia,serif;transform:rotate(-3deg)}.log-letter span{font-size:6.3rem;font-weight:800;color:#4f3211;letter-spacing:-.12em;text-shadow:0 13px 0 #fff7,0 26px 30px #7d4a1620}.log-letter sup{position:absolute;top:0;right:32px;font-size:2.1rem;color:#b84d24}.log-letter em{position:absolute;bottom:3px;right:16px;font-size:3.5rem;color:#1d6a6b}.log-zone{margin-top:-82px}.log-ribbon{padding:28px;background:var(--panel);border-radius:42px 12px 42px 12px;border:1px solid var(--line);box-shadow:var(--shadow)}.log-inputs{display:grid;grid-template-columns:1fr 1fr auto auto;gap:10px;align-items:end}.base-pill input{border-radius:30px}.log-answer{margin-top:20px;padding:24px;border-radius:28px;background:linear-gradient(145deg,#fff9df,#fff);border:1px solid var(--line)}.log-answer>span{font:800 1rem ui-monospace;color:#7e541c}.log-answer>strong{display:block;font-size:3.4rem;line-height:1.1;margin:5px 0 10px}@media(max-width:850px){.log-inputs{grid-template-columns:1fr 1fr}.log-inputs button{width:100%}}@media(max-width:560px){.log-inputs{grid-template-columns:1fr}}
 
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/log-calculator/#app", "name": "Log Calculator", "url": "/log-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate logarithms in any valid real base and compare natural log, common log, and exponential verification."}, {"@type": "BreadcrumbList", "@id": "/log-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Math & Statistics", "item": "/math/"}, {"@type": "ListItem", "position": 3, "name": "Algebra", "item": "/math/algebra/"}, {"@type": "ListItem", "position": 4, "name": "Log Calculator", "item": "/log-calculator/"}]}, {"@type": "FAQPage", "@id": "/log-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "What is a logarithm?", "acceptedAnswer": {"@type": "Answer", "text": "A logarithm answers the question: to what exponent must the base be raised to produce a given positive number?"}}, {"@type": "Question", "name": "What bases are valid?", "acceptedAnswer": {"@type": "Answer", "text": "For real logarithms, the base must be greater than zero and cannot equal one. The argument must also be greater than zero."}}, {"@type": "Question", "name": "What is the change-of-base formula?", "acceptedAnswer": {"@type": "Answer", "text": "log base b of x can be computed as ln(x)/ln(b), or equivalently using any other valid logarithm base."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body data-cp-category="math" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../math/index.html">Math &amp; Statistics</a></li><li><a aria-current="page" href="index.html">Log Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a href="../calculators/index.html">All calculators</a></div><header><div class="log-hero"><div class="wrap log-wrap"><nav class="crumbs">Home / Algebra / Log Calculator</nav><div class="log-letter"><span>log</span><sup>b</sup><em>x</em></div><h1>Log Calculator</h1><p>Evaluate logarithms in any valid real base and compare the result with natural and common logarithms.</p></div></div></header>
-<div class="cp-page-layout"><main id="main"><h1 class="page-title">Log Calculator</h1>
-<section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="log-zone"><div class="wrap log-ribbon"><div class="log-inputs"><div><label for="lx">Number x</label><input id="lx" min="0" step="any" type="number" value="8"/></div><div class="base-pill"><label for="lb">Base b</label><input id="lb" min="0" step="any" type="number" value="2"/></div><button class="btn primary" onclick="calcLog()">Evaluate logᵦ(x)</button><button class="btn secondary" onclick="resetLog()">Reset</button></div><div class="error" id="logErr"></div><div class="log-answer"><span>log<sub id="baseSub">2</sub>(<span id="argSub">8</span>)</span><strong id="logMain">3</strong><div class="result-grid"><div class="result-chip"><b>Natural log ln(x)</b><span id="lnOut">2.079441542</span></div><div class="result-chip"><b>Common log log₁₀(x)</b><span id="lgOut">0.903089987</span></div><div class="result-chip"><b>Check b^result</b><span id="checkOut">8</span></div><div class="result-chip"><b>Base type</b><span id="baseType">Custom base</span></div></div></div></div></section>
-<div class="content"><div class="wrap article-grid">
-<article><section id="about"><h2>What Is a Log Calculator?</h2><p>A log calculator evaluates logᵦ(x), the exponent to which a base b must be raised to produce x. It supports any real base greater than zero except 1, provided the logarithm argument is also positive.</p></section><section id="use"><h2>How to Use the Log Calculator</h2><ol><li>Enter a positive number x.</li><li>Enter a valid base b where b &gt; 0 and b ≠ 1.</li><li>Evaluate to see logᵦ(x), ln(x), log₁₀(x), and an exponential check.</li></ol></section><section id="formula"><h2>Logarithm Formula</h2><div class="formula">logᵦ(x) = ln(x) / ln(b)    ⇔    b^(logᵦ(x)) = x</div><p>OpenStax gives this as the change-of-base formula, allowing a logarithm in any valid base to be computed using natural or common logarithms.</p></section><section id="example"><h2>Calculation Example</h2><p>log₂(8) = <strong>3</strong> because 2³ = 8.</p></section><section id="limits"><h2>Limitations</h2><p>This page evaluates real logarithms only. It does not calculate complex logarithms. Inputs must satisfy x &gt; 0, b &gt; 0, and b ≠ 1.</p></section><section id="faq"><h2>Frequently Asked Questions</h2><h3>What is ln?</h3><p>ln(x) is the natural logarithm, which uses Euler’s number e as its base.</p><h3>What is the common logarithm?</h3><p>The common logarithm uses base 10 and is often written simply as log(x) when the context is clear.</p></section><section id="sources"><h2>Sources and Methodology</h2><ul><li><a href="https://openstax.org/books/algebra-and-trigonometry/pages/6-key-equations" rel="noopener" target="_blank">OpenStax Algebra and Trigonometry — Logarithm Definition and Change of Base</a></li><li><a href="https://openstax.org/books/college-algebra-corequisite-support/pages/6-5-logarithmic-properties" rel="noopener" target="_blank">OpenStax — Logarithmic Properties</a></li></ul></section></article>
-<aside><div class="toc"><h3>On this page</h3>
-<a href="#about">What it calculates</a><a href="#use">How to use it</a><a href="#formula">Formula</a>
-<a href="#example">Example</a><a href="#limits">Limitations</a><a href="#faq">FAQs</a><a href="#sources">Sources</a>
-</div></aside>
-</div></div>
+<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+<!-- Primary Meta Tags -->
+<title>Log Calculator – Calculate Logarithms in Any Real Base</title>
+<meta name="title" content="Log Calculator – Calculate Logarithms in Any Real Base">
+<meta name="description" content="Calculate logarithms for any valid real base with the change-of-base formula. Enter x and base b to get the log result, natural log, and common log.">
 
-<script class="cp-calculator-data" type="application/json">{"index":"135","Batch":"14","Calculator / Page":"Log Calculator","Slug":"log-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Calculate logarithms in any valid real base and compare natural log, common log, and exponential verification.","Formula / Algorithm Used in Tool":"Logarithm Formula: logᵦ(x) = ln(x) / ln(b) ⇔ b^(logᵦ(x)) = x OpenStax gives this as the change-of-base formula, allowing a logarithm in any valid base to be computed using natural or common logarithms.","Required User Inputs":"Number x; Base b","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Number x, Base b. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"This page evaluates real logarithms only. It does not calculate complex logarithms. Inputs must satisfy x > 0, b > 0, and b ≠ 1.","Current Source URLs in Page":"https://openstax.org/books/algebra-and-trigonometry/pages/6-key-equations | https://openstax.org/books/college-algebra-corequisite-support/pages/6-5-logarithmic-properties","Implementation Path":"/log-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Math &amp; Statistics</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../exponent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Exponent Calculator</strong><small>Calculate a number raised to any valid real exponent and view the result in standar…</small></span></a><a class="cp-related-link" href="../scientific-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Scientific Calculator</strong><small>Calculate trigonometric functions, inverse trig, logarithms, roots, powers, factori…</small></span></a><a class="cp-related-link" href="../percent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Percent Calculator</strong><small>Calculate a percentage of a number, find what percent one value is of another, calc…</small></span></a><a class="cp-related-link" href="../volume-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Volume Calculator</strong><small>Calculate volume for common 3D solids including cube, rectangular prism, cylinder,…</small></span></a><a class="cp-related-link" href="../half-life-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Half-Life Calculator</strong><small>Calculate exponential half-life decay, remaining amount, decayed amount, elapsed ha…</small></span></a><a class="cp-related-link" href="../circle-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Circle Calculator</strong><small>Calculate radius, diameter, circumference, and area of a circle from any one known…</small></span></a><a class="cp-related-link" href="../distance-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Distance Calculator</strong><small>Calculate distance between two points in 2D, 3D, or between latitude-longitude coor…</small></span></a><a class="cp-related-link" href="../gcf-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>GCF Calculator</strong><small>Find the greatest common factor of two or more integers. Free, fast and responsive…</small></span></a></div><a class="cp-side-category" href="../math/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-const lf=n=>Math.abs(n)>=1e10||(Math.abs(n)>0&&Math.abs(n)<1e-8)?n.toExponential(9):parseFloat(n.toFixed(10)).toString();
-function calcLog(){const x=Number(lx.value),b=Number(lb.value);logErr.textContent='';if(!Number.isFinite(x)||!Number.isFinite(b)){logErr.textContent='Enter valid numeric values.';return}if(x<=0){logErr.textContent='The logarithm argument x must be greater than zero.';return}if(b<=0||b===1){logErr.textContent='The base must be greater than zero and cannot equal 1.';return}const r=Math.log(x)/Math.log(b);logMain.textContent=lf(r);lnOut.textContent=lf(Math.log(x));lgOut.textContent=lf(Math.log10(x));checkOut.textContent=lf(Math.pow(b,r));baseSub.textContent=lf(b);argSub.textContent=lf(x);baseType.textContent=Math.abs(b-Math.E)<1e-12?'Natural base e':b===10?'Common base 10':b===2?'Binary base 2':'Custom base'}
-function resetLog(){lx.value=8;lb.value=2;calcLog()}calcLog();
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/log-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/log-calculator/">
+<meta property="og:title" content="Log Calculator – Calculate Logarithms in Any Real Base">
+<meta property="og:description" content="Calculate logarithms for any valid real base with the change-of-base formula. Enter x and base b to get the log result, natural log, and common log.">
+<meta property="og:site_name" content="Log Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/log-calculator/">
+<meta name="twitter:title" content="Log Calculator – Calculate Logarithms in Any Real Base">
+<meta name="twitter:description" content="Calculate logarithms for any valid real base with the change-of-base formula. Enter x and base b to get the log result, natural log, and common log.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.65
+        }
+
+        a {
+            color: inherit
+        }
+
+        button,
+        input,
+        select {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        .wrap {
+            width: min(1160px, 92vw);
+            margin: auto
+        }
+
+        .crumbs {
+            font-size: .88rem;
+            opacity: .78;
+            margin-bottom: 18px
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.15;
+            margin: 0 0 14px
+        }
+
+        h1 {
+            font-size: clamp(2.3rem, 5vw, 4.9rem);
+            letter-spacing: -.045em
+        }
+
+        h2 {
+            font-size: clamp(1.6rem, 3vw, 2.25rem);
+            letter-spacing: -.025em
+        }
+
+        h3 {
+            font-size: 1.1rem
+        }
+
+        p {
+            margin: 0 0 14px
+        }
+
+        .muted {
+            opacity: .74
+        }
+
+        label {
+            font-weight: 750;
+            font-size: .92rem;
+            display: block;
+            margin-bottom: 7px
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 13px 14px;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            background: var(--field);
+            color: var(--ink);
+            outline: none
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--focus)
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 13px 18px;
+            font-weight: 800;
+            box-shadow: var(--btnshadow)
+        }
+
+        .primary {
+            background: var(--accent);
+            color: var(--onaccent)
+        }
+
+        .secondary {
+            background: var(--soft);
+            color: var(--ink);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            min-height: 24px;
+            color: var(--danger);
+            font-weight: 700;
+            margin-top: 10px
+        }
+
+        .formula {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: var(--formula);
+            border: 1px solid var(--line);
+            padding: 14px 16px;
+            border-radius: 16px;
+            overflow: auto
+        }
+
+        .result-main {
+            font-size: clamp(1.9rem, 4vw, 3.2rem);
+            font-weight: 900;
+            letter-spacing: -.04em;
+            word-break: break-word
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 14px
+        }
+
+        .result-chip {
+            padding: 12px 13px;
+            border-radius: 14px;
+            background: var(--soft);
+            border: 1px solid var(--line)
+        }
+
+        .result-chip b {
+            display: block;
+            font-size: .8rem;
+            opacity: .65;
+            margin-bottom: 2px
+        }
+
+        .content {
+            padding: 72px 0 40px
+        }
+
+        .article-grid {
+            display: grid;
+             gap: 28px;
+            align-items: start
+        }
+
+        article section {
+            margin-bottom: 38px
+        }
+
+        aside {
+            position: sticky;
+            top: 18px
+        }
+
+        .toc,
+        .sourcebox {
+            border: 1px solid var(--line);
+            background: var(--panel);
+            box-shadow: var(--shadow);
+            border-radius: 24px;
+            padding: 20px
+        }
+
+        .toc a {
+            display: block;
+            text-decoration: none;
+            padding: 6px 0;
+            opacity: .78
+        }
+
+        .toc a:hover {
+            opacity: 1
+        }
+
+        ul,
+        ol {
+            padding-left: 22px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 18px;
+            overflow: hidden
+        }
+
+        th,
+        td {
+            padding: 11px;
+            border-bottom: 1px solid var(--line);
+            text-align: left
+        }
+
+        th {
+            background: var(--soft)
+        }
+
+        footer {
+            padding: 36px 0 50px;
+            opacity: .7;
+            font-size: .9rem
+        }
+
+        .sr {
+            position: absolute;
+            left: -9999px
+        }
+
+        @media(max-width:860px) {
+            .article-grid {
+                grid-template-columns: 1fr
+            }
+
+            aside {
+                position: static
+            }
+
+            .result-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+    <style>
+        :root {
+            --bg: #fffdf5;
+            --ink: #3a2b18;
+            --panel: #fff;
+            --field: #fffdf7;
+            --soft: #fff5d8;
+            --formula: #fff3cd;
+            --line: #eadcbb;
+            --accent: #a45a17;
+            --onaccent: #fff;
+            --focus: #a45a171b;
+            --danger: #b42318;
+            --shadow: 0 30px 80px #7f50171d;
+            --btnshadow: 0 12px 28px #a45a1726;
+        }
+
+        .log-hero {
+            padding: 54px 0 135px;
+            background: linear-gradient(120deg, #fff9da, #ffea91 40%, #f7b44a);
+            overflow: hidden
+        }
+
+        .log-wrap {
+            text-align: center
+        }
+
+        .log-letter {
+            width: 280px;
+            height: 150px;
+            margin: 18px auto -15px;
+            position: relative;
+            font-family: Georgia, serif;
+            transform: rotate(-3deg)
+        }
+
+        .log-letter span {
+            font-size: 6.3rem;
+            font-weight: 800;
+            color: #4f3211;
+            letter-spacing: -.12em;
+            text-shadow: 0 13px 0 #fff7, 0 26px 30px #7d4a1620
+        }
+
+        .log-letter sup {
+            position: absolute;
+            top: 0;
+            right: 32px;
+            font-size: 2.1rem;
+            color: #b84d24
+        }
+
+        .log-letter em {
+            position: absolute;
+            bottom: 3px;
+            right: 16px;
+            font-size: 3.5rem;
+            color: #1d6a6b
+        }
+
+        .log-zone {
+            margin-top: -82px
+        }
+
+        .log-ribbon {
+            padding: 28px;
+            background: var(--panel);
+            border-radius: 42px 12px 42px 12px;
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow)
+        }
+
+        .log-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto auto;
+            gap: 10px;
+            align-items: end
+        }
+
+        .base-pill input {
+            border-radius: 30px
+        }
+
+        .log-answer {
+            margin-top: 20px;
+            padding: 24px;
+            border-radius: 28px;
+            background: linear-gradient(145deg, #fff9df, #fff);
+            border: 1px solid var(--line)
+        }
+
+        .log-answer>span {
+            font: 800 1rem ui-monospace;
+            color: #7e541c
+        }
+
+        .log-answer>strong {
+            display: block;
+            font-size: 3.4rem;
+            line-height: 1.1;
+            margin: 5px 0 10px
+        }
+
+        @media(max-width:850px) {
+            .log-inputs {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .log-inputs button {
+                width: 100%
+            }
+        }
+
+        @media(max-width:560px) {
+            .log-inputs {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/log-calculator/#webapplication",
+      "name": "Log Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/log-calculator/",
+      "description": "Calculate logarithms for any valid real base with the change-of-base formula. Enter x and base b to get the log result, natural log, and common log.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/log-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Log Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/log-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/log-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does a logarithm calculate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A logarithm finds the exponent required to raise a base to a specific number. For example, log₂(8) = 3 because 2³ = 8."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What formula does the Log Calculator use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It uses the change-of-base formula: logᵦ(x) = ln(x) / ln(b). This allows logarithms with different valid bases to be calculated using natural logarithms."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can the logarithm base be any number?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The base can be any positive real number except 1. Therefore, it must satisfy b > 0 and b ≠ 1."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I calculate the log of a negative number?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not with this calculator. A negative number does not have a real logarithm, so the calculator is limited to x > 0."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between log and ln?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ln(x) is the natural logarithm with base e. The common logarithm normally uses base 10 and is written as log(x) or log₁₀(x)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is base 1 not allowed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every real power of 1 equals 1. Because of this, base 1 does not create the one-to-one exponential relationship needed to define a logarithm."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I check whether a logarithm answer is correct?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Raise the base to the calculated logarithm: bʸ = x. For example, if log₂(32) = 5, then 2⁵ = 32, confirming the result."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="math" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../math/index.html">Math &amp; Statistics</a></li>
+            <li><a aria-current="page" href="index.html">Log Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a
+            href="../calculators/index.html">All calculators</a></div>
+     
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Log Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="log-zone">
+                <div class="wrap log-ribbon">
+                    <div class="log-inputs">
+                        <div><label for="lx">Number x</label><input id="lx" min="0" step="any" type="number"
+                                value="8" /></div>
+                        <div class="base-pill"><label for="lb">Base b</label><input id="lb" min="0" step="any"
+                                type="number" value="2" /></div><button class="btn primary" onclick="calcLog()">Evaluate
+                            logᵦ(x)</button><button class="btn secondary" onclick="resetLog()">Reset</button>
+                    </div>
+                    <div class="error" id="logErr"></div>
+                    <div class="log-answer"><span>log<sub id="baseSub">2</sub>(<span id="argSub">8</span>)</span><strong
+                            id="logMain">3</strong>
+                        <div class="result-grid">
+                            <div class="result-chip"><b>Natural log ln(x)</b><span id="lnOut">2.079441542</span></div>
+                            <div class="result-chip"><b>Common log log₁₀(x)</b><span id="lgOut">0.903089987</span></div>
+                            <div class="result-chip"><b>Check b^result</b><span id="checkOut">8</span></div>
+                            <div class="result-chip"><b>Base type</b><span id="baseType">Custom base</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="content">
+                <div class="wrap article-grid">
+                   
+ 
+
+<article class="article">
+
+ 
+
+  <p>Use the Log Calculator to calculate the logarithm of a positive number in any valid real base. Enter the <strong>number x</strong> and <strong>base b</strong> to find <code>logᵦ(x)</code> and compare the result with natural log, common log, and exponential verification.</p>
+
+  <section id="what">
+    <h2>What Is the Log Calculator?</h2>
+
+    <p class="direct">The Log Calculator finds the exponent to which a base must be raised to produce a given number.</p>
+
+    <p>For example:</p>
+
+    <div class="formula">log₂(8) = 3</div>
+
+    <p>because:</p>
+
+    <div class="formula">2³ = 8</div>
+
+    <p>The calculator is useful when working with logarithmic equations, exponential functions, algebra, scientific calculations, growth and decay models, or any problem that requires a logarithm with a base other than 10 or <em>e</em>.</p>
+
+    <p>For real logarithms, the number must be greater than zero, and the base must be positive and cannot equal 1.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Log Calculator</h2>
+
+    <p>Enter the following values:</p>
+
+    <h3>Number x</h3>
+
+    <p>Enter the positive number whose logarithm you want to calculate.</p>
+
+    <p><strong>Required condition:</strong></p>
+
+    <pre><code>x &gt; 0</code></pre>
+
+    <p>For example, you can enter <code>64</code>.</p>
+
+    <h3>Base b</h3>
+
+    <p>Enter the logarithm base.</p>
+
+    <p>The base must satisfy:</p>
+
+    <pre><code>b &gt; 0</code></pre>
+
+    <p>and:</p>
+
+    <pre><code>b ≠ 1</code></pre>
+
+    <p>Examples of valid bases include <code>2</code>, <code>10</code>, <code>e</code>, and other positive values except 1.</p>
+
+    <p>After entering both values, the calculator determines the logarithm and its supporting values.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+
+    <p>The calculator uses the <strong>change-of-base formula</strong>:</p>
+
+    <div class="formula">logᵦ(x) = ln(x) / ln(b)</div>
+
+    <p>A logarithm is also equivalent to the exponential relationship:</p>
+
+    <div class="formula">logᵦ(x) = y ⇔ bʸ = x</div>
+
+    <p>The change-of-base formula allows a logarithm with almost any valid real base to be calculated using natural logarithms.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>x</strong></td>
+          <td>Number whose logarithm is calculated</td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td><strong>b</strong></td>
+          <td>Logarithm base</td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td><strong>y</strong></td>
+          <td>Calculated logarithm</td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td><strong>ln(x)</strong></td>
+          <td>Natural logarithm of x</td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td><strong>ln(b)</strong></td>
+          <td>Natural logarithm of the base</td>
+          <td>None</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Calculation Sequence</h3>
+
+    <p>The calculation follows these steps:</p>
+
+    <ol>
+      <li>Check that <code>x &gt; 0</code>.</li>
+      <li>Check that <code>b &gt; 0</code> and <code>b ≠ 1</code>.</li>
+      <li>Calculate <code>ln(x)</code>.</li>
+      <li>Calculate <code>ln(b)</code>.</li>
+      <li>Divide <code>ln(x)</code> by <code>ln(b)</code>.</li>
+      <li>Return the logarithm result.</li>
+      <li>Verify the result using <code>bʸ = x</code>.</li>
+    </ol>
+
+    <h3>Natural Log</h3>
+
+    <p>The natural logarithm uses base <strong>e</strong>, where:</p>
+
+    <div class="formula">e ≈ 2.71828</div>
+
+    <p>It is written as:</p>
+
+    <div class="formula">ln(x)</div>
+
+    <p>For example:</p>
+
+    <div class="formula">ln(64) ≈ 4.158883</div>
+
+    <h3>Common Log</h3>
+
+    <p>The common logarithm uses base <strong>10</strong>.</p>
+
+    <p>It is normally written as:</p>
+
+    <div class="formula">log(x)</div>
+
+    <p>or</p>
+
+    <div class="formula">log₁₀(x)</div>
+
+    <p>For example:</p>
+
+    <div class="formula">log₁₀(1000) = 3</div>
+
+    <p>because:</p>
+
+    <div class="formula">10³ = 1000</div>
+
+    <p>OpenStax defines the common logarithm as base 10 and the natural logarithm as base <em>e</em>.</p>
+
+    <h3>Exponential Verification</h3>
+
+    <p>The calculated logarithm can be checked by raising the base to the calculated result:</p>
+
+    <div class="formula">bʸ = x</div>
+
+    <p>If:</p>
+
+    <div class="formula">log₂(64) = 6</div>
+
+    <p>then:</p>
+
+    <div class="formula">2⁶ = 64</div>
+
+    <p>This confirms the logarithm result.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Calculate:</p>
+
+    <div class="formula">log₂(64)</div>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li>Number <code>x = 64</code></li>
+      <li>Base <code>b = 2</code></li>
+    </ul>
+
+    <h3>Step 1: Apply the Formula</h3>
+
+    <div class="formula">log₂(64) = ln(64) / ln(2)</div>
+
+    <h3>Step 2: Calculate the Natural Logs</h3>
+
+    <div class="formula">ln(64) ≈ 4.1588830834</div>
+
+    <div class="formula">ln(2) ≈ 0.6931471806</div>
+
+    <h3>Step 3: Divide</h3>
+
+    <div class="formula">log₂(64) = 4.1588830834 / 0.6931471806</div>
+
+    <div class="formula">log₂(64) = 6</div>
+
+    <h3>Final Result</h3>
+
+    <div class="formula">log₂(64) = 6</div>
+
+    <p>Verification:</p>
+
+    <div class="formula">2⁶ = 64</div>
+
+    <p>The supporting logarithms are approximately:</p>
+
+    <ul>
+      <li>Natural log: <strong>ln(64) ≈ 4.158883</strong></li>
+      <li>Common log: <strong>log₁₀(64) ≈ 1.806180</strong></li>
+    </ul>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Logarithm Result</h3>
+
+    <p>The main result tells you the exponent required to raise the selected base to the entered number.</p>
+
+    <p>For example:</p>
+
+    <div class="formula">log₅(125) = 3</div>
+
+    <p>means:</p>
+
+    <div class="formula">5³ = 125</div>
+
+    <h3>Natural Log</h3>
+
+    <p>The natural log shows the logarithm of the entered number using base <em>e</em>.</p>
+
+    <p>It is commonly written as:</p>
+
+    <div class="formula">ln(x)</div>
+
+    <h3>Common Log</h3>
+
+    <p>The common log shows the logarithm using base 10:</p>
+
+    <div class="formula">log₁₀(x)</div>
+
+    <h3>Exponential Check</h3>
+
+    <p>The exponential check confirms the result by evaluating:</p>
+
+    <div class="formula">b^(logᵦ(x))</div>
+
+    <p>The result should return the original value of <code>x</code>, apart from possible decimal rounding for results that cannot be represented exactly.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>This calculator evaluates <strong>real logarithms only</strong>. It does not calculate complex logarithms.</p>
+
+    <p>Valid inputs must satisfy:</p>
+
+    <div class="formula">x &gt; 0</div>
+
+    <div class="formula">b &gt; 0</div>
+
+    <div class="formula">b ≠ 1</div>
+
+    <p>A real logarithm is not defined for zero or negative <code>x</code>.</p>
+
+    <p>Base <code>1</code> is invalid because <code>1</code> raised to any real exponent remains <code>1</code>, so it cannot provide a unique logarithmic relationship.</p>
+
+    <p>Many logarithms are irrational numbers, so their displayed decimal values may be rounded.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What does a logarithm calculate?</summary>
+      <p>A logarithm finds the exponent required to raise a base to a specific number. For example, <code>log₂(8) = 3</code> because <code>2³ = 8</code>.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What formula does the Log Calculator use?</summary>
+
+      <p>It uses the change-of-base formula:</p>
+
+      <div class="formula">logᵦ(x) = ln(x) / ln(b)</div>
+
+      <p>This allows logarithms with different valid bases to be calculated using natural logarithms.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can the logarithm base be any number?</summary>
+      <p>The base can be any positive real number except <code>1</code>. Therefore, it must satisfy <code>b &gt; 0</code> and <code>b ≠ 1</code>.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can I calculate the log of a negative number?</summary>
+      <p>Not with this calculator. A negative number does not have a real logarithm, so the calculator is limited to <code>x &gt; 0</code>.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What is the difference between log and ln?</summary>
+      <p><code>ln(x)</code> is the natural logarithm with base <em>e</em>. The common logarithm normally uses base 10 and is written as <code>log(x)</code> or <code>log₁₀(x)</code>.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why is base 1 not allowed?</summary>
+      <p>Every real power of 1 equals 1. Because of this, base 1 does not create the one-to-one exponential relationship needed to define a logarithm.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How can I check whether a logarithm answer is correct?</summary>
+
+      <p>Raise the base to the calculated logarithm:</p>
+
+      <div class="formula">bʸ = x</div>
+
+      <p>For example, if <code>log₂(32) = 5</code>, then <code>2⁵ = 32</code>, confirming the result.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <strong>OpenStax — Algebra and Trigonometry: Key Equations</strong><br>
+        Defines logarithmic and exponential relationships, common and natural logarithms, valid logarithm domains, and the change-of-base formula.<a href="https://openstax.org/books/algebra-and-trigonometry/pages/6-key-equations?utm_source=chatgpt.com" rel="noopener" target="_blank"> OpenStax — Algebra and Trigonometry: Key Equations</a>
+      </li>
+
+      <li>
+        <strong>OpenStax — College Algebra with Corequisite Support: Logarithmic Properties</strong><br>
+        Explains how the change-of-base formula converts logarithms with other bases into natural or common logarithms.<a href="https://openstax.org/books/college-algebra-corequisite-support/pages/6-5-logarithmic-properties?utm_source=chatgpt.com" rel="noopener" target="_blank"> OpenStax — Logarithmic Properties</a>
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/exponent-calculator/">Exponent Calculator</a></li>
+      <li><a href="https://example.com/scientific-calculator/">Scientific Calculator</a></li>
+      <li><a href="https://example.com/half-life-calculator/">Half-Life Calculator</a></li>
+      <li><a href="https://example.com/number-sequence-calculator/">Number Sequence Calculator</a></li>
+      <li><a href="https://example.com/quadratic-formula-calculator/">Quadratic Formula Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+
+                </div>
+            </div>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"135","Batch":"14","Calculator / Page":"Log Calculator","Slug":"log-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Calculate logarithms in any valid real base and compare natural log, common log, and exponential verification.","Formula / Algorithm Used in Tool":"Logarithm Formula: logᵦ(x) = ln(x) / ln(b) ⇔ b^(logᵦ(x)) = x OpenStax gives this as the change-of-base formula, allowing a logarithm in any valid base to be computed using natural or common logarithms.","Required User Inputs":"Number x; Base b","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Number x, Base b. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"This page evaluates real logarithms only. It does not calculate complex logarithms. Inputs must satisfy x > 0, b > 0, and b ≠ 1.","Current Source URLs in Page":"https://openstax.org/books/algebra-and-trigonometry/pages/6-key-equations | https://openstax.org/books/college-algebra-corequisite-support/pages/6-5-logarithmic-properties","Implementation Path":"/log-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Math &amp; Statistics</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../exponent-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Exponent Calculator</strong><small>Calculate a
+                            number raised to any valid real exponent and view the result in
+                            standar…</small></span></a><a class="cp-related-link"
+                    href="../scientific-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Scientific Calculator</strong><small>Calculate
+                            trigonometric functions, inverse trig, logarithms, roots, powers,
+                            factori…</small></span></a><a class="cp-related-link"
+                    href="../percent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Percent
+                            Calculator</strong><small>Calculate a percentage of a number, find what percent one value is
+                            of another, calc…</small></span></a><a class="cp-related-link"
+                    href="../volume-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Volume
+                            Calculator</strong><small>Calculate volume for common 3D solids including cube, rectangular
+                            prism, cylinder,…</small></span></a><a class="cp-related-link"
+                    href="../half-life-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Half-Life Calculator</strong><small>Calculate
+                            exponential half-life decay, remaining amount, decayed amount, elapsed
+                            ha…</small></span></a><a class="cp-related-link"
+                    href="../circle-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Circle
+                            Calculator</strong><small>Calculate radius, diameter, circumference, and area of a circle
+                            from any one known…</small></span></a><a class="cp-related-link"
+                    href="../distance-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Distance
+                            Calculator</strong><small>Calculate distance between two points in 2D, 3D, or between
+                            latitude-longitude coor…</small></span></a><a class="cp-related-link"
+                    href="../gcf-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>GCF
+                            Calculator</strong><small>Find the greatest common factor of two or more integers. Free,
+                            fast and responsive…</small></span></a></div><a class="cp-side-category"
+                href="../math/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const lf = n => Math.abs(n) >= 1e10 || (Math.abs(n) > 0 && Math.abs(n) < 1e-8) ? n.toExponential(9) : parseFloat(n.toFixed(10)).toString();
+        function calcLog() { const x = Number(lx.value), b = Number(lb.value); logErr.textContent = ''; if (!Number.isFinite(x) || !Number.isFinite(b)) { logErr.textContent = 'Enter valid numeric values.'; return } if (x <= 0) { logErr.textContent = 'The logarithm argument x must be greater than zero.'; return } if (b <= 0 || b === 1) { logErr.textContent = 'The base must be greater than zero and cannot equal 1.'; return } const r = Math.log(x) / Math.log(b); logMain.textContent = lf(r); lnOut.textContent = lf(Math.log(x)); lgOut.textContent = lf(Math.log10(x)); checkOut.textContent = lf(Math.pow(b, r)); baseSub.textContent = lf(b); argSub.textContent = lf(x); baseType.textContent = Math.abs(b - Math.E) < 1e-12 ? 'Natural base e' : b === 10 ? 'Common base 10' : b === 2 ? 'Binary base 2' : 'Custom base' }
+        function resetLog() { lx.value = 8; lb.value = 2; calcLog() } calcLog();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

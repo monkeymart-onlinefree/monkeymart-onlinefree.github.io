@@ -1,110 +1,1110 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>BAC Calculator – Free Accurate Online Calculator</title>
-<meta content="Estimate blood alcohol concentration with a simplified Widmark-style model for education only; never use the result to decide whether to drive." name="description"/>
-<meta content="index,follow" name="robots"/>
-<link href="../bac-calculator/" rel="canonical"/>
-<meta content="BAC Calculator" property="og:title"/>
-<meta content="Estimate blood alcohol concentration with a simplified Widmark-style model for education only; never use the result to decide whether to drive." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="/bac-calculator/" property="og:url"/>
-<meta content="#1477ff" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "BAC Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Estimate blood alcohol concentration with a simplified Widmark-style model for education only; never use the result to decide whether to drive.", "url": "/bac-calculator/", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Health & Fitness", "item": "/health/"}, {"@type": "ListItem", "position": 3, "name": "Medical & Wellness", "item": "/health/medical-wellness/"}, {"@type": "ListItem", "position": 4, "name": "BAC Calculator", "item": "/bac-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What formula does this BAC calculator use?", "acceptedAnswer": {"@type": "Answer", "text": "It uses a simplified Widmark-style estimate based on grams of ethanol, body weight, a sex-based distribution factor, and an average elimination rate."}}, {"@type": "Question", "name": "What counts as a standard drink in the US?", "acceptedAnswer": {"@type": "Answer", "text": "CDC states that a US standard drink contains about 14 grams of pure alcohol, such as 12 oz of 5% beer, 5 oz of 12% wine, or 1.5 oz of 40% spirits."}}, {"@type": "Question", "name": "Can BAC be predicted exactly from drinks?", "acceptedAnswer": {"@type": "Answer", "text": "No. Actual BAC varies with absorption, food, drinking rate, body composition, medications, health, and individual metabolism."}}, {"@type": "Question", "name": "Can I use this result to decide whether to drive?", "acceptedAnswer": {"@type": "Answer", "text": "No. Never use an online BAC estimate to decide whether you are safe or legally allowed to drive or do safety-critical work."}}]}]}</script>
-<style>
-    :root{--bg:#100e0b;--panel:#19150f;--ink:#fff6e7;--muted:#c8b99f;--accent:#f2a72b;--accent2:#ffd36a;--soft:#292014;--line:#3b2f20;--shadow:0 28px 80px rgba(0,0,0,.4);}
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.62}
-    a{color:var(--accent)} .wrap{width:min(1160px,calc(100% - 32px));margin:auto}
-    .topbar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;position:relative;z-index:5}
-    .brand{font-weight:900;letter-spacing:-.04em;font-size:1.2rem;color:var(--ink);text-decoration:none} .brand i{color:var(--accent);font-style:normal}
-    .crumb{font-size:.86rem;color:var(--muted)} .crumb a{color:inherit;text-decoration:none}
-    .hero{position:relative;isolation:isolate;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);margin-bottom:28px}
-    .hero:before,.hero:after{content:"";position:absolute;z-index:-1;filter:blur(2px);opacity:.7}
-    .hero-copy h1{font-size:clamp(2.35rem,5vw,5.2rem);line-height:.98;letter-spacing:-.065em;margin:.15em 0 .28em}
-    .kicker{display:inline-flex;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--panel) 80%, transparent);font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em}
-    .hero-copy p{max-width:680px;color:var(--muted);font-size:1.03rem}
-    .stage{position:relative;min-height:300px;display:grid;place-items:center;perspective:900px}
-    .orb{width:210px;height:210px;border-radius:38% 62% 61% 39%/45% 43% 57% 55%;background:linear-gradient(145deg,var(--accent),var(--accent2));box-shadow:inset -22px -24px 45px rgba(0,0,0,.16),inset 14px 14px 30px rgba(255,255,255,.32),0 35px 70px color-mix(in srgb,var(--accent) 32%, transparent);transform:rotate(-10deg) translateZ(30px)}
-    .float{position:absolute;border:1px solid color-mix(in srgb,var(--line) 75%, transparent);background:color-mix(in srgb,var(--panel) 85%, transparent);backdrop-filter:blur(12px);box-shadow:0 18px 45px rgba(0,0,0,.12);border-radius:18px;padding:12px 14px;font-weight:800}
-    .calc-shell{display:grid;gap:22px;margin:24px 0 46px;align-items:start}
-    .calc-card,.result-card,.content-card{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow)}
-    .calc-card{padding:clamp(20px,3vw,34px)} .calc-card h2,.result-card h2{margin-top:0;letter-spacing:-.03em}
-    .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
-    .field{display:grid;gap:7px} .field.full{grid-column:1/-1} label,.label{font-size:.88rem;font-weight:800}
-    input,select,button{font:inherit} input,select{width:100%;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 45%,var(--panel));color:var(--ink);padding:12px 13px;border-radius:13px;outline:none}
-    input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}
-    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px} button{border:0;border-radius:14px;padding:12px 18px;font-weight:900;cursor:pointer}
-    .primary{background:var(--accent);color:white;box-shadow:0 10px 24px color-mix(in srgb,var(--accent) 28%,transparent)} .secondary{background:var(--soft);color:var(--ink);border:1px solid var(--line)}
-    .error{min-height:1.5em;color:#b42318;font-weight:700;font-size:.9rem;margin-top:8px}
-    .result-card{padding:clamp(20px,3vw,34px);position:sticky;top:18px;overflow:hidden}
-    .metric{font-size:clamp(2rem,5vw,4.6rem);line-height:1;font-weight:950;letter-spacing:-.06em;color:var(--accent);margin:.15em 0}
-    .submetrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px} .mini{background:var(--soft);padding:14px;border-radius:16px;border:1px solid var(--line)} .mini b{display:block;font-size:1.1rem}
-    .note{padding:13px 15px;border-left:4px solid var(--accent);background:var(--soft);border-radius:10px;color:var(--muted);font-size:.92rem}
-    .content{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;margin-bottom:56px} .content-card{padding:clamp(22px,4vw,40px)} .content h2{font-size:clamp(1.45rem,2.4vw,2.05rem);letter-spacing:-.035em;margin-top:1.65em} .content h2:first-child{margin-top:0}
-    .content h3{margin-top:1.35em} table{width:100%;border-collapse:collapse;margin:18px 0} th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top} th{font-size:.84rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
-    code,.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--soft);padding:.15em .35em;border-radius:7px}
-    details{border-top:1px solid var(--line);padding:13px 0} summary{font-weight:850;cursor:pointer} details p{color:var(--muted)}
-    aside{display:grid;gap:16px;align-content:start} .sidebox{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);padding:18px} .sidebox h3{margin-top:0}
-    footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:.9rem}
-    .pillrow{display:flex;gap:8px;flex-wrap:wrap} .pill{padding:7px 10px;border-radius:999px;background:var(--soft);border:1px solid var(--line);font-size:.82rem;font-weight:800}
-    .unit-toggle{display:inline-flex;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px;margin-bottom:16px} .unit-toggle button{padding:7px 12px;border-radius:999px;background:transparent;color:var(--ink)} .unit-toggle button.active{background:var(--panel);box-shadow:0 4px 14px rgba(0,0,0,.1)}
-    ul.clean{padding-left:1.2rem} .source-list{padding-left:1.1rem;font-size:.9rem;color:var(--muted)} .source-list li{margin:.65em 0}
-    .hero{border-radius:24px;padding:42px;background:linear-gradient(135deg,var(--panel),#17120b);display:grid;grid-template-columns:1.05fr .95fr;align-items:center}.calc-shell{grid-template-columns:1fr 1fr}.calc-card{border-radius:22px;border-top:4px solid var(--accent)}.result-card{border-radius:22px;border-bottom:4px solid var(--accent)}.content-card,.sidebox{border-radius:18px}.hero:before{width:330px;height:330px;border-radius:50%;background:color-mix(in srgb,var(--accent) 18%,transparent);right:-100px;top:-90px}
-    @media(max-width:860px){.hero,.calc-shell,.content{grid-template-columns:1fr}.hero{padding:26px}.stage{min-height:230px}.result-card{position:static}.content{grid-template-columns:1fr}.stage{order:initial}}
-    @media(max-width:560px){.wrap{width:min(100% - 20px,1160px)}.form-grid,.submetrics{grid-template-columns:1fr}.hero-copy h1{font-size:2.45rem}.hero{border-radius:20px}.calc-card,.result-card,.content-card,.sidebox{border-radius:18px}}
-    @media(prefers-reduced-motion:no-preference){.float{animation:drift 5s ease-in-out infinite alternate}@keyframes drift{to{transform:translateY(-8px) rotate(1deg)}}}
-    </style>
-<link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body data-cp-category="health" data-cp-page-type="Calculator">
-<header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header><nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../health/index.html">Health &amp; Fitness</a></li><li><a aria-current="page" href="index.html">BAC Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../health/index.html">Browse Health &amp; Fitness</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main class="wrap" id="main"><h1 class="page-title">BAC Calculator</h1>
+  <!-- Primary Meta Tags -->
+<title>Target Heart Rate Calculator – Exercise HR Zones</title>
+<meta name="title" content="Target Heart Rate Calculator – Exercise HR Zones">
+<meta name="description" content="Calculate your estimated maximum heart rate and target exercise heart rate zones using age-based formulas, percent of HRmax, or the Karvonen method.">
 
-<section aria-label="BAC Calculator tool" class="calc-shell">
-<article class="calc-card">
-<h2>Enter Your Details</h2>
-<div class="form-grid"><div class="field"><label for="sex">Sex used by model</label><select data-default="male" id="sex"><option value="male">Male</option><option value="female">Female</option></select></div><div class="field"><label for="weight">Body weight (kg)</label><input data-default="75" id="weight" min="30" step=".1" type="number" value="75"/></div><div class="field full"><label for="hours">Hours since first drink</label><input data-default="2" id="hours" max="48" min="0" step=".25" type="number" value="2"/></div><div class="field"><label for="beer">Beer: 355 mL at 5%</label><input data-default="0" id="beer" max="30" min="0" type="number" value="0"/></div><div class="field"><label for="wine">Wine: 148 mL at 12%</label><input data-default="0" id="wine" max="30" min="0" type="number" value="0"/></div><div class="field full"><label for="spirits">Spirits: 44 mL at 40%</label><input data-default="0" id="spirits" max="30" min="0" type="number" value="0"/></div></div>
-<div class="actions"><button class="primary" id="calcBtn" type="button">Calculate</button><button class="secondary" id="resetBtn" type="button">Reset</button></div>
-<div aria-live="polite" class="error" id="error" role="alert"></div>
-</article>
-<aside aria-live="polite" class="result-card">
-<h2>Your Result</h2>
-<div class="metric" id="mainResult">—</div><p>Estimated BAC (%)</p><div class="submetrics"><div class="mini">Pure alcohol<b id="grams">—</b></div><div class="mini">Model note<b id="model">Widmark-style</b></div></div>
-<p class="note">Never use this estimate to decide whether to drive or perform safety-critical work.</p>
-</aside>
-</section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<section class="content">
-<article class="content-card">
-<h2>What Is a BAC Calculator?</h2><p>A blood alcohol concentration (BAC) calculator estimates alcohol concentration from reported drink volume and strength, body weight, sex-based distribution assumptions, and elapsed time. It is only a rough educational estimate.</p>
-<h2>How to Use the BAC Calculator</h2><p>Enter body weight, elapsed time since drinking began, and the number of typical beers, glasses of wine, and spirit shots consumed. Presets use common US serving sizes and ABVs; real pours may be stronger or larger.</p>
-<h2>Widmark-Style Formula</h2><p>The calculator first converts beverage volume and ABV into grams of ethanol using ethanol density (~0.789 g/mL). A simplified form is <span class="formula">BAC% ≈ [alcohol grams ÷ (r × body weight kg)] ÷ 10 − 0.015 × hours</span>, where r is 0.68 for males and 0.55 for females in the classic model.</p>
-<h2>Why BAC Estimates Vary</h2><p>NHTSA notes that BAC is affected by number of drinks, drinking speed, sex, weight, and food. Forensic literature also shows meaningful variation in the Widmark distribution factor between individuals.</p>
-<h2>Safety Limitation</h2><p>This page cannot measure your BAC and cannot tell whether you are safe to drive. If alcohol has been consumed, use a sober driver, taxi/ride service, public transport, or stay where you are.</p>
-<h2 id="faq">Frequently Asked Questions</h2>
-<details><summary>What formula does this BAC calculator use?</summary><p>It uses a simplified Widmark-style estimate based on grams of ethanol, body weight, a sex-based distribution factor, and an average elimination rate.</p></details><details><summary>What counts as a standard drink in the US?</summary><p>CDC states that a US standard drink contains about 14 grams of pure alcohol, such as 12 oz of 5% beer, 5 oz of 12% wine, or 1.5 oz of 40% spirits.</p></details><details><summary>Can BAC be predicted exactly from drinks?</summary><p>No. Actual BAC varies with absorption, food, drinking rate, body composition, medications, health, and individual metabolism.</p></details><details><summary>Can I use this result to decide whether to drive?</summary><p>No. Never use an online BAC estimate to decide whether you are safe or legally allowed to drive or do safety-critical work.</p></details>
-<h2>Sources and Methodology</h2>
-<p>This page uses the formulas and assumptions described above. Health-related results are estimates and should be interpreted in context, not as a diagnosis or individualized medical advice.</p>
-<ul class="source-list"><li><a href="https://www.cdc.gov/alcohol/standard-drink-sizes/index.html" rel="noopener" target="_blank">CDC – Standard Drink Sizes</a> — 14 g standard drink and common serving sizes.</li><li><a href="https://www.nhtsa.gov/risky-driving/drunk-driving" rel="noopener" target="_blank">NHTSA – Drunk Driving</a> — Factors that influence BAC.</li><li><a href="https://www.nhtsa.gov/sites/nhtsa.gov/files/2023-04/15941-2023_Preliminary_School_Instructor_Guide-tag.pdf" rel="noopener" target="_blank">NHTSA training – average BAC elimination</a> — Average decrease of about 0.015 BAC per hour.</li><li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7564564/" rel="noopener" target="_blank">Widmark formula research</a> — Classic distribution factors and formula context.</li></ul>
-</article>
-<aside>
-<div class="sidebox"><h3>Method at a glance</h3><p>Estimate blood alcohol concentration with a simplified Widmark-style model for education only; never use the result to decide whether to drive.</p></div>
-<div class="sidebox"><h3>Privacy</h3><p>Calculations run in your browser. This standalone page does not need to send form values to a server.</p></div>
-</aside>
-</section>
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/target-heart-rate-calculator/">
 
-<script class="cp-calculator-data" type="application/json">{"index":"120","Batch":"13","Calculator / Page":"BAC Calculator","Slug":"bac-calculator","Site Category (Current)":"Health & Fitness","Recommended Content Domain":"Health / Fitness / Nutrition","Page Type":"Calculator","Search Intent / Purpose":"Estimate blood alcohol concentration with a simplified Widmark-style model for education only; never use the result to decide whether to drive.","Formula / Algorithm Used in Tool":"Widmark-Style Formula: The calculator first converts beverage volume and ABV into grams of ethanol using ethanol density (~0.789 g/mL). A simplified form is BAC% ≈ [alcohol grams ÷ (r × body weight kg)] ÷ 10 − 0.015 × hours , where r is 0.68 for males and 0.55 for females in the classic model.","Required User Inputs":"Sex used by model; Body weight (kg); Hours since first drink; Beer: 355 mL at 5%; Wine: 148 mL at 12%; Spirits: 44 mL at 40%","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Sex used by model, Body weight (kg), Hours since first drink, Beer: 355 mL at 5%, Wine: 148 mL at 12%, Spirits: 44 mL at 40%. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Authoritative formula source, population/age/sex applicability, units, cutoffs/reference ranges and limitations; avoid diagnostic claims.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When clinical/exercise guidance changes","Important Assumptions / Limitations":"This page cannot measure your BAC and cannot tell whether you are safe to drive. If alcohol has been consumed, use a sober driver, taxi/ride service, public transport, or stay where you are.","Current Source URLs in Page":"https://www.cdc.gov/alcohol/standard-drink-sizes/index.html | https://www.nhtsa.gov/risky-driving/drunk-driving | https://www.nhtsa.gov/sites/nhtsa.gov/files/2023-04/15941-2023_Preliminary_School_Instructor_Guide-tag.pdf | https://pmc.ncbi.nlm.nih.gov/articles/PMC7564564/","Implementation Path":"/bac-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Health &amp; Fitness</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../weight-watchers-points-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Translate a nutrition label into a historical points estimate.</strong><small>Estimate historical WW-style food points using SmartPoints-era, PointsPlus-era, or…</small></span></a><a class="cp-related-link" href="../bmi-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>BMI Calculator</strong><small>Calculate adult Body Mass Index from height and weight, see the CDC BMI category, h…</small></span></a><a class="cp-related-link" href="../bmr-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>BMR Calculator</strong><small>Estimate basal metabolic rate with the Mifflin-St Jeor equation and compare activit…</small></span></a><a class="cp-related-link" href="../body-fat-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Body Fat Calculator</strong><small>Estimate adult body fat percentage using U.S. Navy circumference equations, calcula…</small></span></a><a class="cp-related-link" href="../calorie-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Calorie Calculator</strong><small>Estimate adult BMR with the Mifflin-St Jeor equation and calculate activity-adjuste…</small></span></a><a class="cp-related-link" href="../macro-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Macro Calculator</strong><small>Convert a daily calorie target and chosen protein, carbohydrate, and fat percentage…</small></span></a><a class="cp-related-link" href="../ideal-weight-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Ideal Weight Calculator</strong><small>Compare common ideal body weight formulas including Devine, Robinson, Miller, and H…</small></span></a><a class="cp-related-link" href="../pace-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Pace Calculator</strong><small>Calculate running or walking pace, total time, or distance using miles or kilometer…</small></span></a></div><a class="cp-side-category" href="../health/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/target-heart-rate-calculator/">
+<meta property="og:title" content="Target Heart Rate Calculator – Exercise HR Zones">
+<meta property="og:description" content="Calculate your estimated maximum heart rate and target exercise heart rate zones using age-based formulas, percent of HRmax, or the Karvonen method.">
+<meta property="og:site_name" content="Target Heart Rate Calculator">
 
-function calculate(){const e=document.getElementById('error');e.textContent='';let sex=document.getElementById('sex').value,w=+document.getElementById('weight').value,t=+document.getElementById('hours').value,b=+document.getElementById('beer').value,v=+document.getElementById('wine').value,s=+document.getElementById('spirits').value;if(w<30||t<0||![b,v,s].every(x=>Number.isFinite(x)&&x>=0)){e.textContent='Enter valid non-negative drink counts, time, and body weight.';return}let ml=b*355*.05+v*148*.12+s*44*.40,grams=ml*.789,r=sex==='male'?.68:.55,bac=Math.max(0,grams/(r*w)/10-.015*t);document.getElementById('mainResult').textContent=bac.toFixed(3)+'%';document.getElementById('grams').textContent=Math.round(grams)+' g';}
-
-document.getElementById('calcBtn').addEventListener('click', calculate);
-document.getElementById('resetBtn').addEventListener('click', ()=>{document.querySelectorAll('input').forEach(i=>{if(i.dataset.default!==undefined)i.value=i.dataset.default;});document.querySelectorAll('select').forEach(s=>{if(s.dataset.default!==undefined)s.value=s.dataset.default;});document.getElementById('error').textContent='';calculate();});
-window.addEventListener('DOMContentLoaded', calculate);
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/target-heart-rate-calculator/">
+<meta name="twitter:title" content="Target Heart Rate Calculator – Exercise HR Zones">
+<meta name="twitter:description" content="Calculate your estimated maximum heart rate and target exercise heart rate zones using age-based formulas, percent of HRmax, or the Karvonen method.">
+    <meta content="#1477ff" name="theme-color" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/bac-calculator/#webapplication",
+      "name": "BAC Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/bac-calculator/",
+      "description": "Estimate blood alcohol concentration (BAC) from sex, body weight, time, and standard beer, wine, or spirits using a simplified Widmark-style formula.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/bac-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "BAC Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/bac-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/bac-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What formula does the BAC Calculator use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It uses a simplified Widmark-style formula: BAC% ≈ [alcohol grams ÷ (r × body weight kg)] ÷ 10 − 0.015 × hours. Alcohol grams are calculated from the fixed drink volume, ABV, and an ethanol density of approximately 0.789 g/mL."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do beer, wine, and spirits contain similar alcohol amounts in this calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The preset volumes and ABV values are designed around approximately equivalent amounts of pure alcohol. CDC standard-drink guidance similarly lists 12 ounces of 5% beer, 5 ounces of 12% wine, and 1.5 ounces of 40% spirits as roughly one standard drink containing about 14 grams of alcohol."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does BAC decrease as time increases?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The calculator subtracts 0.015 percentage points per hour as a fixed elimination assumption. NHTSA training materials describe about 0.015 per hour as an average, but individual elimination rates vary."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does food change BAC?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Food can slow alcohol absorption, according to NHTSA. However, this calculator does not include food as an input, so that effect is not directly modeled."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use this BAC estimate to decide whether I can drive?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. An online estimate cannot determine whether you are safe to drive. NHTSA states that even small amounts of alcohol can affect driving and recommends not driving after drinking."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why might my actual BAC differ from the calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The result depends on simplified assumptions about alcohol content, body-water distribution, and elimination. Actual BAC varies with individual physiology, drinking pattern, absorption, food, beverage strength, and other factors. Published Widmark calculations also use different assumptions and formula variants."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this result the same as a breathalyzer result?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This calculator produces an estimate from entered information. NHTSA states that BAC is measured through breath testing or blood testing."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart OnlineFree",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <style>
+        :root {
+            --bg: #100e0b;
+            --panel: #19150f;
+            --ink: #fff6e7;
+            --muted: #c8b99f;
+            --accent: #f2a72b;
+            --accent2: #ffd36a;
+            --soft: #292014;
+            --line: #3b2f20;
+            --shadow: 0 28px 80px rgba(0, 0, 0, .4);
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.62
+        }
+
+        a {
+            color: var(--accent)
+        }
+
+        .wrap {
+            width: min(1160px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            position: relative;
+            z-index: 5
+        }
+
+        .brand {
+            font-weight: 900;
+            letter-spacing: -.04em;
+            font-size: 1.2rem;
+            color: var(--ink);
+            text-decoration: none
+        }
+
+        .brand i {
+            color: var(--accent);
+            font-style: normal
+        }
+
+        .crumb {
+            font-size: .86rem;
+            color: var(--muted)
+        }
+
+        .crumb a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .hero {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            margin-bottom: 28px
+        }
+
+        .hero:before,
+        .hero:after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            filter: blur(2px);
+            opacity: .7
+        }
+
+        .hero-copy h1 {
+            font-size: clamp(2.35rem, 5vw, 5.2rem);
+            line-height: .98;
+            letter-spacing: -.065em;
+            margin: .15em 0 .28em
+        }
+
+        .kicker {
+            display: inline-flex;
+            padding: 7px 11px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: color-mix(in srgb, var(--panel) 80%, transparent);
+            font-size: .78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .09em
+        }
+
+        .hero-copy p {
+            max-width: 680px;
+            color: var(--muted);
+            font-size: 1.03rem
+        }
+
+        .stage {
+            position: relative;
+            min-height: 300px;
+            display: grid;
+            place-items: center;
+            perspective: 900px
+        }
+
+        .orb {
+            width: 210px;
+            height: 210px;
+            border-radius: 38% 62% 61% 39%/45% 43% 57% 55%;
+            background: linear-gradient(145deg, var(--accent), var(--accent2));
+            box-shadow: inset -22px -24px 45px rgba(0, 0, 0, .16), inset 14px 14px 30px rgba(255, 255, 255, .32), 0 35px 70px color-mix(in srgb, var(--accent) 32%, transparent);
+            transform: rotate(-10deg) translateZ(30px)
+        }
+
+        .float {
+            position: absolute;
+            border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
+            background: color-mix(in srgb, var(--panel) 85%, transparent);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, .12);
+            border-radius: 18px;
+            padding: 12px 14px;
+            font-weight: 800
+        }
+
+        .calc-shell {
+            display: grid;
+            gap: 22px;
+            margin: 24px 0 46px;
+            align-items: start
+        }
+
+        .calc-card,
+        .result-card,
+        .content-card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow)
+        }
+
+        .calc-card {
+            padding: clamp(20px, 3vw, 34px)
+        }
+
+        .calc-card h2,
+        .result-card h2 {
+            margin-top: 0;
+            letter-spacing: -.03em
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px
+        }
+
+        .field {
+            display: grid;
+            gap: 7px
+        }
+
+        .field.full {
+            grid-column: 1/-1
+        }
+
+        label,
+        .label {
+            font-size: .88rem;
+            font-weight: 800
+        }
+
+        input,
+        select,
+        button {
+            font: inherit
+        }
+
+        input,
+        select {
+            width: 100%;
+            border: 1px solid var(--line);
+            background: color-mix(in srgb, var(--bg) 45%, var(--panel));
+            color: var(--ink);
+            padding: 12px 13px;
+            border-radius: 13px;
+            outline: none
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent)
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 18px
+        }
+
+        button {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-weight: 900;
+            cursor: pointer
+        }
+
+        .primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 28%, transparent)
+        }
+
+        .secondary {
+            background: var(--soft);
+            color: var(--ink);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            min-height: 1.5em;
+            color: #b42318;
+            font-weight: 700;
+            font-size: .9rem;
+            margin-top: 8px
+        }
+
+        .result-card {
+            padding: clamp(20px, 3vw, 34px);
+            position: sticky;
+            top: 18px;
+            overflow: hidden
+        }
+
+        .metric {
+            font-size: clamp(2rem, 5vw, 4.6rem);
+            line-height: 1;
+            font-weight: 950;
+            letter-spacing: -.06em;
+            color: var(--accent);
+            margin: .15em 0
+        }
+
+        .submetrics {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .mini {
+            background: var(--soft);
+            padding: 14px;
+            border-radius: 16px;
+            border: 1px solid var(--line)
+        }
+
+        .mini b {
+            display: block;
+            font-size: 1.1rem
+        }
+
+        .note {
+            padding: 13px 15px;
+            border-left: 4px solid var(--accent);
+            background: var(--soft);
+            border-radius: 10px;
+            color: var(--muted);
+            font-size: .92rem
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 300px;
+            gap: 24px;
+            margin-bottom: 56px
+        }
+
+        .content-card {
+            padding: clamp(22px, 4vw, 40px)
+        }
+
+        .content h2 {
+            font-size: clamp(1.45rem, 2.4vw, 2.05rem);
+            letter-spacing: -.035em;
+            margin-top: 1.65em
+        }
+
+        .content h2:first-child {
+            margin-top: 0
+        }
+
+        .content h3 {
+            margin-top: 1.35em
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0
+        }
+
+        th,
+        td {
+            padding: 11px;
+            border-bottom: 1px solid var(--line);
+            text-align: left;
+            vertical-align: top
+        }
+
+        th {
+            font-size: .84rem;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            color: var(--muted)
+        }
+
+        code,
+        .formula {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: var(--soft);
+            padding: .15em .35em;
+            border-radius: 7px
+        }
+
+        details {
+            border-top: 1px solid var(--line);
+            padding: 13px 0
+        }
+
+        summary {
+            font-weight: 850;
+            cursor: pointer
+        }
+
+        details p {
+            color: var(--muted)
+        }
+
+        aside {
+            display: grid;
+            gap: 16px;
+            align-content: start
+        }
+
+        .sidebox {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            padding: 18px
+        }
+
+        .sidebox h3 {
+            margin-top: 0
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 30px 0;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .pillrow {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap
+        }
+
+        .pill {
+            padding: 7px 10px;
+            border-radius: 999px;
+            background: var(--soft);
+            border: 1px solid var(--line);
+            font-size: .82rem;
+            font-weight: 800
+        }
+
+        .unit-toggle {
+            display: inline-flex;
+            background: var(--soft);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: 4px;
+            margin-bottom: 16px
+        }
+
+        .unit-toggle button {
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: transparent;
+            color: var(--ink)
+        }
+
+        .unit-toggle button.active {
+            background: var(--panel);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, .1)
+        }
+
+        ul.clean {
+            padding-left: 1.2rem
+        }
+
+        .source-list {
+            padding-left: 1.1rem;
+            font-size: .9rem;
+            color: var(--muted)
+        }
+
+        .source-list li {
+            margin: .65em 0
+        }
+
+        .hero {
+            border-radius: 24px;
+            padding: 42px;
+            background: linear-gradient(135deg, var(--panel), #17120b);
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            align-items: center
+        }
+
+        .calc-shell {
+            grid-template-columns: 1fr 1fr
+        }
+
+        .calc-card {
+            border-radius: 22px;
+            border-top: 4px solid var(--accent)
+        }
+
+        .result-card {
+            border-radius: 22px;
+            border-bottom: 4px solid var(--accent)
+        }
+
+        .content-card,
+        .sidebox {
+            border-radius: 18px
+        }
+
+        .hero:before {
+            width: 330px;
+            height: 330px;
+            border-radius: 50%;
+            background: color-mix(in srgb, var(--accent) 18%, transparent);
+            right: -100px;
+            top: -90px
+        }
+
+        @media(max-width:860px) {
+
+            .hero,
+            .calc-shell,
+            .content {
+                grid-template-columns: 1fr
+            }
+
+            .hero {
+                padding: 26px
+            }
+
+            .stage {
+                min-height: 230px
+            }
+
+            .result-card {
+                position: static
+            }
+
+            .content {
+                grid-template-columns: 1fr
+            }
+
+            .stage {
+                order: initial
+            }
+        }
+
+        @media(max-width:560px) {
+            .wrap {
+                width: min(100% - 20px, 1160px)
+            }
+
+            .form-grid,
+            .submetrics {
+                grid-template-columns: 1fr
+            }
+
+            .hero-copy h1 {
+                font-size: 2.45rem
+            }
+
+            .hero {
+                border-radius: 20px
+            }
+
+            .calc-card,
+            .result-card,
+            .content-card,
+            .sidebox {
+                border-radius: 18px
+            }
+        }
+
+        @media(prefers-reduced-motion:no-preference) {
+            .float {
+                animation: drift 5s ease-in-out infinite alternate
+            }
+
+            @keyframes drift {
+                to {
+                    transform: translateY(-8px) rotate(1deg)
+                }
+            }
+        }
+    </style>
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="health" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../health/index.html">Health &amp; Fitness</a></li>
+            <li><a aria-current="page" href="index.html">BAC Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../health/index.html">Browse Health &amp; Fitness</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main class="wrap" id="main">
+            <h1 class="page-title">BAC Calculator</h1>
+
+            <section aria-label="BAC Calculator tool" class="calc-shell">
+                <article class="calc-card">
+                    <h2>Enter Your Details</h2>
+                    <div class="form-grid">
+                        <div class="field"><label for="sex">Sex used by model</label><select data-default="male"
+                                id="sex">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select></div>
+                        <div class="field"><label for="weight">Body weight (kg)</label><input data-default="75"
+                                id="weight" min="30" step=".1" type="number" value="75" /></div>
+                        <div class="field full"><label for="hours">Hours since first drink</label><input
+                                data-default="2" id="hours" max="48" min="0" step=".25" type="number" value="2" /></div>
+                        <div class="field"><label for="beer">Beer: 355 mL at 5%</label><input data-default="0" id="beer"
+                                max="30" min="0" type="number" value="0" /></div>
+                        <div class="field"><label for="wine">Wine: 148 mL at 12%</label><input data-default="0"
+                                id="wine" max="30" min="0" type="number" value="0" /></div>
+                        <div class="field full"><label for="spirits">Spirits: 44 mL at 40%</label><input
+                                data-default="0" id="spirits" max="30" min="0" type="number" value="0" /></div>
+                    </div>
+                    <div class="actions"><button class="primary" id="calcBtn" type="button">Calculate</button><button
+                            class="secondary" id="resetBtn" type="button">Reset</button></div>
+                    <div aria-live="polite" class="error" id="error" role="alert"></div>
+                </article>
+                <aside aria-live="polite" class="result-card">
+                    <h2>Your Result</h2>
+                    <div class="metric" id="mainResult">—</div>
+                    <p>Estimated BAC (%)</p>
+                    <div class="submetrics">
+                        <div class="mini">Pure alcohol<b id="grams">—</b></div>
+                        <div class="mini">Model note<b id="model">Widmark-style</b></div>
+                    </div>
+                    <p class="note">Never use this estimate to decide whether to drive or perform safety-critical work.
+                    </p>
+                </aside>
+            </section>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="content">
+                
+ 
+<article class="article">
+
+   <p>The BAC Calculator estimates blood alcohol concentration using your sex category used by the model, body weight, time since your first drink, and the number of preset beer, wine, and spirit servings consumed. It uses a simplified Widmark-style calculation and reports an estimated BAC percentage.</p>
+
+  <p><strong>Safety note:</strong> This calculator cannot measure your actual BAC or tell you whether you are safe to drive. NHTSA states that even small amounts of alcohol can affect driving and that people cannot reliably assess their own BAC or impairment. If you have consumed alcohol, use a sober driver, taxi or ride service, public transport, or stay where you are.</p>
+
+  <section id="what">
+    <h2>What Is the BAC Calculator?</h2>
+    <p>The BAC Calculator is an educational tool that estimates blood alcohol concentration after alcohol consumption. It converts fixed beer, wine, and spirit servings into grams of ethanol and then applies a simplified Widmark-style formula based on body weight, the model's sex-specific distribution factor, and elapsed time.</p>
+
+    <p>BAC estimates are not the same as a breathalyzer or laboratory blood test. NHTSA notes that actual BAC is measured using breath or blood testing and can be affected by factors such as drinking speed, sex, body weight, and food.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the BAC Calculator</h2>
+    <ol>
+      <li><strong>Sex used by model:</strong> Select the applicable model category. The calculation uses a Widmark factor of 0.68 for males and 0.55 for females.</li>
+      <li><strong>Body weight:</strong> Enter your weight in kilograms. Body weight must be greater than zero because it is used in the formula denominator.</li>
+      <li><strong>Hours since first drink:</strong> Enter the elapsed time in hours from the beginning of the drinking session.</li>
+      <li><strong>Beer:</strong> Enter the number of 355 mL beer servings at 5% ABV.</li>
+      <li><strong>Wine:</strong> Enter the number of 148 mL wine servings at 12% ABV.</li>
+      <li><strong>Spirits:</strong> Enter the number of 44 mL spirit servings at 40% ABV.</li>
+      <li>Calculate to see the estimated BAC.</li>
+    </ol>
+
+    <p>The calculator's fixed drink sizes closely match current U.S. standard-drink references from the CDC.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Alcohol in Each Drink</h3>
+    <p>The calculator first converts beverage volume and alcohol by volume, or ABV, into grams of pure ethanol:</p>
+
+    <div class="formula">Alcohol grams = Volume in mL × ABV as a decimal × 0.789 g/mL</div>
+
+    <p>The ethanol density used is approximately <strong>0.789 grams per milliliter</strong>. This density value is also used in published Widmark calculations.</p>
+
+    <p>For the calculator's preset servings:</p>
+
+    <p><strong>Beer</strong></p>
+    <div class="formula">355 × 0.05 × 0.789 = <strong>14.00475 g</strong></div>
+
+    <p><strong>Wine</strong></p>
+    <div class="formula">148 × 0.12 × 0.789 = <strong>14.01264 g</strong></div>
+
+    <p><strong>Spirits</strong></p>
+    <div class="formula">44 × 0.40 × 0.789 = <strong>13.8864 g</strong></div>
+
+    <p>The total alcohol amount is:</p>
+
+    <div class="formula">A = (Beer servings × 14.00475) + (Wine servings × 14.01264) + (Spirit servings × 13.8864)</div>
+
+    <h3>Main BAC Formula</h3>
+    <p>The calculator then uses:</p>
+
+    <div class="formula">BAC% ≈ [A ÷ (r × W)] ÷ 10 − (0.015 × h)</div>
+
+    <h3>Variables</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Variable</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>BAC%</strong></td>
+          <td>Estimated blood alcohol concentration</td>
+          <td>Percent</td>
+        </tr>
+        <tr>
+          <td><strong>A</strong></td>
+          <td>Total pure alcohol consumed</td>
+          <td>grams</td>
+        </tr>
+        <tr>
+          <td><strong>r</strong></td>
+          <td>Widmark distribution factor</td>
+          <td>0.68 male / 0.55 female</td>
+        </tr>
+        <tr>
+          <td><strong>W</strong></td>
+          <td>Body weight</td>
+          <td>kilograms</td>
+        </tr>
+        <tr>
+          <td><strong>h</strong></td>
+          <td>Hours since first drink</td>
+          <td>hours</td>
+        </tr>
+        <tr>
+          <td><strong>0.015</strong></td>
+          <td>Fixed BAC reduction used per hour</td>
+          <td>percentage points per hour</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Published descriptions of the classic Widmark approach use sex-specific factors around 0.68 for males and 0.55 for females. A fixed reduction of about 0.015 BAC per hour is also commonly used as an average assumption, although actual alcohol elimination varies between individuals.</p>
+
+    <h3>Calculation Sequence</h3>
+    <ol>
+      <li>Convert each preset drink into grams of ethanol.</li>
+      <li>Multiply the ethanol amount by the number of each drink consumed.</li>
+      <li>Add the alcohol amounts to calculate total alcohol grams.</li>
+      <li>Select the model's Widmark factor: 0.68 or 0.55.</li>
+      <li>Multiply the factor by body weight in kilograms.</li>
+      <li>Divide total alcohol grams by this value.</li>
+      <li>Divide by 10 to express the result as BAC percent.</li>
+      <li>Subtract 0.015 percentage points for each hour since the first drink.</li>
+    </ol>
+
+    <p>This calculator uses this simplified sequence exactly. Some research versions of the Widmark equation use additional absorption assumptions, different distribution estimates, or different timing adjustments, so they may produce different results.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+    <p>Suppose the inputs are:</p>
+
+    <ul>
+      <li>Sex used by model: Male</li>
+      <li>Body weight: 80 kg</li>
+      <li>Hours since first drink: 1 hour</li>
+      <li>Beer: 2 servings</li>
+      <li>Wine: 1 serving</li>
+      <li>Spirits: 0 servings</li>
+    </ul>
+
+    <h3>Step 1: Calculate Alcohol From Beer</h3>
+    <div class="formula">2 × 355 × 0.05 × 0.789</div>
+    <div class="formula">= <strong>28.0095 g</strong></div>
+
+    <h3>Step 2: Calculate Alcohol From Wine</h3>
+    <div class="formula">1 × 148 × 0.12 × 0.789</div>
+    <div class="formula">= <strong>14.01264 g</strong></div>
+
+    <h3>Step 3: Calculate Total Alcohol</h3>
+    <div class="formula">28.0095 + 14.01264</div>
+    <div class="formula">= <strong>42.02214 g</strong></div>
+
+    <h3>Step 4: Apply the Widmark-Style Formula</h3>
+    <div class="formula">BAC% ≈ [42.02214 ÷ (0.68 × 80)] ÷ 10 − (0.015 × 1)</div>
+    <div class="formula">BAC% ≈ [42.02214 ÷ 54.4] ÷ 10 − 0.015</div>
+    <div class="formula">BAC% ≈ 0.0772466 − 0.015</div>
+
+    <h3>Final Result</h3>
+    <p><strong>Estimated BAC ≈ 0.06225%</strong></p>
+
+    <p>Rounded to three decimal places, the estimate is approximately <strong>0.062%</strong>.</p>
+
+    <p>This is only a mathematical estimate. It is not a measurement of the person's actual BAC or impairment.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p>The main result is the calculator's <strong>estimated BAC percentage</strong>. For example, an estimated value of 0.062% corresponds numerically to about 0.062 grams of alcohol per deciliter of blood when BAC is expressed as a weight-per-volume concentration.</p>
+
+    <p>A higher estimate generally results from more alcohol, a lower body weight, or the model's lower distribution factor. More elapsed time lowers the estimate because the calculator subtracts a fixed 0.015 percentage points per hour.</p>
+
+    <p>Do not interpret any particular calculator result as proof that driving is safe. NHTSA states that driving ability can be affected at low BAC levels and that self-assessment of impairment is unreliable.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>This calculator uses fixed serving sizes, fixed ABV values, a fixed ethanol density, two fixed Widmark distribution factors, and a fixed hourly elimination rate. These assumptions make the calculation useful for education but prevent it from reproducing every person's actual BAC.</p>
+
+    <p>Actual alcohol concentration can differ because absorption and metabolism vary. Drinking speed, food, body composition, individual physiology, medications and other substances can also affect impairment or alcohol absorption. NHTSA specifically identifies drinking speed, sex, weight, and food as factors affecting BAC.</p>
+
+    <p>The simplified calculation also does not reproduce every version of the Widmark equation. Published methods may account for absorption time, alternative body-water estimates, individual elimination rates, or additional physiological variables.</p>
+
+    <p>For an actual BAC measurement, breath or blood testing is required.</p>
+  </section>
+
+  <section id="rules">
+    <h2>Current Reference Data</h2>
+
+    <p><strong>Checked September 24, 2026.</strong></p>
+
+    <p>The CDC currently defines a U.S. standard drink as approximately <strong>14 grams of pure alcohol</strong>. Its common examples include 12 ounces of 5% beer, 5 ounces of 12% wine, and 1.5 ounces of 40% distilled spirits. These correspond closely to the calculator's 355 mL beer, 148 mL wine, and 44 mL spirits presets.</p>
+
+    <p>These serving sizes are reference quantities. Real beverages can contain different serving volumes and ABV percentages, so one actual glass, bottle, can, cocktail, or shot does not always equal one preset serving.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What formula does the BAC Calculator use?</summary>
+      <p>It uses a simplified Widmark-style formula:</p>
+      <div class="formula">BAC% ≈ [alcohol grams ÷ (r × body weight kg)] ÷ 10 − 0.015 × hours</div>
+      <p>Alcohol grams are calculated from the fixed drink volume, ABV, and an ethanol density of approximately 0.789 g/mL.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why do beer, wine, and spirits contain similar alcohol amounts in this calculator?</summary>
+      <p>The preset volumes and ABV values are designed around approximately equivalent amounts of pure alcohol. CDC standard-drink guidance similarly lists 12 ounces of 5% beer, 5 ounces of 12% wine, and 1.5 ounces of 40% spirits as roughly one standard drink containing about 14 grams of alcohol.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why does BAC decrease as time increases?</summary>
+      <p>The calculator subtracts <strong>0.015 percentage points per hour</strong> as a fixed elimination assumption. NHTSA training materials describe about 0.015 per hour as an average, but individual elimination rates vary.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does food change BAC?</summary>
+      <p>Food can slow alcohol absorption, according to NHTSA. However, this calculator does not include food as an input, so that effect is not directly modeled.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can I use this BAC estimate to decide whether I can drive?</summary>
+      <p>No. An online estimate cannot determine whether you are safe to drive. NHTSA states that even small amounts of alcohol can affect driving and recommends not driving after drinking.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why might my actual BAC differ from the calculator?</summary>
+      <p>The result depends on simplified assumptions about alcohol content, body-water distribution, and elimination. Actual BAC varies with individual physiology, drinking pattern, absorption, food, beverage strength, and other factors. Published Widmark calculations also use different assumptions and formula variants.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is this result the same as a breathalyzer result?</summary>
+      <p>No. This calculator produces an estimate from entered information. NHTSA states that BAC is measured through breath testing or blood testing.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+    <ul class="sources">
+      <li>
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4361698/?utm_source=chatgpt.com" rel="noopener" target="_blank">Alcohol Calculations and Their Uncertainty — PubMed Central</a><br>
+        Supports the Widmark calculation framework, ethanol density of approximately 0.789 g/mL, formula variables, and uncertainty in calculated BAC.
+      </li>
+      <li>
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7564564/?utm_source=chatgpt.com" rel="noopener" target="_blank">Prevalence of Hangover Resistance According to Two Methods for Calculating Estimated BAC — PubMed Central</a><br>
+        Supports the classic Widmark factors of 0.68 for males and 0.55 for females and documents differences between Widmark calculation methods.
+      </li>
+      <li>
+        <a href="https://www.cdc.gov/alcohol/standard-drink-sizes/index.html?utm_source=chatgpt.com" rel="noopener" target="_blank">CDC — About Standard Drink Sizes</a><br>
+        Supports the current U.S. standard-drink reference of approximately 14 grams of pure alcohol and the beer, wine, and spirit serving examples.
+      </li>
+      <li>
+        <a href="https://www.nhtsa.gov/risky-driving/drunk-driving" rel="noopener" target="_blank">NHTSA — Drunk Driving</a><br>
+        Supports BAC definitions, factors affecting BAC, measurement methods, driving-impairment limitations, and safe-driving guidance.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="https://example.com/calorie-calculator/">Calorie Calculator</a></li>
+      <li><a href="https://example.com/bmi-calculator/">BMI Calculator</a></li>
+      <li><a href="https://example.com/bmr-calculator/">BMR Calculator</a></li>
+      <li><a href="https://example.com/tdee-calculator/">TDEE Calculator</a></li>
+      <li><a href="https://example.com/healthy-weight-calculator/">Healthy Weight Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+
+            </section>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"120","Batch":"13","Calculator / Page":"BAC Calculator","Slug":"bac-calculator","Site Category (Current)":"Health & Fitness","Recommended Content Domain":"Health / Fitness / Nutrition","Page Type":"Calculator","Search Intent / Purpose":"Estimate blood alcohol concentration with a simplified Widmark-style model for education only; never use the result to decide whether to drive.","Formula / Algorithm Used in Tool":"Widmark-Style Formula: The calculator first converts beverage volume and ABV into grams of ethanol using ethanol density (~0.789 g/mL). A simplified form is BAC% ≈ [alcohol grams ÷ (r × body weight kg)] ÷ 10 − 0.015 × hours , where r is 0.68 for males and 0.55 for females in the classic model.","Required User Inputs":"Sex used by model; Body weight (kg); Hours since first drink; Beer: 355 mL at 5%; Wine: 148 mL at 12%; Spirits: 44 mL at 40%","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Sex used by model, Body weight (kg), Hours since first drink, Beer: 355 mL at 5%, Wine: 148 mL at 12%, Spirits: 44 mL at 40%. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Authoritative formula source, population/age/sex applicability, units, cutoffs/reference ranges and limitations; avoid diagnostic claims.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When clinical/exercise guidance changes","Important Assumptions / Limitations":"This page cannot measure your BAC and cannot tell whether you are safe to drive. If alcohol has been consumed, use a sober driver, taxi/ride service, public transport, or stay where you are.","Current Source URLs in Page":"https://www.cdc.gov/alcohol/standard-drink-sizes/index.html | https://www.nhtsa.gov/risky-driving/drunk-driving | https://www.nhtsa.gov/sites/nhtsa.gov/files/2023-04/15941-2023_Preliminary_School_Instructor_Guide-tag.pdf | https://pmc.ncbi.nlm.nih.gov/articles/PMC7564564/","Implementation Path":"/bac-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Health &amp; Fitness</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link"
+                    href="../weight-watchers-points-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Translate a nutrition label into a historical
+                            points estimate.</strong><small>Estimate historical WW-style food points using
+                            SmartPoints-era, PointsPlus-era, or…</small></span></a><a class="cp-related-link"
+                    href="../bmi-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>BMI
+                            Calculator</strong><small>Calculate adult Body Mass Index from height and weight, see the
+                            CDC BMI category, h…</small></span></a><a class="cp-related-link"
+                    href="../bmr-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>BMR
+                            Calculator</strong><small>Estimate basal metabolic rate with the Mifflin-St Jeor equation
+                            and compare activit…</small></span></a><a class="cp-related-link"
+                    href="../body-fat-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Body Fat
+                            Calculator</strong><small>Estimate adult body fat percentage using U.S. Navy circumference
+                            equations, calcula…</small></span></a><a class="cp-related-link"
+                    href="../calorie-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Calorie
+                            Calculator</strong><small>Estimate adult BMR with the Mifflin-St Jeor equation and calculate
+                            activity-adjuste…</small></span></a><a class="cp-related-link"
+                    href="../macro-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Macro
+                            Calculator</strong><small>Convert a daily calorie target and chosen protein, carbohydrate,
+                            and fat percentage…</small></span></a><a class="cp-related-link"
+                    href="../ideal-weight-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Ideal Weight Calculator</strong><small>Compare
+                            common ideal body weight formulas including Devine, Robinson, Miller, and
+                            H…</small></span></a><a class="cp-related-link" href="../pace-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Pace Calculator</strong><small>Calculate running or
+                            walking pace, total time, or distance using miles or kilometer…</small></span></a></div><a
+                class="cp-side-category" href="../health/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+
+        function calculate() { const e = document.getElementById('error'); e.textContent = ''; let sex = document.getElementById('sex').value, w = +document.getElementById('weight').value, t = +document.getElementById('hours').value, b = +document.getElementById('beer').value, v = +document.getElementById('wine').value, s = +document.getElementById('spirits').value; if (w < 30 || t < 0 || ![b, v, s].every(x => Number.isFinite(x) && x >= 0)) { e.textContent = 'Enter valid non-negative drink counts, time, and body weight.'; return } let ml = b * 355 * .05 + v * 148 * .12 + s * 44 * .40, grams = ml * .789, r = sex === 'male' ? .68 : .55, bac = Math.max(0, grams / (r * w) / 10 - .015 * t); document.getElementById('mainResult').textContent = bac.toFixed(3) + '%'; document.getElementById('grams').textContent = Math.round(grams) + ' g'; }
+
+        document.getElementById('calcBtn').addEventListener('click', calculate);
+        document.getElementById('resetBtn').addEventListener('click', () => { document.querySelectorAll('input').forEach(i => { if (i.dataset.default !== undefined) i.value = i.dataset.default; }); document.querySelectorAll('select').forEach(s => { if (s.dataset.default !== undefined) s.value = s.dataset.default; }); document.getElementById('error').textContent = ''; calculate(); });
+        window.addEventListener('DOMContentLoaded', calculate);
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

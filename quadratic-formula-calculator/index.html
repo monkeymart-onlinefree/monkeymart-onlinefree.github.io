@@ -1,51 +1,1056 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<title>Quadratic Formula Calculator | CalcPro</title>
-<meta content="Solve quadratic equations with the quadratic formula and view roots, discriminant, vertex, and axis of symmetry." name="description"/>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="index,follow" name="robots"/>
-<link href="../quadratic-formula-calculator/" rel="canonical"/>
-<meta content="website" property="og:type"/>
-<meta content="Quadratic Formula Calculator" property="og:title"/>
-<meta content="Solve quadratic equations with the quadratic formula and view roots, discriminant, vertex, and axis of symmetry." property="og:description"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}
-a{color:inherit}button,input,select{font:inherit}button{cursor:pointer}.wrap{width:min(1160px,92vw);margin:auto}.crumbs{font-size:.88rem;opacity:.78;margin-bottom:18px}h1,h2,h3{line-height:1.15;margin:0 0 14px}h1{font-size:clamp(2.3rem,5vw,4.9rem);letter-spacing:-.045em}h2{font-size:clamp(1.6rem,3vw,2.25rem);letter-spacing:-.025em}h3{font-size:1.1rem}p{margin:0 0 14px}.muted{opacity:.74}label{font-weight:750;font-size:.92rem;display:block;margin-bottom:7px}input,select{width:100%;padding:13px 14px;border-radius:14px;border:1px solid var(--line);background:var(--field);color:var(--ink);outline:none}input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.btn{border:0;border-radius:14px;padding:13px 18px;font-weight:800;box-shadow:var(--btnshadow)}.primary{background:var(--accent);color:var(--onaccent)}.secondary{background:var(--soft);color:var(--ink);border:1px solid var(--line)}.error{min-height:24px;color:var(--danger);font-weight:700;margin-top:10px}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--formula);border:1px solid var(--line);padding:14px 16px;border-radius:16px;overflow:auto}.result-main{font-size:clamp(1.9rem,4vw,3.2rem);font-weight:900;letter-spacing:-.04em;word-break:break-word}.result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.result-chip{padding:12px 13px;border-radius:14px;background:var(--soft);border:1px solid var(--line)}.result-chip b{display:block;font-size:.8rem;opacity:.65;margin-bottom:2px}.content{padding:72px 0 40px}.article-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}article section{margin-bottom:38px}aside{position:sticky;top:18px}.toc,.sourcebox{border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow);border-radius:24px;padding:20px}.toc a{display:block;text-decoration:none;padding:6px 0;opacity:.78}.toc a:hover{opacity:1}ul,ol{padding-left:22px}table{width:100%;border-collapse:collapse;border-radius:18px;overflow:hidden}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left}th{background:var(--soft)}footer{padding:36px 0 50px;opacity:.7;font-size:.9rem}.sr{position:absolute;left:-9999px}
-@media(max-width:860px){.article-grid{grid-template-columns:1fr}aside{position:static}.result-grid{grid-template-columns:1fr}}
-</style>
-<style>
-:root{--bg:#faf7ff;--ink:#2a2140;--panel:#fff;--field:#fff;--soft:#f1eaff;--formula:#f5edff;--line:#e0d4f1;--accent:#714dc1;--onaccent:#fff;--focus:#714dc11c;--danger:#b42318;--shadow:0 30px 80px #4b33761b;--btnshadow:0 12px 28px #714dc127;}
+<meta charset="utf-8" />
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<meta http-equiv="content-language" content="en">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
 
-.q-hero{padding:54px 0 120px;background:linear-gradient(135deg,#f8f0ff,#e7d5ff 48%,#c3d8ff);overflow:hidden}.q-grid{display:grid;grid-template-columns:1.fr;align-items:center}.parabola{height:270px;position:relative;background:linear-gradient(#7254a210 1px,transparent 1px),linear-gradient(90deg,#7254a210 1px,transparent 1px);background-size:28px 28px;border-radius:36px;box-shadow:inset 0 0 0 1px #fff8,0 25px 60px #533f8220;transform:rotate(2deg)}.axis{position:absolute;left:50%;top:12%;bottom:12%;width:2px;background:#6a4cb755}.curve{position:absolute;left:50%;top:30px;width:180px;height:210px;border:7px solid #744fc7;border-top:0;border-radius:0 0 90px 90px;transform:translateX(-50%) rotate(180deg);filter:drop-shadow(0 15px 10px #6b4eb530)}.dot{position:absolute;width:16px;height:16px;border-radius:50%;background:#ff5c86;box-shadow:0 0 0 7px #ff5c8620}.d1{left:30%;bottom:50px}.d2{right:30%;bottom:50px}.q-zone{margin-top:-70px}.q-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}.coeff-card,.roots-card{padding:28px;border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow);border-radius:30px}.roots-card{background:linear-gradient(150deg,#281f41,#4a3479);color:#fff}.eq-display{padding:18px;border-radius:18px;background:var(--soft);font:800 1.45rem ui-monospace;text-align:center;margin-bottom:17px}.coeff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.root-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0 18px}.root-pair strong{padding:18px;background:#ffffff12;border:1px solid #ffffff20;border-radius:18px;font-size:1.4rem;word-break:break-word}@media(max-width:760px){.q-grid,.q-layout,.coeff-grid{grid-template-columns:1fr}.parabola{height:210px}}
 
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/quadratic-formula-calculator/#app", "name": "Quadratic Formula Calculator", "url": "/quadratic-formula-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Solve quadratic equations with the quadratic formula and view roots, discriminant, vertex, and axis of symmetry."}, {"@type": "BreadcrumbList", "@id": "/quadratic-formula-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Math & Statistics", "item": "/math/"}, {"@type": "ListItem", "position": 3, "name": "Algebra", "item": "/math/algebra/"}, {"@type": "ListItem", "position": 4, "name": "Quadratic Formula Calculator", "item": "/quadratic-formula-calculator/"}]}, {"@type": "FAQPage", "@id": "/quadratic-formula-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "What does the discriminant tell you?", "acceptedAnswer": {"@type": "Answer", "text": "For a quadratic ax²+bx+c=0, the discriminant b²−4ac determines the root type: positive gives two distinct real roots, zero gives one repeated real root, and negative gives two complex conjugate roots."}}, {"@type": "Question", "name": "Can a be zero?", "acceptedAnswer": {"@type": "Answer", "text": "No. If a is zero, the expression is not a quadratic equation and the quadratic formula does not apply."}}, {"@type": "Question", "name": "Does the calculator show complex roots?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. When the discriminant is negative, the page displays the two complex conjugate roots in a + bi form."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body data-cp-category="math" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../math/index.html">Math &amp; Statistics</a></li><li><a aria-current="page" href="index.html">Quadratic Formula Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a href="../calculators/index.html">All calculators</a></div><header><div class="q-hero"><div class="wrap q-grid"><div><nav class="crumbs">Home / Algebra / Quadratic Formula Calculator</nav><h1>Quadratic Formula Calculator</h1><p>Solve ax² + bx + c = 0, classify the roots from the discriminant, and see the vertex and axis of symmetry.</p></div><div aria-hidden="true" class="parabola"><span class="axis"></span><span class="curve c1"></span><span class="dot d1"></span><span class="dot d2"></span></div></div></div></header>
-<div class="cp-page-layout"><main id="main"><h1 class="page-title">Quadratic Formula Calculator</h1>
-<section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="q-zone"><div class="wrap q-layout"><div class="coeff-card"><div class="eq-display"><span><b id="da">1</b>x²</span><span> + <b id="db">-3</b>x</span><span> + <b id="dc">2</b> = 0</span></div><div class="coeff-grid"><div><label for="qa">a</label><input id="qa" oninput="syncEq()" step="any" type="number" value="1"/></div><div><label for="qb">b</label><input id="qb" oninput="syncEq()" step="any" type="number" value="-3"/></div><div><label for="qc">c</label><input id="qc" oninput="syncEq()" step="any" type="number" value="2"/></div></div><div class="actions"><button class="btn primary" onclick="calcQ()">Solve Equation</button><button class="btn secondary" onclick="resetQ()">Reset</button></div><div class="error" id="qErr"></div></div><div class="roots-card"><span class="muted">Roots</span><div class="root-pair"><strong id="r1">2</strong><strong id="r2">1</strong></div><div class="result-grid"><div class="result-chip"><b>Discriminant</b><span id="disc">1</span></div><div class="result-chip"><b>Root type</b><span id="rtype">Two real roots</span></div><div class="result-chip"><b>Vertex</b><span id="vertex">(1.5, -0.25)</span></div><div class="result-chip"><b>Axis</b><span id="axis">x = 1.5</span></div></div></div></div></section>
-<div class="content"><div class="wrap article-grid">
-<article><section id="about"><h2>What Is a Quadratic Formula Calculator?</h2><p>This calculator solves equations in the form ax² + bx + c = 0 where a ≠ 0. It returns real or complex roots, the discriminant, the root classification, the parabola’s vertex, and its vertical axis of symmetry.</p></section><section id="use"><h2>How to Use the Quadratic Formula Calculator</h2><ol><li>Enter coefficients a, b, and c.</li><li>Make sure a is not zero.</li><li>Select <strong>Solve Equation</strong> to calculate the roots and supporting values.</li></ol></section><section id="formula"><h2>Quadratic Formula</h2><div class="formula">x = (−b ± √(b² − 4ac)) / (2a)</div><p>The quantity b² − 4ac is called the discriminant. Its sign determines whether the roots are two distinct real numbers, one repeated real number, or a complex-conjugate pair.</p></section><section id="example"><h2>Calculation Example</h2><p>For x² − 3x + 2 = 0, the discriminant is 1. The two roots are <strong>x = 2</strong> and <strong>x = 1</strong>.</p></section><section id="limits"><h2>Limitations</h2><p>The quadratic formula applies only when the coefficient a is nonzero. Results use floating-point arithmetic, so irrational and complex values are displayed as rounded decimal approximations.</p></section><section id="faq"><h2>Frequently Asked Questions</h2><h3>What happens when the discriminant is zero?</h3><p>The equation has one repeated real root at x = −b/(2a). Geometrically, the parabola touches the x-axis at its vertex.</p><h3>Why are there two signs in ±?</h3><p>The plus and minus produce the two possible roots of the quadratic equation. They are identical only when the discriminant equals zero.</p></section><section id="sources"><h2>Sources and Methodology</h2><ul><li><a href="https://openstax.org/books/college-algebra-2e/pages/2-key-equations" rel="noopener" target="_blank">OpenStax College Algebra 2e — Quadratic Formula</a></li><li><a href="https://openstax.org/books/college-algebra-2e/pages/5-1-quadratic-functions" rel="noopener" target="_blank">OpenStax — Quadratic Functions</a></li></ul></section></article>
-<aside><div class="toc"><h3>On this page</h3>
-<a href="#about">What it calculates</a><a href="#use">How to use it</a><a href="#formula">Formula</a>
-<a href="#example">Example</a><a href="#limits">Limitations</a><a href="#faq">FAQs</a><a href="#sources">Sources</a>
-</div></aside>
-</div></div>
+<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+<title>Quadratic Formula Calculator – Solve ax² + bx + c = 0</title>
+<meta name="title" content="Quadratic Formula Calculator – Solve ax² + bx + c = 0">
+<meta name="description" content="Use the Quadratic Formula Calculator to solve ax² + bx + c = 0. Enter a, b, and c to find real or complex roots, discriminant, vertex, and axis of symmetry.">
 
-<script class="cp-calculator-data" type="application/json">{"index":"137","Batch":"14","Calculator / Page":"Quadratic Formula Calculator","Slug":"quadratic-formula-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Solve quadratic equations with the quadratic formula and view roots, discriminant, vertex, and axis of symmetry.","Formula / Algorithm Used in Tool":"Quadratic Formula: x = (−b ± √(b² − 4ac)) / (2a) The quantity b² − 4ac is called the discriminant. Its sign determines whether the roots are two distinct real numbers, one repeated real number, or a complex-conjugate pair.","Required User Inputs":"a; b; c","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: a, b, c. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"The quadratic formula applies only when the coefficient a is nonzero. Results use floating-point arithmetic, so irrational and complex values are displayed as rounded decimal approximations.","Current Source URLs in Page":"https://openstax.org/books/college-algebra-2e/pages/2-key-equations | https://openstax.org/books/college-algebra-2e/pages/5-1-quadratic-functions","Implementation Path":"/quadratic-formula-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Math &amp; Statistics</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../scientific-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Scientific Calculator</strong><small>Calculate trigonometric functions, inverse trig, logarithms, roots, powers, factori…</small></span></a><a class="cp-related-link" href="../triangle-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Triangle Calculator</strong><small>Solve triangles from SSS, SAS, or ASA/AAS inputs and calculate missing sides, angle…</small></span></a><a class="cp-related-link" href="../exponent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Exponent Calculator</strong><small>Calculate a number raised to any valid real exponent and view the result in standar…</small></span></a><a class="cp-related-link" href="../slope-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Slope Calculator</strong><small>Calculate slope from two points and view rise, run, line equation, angle, distance,…</small></span></a><a class="cp-related-link" href="../ratio-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Ratio Calculator</strong><small>Solve a proportion A:B = C:D when one value is unknown, and simplify two-number rat…</small></span></a><a class="cp-related-link" href="../root-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Root Calculator</strong><small>Calculate square roots, cube roots and nth roots. Free, fast and responsive root ca…</small></span></a><a class="cp-related-link" href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the simplified fraction, m…</small></span></a><a class="cp-related-link" href="../math-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Math Calculator</strong><small>Perform basic arithmetic with addition, subtraction, multiplication, division, pare…</small></span></a></div><a class="cp-side-category" href="../math/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-const qf=n=>Math.abs(n)<1e-12?'0':parseFloat(n.toFixed(10)).toString();
-function syncEq(){da.textContent=qa.value||'a';db.textContent=qb.value||'b';dc.textContent=qc.value||'c'}
-function cplx(re,im){const s=im>=0?'+':'−';return `${qf(re)} ${s} ${qf(Math.abs(im))}i`}
-function calcQ(){const a=Number(qa.value),b=Number(qb.value),c=Number(qc.value);qErr.textContent='';if(![a,b,c].every(Number.isFinite)){qErr.textContent='Enter valid numeric coefficients.';return}if(a===0){qErr.textContent='a must be nonzero for a quadratic equation.';r1.textContent=r2.textContent='—';return}const d=b*b-4*a*c, h=-b/(2*a),k=a*h*h+b*h+c;disc.textContent=qf(d);vertex.textContent=`(${qf(h)}, ${qf(k)})`;axis.textContent='x = '+qf(h);if(d>1e-12){const s=Math.sqrt(d);r1.textContent=qf((-b+s)/(2*a));r2.textContent=qf((-b-s)/(2*a));rtype.textContent='Two real roots'}else if(Math.abs(d)<=1e-12){const x=-b/(2*a);r1.textContent=r2.textContent=qf(x);rtype.textContent='One repeated real root'}else{const re=-b/(2*a),im=Math.sqrt(-d)/Math.abs(2*a);r1.textContent=cplx(re,im);r2.textContent=cplx(re,-im);rtype.textContent='Two complex roots'}syncEq()}
-function resetQ(){qa.value=1;qb.value=-3;qc.value=2;calcQ()}calcQ();
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/quadratic-formula-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/quadratic-formula-calculator/">
+<meta property="og:title" content="Quadratic Formula Calculator – Solve ax² + bx + c = 0">
+<meta property="og:description" content="Use the Quadratic Formula Calculator to solve ax² + bx + c = 0. Enter a, b, and c to find real or complex roots, discriminant, vertex, and axis of symmetry.">
+<meta property="og:site_name" content="Quadratic Formula Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/quadratic-formula-calculator/">
+<meta name="twitter:title" content="Quadratic Formula Calculator – Solve ax² + bx + c = 0">
+<meta name="twitter:description" content="Use the Quadratic Formula Calculator to solve ax² + bx + c = 0. Enter a, b, and c to find real or complex roots, discriminant, vertex, and axis of symmetry.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.65
+        }
+
+        a {
+            color: inherit
+        }
+
+        button,
+        input,
+        select {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        .wrap {
+            width: min(1160px, 92vw);
+            margin: auto
+        }
+
+        .crumbs {
+            font-size: .88rem;
+            opacity: .78;
+            margin-bottom: 18px
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.15;
+            margin: 0 0 14px
+        }
+
+        h1 {
+            font-size: clamp(2.3rem, 5vw, 4.9rem);
+            letter-spacing: -.045em
+        }
+
+        h2 {
+            font-size: clamp(1.6rem, 3vw, 2.25rem);
+            letter-spacing: -.025em
+        }
+
+        h3 {
+            font-size: 1.1rem
+        }
+
+        p {
+            margin: 0 0 14px
+        }
+
+        .muted {
+            opacity: .74
+        }
+
+        label {
+            font-weight: 750;
+            font-size: .92rem;
+            display: block;
+            margin-bottom: 7px
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 13px 14px;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            background: var(--field);
+            color: var(--ink);
+            outline: none
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--focus)
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 13px 18px;
+            font-weight: 800;
+            box-shadow: var(--btnshadow)
+        }
+
+        .primary {
+            background: var(--accent);
+            color: var(--onaccent)
+        }
+
+        .secondary {
+            background: var(--soft);
+            color: var(--ink);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            min-height: 24px;
+            color: var(--danger);
+            font-weight: 700;
+            margin-top: 10px
+        }
+
+        .formula {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: var(--formula);
+            border: 1px solid var(--line);
+            padding: 14px 16px;
+            border-radius: 16px;
+            overflow: auto
+        }
+
+        .result-main {
+            font-size: clamp(1.9rem, 4vw, 3.2rem);
+            font-weight: 900;
+            letter-spacing: -.04em;
+            word-break: break-word
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 14px
+        }
+
+        .result-chip {
+            padding: 12px 13px;
+            border-radius: 14px;
+            background: var(--soft);
+            border: 1px solid var(--line)
+        }
+
+        .result-chip b {
+            display: block;
+            font-size: .8rem;
+            opacity: .65;
+            margin-bottom: 2px
+        }
+
+        .content {
+            padding: 72px 0 40px
+        }
+
+        .article-grid {
+            display: grid;
+             gap: 28px;
+            align-items: start
+        }
+
+        article section {
+            margin-bottom: 38px
+        }
+
+        aside {
+            position: sticky;
+            top: 18px
+        }
+
+        .toc,
+        .sourcebox {
+            border: 1px solid var(--line);
+            background: var(--panel);
+            box-shadow: var(--shadow);
+            border-radius: 24px;
+            padding: 20px
+        }
+
+        .toc a {
+            display: block;
+            text-decoration: none;
+            padding: 6px 0;
+            opacity: .78
+        }
+
+        .toc a:hover {
+            opacity: 1
+        }
+
+        ul,
+        ol {
+            padding-left: 22px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 18px;
+            overflow: hidden
+        }
+
+        th,
+        td {
+            padding: 11px;
+            border-bottom: 1px solid var(--line);
+            text-align: left
+        }
+
+        th {
+            background: var(--soft)
+        }
+
+        footer {
+            padding: 36px 0 50px;
+            opacity: .7;
+            font-size: .9rem
+        }
+
+        .sr {
+            position: absolute;
+            left: -9999px
+        }
+
+        @media(max-width:860px) {
+            .article-grid {
+                grid-template-columns: 1fr
+            }
+
+            aside {
+                position: static
+            }
+
+            .result-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+    <style>
+        :root {
+            --bg: #faf7ff;
+            --ink: #2a2140;
+            --panel: #fff;
+            --field: #fff;
+            --soft: #f1eaff;
+            --formula: #f5edff;
+            --line: #e0d4f1;
+            --accent: #714dc1;
+            --onaccent: #fff;
+            --focus: #714dc11c;
+            --danger: #b42318;
+            --shadow: 0 30px 80px #4b33761b;
+            --btnshadow: 0 12px 28px #714dc127;
+        }
+
+        .q-hero {
+            padding: 54px 0 120px;
+            background: linear-gradient(135deg, #f8f0ff, #e7d5ff 48%, #c3d8ff);
+            overflow: hidden
+        }
+
+        .q-grid {
+            display: grid;
+            grid-template-columns: 1.fr;
+            align-items: center
+        }
+
+        .parabola {
+            height: 270px;
+            position: relative;
+            background: linear-gradient(#7254a210 1px, transparent 1px), linear-gradient(90deg, #7254a210 1px, transparent 1px);
+            background-size: 28px 28px;
+            border-radius: 36px;
+            box-shadow: inset 0 0 0 1px #fff8, 0 25px 60px #533f8220;
+            transform: rotate(2deg)
+        }
+
+        .axis {
+            position: absolute;
+            left: 50%;
+            top: 12%;
+            bottom: 12%;
+            width: 2px;
+            background: #6a4cb755
+        }
+
+        .curve {
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            width: 180px;
+            height: 210px;
+            border: 7px solid #744fc7;
+            border-top: 0;
+            border-radius: 0 0 90px 90px;
+            transform: translateX(-50%) rotate(180deg);
+            filter: drop-shadow(0 15px 10px #6b4eb530)
+        }
+
+        .dot {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #ff5c86;
+            box-shadow: 0 0 0 7px #ff5c8620
+        }
+
+        .d1 {
+            left: 30%;
+            bottom: 50px
+        }
+
+        .d2 {
+            right: 30%;
+            bottom: 50px
+        }
+
+        .q-zone {
+            margin-top: -70px
+        }
+
+        .q-layout {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 18px
+        }
+
+        .coeff-card,
+        .roots-card {
+            padding: 28px;
+            border: 1px solid var(--line);
+            background: var(--panel);
+            box-shadow: var(--shadow);
+            border-radius: 30px
+        }
+
+        .roots-card {
+            background: linear-gradient(150deg, #281f41, #4a3479);
+            color: #fff
+        }
+
+        .eq-display {
+            padding: 18px;
+            border-radius: 18px;
+            background: var(--soft);
+            font: 800 1.45rem ui-monospace;
+            text-align: center;
+            margin-bottom: 17px
+        }
+
+        .coeff-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px
+        }
+
+        .root-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 10px 0 18px
+        }
+
+        .root-pair strong {
+            padding: 18px;
+            background: #ffffff12;
+            border: 1px solid #ffffff20;
+            border-radius: 18px;
+            font-size: 1.4rem;
+            word-break: break-word
+        }
+
+        @media(max-width:760px) {
+
+            .q-grid,
+            .q-layout,
+            .coeff-grid {
+                grid-template-columns: 1fr
+            }
+
+            .parabola {
+                height: 210px
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/quadratic-formula-calculator/#webapplication",
+      "name": "Quadratic Formula Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/quadratic-formula-calculator/",
+      "description": "Use the Quadratic Formula Calculator to solve ax² + bx + c = 0. Enter a, b, and c to find real or complex roots, discriminant, vertex, and axis of symmetry.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/quadratic-formula-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Quadratic Formula Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/quadratic-formula-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/quadratic-formula-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What happens if a = 0?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The equation is not quadratic when a = 0 because the x² term disappears. The quadratic formula divides by 2a, so a zero value for a is not valid for this calculation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the discriminant tell me?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The discriminant is b² − 4ac. A positive value indicates two distinct real roots, zero indicates a repeated real root, and a negative value indicates two complex roots."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can the calculator solve equations with complex roots?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A negative discriminant indicates a complex-conjugate pair of roots. These arise because the quadratic formula requires the square root of a negative value."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why are some answers shown as decimals?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Roots involving irrational numbers cannot always be represented exactly as terminating decimals. The calculator therefore displays numerical approximations, and the final displayed value may be rounded."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between a root and an x-intercept?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A root is an x-value that makes the quadratic expression equal to zero. When that root is real, it corresponds to an x-intercept of the graph of the related quadratic function."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is the axis of symmetry calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For f(x) = ax² + bx + c, the axis of symmetry is: x = −b / (2a). The vertex lies on this vertical line."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a quadratic equation have only one root?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It can have one distinct real root when the discriminant equals zero. In this case, both results from the quadratic formula have the same value, which is called a repeated or double root."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="math" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../math/index.html">Math &amp; Statistics</a></li>
+            <li><a aria-current="page" href="index.html">Quadratic Formula Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Quadratic Formula Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="q-zone">
+                <div class="wrap q-layout">
+                    <div class="coeff-card">
+                        <div class="eq-display"><span><b id="da">1</b>x²</span><span> + <b id="db">-3</b>x</span><span>
+                                + <b id="dc">2</b> = 0</span></div>
+                        <div class="coeff-grid">
+                            <div><label for="qa">a</label><input id="qa" oninput="syncEq()" step="any" type="number"
+                                    value="1" /></div>
+                            <div><label for="qb">b</label><input id="qb" oninput="syncEq()" step="any" type="number"
+                                    value="-3" /></div>
+                            <div><label for="qc">c</label><input id="qc" oninput="syncEq()" step="any" type="number"
+                                    value="2" /></div>
+                        </div>
+                        <div class="actions"><button class="btn primary" onclick="calcQ()">Solve
+                                Equation</button><button class="btn secondary" onclick="resetQ()">Reset</button></div>
+                        <div class="error" id="qErr"></div>
+                    </div>
+                    <div class="roots-card"><span class="muted">Roots</span>
+                        <div class="root-pair"><strong id="r1">2</strong><strong id="r2">1</strong></div>
+                        <div class="result-grid">
+                            <div class="result-chip"><b>Discriminant</b><span id="disc">1</span></div>
+                            <div class="result-chip"><b>Root type</b><span id="rtype">Two real roots</span></div>
+                            <div class="result-chip"><b>Vertex</b><span id="vertex">(1.5, -0.25)</span></div>
+                            <div class="result-chip"><b>Axis</b><span id="axis">x = 1.5</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="content">
+                <div class="wrap article-grid">
+                    
+
+<article class="article">
+
+ 
+
+  <p>The Quadratic Formula Calculator solves equations in the form <strong>ax² + bx + c = 0</strong>. Enter the coefficients <strong>a</strong>, <strong>b</strong>, and <strong>c</strong> to calculate the roots and supporting values such as the discriminant, vertex, and axis of symmetry.</p>
+
+  <section id="what">
+    <h2>What Is the Quadratic Formula Calculator?</h2>
+
+    <p>A Quadratic Formula Calculator finds the solutions, or roots, of a quadratic equation using the quadratic formula. It is useful when a quadratic equation cannot be solved easily by factoring or when you want to check your algebra.</p>
+
+    <p>The calculator also helps describe the related parabola by showing the discriminant, vertex, and axis of symmetry. A valid quadratic equation requires <strong>a ≠ 0</strong>.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Quadratic Formula Calculator</h2>
+
+    <ol>
+      <li>Enter <strong>a</strong>, the coefficient of x². It must not be zero.</li>
+      <li>Enter <strong>b</strong>, the coefficient of x.</li>
+      <li>Enter <strong>c</strong>, the constant term.</li>
+      <li>Calculate the result to find the roots and supporting quadratic values.</li>
+    </ol>
+
+    <p>Positive, negative, zero, and decimal coefficients can be used where accepted by the calculator.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <p>For a quadratic equation written as:</p>
+
+    <div class="formula"><strong>ax² + bx + c = 0</strong></div>
+
+    <p>the roots are calculated with the quadratic formula:</p>
+
+    <div class="formula"><strong>x = (−b ± √(b² − 4ac)) / (2a)</strong></div>
+
+    <p>The expression inside the square root is called the <strong>discriminant</strong>:</p>
+
+    <div class="formula"><strong>D = b² − 4ac</strong></div>
+
+    <p>For real coefficients, the discriminant indicates the type of roots. When <strong>D &gt; 0</strong>, there are two distinct real roots. When <strong>D = 0</strong>, there is one repeated real root. When <strong>D &lt; 0</strong>, the equation has two complex-conjugate roots.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>a</td>
+          <td>Coefficient of x²</td>
+          <td>No fixed unit</td>
+        </tr>
+        <tr>
+          <td>b</td>
+          <td>Coefficient of x</td>
+          <td>No fixed unit</td>
+        </tr>
+        <tr>
+          <td>c</td>
+          <td>Constant term</td>
+          <td>No fixed unit</td>
+        </tr>
+        <tr>
+          <td>x</td>
+          <td>Solution or root of the equation</td>
+          <td>Depends on the equation</td>
+        </tr>
+        <tr>
+          <td>D</td>
+          <td>Discriminant, b² − 4ac</td>
+          <td>No fixed unit</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Calculation Sequence</h3>
+
+    <p>The calculator first evaluates the discriminant <strong>D = b² − 4ac</strong>. It then substitutes the coefficients and discriminant into the quadratic formula to calculate the two possible root values.</p>
+
+    <p>For the related quadratic function <strong>f(x) = ax² + bx + c</strong>, the axis of symmetry is:</p>
+
+    <div class="formula"><strong>x = −b / (2a)</strong></div>
+
+    <p>The vertex lies on this axis. If:</p>
+
+    <div class="formula"><strong>h = −b / (2a)</strong></div>
+
+    <p>then the vertex is:</p>
+
+    <div class="formula"><strong>(h, f(h))</strong></div>
+
+    <p>OpenStax confirms that the axis of symmetry of a quadratic function is <strong>x = −b/(2a)</strong> and that the vertex's y-coordinate can be found by evaluating the function at this x-value.</p>
+
+    <h3>Discriminant</h3>
+
+    <div class="formula"><strong>D = b² − 4ac</strong></div>
+
+    <p>Its sign determines the general nature of the roots:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Discriminant</th>
+          <th>Root Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>D &gt; 0</td>
+          <td>Two distinct real roots</td>
+        </tr>
+        <tr>
+          <td>D = 0</td>
+          <td>One repeated real root</td>
+        </tr>
+        <tr>
+          <td>D &lt; 0</td>
+          <td>Two complex-conjugate roots</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Axis of Symmetry</h3>
+
+    <p>The vertical line passing through the center of the parabola is:</p>
+
+    <div class="formula"><strong>x = −b / (2a)</strong></div>
+
+    <h3>Vertex</h3>
+
+    <p>First calculate:</p>
+
+    <div class="formula"><strong>h = −b / (2a)</strong></div>
+
+    <p>Then evaluate:</p>
+
+    <div class="formula"><strong>k = ah² + bh + c</strong></div>
+
+    <p>The vertex is:</p>
+
+    <div class="formula"><strong>(h, k)</strong></div>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose the equation is:</p>
+
+    <div class="formula"><strong>x² − 5x + 6 = 0</strong></div>
+
+    <p>Here:</p>
+
+    <div class="formula"><strong>a = 1, b = −5, c = 6</strong></div>
+
+    <h3>Step 1: Calculate the Discriminant</h3>
+
+    <div class="formula"><strong>D = b² − 4ac</strong></div>
+
+    <div class="formula"><strong>D = (−5)² − 4(1)(6)</strong></div>
+
+    <div class="formula"><strong>D = 25 − 24 = 1</strong></div>
+
+    <p>Because the discriminant is positive, the equation has two distinct real roots.</p>
+
+    <h3>Step 2: Apply the Quadratic Formula</h3>
+
+    <div class="formula"><strong>x = (−b ± √D) / (2a)</strong></div>
+
+    <div class="formula"><strong>x = (5 ± √1) / 2</strong></div>
+
+    <p>So:</p>
+
+    <div class="formula"><strong>x₁ = (5 + 1) / 2 = 3</strong></div>
+
+    <div class="formula"><strong>x₂ = (5 − 1) / 2 = 2</strong></div>
+
+    <h3>Step 3: Find the Axis of Symmetry</h3>
+
+    <div class="formula"><strong>x = −b / (2a)</strong></div>
+
+    <div class="formula"><strong>x = −(−5) / (2 × 1)</strong></div>
+
+    <div class="formula"><strong>x = 2.5</strong></div>
+
+    <h3>Step 4: Find the Vertex</h3>
+
+    <p>Evaluate the quadratic at <strong>x = 2.5</strong>:</p>
+
+    <div class="formula"><strong>f(2.5) = (2.5)² − 5(2.5) + 6</strong></div>
+
+    <div class="formula"><strong>f(2.5) = 6.25 − 12.5 + 6</strong></div>
+
+    <div class="formula"><strong>f(2.5) = −0.25</strong></div>
+
+    <h3>Final Result</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Result</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>First root</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>Second root</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>Discriminant</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Axis of symmetry</td>
+          <td>x = 2.5</td>
+        </tr>
+        <tr>
+          <td>Vertex</td>
+          <td>(2.5, −0.25)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p><strong>Roots</strong> are the values of x that make <strong>ax² + bx + c = 0</strong> true. For a quadratic function, real roots correspond to the x-values where its graph reaches the x-axis.</p>
+
+    <p>The <strong>discriminant</strong> provides information about the number and type of roots before the complete root calculation is interpreted.</p>
+
+    <p>The <strong>axis of symmetry</strong> is the vertical line that divides the parabola into two mirror-image halves. The <strong>vertex</strong> is the point where this axis meets the parabola and represents the minimum point when the parabola opens upward or the maximum point when it opens downward.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The quadratic formula applies only when <strong>a is not zero</strong>. If <strong>a = 0</strong>, the equation is no longer quadratic and should be solved as a lower-degree equation.</p>
+
+    <p>The root classification based on whether the discriminant is positive, zero, or negative assumes real coefficients. Irrational and complex results may be displayed as rounded decimal approximations because the calculator uses floating-point arithmetic.</p>
+
+    <p>Rounding can cause the displayed value to differ slightly from an exact symbolic result, especially when roots contain irrational numbers or coefficients have many decimal places.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What happens if a = 0?</summary>
+      <p>The equation is not quadratic when <strong>a = 0</strong> because the x² term disappears. The quadratic formula divides by <strong>2a</strong>, so a zero value for a is not valid for this calculation.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What does the discriminant tell me?</summary>
+      <p>The discriminant is <strong>b² − 4ac</strong>. A positive value indicates two distinct real roots, zero indicates a repeated real root, and a negative value indicates two complex roots.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can the calculator solve equations with complex roots?</summary>
+      <p>Yes. A negative discriminant indicates a complex-conjugate pair of roots. These arise because the quadratic formula requires the square root of a negative value.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why are some answers shown as decimals?</summary>
+      <p>Roots involving irrational numbers cannot always be represented exactly as terminating decimals. The calculator therefore displays numerical approximations, and the final displayed value may be rounded.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What is the difference between a root and an x-intercept?</summary>
+      <p>A root is an x-value that makes the quadratic expression equal to zero. When that root is real, it corresponds to an x-intercept of the graph of the related quadratic function.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How is the axis of symmetry calculated?</summary>
+
+      <p>For <strong>f(x) = ax² + bx + c</strong>, the axis of symmetry is:</p>
+
+      <div class="formula"><strong>x = −b / (2a)</strong></div>
+
+      <p>The vertex lies on this vertical line.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can a quadratic equation have only one root?</summary>
+      <p>It can have one distinct real root when the discriminant equals zero. In this case, both results from the quadratic formula have the same value, which is called a repeated or double root.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://openstax.org/books/college-algebra-2e/pages/2-5-quadratic-equations?utm_source=chatgpt.com" rel="noopener" target="_blank">OpenStax College Algebra 2e — Quadratic Equations</a><br>
+        Supports the quadratic formula, discriminant definition, and interpretation of real and complex solutions.
+      </li>
+
+      <li>
+        <a href="https://openstax.org/books/college-algebra-2e/pages/5-1-quadratic-functions?utm_source=chatgpt.com" rel="noopener" target="_blank">OpenStax College Algebra 2e — Quadratic Functions</a><br>
+        Supports the axis-of-symmetry formula, vertex calculation, parabola properties, and relationship between roots and x-intercepts.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Calculator</th>
+          <th>Use</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://example.com/math-calculator/">Math Calculator</a></td>
+          <td>Perform general mathematical calculations.</td>
+        </tr>
+        <tr>
+          <td><a href="https://example.com/scientific-calculator/">Scientific Calculator</a></td>
+          <td>Work with powers, roots, and other scientific operations.</td>
+        </tr>
+        <tr>
+          <td><a href="https://example.com/root-calculator/">Root Calculator</a></td>
+          <td>Calculate roots of numerical values.</td>
+        </tr>
+        <tr>
+          <td><a href="https://example.com/exponent-calculator/">Exponent Calculator</a></td>
+          <td>Calculate powers and exponential expressions.</td>
+        </tr>
+        <tr>
+          <td><a href="https://example.com/factor-calculator/">Factor Calculator</a></td>
+          <td>Find factors of integers for related algebra work.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</article>
+
+
+
+                </div>
+            </div>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"137","Batch":"14","Calculator / Page":"Quadratic Formula Calculator","Slug":"quadratic-formula-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Solve quadratic equations with the quadratic formula and view roots, discriminant, vertex, and axis of symmetry.","Formula / Algorithm Used in Tool":"Quadratic Formula: x = (−b ± √(b² − 4ac)) / (2a) The quantity b² − 4ac is called the discriminant. Its sign determines whether the roots are two distinct real numbers, one repeated real number, or a complex-conjugate pair.","Required User Inputs":"a; b; c","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: a, b, c. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"The quadratic formula applies only when the coefficient a is nonzero. Results use floating-point arithmetic, so irrational and complex values are displayed as rounded decimal approximations.","Current Source URLs in Page":"https://openstax.org/books/college-algebra-2e/pages/2-key-equations | https://openstax.org/books/college-algebra-2e/pages/5-1-quadratic-functions","Implementation Path":"/quadratic-formula-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Math &amp; Statistics</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../scientific-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Scientific Calculator</strong><small>Calculate
+                            trigonometric functions, inverse trig, logarithms, roots, powers,
+                            factori…</small></span></a><a class="cp-related-link"
+                    href="../triangle-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Triangle
+                            Calculator</strong><small>Solve triangles from SSS, SAS, or ASA/AAS inputs and calculate
+                            missing sides, angle…</small></span></a><a class="cp-related-link"
+                    href="../exponent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Exponent
+                            Calculator</strong><small>Calculate a number raised to any valid real exponent and view the
+                            result in standar…</small></span></a><a class="cp-related-link"
+                    href="../slope-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Slope
+                            Calculator</strong><small>Calculate slope from two points and view rise, run, line equation,
+                            angle, distance,…</small></span></a><a class="cp-related-link"
+                    href="../ratio-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Ratio
+                            Calculator</strong><small>Solve a proportion A:B = C:D when one value is unknown, and
+                            simplify two-number rat…</small></span></a><a class="cp-related-link"
+                    href="../root-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Root
+                            Calculator</strong><small>Calculate square roots, cube roots and nth roots. Free, fast and
+                            responsive root ca…</small></span></a><a class="cp-related-link"
+                    href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction
+                            Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the
+                            simplified fraction, m…</small></span></a><a class="cp-related-link"
+                    href="../math-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Math
+                            Calculator</strong><small>Perform basic arithmetic with addition, subtraction,
+                            multiplication, division, pare…</small></span></a></div><a class="cp-side-category"
+                href="../math/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const qf = n => Math.abs(n) < 1e-12 ? '0' : parseFloat(n.toFixed(10)).toString();
+        function syncEq() { da.textContent = qa.value || 'a'; db.textContent = qb.value || 'b'; dc.textContent = qc.value || 'c' }
+        function cplx(re, im) { const s = im >= 0 ? '+' : '−'; return `${qf(re)} ${s} ${qf(Math.abs(im))}i` }
+        function calcQ() { const a = Number(qa.value), b = Number(qb.value), c = Number(qc.value); qErr.textContent = ''; if (![a, b, c].every(Number.isFinite)) { qErr.textContent = 'Enter valid numeric coefficients.'; return } if (a === 0) { qErr.textContent = 'a must be nonzero for a quadratic equation.'; r1.textContent = r2.textContent = '—'; return } const d = b * b - 4 * a * c, h = -b / (2 * a), k = a * h * h + b * h + c; disc.textContent = qf(d); vertex.textContent = `(${qf(h)}, ${qf(k)})`; axis.textContent = 'x = ' + qf(h); if (d > 1e-12) { const s = Math.sqrt(d); r1.textContent = qf((-b + s) / (2 * a)); r2.textContent = qf((-b - s) / (2 * a)); rtype.textContent = 'Two real roots' } else if (Math.abs(d) <= 1e-12) { const x = -b / (2 * a); r1.textContent = r2.textContent = qf(x); rtype.textContent = 'One repeated real root' } else { const re = -b / (2 * a), im = Math.sqrt(-d) / Math.abs(2 * a); r1.textContent = cplx(re, im); r2.textContent = cplx(re, -im); rtype.textContent = 'Two complex roots' } syncEq() }
+        function resetQ() { qa.value = 1; qb.value = -3; qc.value = 2; calcQ() } calcQ();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

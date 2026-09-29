@@ -1,41 +1,1120 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+<html lang="en">
 
-<title>Password Generator | CalcPro</title><meta content="Generate long random passwords locally in your browser, control character sets, avoid ambiguous characters, and estimate theoretical entropy." name="description"/><meta content="index,follow" name="robots"/><link href="../password-generator/" rel="canonical"/>
-<meta content="Password Generator | CalcPro" property="og:title"/><meta content="Generate long random passwords locally in your browser, control character sets, avoid ambiguous characters, and estimate theoretical entropy." property="og:description"/><meta content="website" property="og:type"/><meta content="/password-generator/" property="og:url"/><meta content="#1477ff" name="theme-color"/>
-<style>:root{--bg:#071317;--ink:#ecfffb;--muted:#95b7b1;--card:#0d2024;--line:rgba(121,255,224,.16);--a:#36f2ba;--b:#8b5cf6;--accent:#f6c453;--shadow:0 28px 80px rgba(0,0,0,.38)}
-:root{--bg:#f6f7fb;--ink:#14213d;--muted:#637085;--card:#fff;--line:rgba(20,33,61,.12);--a:#5b5bf7;--b:#19b3a6;--accent:#ffb703;--shadow:0 24px 70px rgba(20,33,61,.14)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}a{color:var(--a)}button,input,select,textarea{font:inherit}button{cursor:pointer}.wrap{width:min(1160px,92vw);margin:auto}.topbar{display:flex;justify-content:space-between;align-items:center;padding:20px 0}.brand{font-weight:900;letter-spacing:-.04em;font-size:1.15rem}.brand b{color:var(--a)}.crumbs{font-size:.88rem;color:var(--muted)}.crumbs a{text-decoration:none;color:inherit}.hero{position:relative;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);margin:8px auto 28px}.hero-copy{position:relative;z-index:2}.eyebrow{display:inline-flex;gap:8px;align-items:center;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--a)}h1,h2,h3{line-height:1.16;letter-spacing:-.035em}h1{font-size:clamp(2.2rem,5vw,4.8rem);margin:.3em 0 .25em}h2{font-size:clamp(1.55rem,3vw,2.35rem);margin:0 0 .55em}h3{font-size:1.18rem}.lede{font-size:1.05rem;color:var(--muted);max-width:68ch}.panel,.content-card,.result-card,.embed-card{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow)}.calc-shell{margin:30px auto 64px}.field{display:grid;gap:7px}.field label{font-weight:800;font-size:.9rem}.field small{color:var(--muted)}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.9);padding:12px 13px;color:var(--ink);outline:none;transition:.2s}input:focus,select:focus,textarea:focus{border-color:var(--a);box-shadow:0 0 0 4px color-mix(in srgb,var(--a) 14%, transparent)}.btns{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:850}.btn.primary{background:linear-gradient(135deg,var(--a),var(--b));color:#fff;box-shadow:0 12px 28px color-mix(in srgb,var(--a) 24%, transparent)}.btn.ghost{background:rgba(255,255,255,.72);color:var(--ink);border:1px solid var(--line)}.error{color:#b42318;background:#fff1f0;border:1px solid #ffc7c2;border-radius:12px;padding:10px 12px;font-size:.9rem}.result-number{font-size:clamp(2rem,5vw,4rem);font-weight:950;letter-spacing:-.06em}.result-label{color:var(--muted);font-size:.9rem}.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.metric{padding:14px;border-radius:16px;background:color-mix(in srgb,var(--a) 7%, #fff);border:1px solid var(--line)}.metric strong{display:block;font-size:1.18rem}.content{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:28px;align-items:start;margin-bottom:70px}.article{display:grid;gap:18px}.content-card{padding:clamp(20px,3vw,34px);border-radius:24px}.toc{position:sticky;top:18px;padding:22px;border-radius:22px}.toc a{display:block;padding:6px 0;text-decoration:none;color:var(--muted)}.toc strong{display:block;margin-bottom:8px}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#0b1220;color:#f8fbff;padding:14px 16px;border-radius:14px;overflow:auto}.table{width:100%;border-collapse:collapse}.table th,.table td{text-align:left;border-bottom:1px solid var(--line);padding:10px}.faq details{border-top:1px solid var(--line);padding:14px 0}.faq summary{font-weight:850;cursor:pointer}.sources a{word-break:break-word}.site-footer{padding:28px 0 44px;color:var(--muted);font-size:.9rem}.embed-card{padding:18px;border-radius:20px;margin-top:18px}.embed-card textarea{min-height:115px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.8rem}.chip{display:inline-flex;border-radius:999px;padding:7px 10px;background:color-mix(in srgb,var(--a) 10%,#fff);border:1px solid var(--line);font-size:.8rem;font-weight:800}.tabs{display:flex;gap:8px;flex-wrap:wrap}.tab{padding:9px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;font-weight:800}.tab.active{background:var(--ink);color:#fff}.hidden{display:none!important}
-@media(max-width:850px){.content{grid-template-columns:1fr}.toc{position:static}.metric-grid{grid-template-columns:1fr}.topbar{gap:16px;align-items:flex-start;flex-direction:column}}
-.hero{border-radius:36px;padding:54px;background:radial-gradient(circle at 82% 20%,rgba(54,242,186,.18),transparent 34%),linear-gradient(145deg,#0a1f22,#091318)}.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;align-items:center;gap:30px}.vault{width:250px;height:250px;margin:auto;border-radius:54px;background:linear-gradient(145deg,#16383b,#081417);box-shadow:24px 24px 55px #03090b,-14px -14px 45px rgba(82,255,215,.08),inset 0 0 0 1px rgba(121,255,224,.18);position:relative;transform:rotate(-5deg)}.vault:before{content:'🔒';position:absolute;inset:0;display:grid;place-items:center;font-size:7rem;filter:drop-shadow(0 14px 25px #000)}.password-layout{display:grid;grid-template-columns:.95fr 1.05fr;gap:22px}.panel{border-radius:28px;padding:24px}.checks{display:grid;grid-template-columns:1fr 1fr;gap:10px}.check{display:flex;gap:9px;align-items:center;padding:10px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid var(--line)}.check input{width:auto}.pw-output{font-family:ui-monospace,monospace;word-break:break-all;padding:20px;border-radius:18px;background:#051013;border:1px dashed rgba(54,242,186,.35);font-size:1.25rem}.strengthbar{height:9px;border-radius:999px;background:#071012;overflow:hidden}.strengthbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ef4444,#f59e0b,#36f2ba);transition:.2s}@media(max-width:850px){.hero-grid,.password-layout{grid-template-columns:1fr}.vault{width:190px;height:190px}.checks{grid-template-columns:1fr}}</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Password Generator", "url": "/password-generator/", "description": "Generate long random passwords locally in your browser, control character sets, avoid ambiguous characters, and estimate theoretical entropy.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Conversion & Web", "item": "/conversion/"}, {"@type": "ListItem", "position": 3, "name": "Web & Network Utilities", "item": "/conversion/web-network-utilities/"}, {"@type": "ListItem", "position": 4, "name": "Password Generator", "item": "/password-generator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does this generator send my password to a server?", "acceptedAnswer": {"@type": "Answer", "text": "No. The generator code on this page uses the browser’s cryptographic random-number interface and produces the password locally."}}, {"@type": "Question", "name": "Is a longer password better than adding many rules?", "acceptedAnswer": {"@type": "Answer", "text": "For randomly generated passwords, additional length rapidly increases the search space. NIST guidance also prioritizes password length and does not recommend mandatory composition rules for user-chosen passwords."}}, {"@type": "Question", "name": "What does password entropy mean?", "acceptedAnswer": {"@type": "Answer", "text": "Entropy is an idealized measure of how many equally likely possibilities the generator can produce. Higher bit values correspond to a larger search space, but real security depends on more than entropy alone."}}, {"@type": "Question", "name": "Should I reuse a generated password?", "acceptedAnswer": {"@type": "Answer", "text": "No. Use a unique password for each account so that a compromise on one service does not automatically expose other accounts."}}]}]}</script><link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body class="theme-password" data-cp-category="conversion" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header><nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../conversion/index.html">Conversion &amp; Web</a></li><li><a aria-current="page" href="index.html">Password Generator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../conversion/index.html">Browse Conversion &amp; Web</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main"><h1 class="page-title">Password Generator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="calc-shell wrap"><div class="password-layout"><div class="panel"><h2>Build your password</h2><div class="field"><label for="pwLen">Password length</label><input id="pwLen" max="128" min="4" type="number" value="20"/></div><div class="checks" style="margin:15px 0"><label class="check"><input checked="" id="lower" type="checkbox"/> Lowercase</label><label class="check"><input checked="" id="upper" type="checkbox"/> Uppercase</label><label class="check"><input checked="" id="nums" type="checkbox"/> Numbers</label><label class="check"><input checked="" id="symbols" type="checkbox"/> Symbols</label><label class="check"><input id="ambig" type="checkbox"/> Exclude ambiguous</label><label class="check"><input id="brackets" type="checkbox"/> Exclude brackets</label><label class="check"><input id="repeat" type="checkbox"/> No repeated chars</label></div><div class="error" hidden="" id="pwErr"></div><div class="btns"><button class="btn primary" id="genPw">Generate password</button><button class="btn ghost" id="resetPw">Reset</button></div></div><div class="panel"><span class="result-label">Generated password</span><div aria-live="polite" class="pw-output" id="pwOut">—</div><div class="btns" style="margin-top:12px"><button class="btn primary" id="copyPw">Copy password</button><button class="btn ghost" id="regenPw">Generate another</button></div><div style="margin-top:22px"><div class="result-label">Theoretical entropy</div><div class="result-number" id="entropy">—</div><div class="strengthbar"><i id="strengthFill"></i></div><p class="lede" style="font-size:.9rem">Entropy here assumes each character is chosen uniformly from the active character pool. Real-world password security also depends on storage, reuse, phishing resistance, and account protections.</p></div></div></div></section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<div class="content wrap"><article class="article"><section class="content-card" id="what"><h2>What Is a Password Generator?</h2><p>A password generator creates a random string from an allowed character set. This version performs the selection in the browser with the Web Crypto API, so the generated value does not need to be submitted to a remote calculation endpoint.</p></section><section class="content-card" id="use"><h2>How to Use the Password Generator</h2><p>Choose a length, select the character groups you want to allow, optionally remove ambiguous or bracket characters, and select <strong>Generate password</strong>. Use the copy button to move the generated password into a password manager or account form.</p></section><section class="content-card" id="password-entropy"><h2>How Password Entropy Is Estimated</h2><p>For independent random choices from a pool of <em>N</em> possible characters and a password length of <em>L</em>, the idealized entropy is:</p><div class="formula">H = L × log₂(N)</div><p>If repeated characters are disabled, this page uses the logarithm of the number of possible ordered selections without replacement instead.</p></section><section class="content-card" id="guidance"><h2>Password Length and Security Guidance</h2><p>NIST’s current public guidance emphasizes length over forced composition rules. For passwords used as a single factor, NIST SP 800-63B requires verifiers to require at least 15 characters and recommends allowing long passwords. A generated password can still be compromised by reuse, phishing, malware, insecure storage, or a breached service, so use unique passwords and enable MFA or passkeys where available.</p></section><section class="content-card" id="limits"><h2>Limitations</h2><p>The entropy estimate is mathematical, not a guarantee of crack time. It assumes uniform random generation and does not model the target service’s hashing method, rate limits, attacker hardware, credential leaks, or password reuse.</p></section><section class="content-card faq" id="faq"><h2>Frequently Asked Questions</h2><details><summary>Does this generator send my password to a server?</summary><p>No. The generator code on this page uses the browser’s cryptographic random-number interface and produces the password locally.</p></details><details><summary>Is a longer password better than adding many rules?</summary><p>For randomly generated passwords, additional length rapidly increases the search space. NIST guidance also prioritizes password length and does not recommend mandatory composition rules for user-chosen passwords.</p></details><details><summary>What does password entropy mean?</summary><p>Entropy is an idealized measure of how many equally likely possibilities the generator can produce. Higher bit values correspond to a larger search space, but real security depends on more than entropy alone.</p></details><details><summary>Should I reuse a generated password?</summary><p>No. Use a unique password for each account so that a compromise on one service does not automatically expose other accounts.</p></details></section><section class="content-card sources" id="sources"><h2>Sources and Methodology</h2><p>This page uses original code and explanatory content. Core behavior and formulas were cross-checked against the sources below.</p><ul><li><a href="https://www.calculator.net/password-generator.html" rel="noopener" target="_blank">Calculator.net Password Generator</a> — Reference for common generator controls and search intent.</li><li><a href="https://pages.nist.gov/800-63-4/sp800-63b.html" rel="noopener" target="_blank">NIST SP 800-63B</a> — Current password-verifier guidance, including length and composition requirements.</li><li><a href="https://www.nist.gov/cybersecurity-and-privacy/how-do-i-create-good-password" rel="noopener" target="_blank">NIST: How Do I Create a Good Password?</a> — Plain-language NIST password guidance.</li></ul></section></article><aside class="panel toc"><strong>On this page</strong><a href="#what">What Is a Password Generator?</a><a href="#use">How to Use the Password Generator</a><a href="#password-entropy">How Password Entropy Is Estimated</a><a href="#guidance">Password Length and Security Guidance</a><a href="#limits">Limitations</a><a href="#faq">FAQs</a><a href="#sources">Sources</a></aside></div>
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width,initial-scale=1" name="viewport" />
+  <meta http-equiv="content-language" content="en">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+  <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<script class="cp-calculator-data" type="application/json">{"index":"58","Batch":"6","Calculator / Page":"Password Generator","Slug":"password-generator","Site Category (Current)":"Conversion & Web","Recommended Content Domain":"Conversion & Web","Page Type":"Calculator","Search Intent / Purpose":"Generate long random passwords locally in your browser, control character sets, avoid ambiguous characters, and estimate theoretical entropy.","Formula / Algorithm Used in Tool":"Password characters are selected with Web Crypto randomness from the enabled character pool. Idealized entropy H = L × log2(N); when repeated characters are disabled, entropy uses log2 of ordered selections without replacement.","Required User Inputs":"Password length; Lowercase; Uppercase; Numbers; Symbols; Exclude ambiguous; Exclude brackets; No repeated chars","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Password length, Lowercase, Uppercase, Numbers, Symbols, Exclude ambiguous, Exclude brackets, No repeated chars. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"The entropy estimate is mathematical, not a guarantee of crack time. It assumes uniform random generation and does not model the target service’s hashing method, rate limits, attacker hardware, credential leaks, or password reuse.","Current Source URLs in Page":"https://www.calculator.net/password-generator.html | https://pages.nist.gov/800-63-4/sp800-63b.html | https://www.nist.gov/cybersecurity-and-privacy/how-do-i-create-good-password","Implementation Path":"/password-generator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Conversion &amp; Web</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../dice-roller/index.html"><span class="cp-related-dot">›</span><span><strong>Dice Roller</strong><small>Roll standard six-sided dice or custom-sided virtual dice, view each result, the to…</small></span></a><a class="cp-related-link" href="../url-encode-decode/index.html"><span class="cp-related-dot">›</span><span><strong>URL Encode / Decode</strong><small>Percent-encode or decode URL text with separate whole-URI and URI-component modes b…</small></span></a><a class="cp-related-link" href="../ip-subnet-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>IP Subnet Calculator</strong><small>Calculate IPv4 network, broadcast, subnet mask, host range, address count, and insp…</small></span></a><a class="cp-related-link" href="../conversion-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Conversion Calculator</strong><small>Convert common units of length, mass, temperature, area, volume, speed, pressure, a…</small></span></a><a class="cp-related-link" href="../shoe-size-conversion/index.html"><span class="cp-related-dot">›</span><span><strong>Shoe Size Conversion Calculator</strong><small>Convert shoe sizes between US/Canada, UK/India, EU, Japan/Mexico, China, and foot l…</small></span></a><a class="cp-related-link" href="../roman-numeral-converter/index.html"><span class="cp-related-dot">›</span><span><strong>Roman Numeral Converter</strong><small>Convert whole numbers to Roman numerals, Roman numerals to Arabic numbers, and nume…</small></span></a><a class="cp-related-link" href="../bandwidth-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Bandwidth Calculator</strong><small>Estimate file transfer time from data size and bandwidth, or calculate the bandwidt…</small></span></a><a class="cp-related-link" href="../base64-encode-decode/index.html"><span class="cp-related-dot">›</span><span><strong>Base64 Encode / Decode</strong><small>Encode UTF-8 text to Base64 or decode Base64 back to text, with standard and Base64…</small></span></a></div><a class="cp-side-category" href="../conversion/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-function $(id){return document.getElementById(id)}
-function fmt(n, d=2){ if(!Number.isFinite(n)) return '—'; return new Intl.NumberFormat('en-US',{maximumFractionDigits:d}).format(n); }
-function money(n){ if(!Number.isFinite(n)) return '—'; return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(n); }
-function copyText(text, btn){
-  if(navigator.clipboard && window.isSecureContext){ navigator.clipboard.writeText(text).then(()=>flash(btn)); }
-  else { const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();flash(btn); }
+  <!-- Primary Meta Tags -->
+<title>Password Generator – Create Random Secure Passwords</title>
+<meta name="title" content="Password Generator – Create Random Secure Passwords">
+<meta name="description" content="Generate random passwords in your browser, control character sets and exclusions, prevent repeats, and estimate theoretical password entropy.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/password-generator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/password-generator/">
+<meta property="og:title" content="Password Generator – Create Random Secure Passwords">
+<meta property="og:description" content="Generate random passwords in your browser, control character sets and exclusions, prevent repeats, and estimate theoretical password entropy.">
+<meta property="og:site_name" content="Password Generator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/password-generator/">
+<meta name="twitter:title" content="Password Generator – Create Random Secure Passwords">
+<meta name="twitter:description" content="Generate random passwords in your browser, control character sets and exclusions, prevent repeats, and estimate theoretical password entropy.">
+  <meta content="#1477ff" name="theme-color" />
+  <style>
+    :root {
+      --bg: #071317;
+      --ink: #ecfffb;
+      --muted: #95b7b1;
+      --card: #0d2024;
+      --line: rgba(121, 255, 224, .16);
+      --a: #36f2ba;
+      --b: #8b5cf6;
+      --accent: #f6c453;
+      --shadow: 0 28px 80px rgba(0, 0, 0, .38)
+    }
+
+    :root {
+      --bg: #f6f7fb;
+      --ink: #14213d;
+      --muted: #637085;
+      --card: #fff;
+      --line: rgba(20, 33, 61, .12);
+      --a: #5b5bf7;
+      --b: #19b3a6;
+      --accent: #ffb703;
+      --shadow: 0 24px 70px rgba(20, 33, 61, .14)
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65
+    }
+
+    a {
+      color: var(--a)
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit
+    }
+
+    button {
+      cursor: pointer
+    }
+
+    .wrap {
+      width: min(1160px, 92vw);
+      margin: auto
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0
+    }
+
+    .brand {
+      font-weight: 900;
+      letter-spacing: -.04em;
+      font-size: 1.15rem
+    }
+
+    .brand b {
+      color: var(--a)
+    }
+
+    .crumbs {
+      font-size: .88rem;
+      color: var(--muted)
+    }
+
+    .crumbs a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      margin: 8px auto 28px
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      font-size: .78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--a)
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.16;
+      letter-spacing: -.035em
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 4.8rem);
+      margin: .3em 0 .25em
+    }
+
+    h2 {
+      font-size: clamp(1.55rem, 3vw, 2.35rem);
+      margin: 0 0 .55em
+    }
+
+    h3 {
+      font-size: 1.18rem
+    }
+
+    .lede {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 68ch
+    }
+
+    .panel,
+    .content-card,
+    .result-card,
+    .embed-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow)
+    }
+
+    .calc-shell {
+      margin: 30px auto 64px
+    }
+
+    .field {
+      display: grid;
+      gap: 7px
+    }
+
+    .field label {
+      font-weight: 800;
+      font-size: .9rem
+    }
+
+    .field small {
+      color: var(--muted)
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .9);
+      padding: 12px 13px;
+      color: var(--ink);
+      outline: none;
+      transition: .2s
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--a);
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--a) 14%, transparent)
+    }
+
+    .btns {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 14px;
+      padding: 12px 18px;
+      font-weight: 850
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--a), var(--b));
+      color: #fff;
+      box-shadow: 0 12px 28px color-mix(in srgb, var(--a) 24%, transparent)
+    }
+
+    .btn.ghost {
+      background: rgba(255, 255, 255, .72);
+      color: var(--ink);
+      border: 1px solid var(--line)
+    }
+
+    .error {
+      color: #b42318;
+      background: #fff1f0;
+      border: 1px solid #ffc7c2;
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: .9rem
+    }
+
+    .result-number {
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 950;
+      letter-spacing: -.06em
+    }
+
+    .result-label {
+      color: var(--muted);
+      font-size: .9rem
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px
+    }
+
+    .metric {
+      padding: 14px;
+      border-radius: 16px;
+      background: color-mix(in srgb, var(--a) 7%, #fff);
+      border: 1px solid var(--line)
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.18rem
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 70px
+    }
+
+    .article {
+      display: grid;
+      gap: 18px
+    }
+
+    .content-card {
+      padding: clamp(20px, 3vw, 34px);
+      border-radius: 24px
+    }
+
+    .toc {
+      position: sticky;
+      top: 18px;
+      padding: 22px;
+      border-radius: 22px
+    }
+
+    .toc a {
+      display: block;
+      padding: 6px 0;
+      text-decoration: none;
+      color: var(--muted)
+    }
+
+    .toc strong {
+      display: block;
+      margin-bottom: 8px
+    }
+
+    .formula {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      background: #0b1220;
+      color: #f8fbff;
+      padding: 14px 16px;
+      border-radius: 14px;
+      overflow: auto
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse
+    }
+
+    .table th,
+    .table td {
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      padding: 10px
+    }
+
+    .faq details {
+      border-top: 1px solid var(--line);
+      padding: 14px 0
+    }
+
+    .faq summary {
+      font-weight: 850;
+      cursor: pointer
+    }
+
+    .sources a {
+      word-break: break-word
+    }
+
+    .site-footer {
+      padding: 28px 0 44px;
+      color: var(--muted);
+      font-size: .9rem
+    }
+
+    .embed-card {
+      padding: 18px;
+      border-radius: 20px;
+      margin-top: 18px
+    }
+
+    .embed-card textarea {
+      min-height: 115px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: .8rem
+    }
+
+    .chip {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: color-mix(in srgb, var(--a) 10%, #fff);
+      border: 1px solid var(--line);
+      font-size: .8rem;
+      font-weight: 800
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap
+    }
+
+    .tab {
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      font-weight: 800
+    }
+
+    .tab.active {
+      background: var(--ink);
+      color: #fff
+    }
+
+    .hidden {
+      display: none !important
+    }
+
+    @media(max-width:850px) {
+      .content {
+        grid-template-columns: 1fr
+      }
+
+      .toc {
+        position: static
+      }
+
+      .metric-grid {
+        grid-template-columns: 1fr
+      }
+
+      .topbar {
+        gap: 16px;
+        align-items: flex-start;
+        flex-direction: column
+      }
+    }
+
+    .hero {
+      border-radius: 36px;
+      padding: 54px;
+      background: radial-gradient(circle at 82% 20%, rgba(54, 242, 186, .18), transparent 34%), linear-gradient(145deg, #0a1f22, #091318)
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      align-items: center;
+      gap: 30px
+    }
+
+    .vault {
+      width: 250px;
+      height: 250px;
+      margin: auto;
+      border-radius: 54px;
+      background: linear-gradient(145deg, #16383b, #081417);
+      box-shadow: 24px 24px 55px #03090b, -14px -14px 45px rgba(82, 255, 215, .08), inset 0 0 0 1px rgba(121, 255, 224, .18);
+      position: relative;
+      transform: rotate(-5deg)
+    }
+
+    .vault:before {
+      content: '🔒';
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 7rem;
+      filter: drop-shadow(0 14px 25px #000)
+    }
+
+    .password-layout {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 22px
+    }
+
+    .panel {
+      border-radius: 28px;
+      padding: 24px
+    }
+
+    .checks {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px
+    }
+
+    .check {
+      display: flex;
+      gap: 9px;
+      align-items: center;
+      padding: 10px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid var(--line)
+    }
+
+    .check input {
+      width: auto
+    }
+
+    .pw-output {
+      font-family: ui-monospace, monospace;
+      word-break: break-all;
+      padding: 20px;
+      border-radius: 18px;
+      background: #051013;
+      border: 1px dashed rgba(54, 242, 186, .35);
+      font-size: 1.25rem
+    }
+
+    .strengthbar {
+      height: 9px;
+      border-radius: 999px;
+      background: #071012;
+      overflow: hidden
+    }
+
+    .strengthbar i {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #ef4444, #f59e0b, #36f2ba);
+      transition: .2s
+    }
+
+    @media(max-width:850px) {
+
+      .hero-grid,
+      .password-layout {
+        grid-template-columns: 1fr
+      }
+
+      .vault {
+        width: 190px;
+        height: 190px
+      }
+
+      .checks {
+        grid-template-columns: 1fr
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/password-generator/#webapplication",
+      "name": "Password Generator",
+      "url": "https://monkeymart-onlinefree.github.io/password-generator/",
+      "description": "Generate random passwords in your browser, control character sets and exclusions, prevent repeats, and estimate theoretical password entropy.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/password-generator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Password Generator",
+          "item": "https://monkeymart-onlinefree.github.io/password-generator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/password-generator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does the Password Generator create random passwords?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It builds a pool from the character types you enable, applies your exclusion settings, and uses browser Web Crypto randomness to select characters from the remaining pool."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does password entropy mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Entropy measures the theoretical uncertainty of a randomly generated password and is expressed in bits. For normal generation with replacement, the calculator uses H = L × log₂(N)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a higher entropy value guarantee that my password cannot be cracked?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The value measures the idealized random search space. Real-world security can also depend on password storage, rate limiting, compromised credentials, password reuse, phishing, and other factors."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens when I exclude characters?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Excluded characters are removed from the available pool. This reduces the value of N, so it can also reduce theoretical entropy when the password length stays the same."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the no-repeated-characters option affect entropy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The full pool is not available for every position. After one character is selected, there is one fewer possible character for the next position. The calculator therefore uses ordered selections without replacement instead of L × log₂(N)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can password length exceed the character pool when repeats are disabled?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. If there are N usable characters, a no-repeat password can contain at most N characters."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a randomly generated password better than manually adding symbols and numbers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Random generation avoids many predictable choices people make when constructing passwords manually. NIST also notes that password managers can help users create and use stronger passwords and that services should allow password-manager use."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
 }
-function flash(btn){ if(!btn)return; const old=btn.textContent;btn.textContent='Copied';setTimeout(()=>btn.textContent=old,1200); }
-function setErr(id,msg=''){ const e=$(id); if(e){e.textContent=msg;e.hidden=!msg;} }
-function currentEmbedUrl(slug){ return location.protocol.startsWith('http') ? location.href.split('#')[0] : `/${slug}/`; }
-function makeEmbedCode(slug,title){ const src=currentEmbedUrl(slug); return `<iframe src="${src}" title="${title}" loading="lazy" style="width:100%;max-width:760px;height:720px;border:0;border-radius:18px" referrerpolicy="strict-origin-when-cross-origin"></iframe>`; }
+</script>
 
 
-const sets={lower:'abcdefghijklmnopqrstuvwxyz',upper:'ABCDEFGHIJKLMNOPQRSTUVWXYZ',nums:'0123456789',symbols:'!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'};
-const ambiguous=new Set('iIl1L|o0O`\'-_":;.,'.split('')); const brackets=new Set('<>()[]{}'.split(''));
-function cryptoIndex(max){ const lim=Math.floor(4294967296/max)*max; const a=new Uint32Array(1); do{crypto.getRandomValues(a)}while(a[0]>=lim); return a[0]%max; }
-function generatePw(){ setErr('pwErr'); let len=Number($('pwLen').value); if(!Number.isInteger(len)||len<4||len>128){setErr('pwErr','Choose a length from 4 to 128.');return;} let pool=''; ['lower','upper','nums','symbols'].forEach(k=>{if($(k).checked) pool+=sets[k]}); if($('ambig').checked) pool=[...pool].filter(c=>!ambiguous.has(c)).join(''); if($('brackets').checked) pool=[...pool].filter(c=>!brackets.has(c)).join(''); let chars=[...new Set([...pool])]; if(!chars.length){setErr('pwErr','Select at least one character group.');return;} if($('repeat').checked&&len>chars.length){setErr('pwErr',`No-repeat mode supports at most ${chars.length} characters with the current pool.`);return;} let out=''; let available=[...chars]; for(let i=0;i<len;i++){ let src=$('repeat').checked?available:chars; let idx=cryptoIndex(src.length); out+=src[idx]; if($('repeat').checked) available.splice(idx,1); } $('pwOut').textContent=out; const H=$('repeat').checked?logPerm(chars.length,len):len*Math.log2(chars.length); $('entropy').textContent=H.toFixed(1)+' bits'; $('strengthFill').style.width=Math.min(100,H/1.28)+'%'; }
-function logPerm(n,k){let s=0;for(let i=0;i<k;i++)s+=Math.log2(n-i);return s}
-$('genPw').onclick=generatePw;$('regenPw').onclick=generatePw;$('copyPw').onclick=()=>copyText($('pwOut').textContent,$('copyPw'));$('resetPw').onclick=()=>{ $('pwLen').value=20;lower.checked=upper.checked=nums.checked=symbols.checked=true;ambig.checked=brackets.checked=repeat.checked=false;generatePw();};generatePw();
-</script><script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+  <link href="../assets/css/global.css" rel="stylesheet" />
+  <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+  <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body class="theme-password" data-cp-category="conversion" data-cp-page-type="Calculator">
+  <header class="cp-site-header" data-cp-header="">
+    <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+          class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+      <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+          href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+          href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+          href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+          href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+          href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+          data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+          class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+      <div class="cp-header-actions">
+        <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search">
+          <input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+            placeholder="Search calculators…" type="search" />
+          <div class="cp-search-results" hidden="" role="listbox"></div>
+        </form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a>
+      </div>
+    </div>
+  </header>
+  <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+    <ol>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../conversion/index.html">Conversion &amp; Web</a></li>
+      <li><a aria-current="page" href="index.html">Password Generator</a></li>
+    </ol>
+  </nav>
+  <div class="cp-tool-taxonomy"><a href="../conversion/index.html">Browse Conversion &amp; Web</a><a
+      href="../calculators/index.html">All calculators</a></div>
+  <div class="cp-page-layout">
+    <main id="main">
+      <h1 class="page-title">Password Generator</h1>
+      <div class="cp-ad-slot cp-ad-wide">
+        <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+      </div>
+      <section class="calc-shell wrap">
+        <div class="password-layout">
+          <div class="panel">
+            <h2>Build your password</h2>
+            <div class="field"><label for="pwLen">Password length</label><input id="pwLen" max="128" min="4"
+                type="number" value="20" /></div>
+            <div class="checks" style="margin:15px 0"><label class="check"><input checked="" id="lower"
+                  type="checkbox" /> Lowercase</label><label class="check"><input checked="" id="upper"
+                  type="checkbox" /> Uppercase</label><label class="check"><input checked="" id="nums"
+                  type="checkbox" /> Numbers</label><label class="check"><input checked="" id="symbols"
+                  type="checkbox" /> Symbols</label><label class="check"><input id="ambig" type="checkbox" /> Exclude
+                ambiguous</label><label class="check"><input id="brackets" type="checkbox" /> Exclude
+                brackets</label><label class="check"><input id="repeat" type="checkbox" /> No repeated chars</label>
+            </div>
+            <div class="error" hidden="" id="pwErr"></div>
+            <div class="btns"><button class="btn primary" id="genPw">Generate password</button><button class="btn ghost"
+                id="resetPw">Reset</button></div>
+          </div>
+          <div class="panel"><span class="result-label">Generated password</span>
+            <div aria-live="polite" class="pw-output" id="pwOut">—</div>
+            <div class="btns" style="margin-top:12px"><button class="btn primary" id="copyPw">Copy
+                password</button><button class="btn ghost" id="regenPw">Generate another</button></div>
+            <div style="margin-top:22px">
+              <div class="result-label">Theoretical entropy</div>
+              <div class="result-number" id="entropy">—</div>
+              <div class="strengthbar"><i id="strengthFill"></i></div>
+              <p class="lede" style="font-size:.9rem">Entropy here assumes each character is chosen uniformly from the
+                active character pool. Real-world password security also depends on storage, reuse, phishing resistance,
+                and account protections.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+        <div class="cp-visual-top">
+          <div><span class="cp-visual-kicker">Visual breakdown</span>
+            <h2 id="cp-visual-title">Calculation Graph</h2>
+            <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+          </div><span class="cp-chart-badge">Live view</span>
+        </div>
+        <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+        <div aria-label="Calculation method flow" class="cp-flow">
+          <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+            class="cp-flow-arrow">→</span>
+          <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+            class="cp-flow-arrow">→</span>
+          <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+        </div>
+      </section>
+      <div class="cp-ad-slot cp-ad-wide">
+        <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+      </div>
+      <div class="content wrap">
+      
+
+<article class="article">
+
+ 
+  <p>The Password Generator creates random passwords using browser-based cryptographic randomness. Choose the password length, character types, exclusions, and repetition settings, then generate a password and estimate its theoretical entropy.</p>
+
+  <section id="what">
+    <h2>What Is the Password Generator?</h2>
+
+    <p class="direct">The Password Generator is a browser-based tool for creating random passwords from a configurable character pool. You can control which types of characters are available, remove ambiguous or bracket characters, prevent repeated characters, and measure the theoretical number of bits of entropy produced by the selected settings.</p>
+
+    <p>It is useful when you need a randomly generated password rather than one chosen manually.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Password Generator</h2>
+
+    <p>Configure the options in this order:</p>
+
+    <ol>
+      <li><strong>Password length</strong> — Enter the number of characters the generated password should contain.</li>
+      <li><strong>Lowercase</strong> — Include or exclude lowercase letters from the available character pool.</li>
+      <li><strong>Uppercase</strong> — Include or exclude uppercase letters.</li>
+      <li><strong>Numbers</strong> — Include or exclude numeric characters.</li>
+      <li><strong>Symbols</strong> — Include or exclude symbols.</li>
+      <li><strong>Exclude ambiguous</strong> — Remove characters the tool classifies as visually ambiguous from the available pool.</li>
+      <li><strong>Exclude brackets</strong> — Remove bracket characters from the available pool.</li>
+      <li><strong>No repeated chars</strong> — Prevent the same available character from being selected more than once in a password.</li>
+    </ol>
+
+    <p>At least one usable character must remain in the final character pool. When repeated characters are disabled, the requested password length also cannot exceed the number of available characters.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <p>The generator has two related processes: randomly selecting password characters and estimating the theoretical entropy of the possible passwords.</p>
+
+    <h3>Random Password Generation</h3>
+
+    <p>The calculator first builds a character pool from the enabled character sets. Any selected exclusions are then removed.</p>
+
+    <p>Password characters are selected from this final pool using browser Web Crypto randomness. Browser Web Crypto provides cryptographically strong random values suitable for this type of random selection.</p>
+
+    <p>When repeated characters are allowed, each position can be selected from the full available pool.</p>
+
+    <p>When <strong>No repeated chars</strong> is enabled, a selected character cannot be used again. The number of available choices therefore decreases after every selection.</p>
+
+    <h3>Main Entropy Formula</h3>
+
+    <p>When repeated characters are allowed:</p>
+
+    <div class="formula">H = L × log₂(N)</div>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Variable</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>H</strong></td>
+          <td>Theoretical entropy</td>
+          <td>bits</td>
+        </tr>
+        <tr>
+          <td><strong>L</strong></td>
+          <td>Password length</td>
+          <td>characters</td>
+        </tr>
+        <tr>
+          <td><strong>N</strong></td>
+          <td>Number of characters in the final available pool</td>
+          <td>characters</td>
+        </tr>
+        <tr>
+          <td><strong>log₂</strong></td>
+          <td>Base-2 logarithm</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>This formula represents the uncertainty in a uniformly generated password when every position has <strong>N</strong> equally likely choices.</p>
+
+    <p>NIST defines entropy as the uncertainty an attacker faces when determining a secret, normally expressed in bits.</p>
+
+    <h3>No-Repeated-Characters Formula</h3>
+
+    <p>If repeated characters are disabled, each selection reduces the remaining pool by one.</p>
+
+    <p>The number of possible ordered passwords is:</p>
+
+    <div class="formula">P(N,L) = N × (N − 1) × (N − 2) × ... × (N − L + 1)</div>
+
+    <p>Therefore:</p>
+
+    <div class="formula">H = log₂[P(N,L)]</div>
+
+    <p>Equivalent form:</p>
+
+    <div class="formula">H = log₂[N! / (N − L)!]</div>
+
+    <p>This method applies when:</p>
+
+    <div class="formula">L ≤ N</div>
+
+    <p>If the requested password length exceeds the available pool size, a password with no repeated characters cannot be constructed.</p>
+
+    <h3>Calculation Sequence</h3>
+
+    <ol>
+      <li>Read the selected password length.</li>
+      <li>Combine the enabled lowercase, uppercase, number, and symbol sets.</li>
+      <li>Remove ambiguous characters when that option is enabled.</li>
+      <li>Remove bracket characters when that option is enabled.</li>
+      <li>Determine the final pool size, <strong>N</strong>.</li>
+      <li>Generate characters using browser cryptographic randomness.</li>
+      <li>If repetitions are allowed, selections continue from the full pool.</li>
+      <li>If repetitions are disabled, already selected characters are removed from later choices.</li>
+      <li>Calculate theoretical entropy from the final pool size and password length.</li>
+    </ol>
+
+    <h3>Effect of Character Exclusions</h3>
+
+    <p>Removing characters reduces <strong>N</strong>, the number of available choices.</p>
+
+    <p>Because entropy depends on both password length and pool size, exclusions can reduce the theoretical entropy for the same password length.</p>
+
+    <p>The calculator does not assume that a higher entropy estimate guarantees a particular real-world crack time.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <h3>Inputs</h3>
+
+    <p>Consider a generated password with:</p>
+
+    <ul>
+      <li>Password length: <strong>12 characters</strong></li>
+      <li>Repeated characters: <strong>Allowed</strong></li>
+      <li>Final available character pool after the selected character options and exclusions: <strong>10 characters</strong></li>
+    </ul>
+
+    <h3>Step 1: Use the Entropy Formula</h3>
+
+    <div class="formula">H = L × log₂(N)</div>
+
+    <p>Substitute the values:</p>
+
+    <div class="formula">H = 12 × log₂(10)</div>
+
+    <h3>Step 2: Calculate the Base-2 Logarithm</h3>
+
+    <div class="formula">log₂(10) ≈ 3.321928</div>
+
+    <p>Therefore:</p>
+
+    <div class="formula">H ≈ 12 × 3.321928</div>
+
+    <h3>Step 3: Calculate the Entropy</h3>
+
+    <div class="formula">H ≈ 39.8631 bits</div>
+
+    <h3>Final Result</h3>
+
+    <p>The theoretical entropy is approximately:</p>
+
+    <div class="formula">39.86 bits</div>
+
+    <p>The actual generated password can be different each time because the characters are selected randomly. The entropy value describes the size of the idealized random-password search space for those settings rather than predicting the exact time needed to compromise the password.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Generated Password</h3>
+
+    <p>The main result is the randomly generated character sequence produced from your selected settings.</p>
+
+    <p>Changing the length, enabled character types, exclusions, or repetition option changes the set of possible passwords.</p>
+
+    <h3>Character Pool</h3>
+
+    <p>The effective character pool consists only of characters remaining after the enabled sets and exclusion options have been applied.</p>
+
+    <p>A larger pool generally provides more possible combinations for a password of the same length.</p>
+
+    <h3>Theoretical Entropy</h3>
+
+    <p>Entropy is expressed in <strong>bits</strong>.</p>
+
+    <p>For uniformly random passwords, a larger entropy value represents a larger theoretical space of possible passwords.</p>
+
+    <p>However, entropy is only a mathematical measure of the random generation process. It is not a prediction of how long a particular account would resist an attack.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The entropy calculation assumes that characters are generated uniformly using the available pool.</p>
+
+    <p>The estimate does <strong>not</strong> model:</p>
+
+    <ul>
+      <li>How the target website stores or hashes passwords</li>
+      <li>Login attempt rate limits</li>
+      <li>Attacker hardware or computing resources</li>
+      <li>Password database breaches</li>
+      <li>Credential theft</li>
+      <li>Phishing</li>
+      <li>Password reuse across accounts</li>
+    </ul>
+
+    <p>NIST notes that password length is important, but also explains that attacks such as phishing can succeed regardless of password complexity or length.</p>
+
+    <p>The entropy calculation should therefore be treated as a mathematical description of the generated password space, not as a guaranteed security score or crack-time estimate.</p>
+
+    <p>Turning on character exclusions changes the available pool and therefore changes the entropy calculation.</p>
+
+    <p>When <strong>No repeated chars</strong> is enabled, the password length cannot mathematically exceed the number of characters remaining in the pool.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>How does the Password Generator create random passwords?</summary>
+      <p>It builds a pool from the character types you enable, applies your exclusion settings, and uses browser Web Crypto randomness to select characters from the remaining pool.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What does password entropy mean?</summary>
+      <p>Entropy measures the theoretical uncertainty of a randomly generated password and is expressed in bits. For normal generation with replacement, the calculator uses <strong>H = L × log₂(N)</strong>.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does a higher entropy value guarantee that my password cannot be cracked?</summary>
+      <p>No. The value measures the idealized random search space. Real-world security can also depend on password storage, rate limiting, compromised credentials, password reuse, phishing, and other factors.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What happens when I exclude characters?</summary>
+      <p>Excluded characters are removed from the available pool. This reduces the value of <strong>N</strong>, so it can also reduce theoretical entropy when the password length stays the same.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How does the no-repeated-characters option affect entropy?</summary>
+      <p>The full pool is not available for every position. After one character is selected, there is one fewer possible character for the next position. The calculator therefore uses ordered selections without replacement instead of <strong>L × log₂(N)</strong>.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can password length exceed the character pool when repeats are disabled?</summary>
+      <p>No. If there are <strong>N</strong> usable characters, a no-repeat password can contain at most <strong>N</strong> characters.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is a randomly generated password better than manually adding symbols and numbers?</summary>
+      <p>Random generation avoids many predictable choices people make when constructing passwords manually. NIST also notes that password managers can help users create and use stronger passwords and that services should allow password-manager use.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <strong>MDN Web Docs — Crypto.getRandomValues()</strong><br>
+        Used to verify that the browser Web Crypto API provides cryptographically strong random values.
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues?utm_source=chatgpt.com" rel="noopener" target="_blank"> MDN: Crypto.getRandomValues()</a>
+      </li>
+
+      <li>
+        <strong>NIST SP 800-63B — Digital Identity Guidelines</strong><br>
+        Used to verify the definition and limitations of password entropy and general password-security principles.
+        <a href="https://pages.nist.gov/800-63-4/sp800-63b.html?utm_source=chatgpt.com" rel="noopener" target="_blank"> NIST SP 800-63B</a>
+      </li>
+
+      <li>
+        <strong>NIST — How Do I Create a Good Password?</strong><br>
+        Used for supporting guidance on password length, randomly generated passwords, password managers, and account security.
+        <a href="https://www.nist.gov/cybersecurity-and-privacy/how-do-i-create-good-password?utm_source=chatgpt.com" rel="noopener" target="_blank"> NIST: How Do I Create a Good Password?</a>
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/random-number-generator/">Random Number Generator</a></li>
+      <li><a href="https://example.com/dice-roller/">Dice Roller</a></li>
+      <li><a href="https://example.com/base64-encode-decode/">Base64 Encode / Decode</a></li>
+      <li><a href="https://example.com/url-encode-decode/">URL Encode / Decode</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+
+      </div>
+
+      <script class="cp-calculator-data"
+        type="application/json">{"index":"58","Batch":"6","Calculator / Page":"Password Generator","Slug":"password-generator","Site Category (Current)":"Conversion & Web","Recommended Content Domain":"Conversion & Web","Page Type":"Calculator","Search Intent / Purpose":"Generate long random passwords locally in your browser, control character sets, avoid ambiguous characters, and estimate theoretical entropy.","Formula / Algorithm Used in Tool":"Password characters are selected with Web Crypto randomness from the enabled character pool. Idealized entropy H = L × log2(N); when repeated characters are disabled, entropy uses log2 of ordered selections without replacement.","Required User Inputs":"Password length; Lowercase; Uppercase; Numbers; Symbols; Exclude ambiguous; Exclude brackets; No repeated chars","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Password length, Lowercase, Uppercase, Numbers, Symbols, Exclude ambiguous, Exclude brackets, No repeated chars. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"The entropy estimate is mathematical, not a guarantee of crack time. It assumes uniform random generation and does not model the target service’s hashing method, rate limits, attacker hardware, credential leaks, or password reuse.","Current Source URLs in Page":"https://www.calculator.net/password-generator.html | https://pages.nist.gov/800-63-4/sp800-63b.html | https://www.nist.gov/cybersecurity-and-privacy/how-do-i-create-good-password","Implementation Path":"/password-generator/index.html"}</script>
+      <div class="cp-ad-slot cp-ad-wide">
+        <div>Advertisement<small>Responsive lower-page placement</small></div>
+      </div>
+    </main>
+    <aside aria-label="Related calculators" class="cp-related-sidebar">
+      <div class="cp-ad-slot cp-ad-sidebar">
+        <div>Advertisement<small>300 × 250 / responsive</small></div>
+      </div><span class="cp-side-kicker">Related tools</span>
+      <h2>Conversion &amp; Web</h2>
+      <p>More tools from the same Calculator Data category.</p>
+      <div class="cp-related-list"><a class="cp-related-link" href="../dice-roller/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Dice Roller</strong><small>Roll standard six-sided dice or
+              custom-sided virtual dice, view each result, the to…</small></span></a><a class="cp-related-link"
+          href="../url-encode-decode/index.html"><span class="cp-related-dot">›</span><span><strong>URL Encode /
+              Decode</strong><small>Percent-encode or decode URL text with separate whole-URI and URI-component modes
+              b…</small></span></a><a class="cp-related-link" href="../ip-subnet-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>IP Subnet Calculator</strong><small>Calculate IPv4 network,
+              broadcast, subnet mask, host range, address count, and insp…</small></span></a><a class="cp-related-link"
+          href="../conversion-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Conversion
+              Calculator</strong><small>Convert common units of length, mass, temperature, area, volume, speed,
+              pressure, a…</small></span></a><a class="cp-related-link" href="../shoe-size-conversion/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Shoe Size Conversion Calculator</strong><small>Convert shoe
+              sizes between US/Canada, UK/India, EU, Japan/Mexico, China, and foot l…</small></span></a><a
+          class="cp-related-link" href="../roman-numeral-converter/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Roman Numeral Converter</strong><small>Convert whole numbers to
+              Roman numerals, Roman numerals to Arabic numbers, and nume…</small></span></a><a class="cp-related-link"
+          href="../bandwidth-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Bandwidth
+              Calculator</strong><small>Estimate file transfer time from data size and bandwidth, or calculate the
+              bandwidt…</small></span></a><a class="cp-related-link" href="../base64-encode-decode/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Base64 Encode / Decode</strong><small>Encode UTF-8 text to
+              Base64 or decode Base64 back to text, with standard and Base64…</small></span></a></div><a
+        class="cp-side-category" href="../conversion/index.html"><span>View category</span><span>→</span></a>
+    </aside>
+  </div>
+  <footer>
+    <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+  </footer>
+  <script>
+    function $(id) { return document.getElementById(id) }
+    function fmt(n, d = 2) { if (!Number.isFinite(n)) return '—'; return new Intl.NumberFormat('en-US', { maximumFractionDigits: d }).format(n); }
+    function money(n) { if (!Number.isFinite(n)) return '—'; return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 }).format(n); }
+    function copyText(text, btn) {
+      if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(text).then(() => flash(btn)); }
+      else { const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); flash(btn); }
+    }
+    function flash(btn) { if (!btn) return; const old = btn.textContent; btn.textContent = 'Copied'; setTimeout(() => btn.textContent = old, 1200); }
+    function setErr(id, msg = '') { const e = $(id); if (e) { e.textContent = msg; e.hidden = !msg; } }
+    function currentEmbedUrl(slug) { return location.protocol.startsWith('http') ? location.href.split('#')[0] : `/${slug}/`; }
+    function makeEmbedCode(slug, title) { const src = currentEmbedUrl(slug); return `<iframe src="${src}" title="${title}" loading="lazy" style="width:100%;max-width:760px;height:720px;border:0;border-radius:18px" referrerpolicy="strict-origin-when-cross-origin"></iframe>`; }
+
+
+    const sets = { lower: 'abcdefghijklmnopqrstuvwxyz', upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', nums: '0123456789', symbols: '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~' };
+    const ambiguous = new Set('iIl1L|o0O`\'-_":;.,'.split('')); const brackets = new Set('<>()[]{}'.split(''));
+    function cryptoIndex(max) { const lim = Math.floor(4294967296 / max) * max; const a = new Uint32Array(1); do { crypto.getRandomValues(a) } while (a[0] >= lim); return a[0] % max; }
+    function generatePw() { setErr('pwErr'); let len = Number($('pwLen').value); if (!Number.isInteger(len) || len < 4 || len > 128) { setErr('pwErr', 'Choose a length from 4 to 128.'); return; } let pool = '';['lower', 'upper', 'nums', 'symbols'].forEach(k => { if ($(k).checked) pool += sets[k] }); if ($('ambig').checked) pool = [...pool].filter(c => !ambiguous.has(c)).join(''); if ($('brackets').checked) pool = [...pool].filter(c => !brackets.has(c)).join(''); let chars = [...new Set([...pool])]; if (!chars.length) { setErr('pwErr', 'Select at least one character group.'); return; } if ($('repeat').checked && len > chars.length) { setErr('pwErr', `No-repeat mode supports at most ${chars.length} characters with the current pool.`); return; } let out = ''; let available = [...chars]; for (let i = 0; i < len; i++) { let src = $('repeat').checked ? available : chars; let idx = cryptoIndex(src.length); out += src[idx]; if ($('repeat').checked) available.splice(idx, 1); } $('pwOut').textContent = out; const H = $('repeat').checked ? logPerm(chars.length, len) : len * Math.log2(chars.length); $('entropy').textContent = H.toFixed(1) + ' bits'; $('strengthFill').style.width = Math.min(100, H / 1.28) + '%'; }
+    function logPerm(n, k) { let s = 0; for (let i = 0; i < k; i++)s += Math.log2(n - i); return s }
+    $('genPw').onclick = generatePw; $('regenPw').onclick = generatePw; $('copyPw').onclick = () => copyText($('pwOut').textContent, $('copyPw')); $('resetPw').onclick = () => { $('pwLen').value = 20; lower.checked = upper.checked = nums.checked = symbols.checked = true; ambig.checked = brackets.checked = repeat.checked = false; generatePw(); }; generatePw();
+  </script>
+  <script defer="" src="../assets/js/global.js"></script>
+  <script defer="" src="../assets/js/taxonomy.js"></script>
+  <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

@@ -1,50 +1,979 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<title>Binary Calculator | CalcPro</title>
-<meta content="Perform exact binary integer arithmetic and convert results to decimal and hexadecimal." name="description"/>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="index,follow" name="robots"/>
-<link href="../binary-calculator/" rel="canonical"/>
-<meta content="website" property="og:type"/>
-<meta content="Binary Calculator" property="og:title"/>
-<meta content="Perform exact binary integer arithmetic and convert results to decimal and hexadecimal." property="og:description"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}
-a{color:inherit}button,input,select{font:inherit}button{cursor:pointer}.wrap{width:min(1160px,92vw);margin:auto}.crumbs{font-size:.88rem;opacity:.78;margin-bottom:18px}h1,h2,h3{line-height:1.15;margin:0 0 14px}h1{font-size:clamp(2.3rem,5vw,4.9rem);letter-spacing:-.045em}h2{font-size:clamp(1.6rem,3vw,2.25rem);letter-spacing:-.025em}h3{font-size:1.1rem}p{margin:0 0 14px}.muted{opacity:.74}label{font-weight:750;font-size:.92rem;display:block;margin-bottom:7px}input,select{width:100%;padding:13px 14px;border-radius:14px;border:1px solid var(--line);background:var(--field);color:var(--ink);outline:none}input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.btn{border:0;border-radius:14px;padding:13px 18px;font-weight:800;box-shadow:var(--btnshadow)}.primary{background:var(--accent);color:var(--onaccent)}.secondary{background:var(--soft);color:var(--ink);border:1px solid var(--line)}.error{min-height:24px;color:var(--danger);font-weight:700;margin-top:10px}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--formula);border:1px solid var(--line);padding:14px 16px;border-radius:16px;overflow:auto}.result-main{font-size:clamp(1.9rem,4vw,3.2rem);font-weight:900;letter-spacing:-.04em;word-break:break-word}.result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.result-chip{padding:12px 13px;border-radius:14px;background:var(--soft);border:1px solid var(--line)}.result-chip b{display:block;font-size:.8rem;opacity:.65;margin-bottom:2px}.content{padding:72px 0 40px}.article-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}article section{margin-bottom:38px}aside{position:sticky;top:18px}.toc,.sourcebox{border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow);border-radius:24px;padding:20px}.toc a{display:block;text-decoration:none;padding:6px 0;opacity:.78}.toc a:hover{opacity:1}ul,ol{padding-left:22px}table{width:100%;border-collapse:collapse;border-radius:18px;overflow:hidden}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left}th{background:var(--soft)}footer{padding:36px 0 50px;opacity:.7;font-size:.9rem}.sr{position:absolute;left:-9999px}
-@media(max-width:860px){.article-grid{grid-template-columns:1fr}aside{position:static}.result-grid{grid-template-columns:1fr}}
-</style>
-<style>
-:root{--bg:#070b10;--ink:#dfffea;--panel:#0c141a;--field:#091017;--soft:#10241f;--formula:#0a1915;--line:#1d3931;--accent:#65ff9b;--onaccent:#05200f;--focus:#65ff9b20;--danger:#ff7878;--shadow:0 30px 90px #000a;--btnshadow:0 12px 30px #65ff9b18;}
+   <meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
 
-body{background-image:linear-gradient(#0c171355 1px,transparent 1px),linear-gradient(90deg,#0c171355 1px,transparent 1px);background-size:28px 28px}.bin-hero{padding:54px 0 105px;position:relative;overflow:hidden;background:radial-gradient(circle at 85% 30%,#1cff8730,transparent 28%),linear-gradient(180deg,#020406,#07120d);border-bottom:1px solid #1f3e31}.matrix{position:absolute;right:-30px;top:45px;font:800 2rem/1.8 ui-monospace;color:#65ff9b16;transform:rotate(-8deg) scale(1.25)}.terminal-tag{display:inline-block;font:800 .8rem ui-monospace;letter-spacing:.18em;color:#65ff9b;margin-bottom:14px}.bin-zone{margin-top:-55px}.bin-panel{padding:28px;border:1px solid var(--line);background:#08100dcc;backdrop-filter:blur(10px);border-radius:12px;box-shadow:var(--shadow);position:relative}.bin-panel:before{content:"● ● ●";position:absolute;top:10px;right:14px;color:#65ff9b55;letter-spacing:5px}.bin-row{display:grid;grid-template-columns:1fr 180px 1fr;gap:14px;margin-top:14px}.bin-readout{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:10px;margin-top:20px}.bin-readout>div{border:1px solid var(--line);padding:14px;background:#07120e;border-radius:8px}.bin-readout span{display:block;font:700 .75rem ui-monospace;color:#8abf9c}.bin-readout strong{display:block;font:800 1.15rem ui-monospace;word-break:break-all;color:#dfffea}@media(max-width:760px){.bin-row,.bin-readout{grid-template-columns:1fr}}
 
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/binary-calculator/#app", "name": "Binary Calculator", "url": "/binary-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Perform exact binary integer arithmetic and convert results to decimal and hexadecimal."}, {"@type": "BreadcrumbList", "@id": "/binary-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Math & Statistics", "item": "/math/"}, {"@type": "ListItem", "position": 3, "name": "Number Theory & Number Systems", "item": "/math/number-theory-number-systems/"}, {"@type": "ListItem", "position": 4, "name": "Binary Calculator", "item": "/binary-calculator/"}]}, {"@type": "FAQPage", "@id": "/binary-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "What is binary?", "acceptedAnswer": {"@type": "Answer", "text": "Binary is a base-2 positional number system that uses the digits 0 and 1."}}, {"@type": "Question", "name": "How do binary and hexadecimal relate?", "acceptedAnswer": {"@type": "Answer", "text": "Because 16 equals 2 to the fourth power, one hexadecimal digit corresponds to four binary bits."}}, {"@type": "Question", "name": "Does binary division return fractions?", "acceptedAnswer": {"@type": "Answer", "text": "This page uses integer BigInt arithmetic, so division returns an integer quotient plus a remainder."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body data-cp-category="math" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../math/index.html">Math &amp; Statistics</a></li><li><a aria-current="page" href="index.html">Binary Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a href="../calculators/index.html">All calculators</a></div><header><div class="bin-hero"><div aria-hidden="true" class="matrix">0101 1100 0011 1010<br/>1110 0101 1001 0010<br/>0011 1111 0001 1011</div><div class="wrap"><nav class="crumbs">Home / Technical Math / Binary Calculator</nav><div class="terminal-tag">INTEGER / BASE 2</div><h1>Binary Calculator</h1><p>Add, subtract, multiply, or divide binary integers with exact BigInt arithmetic, then inspect decimal and hexadecimal equivalents.</p></div></div></header>
-<div class="cp-page-layout"><main id="main-content"><h1 class="page-title">Binary Calculator</h1>
-<section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="bin-zone"><div class="wrap"><div class="bin-panel"><div class="bin-row"><div><label for="a">Binary A</label><input id="a" inputmode="text" spellcheck="false" value="1010"/></div><div><label for="op">Operation</label><select id="op"><option value="+">Add (+)</option><option value="-">Subtract (−)</option><option value="*">Multiply (×)</option><option value="/">Divide (÷)</option></select></div><div><label for="b">Binary B</label><input id="b" inputmode="text" spellcheck="false" value="11"/></div></div><div class="actions"><button class="btn primary" onclick="calcBase()">Run Binary Math</button><button class="btn secondary" onclick="resetBase()">Reset</button></div><div class="error" id="err"></div><div class="bin-readout"><div><span>Binary result</span><strong id="main">1101</strong></div><div><span>Decimal</span><strong id="dec">13</strong></div><div><span>Hex</span><strong id="other">D</strong></div><div><span>Remainder</span><strong id="rem">0</strong></div></div></div></div></section>
-<div class="content"><div class="wrap article-grid">
-<article><section id="about"><h2>What Is a Binary Calculator?</h2><p>A binary calculator performs arithmetic on base-2 integers. Binary uses only the digits 0 and 1. This calculator keeps integer operations exact with JavaScript BigInt and also shows the same result in decimal and hexadecimal notation.</p></section><section id="use"><h2>How to Use the Binary Calculator</h2><ol><li>Enter two binary integers using only 0 and 1, with an optional leading minus sign.</li><li>Choose add, subtract, multiply, or divide.</li><li>Run the calculation to see base-2, base-10, and base-16 outputs.</li></ol></section><section id="formula"><h2>How Binary Place Value Works</h2><div class="formula">bₙ…b₂b₁b₀ = Σ bᵢ × 2ⁱ</div><p>Binary is base 2. Hexadecimal is base 16, and because 16 = 2⁴, each hexadecimal digit corresponds to exactly four binary bits.</p></section><section id="example"><h2>Calculation Example</h2><p>1010₂ equals 10₁₀ and 11₂ equals 3₁₀. Their sum is 13₁₀, which is <strong>1101₂</strong> or D₁₆.</p></section><section id="limits"><h2>Limitations</h2><p>This calculator is for integers, not binary fractions or IEEE-754 floating-point encodings. Division returns an integer quotient and remainder, matching BigInt integer division.</p></section><section id="faq"><h2>Frequently Asked Questions</h2><h3>Why is hexadecimal useful with binary?</h3><p>One hex digit maps exactly to four bits, so long binary values can be written much more compactly without changing the underlying integer value.</p><h3>Does this calculator support negative binary numbers?</h3><p>Yes, a leading minus sign is supported as a mathematical signed integer. It does not interpret fixed-width two's-complement bit patterns.</p></section><section id="sources"><h2>Sources and Methodology</h2><ul><li><a href="https://www.cs.uni.edu/~schafer/cohort26/FCCS/lessons/week1/topic1b/t1b_r3_hex.html" rel="noopener" target="_blank">University of Northern Iowa — Hexadecimal: A Shorthand for Binary</a></li><li><a href="https://www.eecs.umich.edu/courses/eecs452/Handout/number_systems.html" rel="noopener" target="_blank">University of Michigan EECS — Binary/Hexadecimal/Decimal Conversion</a></li></ul></section></article>
-<aside><div class="toc"><h3>On this page</h3>
-<a href="#about">What it calculates</a><a href="#use">How to use it</a><a href="#formula">Formula</a>
-<a href="#example">Example</a><a href="#limits">Limitations</a><a href="#faq">FAQs</a><a href="#sources">Sources</a>
-</div></aside>
-</div></div>
+<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+<!-- Primary Meta Tags -->
+<title>Binary Calculator – Binary Arithmetic, Decimal &amp; Hex</title>
+<meta name="title" content="Binary Calculator – Binary Arithmetic, Decimal &amp; Hex">
+<meta name="description" content="Use the Binary Calculator to perform exact binary integer arithmetic and view the result in binary, decimal, and hexadecimal, including division remainders.">
 
-<script class="cp-calculator-data" type="application/json">{"index":"131","Batch":"14","Calculator / Page":"Binary Calculator","Slug":"binary-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Perform exact binary integer arithmetic and convert results to decimal and hexadecimal.","Formula / Algorithm Used in Tool":"How Binary Place Value Works: bₙ…b₂b₁b₀ = Σ bᵢ × 2ⁱ Binary is base 2. Hexadecimal is base 16, and because 16 = 2⁴, each hexadecimal digit corresponds to exactly four binary bits.","Required User Inputs":"Binary A; Operation; Binary B","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Binary A, Operation, Binary B. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"This calculator is for integers, not binary fractions or IEEE-754 floating-point encodings. Division returns an integer quotient and remainder, matching BigInt integer division.","Current Source URLs in Page":"https://www.cs.uni.edu/~schafer/cohort26/FCCS/lessons/week1/topic1b/t1b_r3_hex.html | https://www.eecs.umich.edu/courses/eecs452/Handout/number_systems.html","Implementation Path":"/binary-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Math &amp; Statistics</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../hex-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Hex Calculator</strong><small>Perform exact hexadecimal integer arithmetic and convert results to decimal and bin…</small></span></a><a class="cp-related-link" href="../big-number-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Big Number Calculator</strong><small>Perform exact integer arithmetic with very large whole numbers. Free, fast and resp…</small></span></a><a class="cp-related-link" href="../math-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Math Calculator</strong><small>Perform basic arithmetic with addition, subtraction, multiplication, division, pare…</small></span></a><a class="cp-related-link" href="../factor-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Factor Calculator</strong><small>Find positive factors and prime factorization of an integer. Free, fast and respons…</small></span></a><a class="cp-related-link" href="../rounding-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Rounding Calculator</strong><small>Round a number to decimal places or common place values. Free, fast and responsive…</small></span></a><a class="cp-related-link" href="../scientific-notation-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Scientific Notation Calculator</strong><small>Convert ordinary numbers to scientific notation and back. Free, fast and responsive…</small></span></a><a class="cp-related-link" href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the simplified fraction, m…</small></span></a><a class="cp-related-link" href="../number-sequence-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Number Sequence Calculator</strong><small>Calculate arithmetic, geometric, and Fibonacci sequence terms, previews, and finite…</small></span></a></div><a class="cp-side-category" href="../math/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-function parseVal(s){s=s.trim();if(!/^-?[01]+$/.test(s))throw new Error('Use only binary digits 0 and 1, with an optional leading minus sign.');let neg=s[0]=='-';if(neg)s=s.slice(1);let v=0n;for(const ch of s)v=v*2n+BigInt(ch);return neg?-v:v}
-function repr(v,radix){return (v<0n?'-':'')+(v<0n?-v:v).toString(radix).toUpperCase()}
-function calcBase(){err.textContent='';try{const x=parseVal(a.value),y=parseVal(b.value);let r,q=0n;if(op.value==='+')r=x+y;else if(op.value==='-')r=x-y;else if(op.value==='*')r=x*y;else{if(y===0n)throw new Error('Division by zero is undefined.');r=x/y;q=x%y}main.textContent=repr(r,2);dec.textContent=r.toString();other.textContent=repr(r,16);rem.textContent=op.value==='/'?repr(q,2):'0'}catch(e){err.textContent=e.message;main.textContent=dec.textContent=other.textContent=rem.textContent='—'}}
-function resetBase(){a.value='1010';b.value='11';op.value='+';calcBase()}calcBase();
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/binary-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/binary-calculator/">
+<meta property="og:title" content="Binary Calculator – Binary Arithmetic, Decimal &amp; Hex">
+<meta property="og:description" content="Use the Binary Calculator to perform exact binary integer arithmetic and view the result in binary, decimal, and hexadecimal, including division remainders.">
+<meta property="og:site_name" content="Binary Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/binary-calculator/">
+<meta name="twitter:title" content="Binary Calculator – Binary Arithmetic, Decimal &amp; Hex">
+<meta name="twitter:description" content="Use the Binary Calculator to perform exact binary integer arithmetic and view the result in binary, decimal, and hexadecimal, including division remainders.">
+     <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.65
+        }
+
+        a {
+            color: inherit
+        }
+
+        button,
+        input,
+        select {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        .wrap {
+            width: min(1160px, 92vw);
+            margin: auto
+        }
+
+        .crumbs {
+            font-size: .88rem;
+            opacity: .78;
+            margin-bottom: 18px
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.15;
+            margin: 0 0 14px
+        }
+
+        h1 {
+            font-size: clamp(2.3rem, 5vw, 4.9rem);
+            letter-spacing: -.045em
+        }
+
+        h2 {
+            font-size: clamp(1.6rem, 3vw, 2.25rem);
+            letter-spacing: -.025em
+        }
+
+        h3 {
+            font-size: 1.1rem
+        }
+
+        p {
+            margin: 0 0 14px
+        }
+
+        .muted {
+            opacity: .74
+        }
+
+        label {
+            font-weight: 750;
+            font-size: .92rem;
+            display: block;
+            margin-bottom: 7px
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 13px 14px;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            background: var(--field);
+            color: var(--ink);
+            outline: none
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--focus)
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 13px 18px;
+            font-weight: 800;
+            box-shadow: var(--btnshadow)
+        }
+
+        .primary {
+            background: var(--accent);
+            color: var(--onaccent)
+        }
+
+        .secondary {
+            background: var(--soft);
+            color: var(--ink);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            min-height: 24px;
+            color: var(--danger);
+            font-weight: 700;
+            margin-top: 10px
+        }
+
+        .formula {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: var(--formula);
+            border: 1px solid var(--line);
+            padding: 14px 16px;
+            border-radius: 16px;
+            overflow: auto
+        }
+
+        .result-main {
+            font-size: clamp(1.9rem, 4vw, 3.2rem);
+            font-weight: 900;
+            letter-spacing: -.04em;
+            word-break: break-word
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 14px
+        }
+
+        .result-chip {
+            padding: 12px 13px;
+            border-radius: 14px;
+            background: var(--soft);
+            border: 1px solid var(--line)
+        }
+
+        .result-chip b {
+            display: block;
+            font-size: .8rem;
+            opacity: .65;
+            margin-bottom: 2px
+        }
+
+        .content {
+            padding: 72px 0 40px
+        }
+
+        .article-grid {
+            display: grid;
+             gap: 28px;
+            align-items: start
+        }
+
+        article section {
+            margin-bottom: 38px
+        }
+
+        aside {
+            position: sticky;
+            top: 18px
+        }
+
+        .toc,
+        .sourcebox {
+            border: 1px solid var(--line);
+            background: var(--panel);
+            box-shadow: var(--shadow);
+            border-radius: 24px;
+            padding: 20px
+        }
+
+        .toc a {
+            display: block;
+            text-decoration: none;
+            padding: 6px 0;
+            opacity: .78
+        }
+
+        .toc a:hover {
+            opacity: 1
+        }
+
+        ul,
+        ol {
+            padding-left: 22px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 18px;
+            overflow: hidden
+        }
+
+        th,
+        td {
+            padding: 11px;
+            border-bottom: 1px solid var(--line);
+            text-align: left
+        }
+
+        th {
+            background: var(--soft)
+        }
+
+        footer {
+            padding: 36px 0 50px;
+            opacity: .7;
+            font-size: .9rem
+        }
+
+        .sr {
+            position: absolute;
+            left: -9999px
+        }
+
+        @media(max-width:860px) {
+            .article-grid {
+                grid-template-columns: 1fr
+            }
+
+            aside {
+                position: static
+            }
+
+            .result-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+    <style>
+        :root {
+            --bg: #070b10;
+            --ink: #dfffea;
+            --panel: #0c141a;
+            --field: #091017;
+            --soft: #10241f;
+            --formula: #0a1915;
+            --line: #1d3931;
+            --accent: #65ff9b;
+            --onaccent: #05200f;
+            --focus: #65ff9b20;
+            --danger: #ff7878;
+            --shadow: 0 30px 90px #000a;
+            --btnshadow: 0 12px 30px #65ff9b18;
+        }
+
+        body {
+            background-image: linear-gradient(#0c171355 1px, transparent 1px), linear-gradient(90deg, #0c171355 1px, transparent 1px);
+            background-size: 28px 28px
+        }
+
+        .bin-hero {
+            padding: 54px 0 105px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at 85% 30%, #1cff8730, transparent 28%), linear-gradient(180deg, #020406, #07120d);
+            border-bottom: 1px solid #1f3e31
+        }
+
+        .matrix {
+            position: absolute;
+            right: -30px;
+            top: 45px;
+            font: 800 2rem/1.8 ui-monospace;
+            color: #65ff9b16;
+            transform: rotate(-8deg) scale(1.25)
+        }
+
+        .terminal-tag {
+            display: inline-block;
+            font: 800 .8rem ui-monospace;
+            letter-spacing: .18em;
+            color: #65ff9b;
+            margin-bottom: 14px
+        }
+
+        .bin-zone {
+            margin-top: -55px
+        }
+
+        .bin-panel {
+            padding: 28px;
+            border: 1px solid var(--line);
+            background: #08100dcc;
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            position: relative
+        }
+
+        .bin-panel:before {
+            content: "● ● ●";
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            color: #65ff9b55;
+            letter-spacing: 5px
+        }
+
+        .bin-row {
+            display: grid;
+            grid-template-columns: 1fr 180px 1fr;
+            gap: 14px;
+            margin-top: 14px
+        }
+
+        .bin-readout {
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px
+        }
+
+        .bin-readout>div {
+            border: 1px solid var(--line);
+            padding: 14px;
+            background: #07120e;
+            border-radius: 8px
+        }
+
+        .bin-readout span {
+            display: block;
+            font: 700 .75rem ui-monospace;
+            color: #8abf9c
+        }
+
+        .bin-readout strong {
+            display: block;
+            font: 800 1.15rem ui-monospace;
+            word-break: break-all;
+            color: #dfffea
+        }
+
+        @media(max-width:760px) {
+
+            .bin-row,
+            .bin-readout {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/binary-calculator/#webapplication",
+      "name": "Binary Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/binary-calculator/",
+      "description": "Use the Binary Calculator to perform exact binary integer arithmetic and view the result in binary, decimal, and hexadecimal, including division remainders.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/binary-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Binary Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/binary-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/binary-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What digits can a binary number contain?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A standard binary number uses only 0 and 1. Each position represents a power of 2."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the calculator convert binary to decimal?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It multiplies each bit by the corresponding power of 2 and adds the values together. The rightmost bit starts at 2^0."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does the calculator also show hexadecimal?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hexadecimal provides a shorter representation of binary values. Since one hexadecimal digit represents four binary bits, conversion between the two systems is especially convenient."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does binary division produce decimal fractions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not in this calculator. Division is integer-based and returns an integer quotient and remainder."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a division remainder mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The remainder is the amount left after the divisor has been multiplied by the largest applicable integer quotient. For integer division: A = Bq + r."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use this tool to decode IEEE-754 floating-point numbers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The calculator works with binary integers and does not interpret IEEE-754 floating-point encodings."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the decimal and hexadecimal results different numbers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Binary, decimal, and hexadecimal can represent the same numerical value using different numeral systems. For example: 1010₂ = 10₁₀ = A₁₆."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="math" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../math/index.html">Math &amp; Statistics</a></li>
+            <li><a aria-current="page" href="index.html">Binary Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a
+            href="../calculators/index.html">All calculators</a></div>
+     
+    <div class="cp-page-layout">
+        <main id="main-content">
+            <h1 class="page-title">Binary Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="bin-zone">
+                <div class="wrap">
+                    <div class="bin-panel">
+                        <div class="bin-row">
+                            <div><label for="a">Binary A</label><input id="a" inputmode="text" spellcheck="false"
+                                    value="1010" /></div>
+                            <div><label for="op">Operation</label><select id="op">
+                                    <option value="+">Add (+)</option>
+                                    <option value="-">Subtract (−)</option>
+                                    <option value="*">Multiply (×)</option>
+                                    <option value="/">Divide (÷)</option>
+                                </select></div>
+                            <div><label for="b">Binary B</label><input id="b" inputmode="text" spellcheck="false"
+                                    value="11" /></div>
+                        </div>
+                        <div class="actions"><button class="btn primary" onclick="calcBase()">Run Binary
+                                Math</button><button class="btn secondary" onclick="resetBase()">Reset</button></div>
+                        <div class="error" id="err"></div>
+                        <div class="bin-readout">
+                            <div><span>Binary result</span><strong id="main">1101</strong></div>
+                            <div><span>Decimal</span><strong id="dec">13</strong></div>
+                            <div><span>Hex</span><strong id="other">D</strong></div>
+                            <div><span>Remainder</span><strong id="rem">0</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="content">
+                <div class="wrap article-grid">
+                 
+ 
+<article class="article">
+ 
+
+  <p>The Binary Calculator performs binary integer arithmetic using two binary values and a selected operation. Enter Binary A and Binary B to calculate the result and view its equivalent decimal and hexadecimal values.</p>
+
+  <section id="what">
+    <h2>What Is the Binary Calculator?</h2>
+
+    <p>A Binary Calculator works with integers written in base 2, where each digit is either 0 or 1. It is useful for performing arithmetic with binary integers and checking the same result in binary, decimal, and hexadecimal notation.</p>
+
+    <p>This tool is intended for integer calculations. It does not calculate binary fractions or interpret IEEE-754 floating-point bit patterns.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Binary Calculator</h2>
+
+    <h3>Binary A</h3>
+
+    <p>Enter the first binary integer. A binary value is written with base-2 digits, such as <code>1011</code> or <code>110101</code>.</p>
+
+    <h3>Operation</h3>
+
+    <p>Select the operation to apply between Binary A and Binary B. The selected operation determines how the two integer values are combined.</p>
+
+    <h3>Binary B</h3>
+
+    <p>Enter the second binary integer. When performing division, Binary B cannot represent zero because division by zero is undefined.</p>
+
+    <p>After entering the values and operation, the calculator processes the binary integers and displays the calculated result with supporting decimal and hexadecimal values.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+
+    <p>A binary integer is converted to its numerical value using binary place value:</p>
+
+    <div class="formula">N=∑i=0nbi×2iN=\sum\_{i=0}^{n} b_i \times 2^i</div>
+
+    <p>Each binary digit contributes its value multiplied by a power of 2.</p>
+
+    <p>For example:</p>
+
+    <div class="formula">10112=(1×23)+(0×22)+(1×21)+(1×20)1011_2=(1\times2^3)+(0\times2^2)+(1\times2^1)+(1\times2^0) =8+0+2+1=1110=8+0+2+1=11\_{10}</div>
+
+    <p>The calculator interprets Binary A and Binary B as integers, applies the selected arithmetic operation, and represents the resulting integer in binary, decimal, and hexadecimal form.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit / Format</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>NN</td>
+          <td>Integer value represented by the binary number</td>
+          <td>Integer</td>
+        </tr>
+        <tr>
+          <td>bib_i</td>
+          <td>Binary digit at position ii</td>
+          <td>0 or 1</td>
+        </tr>
+        <tr>
+          <td>ii</td>
+          <td>Bit position counted from the right, starting at 0</td>
+          <td>Non-negative integer</td>
+        </tr>
+        <tr>
+          <td>AA</td>
+          <td>First input value</td>
+          <td>Binary integer</td>
+        </tr>
+        <tr>
+          <td>BB</td>
+          <td>Second input value</td>
+          <td>Binary integer</td>
+        </tr>
+        <tr>
+          <td>qq</td>
+          <td>Integer quotient in division</td>
+          <td>Integer</td>
+        </tr>
+        <tr>
+          <td>rr</td>
+          <td>Division remainder</td>
+          <td>Integer</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Calculation Sequence</h3>
+
+    <ol>
+      <li>Read Binary A as a base-2 integer.</li>
+      <li>Read Binary B as a base-2 integer.</li>
+      <li>Apply the selected integer arithmetic operation.</li>
+      <li>Determine the primary integer result.</li>
+      <li>Convert the result to binary notation.</li>
+      <li>Convert the same value to decimal notation.</li>
+      <li>Convert the same value to hexadecimal notation.</li>
+      <li>For division, return an integer quotient and remainder rather than a fractional binary result.</li>
+    </ol>
+
+    <h3>Binary to Decimal Conversion</h3>
+
+    <p>For a binary number:</p>
+
+    <div class="formula">bn...b2b1b0b_n...b_2b_1b_0</div>
+
+    <p>the decimal value is:</p>
+
+    <div class="formula">bn2n+⋯+b222+b121+b020b_n2^n+\cdots+b_22^2+b_12^1+b_02^0</div>
+
+    <p>The rightmost bit represents 202^0, the next represents 212^1, and each position continues with the next power of 2.</p>
+
+    <h3>Binary to Hexadecimal Conversion</h3>
+
+    <p>Hexadecimal is base 16. Because:</p>
+
+    <div class="formula">16=2416=2^4</div>
+
+    <p>one hexadecimal digit corresponds to four binary bits.</p>
+
+    <p>For example:</p>
+
+    <div class="formula">10102=A161010_2=A\_{16}</div>
+
+    <p>and:</p>
+
+    <div class="formula">11112=F161111_2=F\_{16}</div>
+
+    <p>Binary values can therefore be separated into groups of four bits from the right to determine their hexadecimal representation.</p>
+
+    <h3>Integer Division</h3>
+
+    <p>When division is selected, the calculator uses integer division and returns a quotient and remainder.</p>
+
+    <p>The relationship can be written as:</p>
+
+    <div class="formula">A=Bq+rA=Bq+r</div>
+
+    <p>where:</p>
+
+    <ul>
+      <li>AA is the dividend.</li>
+      <li>BB is the divisor.</li>
+      <li>qq is the integer quotient.</li>
+      <li>rr is the remainder.</li>
+    </ul>
+
+    <p>The calculator does not turn the remaining portion into a binary fraction.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose you enter:</p>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li>Binary A: <code>110101</code></li>
+      <li>Operation: Division</li>
+      <li>Binary B: <code>101</code></li>
+    </ul>
+
+    <h3>Step 1: Convert the Binary Inputs</h3>
+
+    <p>Binary A:</p>
+
+    <div class="formula">1101012110101_2 =(1×25)+(1×24)+(0×23)+(1×22)+(0×21)+(1×20)=(1\times2^5)+(1\times2^4)+(0\times2^3)+(1\times2^2)+(0\times2^1)+(1\times2^0) =32+16+0+4+0+1=53=32+16+0+4+0+1=53</div>
+
+    <p>Binary B:</p>
+
+    <div class="formula">1012=(1×22)+(0×21)+(1×20)=5101_2=(1\times2^2)+(0\times2^1)+(1\times2^0)=5</div>
+
+    <h3>Step 2: Perform Integer Division</h3>
+
+    <div class="formula">53÷5=10 remainder 353\div5=10\text{ remainder }3</div>
+
+    <p>This can also be checked with:</p>
+
+    <div class="formula">53=(5×10)+353=(5\times10)+3</div>
+
+    <h3>Step 3: Convert the Results</h3>
+
+    <p>Quotient:</p>
+
+    <div class="formula">1010=10102=A1610\_{10}=1010_2=A\_{16}</div>
+
+    <p>Remainder:</p>
+
+    <div class="formula">310=112=3163\_{10}=11_2=3\_{16}</div>
+
+    <h3>Final Result</h3>
+
+    <ul>
+      <li>Binary quotient: <code>1010</code></li>
+      <li>Binary remainder: <code>11</code></li>
+      <li>Decimal quotient: <code>10</code></li>
+      <li>Decimal remainder: <code>3</code></li>
+      <li>Hexadecimal quotient: <code>A</code></li>
+      <li>Hexadecimal remainder: <code>3</code></li>
+    </ul>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Binary Result</h3>
+
+    <p>The binary result expresses the calculated integer using base-2 digits.</p>
+
+    <h3>Decimal Value</h3>
+
+    <p>The decimal value shows the same calculated quantity in the familiar base-10 number system.</p>
+
+    <h3>Hexadecimal Value</h3>
+
+    <p>The hexadecimal value represents the same integer in base 16 using the digits <code>0–9</code> and letters for values above 9.</p>
+
+    <h3>Division Remainder</h3>
+
+    <p>For division, a remainder shows the part of Binary A that cannot be divided evenly by Binary B using integer division.</p>
+
+    <p>For example, dividing 53 by 5 produces a quotient of 10 and a remainder of 3 rather than the decimal result 10.6.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The Binary Calculator is designed for integer arithmetic. Binary fractions are outside the calculator's supported calculation model.</p>
+
+    <p>It is not an IEEE-754 converter. A sequence of bits representing a floating-point value should not be entered with the expectation that the calculator will decode its sign, exponent, and fraction fields.</p>
+
+    <p>Binary values are interpreted using base-2 place value. Invalid non-binary digits do not represent valid binary integers.</p>
+
+    <p>Division uses integer quotient-and-remainder behavior. It does not generate a fractional binary quotient.</p>
+
+    <p>Division by zero is mathematically undefined and cannot produce a valid quotient.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What digits can a binary number contain?</summary>
+      <p>A standard binary number uses only <code>0</code> and <code>1</code>. Each position represents a power of 2.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How does the calculator convert binary to decimal?</summary>
+      <p>It multiplies each bit by the corresponding power of 2 and adds the values together. The rightmost bit starts at 202^0.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why does the calculator also show hexadecimal?</summary>
+      <p>Hexadecimal provides a shorter representation of binary values. Since one hexadecimal digit represents four binary bits, conversion between the two systems is especially convenient.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does binary division produce decimal fractions?</summary>
+      <p>Not in this calculator. Division is integer-based and returns an integer quotient and remainder.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What does a division remainder mean?</summary>
+      <p>The remainder is the amount left after the divisor has been multiplied by the largest applicable integer quotient.</p>
+      <p>For integer division:</p>
+      <div class="formula">A=Bq+rA=Bq+r</div>
+    </details>
+
+    <details class="faq">
+      <summary>Can I use this tool to decode IEEE-754 floating-point numbers?</summary>
+      <p>No. The calculator works with binary integers and does not interpret IEEE-754 floating-point encodings.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Are the decimal and hexadecimal results different numbers?</summary>
+      <p>No. Binary, decimal, and hexadecimal can represent the same numerical value using different numeral systems. For example:</p>
+      <div class="formula">10102=1010=A161010_2=10\_{10}=A\_{16}</div>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://www.cs.uni.edu/~schafer/cohort26/FCCS/lessons/week1/topic1b/t1b_r3_hex.html" rel="noopener" target="_blank">University of Northern Iowa — Binary and Hexadecimal Number Systems</a>
+        <p>Supports binary place-value concepts and the relationship between binary and hexadecimal notation.</p>
+      </li>
+
+      <li>
+        <a href="https://www.eecs.umich.edu/courses/eecs452/Handout/number_systems.html" rel="noopener" target="_blank">University of Michigan EECS — Number Systems Reference</a>
+        <p>Supports numeral-system definitions and binary, decimal, and hexadecimal representation methods.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/hex-calculator/">Hex Calculator</a></li>
+      <li><a href="https://example.com/math-calculator/">Math Calculator</a></li>
+      <li><a href="https://example.com/exponent-calculator/">Exponent Calculator</a></li>
+      <li><a href="https://example.com/long-division-calculator/">Long Division Calculator</a></li>
+      <li><a href="https://example.com/scientific-calculator/">Scientific Calculator</a></li>
+    </ul>
+  </section>
+</article>
+
+
+
+                </div>
+            </div>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"131","Batch":"14","Calculator / Page":"Binary Calculator","Slug":"binary-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Perform exact binary integer arithmetic and convert results to decimal and hexadecimal.","Formula / Algorithm Used in Tool":"How Binary Place Value Works: bₙ…b₂b₁b₀ = Σ bᵢ × 2ⁱ Binary is base 2. Hexadecimal is base 16, and because 16 = 2⁴, each hexadecimal digit corresponds to exactly four binary bits.","Required User Inputs":"Binary A; Operation; Binary B","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Binary A, Operation, Binary B. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"This calculator is for integers, not binary fractions or IEEE-754 floating-point encodings. Division returns an integer quotient and remainder, matching BigInt integer division.","Current Source URLs in Page":"https://www.cs.uni.edu/~schafer/cohort26/FCCS/lessons/week1/topic1b/t1b_r3_hex.html | https://www.eecs.umich.edu/courses/eecs452/Handout/number_systems.html","Implementation Path":"/binary-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Math &amp; Statistics</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../hex-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Hex Calculator</strong><small>Perform exact
+                            hexadecimal integer arithmetic and convert results to decimal and bin…</small></span></a><a
+                    class="cp-related-link" href="../big-number-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Big Number Calculator</strong><small>Perform exact
+                            integer arithmetic with very large whole numbers. Free, fast and resp…</small></span></a><a
+                    class="cp-related-link" href="../math-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Math Calculator</strong><small>Perform basic
+                            arithmetic with addition, subtraction, multiplication, division, pare…</small></span></a><a
+                    class="cp-related-link" href="../factor-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Factor Calculator</strong><small>Find positive
+                            factors and prime factorization of an integer. Free, fast and respons…</small></span></a><a
+                    class="cp-related-link" href="../rounding-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Rounding Calculator</strong><small>Round a number
+                            to decimal places or common place values. Free, fast and responsive…</small></span></a><a
+                    class="cp-related-link" href="../scientific-notation-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Scientific Notation
+                            Calculator</strong><small>Convert ordinary numbers to scientific notation and back. Free,
+                            fast and responsive…</small></span></a><a class="cp-related-link"
+                    href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction
+                            Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the
+                            simplified fraction, m…</small></span></a><a class="cp-related-link"
+                    href="../number-sequence-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Number Sequence Calculator</strong><small>Calculate
+                            arithmetic, geometric, and Fibonacci sequence terms, previews, and
+                            finite…</small></span></a></div><a class="cp-side-category"
+                href="../math/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        function parseVal(s) { s = s.trim(); if (!/^-?[01]+$/.test(s)) throw new Error('Use only binary digits 0 and 1, with an optional leading minus sign.'); let neg = s[0] == '-'; if (neg) s = s.slice(1); let v = 0n; for (const ch of s) v = v * 2n + BigInt(ch); return neg ? -v : v }
+        function repr(v, radix) { return (v < 0n ? '-' : '') + (v < 0n ? -v : v).toString(radix).toUpperCase() }
+        function calcBase() { err.textContent = ''; try { const x = parseVal(a.value), y = parseVal(b.value); let r, q = 0n; if (op.value === '+') r = x + y; else if (op.value === '-') r = x - y; else if (op.value === '*') r = x * y; else { if (y === 0n) throw new Error('Division by zero is undefined.'); r = x / y; q = x % y } main.textContent = repr(r, 2); dec.textContent = r.toString(); other.textContent = repr(r, 16); rem.textContent = op.value === '/' ? repr(q, 2) : '0' } catch (e) { err.textContent = e.message; main.textContent = dec.textContent = other.textContent = rem.textContent = '—' } }
+        function resetBase() { a.value = '1010'; b.value = '11'; op.value = '+'; calcBase() } calcBase();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

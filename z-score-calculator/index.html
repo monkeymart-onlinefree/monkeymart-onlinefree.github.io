@@ -1,84 +1,1099 @@
 <!DOCTYPE html>
 
 <html lang="en-US">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>Z-Score Calculator | CalcPro</title>
-<meta content="Calculate a z-score from a raw value, mean, and standard deviation, plus standard normal lower-tail and upper-tail probabilities." name="description"/>
-<meta content="index,follow" name="robots"/>
-<link href="../z-score-calculator/" rel="canonical"/>
-<meta content="Z-Score Calculator | CalcPro" property="og:title"/>
-<meta content="Calculate a z-score from a raw value, mean, and standard deviation, plus standard normal lower-tail and upper-tail probabilities." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="/z-score-calculator/" property="og:url"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
-:root{--max:1180px}a{color:inherit}.wrap{width:min(var(--max),calc(100% - 32px));margin:auto}.sitebar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:18px}.brand{font-weight:900;letter-spacing:-.04em;font-size:1.25rem;text-decoration:none}.brand span{color:var(--accent)}.topnav{display:flex;gap:10px;flex-wrap:wrap}.topnav a{text-decoration:none;font-size:.9rem;padding:9px 12px;border-radius:999px;background:var(--glass);border:1px solid var(--line)}
-.breadcrumb{font-size:.85rem;opacity:.78;margin-bottom:14px}.breadcrumb a{text-decoration:none}.hero{position:relative;overflow:hidden}.hero h1{font-size:clamp(2.35rem,5vw,5rem);line-height:.98;letter-spacing:-.065em;margin:0 0 18px;max-width:860px}.hero p{font-size:clamp(1rem,1.8vw,1.18rem);max-width:720px;margin:0;color:var(--muted)}
-.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:var(--glass);border:1px solid var(--line);font-size:.82rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:18px}
-main{padding-bottom:60px}.calc-shell{position:relative;margin-top:-28px;z-index:4}.panel{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-.calc-card{border-radius:30px;padding:clamp(20px,4vw,38px)}.calc-title{font-size:1.45rem;font-weight:900;letter-spacing:-.03em;margin:0 0 6px}.calc-sub{margin:0 0 24px;color:var(--muted)}
-label{display:block;font-weight:800;font-size:.9rem;margin-bottom:7px}.field{margin-bottom:15px}.input,select,textarea{width:100%;border:1px solid var(--input-line);background:var(--input-bg);color:var(--text);border-radius:16px;padding:14px 15px;font:inherit;outline:none;transition:.2s}textarea{min-height:126px;resize:vertical}.input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}
-.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.btn{appearance:none;border:0;border-radius:16px;padding:13px 18px;font-weight:900;font:inherit;cursor:pointer;transition:.18s;box-shadow:0 8px 18px rgba(0,0,0,.12)}.btn:hover{transform:translateY(-2px)}.btn.primary{background:var(--accent);color:var(--accentText)}.btn.secondary{background:var(--button2);color:var(--text);border:1px solid var(--line)}
-.error{display:none;margin-top:14px;padding:11px 13px;border-radius:14px;background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.22);color:#b91c1c;font-weight:700}.error.show{display:block}
-.result-card{border-radius:26px;padding:24px;background:var(--result-bg);border:1px solid var(--line);position:relative;overflow:hidden}.result-kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;font-weight:900;color:var(--muted)}.result-big{font-size:clamp(2rem,5vw,4rem);font-weight:950;letter-spacing:-.06em;line-height:1.02;margin:8px 0 6px;word-break:break-word}.muted{color:var(--muted)}.metric-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.metric{padding:13px;border-radius:16px;background:var(--metric-bg);border:1px solid var(--line)}.metric b{display:block;font-size:.8rem;color:var(--muted);margin-bottom:2px}.metric span{font-size:1.08rem;font-weight:900;word-break:break-word}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.tab{border:1px solid var(--line);background:var(--button2);color:var(--text);border-radius:999px;padding:9px 13px;font-weight:850;cursor:pointer}.tab.active{background:var(--accent);color:var(--accentText);border-color:transparent}
-.content{padding-top:70px}.article-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:32px;align-items:start}.article{min-width:0}.article h2{font-size:clamp(1.55rem,2.7vw,2.25rem);letter-spacing:-.04em;margin:44px 0 12px}.article h3{font-size:1.18rem;margin:28px 0 8px}.article p,.article li{color:var(--bodyText)}.formula{padding:18px 20px;border-radius:18px;background:var(--formula-bg);border:1px solid var(--line);font-weight:850;overflow:auto}.aside{position:sticky;top:18px;border-radius:24px;padding:20px}.aside h3{margin:0 0 10px}.aside a{display:block;text-decoration:none;padding:8px 0;border-bottom:1px solid var(--line);font-size:.92rem}.faq details{border:1px solid var(--line);background:var(--panel);border-radius:18px;padding:14px 16px;margin:10px 0}.faq summary{font-weight:900;cursor:pointer}.sources a{word-break:break-word}
-footer{border-top:1px solid var(--line);padding:28px 0 38px;color:var(--muted);font-size:.9rem}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-@media(max-width:860px){.article-grid{grid-template-columns:1fr}.aside{position:relative}.row3{grid-template-columns:1fr}.calc-shell{margin-top:-10px}}@media(max-width:620px){.row,.metric-grid{grid-template-columns:1fr}.topnav{display:none}.sitebar{padding:14px 0}.calc-card{border-radius:24px}.wrap{width:min(var(--max),calc(100% - 22px))}}
+    <!-- Primary Meta Tags -->
+<title>Z-Score Calculator – Find Z Score &amp; Tail Probabilities</title>
+<meta name="title" content="Z-Score Calculator – Find Z Score &amp; Tail Probabilities">
+<meta name="description" content="Calculate a z-score from a raw value, mean, and standard deviation, plus lower-tail and upper-tail probabilities for the standard normal distribution.">
 
-:root{--bg:#ecfffb;--text:#073b3a;--muted:#4c7774;--bodyText:#315f5c;--panel:rgba(249,255,254,.9);--glass:#dff8f3;--line:#c3e9e2;--accent:#0f9f8c;--accentText:#fff;--input-bg:#fbfffe;--input-line:#b8ddd7;--focus:rgba(15,159,140,.15);--button2:#def6f1;--result-bg:linear-gradient(145deg,#d7f8f0,#f8fffd);--metric-bg:#f8fffd;--formula-bg:#dcf7f2;--shadow:0 27px 65px rgba(17,105,94,.15)}
-.hero{padding:42px 0 120px;background:linear-gradient(180deg,#dffbf5,#f4fffc)}.hero-layout{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}.bell-card{height:320px;border-radius:40px;background:#f9fffd;border:1px solid #c5e8e2;box-shadow:0 28px 60px rgba(18,107,95,.16);display:grid;place-items:center;padding:20px}.bell-card svg{width:100%;height:100%}.z-layout{display:grid;grid-template-columns:1fr .92fr;gap:22px}.z-gauge{height:16px;border-radius:999px;background:linear-gradient(90deg,#a7f3d0,#0f9f8c,#a7f3d0);position:relative;margin:20px 0 6px}.z-pin{position:absolute;top:-8px;width:4px;height:32px;background:#053f3b;border-radius:4px;left:50%}@media(max-width:800px){.hero-layout,.z-layout{grid-template-columns:1fr}.bell-card{height:260px}}
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Z-Score Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate a z-score from a raw value, mean, and standard deviation, plus standard normal lower-tail and upper-tail probabilities.", "url": "/z-score-calculator/", "browserRequirements": "Requires JavaScript"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Math & Statistics", "item": "/math/"}, {"@type": "ListItem", "position": 3, "name": "Statistics & Probability", "item": "/math/statistics-probability/"}, {"@type": "ListItem", "position": 4, "name": "Z-Score Calculator", "item": "/z-score-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does a positive z-score mean?", "acceptedAnswer": {"@type": "Answer", "text": "A positive z-score means the raw value is above the mean. A z-score of 2 means the value is two standard deviations above the mean."}}, {"@type": "Question", "name": "What does z = 0 mean?", "acceptedAnswer": {"@type": "Answer", "text": "It means the raw value equals the mean exactly."}}, {"@type": "Question", "name": "Can a z-score be negative?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Negative z-scores indicate values below the mean."}}, {"@type": "Question", "name": "Is a high z-score always good?", "acceptedAnswer": {"@type": "Answer", "text": "No. A z-score only describes relative position. Whether a high or low value is desirable depends on what is being measured."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/><link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body data-cp-category="math" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../math/index.html">Math &amp; Statistics</a></li><li><a aria-current="page" href="index.html">Z-Score Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a href="../calculators/index.html">All calculators</a></div><header class="hero">
-<div class="wrap">
-<nav aria-label="Primary navigation" class="sitebar"><a class="brand" href="#">Calc<span>Pro</span></a><div class="topnav"><a href="#calculator">Calculator</a><a href="#guide">Guide</a><a href="#faq">FAQ</a></div></nav>
-<div class="hero-layout">
-<div><div class="breadcrumb"><a href="#">Home</a> / <a href="#">Math</a> / Z-Score Calculator</div><div class="pill">CalcPro · Statistics + Geometry</div><h1>Z-Score Calculator</h1><p>Standardize a value and see where it sits on the normal scale — in standard deviations from the mean.</p></div>
-<div aria-hidden="true" class="bell-card"><svg viewbox="0 0 520 260"><defs><lineargradient id="g" x1="0" x2="1"><stop stop-color="#bff6e9"></stop><stop offset=".5" stop-color="#0f9f8c"></stop><stop offset="1" stop-color="#bff6e9"></stop></lineargradient></defs><path d="M28 216 C120 214, 142 205, 172 176 C212 138, 216 58, 260 42 C304 58,308 138,348 176 C378 205,400 214,492 216" fill="none" stroke="url(#g)" stroke-linecap="round" stroke-width="16"></path><line stroke="#0a4d46" stroke-dasharray="8 8" stroke-width="3" x1="260" x2="260" y1="42" y2="220"></line><text fill="#0a4d46" font-size="24" font-weight="800" text-anchor="middle" x="260" y="245">z = 0</text></svg></div>
-</div>
-</div>
-</header>
-<div class="cp-page-layout"><main id="main"><h1 class="page-title">Z-Score Calculator</h1>
-<div class="wrap calc-shell" id="calculator"><section class="panel calc-card"><h2 class="calc-title">Z-Score Calculator</h2><p class="calc-sub">Calculate a z-score from a raw value, mean, and standard deviation, plus standard normal lower-tail and upper-tail probabilities.</p>
-<div class="z-layout">
-<section>
-<div class="row3"><div class="field"><label for="x">Raw value (x)</label><input class="input" id="x" step="any" type="number" value="85"/></div><div class="field"><label for="mu">Mean (μ)</label><input class="input" id="mu" step="any" type="number" value="70"/></div><div class="field"><label for="sigma">Standard deviation (σ)</label><input class="input" id="sigma" min="0" step="any" type="number" value="10"/></div></div>
-<div class="buttons"><button class="btn primary" id="calcBtn">Calculate z-score</button><button class="btn secondary" id="resetBtn">Reset</button></div><div class="error" id="error"></div>
-<div class="formula">z = (x − μ) / σ</div>
-</section>
-<section aria-live="polite" class="result-card">
-<div class="result-kicker">Standard score</div><div class="result-big" id="z">—</div><div class="muted" id="meaning">—</div><div class="z-gauge"><div class="z-pin" id="pin"></div></div>
-<div class="metric-grid"><div class="metric"><b>P(Z ≤ z)</b><span id="lower">—</span></div><div class="metric"><b>P(Z &gt; z)</b><span id="upper">—</span></div><div class="metric"><b>Percentile</b><span id="pct">—</span></div><div class="metric"><b>Distance from mean</b><span id="dist">—</span></div></div>
-</section>
-</div>
-</section></div><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<div class="wrap content" id="guide">
-<div class="article-grid">
-<article class="article">
-<section id="s1"><h2>What Is a Z-Score Calculator?</h2><p>A z-score calculator standardizes a raw value by expressing how many standard deviations it lies above or below a mean. Positive z-scores are above the mean, negative z-scores are below it, and z = 0 is exactly at the mean.</p></section><section id="s2"><h2>How to Use the Z-Score Calculator</h2><p>Enter the raw value x, the mean μ, and a positive standard deviation σ. The calculator reports the z-score and approximate lower-tail and upper-tail probabilities for the standard normal distribution.</p></section><section id="s3"><h2>Z-Score Formula</h2><div class="formula">The population standard-score formula is z = (x − μ)/σ. Subtract the mean from the observation and divide the difference by the population standard deviation.</div></section><section id="s4"><h2>Calculation Example</h2><p>If x = 85, μ = 70, and σ = 10, then z = (85 − 70)/10 = 1.5. The observation is 1.5 standard deviations above the mean.</p></section><section id="s5"><h2>Understanding the Probability Output</h2><p>The lower-tail probability P(Z ≤ z) is the area to the left of the z-score under a standard normal curve. The percentile is that probability expressed as a percentage.</p></section><section id="s6"><h2>Limitations</h2><p>A z-score itself is a standardization and can be calculated for any numeric value with a nonzero standard deviation. Interpreting the displayed probabilities as model probabilities assumes the standardized variable follows a normal distribution.</p></section>
-<section class="faq" id="faq"><h2>Frequently Asked Questions</h2><details><summary>What does a positive z-score mean?</summary><p>A positive z-score means the raw value is above the mean. A z-score of 2 means the value is two standard deviations above the mean.</p></details><details><summary>What does z = 0 mean?</summary><p>It means the raw value equals the mean exactly.</p></details><details><summary>Can a z-score be negative?</summary><p>Yes. Negative z-scores indicate values below the mean.</p></details><details><summary>Is a high z-score always good?</summary><p>No. A z-score only describes relative position. Whether a high or low value is desirable depends on what is being measured.</p></details></section>
-<section class="sources" id="sources"><h2>Sources and Methodology</h2><p>Formulas and calculator behavior were cross-checked against the sources below. Page copy and visual design are original. Results are computed locally in your browser.</p><ul><li><a href="https://www.calculator.net/z-score-calculator.html" rel="noopener" target="_blank">Calculator.net Z-Score Calculator</a></li><li><a href="https://openstax.org/books/contemporary-mathematics/pages/8-formula-review" rel="noopener" target="_blank">OpenStax – Contemporary Mathematics Formula Review</a></li></ul></section>
-</article>
-<aside class="aside panel"><h3>On this page</h3><a href="#s1">What Is a Z-Score Calculator?</a><a href="#s2">How to Use the Z-Score Calculator</a><a href="#s3">Z-Score Formula</a><a href="#s4">Calculation Example</a><a href="#s5">Understanding the Probability Output</a><a href="#s6">Limitations</a><a href="#faq">Frequently Asked Questions</a><a href="#sources">Sources &amp; Methodology</a></aside>
-</div>
-</div>
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/z-score-calculator/">
 
-<script class="cp-calculator-data" type="application/json">{"index":"149","Batch":"15","Calculator / Page":"Z-Score Calculator","Slug":"z-score-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Calculate a z-score from a raw value, mean, and standard deviation, plus standard normal lower-tail and upper-tail probabilities.","Formula / Algorithm Used in Tool":"Z-Score Formula: The population standard-score formula is z = (x − μ)/σ. Subtract the mean from the observation and divide the difference by the population standard deviation.","Required User Inputs":"Raw value (x); Mean (μ); Standard deviation (σ)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Raw value (x), Mean (μ), Standard deviation (σ). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"A z-score itself is a standardization and can be calculated for any numeric value with a nonzero standard deviation. Interpreting the displayed probabilities as model probabilities assumes the standardized variable follows a normal distribution.","Current Source URLs in Page":"https://www.calculator.net/z-score-calculator.html | https://openstax.org/books/contemporary-mathematics/pages/8-formula-review","Implementation Path":"/z-score-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Math &amp; Statistics</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../p-value-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>P-Value Calculator</strong><small>Calculate left-tail, right-tail, center, between, or two-tail p-values from a z-sco…</small></span></a><a class="cp-related-link" href="../confidence-interval-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Confidence Interval Calculator</strong><small>Calculate a two-sided confidence interval for a mean using a t interval for sample…</small></span></a><a class="cp-related-link" href="../standard-deviation-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Standard Deviation Calculator</strong><small>Calculate sample or population standard deviation, variance, mean, sum, count, stan…</small></span></a><a class="cp-related-link" href="../statistics-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Statistics Calculator</strong><small>Calculate count, sum, mean, median, mode, range, quartiles, variance, standard devi…</small></span></a><a class="cp-related-link" href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the simplified fraction, m…</small></span></a><a class="cp-related-link" href="../math-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Math Calculator</strong><small>Perform basic arithmetic with addition, subtraction, multiplication, division, pare…</small></span></a><a class="cp-related-link" href="../percent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Percent Calculator</strong><small>Calculate a percentage of a number, find what percent one value is of another, calc…</small></span></a><a class="cp-related-link" href="../exponent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Exponent Calculator</strong><small>Calculate a number raised to any valid real exponent and view the result in standar…</small></span></a></div><a class="cp-side-category" href="../math/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-const $=id=>document.getElementById(id),fmt=n=>Number.isFinite(n)?Number(n.toPrecision(10)).toString():'—';
-function erf(x){const s=x<0?-1:1; x=Math.abs(x);const a1=.254829592,a2=-.284496736,a3=1.421413741,a4=-1.453152027,a5=1.061405429,p=.3275911,t=1/(1+p*x);return s*(1-(((((a5*t+a4)*t+a3)*t+a2)*t+a1)*t)*Math.exp(-x*x))}
-function cdf(z){return .5*(1+erf(z/Math.SQRT2))}
-function render(){const x=+$('x').value,m=+$('mu').value,s=+$('sigma').value,e=$('error');e.classList.remove('show');if(![x,m,s].every(Number.isFinite)||s<=0){e.textContent='Enter finite numbers and a standard deviation greater than 0.';e.classList.add('show');return}const z=(x-m)/s,p=cdf(z);$('z').textContent=fmt(z);$('lower').textContent=fmt(p);$('upper').textContent=fmt(1-p);$('pct').textContent=fmt(p*100)+'%';$('dist').textContent=fmt(Math.abs(z))+' SD';$('meaning').textContent=z===0?'The value is exactly at the mean.':`The value is ${fmt(Math.abs(z))} standard deviation${Math.abs(z)===1?'':'s'} ${z>0?'above':'below'} the mean.`;const pos=Math.max(2,Math.min(98,50+z/4*48));$('pin').style.left=pos+'%'}
-$('calcBtn').onclick=render;$('resetBtn').onclick=()=>{$('x').value=85;$('mu').value=70;$('sigma').value=10;render()};render();
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/z-score-calculator/">
+<meta property="og:title" content="Z-Score Calculator – Find Z Score &amp; Tail Probabilities">
+<meta property="og:description" content="Calculate a z-score from a raw value, mean, and standard deviation, plus lower-tail and upper-tail probabilities for the standard normal distribution.">
+<meta property="og:site_name" content="Z-Score Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/z-score-calculator/">
+<meta name="twitter:title" content="Z-Score Calculator – Find Z Score &amp; Tail Probabilities">
+<meta name="twitter:description" content="Calculate a z-score from a raw value, mean, and standard deviation, plus lower-tail and upper-tail probabilities for the standard normal distribution.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65
+        }
+
+        :root {
+            --max: 1180px
+        }
+
+        a {
+            color: inherit
+        }
+
+        .wrap {
+            width: min(var(--max), calc(100% - 32px));
+            margin: auto
+        }
+
+        .sitebar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            gap: 18px
+        }
+
+        .brand {
+            font-weight: 900;
+            letter-spacing: -.04em;
+            font-size: 1.25rem;
+            text-decoration: none
+        }
+
+        .brand span {
+            color: var(--accent)
+        }
+
+        .topnav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .topnav a {
+            text-decoration: none;
+            font-size: .9rem;
+            padding: 9px 12px;
+            border-radius: 999px;
+            background: var(--glass);
+            border: 1px solid var(--line)
+        }
+
+        .breadcrumb {
+            font-size: .85rem;
+            opacity: .78;
+            margin-bottom: 14px
+        }
+
+        .breadcrumb a {
+            text-decoration: none
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero h1 {
+            font-size: clamp(2.35rem, 5vw, 5rem);
+            line-height: .98;
+            letter-spacing: -.065em;
+            margin: 0 0 18px;
+            max-width: 860px
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 1.8vw, 1.18rem);
+            max-width: 720px;
+            margin: 0;
+            color: var(--muted)
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: var(--glass);
+            border: 1px solid var(--line);
+            font-size: .82rem;
+            font-weight: 800;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            margin-bottom: 18px
+        }
+
+        main {
+            padding-bottom: 60px
+        }
+
+        .calc-shell {
+            position: relative;
+             z-index: 4
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px)
+        }
+
+        .calc-card {
+            border-radius: 30px;
+            padding: clamp(20px, 4vw, 38px)
+        }
+
+        .calc-title {
+            font-size: 1.45rem;
+            font-weight: 900;
+            letter-spacing: -.03em;
+            margin: 0 0 6px
+        }
+
+        .calc-sub {
+            margin: 0 0 24px;
+            color: var(--muted)
+        }
+
+        label {
+            display: block;
+            font-weight: 800;
+            font-size: .9rem;
+            margin-bottom: 7px
+        }
+
+        .field {
+            margin-bottom: 15px
+        }
+
+        .input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--input-line);
+            background: var(--input-bg);
+            color: var(--text);
+            border-radius: 16px;
+            padding: 14px 15px;
+            font: inherit;
+            outline: none;
+            transition: .2s
+        }
+
+        textarea {
+            min-height: 126px;
+            resize: vertical
+        }
+
+        .input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--focus)
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .row3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .btn {
+            appearance: none;
+            border: 0;
+            border-radius: 16px;
+            padding: 13px 18px;
+            font-weight: 900;
+            font: inherit;
+            cursor: pointer;
+            transition: .18s;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, .12)
+        }
+
+        .btn:hover {
+            transform: translateY(-2px)
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            color: var(--accentText)
+        }
+
+        .btn.secondary {
+            background: var(--button2);
+            color: var(--text);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            display: none;
+            margin-top: 14px;
+            padding: 11px 13px;
+            border-radius: 14px;
+            background: rgba(220, 38, 38, .1);
+            border: 1px solid rgba(220, 38, 38, .22);
+            color: #b91c1c;
+            font-weight: 700
+        }
+
+        .error.show {
+            display: block
+        }
+
+        .result-card {
+            border-radius: 26px;
+            padding: 24px;
+            background: var(--result-bg);
+            border: 1px solid var(--line);
+            position: relative;
+            overflow: hidden
+        }
+
+        .result-kicker {
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            font-weight: 900;
+            color: var(--muted)
+        }
+
+        .result-big {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 950;
+            letter-spacing: -.06em;
+            line-height: 1.02;
+            margin: 8px 0 6px;
+            word-break: break-word
+        }
+
+        .muted {
+            color: var(--muted)
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 14px
+        }
+
+        .metric {
+            padding: 13px;
+            border-radius: 16px;
+            background: var(--metric-bg);
+            border: 1px solid var(--line)
+        }
+
+        .metric b {
+            display: block;
+            font-size: .8rem;
+            color: var(--muted);
+            margin-bottom: 2px
+        }
+
+        .metric span {
+            font-size: 1.08rem;
+            font-weight: 900;
+            word-break: break-word
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 0 0 18px
+        }
+
+        .tab {
+            border: 1px solid var(--line);
+            background: var(--button2);
+            color: var(--text);
+            border-radius: 999px;
+            padding: 9px 13px;
+            font-weight: 850;
+            cursor: pointer
+        }
+
+        .tab.active {
+            background: var(--accent);
+            color: var(--accentText);
+            border-color: transparent
+        }
+
+        .content {
+            padding-top: 70px
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 300px;
+            gap: 32px;
+            align-items: start
+        }
+
+        .article {
+            min-width: 0
+        }
+
+        .article h2 {
+            font-size: clamp(1.55rem, 2.7vw, 2.25rem);
+            letter-spacing: -.04em;
+            margin: 44px 0 12px
+        }
+
+        .article h3 {
+            font-size: 1.18rem;
+            margin: 28px 0 8px
+        }
+
+        .article p,
+        .article li {
+            color: var(--bodyText)
+        }
+
+        .formula {
+            padding: 18px 20px;
+            border-radius: 18px;
+            background: var(--formula-bg);
+            border: 1px solid var(--line);
+            font-weight: 850;
+            overflow: auto
+        }
+
+        .aside {
+            position: sticky;
+            top: 18px;
+            border-radius: 24px;
+            padding: 20px
+        }
+
+        .aside h3 {
+            margin: 0 0 10px
+        }
+
+        .aside a {
+            display: block;
+            text-decoration: none;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--line);
+            font-size: .92rem
+        }
+
+        .faq details {
+            border: 1px solid var(--line);
+            background: var(--panel);
+            border-radius: 18px;
+            padding: 14px 16px;
+            margin: 10px 0
+        }
+
+        .faq summary {
+            font-weight: 900;
+            cursor: pointer
+        }
+
+        .sources a {
+            word-break: break-word
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 28px 0 38px;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0
+        }
+
+        @media(max-width:860px) {
+            .article-grid {
+                grid-template-columns: 1fr
+            }
+
+            .aside {
+                position: relative
+            }
+
+            .row3 {
+                grid-template-columns: 1fr
+            }
+ 
+        }
+
+        @media(max-width:620px) {
+
+            .row,
+            .metric-grid {
+                grid-template-columns: 1fr
+            }
+
+            .topnav {
+                display: none
+            }
+
+            .sitebar {
+                padding: 14px 0
+            }
+
+            .calc-card {
+                border-radius: 24px
+            }
+
+            .wrap {
+                width: min(var(--max), calc(100% - 22px))
+            }
+        }
+
+        :root {
+            --bg: #ecfffb;
+            --text: #073b3a;
+            --muted: #4c7774;
+            --bodyText: #315f5c;
+            --panel: rgba(249, 255, 254, .9);
+            --glass: #dff8f3;
+            --line: #c3e9e2;
+            --accent: #0f9f8c;
+            --accentText: #fff;
+            --input-bg: #fbfffe;
+            --input-line: #b8ddd7;
+            --focus: rgba(15, 159, 140, .15);
+            --button2: #def6f1;
+            --result-bg: linear-gradient(145deg, #d7f8f0, #f8fffd);
+            --metric-bg: #f8fffd;
+            --formula-bg: #dcf7f2;
+            --shadow: 0 27px 65px rgba(17, 105, 94, .15)
+        }
+
+        .hero {
+            padding: 42px 0 120px;
+            background: linear-gradient(180deg, #dffbf5, #f4fffc)
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 44px;
+            align-items: center
+        }
+
+        .bell-card {
+            height: 320px;
+            border-radius: 40px;
+            background: #f9fffd;
+            border: 1px solid #c5e8e2;
+            box-shadow: 0 28px 60px rgba(18, 107, 95, .16);
+            display: grid;
+            place-items: center;
+            padding: 20px
+        }
+
+        .bell-card svg {
+            width: 100%;
+            height: 100%
+        }
+
+        .z-layout {
+            display: grid;
+            grid-template-columns: 1fr .92fr;
+            gap: 22px
+        }
+
+        .z-gauge {
+            height: 16px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #a7f3d0, #0f9f8c, #a7f3d0);
+            position: relative;
+            margin: 20px 0 6px
+        }
+
+        .z-pin {
+            position: absolute;
+            top: -8px;
+            width: 4px;
+            height: 32px;
+            background: #053f3b;
+            border-radius: 4px;
+            left: 50%
+        }
+
+        @media(max-width:800px) {
+
+            .hero-layout,
+            .z-layout {
+                grid-template-columns: 1fr
+            }
+
+            .bell-card {
+                height: 260px
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/z-score-calculator/#webapplication",
+      "name": "Z-Score Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/z-score-calculator/",
+      "description": "Calculate a z-score from a raw value, mean, and standard deviation, plus lower-tail and upper-tail probabilities for the standard normal distribution.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/z-score-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Z-Score Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/z-score-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/z-score-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does a z-score tell you?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A z-score tells you how many standard deviations a value is above or below the mean. Positive scores are above the mean, while negative scores are below it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the formula for a z-score?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For a population mean and population standard deviation: z = (x − μ) / σ, where x is the raw value, μ is the mean, and σ is the population standard deviation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a z-score be negative?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A negative z-score means the raw value is below the mean. For example, z = −1.5 means the value is 1.5 standard deviations below the mean."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a z-score of 0 mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A z-score of 0 means the raw value is exactly equal to the mean."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can the standard deviation be zero?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The formula divides by the standard deviation, so a zero standard deviation does not produce a defined z-score."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a z-score require normally distributed data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The standardization calculation itself can be performed from a numeric value, mean, and valid standard deviation. However, using the resulting z-score to interpret standard normal tail probabilities assumes a normal-distribution model."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a z-score a percentage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A z-score is a unitless standardized value, not a percentage. The lower-tail or upper-tail probability associated with the z-score can be expressed as a decimal or percentage."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart OnlineFree",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script><script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="math" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../math/index.html">Math &amp; Statistics</a></li>
+            <li><a aria-current="page" href="index.html">Z-Score Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Z-Score Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+            <div class="wrap calc-shell" id="calculator">
+                <section class="panel calc-card">
+                    <h2 class="calc-title">Z-Score Calculator</h2>
+                    <p class="calc-sub">Calculate a z-score from a raw value, mean, and standard deviation, plus
+                        standard normal lower-tail and upper-tail probabilities.</p>
+                    <div class="z-layout">
+                        <section>
+                            <div class="row3">
+                                <div class="field"><label for="x">Raw value (x)</label><input class="input" id="x"
+                                        step="any" type="number" value="85" /></div>
+                                <div class="field"><label for="mu">Mean (μ)</label><input class="input" id="mu"
+                                        step="any" type="number" value="70" /></div>
+                                <div class="field"><label for="sigma">Standard deviation (σ)</label><input class="input"
+                                        id="sigma" min="0" step="any" type="number" value="10" /></div>
+                            </div>
+                            <div class="buttons"><button class="btn primary" id="calcBtn">Calculate
+                                    z-score</button><button class="btn secondary" id="resetBtn">Reset</button></div>
+                            <div class="error" id="error"></div>
+                            <div class="formula">z = (x − μ) / σ</div>
+                        </section>
+                        <section aria-live="polite" class="result-card">
+                            <div class="result-kicker">Standard score</div>
+                            <div class="result-big" id="z">—</div>
+                            <div class="muted" id="meaning">—</div>
+                            <div class="z-gauge">
+                                <div class="z-pin" id="pin"></div>
+                            </div>
+                            <div class="metric-grid">
+                                <div class="metric"><b>P(Z ≤ z)</b><span id="lower">—</span></div>
+                                <div class="metric"><b>P(Z &gt; z)</b><span id="upper">—</span></div>
+                                <div class="metric"><b>Percentile</b><span id="pct">—</span></div>
+                                <div class="metric"><b>Distance from mean</b><span id="dist">—</span></div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <div class="wrap content" id="guide">
+                
+
+<article class="article">
+
+ 
+  <p>Use the Z-Score Calculator to find how many standard deviations a raw value is above or below a population mean. Enter the raw value, mean, and standard deviation to calculate the z-score and its standard normal lower-tail and upper-tail probabilities.</p>
+
+  <section id="what">
+    <h2>What Is the Z-Score Calculator?</h2>
+    <p>A z-score, also called a standard score, measures the position of a value relative to a mean in units of standard deviation. A positive z-score means the value is above the mean, a negative z-score means it is below the mean, and a z-score of 0 means the value equals the mean.</p>
+    <p>This calculator is useful when you want to standardize a value or compare its relative position within a distribution.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Z-Score Calculator</h2>
+    <p>Enter these three values:</p>
+    <ul>
+      <li><strong>Raw value (x):</strong> The individual value you want to standardize.</li>
+      <li><strong>Mean (μ):</strong> The population mean used as the reference point.</li>
+      <li><strong>Standard deviation (σ):</strong> The population standard deviation. It must be greater than 0.</li>
+    </ul>
+    <p>The raw value, mean, and standard deviation should use the same measurement unit. The resulting z-score has no unit.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+    <p>The calculator uses the population z-score formula:</p>
+
+    <div class="formula">z=x−μσz=\frac{x-\mu}{\sigma}</div>
+
+    <p>OpenStax defines the same standard-score calculation as the difference between the observation and population mean divided by the population standard deviation.</p>
+
+    <h3>Variables</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>z</strong></td>
+          <td>Z-score or standardized score</td>
+          <td>Unitless</td>
+        </tr>
+        <tr>
+          <td><strong>x</strong></td>
+          <td>Raw value or observation</td>
+          <td>Same unit as the data</td>
+        </tr>
+        <tr>
+          <td><strong>μ</strong></td>
+          <td>Population mean</td>
+          <td>Same unit as x</td>
+        </tr>
+        <tr>
+          <td><strong>σ</strong></td>
+          <td>Population standard deviation</td>
+          <td>Same unit as x</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Calculation Sequence</h3>
+    <ol>
+      <li>Subtract the mean from the raw value:<br>
+        <div class="formula">x−μx-\mu</div>
+      </li>
+      <li>Divide that difference by the standard deviation:<br>
+        <div class="formula">z=x−μσz=\frac{x-\mu}{\sigma}</div>
+      </li>
+      <li>Use the calculated z-score to determine the displayed standard normal tail probabilities.</li>
+    </ol>
+
+    <h3>Lower-Tail Probability</h3>
+    <p>For the standard normal model, the lower-tail probability represents the cumulative probability at or below the calculated z-score:</p>
+
+    <div class="formula">P(Z≤z)=Φ(z)P(Z\le z)=\Phi(z)</div>
+
+    <p>where <strong>Φ(z)</strong> is the cumulative distribution function of the standard normal distribution.</p>
+
+    <h3>Upper-Tail Probability</h3>
+    <p>The upper-tail probability is the remaining probability above the calculated z-score:</p>
+
+    <div class="formula">P(Z&gt;z)=1−Φ(z)P(Z&gt;z)=1-\Phi(z)</div>
+
+    <p>NIST's standard normal tables show how cumulative probabilities can be obtained from a standardized value and how the complementary probability is used for the opposite tail.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+    <p>Suppose:</p>
+
+    <h3>Inputs</h3>
+    <ul>
+      <li>Raw value, <strong>x = 85</strong></li>
+      <li>Mean, <strong>μ = 70</strong></li>
+      <li>Standard deviation, <strong>σ = 10</strong></li>
+    </ul>
+
+    <h3>Step 1: Find the Difference</h3>
+    <div class="formula">85−70=1585-70=15</div>
+
+    <h3>Step 2: Calculate the Z-Score</h3>
+    <div class="formula">z=1510=1.5z=\frac{15}{10}=1.5</div>
+
+    <h3>Step 3: Find the Tail Probabilities</h3>
+    <p>For <strong>z = 1.5</strong>, the standard normal cumulative probability is approximately:</p>
+
+    <div class="formula">Φ(1.5)≈0.9332\Phi(1.5)\approx0.9332</div>
+
+    <p>Therefore:</p>
+
+    <p><strong>Lower-tail probability:</strong></p>
+    <div class="formula">0.9332≈93.32%0.9332\approx93.32\\%</div>
+
+    <p><strong>Upper-tail probability:</strong></p>
+    <div class="formula">1−0.9332=0.06681-0.9332=0.0668 0.0668≈6.68%0.0668\approx6.68\\%</div>
+
+    <h3>Final Result</h3>
+    <ul>
+      <li><strong>Z-score:</strong> 1.5</li>
+      <li><strong>Lower-tail probability:</strong> approximately 93.32%</li>
+      <li><strong>Upper-tail probability:</strong> approximately 6.68%</li>
+    </ul>
+
+    <p>A z-score of <strong>1.5</strong> means the raw value is 1.5 standard deviations above the mean.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Z-Score</h3>
+    <p>The z-score shows the raw value's distance from the mean in standard deviation units.</p>
+    <ul>
+      <li><strong>z &gt; 0:</strong> The value is above the mean.</li>
+      <li><strong>z &lt; 0:</strong> The value is below the mean.</li>
+      <li><strong>z = 0:</strong> The value equals the mean.</li>
+    </ul>
+
+    <p>For example, a z-score of <strong>2</strong> means the value is two standard deviations above the mean, while <strong>−2</strong> means it is two standard deviations below the mean.</p>
+
+    <h3>Lower-Tail Probability</h3>
+    <p>The lower-tail probability represents the area of the standard normal distribution at or below the calculated z-score.</p>
+
+    <p>A result of <strong>0.9332</strong>, for example, represents about <strong>93.32%</strong> of the standard normal distribution below that z-score.</p>
+
+    <h3>Upper-Tail Probability</h3>
+    <p>The upper-tail probability represents the area above the calculated z-score.</p>
+
+    <p>Because the total probability is 1, the lower-tail and upper-tail probabilities add to approximately 1, apart from rounding.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The calculator uses the population standard-score formula <strong>z = (x − μ) / σ</strong>.</p>
+
+    <p>The standard deviation must be greater than zero. A standard deviation of zero makes the calculation undefined because division by zero is not possible.</p>
+
+    <p>A z-score can standardize a numeric value whenever a valid mean and nonzero standard deviation are available. However, interpreting the displayed tail values as probabilities assumes the standardized variable is appropriately modeled by a normal distribution.</p>
+
+    <p>A z-score is not automatically the same thing as a percentile. A percentile interpretation requires a distribution model, such as the standard normal distribution used for the displayed tail probabilities.</p>
+
+    <p>Results may differ slightly from printed z-tables or other software because of rounding and numerical precision.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What does a z-score tell you?</summary>
+      <p>A z-score tells you how many standard deviations a value is above or below the mean. Positive scores are above the mean, while negative scores are below it.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What is the formula for a z-score?</summary>
+      <p>For a population mean and population standard deviation:</p>
+      <div class="formula">z=x−μσz=\frac{x-\mu}{\sigma}</div>
+      <p>where x is the raw value, μ is the mean, and σ is the population standard deviation.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can a z-score be negative?</summary>
+      <p>Yes. A negative z-score means the raw value is below the mean. For example, <strong>z = −1.5</strong> means the value is 1.5 standard deviations below the mean.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What does a z-score of 0 mean?</summary>
+      <p>A z-score of 0 means the raw value is exactly equal to the mean.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can the standard deviation be zero?</summary>
+      <p>No. The formula divides by the standard deviation, so a zero standard deviation does not produce a defined z-score.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does a z-score require normally distributed data?</summary>
+      <p>The standardization calculation itself can be performed from a numeric value, mean, and valid standard deviation. However, using the resulting z-score to interpret standard normal tail probabilities assumes a normal-distribution model.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is a z-score a percentage?</summary>
+      <p>No. A z-score is a unitless standardized value, not a percentage. The lower-tail or upper-tail probability associated with the z-score can be expressed as a decimal or percentage.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+    <ul class="sources">
+      <li>
+        <strong>OpenStax — The Standard Normal Distribution</strong><br>
+        Supports the z-score formula, interpretation of positive and negative z-scores, and the standard normal distribution.
+        <a href="https://openstax.org/books/statistics/pages/6-1-the-standard-normal-distribution?utm_source=chatgpt.com" rel="noopener" target="_blank"> OpenStax — The Standard Normal Distribution</a>
+      </li>
+      <li>
+        <strong>OpenStax — Contemporary Mathematics Formula Review</strong><br>
+        Supports the population standardized-score formula and variable definitions.
+        <a href="https://openstax.org/books/contemporary-mathematics/pages/8-formula-review?utm_source=chatgpt.com" rel="noopener" target="_blank"> OpenStax — Contemporary Mathematics Formula Review</a>
+      </li>
+      <li>
+        <strong>NIST — Cumulative Distribution Function of the Standard Normal Distribution</strong><br>
+        Supports standard-normal cumulative probabilities, complementary tail probabilities, and standardization using the mean and standard deviation.
+        <a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda3671.htm?utm_source=chatgpt.com" rel="noopener" target="_blank"> NIST — Standard Normal Distribution CDF</a>
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="https://example.com/standard-deviation-calculator/?utm_source=chatgpt.com">Standard Deviation Calculator</a></li>
+      <li><a href="https://example.com/statistics-calculator/?utm_source=chatgpt.com">Statistics Calculator</a></li>
+      <li><a href="https://example.com/probability-calculator/?utm_source=chatgpt.com">Probability Calculator</a></li>
+      <li><a href="https://example.com/p-value-calculator/?utm_source=chatgpt.com">P-Value Calculator</a></li>
+      <li><a href="https://example.com/confidence-interval-calculator/?utm_source=chatgpt.com">Confidence Interval Calculator</a></li>
+      <li><a href="https://example.com/mean-median-mode-range-calculator/?utm_source=chatgpt.com">Mean Median Mode Range Calculator</a></li>
+    </ul>
+  </section>
+
+  <p>Methodology note: This page is structured to describe the calculator's actual purpose, inputs, calculations, outputs, assumptions, and limitations without adding unsupported functionality.</p>
+
+</article>
+
+
+
+            </div>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"149","Batch":"15","Calculator / Page":"Z-Score Calculator","Slug":"z-score-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Calculate a z-score from a raw value, mean, and standard deviation, plus standard normal lower-tail and upper-tail probabilities.","Formula / Algorithm Used in Tool":"Z-Score Formula: The population standard-score formula is z = (x − μ)/σ. Subtract the mean from the observation and divide the difference by the population standard deviation.","Required User Inputs":"Raw value (x); Mean (μ); Standard deviation (σ)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Raw value (x), Mean (μ), Standard deviation (σ). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"A z-score itself is a standardization and can be calculated for any numeric value with a nonzero standard deviation. Interpreting the displayed probabilities as model probabilities assumes the standardized variable follows a normal distribution.","Current Source URLs in Page":"https://www.calculator.net/z-score-calculator.html | https://openstax.org/books/contemporary-mathematics/pages/8-formula-review","Implementation Path":"/z-score-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Math &amp; Statistics</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../p-value-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>P-Value Calculator</strong><small>Calculate
+                            left-tail, right-tail, center, between, or two-tail p-values from a
+                            z-sco…</small></span></a><a class="cp-related-link"
+                    href="../confidence-interval-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Confidence Interval
+                            Calculator</strong><small>Calculate a two-sided confidence interval for a mean using a t
+                            interval for sample…</small></span></a><a class="cp-related-link"
+                    href="../standard-deviation-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Standard Deviation
+                            Calculator</strong><small>Calculate sample or population standard deviation, variance, mean,
+                            sum, count, stan…</small></span></a><a class="cp-related-link"
+                    href="../statistics-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Statistics Calculator</strong><small>Calculate
+                            count, sum, mean, median, mode, range, quartiles, variance, standard
+                            devi…</small></span></a><a class="cp-related-link"
+                    href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction
+                            Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the
+                            simplified fraction, m…</small></span></a><a class="cp-related-link"
+                    href="../math-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Math
+                            Calculator</strong><small>Perform basic arithmetic with addition, subtraction,
+                            multiplication, division, pare…</small></span></a><a class="cp-related-link"
+                    href="../percent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Percent
+                            Calculator</strong><small>Calculate a percentage of a number, find what percent one value is
+                            of another, calc…</small></span></a><a class="cp-related-link"
+                    href="../exponent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Exponent
+                            Calculator</strong><small>Calculate a number raised to any valid real exponent and view the
+                            result in standar…</small></span></a></div><a class="cp-side-category"
+                href="../math/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const $ = id => document.getElementById(id), fmt = n => Number.isFinite(n) ? Number(n.toPrecision(10)).toString() : '—';
+        function erf(x) { const s = x < 0 ? -1 : 1; x = Math.abs(x); const a1 = .254829592, a2 = -.284496736, a3 = 1.421413741, a4 = -1.453152027, a5 = 1.061405429, p = .3275911, t = 1 / (1 + p * x); return s * (1 - (((((a5 * t + a4) * t + a3) * t + a2) * t + a1) * t) * Math.exp(-x * x)) }
+        function cdf(z) { return .5 * (1 + erf(z / Math.SQRT2)) }
+        function render() { const x = +$('x').value, m = +$('mu').value, s = +$('sigma').value, e = $('error'); e.classList.remove('show'); if (![x, m, s].every(Number.isFinite) || s <= 0) { e.textContent = 'Enter finite numbers and a standard deviation greater than 0.'; e.classList.add('show'); return } const z = (x - m) / s, p = cdf(z); $('z').textContent = fmt(z); $('lower').textContent = fmt(p); $('upper').textContent = fmt(1 - p); $('pct').textContent = fmt(p * 100) + '%'; $('dist').textContent = fmt(Math.abs(z)) + ' SD'; $('meaning').textContent = z === 0 ? 'The value is exactly at the mean.' : `The value is ${fmt(Math.abs(z))} standard deviation${Math.abs(z) === 1 ? '' : 's'} ${z > 0 ? 'above' : 'below'} the mean.`; const pos = Math.max(2, Math.min(98, 50 + z / 4 * 48)); $('pin').style.left = pos + '%' }
+        $('calcBtn').onclick = render; $('resetBtn').onclick = () => { $('x').value = 85; $('mu').value = 70; $('sigma').value = 10; render() }; render();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

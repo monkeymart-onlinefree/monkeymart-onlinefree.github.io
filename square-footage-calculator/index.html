@@ -1,113 +1,1213 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>Square Footage Calculator | CalcPro</title>
-<meta content="Calculate square footage for rectangles, triangles, and circles, with square-meter conversion and optional cost per square foot." name="description"/>
-<meta content="index,follow" name="robots"/>
-<link href="../square-footage-calculator/" rel="canonical"/>
-<meta content="Square Footage Calculator | CalcPro" property="og:title"/>
-<meta content="Calculate square footage for rectangles, triangles, and circles, with square-meter conversion and optional cost per square foot." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="/square-footage-calculator/" property="og:url"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>:root{--bg:#0d2745;--text:#f3f8ff;--muted:#b1c7dd;--bodyText:#c8d8e8;--accent:#fbbf24;--accentText:#1f2937;--accentShadow:#fbbf2433;--hero:linear-gradient(135deg,#102c4e,#153d69);--heroText:#c4d8eb;--panel:#153657e8;--article:#12304f;--input:#0e2945;--result:linear-gradient(135deg,#183f66,#0e2945);--mini:#173a5e;--chip:#ffffff10;--code:#0c2947;--line:#dbeafe22;--lineStrong:#dbeafe45;--focus:#fbbf2430;--shadow:0 30px 85px #02061766;--softShadow:0 18px 45px #02061745}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.62}
-a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
-.container{width:min(1180px,calc(100% - 32px));margin:auto}
-.sitebar{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:16px}.brand{font-weight:900;letter-spacing:-.04em;font-size:1.25rem}.brand span{color:var(--accent)}
-.crumbs{font-size:.9rem;color:var(--muted);margin:12px 0 0}.crumbs a{color:inherit}
-.hero{position:relative;overflow:hidden;margin:12px auto 30px;border-radius:32px;padding:clamp(28px,5vw,70px);background:var(--hero);box-shadow:var(--shadow);border:1px solid var(--line);isolation:isolate}
-.hero h1{font-size:clamp(2.35rem,5.7vw,5.2rem);line-height:.96;letter-spacing:-.065em;margin:12px 0 20px;max-width:800px}.hero p{font-size:clamp(1rem,1.5vw,1.18rem);max-width:720px;color:var(--heroText,var(--muted));margin:0}
-.eyebrow{display:inline-flex;gap:8px;align-items:center;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.76rem;padding:8px 12px;border-radius:99px;background:var(--chip);border:1px solid var(--line)}
-.hero-art{position:absolute;right:3%;top:50%;transform:translateY(-50%);width:min(34vw,360px);height:min(34vw,360px);pointer-events:none;opacity:.96}
-.calc-zone{margin:0 auto 34px}.calc-shell{position:relative;background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:28px;padding:clamp(20px,3vw,34px);backdrop-filter:blur(14px)}
-.calc-title{margin:0 0 5px;font-size:1.5rem;letter-spacing:-.03em}.calc-note{margin:0 0 22px;color:var(--muted)}
-.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
-label{font-size:.9rem;font-weight:750}.input-row{display:flex;gap:8px}input,select,textarea,button{font:inherit}
-input,select,textarea{width:100%;border:1px solid var(--lineStrong);background:var(--input);color:var(--text);border-radius:14px;padding:13px 14px;outline:none;transition:.2s}
-input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}
-.unit{max-width:122px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-button{border:0;border-radius:14px;padding:13px 18px;font-weight:850;cursor:pointer;transition:transform .18s,box-shadow .18s}
-button:hover{transform:translateY(-2px)}.primary{background:var(--accent);color:var(--accentText,#fff);box-shadow:0 10px 25px var(--accentShadow)}.secondary{background:var(--chip);color:var(--text);border:1px solid var(--line)}
-.error{min-height:24px;margin-top:12px;color:#c33;font-weight:700}.result{margin-top:24px;padding:24px;border-radius:24px;background:var(--result);border:1px solid var(--line);position:relative;overflow:hidden}
-.result .big{font-size:clamp(2rem,5vw,3.7rem);font-weight:950;letter-spacing:-.055em;line-height:1;margin:.25rem 0}.result .sub{color:var(--muted)}
-.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.stat{background:var(--mini);border:1px solid var(--line);border-radius:16px;padding:14px}.stat b{display:block;font-size:1.13rem}
-.content-grid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:28px;align-items:start}.article{background:var(--article);border:1px solid var(--line);box-shadow:var(--softShadow);border-radius:28px;padding:clamp(22px,4vw,42px)}
-.article h2{font-size:clamp(1.55rem,3vw,2.2rem);line-height:1.1;letter-spacing:-.035em;margin:2.2rem 0 .7rem}.article h2:first-child{margin-top:0}.article h3{margin:1.5rem 0 .5rem}.article p,.article li{color:var(--bodyText)}
-.aside{position:sticky;top:18px;background:var(--panel);border:1px solid var(--line);box-shadow:var(--softShadow);border-radius:22px;padding:20px}.aside h3{margin-top:0}.aside ul{padding-left:18px;margin-bottom:0}
-.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--code);padding:16px;border-radius:16px;overflow:auto;border:1px solid var(--line);font-weight:750}
-.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px}table{width:100%;border-collapse:collapse;min-width:560px}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line)}th{background:var(--chip)}
-.faq details{border-top:1px solid var(--line);padding:14px 0}.faq summary{font-weight:850;cursor:pointer}.sources li{margin:.45rem 0}
-.footer{padding:34px 0 50px;color:var(--muted);font-size:.9rem}
-.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.pill{padding:7px 11px;border-radius:999px;background:var(--chip);border:1px solid var(--line);font-size:.82rem;font-weight:750}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.tab{padding:9px 13px;border-radius:12px;background:var(--chip);border:1px solid var(--line);font-weight:800;cursor:pointer}.tab.active{background:var(--accent);color:var(--accentText,#fff)}
-.hidden{display:none!important}
-@media(max-width:860px){.content-grid{grid-template-columns:1fr}.aside{position:static}.hero-art{opacity:.28;width:250px;height:250px}.hero h1{max-width:95%}}
-@media(max-width:650px){.container{width:min(100% - 20px,1180px)}.hero{border-radius:22px;padding:26px 20px}.calc-shell,.article{border-radius:22px;padding:20px}.form-grid,.stat-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.input-row{flex-direction:column}.unit{max-width:none}.hero-art{right:-60px}}
-.theme-area{background-image:linear-gradient(#93c5fd0b 1px,transparent 1px),linear-gradient(90deg,#93c5fd0b 1px,transparent 1px);background-size:28px 28px}.theme-area .hero{border-radius:4px;box-shadow:20px 20px 0 #07192b}.theme-area .calc-shell{border-radius:4px;box-shadow:14px 14px 0 #07192b}.theme-area .article{border-radius:4px}.blueprint{position:absolute;inset:12%;border:3px solid #fbbf24;transform:rotate(-6deg);box-shadow:inset 0 0 0 18px #ffffff08}.blueprint:before{content:"12′ × 10′";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:900 42px ui-monospace;color:#fbbf24}.blueprint:after{content:"";position:absolute;left:18%;right:18%;top:20%;bottom:20%;border:2px dashed #93c5fd}</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Square Footage Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate square footage for rectangles, triangles, and circles, with square-meter conversion and optional cost per square foot.", "url": "/square-footage-calculator/", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Construction & Home", "item": "/construction/"}, {"@type": "ListItem", "position": 3, "name": "Building & Remodeling", "item": "/construction/building-remodeling/"}, {"@type": "ListItem", "position": 4, "name": "Square Footage Calculator", "item": "/square-footage-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I calculate square footage of a rectangle?", "acceptedAnswer": {"@type": "Answer", "text": "Multiply length by width after converting both measurements to feet. The result is square feet."}}, {"@type": "Question", "name": "How do I calculate square footage of a triangle?", "acceptedAnswer": {"@type": "Answer", "text": "Multiply base by height and divide by two. Use perpendicular height, not a sloped side."}}, {"@type": "Question", "name": "Can I use this for complex rooms?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Split the space into simple rectangles, triangles, or circles, calculate each area, and add the results."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body class="theme-area" data-cp-category="date-time" data-cp-page-type="Calculator">
-<header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header><nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../date-time/index.html">Date &amp; Time</a></li><li><a aria-current="page" href="index.html">Square Footage Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../date-time/index.html">Browse Date &amp; Time</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main"><h1 class="page-title">Square Footage Calculator</h1>
+    <!-- Primary Meta Tags -->
+<title>Square Footage Calculator – Area, Square Meters &amp; Cost</title>
+<meta name="title" content="Square Footage Calculator – Area, Square Meters &amp; Cost">
+<meta name="description" content="Calculate square footage for rectangles, triangles, and circles. Convert area to square meters and estimate cost using an optional price per square foot.">
 
-<section aria-labelledby="calculator-heading" class="container calc-zone">
-<div class="calc-shell">
-<h2 class="calc-title" id="calculator-heading">Square Footage Calculator</h2>
-<p class="calc-note">Calculate area for common shapes, convert to square meters, and optionally estimate material cost.</p>
-<div class="tabs"><button class="tab active" data-shape="rect">Rectangle</button><button class="tab" data-shape="tri">Triangle</button><button class="tab" data-shape="circle">Circle</button></div>
-<div class="form-grid">
-<div class="field" id="aField"><label for="a" id="aLabel">Length</label><div class="input-row"><input id="a" min="0" step="any" type="number" value="12"/><select class="unit" id="unit"><option value="ft">feet</option><option value="in">inches</option><option value="m">meters</option></select></div></div>
-<div class="field" id="bField"><label for="b" id="bLabel">Width</label><input id="b" min="0" step="any" type="number" value="10"/></div>
-<div class="field"><label for="qty">Quantity</label><input id="qty" min="1" step="1" type="number" value="1"/></div>
-<div class="field"><label for="price">Price per ft² (optional)</label><input id="price" min="0" placeholder="e.g. 2.50" step="any" type="number"/></div>
-</div>
-<div class="actions"><button class="primary" id="calcBtn">Calculate Area</button><button class="secondary" id="resetBtn">Reset</button></div><div class="error" id="error" role="alert"></div>
-<div class="result"><span class="sub">Total area</span><div class="big" id="sqft">120.00 ft²</div><div class="stat-grid"><div class="stat"><span>Square meters</span><b id="sqm">11.15 m²</b></div><div class="stat"><span>Square yards</span><b id="sqyd">13.33 yd²</b></div><div class="stat"><span>Estimated cost</span><b id="cost">—</b></div></div></div>
-</div>
-</section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<section class="container content-grid">
-<article class="article">
-<h2>What Is a Square Footage Calculator?</h2><p>A square footage calculator finds the area of a floor, wall, lot section, or other surface. This version supports rectangles, triangles, and circles, converts the result to square meters and square yards, and can multiply the area by a price per square foot.</p>
-<h2>Square Footage Formulas</h2><div class="formula">Rectangle: A = length × width<br/>Triangle: A = base × height ÷ 2<br/>Circle: A = π × (diameter ÷ 2)²</div><p>Convert dimensions to the same linear unit before applying an area formula. The calculator converts input feet, inches, or meters to feet internally, then reports square feet.</p>
-<h3>Example</h3><p>A rectangular room that is 12 ft long and 10 ft wide has an area of 120 ft². Using the exact conversion 1 ft² = 0.09290304 m², that is about 11.15 m².</p>
-<h2>How to Measure Complex Areas</h2><p>For an irregular room or lot, divide the outline into simple shapes. Calculate each section separately and add the areas. ENERGY STAR uses the same general approach when explaining room measurements for air-conditioner sizing.</p>
-<h2>Limitations</h2><p>Real construction projects usually need a waste allowance for cuts, breakage, pattern matching, and offcuts. This calculator gives geometric area only unless you intentionally increase the quantity or material order.</p>
-<h2 id="faq">Frequently Asked Questions</h2>
-<div class="faq"><details><summary>How do I calculate square footage of a rectangle?</summary><p>Multiply length by width after converting both measurements to feet. The result is square feet.</p></details>
-<details><summary>How do I calculate square footage of a triangle?</summary><p>Multiply base by height and divide by two. Use perpendicular height, not a sloped side.</p></details>
-<details><summary>Can I use this for complex rooms?</summary><p>Yes. Split the space into simple rectangles, triangles, or circles, calculate each area, and add the results.</p></details></div>
-<h2>Sources and Methodology</h2>
-<p>CalcPro uses the formulas and assumptions described above. References below were used to cross-check the calculator method and terminology. Results are estimates unless a definition or unit conversion is mathematically exact.</p>
-<ul class="sources"><li><a href="https://www.nist.gov/document/2025-nist-handbook-133-appendix-e" rel="noopener noreferrer">NIST Handbook 133 Appendix E</a> — exact area conversion factor: 1 ft² = 0.09290304 m².</li>
-<li><a href="https://www.energystar.gov/products/room_air_conditioners" rel="noopener noreferrer">ENERGY STAR Room Air Conditioners</a> — rectangle, triangle, and complex-room measurement guidance.</li>
-<li><a href="https://www.calculator.net/square-footage-calculator.html" rel="noopener noreferrer">Calculator.net Square Footage Calculator</a> — cross-check of common shape calculator intent.</li></ul>
-</article>
-<aside class="aside">
-<h3>Quick reference</h3>
-<div class="formula">Rectangle = L × W<br/>Triangle = B × H ÷ 2<br/>Circle = πr²</div><div class="pills"><span class="pill">ft²</span><span class="pill">m²</span><span class="pill">yd²</span></div>
-</aside>
-</section>
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/square-footage-calculator/">
 
-<script class="cp-calculator-data" type="application/json">{"index":"166","Batch":"17","Calculator / Page":"Square Footage Calculator","Slug":"square-footage-calculator","Site Category (Current)":"Date & Time","Recommended Content Domain":"Engineering / Construction","Page Type":"Calculator","Search Intent / Purpose":"Calculate square footage for rectangles, triangles, and circles, with square-meter conversion and optional cost per square foot.","Formula / Algorithm Used in Tool":"Square Footage Formulas: Rectangle: A = length × width Triangle: A = base × height ÷ 2 Circle: A = π × (diameter ÷ 2)² Convert dimensions to the same linear unit before applying an area formula. The calculator converts input feet, inches, or meters to feet internally, then reports square feet.","Required User Inputs":"Length; Width; Quantity; Price per ft² (optional)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Length, Width, Quantity, Price per ft² (optional). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Exact engineering/geometry formula, units, standards; document any default density, waste factor, safety factor or material assumption.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When standards/default factors change","Important Assumptions / Limitations":"Real construction projects usually need a waste allowance for cuts, breakage, pattern matching, and offcuts. This calculator gives geometric area only unless you intentionally increase the quantity or material order.","Current Source URLs in Page":"https://www.nist.gov/document/2025-nist-handbook-133-appendix-e | https://www.energystar.gov/products/room_air_conditioners | https://www.calculator.net/square-footage-calculator.html","Implementation Path":"/square-footage-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Date &amp; Time</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../gas-mileage-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Gas Mileage Calculator</strong><small>Calculate MPG or L/100 km from odometer readings and fuel added at your latest fill…</small></span></a><a class="cp-related-link" href="../mileage-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Mileage Calculator</strong><small>Calculate trip mileage from odometer readings and estimate driving time, fuel use,…</small></span></a><a class="cp-related-link" href="../mortgage-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Mortgage Calculator</strong><small>Estimate a fixed-rate mortgage payment including principal and interest, property t…</small></span></a><a class="cp-related-link" href="../age-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Age Calculator</strong><small>Calculate age between two dates in years, months, and days, plus total days, weeks,…</small></span></a><a class="cp-related-link" href="../date-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Date Calculator</strong><small>Calculate days between dates or add and subtract years, months, weeks, and days fro…</small></span></a><a class="cp-related-link" href="../hours-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Hours Calculator</strong><small>Calculate hours and minutes between two clock times, with an overnight option and d…</small></span></a><a class="cp-related-link" href="../time-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time Calculator</strong><small>Add or subtract two time durations in hours, minutes, and seconds and view the norm…</small></span></a><a class="cp-related-link" href="../marriage-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Marriage Tax Calculator</strong><small>Compare a simplified 2026 federal tax estimate for two people before marriage with…</small></span></a></div><a class="cp-side-category" href="../date-time/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/square-footage-calculator/">
+<meta property="og:title" content="Square Footage Calculator – Area, Square Meters &amp; Cost">
+<meta property="og:description" content="Calculate square footage for rectangles, triangles, and circles. Convert area to square meters and estimate cost using an optional price per square foot.">
+<meta property="og:site_name" content="Square Footage Calculator">
 
-const $=id=>document.getElementById(id);let shape="rect";
-document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");shape=b.dataset.shape;
- $("bField").classList.toggle("hidden",shape==="circle");$("aLabel").textContent=shape==="circle"?"Diameter":shape==="tri"?"Base":"Length";$("bLabel").textContent=shape==="tri"?"Height":"Width";run()});
-function ft(v){return $("unit").value==="ft"?v:$("unit").value==="in"?v/12:v/0.3048}
-function run(){let a=+$("a").value,b=+$("b").value,q=Math.max(1,Math.floor(+$("qty").value||1));if(!(a>0)||(shape!=="circle"&&!(b>0))){$("error").textContent="Enter positive dimensions.";return}
- a=ft(a);b=ft(b);let area=shape==="rect"?a*b:shape==="tri"?a*b/2:Math.PI*(a/2)**2;area*=q;let p=+$("price").value;
- $("error").textContent="";$("sqft").textContent=area.toFixed(2)+" ft²";$("sqm").textContent=(area*0.09290304).toFixed(2)+" m²";$("sqyd").textContent=(area/9).toFixed(2)+" yd²";$("cost").textContent=p>=0&&$("price").value!==""?"$"+(area*p).toFixed(2):"—";
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/square-footage-calculator/">
+<meta name="twitter:title" content="Square Footage Calculator – Area, Square Meters &amp; Cost">
+<meta name="twitter:description" content="Calculate square footage for rectangles, triangles, and circles. Convert area to square meters and estimate cost using an optional price per square foot.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        :root {
+            --bg: #0d2745;
+            --text: #f3f8ff;
+            --muted: #b1c7dd;
+            --bodyText: #c8d8e8;
+            --accent: #fbbf24;
+            --accentText: #1f2937;
+            --accentShadow: #fbbf2433;
+            --hero: linear-gradient(135deg, #102c4e, #153d69);
+            --heroText: #c4d8eb;
+            --panel: #153657e8;
+            --article: #12304f;
+            --input: #0e2945;
+            --result: linear-gradient(135deg, #183f66, #0e2945);
+            --mini: #173a5e;
+            --chip: #ffffff10;
+            --code: #0c2947;
+            --line: #dbeafe22;
+            --lineStrong: #dbeafe45;
+            --focus: #fbbf2430;
+            --shadow: 0 30px 85px #02061766;
+            --softShadow: 0 18px 45px #02061745
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.62
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .sitebar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            gap: 16px
+        }
+
+        .brand {
+            font-weight: 900;
+            letter-spacing: -.04em;
+            font-size: 1.25rem
+        }
+
+        .brand span {
+            color: var(--accent)
+        }
+
+        .crumbs {
+            font-size: .9rem;
+            color: var(--muted);
+            margin: 12px 0 0
+        }
+
+        .crumbs a {
+            color: inherit
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            margin: 12px auto 30px;
+            border-radius: 32px;
+            padding: clamp(28px, 5vw, 70px);
+            background: var(--hero);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--line);
+            isolation: isolate
+        }
+
+        .hero h1 {
+            font-size: clamp(2.35rem, 5.7vw, 5.2rem);
+            line-height: .96;
+            letter-spacing: -.065em;
+            margin: 12px 0 20px;
+            max-width: 800px
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 1.5vw, 1.18rem);
+            max-width: 720px;
+            color: var(--heroText, var(--muted));
+            margin: 0
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            font-size: .76rem;
+            padding: 8px 12px;
+            border-radius: 99px;
+            background: var(--chip);
+            border: 1px solid var(--line)
+        }
+
+        .hero-art {
+            position: absolute;
+            right: 3%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: min(34vw, 360px);
+            height: min(34vw, 360px);
+            pointer-events: none;
+            opacity: .96
+        }
+
+        .calc-zone {
+            margin: 0 auto 34px
+        }
+
+        .calc-shell {
+            position: relative;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            border-radius: 28px;
+            padding: clamp(20px, 3vw, 34px);
+            backdrop-filter: blur(14px)
+        }
+
+        .calc-title {
+            margin: 0 0 5px;
+            font-size: 1.5rem;
+            letter-spacing: -.03em
+        }
+
+        .calc-note {
+            margin: 0 0 22px;
+            color: var(--muted)
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px
+        }
+
+        .field.full {
+            grid-column: 1/-1
+        }
+
+        label {
+            font-size: .9rem;
+            font-weight: 750
+        }
+
+        .input-row {
+            display: flex;
+            gap: 8px
+        }
+
+        input,
+        select,
+        textarea,
+        button {
+            font: inherit
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--lineStrong);
+            background: var(--input);
+            color: var(--text);
+            border-radius: 14px;
+            padding: 13px 14px;
+            outline: none;
+            transition: .2s
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--focus)
+        }
+
+        .unit {
+            max-width: 122px
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px
+        }
+
+        button {
+            border: 0;
+            border-radius: 14px;
+            padding: 13px 18px;
+            font-weight: 850;
+            cursor: pointer;
+            transition: transform .18s, box-shadow .18s
+        }
+
+        button:hover {
+            transform: translateY(-2px)
+        }
+
+        .primary {
+            background: var(--accent);
+            color: var(--accentText, #fff);
+            box-shadow: 0 10px 25px var(--accentShadow)
+        }
+
+        .secondary {
+            background: var(--chip);
+            color: var(--text);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            min-height: 24px;
+            margin-top: 12px;
+            color: #c33;
+            font-weight: 700
+        }
+
+        .result {
+            margin-top: 24px;
+            padding: 24px;
+            border-radius: 24px;
+            background: var(--result);
+            border: 1px solid var(--line);
+            position: relative;
+            overflow: hidden
+        }
+
+        .result .big {
+            font-size: clamp(2rem, 5vw, 3.7rem);
+            font-weight: 950;
+            letter-spacing: -.055em;
+            line-height: 1;
+            margin: .25rem 0
+        }
+
+        .result .sub {
+            color: var(--muted)
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .stat {
+            background: var(--mini);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 14px
+        }
+
+        .stat b {
+            display: block;
+            font-size: 1.13rem
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 290px;
+            gap: 28px;
+            align-items: start
+        }
+
+        .article {
+            background: var(--article);
+            border: 1px solid var(--line);
+             border-radius: 28px;
+            padding: clamp(22px, 4vw, 42px)
+        }
+
+        .article h2 {
+            font-size: clamp(1.55rem, 3vw, 2.2rem);
+            line-height: 1.1;
+            letter-spacing: -.035em;
+            margin: 2.2rem 0 .7rem
+        }
+
+        .article h2:first-child {
+            margin-top: 0
+        }
+
+        .article h3 {
+            margin: 1.5rem 0 .5rem
+        }
+
+        .article p,
+        .article li {
+            color: var(--bodyText)
+        }
+
+        .aside {
+            position: sticky;
+            top: 18px;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--softShadow);
+            border-radius: 22px;
+            padding: 20px
+        }
+
+        .aside h3 {
+            margin-top: 0
+        }
+
+        .aside ul {
+            padding-left: 18px;
+            margin-bottom: 0
+        }
+
+        .formula {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: var(--code);
+            padding: 16px;
+            border-radius: 16px;
+            overflow: auto;
+            border: 1px solid var(--line);
+            font-weight: 750
+        }
+
+        .table-wrap {
+            overflow: auto;
+            border: 1px solid var(--line);
+            border-radius: 18px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 560px
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--line)
+        }
+
+        th {
+            background: var(--chip)
+        }
+
+        .faq details {
+            border-top: 1px solid var(--line);
+            padding: 14px 0
+        }
+
+        .faq summary {
+            font-weight: 850;
+            cursor: pointer
+        }
+
+        .sources li {
+            margin: .45rem 0
+        }
+
+        .footer {
+            padding: 34px 0 50px;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 16px
+        }
+
+        .pill {
+            padding: 7px 11px;
+            border-radius: 999px;
+            background: var(--chip);
+            border: 1px solid var(--line);
+            font-size: .82rem;
+            font-weight: 750
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 0 0 18px
+        }
+
+        .tab {
+            padding: 9px 13px;
+            border-radius: 12px;
+            background: var(--chip);
+            border: 1px solid var(--line);
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .tab.active {
+            background: var(--accent);
+            color: var(--accentText, #fff)
+        }
+
+        .hidden {
+            display: none !important
+        }
+
+        @media(max-width:860px) {
+            .content-grid {
+                grid-template-columns: 1fr
+            }
+
+            .aside {
+                position: static
+            }
+
+            .hero-art {
+                opacity: .28;
+                width: 250px;
+                height: 250px
+            }
+
+            .hero h1 {
+                max-width: 95%
+            }
+        }
+
+        @media(max-width:650px) {
+            .container {
+                width: min(100% - 20px, 1180px)
+            }
+
+            .hero {
+                border-radius: 22px;
+                padding: 26px 20px
+            }
+
+            .calc-shell,
+            .article {
+                border-radius: 22px;
+                padding: 20px
+            }
+
+            .form-grid,
+            .stat-grid {
+                grid-template-columns: 1fr
+            }
+
+            .field.full {
+                grid-column: auto
+            }
+
+            .input-row {
+                flex-direction: column
+            }
+
+            .unit {
+                max-width: none
+            }
+
+            .hero-art {
+                right: -60px
+            }
+        }
+
+        .theme-area {
+            background-image: linear-gradient(#93c5fd0b 1px, transparent 1px), linear-gradient(90deg, #93c5fd0b 1px, transparent 1px);
+            background-size: 28px 28px
+        }
+
+        .theme-area .hero {
+            border-radius: 4px;
+            box-shadow: 20px 20px 0 #07192b
+        }
+
+        .theme-area .calc-shell {
+            border-radius: 4px;
+            box-shadow: 14px 14px 0 #07192b
+        }
+
+        .theme-area .article {
+            border-radius: 4px
+        }
+
+        .blueprint {
+            position: absolute;
+            inset: 12%;
+            border: 3px solid #fbbf24;
+            transform: rotate(-6deg);
+            box-shadow: inset 0 0 0 18px #ffffff08
+        }
+
+        .blueprint:before {
+            content: "12′ × 10′";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font: 900 42px ui-monospace;
+            color: #fbbf24
+        }
+
+        .blueprint:after {
+            content: "";
+            position: absolute;
+            left: 18%;
+            right: 18%;
+            top: 20%;
+            bottom: 20%;
+            border: 2px dashed #93c5fd
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/square-footage-calculator/#webapplication",
+      "name": "Square Footage Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/square-footage-calculator/",
+      "description": "Calculate square footage for rectangles, triangles, and circles. Convert area to square meters and estimate cost using an optional price per square foot.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/square-footage-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Square Footage Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/square-footage-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/square-footage-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate the square footage of a rectangle?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Convert both dimensions to feet and multiply the length by the width. A 15 ft × 12 ft rectangle has an area of 180 ft²."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use inches or meters?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The calculation method supports feet, inches, and meters by converting the dimensions to feet before applying the area formula."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is the square footage of a circle calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The calculator uses the diameter to find the radius and then applies A = π × (d ÷ 2)². A radius is always half the circle's diameter."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate the area of a triangle?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiply the base by the perpendicular height and divide the result by 2: A = (b × h) ÷ 2. The height should be perpendicular to the selected base."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the calculator automatically include extra material for waste?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The geometric area does not automatically include waste for cuts, damaged material, pattern alignment, breakage, or offcuts. Add any required project allowance separately."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does price per square foot mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Price per square foot is an optional project-pricing input. It allows the calculator to provide cost-related supporting information based on the calculated area when a price is supplied."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate is a square footage calculation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The formulas themselves are standard geometry formulas, but the practical accuracy depends on your measurements, selected units, shape approximation, and result rounding. Measure carefully when the result will be used to purchase materials."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
 }
-$("calcBtn").onclick=run;$("resetBtn").onclick=()=>location.reload();run();
-
 </script>
-<script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body class="theme-area" data-cp-category="date-time" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../date-time/index.html">Date &amp; Time</a></li>
+            <li><a aria-current="page" href="index.html">Square Footage Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../date-time/index.html">Browse Date &amp; Time</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Square Footage Calculator</h1>
+
+            <section aria-labelledby="calculator-heading" class="container calc-zone">
+                <div class="calc-shell">
+                    <h2 class="calc-title" id="calculator-heading">Square Footage Calculator</h2>
+                    <p class="calc-note">Calculate area for common shapes, convert to square meters, and optionally
+                        estimate material cost.</p>
+                    <div class="tabs"><button class="tab active" data-shape="rect">Rectangle</button><button class="tab"
+                            data-shape="tri">Triangle</button><button class="tab" data-shape="circle">Circle</button>
+                    </div>
+                    <div class="form-grid">
+                        <div class="field" id="aField"><label for="a" id="aLabel">Length</label>
+                            <div class="input-row"><input id="a" min="0" step="any" type="number" value="12" /><select
+                                    class="unit" id="unit">
+                                    <option value="ft">feet</option>
+                                    <option value="in">inches</option>
+                                    <option value="m">meters</option>
+                                </select></div>
+                        </div>
+                        <div class="field" id="bField"><label for="b" id="bLabel">Width</label><input id="b" min="0"
+                                step="any" type="number" value="10" /></div>
+                        <div class="field"><label for="qty">Quantity</label><input id="qty" min="1" step="1"
+                                type="number" value="1" /></div>
+                        <div class="field"><label for="price">Price per ft² (optional)</label><input id="price" min="0"
+                                placeholder="e.g. 2.50" step="any" type="number" /></div>
+                    </div>
+                    <div class="actions"><button class="primary" id="calcBtn">Calculate Area</button><button
+                            class="secondary" id="resetBtn">Reset</button></div>
+                    <div class="error" id="error" role="alert"></div>
+                    <div class="result"><span class="sub">Total area</span>
+                        <div class="big" id="sqft">120.00 ft²</div>
+                        <div class="stat-grid">
+                            <div class="stat"><span>Square meters</span><b id="sqm">11.15 m²</b></div>
+                            <div class="stat"><span>Square yards</span><b id="sqyd">13.33 yd²</b></div>
+                            <div class="stat"><span>Estimated cost</span><b id="cost">—</b></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="container content-grid">
+                
+
+<article class="article">
+ 
+
+  <p>Use the Square Footage Calculator to find the area of rectangular, triangular, or circular spaces. Enter the required dimensions, quantity, and optional price per square foot to calculate square footage and supporting area or cost values.</p>
+
+  <section id="what">
+    <h2>What Is the Square Footage Calculator?</h2>
+
+    <p>The Square Footage Calculator measures the two-dimensional area of common shapes in square feet. It can be used for rooms, floors, walls, yards, patios, flooring projects, and other spaces where you need an area measurement.</p>
+
+    <p>The calculator supports rectangle, triangle, and circle area formulas. Measurements entered in feet, inches, or meters are converted to feet internally before the area calculation is performed.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Square Footage Calculator</h2>
+
+    <p>Enter the measurements requested for the area you want to calculate.</p>
+
+    <p><strong>Length:</strong> Enter the length or first required dimension of the area. Use the measurement unit that matches your value.</p>
+
+    <p><strong>Width:</strong> Enter the width or second required dimension when the selected shape needs two dimensions.</p>
+
+    <p><strong>Quantity:</strong> Enter the number of matching areas or sections you want included. Use 1 when calculating a single area.</p>
+
+    <p><strong>Price per ft²:</strong> This optional input can be used when you want a cost estimate based on the calculated square footage. Leave it empty when you only need the area.</p>
+
+    <p>Make sure each measurement uses the correct unit. The calculator normalizes supported measurements to feet before calculating the area.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <p>The calculator first converts the entered dimensions to the same linear unit—feet—and then applies the appropriate geometry formula. Standard references give the rectangle area as length × width, triangle area as one-half base × perpendicular height, and circle area as π × radius².</p>
+
+    <h3>Rectangle Formula</h3>
+
+    <p>For a rectangular area:</p>
+
+    <div class="formula"><strong>A = L × W</strong></div>
+
+    <p>Where:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>A</td>
+          <td>Area</td>
+          <td>ft²</td>
+        </tr>
+        <tr>
+          <td>L</td>
+          <td>Length</td>
+          <td>ft</td>
+        </tr>
+        <tr>
+          <td>W</td>
+          <td>Width</td>
+          <td>ft</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>For example, a rectangle 12 feet long and 10 feet wide has an area of:</p>
+
+    <div class="formula"><strong>12 × 10 = 120 ft²</strong></div>
+
+    <h3>Triangle Formula</h3>
+
+    <p>For a triangle:</p>
+
+    <div class="formula"><strong>A = (b × h) ÷ 2</strong></div>
+
+    <p>Where:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>A</td>
+          <td>Area</td>
+          <td>ft²</td>
+        </tr>
+        <tr>
+          <td>b</td>
+          <td>Base</td>
+          <td>ft</td>
+        </tr>
+        <tr>
+          <td>h</td>
+          <td>Perpendicular height</td>
+          <td>ft</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The height must be measured perpendicular to the base.</p>
+
+    <h3>Circle Formula</h3>
+
+    <p>For a circle:</p>
+
+    <div class="formula"><strong>A = π × (d ÷ 2)²</strong></div>
+
+    <p>Because the radius is half the diameter:</p>
+
+    <div class="formula"><strong>r = d ÷ 2</strong></div>
+
+    <p>So the equivalent standard formula is:</p>
+
+    <div class="formula"><strong>A = πr²</strong></div>
+
+    <p>Where:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>A</td>
+          <td>Area</td>
+          <td>ft²</td>
+        </tr>
+        <tr>
+          <td>d</td>
+          <td>Diameter</td>
+          <td>ft</td>
+        </tr>
+        <tr>
+          <td>r</td>
+          <td>Radius</td>
+          <td>ft</td>
+        </tr>
+        <tr>
+          <td>π</td>
+          <td>Pi, approximately 3.14159</td>
+          <td>No unit</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Unit Conversion</h3>
+
+    <p>The calculator converts supported linear measurements to feet before applying the area formula.</p>
+
+    <p>For inches:</p>
+
+    <div class="formula"><strong>Feet = Inches ÷ 12</strong></div>
+
+    <p>For meters:</p>
+
+    <div class="formula"><strong>Feet = Meters ÷ 0.3048</strong></div>
+
+    <p>After calculating square footage, the square-meter equivalent can be found using:</p>
+
+    <div class="formula"><strong>Square meters = Square feet × 0.09290304</strong></div>
+
+    <p>NIST lists 1 square foot as exactly 929.0304 square centimeters, equivalent to <strong>0.09290304 m²</strong>.</p>
+
+    <h3>Calculation Sequence</h3>
+
+    <ol>
+      <li>Read the entered dimensions and their measurement units.</li>
+      <li>Convert the dimensions to feet when necessary.</li>
+      <li>Apply the formula for the selected geometric shape.</li>
+      <li>Report the calculated area in square feet.</li>
+      <li>Convert the area to square meters for the supporting metric result.</li>
+      <li>Use the quantity and optional price-per-square-foot inputs when applicable to the calculator's supporting results.</li>
+    </ol>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose you want to calculate the square footage of one rectangular room that is 12 feet long and 10 feet wide.</p>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li>Length: 12 ft</li>
+      <li>Width: 10 ft</li>
+      <li>Quantity: 1</li>
+      <li>Price per ft²: Not entered</li>
+    </ul>
+
+    <h3>Step 1: Apply the Rectangle Formula</h3>
+
+    <div class="formula"><strong>A = L × W</strong></div>
+
+    <p>Substitute the measurements:</p>
+
+    <div class="formula"><strong>A = 12 × 10</strong></div>
+
+    <h3>Step 2: Calculate Square Feet</h3>
+
+    <div class="formula"><strong>A = 120 ft²</strong></div>
+
+    <h3>Step 3: Convert to Square Meters</h3>
+
+    <div class="formula"><strong>120 × 0.09290304 = 11.1483648 m²</strong></div>
+
+    <h3>Final Result</h3>
+
+    <p>The room has an area of:</p>
+
+    <div class="formula"><strong>120 square feet</strong></div>
+
+    <p>or approximately:</p>
+
+    <div class="formula"><strong>11.15 square meters</strong></div>
+
+    <p>The square-meter figure is rounded here for readability. The calculator's displayed precision may depend on its result formatting.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Square Footage</h3>
+
+    <p>Square footage is the main area result. It represents how much two-dimensional surface the measured shape covers in square feet.</p>
+
+    <h3>Square Meters</h3>
+
+    <p>The square-meter result expresses the same area using the metric system. This is useful when measurements, plans, products, or project requirements use metric units.</p>
+
+    <h3>Quantity</h3>
+
+    <p>Quantity is useful when several areas have the same dimensions. For a single room, panel, section, or surface, use a quantity of 1.</p>
+
+    <h3>Estimated Cost</h3>
+
+    <p>When a price per square foot is entered, the calculator can provide supporting cost information based on the calculated area. Treat this as a planning estimate rather than a final supplier, contractor, or construction quote.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The calculator uses standard geometric area formulas. Its result depends directly on the measurements and units you enter, so incorrect measurements or unit selections will produce incorrect area results.</p>
+
+    <p>Measurements in feet, inches, or meters are normalized to feet before the square-foot calculation. Small differences may appear when displayed results are rounded.</p>
+
+    <p>The calculator determines geometric area. It does <strong>not automatically add a construction waste allowance</strong> for cutting, breakage, offcuts, pattern matching, installation losses, or damaged material. Real flooring, tile, roofing, and similar projects may therefore require more material than the geometric area alone.</p>
+
+    <p>For irregular spaces, separate the space into simpler measurable shapes where practical and calculate the required sections individually.</p>
+
+    <p>Optional cost results should be treated as estimates. Actual project prices can also include labor, taxes, delivery, preparation, accessories, minimum order quantities, and other costs that are outside a basic square-footage calculation.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>How do I calculate the square footage of a rectangle?</summary>
+      <p>Convert both dimensions to feet and multiply the length by the width. A 15 ft × 12 ft rectangle has an area of 180 ft².</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can I use inches or meters?</summary>
+      <p>Yes. The calculation method supports feet, inches, and meters by converting the dimensions to feet before applying the area formula.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How is the square footage of a circle calculated?</summary>
+      <p>The calculator uses the diameter to find the radius and then applies <strong>A = π × (d ÷ 2)²</strong>. A radius is always half the circle's diameter.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How do I calculate the area of a triangle?</summary>
+      <p>Multiply the base by the perpendicular height and divide the result by 2:</p>
+      <div class="formula"><strong>A = (b × h) ÷ 2</strong></div>
+      <p>The height should be perpendicular to the selected base.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does the calculator automatically include extra material for waste?</summary>
+      <p>No. The geometric area does not automatically include waste for cuts, damaged material, pattern alignment, breakage, or offcuts. Add any required project allowance separately.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What does price per square foot mean?</summary>
+      <p>Price per square foot is an optional project-pricing input. It allows the calculator to provide cost-related supporting information based on the calculated area when a price is supplied.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How accurate is a square footage calculation?</summary>
+      <p>The formulas themselves are standard geometry formulas, but the practical accuracy depends on your measurements, selected units, shape approximation, and result rounding. Measure carefully when the result will be used to purchase materials.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <p>This page documents the calculator's supported inputs and calculation method without adding unsupported formulas, options, or functionality.</p>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://www.nist.gov/pml/owm/circumference-area-and-volume?utm_source=chatgpt.com" rel="noopener" target="_blank">NIST — Circumference, Area and Volume</a>
+        <p>Supports standard rectangle, triangle, and circle area calculations.</p>
+      </li>
+
+      <li>
+        <a href="https://www.nist.gov/document/2025-nist-handbook-133-appendix-e?utm_source=chatgpt.com" rel="noopener" target="_blank">NIST Handbook 133 — Appendix E: General Tables of Units of Measurement</a>
+        <p>Supports authoritative area-unit relationships and conversions between square feet and metric area units.</p>
+      </li>
+
+      <li>
+        <a href="https://openstax.org/books/prealgebra-2e/pages/c-geometric-formulas?utm_source=chatgpt.com" rel="noopener" target="_blank">OpenStax — Geometric Formulas</a>
+        <p>Supports the standard formulas <strong>A = lw</strong>, <strong>A = ½bh</strong>, and <strong>A = πr²</strong>.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/area-calculator/">Area Calculator</a></li>
+      <li><a href="https://example.com/triangle-calculator/">Triangle Calculator</a></li>
+      <li><a href="https://example.com/conversion-calculator/">Conversion Calculator</a></li>
+      <li><a href="https://example.com/concrete-calculator/">Concrete Calculator</a></li>
+      <li><a href="https://example.com/roofing-calculator/">Roofing Calculator</a></li>
+      <li><a href="https://example.com/tile-calculator/">Tile Calculator</a></li>
+    </ul>
+
+    <p>- \</p>
+  </section>
+</article>
+
+
+
+            </section>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"166","Batch":"17","Calculator / Page":"Square Footage Calculator","Slug":"square-footage-calculator","Site Category (Current)":"Date & Time","Recommended Content Domain":"Engineering / Construction","Page Type":"Calculator","Search Intent / Purpose":"Calculate square footage for rectangles, triangles, and circles, with square-meter conversion and optional cost per square foot.","Formula / Algorithm Used in Tool":"Square Footage Formulas: Rectangle: A = length × width Triangle: A = base × height ÷ 2 Circle: A = π × (diameter ÷ 2)² Convert dimensions to the same linear unit before applying an area formula. The calculator converts input feet, inches, or meters to feet internally, then reports square feet.","Required User Inputs":"Length; Width; Quantity; Price per ft² (optional)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Length, Width, Quantity, Price per ft² (optional). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Exact engineering/geometry formula, units, standards; document any default density, waste factor, safety factor or material assumption.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When standards/default factors change","Important Assumptions / Limitations":"Real construction projects usually need a waste allowance for cuts, breakage, pattern matching, and offcuts. This calculator gives geometric area only unless you intentionally increase the quantity or material order.","Current Source URLs in Page":"https://www.nist.gov/document/2025-nist-handbook-133-appendix-e | https://www.energystar.gov/products/room_air_conditioners | https://www.calculator.net/square-footage-calculator.html","Implementation Path":"/square-footage-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Date &amp; Time</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../gas-mileage-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Gas Mileage Calculator</strong><small>Calculate MPG
+                            or L/100 km from odometer readings and fuel added at your latest fill…</small></span></a><a
+                    class="cp-related-link" href="../mileage-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Mileage Calculator</strong><small>Calculate trip
+                            mileage from odometer readings and estimate driving time, fuel use,…</small></span></a><a
+                    class="cp-related-link" href="../mortgage-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Mortgage Calculator</strong><small>Estimate a
+                            fixed-rate mortgage payment including principal and interest, property
+                            t…</small></span></a><a class="cp-related-link" href="../age-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Age Calculator</strong><small>Calculate age between
+                            two dates in years, months, and days, plus total days, weeks,…</small></span></a><a
+                    class="cp-related-link" href="../date-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Date Calculator</strong><small>Calculate days
+                            between dates or add and subtract years, months, weeks, and days fro…</small></span></a><a
+                    class="cp-related-link" href="../hours-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Hours Calculator</strong><small>Calculate hours and
+                            minutes between two clock times, with an overnight option and d…</small></span></a><a
+                    class="cp-related-link" href="../time-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Time Calculator</strong><small>Add or subtract two
+                            time durations in hours, minutes, and seconds and view the norm…</small></span></a><a
+                    class="cp-related-link" href="../marriage-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Marriage Tax Calculator</strong><small>Compare a
+                            simplified 2026 federal tax estimate for two people before marriage with…</small></span></a>
+            </div><a class="cp-side-category" href="../date-time/index.html"><span>View
+                    category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+
+        const $ = id => document.getElementById(id); let shape = "rect";
+        document.querySelectorAll(".tab").forEach(b => b.onclick = () => {
+            document.querySelectorAll(".tab").forEach(x => x.classList.remove("active")); b.classList.add("active"); shape = b.dataset.shape;
+            $("bField").classList.toggle("hidden", shape === "circle"); $("aLabel").textContent = shape === "circle" ? "Diameter" : shape === "tri" ? "Base" : "Length"; $("bLabel").textContent = shape === "tri" ? "Height" : "Width"; run()
+        });
+        function ft(v) { return $("unit").value === "ft" ? v : $("unit").value === "in" ? v / 12 : v / 0.3048 }
+        function run() {
+            let a = +$("a").value, b = +$("b").value, q = Math.max(1, Math.floor(+$("qty").value || 1)); if (!(a > 0) || (shape !== "circle" && !(b > 0))) { $("error").textContent = "Enter positive dimensions."; return }
+            a = ft(a); b = ft(b); let area = shape === "rect" ? a * b : shape === "tri" ? a * b / 2 : Math.PI * (a / 2) ** 2; area *= q; let p = +$("price").value;
+            $("error").textContent = ""; $("sqft").textContent = area.toFixed(2) + " ft²"; $("sqm").textContent = (area * 0.09290304).toFixed(2) + " m²"; $("sqyd").textContent = (area / 9).toFixed(2) + " yd²"; $("cost").textContent = p >= 0 && $("price").value !== "" ? "$" + (area * p).toFixed(2) : "—";
+        }
+        $("calcBtn").onclick = run; $("resetBtn").onclick = () => location.reload(); run();
+
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

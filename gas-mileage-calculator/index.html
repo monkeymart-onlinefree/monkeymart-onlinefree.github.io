@@ -1,107 +1,1205 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>Gas Mileage Calculator | CalcPro</title>
-<meta content="Calculate MPG or L/100 km from odometer readings and fuel added at your latest fill-up, with optional fuel cost per distance." name="description"/>
-<meta content="index,follow" name="robots"/>
-<link href="../gas-mileage-calculator/" rel="canonical"/>
-<meta content="Gas Mileage Calculator | CalcPro" property="og:title"/>
-<meta content="Calculate MPG or L/100 km from odometer readings and fuel added at your latest fill-up, with optional fuel cost per distance." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="/gas-mileage-calculator/" property="og:url"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>:root{--bg:#eef0f2;--text:#14191d;--muted:#67737c;--bodyText:#48545c;--accent:#dc2626;--accentText:#fff;--accentShadow:#dc262633;--hero:linear-gradient(145deg,#f8fafc,#d8dde2 58%,#cbd5e1);--heroText:#4d5962;--panel:#f8fafce8;--article:#fafafa;--input:#fff;--result:linear-gradient(135deg,#fff,#e5e7eb);--mini:#fff;--chip:#ffffffa8;--code:#f1f5f9;--line:#0f172a18;--lineStrong:#0f172a35;--focus:#ef44442a;--shadow:0 30px 70px #11182726;--softShadow:0 16px 40px #11182714}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.62}
-a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
-.container{width:min(1180px,calc(100% - 32px));margin:auto}
-.sitebar{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:16px}.brand{font-weight:900;letter-spacing:-.04em;font-size:1.25rem}.brand span{color:var(--accent)}
-.crumbs{font-size:.9rem;color:var(--muted);margin:12px 0 0}.crumbs a{color:inherit}
-.hero{position:relative;overflow:hidden;margin:12px auto 30px;border-radius:32px;padding:clamp(28px,5vw,70px);background:var(--hero);box-shadow:var(--shadow);border:1px solid var(--line);isolation:isolate}
-.hero h1{font-size:clamp(2.35rem,5.7vw,5.2rem);line-height:.96;letter-spacing:-.065em;margin:12px 0 20px;max-width:800px}.hero p{font-size:clamp(1rem,1.5vw,1.18rem);max-width:720px;color:var(--heroText,var(--muted));margin:0}
-.eyebrow{display:inline-flex;gap:8px;align-items:center;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.76rem;padding:8px 12px;border-radius:99px;background:var(--chip);border:1px solid var(--line)}
-.hero-art{position:absolute;right:3%;top:50%;transform:translateY(-50%);width:min(34vw,360px);height:min(34vw,360px);pointer-events:none;opacity:.96}
-.calc-zone{margin:0 auto 34px}.calc-shell{position:relative;background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:28px;padding:clamp(20px,3vw,34px);backdrop-filter:blur(14px)}
-.calc-title{margin:0 0 5px;font-size:1.5rem;letter-spacing:-.03em}.calc-note{margin:0 0 22px;color:var(--muted)}
-.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
-label{font-size:.9rem;font-weight:750}.input-row{display:flex;gap:8px}input,select,textarea,button{font:inherit}
-input,select,textarea{width:100%;border:1px solid var(--lineStrong);background:var(--input);color:var(--text);border-radius:14px;padding:13px 14px;outline:none;transition:.2s}
-input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}
-.unit{max-width:122px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-button{border:0;border-radius:14px;padding:13px 18px;font-weight:850;cursor:pointer;transition:transform .18s,box-shadow .18s}
-button:hover{transform:translateY(-2px)}.primary{background:var(--accent);color:var(--accentText,#fff);box-shadow:0 10px 25px var(--accentShadow)}.secondary{background:var(--chip);color:var(--text);border:1px solid var(--line)}
-.error{min-height:24px;margin-top:12px;color:#c33;font-weight:700}.result{margin-top:24px;padding:24px;border-radius:24px;background:var(--result);border:1px solid var(--line);position:relative;overflow:hidden}
-.result .big{font-size:clamp(2rem,5vw,3.7rem);font-weight:950;letter-spacing:-.055em;line-height:1;margin:.25rem 0}.result .sub{color:var(--muted)}
-.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.stat{background:var(--mini);border:1px solid var(--line);border-radius:16px;padding:14px}.stat b{display:block;font-size:1.13rem}
-.content-grid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:28px;align-items:start}.article{background:var(--article);border:1px solid var(--line);box-shadow:var(--softShadow);border-radius:28px;padding:clamp(22px,4vw,42px)}
-.article h2{font-size:clamp(1.55rem,3vw,2.2rem);line-height:1.1;letter-spacing:-.035em;margin:2.2rem 0 .7rem}.article h2:first-child{margin-top:0}.article h3{margin:1.5rem 0 .5rem}.article p,.article li{color:var(--bodyText)}
-.aside{position:sticky;top:18px;background:var(--panel);border:1px solid var(--line);box-shadow:var(--softShadow);border-radius:22px;padding:20px}.aside h3{margin-top:0}.aside ul{padding-left:18px;margin-bottom:0}
-.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--code);padding:16px;border-radius:16px;overflow:auto;border:1px solid var(--line);font-weight:750}
-.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px}table{width:100%;border-collapse:collapse;min-width:560px}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line)}th{background:var(--chip)}
-.faq details{border-top:1px solid var(--line);padding:14px 0}.faq summary{font-weight:850;cursor:pointer}.sources li{margin:.45rem 0}
-.footer{padding:34px 0 50px;color:var(--muted);font-size:.9rem}
-.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.pill{padding:7px 11px;border-radius:999px;background:var(--chip);border:1px solid var(--line);font-size:.82rem;font-weight:750}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.tab{padding:9px 13px;border-radius:12px;background:var(--chip);border:1px solid var(--line);font-weight:800;cursor:pointer}.tab.active{background:var(--accent);color:var(--accentText,#fff)}
-.hidden{display:none!important}
-@media(max-width:860px){.content-grid{grid-template-columns:1fr}.aside{position:static}.hero-art{opacity:.28;width:250px;height:250px}.hero h1{max-width:95%}}
-@media(max-width:650px){.container{width:min(100% - 20px,1180px)}.hero{border-radius:22px;padding:26px 20px}.calc-shell,.article{border-radius:22px;padding:20px}.form-grid,.stat-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.input-row{flex-direction:column}.unit{max-width:none}.hero-art{right:-60px}}
-.theme-mileage .hero{border-radius:24px 90px 24px 24px}.theme-mileage .calc-shell{border-radius:24px 8px 24px 8px;border-bottom:7px solid #1f2937}.theme-mileage .result{border-radius:12px;box-shadow:inset 0 -6px 0 #d1d5db}.gauge{position:absolute;inset:16%;border:18px solid #1f2937;border-bottom-color:transparent;border-radius:50%;transform:rotate(-7deg);box-shadow:0 18px 0 #94a3b8}.gauge:before{content:"";position:absolute;width:8px;height:45%;background:#dc2626;left:50%;bottom:48%;transform-origin:bottom;transform:rotate(48deg);border-radius:9px}.gauge:after{content:"MPG";position:absolute;left:50%;bottom:12%;transform:translateX(-50%);font-weight:950;font-size:30px;color:#1f2937}</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Gas Mileage Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate MPG or L/100 km from odometer readings and fuel added at your latest fill-up, with optional fuel cost per distance.", "url": "/gas-mileage-calculator/", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Automotive & Transportation", "item": "/automotive/"}, {"@type": "ListItem", "position": 3, "name": "Fuel & Mileage", "item": "/automotive/fuel-mileage/"}, {"@type": "ListItem", "position": 4, "name": "Gas Mileage Calculator", "item": "/gas-mileage-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I calculate MPG from fill-ups?", "acceptedAnswer": {"@type": "Answer", "text": "Subtract the previous odometer reading from the current reading to get distance traveled, then divide that distance by the gallons added at the next fill-up."}}, {"@type": "Question", "name": "What is L/100 km?", "acceptedAnswer": {"@type": "Answer", "text": "Liters per 100 kilometers is a fuel-consumption measure. Lower values mean less fuel is used per 100 km."}}, {"@type": "Question", "name": "Why should I use a full tank method?", "acceptedAnswer": {"@type": "Answer", "text": "Using consistent fill-ups reduces error because the fuel added is a better estimate of fuel consumed since the prior fill-up. Pump shutoff and tank angle can still introduce variation."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body class="theme-mileage" data-cp-category="date-time" data-cp-page-type="Calculator">
-<header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header><nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../date-time/index.html">Date &amp; Time</a></li><li><a aria-current="page" href="index.html">Gas Mileage Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../date-time/index.html">Browse Date &amp; Time</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main"><h1 class="page-title">Gas Mileage Calculator</h1>
+    <!-- Primary Meta Tags -->
+    <title>Gas Mileage Calculator – Calculate MPG from Fuel Use</title>
+    <meta name="title" content="Gas Mileage Calculator – Calculate MPG from Fuel Use">
+    <meta name="description"
+        content="Calculate gas mileage from odometer readings and fuel added. Find miles traveled and MPG, with optional fuel price for cost-per-distance estimates.">
 
-<section aria-labelledby="calculator-heading" class="container calc-zone">
-<div class="calc-shell">
-<h2 class="calc-title" id="calculator-heading">Gas Mileage Calculator</h2>
-<p class="calc-note">Use two odometer readings and the fuel added at the second fill-up to calculate fuel economy.</p>
-<div class="tabs"><button class="tab active" data-mode="us">US (MPG)</button><button class="tab" data-mode="metric">Metric</button></div>
-<div class="form-grid">
-<div class="field"><label for="current">Current odometer</label><input id="current" min="0" step="any" type="number" value="10100"/></div>
-<div class="field"><label for="previous">Previous odometer</label><input id="previous" min="0" step="any" type="number" value="10000"/></div>
-<div class="field"><label for="fuel" id="fuelLabel">Fuel added (US gal)</label><input id="fuel" min="0.001" step="any" type="number" value="4"/></div>
-<div class="field"><label for="price" id="priceLabel">Fuel price per gallon (optional)</label><input id="price" min="0" step="any" type="number" value="3.50"/></div>
-</div>
-<div class="actions"><button class="primary" id="calcBtn">Calculate Mileage</button><button class="secondary" id="resetBtn">Reset</button></div><div class="error" id="error" role="alert"></div>
-<div class="result"><span class="sub">Fuel economy</span><div class="big" id="primary">25.00 MPG</div><div class="stat-grid"><div class="stat"><span id="altLabel">Metric equivalent</span><b id="alt">9.41 L/100 km</b></div><div class="stat"><span>Distance</span><b id="distanceOut">100 mi</b></div><div class="stat"><span>Fuel cost / distance</span><b id="costOut">$0.140/mi</b></div></div></div>
-</div>
-</section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<section class="container content-grid">
-<article class="article">
-<h2>What Is a Gas Mileage Calculator?</h2><p>A gas mileage calculator measures fuel economy from distance traveled between fill-ups and the amount of fuel added at the later fill-up. In U.S. units, the result is miles per gallon (MPG). In metric use, fuel consumption is often shown as liters per 100 kilometers (L/100 km).</p>
-<h2>Gas Mileage Formula</h2><div class="formula">Distance = Current odometer − Previous odometer<br/>MPG = Miles traveled ÷ US gallons used<br/>L/100 km = Liters used ÷ Kilometers traveled × 100</div>
-<h3>Example</h3><p>If the odometer moves from 10,000 to 10,100 miles and the next fill-up adds 4 gallons, the measured fuel economy is 100 ÷ 4 = 25 MPG. That is approximately 9.41 L/100 km.</p>
-<h2>How to Get a Better Measurement</h2><p>Record the odometer when filling the tank, then refill to a similar level at the next stop and record how much fuel the pump dispensed. Averaging several tanks helps smooth out differences caused by pump shutoff, traffic, weather, route, and driving conditions.</p>
-<h2>Limitations</h2><p>Tank-to-tank MPG is an observed estimate, not a laboratory certification value. Odometer error, incomplete refills, fuel-pump variation, tire size, idling, and changing driving conditions can affect the result.</p>
-<h2 id="faq">Frequently Asked Questions</h2>
-<div class="faq"><details><summary>How do I calculate MPG from fill-ups?</summary><p>Subtract the previous odometer reading from the current reading to get distance traveled, then divide that distance by the gallons added at the next fill-up.</p></details>
-<details><summary>What is L/100 km?</summary><p>Liters per 100 kilometers is a fuel-consumption measure. Lower values mean less fuel is used per 100 km.</p></details>
-<details><summary>Why should I use a full tank method?</summary><p>Using consistent fill-ups reduces error because the fuel added is a better estimate of fuel consumed since the prior fill-up. Pump shutoff and tank angle can still introduce variation.</p></details></div>
-<h2>Sources and Methodology</h2>
-<p>CalcPro uses the formulas and assumptions described above. References below were used to cross-check the calculator method and terminology. Results are estimates unless a definition or unit conversion is mathematically exact.</p>
-<ul class="sources"><li><a href="https://www.calculator.net/gas-mileage-calculator.html" rel="noopener noreferrer">Calculator.net Gas Mileage Calculator</a> — cross-check of odometer-and-fill-up mileage method.</li>
-<li><a href="https://www.fueleconomy.gov/" rel="noopener noreferrer">U.S. EPA FuelEconomy.gov</a> — official U.S. vehicle fuel-economy information resource.</li></ul>
-</article>
-<aside class="aside">
-<h3>Quick reference</h3>
-<div class="formula">MPG = miles ÷ gallons<br/>L/100 km = liters ÷ km × 100</div><div class="pills"><span class="pill">fill-up method</span><span class="pill">MPG</span><span class="pill">L/100 km</span></div>
-</aside>
-</section>
+    <!-- Canonical -->
+    <link rel="canonical" href="https://monkeymart-onlinefree.github.io/gas-mileage-calculator/">
 
-<script class="cp-calculator-data" type="application/json">{"index":"162","Batch":"17","Calculator / Page":"Gas Mileage Calculator","Slug":"gas-mileage-calculator","Site Category (Current)":"Date & Time","Recommended Content Domain":"Date / Time","Page Type":"Calculator","Search Intent / Purpose":"Calculate MPG or L/100 km from odometer readings and fuel added at your latest fill-up, with optional fuel cost per distance.","Formula / Algorithm Used in Tool":"Gas Mileage Formula: Distance = Current odometer − Previous odometer MPG = Miles traveled ÷ US gallons used L/100 km = Liters used ÷ Kilometers traveled × 100","Required User Inputs":"Current odometer; Previous odometer; Fuel added (US gal); Fuel price per gallon (optional)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Current odometer, Previous odometer, Fuel added (US gal), Fuel price per gallon (optional). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Calendar convention and date arithmetic rules; time-zone functions require current IANA/browser data.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When calendar/time-zone rules change","Important Assumptions / Limitations":"Tank-to-tank MPG is an observed estimate, not a laboratory certification value. Odometer error, incomplete refills, fuel-pump variation, tire size, idling, and changing driving conditions can affect the result.","Current Source URLs in Page":"https://www.calculator.net/gas-mileage-calculator.html | https://www.fueleconomy.gov/","Implementation Path":"/gas-mileage-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Date &amp; Time</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../mileage-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Mileage Calculator</strong><small>Calculate trip mileage from odometer readings and estimate driving time, fuel use,…</small></span></a><a class="cp-related-link" href="../date-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Date Calculator</strong><small>Calculate days between dates or add and subtract years, months, weeks, and days fro…</small></span></a><a class="cp-related-link" href="../time-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time Calculator</strong><small>Add or subtract two time durations in hours, minutes, and seconds and view the norm…</small></span></a><a class="cp-related-link" href="../age-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Age Calculator</strong><small>Calculate age between two dates in years, months, and days, plus total days, weeks,…</small></span></a><a class="cp-related-link" href="../hours-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Hours Calculator</strong><small>Calculate hours and minutes between two clock times, with an overnight option and d…</small></span></a><a class="cp-related-link" href="../marriage-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Marriage Tax Calculator</strong><small>Compare a simplified 2026 federal tax estimate for two people before marriage with…</small></span></a><a class="cp-related-link" href="../time-card-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time Card Calculator</strong><small>Total weekly work hours, unpaid breaks, configurable overtime, and estimated gross…</small></span></a><a class="cp-related-link" href="../time-zone-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time Zone Calculator</strong><small>Convert a date and time between major IANA time zones with browser-supported daylig…</small></span></a></div><a class="cp-side-category" href="../date-time/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
+    <!-- Facebook / Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://monkeymart-onlinefree.github.io/gas-mileage-calculator/">
+    <meta property="og:title" content="Gas Mileage Calculator – Calculate MPG from Fuel Use">
+    <meta property="og:description"
+        content="Calculate gas mileage from odometer readings and fuel added. Find miles traveled and MPG, with optional fuel price for cost-per-distance estimates.">
+    <meta property="og:site_name" content="Gas Mileage Calculator">
 
-const $=id=>document.getElementById(id);let mode="us";
-document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");mode=b.dataset.mode;$("fuelLabel").textContent=mode==="us"?"Fuel added (US gal)":"Fuel added (L)";$("priceLabel").textContent=mode==="us"?"Fuel price per gallon (optional)":"Fuel price per liter (optional)";run()});
-function run(){let cur=+$("current").value,prev=+$("previous").value,f=+$("fuel").value,p=+$("price").value;if(!(cur>prev)||!(f>0)||!(p>=0)){$("error").textContent="Current odometer must exceed previous reading, and fuel must be positive.";return}let d=cur-prev;$("error").textContent="";if(mode==="us"){let mpg=d/f,l100=235.214583/mpg;$("primary").textContent=mpg.toFixed(2)+" MPG";$("alt").textContent=l100.toFixed(2)+" L/100 km";$("distanceOut").textContent=d.toFixed(1)+" mi";$("costOut").textContent=p?("$"+(f*p/d).toFixed(3)+"/mi"):"—"}else{let kml=d/f,l100=100/kml,mpg=235.214583/l100;$("primary").textContent=l100.toFixed(2)+" L/100 km";$("alt").textContent=mpg.toFixed(2)+" MPG (US)";$("distanceOut").textContent=d.toFixed(1)+" km";$("costOut").textContent=p?("$"+(f*p/d).toFixed(3)+"/km"):"—"}}
-$("calcBtn").onclick=run;$("resetBtn").onclick=()=>location.reload();run();
+    <!-- X / Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/gas-mileage-calculator/">
+    <meta name="twitter:title" content="Gas Mileage Calculator – Calculate MPG from Fuel Use">
+    <meta name="twitter:description"
+        content="Calculate gas mileage from odometer readings and fuel added. Find miles traveled and MPG, with optional fuel price for cost-per-distance estimates.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        :root {
+            --bg: #eef0f2;
+            --text: #14191d;
+            --muted: #67737c;
+            --bodyText: #48545c;
+            --accent: #dc2626;
+            --accentText: #fff;
+            --accentShadow: #dc262633;
+            --hero: linear-gradient(145deg, #f8fafc, #d8dde2 58%, #cbd5e1);
+            --heroText: #4d5962;
+            --panel: #f8fafce8;
+            --article: #fafafa;
+            --input: #fff;
+            --result: linear-gradient(135deg, #fff, #e5e7eb);
+            --mini: #fff;
+            --chip: #ffffffa8;
+            --code: #f1f5f9;
+            --line: #0f172a18;
+            --lineStrong: #0f172a35;
+            --focus: #ef44442a;
+            --shadow: 0 30px 70px #11182726;
+            --softShadow: 0 16px 40px #11182714
+        }
 
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.62
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .sitebar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            gap: 16px
+        }
+
+        .brand {
+            font-weight: 900;
+            letter-spacing: -.04em;
+            font-size: 1.25rem
+        }
+
+        .brand span {
+            color: var(--accent)
+        }
+
+        .crumbs {
+            font-size: .9rem;
+            color: var(--muted);
+            margin: 12px 0 0
+        }
+
+        .crumbs a {
+            color: inherit
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            margin: 12px auto 30px;
+            border-radius: 32px;
+            padding: clamp(28px, 5vw, 70px);
+            background: var(--hero);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--line);
+            isolation: isolate
+        }
+
+        .hero h1 {
+            font-size: clamp(2.35rem, 5.7vw, 5.2rem);
+            line-height: .96;
+            letter-spacing: -.065em;
+            margin: 12px 0 20px;
+            max-width: 800px
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 1.5vw, 1.18rem);
+            max-width: 720px;
+            color: var(--heroText, var(--muted));
+            margin: 0
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            font-size: .76rem;
+            padding: 8px 12px;
+            border-radius: 99px;
+            background: var(--chip);
+            border: 1px solid var(--line)
+        }
+
+        .hero-art {
+            position: absolute;
+            right: 3%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: min(34vw, 360px);
+            height: min(34vw, 360px);
+            pointer-events: none;
+            opacity: .96
+        }
+
+        .calc-zone {
+            margin: 0 auto 34px
+        }
+
+        .calc-shell {
+            position: relative;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            border-radius: 28px;
+            padding: clamp(20px, 3vw, 34px);
+            backdrop-filter: blur(14px)
+        }
+
+        .calc-title {
+            margin: 0 0 5px;
+            font-size: 1.5rem;
+            letter-spacing: -.03em
+        }
+
+        .calc-note {
+            margin: 0 0 22px;
+            color: var(--muted)
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px
+        }
+
+        .field.full {
+            grid-column: 1/-1
+        }
+
+        label {
+            font-size: .9rem;
+            font-weight: 750
+        }
+
+        .input-row {
+            display: flex;
+            gap: 8px
+        }
+
+        input,
+        select,
+        textarea,
+        button {
+            font: inherit
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--lineStrong);
+            background: var(--input);
+            color: var(--text);
+            border-radius: 14px;
+            padding: 13px 14px;
+            outline: none;
+            transition: .2s
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--focus)
+        }
+
+        .unit {
+            max-width: 122px
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px
+        }
+
+        button {
+            border: 0;
+            border-radius: 14px;
+            padding: 13px 18px;
+            font-weight: 850;
+            cursor: pointer;
+            transition: transform .18s, box-shadow .18s
+        }
+
+        button:hover {
+            transform: translateY(-2px)
+        }
+
+        .primary {
+            background: var(--accent);
+            color: var(--accentText, #fff);
+            box-shadow: 0 10px 25px var(--accentShadow)
+        }
+
+        .secondary {
+            background: var(--chip);
+            color: var(--text);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            min-height: 24px;
+            margin-top: 12px;
+            color: #c33;
+            font-weight: 700
+        }
+
+        .result {
+            margin-top: 24px;
+            padding: 24px;
+            border-radius: 24px;
+            background: var(--result);
+            border: 1px solid var(--line);
+            position: relative;
+            overflow: hidden
+        }
+
+        .result .big {
+            font-size: clamp(2rem, 5vw, 3.7rem);
+            font-weight: 950;
+            letter-spacing: -.055em;
+            line-height: 1;
+            margin: .25rem 0
+        }
+
+        .result .sub {
+            color: var(--muted)
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .stat {
+            background: var(--mini);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 14px
+        }
+
+        .stat b {
+            display: block;
+            font-size: 1.13rem
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 290px;
+            gap: 28px;
+            align-items: start
+        }
+
+        .article {
+            background: var(--article);
+            border: 1px solid var(--line);
+            box-shadow: var(--softShadow);
+            border-radius: 28px;
+            padding: clamp(22px, 4vw, 42px)
+        }
+
+        .article h2 {
+            font-size: clamp(1.55rem, 3vw, 2.2rem);
+            line-height: 1.1;
+            letter-spacing: -.035em;
+            margin: 2.2rem 0 .7rem
+        }
+
+        .article h2:first-child {
+            margin-top: 0
+        }
+
+        .article h3 {
+            margin: 1.5rem 0 .5rem
+        }
+
+        .article p,
+        .article li {
+            color: var(--bodyText)
+        }
+
+        .aside {
+            position: sticky;
+            top: 18px;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--softShadow);
+            border-radius: 22px;
+            padding: 20px
+        }
+
+        .aside h3 {
+            margin-top: 0
+        }
+
+        .aside ul {
+            padding-left: 18px;
+            margin-bottom: 0
+        }
+
+        .formula {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: var(--code);
+            padding: 16px;
+            border-radius: 16px;
+            overflow: auto;
+            border: 1px solid var(--line);
+            font-weight: 750
+        }
+
+        .table-wrap {
+            overflow: auto;
+            border: 1px solid var(--line);
+            border-radius: 18px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 560px
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--line)
+        }
+
+        th {
+            background: var(--chip)
+        }
+
+        .faq details {
+            border-top: 1px solid var(--line);
+            padding: 14px 0
+        }
+
+        .faq summary {
+            font-weight: 850;
+            cursor: pointer
+        }
+
+        .sources li {
+            margin: .45rem 0
+        }
+
+        .footer {
+            padding: 34px 0 50px;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 16px
+        }
+
+        .pill {
+            padding: 7px 11px;
+            border-radius: 999px;
+            background: var(--chip);
+            border: 1px solid var(--line);
+            font-size: .82rem;
+            font-weight: 750
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 0 0 18px
+        }
+
+        .tab {
+            padding: 9px 13px;
+            border-radius: 12px;
+            background: var(--chip);
+            border: 1px solid var(--line);
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .tab.active {
+            background: var(--accent);
+            color: var(--accentText, #fff)
+        }
+
+        .hidden {
+            display: none !important
+        }
+
+        @media(max-width:860px) {
+            .content-grid {
+                grid-template-columns: 1fr
+            }
+
+            .aside {
+                position: static
+            }
+
+            .hero-art {
+                opacity: .28;
+                width: 250px;
+                height: 250px
+            }
+
+            .hero h1 {
+                max-width: 95%
+            }
+        }
+
+        @media(max-width:650px) {
+            .container {
+                width: min(100% - 20px, 1180px)
+            }
+
+            .hero {
+                border-radius: 22px;
+                padding: 26px 20px
+            }
+
+            .calc-shell,
+            .article {
+                border-radius: 22px;
+                padding: 20px
+            }
+
+            .form-grid,
+            .stat-grid {
+                grid-template-columns: 1fr
+            }
+
+            .field.full {
+                grid-column: auto
+            }
+
+            .input-row {
+                flex-direction: column
+            }
+
+            .unit {
+                max-width: none
+            }
+
+            .hero-art {
+                right: -60px
+            }
+        }
+
+        .theme-mileage .hero {
+            border-radius: 24px 90px 24px 24px
+        }
+
+        .theme-mileage .calc-shell {
+            border-radius: 24px 8px 24px 8px;
+            border-bottom: 7px solid #1f2937
+        }
+
+        .theme-mileage .result {
+            border-radius: 12px;
+            box-shadow: inset 0 -6px 0 #d1d5db
+        }
+
+        .gauge {
+            position: absolute;
+            inset: 16%;
+            border: 18px solid #1f2937;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            transform: rotate(-7deg);
+            box-shadow: 0 18px 0 #94a3b8
+        }
+
+        .gauge:before {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 45%;
+            background: #dc2626;
+            left: 50%;
+            bottom: 48%;
+            transform-origin: bottom;
+            transform: rotate(48deg);
+            border-radius: 9px
+        }
+
+        .gauge:after {
+            content: "MPG";
+            position: absolute;
+            left: 50%;
+            bottom: 12%;
+            transform: translateX(-50%);
+            font-weight: 950;
+            font-size: 30px;
+            color: #1f2937
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/gas-mileage-calculator/#webapplication",
+      "name": "Gas Mileage Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/gas-mileage-calculator/",
+      "description": "Calculate gas mileage from odometer readings and fuel added. Find miles traveled and MPG, with optional fuel price for cost-per-distance estimates.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/gas-mileage-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Gas Mileage Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/gas-mileage-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/gas-mileage-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate gas mileage from odometer readings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Subtract the previous odometer reading from the current reading to find miles traveled. Then divide those miles by the number of US gallons added at the latest fill-up."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does gas price affect MPG?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. MPG depends on distance traveled and fuel used. The optional fuel-price input affects cost information, not the vehicle’s calculated fuel efficiency."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is my calculated MPG different from my vehicle’s EPA rating?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your result measures fuel economy during your actual driving period. EPA ratings come from standardized testing, while real-world mileage can change with traffic, weather, driving behavior, maintenance, vehicle load, and other conditions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I fill the tank completely before calculating MPG?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Using consistent complete fill-ups generally gives a better tank-to-tank estimate because the amount added at the second fill-up more closely represents the fuel consumed since the previous fill-up. FuelEconomy.gov uses complete refills in its recommended odometer method."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use a trip odometer instead?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A trip odometer can be used to determine the distance traveled between fill-ups. FuelEconomy.gov describes this as an alternative method: reset the trip odometer after filling the tank, then divide the recorded trip distance by the gallons added at the next refill."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I enter zero gallons?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MPG cannot be calculated with zero gallons because the formula requires dividing distance by fuel used. Enter a fuel amount greater than zero."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a single fill-up enough to measure my normal fuel economy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It provides an estimate for that specific driving period. Tracking several fill-ups can give a more representative picture because individual tanks may be affected by different routes, weather, traffic, refill levels, and driving conditions."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body class="theme-mileage" data-cp-category="date-time" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../date-time/index.html">Date &amp; Time</a></li>
+            <li><a aria-current="page" href="index.html">Gas Mileage Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../date-time/index.html">Browse Date &amp; Time</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Gas Mileage Calculator</h1>
+
+            <section aria-labelledby="calculator-heading" class="container calc-zone">
+                <div class="calc-shell">
+                    <h2 class="calc-title" id="calculator-heading">Gas Mileage Calculator</h2>
+                    <p class="calc-note">Use two odometer readings and the fuel added at the second fill-up to calculate
+                        fuel economy.</p>
+                    <div class="tabs"><button class="tab active" data-mode="us">US (MPG)</button><button class="tab"
+                            data-mode="metric">Metric</button></div>
+                    <div class="form-grid">
+                        <div class="field"><label for="current">Current odometer</label><input id="current" min="0"
+                                step="any" type="number" value="10100" /></div>
+                        <div class="field"><label for="previous">Previous odometer</label><input id="previous" min="0"
+                                step="any" type="number" value="10000" /></div>
+                        <div class="field"><label for="fuel" id="fuelLabel">Fuel added (US gal)</label><input id="fuel"
+                                min="0.001" step="any" type="number" value="4" /></div>
+                        <div class="field"><label for="price" id="priceLabel">Fuel price per gallon
+                                (optional)</label><input id="price" min="0" step="any" type="number" value="3.50" />
+                        </div>
+                    </div>
+                    <div class="actions"><button class="primary" id="calcBtn">Calculate Mileage</button><button
+                            class="secondary" id="resetBtn">Reset</button></div>
+                    <div class="error" id="error" role="alert"></div>
+                    <div class="result"><span class="sub">Fuel economy</span>
+                        <div class="big" id="primary">25.00 MPG</div>
+                        <div class="stat-grid">
+                            <div class="stat"><span id="altLabel">Metric equivalent</span><b id="alt">9.41 L/100 km</b>
+                            </div>
+                            <div class="stat"><span>Distance</span><b id="distanceOut">100 mi</b></div>
+                            <div class="stat"><span>Fuel cost / distance</span><b id="costOut">$0.140/mi</b></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="container content-grid">
+
+
+                <article class="article">
+
+
+
+                    <p>Use the Gas Mileage Calculator to estimate your vehicle’s fuel economy from two odometer readings
+                        and the amount of fuel added at your latest fill-up. Enter the current and previous odometer
+                        readings, fuel added in US gallons, and optionally the fuel price to calculate MPG and
+                        supporting mileage information.</p>
+
+                    <section id="what">
+                        <h2>What Is the Gas Mileage Calculator?</h2>
+
+                        <p>The Gas Mileage Calculator measures fuel economy over a driving period between two fill-ups.
+                            It first determines how far the vehicle traveled, then divides that distance by the fuel
+                            used to calculate miles per gallon (MPG).</p>
+
+                        <p>It is useful for drivers who want to track real-world fuel efficiency, compare different
+                            driving periods, or monitor changes in vehicle fuel consumption. A fuel price can also be
+                            entered for an optional cost-per-distance estimate.</p>
+                    </section>
+
+                    <section id="how">
+                        <h2>How to Use the Gas Mileage Calculator</h2>
+
+                        <p>Enter the following values:</p>
+
+                        <p><strong>Current odometer:</strong> Enter the vehicle’s odometer reading at the latest
+                            fill-up. For an MPG calculation, the reading should be in miles.</p>
+
+                        <p><strong>Previous odometer:</strong> Enter the odometer reading recorded at the previous
+                            fill-up. Both odometer readings must use the same distance unit.</p>
+
+                        <p><strong>Fuel added (US gal):</strong> Enter the number of US gallons required to refill the
+                            tank.</p>
+
+                        <p><strong>Fuel price per gallon (optional):</strong> Enter the price paid for one gallon of
+                            fuel if you want the calculator to include its optional cost-related result. Fuel price does
+                            not change the MPG calculation itself.</p>
+
+                        <p>For the most useful tank-to-tank estimate, fill the tank consistently and record the odometer
+                            and fuel amount at each fill-up.</p>
+                    </section>
+
+                    <section id="formula">
+                        <h2>Formula / Calculation Method</h2>
+
+                        <h3>Main Formula</h3>
+
+                        <p>The calculation starts by finding the distance traveled:</p>
+
+                        <div class="formula"><strong>Distance traveled = Current odometer − Previous odometer</strong>
+                        </div>
+
+                        <p>Gas mileage is then calculated as:</p>
+
+                        <div class="formula"><strong>MPG = Miles traveled ÷ US gallons used</strong></div>
+
+                        <p>This is the standard odometer method described by the U.S. Department of Energy and EPA:
+                            subtract the previous odometer reading from the current reading and divide the resulting
+                            miles by the gallons required to refill the tank.</p>
+
+                        <p>For fuel economy expressed as liters per 100 kilometers, the documented metric relationship
+                            is:</p>
+
+                        <div class="formula"><strong>L/100 km = (Liters used ÷ Kilometers traveled) × 100</strong></div>
+
+                        <h3>Variables</h3>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th><strong>Variable</strong></th>
+                                    <th><strong>Meaning</strong></th>
+                                    <th><strong>Unit</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>D</td>
+                                    <td>Distance traveled</td>
+                                    <td>miles or kilometers</td>
+                                </tr>
+                                <tr>
+                                    <td>O₁</td>
+                                    <td>Current odometer reading</td>
+                                    <td>distance</td>
+                                </tr>
+                                <tr>
+                                    <td>O₀</td>
+                                    <td>Previous odometer reading</td>
+                                    <td>distance</td>
+                                </tr>
+                                <tr>
+                                    <td>G</td>
+                                    <td>Fuel used</td>
+                                    <td>US gallons</td>
+                                </tr>
+                                <tr>
+                                    <td>MPG</td>
+                                    <td>Miles traveled per US gallon</td>
+                                    <td>mi/gal</td>
+                                </tr>
+                                <tr>
+                                    <td>L</td>
+                                    <td>Fuel used in metric calculation</td>
+                                    <td>liters</td>
+                                </tr>
+                                <tr>
+                                    <td>K</td>
+                                    <td>Distance traveled in metric calculation</td>
+                                    <td>kilometers</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3>Calculation Sequence</h3>
+
+                        <ol>
+                            <li>Subtract the previous odometer reading from the current odometer reading.</li>
+                            <li>Use the difference as the distance traveled.</li>
+                            <li>Divide miles traveled by US gallons added to calculate MPG.</li>
+                            <li>If metric fuel-use values are being evaluated, divide liters used by kilometers traveled
+                                and multiply by 100 to obtain L/100 km.</li>
+                            <li>If a fuel price is provided, the calculator can include its optional cost-related
+                                supporting value.</li>
+                        </ol>
+
+                        <h3>Distance Traveled</h3>
+
+                        <div class="formula"><strong>Distance = Current odometer − Previous odometer</strong></div>
+
+                        <p>The current odometer must be greater than the previous reading for a positive driving
+                            distance.</p>
+
+                        <h3>MPG</h3>
+
+                        <div class="formula"><strong>MPG = Distance traveled ÷ Fuel added</strong></div>
+
+                        <p>A higher MPG means the vehicle traveled farther for each US gallon of fuel.</p>
+
+                        <h3>L/100 km</h3>
+
+                        <div class="formula"><strong>L/100 km = (Liters used ÷ Kilometers traveled) × 100</strong></div>
+
+                        <p>For L/100 km, a lower number represents lower fuel consumption per 100 kilometers.</p>
+                    </section>
+
+                    <section id="example">
+                        <h2>Worked Example</h2>
+
+                        <p>Suppose these values were recorded between two complete fill-ups.</p>
+
+                        <h3>Inputs</h3>
+
+                        <ul>
+                            <li>Current odometer: 33,001.3 miles</li>
+                            <li>Previous odometer: 32,645.1 miles</li>
+                            <li>Fuel added: 13.5 US gallons</li>
+                            <li>Fuel price: optional</li>
+                        </ul>
+
+                        <h3>Step 1: Calculate Distance</h3>
+
+                        <div class="formula"><strong>Distance = 33,001.3 − 32,645.1</strong></div>
+
+                        <div class="formula"><strong>Distance = 356.2 miles</strong></div>
+
+                        <h3>Step 2: Calculate MPG</h3>
+
+                        <div class="formula"><strong>MPG = 356.2 ÷ 13.5</strong></div>
+
+                        <div class="formula"><strong>MPG = 26.385185...</strong></div>
+
+                        <h3>Step 3: Round the Result</h3>
+
+                        <p>Rounded to one decimal place:</p>
+
+                        <div class="formula"><strong>MPG ≈ 26.4</strong></div>
+
+                        <h3>Final Result</h3>
+
+                        <p>The vehicle achieved approximately <strong>26.4 MPG</strong> over this driving period.</p>
+
+                        <p>The same odometer-method example published by FuelEconomy.gov demonstrates subtracting
+                            consecutive odometer readings and dividing the distance by gallons used.</p>
+                    </section>
+
+                    <section id="results">
+                        <h2>Understanding Your Results</h2>
+
+                        <p><strong>Distance traveled</strong> is the difference between the latest and previous odometer
+                            readings. It represents the driving distance covered during the fuel-use period.</p>
+
+                        <p><strong>MPG</strong> shows how many miles the vehicle traveled for each US gallon of fuel.
+                            For example, 26.4 MPG means approximately 26.4 miles were traveled per gallon during that
+                            measurement period.</p>
+
+                        <p><strong>L/100 km</strong> expresses fuel consumption in the opposite direction: it shows how
+                            many liters are required to travel 100 kilometers. Lower L/100 km values indicate lower fuel
+                            consumption.</p>
+
+                        <p><strong>Fuel cost per distance</strong>, when available after entering a fuel price, provides
+                            a cost-oriented view of the same driving period. Changing the fuel price affects cost
+                            information but does not change the measured MPG.</p>
+
+                        <p>A tank-to-tank result represents your observed fuel economy for that period. It should not be
+                            treated as an official laboratory fuel-economy rating. EPA notes that real-world mileage can
+                            vary because of driving conditions, vehicle condition, fuel differences, and other factors.
+                        </p>
+                    </section>
+
+                    <section id="limits">
+                        <h2>Assumptions and Limitations</h2>
+
+                        <p>The calculator assumes that the odometer readings and fuel-added value accurately describe
+                            the same driving period.</p>
+
+                        <p>For the best tank-to-tank estimate, the vehicle should be filled to a reasonably consistent
+                            level at both fill-ups. An incomplete refill can make the gallons added different from the
+                            fuel actually consumed during the measured distance.</p>
+
+                        <p>Fuel added must be greater than zero because MPG cannot be calculated by dividing by zero.
+                            The current odometer must also exceed the previous odometer for a normal positive-distance
+                            calculation.</p>
+
+                        <p>Real-world results may be affected by odometer accuracy, fuel-pump variation, tire size,
+                            idling, traffic, weather, vehicle load, maintenance, driving style, and changing road
+                            conditions. EPA fuel-economy ratings are produced using standardized testing, so a single
+                            observed fill-up may differ from the vehicle’s official rating.</p>
+
+                        <p>For better long-term tracking, compare several fill-ups instead of relying on one unusually
+                            short or unusual driving period.</p>
+                    </section>
+
+                    <section id="faq">
+                        <h2>Frequently Asked Questions</h2>
+
+                        <details class="faq">
+                            <summary>How do I calculate gas mileage from odometer readings?</summary>
+
+                            <p>Subtract the previous odometer reading from the current reading to find miles traveled.
+                                Then divide those miles by the number of US gallons added at the latest fill-up.</p>
+                        </details>
+
+                        <details class="faq">
+                            <summary>Does gas price affect MPG?</summary>
+
+                            <p>No. MPG depends on distance traveled and fuel used. The optional fuel-price input affects
+                                cost information, not the vehicle’s calculated fuel efficiency.</p>
+                        </details>
+
+                        <details class="faq">
+                            <summary>Why is my calculated MPG different from my vehicle’s EPA rating?</summary>
+
+                            <p>Your result measures fuel economy during your actual driving period. EPA ratings come
+                                from standardized testing, while real-world mileage can change with traffic, weather,
+                                driving behavior, maintenance, vehicle load, and other conditions.</p>
+                        </details>
+
+                        <details class="faq">
+                            <summary>Should I fill the tank completely before calculating MPG?</summary>
+
+                            <p>Using consistent complete fill-ups generally gives a better tank-to-tank estimate because
+                                the amount added at the second fill-up more closely represents the fuel consumed since
+                                the previous fill-up. FuelEconomy.gov uses complete refills in its recommended odometer
+                                method.</p>
+                        </details>
+
+                        <details class="faq">
+                            <summary>Can I use a trip odometer instead?</summary>
+
+                            <p>A trip odometer can be used to determine the distance traveled between fill-ups.
+                                FuelEconomy.gov describes this as an alternative method: reset the trip odometer after
+                                filling the tank, then divide the recorded trip distance by the gallons added at the
+                                next refill.</p>
+                        </details>
+
+                        <details class="faq">
+                            <summary>What happens if I enter zero gallons?</summary>
+
+                            <p>MPG cannot be calculated with zero gallons because the formula requires dividing distance
+                                by fuel used. Enter a fuel amount greater than zero.</p>
+                        </details>
+
+                        <details class="faq">
+                            <summary>Is a single fill-up enough to measure my normal fuel economy?</summary>
+
+                            <p>It provides an estimate for that specific driving period. Tracking several fill-ups can
+                                give a more representative picture because individual tanks may be affected by different
+                                routes, weather, traffic, refill levels, and driving conditions.</p>
+                        </details>
+                    </section>
+
+                    <section id="sources">
+                        <h2>Sources &amp; Methodology</h2>
+
+                        <h3>Formula / Methodology Sources</h3>
+
+                        <ul class="sources">
+                            <li>
+                                <a href="https://www.fueleconomy.gov/mpg/MPG.do?action=calcMPG&amp;utm_source=chatgpt.com"
+                                    rel="noopener" target="_blank">U.S. DOE/EPA FuelEconomy.gov — How to Calculate Your
+                                    MPG</a>
+                                <br>
+                                Supports the odometer method: calculate distance from consecutive odometer readings and
+                                divide miles traveled by gallons used.
+                            </li>
+
+                            <li>
+                                <a href="https://www.fueleconomy.gov/feg/why_differ.shtml?utm_source=chatgpt.com"
+                                    rel="noopener" target="_blank">FuelEconomy.gov — Your Mileage Will Vary</a>
+                                <br>
+                                Supports the distinction between real-world observed MPG and standardized EPA
+                                fuel-economy estimates.
+                            </li>
+
+                            <li>
+                                <a href="https://www.calculator.net/gas-mileage-calculator.html?utm_source=chatgpt.com"
+                                    rel="noopener" target="_blank">Calculator.net — Gas Mileage Calculator</a>
+                                <br>
+                                Used as a secondary reference for the tank-to-tank gas-mileage calculation and common
+                                calculator inputs.
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section id="related">
+                        <h2>Related Tools</h2>
+
+                        <ul>
+                            <li><a href="https://example.com/fuel-cost-calculator/?utm_source=chatgpt.com">Fuel Cost
+                                    Calculator</a></li>
+                            <li><a href="https://example.com/mileage-calculator/?utm_source=chatgpt.com">Mileage
+                                    Calculator</a></li>
+                            <li><a href="https://example.com/distance-calculator/?utm_source=chatgpt.com">Distance
+                                    Calculator</a></li>
+                            <li><a href="https://example.com/speed-calculator/?utm_source=chatgpt.com">Speed
+                                    Calculator</a></li>
+                            <li><a href="https://example.com/tire-size-calculator/?utm_source=chatgpt.com">Tire Size
+                                    Calculator</a></li>
+                            <li><a href="https://example.com/conversion-calculator/?utm_source=chatgpt.com">Conversion
+                                    Calculator</a></li>
+                        </ul>
+                    </section>
+
+                </article>
+
+
+
+            </section>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"162","Batch":"17","Calculator / Page":"Gas Mileage Calculator","Slug":"gas-mileage-calculator","Site Category (Current)":"Date & Time","Recommended Content Domain":"Date / Time","Page Type":"Calculator","Search Intent / Purpose":"Calculate MPG or L/100 km from odometer readings and fuel added at your latest fill-up, with optional fuel cost per distance.","Formula / Algorithm Used in Tool":"Gas Mileage Formula: Distance = Current odometer − Previous odometer MPG = Miles traveled ÷ US gallons used L/100 km = Liters used ÷ Kilometers traveled × 100","Required User Inputs":"Current odometer; Previous odometer; Fuel added (US gal); Fuel price per gallon (optional)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Current odometer, Previous odometer, Fuel added (US gal), Fuel price per gallon (optional). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Calendar convention and date arithmetic rules; time-zone functions require current IANA/browser data.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When calendar/time-zone rules change","Important Assumptions / Limitations":"Tank-to-tank MPG is an observed estimate, not a laboratory certification value. Odometer error, incomplete refills, fuel-pump variation, tire size, idling, and changing driving conditions can affect the result.","Current Source URLs in Page":"https://www.calculator.net/gas-mileage-calculator.html | https://www.fueleconomy.gov/","Implementation Path":"/gas-mileage-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Date &amp; Time</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../mileage-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Mileage Calculator</strong><small>Calculate trip
+                            mileage from odometer readings and estimate driving time, fuel use,…</small></span></a><a
+                    class="cp-related-link" href="../date-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Date Calculator</strong><small>Calculate days
+                            between dates or add and subtract years, months, weeks, and days fro…</small></span></a><a
+                    class="cp-related-link" href="../time-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Time Calculator</strong><small>Add or subtract two
+                            time durations in hours, minutes, and seconds and view the norm…</small></span></a><a
+                    class="cp-related-link" href="../age-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Age Calculator</strong><small>Calculate age between
+                            two dates in years, months, and days, plus total days, weeks,…</small></span></a><a
+                    class="cp-related-link" href="../hours-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Hours Calculator</strong><small>Calculate hours and
+                            minutes between two clock times, with an overnight option and d…</small></span></a><a
+                    class="cp-related-link" href="../marriage-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Marriage Tax Calculator</strong><small>Compare a
+                            simplified 2026 federal tax estimate for two people before marriage
+                            with…</small></span></a><a class="cp-related-link"
+                    href="../time-card-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time
+                            Card Calculator</strong><small>Total weekly work hours, unpaid breaks, configurable
+                            overtime, and estimated gross…</small></span></a><a class="cp-related-link"
+                    href="../time-zone-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time
+                            Zone Calculator</strong><small>Convert a date and time between major IANA time zones with
+                            browser-supported daylig…</small></span></a></div><a class="cp-side-category"
+                href="../date-time/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+
+        const $ = id => document.getElementById(id); let mode = "us";
+        document.querySelectorAll(".tab").forEach(b => b.onclick = () => { document.querySelectorAll(".tab").forEach(x => x.classList.remove("active")); b.classList.add("active"); mode = b.dataset.mode; $("fuelLabel").textContent = mode === "us" ? "Fuel added (US gal)" : "Fuel added (L)"; $("priceLabel").textContent = mode === "us" ? "Fuel price per gallon (optional)" : "Fuel price per liter (optional)"; run() });
+        function run() { let cur = +$("current").value, prev = +$("previous").value, f = +$("fuel").value, p = +$("price").value; if (!(cur > prev) || !(f > 0) || !(p >= 0)) { $("error").textContent = "Current odometer must exceed previous reading, and fuel must be positive."; return } let d = cur - prev; $("error").textContent = ""; if (mode === "us") { let mpg = d / f, l100 = 235.214583 / mpg; $("primary").textContent = mpg.toFixed(2) + " MPG"; $("alt").textContent = l100.toFixed(2) + " L/100 km"; $("distanceOut").textContent = d.toFixed(1) + " mi"; $("costOut").textContent = p ? ("$" + (f * p / d).toFixed(3) + "/mi") : "—" } else { let kml = d / f, l100 = 100 / kml, mpg = 235.214583 / l100; $("primary").textContent = l100.toFixed(2) + " L/100 km"; $("alt").textContent = mpg.toFixed(2) + " MPG (US)"; $("distanceOut").textContent = d.toFixed(1) + " km"; $("costOut").textContent = p ? ("$" + (f * p / d).toFixed(3) + "/km") : "—" } }
+        $("calcBtn").onclick = run; $("resetBtn").onclick = () => location.reload(); run();
+
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

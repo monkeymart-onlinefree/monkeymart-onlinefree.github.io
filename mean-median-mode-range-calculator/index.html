@@ -1,81 +1,1213 @@
 <!DOCTYPE html>
 
 <html lang="en-US">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>Mean Median Mode Range Calculator | CalcPro</title>
-<meta content="Calculate mean, median, mode, range, minimum, maximum, count, and sum for a list of numbers." name="description"/>
-<meta content="index,follow" name="robots"/>
-<link href="../mean-median-mode-range-calculator/" rel="canonical"/>
-<meta content="Mean Median Mode Range Calculator | CalcPro" property="og:title"/>
-<meta content="Calculate mean, median, mode, range, minimum, maximum, count, and sum for a list of numbers." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="/mean-median-mode-range-calculator/" property="og:url"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
-:root{--max:1180px}a{color:inherit}.wrap{width:min(var(--max),calc(100% - 32px));margin:auto}.sitebar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:18px}.brand{font-weight:900;letter-spacing:-.04em;font-size:1.25rem;text-decoration:none}.brand span{color:var(--accent)}.topnav{display:flex;gap:10px;flex-wrap:wrap}.topnav a{text-decoration:none;font-size:.9rem;padding:9px 12px;border-radius:999px;background:var(--glass);border:1px solid var(--line)}
-.breadcrumb{font-size:.85rem;opacity:.78;margin-bottom:14px}.breadcrumb a{text-decoration:none}.hero{position:relative;overflow:hidden}.hero h1{font-size:clamp(2.35rem,5vw,5rem);line-height:.98;letter-spacing:-.065em;margin:0 0 18px;max-width:860px}.hero p{font-size:clamp(1rem,1.8vw,1.18rem);max-width:720px;margin:0;color:var(--muted)}
-.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:var(--glass);border:1px solid var(--line);font-size:.82rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:18px}
-main{padding-bottom:60px}.calc-shell{position:relative;margin-top:-28px;z-index:4}.panel{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-.calc-card{border-radius:30px;padding:clamp(20px,4vw,38px)}.calc-title{font-size:1.45rem;font-weight:900;letter-spacing:-.03em;margin:0 0 6px}.calc-sub{margin:0 0 24px;color:var(--muted)}
-label{display:block;font-weight:800;font-size:.9rem;margin-bottom:7px}.field{margin-bottom:15px}.input,select,textarea{width:100%;border:1px solid var(--input-line);background:var(--input-bg);color:var(--text);border-radius:16px;padding:14px 15px;font:inherit;outline:none;transition:.2s}textarea{min-height:126px;resize:vertical}.input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}
-.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.btn{appearance:none;border:0;border-radius:16px;padding:13px 18px;font-weight:900;font:inherit;cursor:pointer;transition:.18s;box-shadow:0 8px 18px rgba(0,0,0,.12)}.btn:hover{transform:translateY(-2px)}.btn.primary{background:var(--accent);color:var(--accentText)}.btn.secondary{background:var(--button2);color:var(--text);border:1px solid var(--line)}
-.error{display:none;margin-top:14px;padding:11px 13px;border-radius:14px;background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.22);color:#b91c1c;font-weight:700}.error.show{display:block}
-.result-card{border-radius:26px;padding:24px;background:var(--result-bg);border:1px solid var(--line);position:relative;overflow:hidden}.result-kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;font-weight:900;color:var(--muted)}.result-big{font-size:clamp(2rem,5vw,4rem);font-weight:950;letter-spacing:-.06em;line-height:1.02;margin:8px 0 6px;word-break:break-word}.muted{color:var(--muted)}.metric-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.metric{padding:13px;border-radius:16px;background:var(--metric-bg);border:1px solid var(--line)}.metric b{display:block;font-size:.8rem;color:var(--muted);margin-bottom:2px}.metric span{font-size:1.08rem;font-weight:900;word-break:break-word}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.tab{border:1px solid var(--line);background:var(--button2);color:var(--text);border-radius:999px;padding:9px 13px;font-weight:850;cursor:pointer}.tab.active{background:var(--accent);color:var(--accentText);border-color:transparent}
-.content{padding-top:70px}.article-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:32px;align-items:start}.article{min-width:0}.article h2{font-size:clamp(1.55rem,2.7vw,2.25rem);letter-spacing:-.04em;margin:44px 0 12px}.article h3{font-size:1.18rem;margin:28px 0 8px}.article p,.article li{color:var(--bodyText)}.formula{padding:18px 20px;border-radius:18px;background:var(--formula-bg);border:1px solid var(--line);font-weight:850;overflow:auto}.aside{position:sticky;top:18px;border-radius:24px;padding:20px}.aside h3{margin:0 0 10px}.aside a{display:block;text-decoration:none;padding:8px 0;border-bottom:1px solid var(--line);font-size:.92rem}.faq details{border:1px solid var(--line);background:var(--panel);border-radius:18px;padding:14px 16px;margin:10px 0}.faq summary{font-weight:900;cursor:pointer}.sources a{word-break:break-word}
-footer{border-top:1px solid var(--line);padding:28px 0 38px;color:var(--muted);font-size:.9rem}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-@media(max-width:860px){.article-grid{grid-template-columns:1fr}.aside{position:relative}.row3{grid-template-columns:1fr}.calc-shell{margin-top:-10px}}@media(max-width:620px){.row,.metric-grid{grid-template-columns:1fr}.topnav{display:none}.sitebar{padding:14px 0}.calc-card{border-radius:24px}.wrap{width:min(var(--max),calc(100% - 22px))}}
+   <!-- Primary Meta Tags -->
+<title>Mean Median Mode Range Calculator for Data Sets | CalcPro</title>
+<meta name="title" content="Mean Median Mode Range Calculator for Data Sets | CalcPro">
+<meta name="description" content="Calculate mean, median, mode, range, minimum, maximum, count, and sum from a list of numbers with clear formulas, steps, and result explanations.">
 
-:root{--bg:#fff9ef;--text:#342512;--muted:#7c674f;--bodyText:#5c4a36;--panel:rgba(255,252,245,.94);--glass:#fff1d8;--line:#ead8bb;--accent:#ea7a17;--accentText:#fff;--input-bg:#fffdfa;--input-line:#e8d3b1;--focus:rgba(234,122,23,.14);--button2:#fff1db;--result-bg:linear-gradient(145deg,#fff0d2,#fffaf2);--metric-bg:#fffaf2;--formula-bg:#fff0d6;--shadow:0 28px 65px rgba(110,76,31,.14)}
-.hero{padding:46px 0 115px;background:linear-gradient(135deg,#fff8ea,#ffe7be)}.hero-layout{text-align:center;max-width:980px;margin:auto}.hero h1{margin-left:auto;margin-right:auto}.hero p{margin:auto}.tile-stage{height:210px;margin-top:28px;display:flex;justify-content:center;align-items:center;gap:18px;perspective:900px}.tile{width:118px;height:118px;border-radius:24px;display:grid;place-items:center;background:#fff7e8;border:1px solid #ebd3aa;box-shadow:0 18px 30px rgba(119,80,24,.16),inset -8px -9px 18px rgba(225,170,89,.12);font-size:2rem;font-weight:950;transform:rotateX(10deg) rotateY(-12deg)}.tile:nth-child(2){transform:translateY(-24px) rotateX(9deg) rotateY(8deg)}.tile:nth-child(3){transform:rotateX(8deg) rotateY(-8deg)}.tile:nth-child(4){transform:translateY(18px) rotateX(10deg) rotateY(11deg)}.mmmr-layout{display:grid;grid-template-columns:1fr 1fr;gap:24px}.quad{display:grid;grid-template-columns:1fr 1fr;gap:12px}.quad .metric{min-height:110px;display:flex;flex-direction:column;justify-content:center}.quad .metric span{font-size:1.6rem}@media(max-width:760px){.mmmr-layout{grid-template-columns:1fr}.tile{width:78px;height:78px;font-size:1.25rem}.tile-stage{height:155px}}
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Mean Median Mode Range Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate mean, median, mode, range, minimum, maximum, count, and sum for a list of numbers.", "url": "/mean-median-mode-range-calculator/", "browserRequirements": "Requires JavaScript"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Math & Statistics", "item": "/math/"}, {"@type": "ListItem", "position": 3, "name": "Statistics & Probability", "item": "/math/statistics-probability/"}, {"@type": "ListItem", "position": 4, "name": "Mean Median Mode Range Calculator", "item": "/mean-median-mode-range-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What happens if there are two modes?", "acceptedAnswer": {"@type": "Answer", "text": "Both values are modes when they tie for the highest frequency. The calculator lists all tied modes."}}, {"@type": "Question", "name": "How is the median calculated with an even number of values?", "acceptedAnswer": {"@type": "Answer", "text": "After sorting the data, the median is the arithmetic mean of the two middle values."}}, {"@type": "Question", "name": "Can there be no mode?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. If no value occurs more frequently than the others, the data set has no repeated mode."}}, {"@type": "Question", "name": "Does the range use every value?", "acceptedAnswer": {"@type": "Answer", "text": "No. Range uses only the maximum and minimum values, so it can be strongly affected by a single extreme observation."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/><link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body data-cp-category="math" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../math/index.html">Math &amp; Statistics</a></li><li><a aria-current="page" href="index.html">Mean Median Mode Range Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a href="../calculators/index.html">All calculators</a></div><header class="hero">
-<div class="wrap">
-<nav aria-label="Primary navigation" class="sitebar"><a class="brand" href="#">Calc<span>Pro</span></a><div class="topnav"><a href="#calculator">Calculator</a><a href="#guide">Guide</a><a href="#faq">FAQ</a></div></nav>
-<div class="hero-layout">
-<div><div class="breadcrumb"><a href="#">Home</a> / <a href="#">Math</a> / Mean Median Mode Range Calculator</div><div class="pill">CalcPro · Statistics + Geometry</div><h1>Mean Median Mode Range Calculator</h1><p>Four essential summaries, one clean data pad. Enter a list and see its center and spread immediately.</p></div>
-<div aria-hidden="true" class="tile-stage"><div class="tile">x̄</div><div class="tile">M</div><div class="tile">Mo</div><div class="tile">R</div></div>
-</div>
-</div>
-</header>
-<div class="cp-page-layout"><main id="main"><h1 class="page-title">Mean Median Mode Range Calculator</h1>
-<div class="wrap calc-shell" id="calculator"><section class="panel calc-card"><h2 class="calc-title">Mean Median Mode Range Calculator</h2><p class="calc-sub">Calculate mean, median, mode, range, minimum, maximum, count, and sum for a list of numbers.</p>
-<div class="mmmr-layout">
-<section>
-<div class="field"><label for="data">Numbers</label><textarea id="data">10, 2, 38, 23, 38, 23, 21</textarea></div>
-<div class="buttons"><button class="btn primary" id="calcBtn">Calculate</button><button class="btn secondary" id="resetBtn">Reset</button></div><div class="error" id="error"></div>
-</section>
-<section aria-live="polite" class="quad">
-<div class="metric"><b>Mean</b><span id="mean">—</span></div><div class="metric"><b>Median</b><span id="median">—</span></div><div class="metric"><b>Mode</b><span id="mode">—</span></div><div class="metric"><b>Range</b><span id="range">—</span></div>
-<div class="metric"><b>Minimum</b><span id="min">—</span></div><div class="metric"><b>Maximum</b><span id="max">—</span></div><div class="metric"><b>Count</b><span id="count">—</span></div><div class="metric"><b>Sum</b><span id="sum">—</span></div>
-</section>
-</div>
-</section></div><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<div class="wrap content" id="guide">
-<div class="article-grid">
-<article class="article">
-<section id="s1"><h2>What Is a Mean Median Mode Range Calculator?</h2><p>This calculator finds four common descriptive statistics from a list of numbers. The mean is the arithmetic average, the median is the middle ordered value, the mode is the most frequent value or values, and the range is the difference between the largest and smallest values.</p></section><section id="s2"><h2>How to Use It</h2><p>Enter values separated by commas, spaces, semicolons, or line breaks and select Calculate. The result tiles show mean, median, mode, range, minimum, maximum, count, and sum.</p></section><section id="s3"><h2>Mean, Median, Mode, and Range Formulas</h2><div class="formula">Mean = Σx/n. To find the median, sort the data; use the middle value for an odd count or average the two middle values for an even count. Mode is the value with the greatest frequency. Range = maximum − minimum.</div></section><section id="s4"><h2>Calculation Example</h2><p>For 10, 2, 38, 23, 38, 23, 21, the sum is 155 and n = 7, so the mean is about 22.1429. The ordered list has 23 in the middle. Both 23 and 38 occur twice, so the data is bimodal. The range is 38 − 2 = 36.</p></section><section id="s5"><h2>Which Measure Should You Use?</h2><p>Mean uses every value but is sensitive to extreme values. Median is often more resistant to outliers. Mode is useful when frequency matters and can also be used with categories. Range is easy to interpret but depends only on the minimum and maximum.</p></section><section id="s6"><h2>Limitations</h2><p>These measures summarize a data set but do not describe its full distribution. Two data sets can have the same mean or median and still have very different shapes or variability.</p></section>
-<section class="faq" id="faq"><h2>Frequently Asked Questions</h2><details><summary>What happens if there are two modes?</summary><p>Both values are modes when they tie for the highest frequency. The calculator lists all tied modes.</p></details><details><summary>How is the median calculated with an even number of values?</summary><p>After sorting the data, the median is the arithmetic mean of the two middle values.</p></details><details><summary>Can there be no mode?</summary><p>Yes. If no value occurs more frequently than the others, the data set has no repeated mode.</p></details><details><summary>Does the range use every value?</summary><p>No. Range uses only the maximum and minimum values, so it can be strongly affected by a single extreme observation.</p></details></section>
-<section class="sources" id="sources"><h2>Sources and Methodology</h2><p>Formulas and calculator behavior were cross-checked against the sources below. Page copy and visual design are original. Results are computed locally in your browser.</p><ul><li><a href="https://www.calculator.net/mean-median-mode-range-calculator.html" rel="noopener" target="_blank">Calculator.net Mean Median Mode Range Calculator</a></li><li><a href="https://openstax.org/books/contemporary-mathematics/pages/8-formula-review" rel="noopener" target="_blank">OpenStax – Contemporary Mathematics Formula Review</a></li></ul></section>
-</article>
-<aside class="aside panel"><h3>On this page</h3><a href="#s1">What Is a Mean Median Mode Range Calculator?</a><a href="#s2">How to Use It</a><a href="#s3">Mean, Median, Mode, and Range Formulas</a><a href="#s4">Calculation Example</a><a href="#s5">Which Measure Should You Use?</a><a href="#s6">Limitations</a><a href="#faq">Frequently Asked Questions</a><a href="#sources">Sources &amp; Methodology</a></aside>
-</div>
-</div>
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/mean-median-mode-range-calculator/">
 
-<script class="cp-calculator-data" type="application/json">{"index":"143","Batch":"15","Calculator / Page":"Mean Median Mode Range Calculator","Slug":"mean-median-mode-range-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Calculate mean, median, mode, range, minimum, maximum, count, and sum for a list of numbers.","Formula / Algorithm Used in Tool":"Mean, Median, Mode, and Range Formulas: Mean = Σx/n. To find the median, sort the data; use the middle value for an odd count or average the two middle values for an even count. Mode is the value with the greatest frequency. Range = maximum − minimum.","Required User Inputs":"Numbers","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Numbers. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"These measures summarize a data set but do not describe its full distribution. Two data sets can have the same mean or median and still have very different shapes or variability.","Current Source URLs in Page":"https://www.calculator.net/mean-median-mode-range-calculator.html | https://openstax.org/books/contemporary-mathematics/pages/8-formula-review","Implementation Path":"/mean-median-mode-range-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Math &amp; Statistics</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../statistics-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Statistics Calculator</strong><small>Calculate count, sum, mean, median, mode, range, quartiles, variance, standard devi…</small></span></a><a class="cp-related-link" href="../standard-deviation-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Standard Deviation Calculator</strong><small>Calculate sample or population standard deviation, variance, mean, sum, count, stan…</small></span></a><a class="cp-related-link" href="../scientific-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Scientific Calculator</strong><small>Calculate trigonometric functions, inverse trig, logarithms, roots, powers, factori…</small></span></a><a class="cp-related-link" href="../confidence-interval-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Confidence Interval Calculator</strong><small>Calculate a two-sided confidence interval for a mean using a t interval for sample…</small></span></a><a class="cp-related-link" href="../z-score-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Z-Score Calculator</strong><small>Calculate a z-score from a raw value, mean, and standard deviation, plus standard n…</small></span></a><a class="cp-related-link" href="../big-number-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Big Number Calculator</strong><small>Perform exact integer arithmetic with very large whole numbers. Free, fast and resp…</small></span></a><a class="cp-related-link" href="../scientific-notation-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Scientific Notation Calculator</strong><small>Convert ordinary numbers to scientific notation and back. Free, fast and responsive…</small></span></a><a class="cp-related-link" href="../basic-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Basic Calculator</strong><small>Use a fast basic calculator for addition, subtraction, multiplication, division, me…</small></span></a></div><a class="cp-side-category" href="../math/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-const $=id=>document.getElementById(id),fmt=n=>Number.isFinite(n)?Number(n.toPrecision(12)).toString():'—';
-function render(){const a=$('data').value.trim().split(/[\s,;]+/).filter(Boolean).map(Number),e=$('error');e.classList.remove('show');if(!a.length||a.some(x=>!Number.isFinite(x))){e.textContent='Enter a valid list of numbers.';e.classList.add('show');return}a.sort((x,y)=>x-y);const n=a.length,sum=a.reduce((s,x)=>s+x,0),mean=sum/n,m=Math.floor(n/2),median=n%2?a[m]:(a[m-1]+a[m])/2;const f=new Map();a.forEach(x=>f.set(x,(f.get(x)||0)+1));const mx=Math.max(...f.values()),modes=mx>1?[...f].filter(([,c])=>c===mx).map(([v])=>v):[];$('mean').textContent=fmt(mean);$('median').textContent=fmt(median);$('mode').textContent=modes.length?modes.map(fmt).join(', '):'None';$('range').textContent=fmt(a[n-1]-a[0]);$('min').textContent=fmt(a[0]);$('max').textContent=fmt(a[n-1]);$('count').textContent=n;$('sum').textContent=fmt(sum)}
-$('calcBtn').onclick=render;$('resetBtn').onclick=()=>{$('data').value='10, 2, 38, 23, 38, 23, 21';render()};render();
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/mean-median-mode-range-calculator/">
+<meta property="og:title" content="Mean Median Mode Range Calculator for Data Sets | CalcPro">
+<meta property="og:description" content="Calculate mean, median, mode, range, minimum, maximum, count, and sum from a list of numbers with clear formulas, steps, and result explanations.">
+<meta property="og:site_name" content="Mean Median Mode Range Calculator for Data Sets">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/mean-median-mode-range-calculator/">
+<meta name="twitter:title" content="Mean Median Mode Range Calculator for Data Sets | CalcPro">
+<meta name="twitter:description" content="Calculate mean, median, mode, range, minimum, maximum, count, and sum from a list of numbers with clear formulas, steps, and result explanations.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65
+        }
+
+        :root {
+            --max: 1180px
+        }
+
+        a {
+            color: inherit
+        }
+
+        .wrap {
+            width: min(var(--max), calc(100% - 32px));
+            margin: auto
+        }
+
+        .sitebar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            gap: 18px
+        }
+
+        .brand {
+            font-weight: 900;
+            letter-spacing: -.04em;
+            font-size: 1.25rem;
+            text-decoration: none
+        }
+
+        .brand span {
+            color: var(--accent)
+        }
+
+        .topnav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .topnav a {
+            text-decoration: none;
+            font-size: .9rem;
+            padding: 9px 12px;
+            border-radius: 999px;
+            background: var(--glass);
+            border: 1px solid var(--line)
+        }
+
+        .breadcrumb {
+            font-size: .85rem;
+            opacity: .78;
+            margin-bottom: 14px
+        }
+
+        .breadcrumb a {
+            text-decoration: none
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero h1 {
+            font-size: clamp(2.35rem, 5vw, 5rem);
+            line-height: .98;
+            letter-spacing: -.065em;
+            margin: 0 0 18px;
+            max-width: 860px
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 1.8vw, 1.18rem);
+            max-width: 720px;
+            margin: 0;
+            color: var(--muted)
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: var(--glass);
+            border: 1px solid var(--line);
+            font-size: .82rem;
+            font-weight: 800;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            margin-bottom: 18px
+        }
+
+        main {
+            padding-bottom: 60px
+        }
+
+        .calc-shell {
+            position: relative;
+             z-index: 4
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px)
+        }
+
+        .calc-card {
+            border-radius: 30px;
+            padding: clamp(20px, 4vw, 38px)
+        }
+
+        .calc-title {
+            font-size: 1.45rem;
+            font-weight: 900;
+            letter-spacing: -.03em;
+            margin: 0 0 6px
+        }
+
+        .calc-sub {
+            margin: 0 0 24px;
+            color: var(--muted)
+        }
+
+        label {
+            display: block;
+            font-weight: 800;
+            font-size: .9rem;
+            margin-bottom: 7px
+        }
+
+        .field {
+            margin-bottom: 15px
+        }
+
+        .input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--input-line);
+            background: var(--input-bg);
+            color: var(--text);
+            border-radius: 16px;
+            padding: 14px 15px;
+            font: inherit;
+            outline: none;
+            transition: .2s
+        }
+
+        textarea {
+            min-height: 126px;
+            resize: vertical
+        }
+
+        .input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--focus)
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .row3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .btn {
+            appearance: none;
+            border: 0;
+            border-radius: 16px;
+            padding: 13px 18px;
+            font-weight: 900;
+            font: inherit;
+            cursor: pointer;
+            transition: .18s;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, .12)
+        }
+
+        .btn:hover {
+            transform: translateY(-2px)
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            color: var(--accentText)
+        }
+
+        .btn.secondary {
+            background: var(--button2);
+            color: var(--text);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            display: none;
+            margin-top: 14px;
+            padding: 11px 13px;
+            border-radius: 14px;
+            background: rgba(220, 38, 38, .1);
+            border: 1px solid rgba(220, 38, 38, .22);
+            color: #b91c1c;
+            font-weight: 700
+        }
+
+        .error.show {
+            display: block
+        }
+
+        .result-card {
+            border-radius: 26px;
+            padding: 24px;
+            background: var(--result-bg);
+            border: 1px solid var(--line);
+            position: relative;
+            overflow: hidden
+        }
+
+        .result-kicker {
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            font-weight: 900;
+            color: var(--muted)
+        }
+
+        .result-big {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 950;
+            letter-spacing: -.06em;
+            line-height: 1.02;
+            margin: 8px 0 6px;
+            word-break: break-word
+        }
+
+        .muted {
+            color: var(--muted)
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 14px
+        }
+
+        .metric {
+            padding: 13px;
+            border-radius: 16px;
+            background: var(--metric-bg);
+            border: 1px solid var(--line)
+        }
+
+        .metric b {
+            display: block;
+            font-size: .8rem;
+            color: var(--muted);
+            margin-bottom: 2px
+        }
+
+        .metric span {
+            font-size: 1.08rem;
+            font-weight: 900;
+            word-break: break-word
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 0 0 18px
+        }
+
+        .tab {
+            border: 1px solid var(--line);
+            background: var(--button2);
+            color: var(--text);
+            border-radius: 999px;
+            padding: 9px 13px;
+            font-weight: 850;
+            cursor: pointer
+        }
+
+        .tab.active {
+            background: var(--accent);
+            color: var(--accentText);
+            border-color: transparent
+        }
+
+        .content {
+            padding-top: 70px
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 300px;
+            gap: 32px;
+            align-items: start
+        }
+
+        .article {
+            min-width: 0
+        }
+
+        .article h2 {
+            font-size: clamp(1.55rem, 2.7vw, 2.25rem);
+            letter-spacing: -.04em;
+            margin: 44px 0 12px
+        }
+
+        .article h3 {
+            font-size: 1.18rem;
+            margin: 28px 0 8px
+        }
+
+        .article p,
+        .article li {
+            color: var(--bodyText)
+        }
+
+        .formula {
+            padding: 18px 20px;
+            border-radius: 18px;
+            background: var(--formula-bg);
+            border: 1px solid var(--line);
+            font-weight: 850;
+            overflow: auto
+        }
+
+        .aside {
+            position: sticky;
+            top: 18px;
+            border-radius: 24px;
+            padding: 20px
+        }
+
+        .aside h3 {
+            margin: 0 0 10px
+        }
+
+        .aside a {
+            display: block;
+            text-decoration: none;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--line);
+            font-size: .92rem
+        }
+
+        .faq details {
+            border: 1px solid var(--line);
+            background: var(--panel);
+            border-radius: 18px;
+            padding: 14px 16px;
+            margin: 10px 0
+        }
+
+        .faq summary {
+            font-weight: 900;
+            cursor: pointer
+        }
+
+        .sources a {
+            word-break: break-word
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 28px 0 38px;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0
+        }
+
+        @media(max-width:860px) {
+            .article-grid {
+                grid-template-columns: 1fr
+            }
+
+            .aside {
+                position: relative
+            }
+
+            .row3 {
+                grid-template-columns: 1fr
+            }
+
+            .calc-shell {
+                margin-top: -10px
+            }
+        }
+
+        @media(max-width:620px) {
+
+            .row,
+            .metric-grid {
+                grid-template-columns: 1fr
+            }
+
+            .topnav {
+                display: none
+            }
+
+            .sitebar {
+                padding: 14px 0
+            }
+
+            .calc-card {
+                border-radius: 24px
+            }
+
+            .wrap {
+                width: min(var(--max), calc(100% - 22px))
+            }
+        }
+
+        :root {
+            --bg: #fff9ef;
+            --text: #342512;
+            --muted: #7c674f;
+            --bodyText: #5c4a36;
+            --panel: rgba(255, 252, 245, .94);
+            --glass: #fff1d8;
+            --line: #ead8bb;
+            --accent: #ea7a17;
+            --accentText: #fff;
+            --input-bg: #fffdfa;
+            --input-line: #e8d3b1;
+            --focus: rgba(234, 122, 23, .14);
+            --button2: #fff1db;
+            --result-bg: linear-gradient(145deg, #fff0d2, #fffaf2);
+            --metric-bg: #fffaf2;
+            --formula-bg: #fff0d6;
+            --shadow: 0 28px 65px rgba(110, 76, 31, .14)
+        }
+
+        .hero {
+            padding: 46px 0 115px;
+            background: linear-gradient(135deg, #fff8ea, #ffe7be)
+        }
+
+        .hero-layout {
+            text-align: center;
+            max-width: 980px;
+            margin: auto
+        }
+
+        .hero h1 {
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        .hero p {
+            margin: auto
+        }
+
+        .tile-stage {
+            height: 210px;
+            margin-top: 28px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            perspective: 900px
+        }
+
+        .tile {
+            width: 118px;
+            height: 118px;
+            border-radius: 24px;
+            display: grid;
+            place-items: center;
+            background: #fff7e8;
+            border: 1px solid #ebd3aa;
+            box-shadow: 0 18px 30px rgba(119, 80, 24, .16), inset -8px -9px 18px rgba(225, 170, 89, .12);
+            font-size: 2rem;
+            font-weight: 950;
+            transform: rotateX(10deg) rotateY(-12deg)
+        }
+
+        .tile:nth-child(2) {
+            transform: translateY(-24px) rotateX(9deg) rotateY(8deg)
+        }
+
+        .tile:nth-child(3) {
+            transform: rotateX(8deg) rotateY(-8deg)
+        }
+
+        .tile:nth-child(4) {
+            transform: translateY(18px) rotateX(10deg) rotateY(11deg)
+        }
+
+        .mmmr-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px
+        }
+
+        .quad {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px
+        }
+
+        .quad .metric {
+            min-height: 110px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center
+        }
+
+        .quad .metric span {
+            font-size: 1.6rem
+        }
+
+        @media(max-width:760px) {
+            .mmmr-layout {
+                grid-template-columns: 1fr
+            }
+
+            .tile {
+                width: 78px;
+                height: 78px;
+                font-size: 1.25rem
+            }
+
+            .tile-stage {
+                height: 155px
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/mean-median-mode-range-calculator/#webapplication",
+      "name": "Mean Median Mode Range Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/mean-median-mode-range-calculator/",
+      "description": "Calculate mean, median, mode, range, minimum, maximum, count, and sum from a list of numbers with clear formulas, steps, and result explanations.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/mean-median-mode-range-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Mean Median Mode Range Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/mean-median-mode-range-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/mean-median-mode-range-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the formula for the mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The arithmetic mean is: Mean = Σx / n. Add all values and divide the sum by the number of values."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is the median calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sort the values first. For an odd number of observations, use the middle value. For an even number, average the two middle values."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between mean and median?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The mean uses every numerical value in the calculation. The median depends on the position of values after they are sorted. Because of this, an extreme value can change the mean substantially while having much less effect on the median."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a data set have more than one mode?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. If two or more values share the highest frequency, they can all satisfy the statistical definition of mode."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is range calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Subtract the minimum value from the maximum: Range = Maximum − Minimum."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is range the same as variability?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Range is one simple measure of variability, but it uses only the highest and lowest observations. It does not show how the other values are distributed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this calculator provide a complete statistical analysis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Mean, median, mode, range, minimum, maximum, count, and sum are useful descriptive measures, but they do not describe every characteristic of a data set. More detailed analysis may also consider measures such as variance and standard deviation."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart OnlineFree",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script><script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="math" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../math/index.html">Math &amp; Statistics</a></li>
+            <li><a aria-current="page" href="index.html">Mean Median Mode Range Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Mean Median Mode Range Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+            <div class="wrap calc-shell" id="calculator">
+                <section class="panel calc-card">
+                    <h2 class="calc-title">Mean Median Mode Range Calculator</h2>
+                    <p class="calc-sub">Calculate mean, median, mode, range, minimum, maximum, count, and sum for a list
+                        of numbers.</p>
+                    <div class="mmmr-layout">
+                        <section>
+                            <div class="field"><label for="data">Numbers</label><textarea
+                                    id="data">10, 2, 38, 23, 38, 23, 21</textarea></div>
+                            <div class="buttons"><button class="btn primary" id="calcBtn">Calculate</button><button
+                                    class="btn secondary" id="resetBtn">Reset</button></div>
+                            <div class="error" id="error"></div>
+                        </section>
+                        <section aria-live="polite" class="quad">
+                            <div class="metric"><b>Mean</b><span id="mean">—</span></div>
+                            <div class="metric"><b>Median</b><span id="median">—</span></div>
+                            <div class="metric"><b>Mode</b><span id="mode">—</span></div>
+                            <div class="metric"><b>Range</b><span id="range">—</span></div>
+                            <div class="metric"><b>Minimum</b><span id="min">—</span></div>
+                            <div class="metric"><b>Maximum</b><span id="max">—</span></div>
+                            <div class="metric"><b>Count</b><span id="count">—</span></div>
+                            <div class="metric"><b>Sum</b><span id="sum">—</span></div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <div class="wrap content" id="guide">
+                 
+
+<article class="article">
+
+ 
+
+  <p>Use the Mean Median Mode Range Calculator to summarize a list of numbers. Enter your numerical data to calculate the <strong>mean, median, mode, range, minimum, maximum, count, and sum</strong>.</p>
+
+  <section id="what">
+    <h2>What Is the Mean Median Mode Range Calculator?</h2>
+
+    <p>The Mean Median Mode Range Calculator finds common measures of center and spread for a numerical data set.</p>
+
+    <p>It is useful for quickly analyzing scores, measurements, observations, prices, survey values, or other numerical data. Instead of manually sorting and calculating each measure, you can enter the numbers and review the main statistical summaries together.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Mean Median Mode Range Calculator</h2>
+
+    <h3>Numbers</h3>
+
+    <p>Enter the numerical values you want to analyze in the <strong>Numbers</strong> field.</p>
+
+    <p>All calculations are based on this data set. If your values represent measurements such as kilograms, dollars, seconds, or points, use consistent units throughout the list.</p>
+
+    <p>After entering the data, the calculator determines the count and sum and uses the values to calculate the mean, median, mode, range, minimum, and maximum.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <p>The calculator uses standard arithmetic and descriptive-statistics methods for a list of numbers.</p>
+
+    <h3>Mean Formula</h3>
+
+    <p>The arithmetic mean is:</p>
+
+    <div class="formula"><strong>Mean = Σx / n</strong></div>
+
+    <p>where:</p>
+
+    <ul>
+      <li><strong>Σx</strong> = sum of all values</li>
+      <li><strong>x</strong> = each value in the data set</li>
+      <li><strong>n</strong> = number of values</li>
+    </ul>
+
+    <p>The mean is calculated by adding all values and dividing the total by the number of values. This matches the standard arithmetic-mean definition described by OpenStax.</p>
+
+    <h3>Median Formula</h3>
+
+    <p>The values are first arranged from smallest to largest.</p>
+
+    <p>For an odd number of values:</p>
+
+    <div class="formula"><strong>Median = value at position (n + 1) / 2</strong></div>
+
+    <p>For an even number of values:</p>
+
+    <div class="formula"><strong>Median = (a + b) / 2</strong></div>
+
+    <p>where <strong>a</strong> and <strong>b</strong> are the two middle values in the ordered data set.</p>
+
+    <p>OpenStax describes the same odd-count and even-count median method.</p>
+
+    <h3>Mode</h3>
+
+    <p>The <strong>mode</strong> is the value that occurs with the greatest frequency in the data set.</p>
+
+    <p>If multiple values share the highest frequency, more than one value can satisfy the mathematical definition of mode.</p>
+
+    <h3>Range Formula</h3>
+
+    <div class="formula"><strong>Range = Maximum − Minimum</strong></div>
+
+    <p>The range measures the distance between the largest and smallest values in the data set.</p>
+
+    <h3>Sum</h3>
+
+    <div class="formula"><strong>Sum = Σx</strong></div>
+
+    <p>The sum is the total obtained by adding every value in the data set.</p>
+
+    <h3>Count</h3>
+
+    <div class="formula"><strong>Count = n</strong></div>
+
+    <p>The count is simply the number of values included in the calculation.</p>
+
+    <h3>Minimum and Maximum</h3>
+
+    <p><strong>Minimum</strong> is the smallest value in the data set.</p>
+
+    <p><strong>Maximum</strong> is the largest value in the data set.</p>
+
+    <h3>Calculation Sequence</h3>
+
+    <ol>
+      <li>Read the numerical values in the data set.</li>
+      <li>Count the number of values.</li>
+      <li>Add the values to calculate the sum.</li>
+      <li>Divide the sum by the count to calculate the mean.</li>
+      <li>Sort the values from smallest to largest.</li>
+      <li>Find the middle value or middle pair to calculate the median.</li>
+      <li>Compare value frequencies to identify the mode.</li>
+      <li>Identify the minimum and maximum.</li>
+      <li>Subtract the minimum from the maximum to calculate the range.</li>
+    </ol>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose the data set is:</p>
+
+    <div class="formula"><strong>4, 7, 7, 10, 12</strong></div>
+
+    <h3>Inputs</h3>
+
+    <p>Numbers: <strong>4, 7, 7, 10, 12</strong></p>
+
+    <h3>Step 1: Find the Count and Sum</h3>
+
+    <p>There are five values:</p>
+
+    <div class="formula"><strong>n = 5</strong></div>
+
+    <p>Add the numbers:</p>
+
+    <div class="formula"><strong>Sum = 4 + 7 + 7 + 10 + 12 = 40</strong></div>
+
+    <h3>Step 2: Calculate the Mean</h3>
+
+    <p>Using:</p>
+
+    <div class="formula"><strong>Mean = Σx / n</strong></div>
+
+    <p>Substitute the values:</p>
+
+    <div class="formula"><strong>Mean = 40 / 5</strong></div>
+
+    <div class="formula"><strong>Mean = 8</strong></div>
+
+    <h3>Step 3: Calculate Median, Mode, and Range</h3>
+
+    <p>The values are already ordered:</p>
+
+    <div class="formula"><strong>4, 7, 7, 10, 12</strong></div>
+
+    <p>There are five values, so the median is the middle value:</p>
+
+    <div class="formula"><strong>Median = 7</strong></div>
+
+    <p>The value <strong>7</strong> appears twice, more frequently than any other value:</p>
+
+    <div class="formula"><strong>Mode = 7</strong></div>
+
+    <p>Minimum:</p>
+
+    <div class="formula"><strong>Minimum = 4</strong></div>
+
+    <p>Maximum:</p>
+
+    <div class="formula"><strong>Maximum = 12</strong></div>
+
+    <p>Range:</p>
+
+    <div class="formula"><strong>Range = 12 − 4 = 8</strong></div>
+
+    <h3>Final Result</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th><strong>Result</strong></th>
+          <th><strong>Value</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mean</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td>Median</td>
+          <td>7</td>
+        </tr>
+        <tr>
+          <td>Mode</td>
+          <td>7</td>
+        </tr>
+        <tr>
+          <td>Range</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td>Minimum</td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td>Maximum</td>
+          <td>12</td>
+        </tr>
+        <tr>
+          <td>Count</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>Sum</td>
+          <td>40</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p><strong>Mean</strong> represents the arithmetic average of all values. It uses every number in the data set, so unusually high or low values can affect it.</p>
+
+    <p><strong>Median</strong> represents the center of the ordered data. It can be useful when extreme values make the mean less representative of a typical observation.</p>
+
+    <p><strong>Mode</strong> identifies the most frequently occurring value.</p>
+
+    <p><strong>Range</strong> shows the difference between the highest and lowest values. A larger range indicates a greater distance between the two extremes, but it does not describe how the values between those extremes are distributed.</p>
+
+    <p><strong>Minimum</strong> is the lowest value, while <strong>maximum</strong> is the highest.</p>
+
+    <p><strong>Count</strong> tells you how many observations are included.</p>
+
+    <p><strong>Sum</strong> is the total of all entered values.</p>
+
+    <p>Mean, median, mode, and range describe different characteristics of a data set, so one measure alone may not provide a complete picture. OpenStax notes that data sets with similar measures of center can still have different variability or distributions.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>This calculator provides descriptive summaries of the numbers entered. These measures do not describe every property of a data distribution.</p>
+
+    <p>The mean can be strongly influenced by unusually high or low values. The median is generally less sensitive to extreme observations because it depends on position after sorting.</p>
+
+    <p>Range uses only the minimum and maximum values, so it does not show how closely the remaining values are grouped.</p>
+
+    <p>A data set can also have the same mean or median as another data set while having a very different distribution or level of variability.</p>
+
+    <p>At least one valid numerical observation is required for meaningful calculations. Units should be consistent when the numbers represent measurements.</p>
+
+    <p>Some results, especially the mean or the median of an even-sized data set, can produce decimal values. Avoid unnecessary early rounding when using a result in further calculations.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What is the formula for the mean?</summary>
+
+      <p>The arithmetic mean is:</p>
+
+      <div class="formula"><strong>Mean = Σx / n</strong></div>
+
+      <p>Add all values and divide the sum by the number of values.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How is the median calculated?</summary>
+
+      <p>Sort the values first. For an odd number of observations, use the middle value. For an even number, average the two middle values.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What is the difference between mean and median?</summary>
+
+      <p>The mean uses every numerical value in the calculation. The median depends on the position of values after they are sorted. Because of this, an extreme value can change the mean substantially while having much less effect on the median.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can a data set have more than one mode?</summary>
+
+      <p>Yes. If two or more values share the highest frequency, they can all satisfy the statistical definition of mode.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How is range calculated?</summary>
+
+      <p>Subtract the minimum value from the maximum:</p>
+
+      <div class="formula"><strong>Range = Maximum − Minimum</strong></div>
+    </details>
+
+    <details class="faq">
+      <summary>Is range the same as variability?</summary>
+
+      <p>Range is one simple measure of variability, but it uses only the highest and lowest observations. It does not show how the other values are distributed.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does this calculator provide a complete statistical analysis?</summary>
+
+      <p>No. Mean, median, mode, range, minimum, maximum, count, and sum are useful descriptive measures, but they do not describe every characteristic of a data set. More detailed analysis may also consider measures such as variance and standard deviation.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://openstax.org/books/contemporary-mathematics/pages/8-key-concepts?utm_source=chatgpt.com" rel="noopener" target="_blank">OpenStax — Mean, Median and Mode / Range Key Concepts</a>
+        <br>
+        Supports the definitions of arithmetic mean, median, mode, and range.
+      </li>
+
+      <li>
+        <a href="https://openstax.org/books/contemporary-mathematics/pages/8-formula-review?utm_source=chatgpt.com" rel="noopener" target="_blank">OpenStax — Mean, Median and Mode Formula Review</a>
+        <br>
+        Supports the ordered-data method for calculating the median for odd and even data-set sizes.
+      </li>
+
+      <li>
+        <a href="https://openstax.org/books/principles-data-science/pages/3-2-measures-of-variation?utm_source=chatgpt.com" rel="noopener" target="_blank">OpenStax — Measures of Variation</a>
+        <br>
+        Supports the range formula and its interpretation as a measure based on the maximum and minimum values.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/statistics-calculator/?utm_source=chatgpt.com">Statistics Calculator</a></li>
+      <li><a href="https://example.com/standard-deviation-calculator/?utm_source=chatgpt.com">Standard Deviation Calculator</a></li>
+      <li><a href="https://example.com/z-score-calculator/?utm_source=chatgpt.com">Z-Score Calculator</a></li>
+      <li><a href="https://example.com/confidence-interval-calculator/?utm_source=chatgpt.com">Confidence Interval Calculator</a></li>
+      <li><a href="https://example.com/sample-size-calculator/?utm_source=chatgpt.com">Sample Size Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+
+            </div>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"143","Batch":"15","Calculator / Page":"Mean Median Mode Range Calculator","Slug":"mean-median-mode-range-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Calculate mean, median, mode, range, minimum, maximum, count, and sum for a list of numbers.","Formula / Algorithm Used in Tool":"Mean, Median, Mode, and Range Formulas: Mean = Σx/n. To find the median, sort the data; use the middle value for an odd count or average the two middle values for an even count. Mode is the value with the greatest frequency. Range = maximum − minimum.","Required User Inputs":"Numbers","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Numbers. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"These measures summarize a data set but do not describe its full distribution. Two data sets can have the same mean or median and still have very different shapes or variability.","Current Source URLs in Page":"https://www.calculator.net/mean-median-mode-range-calculator.html | https://openstax.org/books/contemporary-mathematics/pages/8-formula-review","Implementation Path":"/mean-median-mode-range-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Math &amp; Statistics</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../statistics-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Statistics Calculator</strong><small>Calculate
+                            count, sum, mean, median, mode, range, quartiles, variance, standard
+                            devi…</small></span></a><a class="cp-related-link"
+                    href="../standard-deviation-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Standard Deviation
+                            Calculator</strong><small>Calculate sample or population standard deviation, variance, mean,
+                            sum, count, stan…</small></span></a><a class="cp-related-link"
+                    href="../scientific-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Scientific Calculator</strong><small>Calculate
+                            trigonometric functions, inverse trig, logarithms, roots, powers,
+                            factori…</small></span></a><a class="cp-related-link"
+                    href="../confidence-interval-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Confidence Interval
+                            Calculator</strong><small>Calculate a two-sided confidence interval for a mean using a t
+                            interval for sample…</small></span></a><a class="cp-related-link"
+                    href="../z-score-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Z-Score
+                            Calculator</strong><small>Calculate a z-score from a raw value, mean, and standard
+                            deviation, plus standard n…</small></span></a><a class="cp-related-link"
+                    href="../big-number-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Big
+                            Number Calculator</strong><small>Perform exact integer arithmetic with very large whole
+                            numbers. Free, fast and resp…</small></span></a><a class="cp-related-link"
+                    href="../scientific-notation-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Scientific Notation
+                            Calculator</strong><small>Convert ordinary numbers to scientific notation and back. Free,
+                            fast and responsive…</small></span></a><a class="cp-related-link"
+                    href="../basic-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Basic
+                            Calculator</strong><small>Use a fast basic calculator for addition, subtraction,
+                            multiplication, division, me…</small></span></a></div><a class="cp-side-category"
+                href="../math/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const $ = id => document.getElementById(id), fmt = n => Number.isFinite(n) ? Number(n.toPrecision(12)).toString() : '—';
+        function render() { const a = $('data').value.trim().split(/[\s,;]+/).filter(Boolean).map(Number), e = $('error'); e.classList.remove('show'); if (!a.length || a.some(x => !Number.isFinite(x))) { e.textContent = 'Enter a valid list of numbers.'; e.classList.add('show'); return } a.sort((x, y) => x - y); const n = a.length, sum = a.reduce((s, x) => s + x, 0), mean = sum / n, m = Math.floor(n / 2), median = n % 2 ? a[m] : (a[m - 1] + a[m]) / 2; const f = new Map(); a.forEach(x => f.set(x, (f.get(x) || 0) + 1)); const mx = Math.max(...f.values()), modes = mx > 1 ? [...f].filter(([, c]) => c === mx).map(([v]) => v) : []; $('mean').textContent = fmt(mean); $('median').textContent = fmt(median); $('mode').textContent = modes.length ? modes.map(fmt).join(', ') : 'None'; $('range').textContent = fmt(a[n - 1] - a[0]); $('min').textContent = fmt(a[0]); $('max').textContent = fmt(a[n - 1]); $('count').textContent = n; $('sum').textContent = fmt(sum) }
+        $('calcBtn').onclick = render; $('resetBtn').onclick = () => { $('data').value = '10, 2, 38, 23, 38, 23, 21'; render() }; render();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

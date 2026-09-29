@@ -1,90 +1,1170 @@
 <!DOCTYPE html>
 
 <html lang="en-US">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>Confidence Interval Calculator | CalcPro</title>
-<meta content="Calculate a two-sided confidence interval for a mean using a t interval for sample standard deviation or a z interval for known population standard deviation." name="description"/>
-<meta content="index,follow" name="robots"/>
-<link href="../confidence-interval-calculator/" rel="canonical"/>
-<meta content="Confidence Interval Calculator | CalcPro" property="og:title"/>
-<meta content="Calculate a two-sided confidence interval for a mean using a t interval for sample standard deviation or a z interval for known population standard deviation." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="/confidence-interval-calculator/" property="og:url"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
-:root{--max:1180px}a{color:inherit}.wrap{width:min(var(--max),calc(100% - 32px));margin:auto}.sitebar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:18px}.brand{font-weight:900;letter-spacing:-.04em;font-size:1.25rem;text-decoration:none}.brand span{color:var(--accent)}.topnav{display:flex;gap:10px;flex-wrap:wrap}.topnav a{text-decoration:none;font-size:.9rem;padding:9px 12px;border-radius:999px;background:var(--glass);border:1px solid var(--line)}
-.breadcrumb{font-size:.85rem;opacity:.78;margin-bottom:14px}.breadcrumb a{text-decoration:none}.hero{position:relative;overflow:hidden}.hero h1{font-size:clamp(2.35rem,5vw,5rem);line-height:.98;letter-spacing:-.065em;margin:0 0 18px;max-width:860px}.hero p{font-size:clamp(1rem,1.8vw,1.18rem);max-width:720px;margin:0;color:var(--muted)}
-.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:var(--glass);border:1px solid var(--line);font-size:.82rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:18px}
-main{padding-bottom:60px}.calc-shell{position:relative;margin-top:-28px;z-index:4}.panel{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-.calc-card{border-radius:30px;padding:clamp(20px,4vw,38px)}.calc-title{font-size:1.45rem;font-weight:900;letter-spacing:-.03em;margin:0 0 6px}.calc-sub{margin:0 0 24px;color:var(--muted)}
-label{display:block;font-weight:800;font-size:.9rem;margin-bottom:7px}.field{margin-bottom:15px}.input,select,textarea{width:100%;border:1px solid var(--input-line);background:var(--input-bg);color:var(--text);border-radius:16px;padding:14px 15px;font:inherit;outline:none;transition:.2s}textarea{min-height:126px;resize:vertical}.input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}
-.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.btn{appearance:none;border:0;border-radius:16px;padding:13px 18px;font-weight:900;font:inherit;cursor:pointer;transition:.18s;box-shadow:0 8px 18px rgba(0,0,0,.12)}.btn:hover{transform:translateY(-2px)}.btn.primary{background:var(--accent);color:var(--accentText)}.btn.secondary{background:var(--button2);color:var(--text);border:1px solid var(--line)}
-.error{display:none;margin-top:14px;padding:11px 13px;border-radius:14px;background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.22);color:#b91c1c;font-weight:700}.error.show{display:block}
-.result-card{border-radius:26px;padding:24px;background:var(--result-bg);border:1px solid var(--line);position:relative;overflow:hidden}.result-kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;font-weight:900;color:var(--muted)}.result-big{font-size:clamp(2rem,5vw,4rem);font-weight:950;letter-spacing:-.06em;line-height:1.02;margin:8px 0 6px;word-break:break-word}.muted{color:var(--muted)}.metric-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.metric{padding:13px;border-radius:16px;background:var(--metric-bg);border:1px solid var(--line)}.metric b{display:block;font-size:.8rem;color:var(--muted);margin-bottom:2px}.metric span{font-size:1.08rem;font-weight:900;word-break:break-word}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.tab{border:1px solid var(--line);background:var(--button2);color:var(--text);border-radius:999px;padding:9px 13px;font-weight:850;cursor:pointer}.tab.active{background:var(--accent);color:var(--accentText);border-color:transparent}
-.content{padding-top:70px}.article-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:32px;align-items:start}.article{min-width:0}.article h2{font-size:clamp(1.55rem,2.7vw,2.25rem);letter-spacing:-.04em;margin:44px 0 12px}.article h3{font-size:1.18rem;margin:28px 0 8px}.article p,.article li{color:var(--bodyText)}.formula{padding:18px 20px;border-radius:18px;background:var(--formula-bg);border:1px solid var(--line);font-weight:850;overflow:auto}.aside{position:sticky;top:18px;border-radius:24px;padding:20px}.aside h3{margin:0 0 10px}.aside a{display:block;text-decoration:none;padding:8px 0;border-bottom:1px solid var(--line);font-size:.92rem}.faq details{border:1px solid var(--line);background:var(--panel);border-radius:18px;padding:14px 16px;margin:10px 0}.faq summary{font-weight:900;cursor:pointer}.sources a{word-break:break-word}
-footer{border-top:1px solid var(--line);padding:28px 0 38px;color:var(--muted);font-size:.9rem}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-@media(max-width:860px){.article-grid{grid-template-columns:1fr}.aside{position:relative}.row3{grid-template-columns:1fr}.calc-shell{margin-top:-10px}}@media(max-width:620px){.row,.metric-grid{grid-template-columns:1fr}.topnav{display:none}.sitebar{padding:14px 0}.calc-card{border-radius:24px}.wrap{width:min(var(--max),calc(100% - 22px))}}
+    <!-- Primary Meta Tags -->
+<title>Confidence Interval Calculator – Mean CI with t or z</title>
+<meta name="title" content="Confidence Interval Calculator – Mean CI with t or z">
+<meta name="description" content="Confidence Interval Calculator for a mean using t or z methods. Enter mean, standard deviation, sample size, and confidence level to get interval bounds.">
 
-:root{--bg:#071526;--text:#f2fbff;--muted:#a3bdd0;--bodyText:#c8dbe7;--panel:rgba(10,31,51,.9);--glass:rgba(113,216,255,.07);--line:rgba(158,221,248,.14);--accent:#38bdf8;--accentText:#032337;--input-bg:#091e31;--input-line:#244b63;--focus:rgba(56,189,248,.16);--button2:#0d2a42;--result-bg:linear-gradient(145deg,#0c2c46,#0a1c32);--metric-bg:rgba(255,255,255,.045);--formula-bg:#0b263d;--shadow:0 34px 90px rgba(0,0,0,.38)}
-.hero{padding:48px 0 135px;background:radial-gradient(circle at 52% 0%,rgba(56,189,248,.2),transparent 36%),#071526}.hero-layout{text-align:center}.hero h1,.hero p{margin-left:auto;margin-right:auto}.interval-viz{max-width:820px;margin:42px auto 0;padding:26px}.ci-line{height:12px;border-radius:999px;background:#143c56;position:relative}.ci-band{position:absolute;left:18%;right:18%;top:-6px;height:24px;border-radius:999px;background:linear-gradient(90deg,#22d3ee,#38bdf8);box-shadow:0 0 35px rgba(56,189,248,.35)}.ci-dot{position:absolute;left:50%;top:50%;width:26px;height:26px;border-radius:50%;background:#fff;transform:translate(-50%,-50%);box-shadow:0 0 0 7px rgba(255,255,255,.1)}.ci-labels{display:flex;justify-content:space-between;margin-top:14px;font-weight:800;color:#9cc6da}.ci-layout{display:grid;grid-template-columns:.95fr 1.05fr;gap:22px}.ci-range{display:flex;align-items:center;gap:10px;margin-top:18px}.ci-end{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.05);flex:1;text-align:center;font-weight:900}@media(max-width:780px){.ci-layout{grid-template-columns:1fr}}
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Confidence Interval Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate a two-sided confidence interval for a mean using a t interval for sample standard deviation or a z interval for known population standard deviation.", "url": "/confidence-interval-calculator/", "browserRequirements": "Requires JavaScript"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Math & Statistics", "item": "/math/"}, {"@type": "ListItem", "position": 3, "name": "Statistics & Probability", "item": "/math/statistics-probability/"}, {"@type": "ListItem", "position": 4, "name": "Confidence Interval Calculator", "item": "/confidence-interval-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Should I use t or z for a confidence interval?", "acceptedAnswer": {"@type": "Answer", "text": "Use the t method when the population standard deviation is unknown and you are using the sample standard deviation. Use z when the population standard deviation is genuinely known or when a specific method requires the normal critical value."}}, {"@type": "Question", "name": "What is margin of error?", "acceptedAnswer": {"@type": "Answer", "text": "Margin of error is the critical value multiplied by the standard error. The confidence interval is the point estimate plus or minus this margin."}}, {"@type": "Question", "name": "Does 95% confidence mean a 95% probability the true mean is inside this one interval?", "acceptedAnswer": {"@type": "Answer", "text": "In the usual frequentist interpretation, no. The 95% refers to the long-run proportion of intervals from repeated samples that would contain the true mean."}}, {"@type": "Question", "name": "What happens when sample size increases?", "acceptedAnswer": {"@type": "Answer", "text": "Holding the standard deviation and confidence level fixed, the standard error decreases with 1/√n, so the interval generally becomes narrower."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/><link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body data-cp-category="math" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../math/index.html">Math &amp; Statistics</a></li><li><a aria-current="page" href="index.html">Confidence Interval Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a href="../calculators/index.html">All calculators</a></div><header class="hero">
-<div class="wrap">
-<nav aria-label="Primary navigation" class="sitebar"><a class="brand" href="#">Calc<span>Pro</span></a><div class="topnav"><a href="#calculator">Calculator</a><a href="#guide">Guide</a><a href="#faq">FAQ</a></div></nav>
-<div class="hero-layout">
-<div><div class="breadcrumb"><a href="#">Home</a> / <a href="#">Math</a> / Confidence Interval Calculator</div><div class="pill">CalcPro · Statistics + Geometry</div><h1>Confidence Interval Calculator</h1><p>Estimate a population mean with a visible uncertainty band. Choose the method that matches what you know about the standard deviation.</p></div>
-<div aria-hidden="true" class="interval-viz panel"><div class="ci-line"><div class="ci-band"></div><div class="ci-dot"></div></div><div class="ci-labels"><span>Lower</span><span>Sample mean</span><span>Upper</span></div></div>
-</div>
-</div>
-</header>
-<div class="cp-page-layout"><main id="main"><h1 class="page-title">Confidence Interval Calculator</h1>
-<div class="wrap calc-shell" id="calculator"><section class="panel calc-card"><h2 class="calc-title">Confidence Interval Calculator</h2><p class="calc-sub">Calculate a two-sided confidence interval for a mean using a t interval for sample standard deviation or a z interval for known population standard deviation.</p>
-<div class="ci-layout">
-<section>
-<div class="field"><label for="method">Standard deviation type</label><select id="method"><option value="sample">Sample SD (t interval)</option><option value="population">Known population SD (z interval)</option></select></div>
-<div class="row"><div class="field"><label for="mean">Sample mean (x̄)</label><input class="input" id="mean" step="any" type="number" value="22.8"/></div><div class="field"><label for="sd">Standard deviation</label><input class="input" id="sd" min="0" step="any" type="number" value="2.7"/></div></div>
-<div class="row"><div class="field"><label for="n">Sample size (n)</label><input class="input" id="n" min="2" step="1" type="number" value="100"/></div><div class="field"><label for="level">Confidence level (%)</label><input class="input" id="level" max="99.999" min="50" step="any" type="number" value="95"/></div></div>
-<div class="buttons"><button class="btn primary" id="calcBtn">Calculate interval</button><button class="btn secondary" id="resetBtn">Reset</button></div><div class="error" id="error"></div>
-</section>
-<section aria-live="polite" class="result-card">
-<div class="result-kicker">Confidence interval</div><div class="result-big" id="interval">—</div><div class="muted" id="methodLabel">—</div>
-<div class="ci-range"><div class="ci-end" id="lower">—</div><span>to</span><div class="ci-end" id="upper">—</div></div>
-<div class="metric-grid"><div class="metric"><b>Margin of error</b><span id="moe">—</span></div><div class="metric"><b>Critical value</b><span id="crit">—</span></div><div class="metric"><b>Standard error</b><span id="se">—</span></div><div class="metric"><b>Degrees of freedom</b><span id="df">—</span></div></div>
-</section>
-</div>
-</section></div><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<div class="wrap content" id="guide">
-<div class="article-grid">
-<article class="article">
-<section id="s1"><h2>What Is a Confidence Interval Calculator?</h2><p>A confidence interval calculator estimates a range for a population mean using sample information and a selected confidence level. This page supports a Student's t interval when the standard deviation is estimated from the sample and a z interval when the population standard deviation is treated as known.</p></section><section id="s2"><h2>How to Use the Confidence Interval Calculator</h2><p>Choose whether the standard deviation is a sample estimate or a known population value. Enter the sample mean, standard deviation, sample size, and confidence level. The result shows the interval endpoints, margin of error, standard error, and critical value.</p></section><section id="s3"><h2>Confidence Interval Formulas</h2><div class="formula">For an unknown population standard deviation, the mean interval is x̄ ± t*·s/√n with n−1 degrees of freedom. If the population standard deviation σ is known, the corresponding normal interval is x̄ ± z*·σ/√n.</div></section><section id="s4"><h2>Calculation Example</h2><p>With x̄ = 22.8, s = 2.7, n = 100, and 95% confidence, the standard error is 0.27. The t critical value with 99 degrees of freedom is slightly above 1.96, so the margin of error is about 0.536 and the interval is approximately 22.264 to 23.336.</p></section><section id="s5"><h2>How to Interpret a Confidence Level</h2><p>A 95% confidence level describes the long-run performance of the interval-building procedure. If the same method were applied repeatedly to independent samples, about 95% of the resulting intervals would contain the true parameter under the model assumptions.</p></section><section id="s6"><h2>Important Assumptions and Limitations</h2><p>The standard one-sample mean t interval assumes independent observations and is derived for data from a normally distributed population, though it becomes more robust in many larger samples. Severe skewness, dependence, biased sampling, or influential outliers can make the interval misleading.</p></section>
-<section class="faq" id="faq"><h2>Frequently Asked Questions</h2><details><summary>Should I use t or z for a confidence interval?</summary><p>Use the t method when the population standard deviation is unknown and you are using the sample standard deviation. Use z when the population standard deviation is genuinely known or when a specific method requires the normal critical value.</p></details><details><summary>What is margin of error?</summary><p>Margin of error is the critical value multiplied by the standard error. The confidence interval is the point estimate plus or minus this margin.</p></details><details><summary>Does 95% confidence mean a 95% probability the true mean is inside this one interval?</summary><p>In the usual frequentist interpretation, no. The 95% refers to the long-run proportion of intervals from repeated samples that would contain the true mean.</p></details><details><summary>What happens when sample size increases?</summary><p>Holding the standard deviation and confidence level fixed, the standard error decreases with 1/√n, so the interval generally becomes narrower.</p></details></section>
-<section class="sources" id="sources"><h2>Sources and Methodology</h2><p>Formulas and calculator behavior were cross-checked against the sources below. Page copy and visual design are original. Results are computed locally in your browser.</p><ul><li><a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda352.htm" rel="noopener" target="_blank">NIST – Confidence Limits for the Mean</a></li><li><a href="https://www.calculator.net/confidence-interval-calculator.html" rel="noopener" target="_blank">Calculator.net Confidence Interval Calculator</a></li></ul></section>
-</article>
-<aside class="aside panel"><h3>On this page</h3><a href="#s1">What Is a Confidence Interval Calculator?</a><a href="#s2">How to Use the Confidence Interval Calculator</a><a href="#s3">Confidence Interval Formulas</a><a href="#s4">Calculation Example</a><a href="#s5">How to Interpret a Confidence Level</a><a href="#s6">Important Assumptions and Limitations</a><a href="#faq">Frequently Asked Questions</a><a href="#sources">Sources &amp; Methodology</a></aside>
-</div>
-</div>
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/confidence-interval-calculator/">
 
-<script class="cp-calculator-data" type="application/json">{"index":"141","Batch":"15","Calculator / Page":"Confidence Interval Calculator","Slug":"confidence-interval-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Calculate a two-sided confidence interval for a mean using a t interval for sample standard deviation or a z interval for known population standard deviation.","Formula / Algorithm Used in Tool":"Confidence Interval Formulas: For an unknown population standard deviation, the mean interval is x̄ ± t*·s/√n with n−1 degrees of freedom. If the population standard deviation σ is known, the corresponding normal interval is x̄ ± z*·σ/√n.","Required User Inputs":"Standard deviation type; Sample mean (x̄); Standard deviation; Sample size (n); Confidence level (%)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Standard deviation type, Sample mean (x̄), Standard deviation, Sample size (n), Confidence level (%). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"The standard one-sample mean t interval assumes independent observations and is derived for data from a normally distributed population, though it becomes more robust in many larger samples. Severe skewness, dependence, biased sampling, or influential outliers can make the interval misleading.","Current Source URLs in Page":"https://www.itl.nist.gov/div898/handbook/eda/section3/eda352.htm | https://www.calculator.net/confidence-interval-calculator.html","Implementation Path":"/confidence-interval-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Math &amp; Statistics</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../standard-deviation-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Standard Deviation Calculator</strong><small>Calculate sample or population standard deviation, variance, mean, sum, count, stan…</small></span></a><a class="cp-related-link" href="../sample-size-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Sample Size Calculator</strong><small>Estimate sample size for a population proportion using confidence level, margin of…</small></span></a><a class="cp-related-link" href="../z-score-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Z-Score Calculator</strong><small>Calculate a z-score from a raw value, mean, and standard deviation, plus standard n…</small></span></a><a class="cp-related-link" href="../p-value-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>P-Value Calculator</strong><small>Calculate left-tail, right-tail, center, between, or two-tail p-values from a z-sco…</small></span></a><a class="cp-related-link" href="../distance-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Distance Calculator</strong><small>Calculate distance between two points in 2D, 3D, or between latitude-longitude coor…</small></span></a><a class="cp-related-link" href="../statistics-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Statistics Calculator</strong><small>Calculate count, sum, mean, median, mode, range, quartiles, variance, standard devi…</small></span></a><a class="cp-related-link" href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the simplified fraction, m…</small></span></a><a class="cp-related-link" href="../random-number-generator/index.html"><span class="cp-related-dot">›</span><span><strong>Random Number Generator</strong><small>Generate one or many random integers or decimals between custom limits, with option…</small></span></a></div><a class="cp-side-category" href="../math/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-const $=id=>document.getElementById(id),fmt=n=>Number.isFinite(n)?Number(n.toPrecision(10)).toString():'—';
-function invNorm(p){if(p<=0||p>=1)return p===0?-Infinity:p===1?Infinity:NaN;const a=[-39.69683028665376,220.9460984245205,-275.9285104469687,138.357751867269,-30.66479806614716,2.506628277459239],b=[-54.47609879822406,161.5858368580409,-155.6989798598866,66.80131188771972,-13.28068155288572],c=[-.007784894002430293,-.3223964580411365,-2.400758277161838,-2.549732539343734,4.374664141464968,2.938163982698783],d=[.007784695709041462,.3224671290700398,2.445134137142996,3.754408661907416],pl=.02425,ph=1-pl;let q,r;if(p<pl){q=Math.sqrt(-2*Math.log(p));return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1)}if(p>ph){q=Math.sqrt(-2*Math.log(1-p));return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1)}q=p-.5;r=q*q;return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1)}
-function logGamma(z){const c=[676.5203681218851,-1259.1392167224028,771.3234287776531,-176.6150291621406,12.507343278686905,-.13857109526572012,9.984369578019572e-6,1.5056327351493116e-7];if(z<.5)return Math.log(Math.PI)-Math.log(Math.sin(Math.PI*z))-logGamma(1-z);z-=1;let x=.9999999999998099;for(let i=0;i<c.length;i++)x+=c[i]/(z+i+1);const t=z+c.length-.5;return .5*Math.log(2*Math.PI)+(z+.5)*Math.log(t)-t+Math.log(x)}
-function betacf(a,b,x){let qab=a+b,qap=a+1,qam=a-1,c=1,d=1-qab*x/qap;if(Math.abs(d)<3e-14)d=3e-14;d=1/d;let h=d;for(let m=1;m<=200;m++){let m2=2*m,aa=m*(b-m)*x/((qam+m2)*(a+m2));d=1+aa*d;if(Math.abs(d)<3e-14)d=3e-14;c=1+aa/c;if(Math.abs(c)<3e-14)c=3e-14;d=1/d;h*=d*c;aa=-(a+m)*(qab+m)*x/((a+m2)*(qap+m2));d=1+aa*d;if(Math.abs(d)<3e-14)d=3e-14;c=1+aa/c;if(Math.abs(c)<3e-14)c=3e-14;d=1/d;const del=d*c;h*=del;if(Math.abs(del-1)<3e-12)break}return h}
-function ibeta(x,a,b){if(x<=0)return 0;if(x>=1)return 1;const bt=Math.exp(logGamma(a+b)-logGamma(a)-logGamma(b)+a*Math.log(x)+b*Math.log(1-x));return x<(a+1)/(a+b+2)?bt*betacf(a,b,x)/a:1-bt*betacf(b,a,1-x)/b}
-function tcdf(t,v){const x=v/(v+t*t),ib=ibeta(x,v/2,.5);return t>=0?1-.5*ib:.5*ib}
-function tinv(p,v){let lo=-50,hi=50;for(let i=0;i<100;i++){const mid=(lo+hi)/2;if(tcdf(mid,v)<p)lo=mid;else hi=mid}return (lo+hi)/2}
-function render(){const mean=+$('mean').value,sd=+$('sd').value,n=+$('n').value,level=+$('level').value,method=$('method').value,e=$('error');e.classList.remove('show');if(![mean,sd,n,level].every(Number.isFinite)||sd<0||!Number.isInteger(n)||n<2||level<=50||level>=100){e.textContent='Use a sample size of at least 2, SD ≥ 0, and a confidence level between 50% and 100%.';e.classList.add('show');return}const alpha=1-level/100,se=sd/Math.sqrt(n),df=n-1,crit=method==='sample'?tinv(1-alpha/2,df):invNorm(1-alpha/2),moe=crit*se,lo=mean-moe,hi=mean+moe;$('interval').textContent=`${fmt(mean)} ± ${fmt(moe)}`;$('lower').textContent=fmt(lo);$('upper').textContent=fmt(hi);$('moe').textContent=fmt(moe);$('crit').textContent=fmt(crit);$('se').textContent=fmt(se);$('df').textContent=method==='sample'?df:'Not used';$('methodLabel').textContent=method==='sample'?`Two-sided ${fmt(level)}% t interval · df = ${df}`:`Two-sided ${fmt(level)}% z interval · population σ treated as known`}
-$('calcBtn').onclick=render;$('method').onchange=render;$('resetBtn').onclick=()=>{$('mean').value=22.8;$('sd').value=2.7;$('n').value=100;$('level').value=95;$('method').value='sample';render()};render();
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/confidence-interval-calculator/">
+<meta property="og:title" content="Confidence Interval Calculator – Mean CI with t or z">
+<meta property="og:description" content="Confidence Interval Calculator for a mean using t or z methods. Enter mean, standard deviation, sample size, and confidence level to get interval bounds.">
+<meta property="og:site_name" content="Confidence Interval Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/confidence-interval-calculator/">
+<meta name="twitter:title" content="Confidence Interval Calculator – Mean CI with t or z">
+<meta name="twitter:description" content="Confidence Interval Calculator for a mean using t or z methods. Enter mean, standard deviation, sample size, and confidence level to get interval bounds.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65
+        }
+
+        :root {
+            --max: 1180px
+        }
+
+        a {
+            color: inherit
+        }
+
+        .wrap {
+            width: min(var(--max), calc(100% - 32px));
+            margin: auto
+        }
+
+        .sitebar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            gap: 18px
+        }
+
+        .brand {
+            font-weight: 900;
+            letter-spacing: -.04em;
+            font-size: 1.25rem;
+            text-decoration: none
+        }
+
+        .brand span {
+            color: var(--accent)
+        }
+
+        .topnav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .topnav a {
+            text-decoration: none;
+            font-size: .9rem;
+            padding: 9px 12px;
+            border-radius: 999px;
+            background: var(--glass);
+            border: 1px solid var(--line)
+        }
+
+        .breadcrumb {
+            font-size: .85rem;
+            opacity: .78;
+            margin-bottom: 14px
+        }
+
+        .breadcrumb a {
+            text-decoration: none
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero h1 {
+            font-size: clamp(2.35rem, 5vw, 5rem);
+            line-height: .98;
+            letter-spacing: -.065em;
+            margin: 0 0 18px;
+            max-width: 860px
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 1.8vw, 1.18rem);
+            max-width: 720px;
+            margin: 0;
+            color: var(--muted)
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: var(--glass);
+            border: 1px solid var(--line);
+            font-size: .82rem;
+            font-weight: 800;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            margin-bottom: 18px
+        }
+
+        main {
+            padding-bottom: 60px
+        }
+
+        .calc-shell {
+            position: relative;
+             z-index: 4
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px)
+        }
+
+        .calc-card {
+            border-radius: 30px;
+            padding: clamp(20px, 4vw, 38px)
+        }
+
+        .calc-title {
+            font-size: 1.45rem;
+            font-weight: 900;
+            letter-spacing: -.03em;
+            margin: 0 0 6px
+        }
+
+        .calc-sub {
+            margin: 0 0 24px;
+            color: var(--muted)
+        }
+
+        label {
+            display: block;
+            font-weight: 800;
+            font-size: .9rem;
+            margin-bottom: 7px
+        }
+
+        .field {
+            margin-bottom: 15px
+        }
+
+        .input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--input-line);
+            background: var(--input-bg);
+            color: var(--text);
+            border-radius: 16px;
+            padding: 14px 15px;
+            font: inherit;
+            outline: none;
+            transition: .2s
+        }
+
+        textarea {
+            min-height: 126px;
+            resize: vertical
+        }
+
+        .input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--focus)
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .row3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .btn {
+            appearance: none;
+            border: 0;
+            border-radius: 16px;
+            padding: 13px 18px;
+            font-weight: 900;
+            font: inherit;
+            cursor: pointer;
+            transition: .18s;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, .12)
+        }
+
+        .btn:hover {
+            transform: translateY(-2px)
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            color: var(--accentText)
+        }
+
+        .btn.secondary {
+            background: var(--button2);
+            color: var(--text);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            display: none;
+            margin-top: 14px;
+            padding: 11px 13px;
+            border-radius: 14px;
+            background: rgba(220, 38, 38, .1);
+            border: 1px solid rgba(220, 38, 38, .22);
+            color: #b91c1c;
+            font-weight: 700
+        }
+
+        .error.show {
+            display: block
+        }
+
+        .result-card {
+            border-radius: 26px;
+            padding: 24px;
+            background: var(--result-bg);
+            border: 1px solid var(--line);
+            position: relative;
+            overflow: hidden
+        }
+
+        .result-kicker {
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            font-weight: 900;
+            color: var(--muted)
+        }
+
+        .result-big {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 950;
+            letter-spacing: -.06em;
+            line-height: 1.02;
+            margin: 8px 0 6px;
+            word-break: break-word
+        }
+
+        .muted {
+            color: var(--muted)
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 14px
+        }
+
+        .metric {
+            padding: 13px;
+            border-radius: 16px;
+            background: var(--metric-bg);
+            border: 1px solid var(--line)
+        }
+
+        .metric b {
+            display: block;
+            font-size: .8rem;
+            color: var(--muted);
+            margin-bottom: 2px
+        }
+
+        .metric span {
+            font-size: 1.08rem;
+            font-weight: 900;
+            word-break: break-word
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 0 0 18px
+        }
+
+        .tab {
+            border: 1px solid var(--line);
+            background: var(--button2);
+            color: var(--text);
+            border-radius: 999px;
+            padding: 9px 13px;
+            font-weight: 850;
+            cursor: pointer
+        }
+
+        .tab.active {
+            background: var(--accent);
+            color: var(--accentText);
+            border-color: transparent
+        }
+
+        .content {
+            padding-top: 70px
+        }
+
+        .article-grid {
+            display: grid;
+            gap: 32px;
+            align-items: start
+        }
+
+        .article {
+            min-width: 0
+        }
+
+        .article h2 {
+            font-size: clamp(1.55rem, 2.7vw, 2.25rem);
+            letter-spacing: -.04em;
+            margin: 44px 0 12px
+        }
+
+        .article h3 {
+            font-size: 1.18rem;
+            margin: 28px 0 8px
+        }
+
+        .article p,
+        .article li {
+            color: var(--bodyText)
+        }
+
+        .formula {
+            padding: 18px 20px;
+            border-radius: 18px;
+            background: var(--formula-bg);
+            border: 1px solid var(--line);
+            font-weight: 850;
+            overflow: auto
+        }
+
+        .aside {
+            position: sticky;
+            top: 18px;
+            border-radius: 24px;
+            padding: 20px
+        }
+
+        .aside h3 {
+            margin: 0 0 10px
+        }
+
+        .aside a {
+            display: block;
+            text-decoration: none;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--line);
+            font-size: .92rem
+        }
+
+        .faq details {
+            border: 1px solid var(--line);
+            background: var(--panel);
+            border-radius: 18px;
+            padding: 14px 16px;
+            margin: 10px 0
+        }
+
+        .faq summary {
+            font-weight: 900;
+            cursor: pointer
+        }
+
+        .sources a {
+            word-break: break-word
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 28px 0 38px;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0
+        }
+
+        @media(max-width:860px) {
+            .article-grid {
+                grid-template-columns: 1fr
+            }
+
+            .aside {
+                position: relative
+            }
+
+            .row3 {
+                grid-template-columns: 1fr
+            }
+
+            .calc-shell {
+                margin-top: -10px
+            }
+        }
+
+        @media(max-width:620px) {
+
+            .row,
+            .metric-grid {
+                grid-template-columns: 1fr
+            }
+
+            .topnav {
+                display: none
+            }
+
+            .sitebar {
+                padding: 14px 0
+            }
+
+            .calc-card {
+                border-radius: 24px
+            }
+
+            .wrap {
+                width: min(var(--max), calc(100% - 22px))
+            }
+        }
+
+        :root {
+            --bg: #071526;
+            --text: #f2fbff;
+            --muted: #a3bdd0;
+            --bodyText: #c8dbe7;
+            --panel: rgba(10, 31, 51, .9);
+            --glass: rgba(113, 216, 255, .07);
+            --line: rgba(158, 221, 248, .14);
+            --accent: #38bdf8;
+            --accentText: #032337;
+            --input-bg: #091e31;
+            --input-line: #244b63;
+            --focus: rgba(56, 189, 248, .16);
+            --button2: #0d2a42;
+            --result-bg: linear-gradient(145deg, #0c2c46, #0a1c32);
+            --metric-bg: rgba(255, 255, 255, .045);
+            --formula-bg: #0b263d;
+            --shadow: 0 34px 90px rgba(0, 0, 0, .38)
+        }
+
+        .hero {
+            padding: 48px 0 135px;
+            background: radial-gradient(circle at 52% 0%, rgba(56, 189, 248, .2), transparent 36%), #071526
+        }
+
+        .hero-layout {
+            text-align: center
+        }
+
+        .hero h1,
+        .hero p {
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        .interval-viz {
+            max-width: 820px;
+            margin: 42px auto 0;
+            padding: 26px
+        }
+
+        .ci-line {
+            height: 12px;
+            border-radius: 999px;
+            background: #143c56;
+            position: relative
+        }
+
+        .ci-band {
+            position: absolute;
+            left: 18%;
+            right: 18%;
+            top: -6px;
+            height: 24px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #22d3ee, #38bdf8);
+            box-shadow: 0 0 35px rgba(56, 189, 248, .35)
+        }
+
+        .ci-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #fff;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 0 7px rgba(255, 255, 255, .1)
+        }
+
+        .ci-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 14px;
+            font-weight: 800;
+            color: #9cc6da
+        }
+
+        .ci-layout {
+            display: grid;
+            grid-template-columns: .95fr 1.05fr;
+            gap: 22px
+        }
+
+        .ci-range {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .ci-end {
+            padding: 12px 14px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, .05);
+            flex: 1;
+            text-align: center;
+            font-weight: 900
+        }
+
+        @media(max-width:780px) {
+            .ci-layout {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/confidence-interval-calculator/#webapplication",
+      "name": "Confidence Interval Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/confidence-interval-calculator/",
+      "description": "Confidence Interval Calculator for a mean using t or z methods. Enter mean, standard deviation, sample size, and confidence level to get interval bounds.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/confidence-interval-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Confidence Interval Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/confidence-interval-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/confidence-interval-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Should I use a t interval or a z interval?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the t interval when the population standard deviation is unknown and you are entering a standard deviation calculated from your sample. Use the z interval when the population standard deviation is known."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a 95% confidence interval mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A 95% confidence level describes the long-run performance of the interval-building method. Across many repeated samples under the same assumptions, about 95% of the calculated intervals would contain the true population mean."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does a larger sample size make the confidence interval narrower?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The standard error contains √n in the denominator. As the sample size increases, the standard error generally decreases, which reduces the width of the interval when the other inputs remain unchanged."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does a higher confidence level create a wider interval?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Higher confidence requires a larger t or z critical value. A larger critical value increases the amount added to and subtracted from the sample mean, producing a wider interval."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if the standard deviation is zero?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If the entered standard deviation is zero, the calculated standard error is zero. Under the formula, the confidence interval therefore collapses to the sample mean. Whether such an input is meaningful depends on the data and how the measurements were obtained."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use this calculator for a population proportion?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The implemented formulas calculate a confidence interval for a mean. Confidence intervals for proportions use a different statistical method."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why might another confidence interval calculator give a slightly different result?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Check whether both calculators use the same sample mean, sample size, confidence level, standard deviation type, and t-versus-z method. Minor differences can also result from numerical precision and rounding."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart OnlineFree",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script><script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="math" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../math/index.html">Math &amp; Statistics</a></li>
+            <li><a aria-current="page" href="index.html">Confidence Interval Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Confidence Interval Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+            <div class="wrap calc-shell" id="calculator">
+                <section class="panel calc-card">
+                    <h2 class="calc-title">Confidence Interval Calculator</h2>
+                    <p class="calc-sub">Calculate a two-sided confidence interval for a mean using a t interval for
+                        sample standard deviation or a z interval for known population standard deviation.</p>
+                    <div class="ci-layout">
+                        <section>
+                            <div class="field"><label for="method">Standard deviation type</label><select id="method">
+                                    <option value="sample">Sample SD (t interval)</option>
+                                    <option value="population">Known population SD (z interval)</option>
+                                </select></div>
+                            <div class="row">
+                                <div class="field"><label for="mean">Sample mean (x̄)</label><input class="input"
+                                        id="mean" step="any" type="number" value="22.8" /></div>
+                                <div class="field"><label for="sd">Standard deviation</label><input class="input"
+                                        id="sd" min="0" step="any" type="number" value="2.7" /></div>
+                            </div>
+                            <div class="row">
+                                <div class="field"><label for="n">Sample size (n)</label><input class="input" id="n"
+                                        min="2" step="1" type="number" value="100" /></div>
+                                <div class="field"><label for="level">Confidence level (%)</label><input class="input"
+                                        id="level" max="99.999" min="50" step="any" type="number" value="95" /></div>
+                            </div>
+                            <div class="buttons"><button class="btn primary" id="calcBtn">Calculate
+                                    interval</button><button class="btn secondary" id="resetBtn">Reset</button></div>
+                            <div class="error" id="error"></div>
+                        </section>
+                        <section aria-live="polite" class="result-card">
+                            <div class="result-kicker">Confidence interval</div>
+                            <div class="result-big" id="interval">—</div>
+                            <div class="muted" id="methodLabel">—</div>
+                            <div class="ci-range">
+                                <div class="ci-end" id="lower">—</div><span>to</span>
+                                <div class="ci-end" id="upper">—</div>
+                            </div>
+                            <div class="metric-grid">
+                                <div class="metric"><b>Margin of error</b><span id="moe">—</span></div>
+                                <div class="metric"><b>Critical value</b><span id="crit">—</span></div>
+                                <div class="metric"><b>Standard error</b><span id="se">—</span></div>
+                                <div class="metric"><b>Degrees of freedom</b><span id="df">—</span></div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <div class="wrap content" id="guide">
+                <div class="article-grid">
+                     
+
+<article class="article">
+ 
+
+  <p>Use the Confidence Interval Calculator to calculate a two-sided confidence interval for a population mean. Enter the sample mean, standard deviation, sample size, confidence level, and whether the standard deviation is a sample estimate or a known population value.</p>
+
+  <p>The calculator uses a <strong>t interval</strong> when you enter a sample standard deviation and a <strong>z interval</strong> when the population standard deviation is known.</p>
+
+  <section id="what">
+    <h2>What Is the Confidence Interval Calculator?</h2>
+
+    <p>A confidence interval gives a lower and upper range around a sample mean to estimate an unknown population mean.</p>
+
+    <p>This calculator supports two methods. It uses the Student's t distribution when the population standard deviation is unknown and estimated from the sample. It uses the standard normal, or z, distribution when the population standard deviation is known.</p>
+
+    <p>It can be useful when analyzing sample measurements, survey data, experiments, quality-control data, and other numerical samples where the goal is to estimate a population mean.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Confidence Interval Calculator</h2>
+
+    <p>Enter the following values in the calculator:</p>
+
+    <ol>
+      <li><strong>Standard deviation type:</strong> Choose whether the standard deviation is a sample standard deviation or a known population standard deviation. This choice determines whether the calculator uses a t critical value or z critical value.</li>
+      <li><strong>Sample mean (x̄):</strong> Enter the arithmetic mean of your sample. The mean and standard deviation should use the same measurement unit.</li>
+      <li><strong>Standard deviation:</strong> Enter either the sample standard deviation, <strong>s</strong>, or known population standard deviation, <strong>σ</strong>, depending on your selected type. A standard deviation cannot be negative.</li>
+      <li><strong>Sample size (n):</strong> Enter the number of observations in the sample. For a t interval based on a sample standard deviation, the sample size must be greater than 1.</li>
+      <li><strong>Confidence level (%):</strong> Enter the desired two-sided confidence level, such as 90%, 95%, or 99%. Mathematically, the confidence level must be greater than 0% and less than 100%.</li>
+    </ol>
+
+    <p>The result is the confidence interval around the entered sample mean.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+
+    <p>When the <strong>population standard deviation is unknown</strong> and the entered standard deviation is a sample standard deviation, the calculator uses:</p>
+
+    <div class="formula">CI=xˉ±t∗snCI=\bar{x}\pm t^\*\frac{s}{\sqrt{n}}</div>
+
+    <p>where the t critical value uses:</p>
+
+    <div class="formula">df=n−1df=n-1</div>
+
+    <p>When the <strong>population standard deviation is known</strong>, the calculator uses:</p>
+
+    <div class="formula">CI=xˉ±z∗σnCI=\bar{x}\pm z^\*\frac{\sigma}{\sqrt{n}}</div>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CICI</td>
+          <td>Two-sided confidence interval for the population mean</td>
+          <td>Same unit as the mean</td>
+        </tr>
+        <tr>
+          <td>xˉ\bar{x}</td>
+          <td>Sample mean</td>
+          <td>Measurement unit</td>
+        </tr>
+        <tr>
+          <td>ss</td>
+          <td>Sample standard deviation</td>
+          <td>Same unit as the mean</td>
+        </tr>
+        <tr>
+          <td>σ\sigma</td>
+          <td>Known population standard deviation</td>
+          <td>Same unit as the mean</td>
+        </tr>
+        <tr>
+          <td>nn</td>
+          <td>Sample size</td>
+          <td>Count</td>
+        </tr>
+        <tr>
+          <td>dfdf</td>
+          <td>Degrees of freedom for the t distribution</td>
+          <td>Unitless</td>
+        </tr>
+        <tr>
+          <td>t∗t^\*</td>
+          <td>t critical value for the selected confidence level</td>
+          <td>Unitless</td>
+        </tr>
+        <tr>
+          <td>z∗z^\*</td>
+          <td>Standard normal critical value</td>
+          <td>Unitless</td>
+        </tr>
+        <tr>
+          <td>α\alpha</td>
+          <td>Significance level</td>
+          <td>Proportion</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Confidence Level Conversion</h3>
+
+    <p>If the entered confidence level is C%C\\%, first convert it to a proportion:</p>
+
+    <div class="formula">C=Confidence Level100C=\frac{\text{Confidence Level}}{100}</div>
+
+    <p>Then:</p>
+
+    <div class="formula">α=1−C\alpha=1-C</div>
+
+    <p>For a two-sided interval, the critical value corresponds to:</p>
+
+    <div class="formula">1−α21-\frac{\alpha}{2}</div>
+
+    <h3>Calculation Sequence</h3>
+
+    <p>For a <strong>sample standard deviation</strong>, the calculation is:</p>
+
+    <div class="formula">df=n−1df=n-1 SE=snSE=\frac{s}{\sqrt{n}} ME=t1−α/2, n−1×SEME=t\_{1-\alpha/2,\ n-1}\times SE Lower=xˉ−MELower=\bar{x}-ME Upper=xˉ+MEUpper=\bar{x}+ME</div>
+
+    <p>For a <strong>known population standard deviation</strong>, the calculation is:</p>
+
+    <div class="formula">SE=σnSE=\frac{\sigma}{\sqrt{n}} ME=z1−α/2×SEME=z\_{1-\alpha/2}\times SE Lower=xˉ−MELower=\bar{x}-ME Upper=xˉ+MEUpper=\bar{x}+ME</div>
+
+    <p>Here, SESE is the standard error and MEME is the amount added to and subtracted from the sample mean to form the interval.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose a sample has the following values.</p>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li>Standard deviation type: Sample standard deviation</li>
+      <li>Sample mean: 100</li>
+      <li>Sample standard deviation: 15</li>
+      <li>Sample size: 25</li>
+      <li>Confidence level: 95%</li>
+    </ul>
+
+    <h3>Step 1: Find the Significance Level and Degrees of Freedom</h3>
+
+    <div class="formula">α=1−0.95=0.05\alpha=1-0.95=0.05 df=25−1=24df=25-1=24</div>
+
+    <p>For a two-sided 95% interval with 24 degrees of freedom:</p>
+
+    <div class="formula">t∗≈2.0639t^\*\approx2.0639</div>
+
+    <h3>Step 2: Calculate the Standard Error</h3>
+
+    <div class="formula">SE=1525SE=\frac{15}{\sqrt{25}} SE=155=3SE=\frac{15}{5}=3</div>
+
+    <h3>Step 3: Calculate the Interval Amount</h3>
+
+    <div class="formula">ME=2.0639×3ME=2.0639\times3 ME≈6.1917ME\approx6.1917</div>
+
+    <h3>Final Result</h3>
+
+    <p>Lower limit:</p>
+
+    <div class="formula">100−6.1917=93.8083100-6.1917=93.8083</div>
+
+    <p>Upper limit:</p>
+
+    <div class="formula">100+6.1917=106.1917100+6.1917=106.1917</div>
+
+    <p>The 95% confidence interval is approximately:</p>
+
+    <div class="formula">93.81 to 106.19\boxed{93.81\text{ to }106.19}</div>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p>The confidence interval provides a <strong>lower bound</strong> and an <strong>upper bound</strong> for estimating the population mean.</p>
+
+    <p>For example, a calculated interval of 93.81 to 106.19 means the confidence-interval procedure produced that range from the entered sample statistics.</p>
+
+    <p>A 95% confidence level does <strong>not</strong> mean there is a 95% probability that the fixed population mean lies inside this particular completed interval. Instead, if the same sampling and interval-building procedure were repeated many times, approximately 95% of the resulting intervals would contain the true population mean.</p>
+
+    <p>A larger sample size generally reduces the standard error and produces a narrower interval when the other inputs remain unchanged. A larger standard deviation increases uncertainty and generally produces a wider interval. Higher confidence levels also require larger critical values and therefore wider intervals.</p>
+
+    <p>The confidence interval uses the same measurement unit as the sample mean and standard deviation.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The t-based confidence interval assumes independent observations and is derived for samples from a normally distributed population. It is often more robust to moderate departures from normality when sample sizes are larger, but severe skewness, influential outliers, dependence between observations, or biased sampling can make the result misleading.</p>
+
+    <p>The selected standard deviation type matters. Use the t method when the entered standard deviation is estimated from the sample. The z method assumes the population standard deviation is already known.</p>
+
+    <p>The calculator estimates a <strong>population mean</strong>. It does not calculate an interval designed to contain individual future observations, and it should not be treated as a prediction interval.</p>
+
+    <p>A confidence interval reflects sampling uncertainty under the selected statistical model. It cannot correct problems caused by poor sampling methods, measurement errors, missing data, or a sample that does not represent the population being studied.</p>
+
+    <p>Small differences between this calculator and another statistics tool may occur when different numerical precision or rounding is used for critical values and displayed results.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>Should I use a t interval or a z interval?</summary>
+      <p>Use the <strong>t interval</strong> when the population standard deviation is unknown and you are entering a standard deviation calculated from your sample.</p>
+      <p>Use the <strong>z interval</strong> when the population standard deviation is known.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What does a 95% confidence interval mean?</summary>
+      <p>A 95% confidence level describes the long-run performance of the interval-building method. Across many repeated samples under the same assumptions, about 95% of the calculated intervals would contain the true population mean.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why does a larger sample size make the confidence interval narrower?</summary>
+      <p>The standard error contains n\sqrt{n} in the denominator. As the sample size increases, the standard error generally decreases, which reduces the width of the interval when the other inputs remain unchanged.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why does a higher confidence level create a wider interval?</summary>
+      <p>Higher confidence requires a larger t or z critical value. A larger critical value increases the amount added to and subtracted from the sample mean, producing a wider interval.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What happens if the standard deviation is zero?</summary>
+      <p>If the entered standard deviation is zero, the calculated standard error is zero. Under the formula, the confidence interval therefore collapses to the sample mean. Whether such an input is meaningful depends on the data and how the measurements were obtained.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can I use this calculator for a population proportion?</summary>
+      <p>No. The implemented formulas calculate a confidence interval for a <strong>mean</strong>. Confidence intervals for proportions use a different statistical method.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why might another confidence interval calculator give a slightly different result?</summary>
+      <p>Check whether both calculators use the same sample mean, sample size, confidence level, standard deviation type, and t-versus-z method. Minor differences can also result from numerical precision and rounding.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda352.htm?utm_source=chatgpt.com" rel="noopener" target="_blank">NIST/SEMATECH e-Handbook — Confidence Limits for the Mean</a>
+        <p>Supports the one-sample t confidence interval for a mean, the n−1n-1 degrees of freedom rule, variable definitions, and interpretation of confidence levels.</p>
+      </li>
+
+      <li>
+        <a href="https://www.itl.nist.gov/div898/handbook/prc/section1/prc14.htm?utm_source=chatgpt.com" rel="noopener" target="_blank">NIST/SEMATECH e-Handbook — What Are Confidence Intervals?</a>
+        <p>Supports the two-sided z confidence interval for a mean when the population standard deviation is known.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/sample-size-calculator/?utm_source=chatgpt.com">Sample Size Calculator</a></li>
+      <li><a href="https://example.com/standard-deviation-calculator/?utm_source=chatgpt.com">Standard Deviation Calculator</a></li>
+      <li><a href="https://example.com/statistics-calculator/?utm_source=chatgpt.com">Statistics Calculator</a></li>
+      <li><a href="https://example.com/z-score-calculator/?utm_source=chatgpt.com">Z-Score Calculator</a></li>
+      <li><a href="https://example.com/probability-calculator/?utm_source=chatgpt.com">Probability Calculator</a></li>
+    </ul>
+  </section>
+</article>
+
+
+
+                </div>
+            </div>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"141","Batch":"15","Calculator / Page":"Confidence Interval Calculator","Slug":"confidence-interval-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Calculate a two-sided confidence interval for a mean using a t interval for sample standard deviation or a z interval for known population standard deviation.","Formula / Algorithm Used in Tool":"Confidence Interval Formulas: For an unknown population standard deviation, the mean interval is x̄ ± t*·s/√n with n−1 degrees of freedom. If the population standard deviation σ is known, the corresponding normal interval is x̄ ± z*·σ/√n.","Required User Inputs":"Standard deviation type; Sample mean (x̄); Standard deviation; Sample size (n); Confidence level (%)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Standard deviation type, Sample mean (x̄), Standard deviation, Sample size (n), Confidence level (%). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"The standard one-sample mean t interval assumes independent observations and is derived for data from a normally distributed population, though it becomes more robust in many larger samples. Severe skewness, dependence, biased sampling, or influential outliers can make the interval misleading.","Current Source URLs in Page":"https://www.itl.nist.gov/div898/handbook/eda/section3/eda352.htm | https://www.calculator.net/confidence-interval-calculator.html","Implementation Path":"/confidence-interval-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Math &amp; Statistics</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link"
+                    href="../standard-deviation-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Standard Deviation
+                            Calculator</strong><small>Calculate sample or population standard deviation, variance, mean,
+                            sum, count, stan…</small></span></a><a class="cp-related-link"
+                    href="../sample-size-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Sample Size Calculator</strong><small>Estimate
+                            sample size for a population proportion using confidence level, margin
+                            of…</small></span></a><a class="cp-related-link"
+                    href="../z-score-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Z-Score
+                            Calculator</strong><small>Calculate a z-score from a raw value, mean, and standard
+                            deviation, plus standard n…</small></span></a><a class="cp-related-link"
+                    href="../p-value-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>P-Value
+                            Calculator</strong><small>Calculate left-tail, right-tail, center, between, or two-tail
+                            p-values from a z-sco…</small></span></a><a class="cp-related-link"
+                    href="../distance-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Distance
+                            Calculator</strong><small>Calculate distance between two points in 2D, 3D, or between
+                            latitude-longitude coor…</small></span></a><a class="cp-related-link"
+                    href="../statistics-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Statistics Calculator</strong><small>Calculate
+                            count, sum, mean, median, mode, range, quartiles, variance, standard
+                            devi…</small></span></a><a class="cp-related-link"
+                    href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction
+                            Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the
+                            simplified fraction, m…</small></span></a><a class="cp-related-link"
+                    href="../random-number-generator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Random Number Generator</strong><small>Generate one
+                            or many random integers or decimals between custom limits, with option…</small></span></a>
+            </div><a class="cp-side-category" href="../math/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const $ = id => document.getElementById(id), fmt = n => Number.isFinite(n) ? Number(n.toPrecision(10)).toString() : '—';
+        function invNorm(p) { if (p <= 0 || p >= 1) return p === 0 ? -Infinity : p === 1 ? Infinity : NaN; const a = [-39.69683028665376, 220.9460984245205, -275.9285104469687, 138.357751867269, -30.66479806614716, 2.506628277459239], b = [-54.47609879822406, 161.5858368580409, -155.6989798598866, 66.80131188771972, -13.28068155288572], c = [-.007784894002430293, -.3223964580411365, -2.400758277161838, -2.549732539343734, 4.374664141464968, 2.938163982698783], d = [.007784695709041462, .3224671290700398, 2.445134137142996, 3.754408661907416], pl = .02425, ph = 1 - pl; let q, r; if (p < pl) { q = Math.sqrt(-2 * Math.log(p)); return (((((c[0] * q + c[1]) * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) / ((((d[0] * q + d[1]) * q + d[2]) * q + d[3]) * q + 1) } if (p > ph) { q = Math.sqrt(-2 * Math.log(1 - p)); return -(((((c[0] * q + c[1]) * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) / ((((d[0] * q + d[1]) * q + d[2]) * q + d[3]) * q + 1) } q = p - .5; r = q * q; return (((((a[0] * r + a[1]) * r + a[2]) * r + a[3]) * r + a[4]) * r + a[5]) * q / (((((b[0] * r + b[1]) * r + b[2]) * r + b[3]) * r + b[4]) * r + 1) }
+        function logGamma(z) { const c = [676.5203681218851, -1259.1392167224028, 771.3234287776531, -176.6150291621406, 12.507343278686905, -.13857109526572012, 9.984369578019572e-6, 1.5056327351493116e-7]; if (z < .5) return Math.log(Math.PI) - Math.log(Math.sin(Math.PI * z)) - logGamma(1 - z); z -= 1; let x = .9999999999998099; for (let i = 0; i < c.length; i++)x += c[i] / (z + i + 1); const t = z + c.length - .5; return .5 * Math.log(2 * Math.PI) + (z + .5) * Math.log(t) - t + Math.log(x) }
+        function betacf(a, b, x) { let qab = a + b, qap = a + 1, qam = a - 1, c = 1, d = 1 - qab * x / qap; if (Math.abs(d) < 3e-14) d = 3e-14; d = 1 / d; let h = d; for (let m = 1; m <= 200; m++) { let m2 = 2 * m, aa = m * (b - m) * x / ((qam + m2) * (a + m2)); d = 1 + aa * d; if (Math.abs(d) < 3e-14) d = 3e-14; c = 1 + aa / c; if (Math.abs(c) < 3e-14) c = 3e-14; d = 1 / d; h *= d * c; aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2)); d = 1 + aa * d; if (Math.abs(d) < 3e-14) d = 3e-14; c = 1 + aa / c; if (Math.abs(c) < 3e-14) c = 3e-14; d = 1 / d; const del = d * c; h *= del; if (Math.abs(del - 1) < 3e-12) break } return h }
+        function ibeta(x, a, b) { if (x <= 0) return 0; if (x >= 1) return 1; const bt = Math.exp(logGamma(a + b) - logGamma(a) - logGamma(b) + a * Math.log(x) + b * Math.log(1 - x)); return x < (a + 1) / (a + b + 2) ? bt * betacf(a, b, x) / a : 1 - bt * betacf(b, a, 1 - x) / b }
+        function tcdf(t, v) { const x = v / (v + t * t), ib = ibeta(x, v / 2, .5); return t >= 0 ? 1 - .5 * ib : .5 * ib }
+        function tinv(p, v) { let lo = -50, hi = 50; for (let i = 0; i < 100; i++) { const mid = (lo + hi) / 2; if (tcdf(mid, v) < p) lo = mid; else hi = mid } return (lo + hi) / 2 }
+        function render() { const mean = +$('mean').value, sd = +$('sd').value, n = +$('n').value, level = +$('level').value, method = $('method').value, e = $('error'); e.classList.remove('show'); if (![mean, sd, n, level].every(Number.isFinite) || sd < 0 || !Number.isInteger(n) || n < 2 || level <= 50 || level >= 100) { e.textContent = 'Use a sample size of at least 2, SD ≥ 0, and a confidence level between 50% and 100%.'; e.classList.add('show'); return } const alpha = 1 - level / 100, se = sd / Math.sqrt(n), df = n - 1, crit = method === 'sample' ? tinv(1 - alpha / 2, df) : invNorm(1 - alpha / 2), moe = crit * se, lo = mean - moe, hi = mean + moe; $('interval').textContent = `${fmt(mean)} ± ${fmt(moe)}`; $('lower').textContent = fmt(lo); $('upper').textContent = fmt(hi); $('moe').textContent = fmt(moe); $('crit').textContent = fmt(crit); $('se').textContent = fmt(se); $('df').textContent = method === 'sample' ? df : 'Not used'; $('methodLabel').textContent = method === 'sample' ? `Two-sided ${fmt(level)}% t interval · df = ${df}` : `Two-sided ${fmt(level)}% z interval · population σ treated as known` }
+        $('calcBtn').onclick = render; $('method').onchange = render; $('resetBtn').onclick = () => { $('mean').value = 22.8; $('sd').value = 2.7; $('n').value = 100; $('level').value = 95; $('method').value = 'sample'; render() }; render();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

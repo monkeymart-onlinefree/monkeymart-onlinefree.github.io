@@ -1,118 +1,1248 @@
 <!DOCTYPE html>
 
 <html lang="en-US">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+  <meta charset="utf-8" />
+  <meta content="width=device-width,initial-scale=1" name="viewport" />
+  <meta http-equiv="content-language" content="en">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+  <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>Probability Calculator | CalcPro</title>
-<meta content="Calculate the probability of independent events, unions, intersections, complements, exclusive outcomes, and simple favorable-outcome probability." name="description"/>
-<meta content="index,follow" name="robots"/>
-<link href="../probability-calculator/" rel="canonical"/>
-<meta content="Probability Calculator | CalcPro" property="og:title"/>
-<meta content="Calculate the probability of independent events, unions, intersections, complements, exclusive outcomes, and simple favorable-outcome probability." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="/probability-calculator/" property="og:url"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
-:root{--max:1180px}a{color:inherit}.wrap{width:min(var(--max),calc(100% - 32px));margin:auto}.sitebar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:18px}.brand{font-weight:900;letter-spacing:-.04em;font-size:1.25rem;text-decoration:none}.brand span{color:var(--accent)}.topnav{display:flex;gap:10px;flex-wrap:wrap}.topnav a{text-decoration:none;font-size:.9rem;padding:9px 12px;border-radius:999px;background:var(--glass);border:1px solid var(--line)}
-.breadcrumb{font-size:.85rem;opacity:.78;margin-bottom:14px}.breadcrumb a{text-decoration:none}.hero{position:relative;overflow:hidden}.hero h1{font-size:clamp(2.35rem,5vw,5rem);line-height:.98;letter-spacing:-.065em;margin:0 0 18px;max-width:860px}.hero p{font-size:clamp(1rem,1.8vw,1.18rem);max-width:720px;margin:0;color:var(--muted)}
-.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:var(--glass);border:1px solid var(--line);font-size:.82rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:18px}
-main{padding-bottom:60px}.calc-shell{position:relative;margin-top:-28px;z-index:4}.panel{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-.calc-card{border-radius:30px;padding:clamp(20px,4vw,38px)}.calc-title{font-size:1.45rem;font-weight:900;letter-spacing:-.03em;margin:0 0 6px}.calc-sub{margin:0 0 24px;color:var(--muted)}
-label{display:block;font-weight:800;font-size:.9rem;margin-bottom:7px}.field{margin-bottom:15px}.input,select,textarea{width:100%;border:1px solid var(--input-line);background:var(--input-bg);color:var(--text);border-radius:16px;padding:14px 15px;font:inherit;outline:none;transition:.2s}textarea{min-height:126px;resize:vertical}.input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}
-.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.btn{appearance:none;border:0;border-radius:16px;padding:13px 18px;font-weight:900;font:inherit;cursor:pointer;transition:.18s;box-shadow:0 8px 18px rgba(0,0,0,.12)}.btn:hover{transform:translateY(-2px)}.btn.primary{background:var(--accent);color:var(--accentText)}.btn.secondary{background:var(--button2);color:var(--text);border:1px solid var(--line)}
-.error{display:none;margin-top:14px;padding:11px 13px;border-radius:14px;background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.22);color:#b91c1c;font-weight:700}.error.show{display:block}
-.result-card{border-radius:26px;padding:24px;background:var(--result-bg);border:1px solid var(--line);position:relative;overflow:hidden}.result-kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;font-weight:900;color:var(--muted)}.result-big{font-size:clamp(2rem,5vw,4rem);font-weight:950;letter-spacing:-.06em;line-height:1.02;margin:8px 0 6px;word-break:break-word}.muted{color:var(--muted)}.metric-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.metric{padding:13px;border-radius:16px;background:var(--metric-bg);border:1px solid var(--line)}.metric b{display:block;font-size:.8rem;color:var(--muted);margin-bottom:2px}.metric span{font-size:1.08rem;font-weight:900;word-break:break-word}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.tab{border:1px solid var(--line);background:var(--button2);color:var(--text);border-radius:999px;padding:9px 13px;font-weight:850;cursor:pointer}.tab.active{background:var(--accent);color:var(--accentText);border-color:transparent}
-.content{padding-top:70px}.article-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:32px;align-items:start}.article{min-width:0}.article h2{font-size:clamp(1.55rem,2.7vw,2.25rem);letter-spacing:-.04em;margin:44px 0 12px}.article h3{font-size:1.18rem;margin:28px 0 8px}.article p,.article li{color:var(--bodyText)}.formula{padding:18px 20px;border-radius:18px;background:var(--formula-bg);border:1px solid var(--line);font-weight:850;overflow:auto}.aside{position:sticky;top:18px;border-radius:24px;padding:20px}.aside h3{margin:0 0 10px}.aside a{display:block;text-decoration:none;padding:8px 0;border-bottom:1px solid var(--line);font-size:.92rem}.faq details{border:1px solid var(--line);background:var(--panel);border-radius:18px;padding:14px 16px;margin:10px 0}.faq summary{font-weight:900;cursor:pointer}.sources a{word-break:break-word}
-footer{border-top:1px solid var(--line);padding:28px 0 38px;color:var(--muted);font-size:.9rem}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-@media(max-width:860px){.article-grid{grid-template-columns:1fr}.aside{position:relative}.row3{grid-template-columns:1fr}.calc-shell{margin-top:-10px}}@media(max-width:620px){.row,.metric-grid{grid-template-columns:1fr}.topnav{display:none}.sitebar{padding:14px 0}.calc-card{border-radius:24px}.wrap{width:min(var(--max),calc(100% - 22px))}}
+  <!-- Primary Meta Tags -->
+<title>Probability Calculator – Union, Intersection &amp; Events</title>
+<meta name="title" content="Probability Calculator – Union, Intersection &amp; Events">
+<meta name="description" content="Calculate independent event probabilities, unions, intersections, complements, exclusive outcomes, and favorable-outcome probability with clear formulas.">
 
-:root{--bg:#080b19;--text:#f8fbff;--muted:#a6b0cd;--bodyText:#c9d1e8;--panel:rgba(16,20,41,.82);--glass:rgba(255,255,255,.06);--line:rgba(255,255,255,.11);--accent:#8b5cf6;--accentText:#fff;--input-bg:#0c1127;--input-line:#293153;--focus:rgba(139,92,246,.18);--button2:#11172f;--result-bg:linear-gradient(145deg,#171336,#0c1533);--metric-bg:rgba(255,255,255,.045);--formula-bg:#10162d;--shadow:0 34px 90px rgba(0,0,0,.42)}
-.hero{min-height:570px;padding:42px 0 110px;background:radial-gradient(circle at 82% 20%,rgba(139,92,246,.28),transparent 34%),radial-gradient(circle at 12% 74%,rgba(34,211,238,.16),transparent 30%)}
-.hero-layout{display:grid;grid-template-columns:1.08fr .92fr;gap:34px;align-items:center}.prob-orbit{height:360px;position:relative;display:grid;place-items:center;perspective:900px}.orb{width:220px;height:220px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#cabffd,#7956ef 42%,#38218e 75%);box-shadow:inset -24px -28px 55px rgba(0,0,0,.3),0 35px 75px rgba(86,49,190,.35);display:grid;place-items:center;font-size:4.5rem;font-weight:950;transform:rotate(-8deg)}.ring{position:absolute;border:2px solid rgba(107,229,255,.5);border-radius:50%;width:330px;height:125px;transform:rotate(-18deg)}.dot{position:absolute;width:26px;height:26px;border-radius:50%;background:#67e8f9;box-shadow:0 0 30px #67e8f9}.dot.d1{top:62px;right:72px}.dot.d2{bottom:46px;left:68px;background:#f9a8d4;box-shadow:0 0 28px #f9a8d4}
-.prob-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:20px}.result-card:after{content:"P";position:absolute;right:-10px;bottom:-60px;font-size:190px;font-weight:950;color:rgba(255,255,255,.035)}
-@media(max-width:860px){.hero-layout,.prob-grid{grid-template-columns:1fr}.prob-orbit{height:280px}.hero{min-height:auto}}
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Probability Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate the probability of independent events, unions, intersections, complements, exclusive outcomes, and simple favorable-outcome probability.", "url": "/probability-calculator/", "browserRequirements": "Requires JavaScript"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Math & Statistics", "item": "/math/"}, {"@type": "ListItem", "position": 3, "name": "Statistics & Probability", "item": "/math/statistics-probability/"}, {"@type": "ListItem", "position": 4, "name": "Probability Calculator", "item": "/probability-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the probability of two independent events both happening?", "acceptedAnswer": {"@type": "Answer", "text": "Multiply the probabilities: P(A ∩ B) = P(A) × P(B). This works when the occurrence of one event does not change the probability of the other."}}, {"@type": "Question", "name": "How do I convert probability to a percentage?", "acceptedAnswer": {"@type": "Answer", "text": "Multiply the decimal probability by 100. A probability of 0.375 is 37.5%."}}, {"@type": "Question", "name": "Can probability be greater than 1?", "acceptedAnswer": {"@type": "Answer", "text": "No. A valid probability is between 0 and 1 inclusive. Values outside that range do not represent probabilities."}}, {"@type": "Question", "name": "What is the complement of an event?", "acceptedAnswer": {"@type": "Answer", "text": "The complement is the probability that the event does not occur. It is calculated as 1 − P(A)."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/><link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body data-cp-category="math" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../math/index.html">Math &amp; Statistics</a></li><li><a aria-current="page" href="index.html">Probability Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a href="../calculators/index.html">All calculators</a></div><header class="hero">
-<div class="wrap">
-<nav aria-label="Primary navigation" class="sitebar"><a class="brand" href="#">Calc<span>Pro</span></a><div class="topnav"><a href="#calculator">Calculator</a><a href="#guide">Guide</a><a href="#faq">FAQ</a></div></nav>
-<div class="hero-layout">
-<div><div class="breadcrumb"><a href="#">Home</a> / <a href="#">Math</a> / Probability Calculator</div><div class="pill">CalcPro · Statistics + Geometry</div><h1>Probability Calculator</h1><p>Explore event probability without turning the math into guesswork. Work with independent events or convert favorable outcomes into decimal and percentage probability.</p></div>
-<div aria-hidden="true" class="prob-orbit"><div class="ring"></div><div class="orb">P</div><div class="dot d1"></div><div class="dot d2"></div></div>
-</div>
-</div>
-</header>
-<div class="cp-page-layout"><main id="main"><h1 class="page-title">Probability Calculator</h1>
-<div class="wrap calc-shell" id="calculator"><section class="panel calc-card"><h2 class="calc-title">Probability Calculator</h2><p class="calc-sub">Calculate the probability of independent events, unions, intersections, complements, exclusive outcomes, and simple favorable-outcome probability.</p>
-<div class="prob-grid">
-<section>
-<div class="tabs" role="tablist">
-<button class="tab active" data-mode="events" type="button">Two independent events</button>
-<button class="tab" data-mode="simple" type="button">Favorable outcomes</button>
-</div>
-<div id="eventsMode">
-<div class="row">
-<div class="field"><label for="pa">Probability of A, P(A)</label><input class="input" id="pa" max="1" min="0" step="any" type="number" value="0.5"/></div>
-<div class="field"><label for="pb">Probability of B, P(B)</label><input class="input" id="pb" max="1" min="0" step="any" type="number" value="0.4"/></div>
-</div>
-</div>
-<div hidden="" id="simpleMode">
-<div class="row">
-<div class="field"><label for="fav">Favorable outcomes</label><input class="input" id="fav" min="0" step="1" type="number" value="1"/></div>
-<div class="field"><label for="total">Total equally likely outcomes</label><input class="input" id="total" min="1" step="1" type="number" value="6"/></div>
-</div>
-</div>
-<div class="buttons"><button class="btn primary" id="calcBtn" type="button">Calculate probability</button><button class="btn secondary" id="resetBtn" type="button">Reset</button></div>
-<div class="error" id="error" role="alert"></div>
-</section>
-<section aria-live="polite" class="result-card">
-<div class="result-kicker">Primary result</div><div class="result-big" id="mainResult">0.20</div><div class="muted" id="mainLabel">P(A ∩ B) — both events occur</div>
-<div class="metric-grid" id="metrics"></div>
-</section>
-</div>
-</section></div><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<div class="wrap content" id="guide">
-<div class="article-grid">
-<article class="article">
-<section id="s1"><h2>What Is a Probability Calculator?</h2><p>A probability calculator converts information about possible outcomes or event probabilities into numerical likelihoods from 0 to 1. This page handles simple equally likely outcomes and two independent events, including the probability that both occur, either occurs, exactly one occurs, or neither occurs.</p></section><section id="s2"><h2>How to Use the Probability Calculator</h2><p>Choose the calculation type. For independent events, enter P(A) and P(B) as decimals from 0 to 1. For equally likely outcomes, enter the number of favorable outcomes and the total number of possible outcomes. Select Calculate to update the result panel.</p></section><section id="s3"><h2>Probability Formulas</h2><div class="formula">For independent events, P(A ∩ B) = P(A) × P(B). The addition rule is P(A ∪ B) = P(A) + P(B) − P(A ∩ B). For equally likely outcomes, probability equals favorable outcomes divided by total outcomes.</div></section><section id="s4"><h2>Calculation Example</h2><p>If P(A) = 0.50 and P(B) = 0.40 and the events are independent, P(A ∩ B) = 0.20. The probability that A or B or both occur is 0.50 + 0.40 − 0.20 = 0.70.</p></section><section id="s5"><h2>Understanding Your Results</h2><p>A probability of 0 means an event is impossible under the model, while 1 means it is certain. A decimal can be converted to a percentage by multiplying by 100. For example, 0.20 corresponds to 20%.</p></section><section id="s6"><h2>Important Assumptions and Limitations</h2><p>The two-event mode assumes A and B are independent. If one event changes the probability of the other, use conditional probability rather than multiplying P(A) and P(B). The favorable-outcomes mode also assumes all listed outcomes are equally likely.</p></section>
-<section class="faq" id="faq"><h2>Frequently Asked Questions</h2><details><summary>What is the probability of two independent events both happening?</summary><p>Multiply the probabilities: P(A ∩ B) = P(A) × P(B). This works when the occurrence of one event does not change the probability of the other.</p></details><details><summary>How do I convert probability to a percentage?</summary><p>Multiply the decimal probability by 100. A probability of 0.375 is 37.5%.</p></details><details><summary>Can probability be greater than 1?</summary><p>No. A valid probability is between 0 and 1 inclusive. Values outside that range do not represent probabilities.</p></details><details><summary>What is the complement of an event?</summary><p>The complement is the probability that the event does not occur. It is calculated as 1 − P(A).</p></details></section>
-<section class="sources" id="sources"><h2>Sources and Methodology</h2><p>Formulas and calculator behavior were cross-checked against the sources below. Page copy and visual design are original. Results are computed locally in your browser.</p><ul><li><a href="https://www.calculator.net/probability-calculator.html" rel="noopener" target="_blank">Calculator.net Probability Calculator</a></li><li><a href="https://openstax.org/books/introductory-statistics-2e/pages/3-3-two-basic-rules-of-probability" rel="noopener" target="_blank">OpenStax – Two Basic Rules of Probability</a></li></ul></section>
-</article>
-<aside class="aside panel"><h3>On this page</h3><a href="#s1">What Is a Probability Calculator?</a><a href="#s2">How to Use the Probability Calculator</a><a href="#s3">Probability Formulas</a><a href="#s4">Calculation Example</a><a href="#s5">Understanding Your Results</a><a href="#s6">Important Assumptions and Limitations</a><a href="#faq">Frequently Asked Questions</a><a href="#sources">Sources &amp; Methodology</a></aside>
-</div>
-</div>
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/probability-calculator/">
 
-<script class="cp-calculator-data" type="application/json">{"index":"145","Batch":"15","Calculator / Page":"Probability Calculator","Slug":"probability-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Calculate the probability of independent events, unions, intersections, complements, exclusive outcomes, and simple favorable-outcome probability.","Formula / Algorithm Used in Tool":"Probability Formulas: For independent events, P(A ∩ B) = P(A) × P(B). The addition rule is P(A ∪ B) = P(A) + P(B) − P(A ∩ B). For equally likely outcomes, probability equals favorable outcomes divided by total outcomes.","Required User Inputs":"Probability of A, P(A); Probability of B, P(B); Favorable outcomes; Total equally likely outcomes","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Probability of A, P(A), Probability of B, P(B), Favorable outcomes, Total equally likely outcomes. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"The two-event mode assumes A and B are independent. If one event changes the probability of the other, use conditional probability rather than multiplying P(A) and P(B). The favorable-outcomes mode also assumes all listed outcomes are equally likely.","Current Source URLs in Page":"https://www.calculator.net/probability-calculator.html | https://openstax.org/books/introductory-statistics-2e/pages/3-3-two-basic-rules-of-probability","Implementation Path":"/probability-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Math &amp; Statistics</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the simplified fraction, m…</small></span></a><a class="cp-related-link" href="../math-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Math Calculator</strong><small>Perform basic arithmetic with addition, subtraction, multiplication, division, pare…</small></span></a><a class="cp-related-link" href="../percent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Percent Calculator</strong><small>Calculate a percentage of a number, find what percent one value is of another, calc…</small></span></a><a class="cp-related-link" href="../scientific-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Scientific Calculator</strong><small>Calculate trigonometric functions, inverse trig, logarithms, roots, powers, factori…</small></span></a><a class="cp-related-link" href="../random-number-generator/index.html"><span class="cp-related-dot">›</span><span><strong>Random Number Generator</strong><small>Generate one or many random integers or decimals between custom limits, with option…</small></span></a><a class="cp-related-link" href="../standard-deviation-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Standard Deviation Calculator</strong><small>Calculate sample or population standard deviation, variance, mean, sum, count, stan…</small></span></a><a class="cp-related-link" href="../triangle-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Triangle Calculator</strong><small>Solve triangles from SSS, SAS, or ASA/AAS inputs and calculate missing sides, angle…</small></span></a><a class="cp-related-link" href="../volume-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Volume Calculator</strong><small>Calculate volume for common 3D solids including cube, rectangular prism, cylinder,…</small></span></a></div><a class="cp-side-category" href="../math/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-let mode='events';
-const $=id=>document.getElementById(id), fmt=n=>Number.isFinite(n)?Number(n.toPrecision(10)).toString():'—';
-function err(m=''){const e=$('error');e.textContent=m;e.classList.toggle('show',!!m)}
-function render(){
- err('');
- if(mode==='simple'){
-   const f=+$('fav').value,t=+$('total').value;
-   if(!Number.isInteger(f)||!Number.isInteger(t)||f<0||t<=0||f>t){err('Enter whole numbers with 0 ≤ favorable outcomes ≤ total outcomes.');return}
-   const p=f/t;
-   $('mainResult').textContent=fmt(p);$('mainLabel').textContent='Probability as a decimal';
-   $('metrics').innerHTML=`<div class="metric"><b>Fraction</b><span>${f}/${t}</span></div><div class="metric"><b>Percentage</b><span>${fmt(p*100)}%</span></div><div class="metric"><b>Complement</b><span>${fmt(1-p)}</span></div><div class="metric"><b>Odds form</b><span>${f}:${t-f}</span></div>`;
-   return;
- }
- const a=+$('pa').value,b=+$('pb').value;
- if(!Number.isFinite(a)||!Number.isFinite(b)||a<0||a>1||b<0||b>1){err('Probabilities must be between 0 and 1.');return}
- const both=a*b, either=a+b-both, xor=a*(1-b)+(1-a)*b, neither=(1-a)*(1-b);
- $('mainResult').textContent=fmt(both);$('mainLabel').textContent='P(A ∩ B) — both events occur';
- $('metrics').innerHTML=`<div class="metric"><b>P(A ∪ B)</b><span>${fmt(either)}</span></div><div class="metric"><b>Exactly one (XOR)</b><span>${fmt(xor)}</span></div><div class="metric"><b>Neither event</b><span>${fmt(neither)}</span></div><div class="metric"><b>P(A′), P(B′)</b><span>${fmt(1-a)}, ${fmt(1-b)}</span></div>`;
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/probability-calculator/">
+<meta property="og:title" content="Probability Calculator – Union, Intersection &amp; Events">
+<meta property="og:description" content="Calculate independent event probabilities, unions, intersections, complements, exclusive outcomes, and favorable-outcome probability with clear formulas.">
+<meta property="og:site_name" content="Probability Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/probability-calculator/">
+<meta name="twitter:title" content="Probability Calculator – Union, Intersection &amp; Events">
+<meta name="twitter:description" content="Calculate independent event probabilities, unions, intersections, complements, exclusive outcomes, and favorable-outcome probability with clear formulas.">
+  <meta content="#1477ff" name="theme-color" />
+  <style>
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65
+    }
+
+    :root {
+      --max: 1180px
+    }
+
+    a {
+      color: inherit
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: auto
+    }
+
+    .sitebar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      gap: 18px
+    }
+
+    .brand {
+      font-weight: 900;
+      letter-spacing: -.04em;
+      font-size: 1.25rem;
+      text-decoration: none
+    }
+
+    .brand span {
+      color: var(--accent)
+    }
+
+    .topnav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap
+    }
+
+    .topnav a {
+      text-decoration: none;
+      font-size: .9rem;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: var(--glass);
+      border: 1px solid var(--line)
+    }
+
+    .breadcrumb {
+      font-size: .85rem;
+      opacity: .78;
+      margin-bottom: 14px
+    }
+
+    .breadcrumb a {
+      text-decoration: none
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero h1 {
+      font-size: clamp(2.35rem, 5vw, 5rem);
+      line-height: .98;
+      letter-spacing: -.065em;
+      margin: 0 0 18px;
+      max-width: 860px
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 1.8vw, 1.18rem);
+      max-width: 720px;
+      margin: 0;
+      color: var(--muted)
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--glass);
+      border: 1px solid var(--line);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: 18px
+    }
+
+    main {
+      padding-bottom: 60px
+    }
+
+    .calc-shell {
+      position: relative;
+       z-index: 4
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px)
+    }
+
+    .calc-card {
+      border-radius: 30px;
+      padding: clamp(20px, 4vw, 38px)
+    }
+
+    .calc-title {
+      font-size: 1.45rem;
+      font-weight: 900;
+      letter-spacing: -.03em;
+      margin: 0 0 6px
+    }
+
+    .calc-sub {
+      margin: 0 0 24px;
+      color: var(--muted)
+    }
+
+    label {
+      display: block;
+      font-weight: 800;
+      font-size: .9rem;
+      margin-bottom: 7px
+    }
+
+    .field {
+      margin-bottom: 15px
+    }
+
+    .input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--input-line);
+      background: var(--input-bg);
+      color: var(--text);
+      border-radius: 16px;
+      padding: 14px 15px;
+      font: inherit;
+      outline: none;
+      transition: .2s
+    }
+
+    textarea {
+      min-height: 126px;
+      resize: vertical
+    }
+
+    .input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--focus)
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px
+    }
+
+    .row3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px
+    }
+
+    .btn {
+      appearance: none;
+      border: 0;
+      border-radius: 16px;
+      padding: 13px 18px;
+      font-weight: 900;
+      font: inherit;
+      cursor: pointer;
+      transition: .18s;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, .12)
+    }
+
+    .btn:hover {
+      transform: translateY(-2px)
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: var(--accentText)
+    }
+
+    .btn.secondary {
+      background: var(--button2);
+      color: var(--text);
+      border: 1px solid var(--line)
+    }
+
+    .error {
+      display: none;
+      margin-top: 14px;
+      padding: 11px 13px;
+      border-radius: 14px;
+      background: rgba(220, 38, 38, .1);
+      border: 1px solid rgba(220, 38, 38, .22);
+      color: #b91c1c;
+      font-weight: 700
+    }
+
+    .error.show {
+      display: block
+    }
+
+    .result-card {
+      border-radius: 26px;
+      padding: 24px;
+      background: var(--result-bg);
+      border: 1px solid var(--line);
+      position: relative;
+      overflow: hidden
+    }
+
+    .result-kicker {
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-weight: 900;
+      color: var(--muted)
+    }
+
+    .result-big {
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 950;
+      letter-spacing: -.06em;
+      line-height: 1.02;
+      margin: 8px 0 6px;
+      word-break: break-word
+    }
+
+    .muted {
+      color: var(--muted)
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px
+    }
+
+    .metric {
+      padding: 13px;
+      border-radius: 16px;
+      background: var(--metric-bg);
+      border: 1px solid var(--line)
+    }
+
+    .metric b {
+      display: block;
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: 2px
+    }
+
+    .metric span {
+      font-size: 1.08rem;
+      font-weight: 900;
+      word-break: break-word
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 0 0 18px
+    }
+
+    .tab {
+      border: 1px solid var(--line);
+      background: var(--button2);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 9px 13px;
+      font-weight: 850;
+      cursor: pointer
+    }
+
+    .tab.active {
+      background: var(--accent);
+      color: var(--accentText);
+      border-color: transparent
+    }
+
+    .content {
+      padding-top: 70px
+    }
+
+    .article-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 32px;
+      align-items: start
+    }
+
+    .article {
+      min-width: 0
+    }
+
+    .article h2 {
+      font-size: clamp(1.55rem, 2.7vw, 2.25rem);
+      letter-spacing: -.04em;
+      margin: 44px 0 12px
+    }
+
+    .article h3 {
+      font-size: 1.18rem;
+      margin: 28px 0 8px
+    }
+
+    .article p,
+    .article li {
+      color: var(--bodyText)
+    }
+
+    .formula {
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: var(--formula-bg);
+      border: 1px solid var(--line);
+      font-weight: 850;
+      overflow: auto
+    }
+
+    .aside {
+      position: sticky;
+      top: 18px;
+      border-radius: 24px;
+      padding: 20px
+    }
+
+    .aside h3 {
+      margin: 0 0 10px
+    }
+
+    .aside a {
+      display: block;
+      text-decoration: none;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: .92rem
+    }
+
+    .faq details {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 18px;
+      padding: 14px 16px;
+      margin: 10px 0
+    }
+
+    .faq summary {
+      font-weight: 900;
+      cursor: pointer
+    }
+
+    .sources a {
+      word-break: break-word
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 38px;
+      color: var(--muted);
+      font-size: .9rem
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0
+    }
+
+    @media(max-width:860px) {
+      .article-grid {
+        grid-template-columns: 1fr
+      }
+
+      .aside {
+        position: relative
+      }
+
+      .row3 {
+        grid-template-columns: 1fr
+      }
+ 
+    }
+
+    @media(max-width:620px) {
+
+      .row,
+      .metric-grid {
+        grid-template-columns: 1fr
+      }
+
+      .topnav {
+        display: none
+      }
+
+      .sitebar {
+        padding: 14px 0
+      }
+
+      .calc-card {
+        border-radius: 24px
+      }
+
+      .wrap {
+        width: min(var(--max), calc(100% - 22px))
+      }
+    }
+
+    :root {
+      --bg: #080b19;
+      --text: #f8fbff;
+      --muted: #a6b0cd;
+      --bodyText: #c9d1e8;
+      --panel: rgba(16, 20, 41, .82);
+      --glass: rgba(255, 255, 255, .06);
+      --line: rgba(255, 255, 255, .11);
+      --accent: #8b5cf6;
+      --accentText: #fff;
+      --input-bg: #0c1127;
+      --input-line: #293153;
+      --focus: rgba(139, 92, 246, .18);
+      --button2: #11172f;
+      --result-bg: linear-gradient(145deg, #171336, #0c1533);
+      --metric-bg: rgba(255, 255, 255, .045);
+      --formula-bg: #10162d;
+      --shadow: 0 34px 90px rgba(0, 0, 0, .42)
+    }
+
+    .hero {
+      min-height: 570px;
+      padding: 42px 0 110px;
+      background: radial-gradient(circle at 82% 20%, rgba(139, 92, 246, .28), transparent 34%), radial-gradient(circle at 12% 74%, rgba(34, 211, 238, .16), transparent 30%)
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 34px;
+      align-items: center
+    }
+
+    .prob-orbit {
+      height: 360px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      perspective: 900px
+    }
+
+    .orb {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 28%, #cabffd, #7956ef 42%, #38218e 75%);
+      box-shadow: inset -24px -28px 55px rgba(0, 0, 0, .3), 0 35px 75px rgba(86, 49, 190, .35);
+      display: grid;
+      place-items: center;
+      font-size: 4.5rem;
+      font-weight: 950;
+      transform: rotate(-8deg)
+    }
+
+    .ring {
+      position: absolute;
+      border: 2px solid rgba(107, 229, 255, .5);
+      border-radius: 50%;
+      width: 330px;
+      height: 125px;
+      transform: rotate(-18deg)
+    }
+
+    .dot {
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #67e8f9;
+      box-shadow: 0 0 30px #67e8f9
+    }
+
+    .dot.d1 {
+      top: 62px;
+      right: 72px
+    }
+
+    .dot.d2 {
+      bottom: 46px;
+      left: 68px;
+      background: #f9a8d4;
+      box-shadow: 0 0 28px #f9a8d4
+    }
+
+    .prob-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 20px
+    }
+
+    .result-card:after {
+      content: "P";
+      position: absolute;
+      right: -10px;
+      bottom: -60px;
+      font-size: 190px;
+      font-weight: 950;
+      color: rgba(255, 255, 255, .035)
+    }
+
+    @media(max-width:860px) {
+
+      .hero-layout,
+      .prob-grid {
+        grid-template-columns: 1fr
+      }
+
+      .prob-orbit {
+        height: 280px
+      }
+
+      .hero {
+        min-height: auto
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/probability-calculator/#webapplication",
+      "name": "Probability Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/probability-calculator/",
+      "description": "Calculate independent event probabilities, unions, intersections, complements, exclusive outcomes, and favorable-outcome probability with clear formulas.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/probability-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Probability Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/probability-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/probability-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does P(A) mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "P(A) represents the probability that event A occurs. A value of 0 means the event cannot occur, while 1 means it is certain."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate the probability of two independent events both happening?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiply their probabilities: P(A ∩ B) = P(A) × P(B). For example, if P(A) = 0.5 and P(B) = 0.2, the probability that both occur is 0.10."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate the probability that A or B occurs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the addition rule: P(A ∪ B) = P(A) + P(B) − P(A ∩ B). Subtracting the intersection prevents the overlapping probability from being counted twice."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the complement of a probability?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The complement is the probability that the event does not happen: P(A') = 1 − P(A). If P(A) is 0.75, then P(A') is 0.25."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between independent and mutually exclusive events?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Independent events can occur together, and one does not change the probability of the other. Mutually exclusive events cannot occur at the same time, so their intersection has probability 0."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I multiply probabilities for dependent events?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not by simply using P(A) × P(B). For dependent events, the probability of one event may change after the other occurs, so conditional probability is required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When can I use favorable outcomes divided by total outcomes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use favorable outcomes ÷ total outcomes when all possible outcomes are equally likely, such as outcomes from a fair die or fair coin."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart OnlineFree",
+      "inLanguage": "en-US"
+    }
+  ]
 }
-document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mode;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));$('eventsMode').hidden=mode!=='events';$('simpleMode').hidden=mode!=='simple';render()}));
-$('calcBtn').onclick=render;$('resetBtn').onclick=()=>{if(mode==='events'){$('pa').value=.5;$('pb').value=.4}else{$('fav').value=1;$('total').value=6}render()};render();
 </script>
-<script defer="" src="../assets/js/global.js"></script><script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+  <link href="../assets/css/global.css" rel="stylesheet" />
+  <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+  <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="math" data-cp-page-type="Calculator">
+  <header class="cp-site-header" data-cp-header="">
+    <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+          class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+      <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+          href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+          href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+          href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+          href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+          href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+          data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+          class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+      <div class="cp-header-actions">
+        <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search">
+          <input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+            placeholder="Search calculators…" type="search" />
+          <div class="cp-search-results" hidden="" role="listbox"></div>
+        </form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a>
+      </div>
+    </div>
+  </header>
+  <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+    <ol>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../math/index.html">Math &amp; Statistics</a></li>
+      <li><a aria-current="page" href="index.html">Probability Calculator</a></li>
+    </ol>
+  </nav>
+  <div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a
+      href="../calculators/index.html">All calculators</a></div>
+   
+  <div class="cp-page-layout">
+    <main id="main">
+      <h1 class="page-title">Probability Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+      <div class="wrap calc-shell" id="calculator">
+        <section class="panel calc-card">
+          <h2 class="calc-title">Probability Calculator</h2>
+          <p class="calc-sub">Calculate the probability of independent events, unions, intersections, complements,
+            exclusive outcomes, and simple favorable-outcome probability.</p>
+          <div class="prob-grid">
+            <section>
+              <div class="tabs" role="tablist">
+                <button class="tab active" data-mode="events" type="button">Two independent events</button>
+                <button class="tab" data-mode="simple" type="button">Favorable outcomes</button>
+              </div>
+              <div id="eventsMode">
+                <div class="row">
+                  <div class="field"><label for="pa">Probability of A, P(A)</label><input class="input" id="pa" max="1"
+                      min="0" step="any" type="number" value="0.5" /></div>
+                  <div class="field"><label for="pb">Probability of B, P(B)</label><input class="input" id="pb" max="1"
+                      min="0" step="any" type="number" value="0.4" /></div>
+                </div>
+              </div>
+              <div hidden="" id="simpleMode">
+                <div class="row">
+                  <div class="field"><label for="fav">Favorable outcomes</label><input class="input" id="fav" min="0"
+                      step="1" type="number" value="1" /></div>
+                  <div class="field"><label for="total">Total equally likely outcomes</label><input class="input"
+                      id="total" min="1" step="1" type="number" value="6" /></div>
+                </div>
+              </div>
+              <div class="buttons"><button class="btn primary" id="calcBtn" type="button">Calculate
+                  probability</button><button class="btn secondary" id="resetBtn" type="button">Reset</button></div>
+              <div class="error" id="error" role="alert"></div>
+            </section>
+            <section aria-live="polite" class="result-card">
+              <div class="result-kicker">Primary result</div>
+              <div class="result-big" id="mainResult">0.20</div>
+              <div class="muted" id="mainLabel">P(A ∩ B) — both events occur</div>
+              <div class="metric-grid" id="metrics"></div>
+            </section>
+          </div>
+        </section>
+      </div>
+      <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+        <div class="cp-visual-top">
+          <div><span class="cp-visual-kicker">Visual breakdown</span>
+            <h2 id="cp-visual-title">Calculation Graph</h2>
+            <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+          </div><span class="cp-chart-badge">Live view</span>
+        </div>
+        <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+        <div aria-label="Calculation method flow" class="cp-flow">
+          <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+            class="cp-flow-arrow">→</span>
+          <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+            class="cp-flow-arrow">→</span>
+          <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+        </div>
+      </section>
+      <div class="cp-ad-slot cp-ad-wide">
+        <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+      </div>
+      <div class="wrap content" id="guide">
+         
+
+<article class="article">
+
+ 
+
+  <p>Use the Probability Calculator to calculate probabilities for two independent events and simple equally likely outcomes. Enter <strong>P(A)</strong> and <strong>P(B)</strong> to calculate related event probabilities, or enter the number of favorable and total outcomes to find a basic probability.</p>
+
+  <section id="what">
+    <h2>What Is the Probability Calculator?</h2>
+
+    <p class="direct">The Probability Calculator helps you calculate the likelihood of events using standard probability rules. It can work with two independent events to find intersections, unions, complements, and exclusive outcomes, and it can calculate probability from favorable outcomes when all possible outcomes are equally likely.</p>
+
+    <p>Probability values range from <strong>0 to 1</strong>, where 0 represents an impossible event and 1 represents a certain event.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Probability Calculator</h2>
+
+    <h3>Probability of A, P(A)</h3>
+
+    <p>Enter the probability that event A occurs.</p>
+
+    <p>The value should be between <strong>0 and 1</strong>. For example, a 40% probability is entered as <strong>0.40</strong>.</p>
+
+    <h3>Probability of B, P(B)</h3>
+
+    <p>Enter the probability that event B occurs.</p>
+
+    <p>This calculation assumes events A and B are <strong>independent</strong>, meaning the occurrence of one event does not change the probability of the other.</p>
+
+    <h3>Favorable Outcomes</h3>
+
+    <p>Enter the number of outcomes that satisfy the event you are measuring.</p>
+
+    <p>For example, when rolling a fair six-sided die, there are three favorable outcomes for rolling an even number: 2, 4, and 6.</p>
+
+    <h3>Total Equally Likely Outcomes</h3>
+
+    <p>Enter the total number of possible outcomes.</p>
+
+    <p>The favorable-outcome method is valid when the possible outcomes are equally likely.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula for Independent Events</h3>
+
+    <p>For independent events A and B, the probability that both occur is:</p>
+
+    <div class="formula">P(A ∩ B) = P(A) × P(B)</div>
+
+    <p>OpenStax and Penn State both describe this multiplication rule for independent events.</p>
+
+    <h3>Variables</h3>
+
+    <ul>
+      <li><strong>P(A)</strong> = probability that event A occurs, from 0 to 1</li>
+      <li><strong>P(B)</strong> = probability that event B occurs, from 0 to 1</li>
+      <li><strong>P(A ∩ B)</strong> = probability that both A and B occur</li>
+      <li><strong>P(A ∪ B)</strong> = probability that A, B, or both occur</li>
+      <li><strong>P(A')</strong> = probability that A does not occur</li>
+      <li><strong>P(B')</strong> = probability that B does not occur</li>
+    </ul>
+
+    <h3>Union of Two Events</h3>
+
+    <p>The probability that A or B or both occur is:</p>
+
+    <div class="formula">P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</div>
+
+    <p>For independent events:</p>
+
+    <div class="formula">P(A ∪ B) = P(A) + P(B) − [P(A) × P(B)]</div>
+
+    <p>The intersection is subtracted because outcomes belonging to both events would otherwise be counted twice.</p>
+
+    <h3>Complement of an Event</h3>
+
+    <p>The complement is the probability that an event does <strong>not</strong> occur.</p>
+
+    <div class="formula">P(A') = 1 − P(A)</div>
+
+    <div class="formula">P(B') = 1 − P(B)</div>
+
+    <p>The probability of an event and its complement always adds to 1.</p>
+
+    <h3>Exclusive Outcome</h3>
+
+    <p>If you want the probability that <strong>A or B occurs, but not both</strong>, the overlapping probability must also be excluded:</p>
+
+    <div class="formula">P(A Δ B) = P(A) + P(B) − 2P(A ∩ B)</div>
+
+    <p>For independent events:</p>
+
+    <div class="formula">P(A Δ B) = P(A) + P(B) − 2[P(A) × P(B)]</div>
+
+    <p>This represents an exclusive OR rather than the inclusive union.</p>
+
+    <p>If A and B are mutually exclusive and cannot happen together, then:</p>
+
+    <div class="formula">P(A ∩ B) = 0</div>
+
+    <p>and the union simplifies to:</p>
+
+    <div class="formula">P(A ∪ B) = P(A) + P(B)</div>.
+
+    <h3>Probability from Favorable Outcomes</h3>
+
+    <p>For equally likely outcomes:</p>
+
+    <div class="formula">P(E) = Favorable Outcomes ÷ Total Outcomes</div>
+
+    <p>or:</p>
+
+    <div class="formula">P(E) = f / n</div>
+
+    <p>where:</p>
+
+    <ul>
+      <li><strong>f</strong> = number of favorable outcomes</li>
+      <li><strong>n</strong> = total number of equally likely outcomes</li>
+    </ul>
+
+    <p>This method assumes every possible outcome has the same chance of occurring.</p>
+
+    <h3>Calculation Sequence</h3>
+
+    <p>For the two-event calculation:</p>
+
+    <ol>
+      <li>Read P(A) and P(B).</li>
+      <li>Confirm that each probability is between 0 and 1.</li>
+      <li>
+        Calculate the independent-event intersection:<br>
+        <strong>P(A ∩ B) = P(A) × P(B)</strong>
+      </li>
+      <li>
+        Calculate the union:<br>
+        <strong>P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</strong>
+      </li>
+      <li>Calculate complements using <strong>1 − P(event)</strong>.</li>
+      <li>Calculate the exclusive outcome by removing the intersection from both overlapping portions.</li>
+    </ol>
+
+    <p>For the favorable-outcome calculation:</p>
+
+    <ol>
+      <li>Read the number of favorable outcomes.</li>
+      <li>Read the total number of equally likely outcomes.</li>
+      <li>Divide favorable outcomes by total outcomes.</li>
+    </ol>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose:</p>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li>P(A) = <strong>0.40</strong></li>
+      <li>P(B) = <strong>0.30</strong></li>
+      <li>Favorable outcomes = <strong>3</strong></li>
+      <li>Total equally likely outcomes = <strong>10</strong></li>
+    </ul>
+
+    <h3>Step 1: Calculate the Intersection</h3>
+
+    <div class="formula">P(A ∩ B) = 0.40 × 0.30</div>
+
+    <div class="formula">P(A ∩ B) = 0.12</div>
+
+    <p>There is a <strong>12% probability</strong> that both independent events occur.</p>
+
+    <h3>Step 2: Calculate the Union</h3>
+
+    <div class="formula">P(A ∪ B) = 0.40 + 0.30 − 0.12</div>
+
+    <div class="formula">P(A ∪ B) = 0.58</div>
+
+    <p>There is a <strong>58% probability</strong> that A, B, or both occur.</p>
+
+    <h3>Step 3: Calculate the Complements</h3>
+
+    <p>For event A:</p>
+
+    <div class="formula">P(A') = 1 − 0.40 = 0.60</div>
+
+    <p>For event B:</p>
+
+    <div class="formula">P(B') = 1 − 0.30 = 0.70</div>
+
+    <h3>Step 4: Calculate the Exclusive Outcome</h3>
+
+    <div class="formula">P(A Δ B) = 0.40 + 0.30 − 2(0.12)</div>
+
+    <div class="formula">P(A Δ B) = 0.46</div>
+
+    <p>There is a <strong>46% probability</strong> that exactly one of the two events occurs.</p>
+
+    <h3>Step 5: Calculate Probability from Favorable Outcomes</h3>
+
+    <div class="formula">P(E) = 3 ÷ 10</div>
+
+    <div class="formula">P(E) = 0.30</div>
+
+    <h3>Final Result</h3>
+
+    <p>The example produces:</p>
+
+    <ul>
+      <li>Both A and B: <strong>0.12 or 12%</strong></li>
+      <li>A or B or both: <strong>0.58 or 58%</strong></li>
+      <li>A does not occur: <strong>0.60 or 60%</strong></li>
+      <li>B does not occur: <strong>0.70 or 70%</strong></li>
+      <li>Exactly one of A or B: <strong>0.46 or 46%</strong></li>
+      <li>3 favorable outcomes from 10 equally likely outcomes: <strong>0.30 or 30%</strong></li>
+    </ul>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p>A probability near <strong>0</strong> means an event is unlikely, while a probability near <strong>1</strong> means it is more likely.</p>
+
+    <p><strong>Intersection</strong> shows the probability that both independent events occur.</p>
+
+    <p><strong>Union</strong> shows the probability that at least one of the two events occurs, including the possibility that both occur.</p>
+
+    <p><strong>Complement</strong> shows the probability that a particular event does not occur.</p>
+
+    <p><strong>Exclusive outcome</strong> shows the probability that exactly one of two events occurs rather than both.</p>
+
+    <p><strong>Favorable-outcome probability</strong> compares the number of desired outcomes with the total number of equally likely possible outcomes.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The two-event calculation assumes that <strong>A and B are independent</strong>. If one event changes the probability of the other, multiplying P(A) by P(B) is not appropriate. Dependent events require conditional probability, such as <strong>P(A ∩ B) = P(A) × P(B|A)</strong>.</p>
+
+    <p>P(A) and P(B) must be valid probabilities between <strong>0 and 1</strong>.</p>
+
+    <p>The favorable-outcomes formula assumes that all outcomes being counted are <strong>equally likely</strong>. If outcomes have different probabilities, favorable outcomes divided by total outcomes may not give the correct result.</p>
+
+    <p>Results may also be affected by rounding when probabilities contain many decimal places.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What does P(A) mean?</summary>
+      <p>P(A) represents the probability that event A occurs. A value of 0 means the event cannot occur, while 1 means it is certain.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How do I calculate the probability of two independent events both happening?</summary>
+
+      <p>Multiply their probabilities:</p>
+
+      <div class="formula">P(A ∩ B) = P(A) × P(B)</div>
+
+      <p>For example, if P(A) = 0.5 and P(B) = 0.2, the probability that both occur is 0.10.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How do I calculate the probability that A or B occurs?</summary>
+
+      <p>Use the addition rule:</p>
+
+      <div class="formula">P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</div>
+
+      <p>Subtracting the intersection prevents the overlapping probability from being counted twice.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What is the complement of a probability?</summary>
+
+      <p>The complement is the probability that the event does not happen:</p>
+
+      <div class="formula">P(A') = 1 − P(A)</div>
+
+      <p>If P(A) is 0.75, then P(A') is 0.25.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What is the difference between independent and mutually exclusive events?</summary>
+
+      <p>Independent events can occur together, and one does not change the probability of the other.</p>
+
+      <p>Mutually exclusive events cannot occur at the same time, so their intersection has probability 0.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can I multiply probabilities for dependent events?</summary>
+      <p>Not by simply using P(A) × P(B). For dependent events, the probability of one event may change after the other occurs, so conditional probability is required.</p>
+    </details>
+
+    <details class="faq">
+      <summary>When can I use favorable outcomes divided by total outcomes?</summary>
+      <p>Use <strong>favorable outcomes ÷ total outcomes</strong> when all possible outcomes are equally likely, such as outcomes from a fair die or fair coin.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://openstax.org/books/introductory-statistics-2e/pages/3-3-two-basic-rules-of-probability" rel="noopener" target="_blank">OpenStax — Two Basic Rules of Probability</a><br>
+        Supports the multiplication rule for independent events and the addition rule for unions.
+      </li>
+
+      <li>
+        <a href="https://openstax.org/books/precalculus/pages/11-7-probability" rel="noopener" target="_blank">OpenStax — Probability</a><br>
+        Supports the complement rule and basic probability principles.
+      </li>
+
+      <li>
+        <a href="https://openstax.org/books/prealgebra/pages/5-5-averages-and-probability" rel="noopener" target="_blank">OpenStax — Averages and Probability</a><br>
+        Supports favorable outcomes divided by total equally likely outcomes.
+      </li>
+
+      <li>
+        <a href="https://online.stat.psu.edu/stat414/Lesson05" rel="noopener" target="_blank">Penn State STAT 414 — Independent Events</a><br>
+        Supports the definition of independent events and the independent-event multiplication rule.
+      </li>
+
+      <li>
+        <a href="https://online.stat.psu.edu/stat500/Lesson02" rel="noopener" target="_blank">Penn State STAT 500 — Probability</a><br>
+        Supports probability limits, complements, and independence principles.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/permutation-and-combination-calculator/">Permutation &amp; Combination Calculator</a></li>
+      <li><a href="https://example.com/statistics-calculator/">Statistics Calculator</a></li>
+      <li><a href="https://example.com/confidence-interval-calculator/">Confidence Interval Calculator</a></li>
+      <li><a href="https://example.com/sample-size-calculator/">Sample Size Calculator</a></li>
+      <li><a href="https://example.com/z-score-calculator/">Z-Score Calculator</a></li>
+      <li><a href="https://example.com/mean-median-mode-range-calculator/">Mean Median Mode Range Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+
+      </div>
+
+      <script class="cp-calculator-data"
+        type="application/json">{"index":"145","Batch":"15","Calculator / Page":"Probability Calculator","Slug":"probability-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Calculate the probability of independent events, unions, intersections, complements, exclusive outcomes, and simple favorable-outcome probability.","Formula / Algorithm Used in Tool":"Probability Formulas: For independent events, P(A ∩ B) = P(A) × P(B). The addition rule is P(A ∪ B) = P(A) + P(B) − P(A ∩ B). For equally likely outcomes, probability equals favorable outcomes divided by total outcomes.","Required User Inputs":"Probability of A, P(A); Probability of B, P(B); Favorable outcomes; Total equally likely outcomes","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Probability of A, P(A), Probability of B, P(B), Favorable outcomes, Total equally likely outcomes. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"The two-event mode assumes A and B are independent. If one event changes the probability of the other, use conditional probability rather than multiplying P(A) and P(B). The favorable-outcomes mode also assumes all listed outcomes are equally likely.","Current Source URLs in Page":"https://www.calculator.net/probability-calculator.html | https://openstax.org/books/introductory-statistics-2e/pages/3-3-two-basic-rules-of-probability","Implementation Path":"/probability-calculator/index.html"}</script>
+      <div class="cp-ad-slot cp-ad-wide">
+        <div>Advertisement<small>Responsive lower-page placement</small></div>
+      </div>
+    </main>
+    <aside aria-label="Related calculators" class="cp-related-sidebar">
+      <div class="cp-ad-slot cp-ad-sidebar">
+        <div>Advertisement<small>300 × 250 / responsive</small></div>
+      </div><span class="cp-side-kicker">Related tools</span>
+      <h2>Math &amp; Statistics</h2>
+      <p>More tools from the same Calculator Data category.</p>
+      <div class="cp-related-list"><a class="cp-related-link" href="../fraction-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Fraction Calculator</strong><small>Add, subtract, multiply, or
+              divide two fractions and get the simplified fraction, m…</small></span></a><a class="cp-related-link"
+          href="../math-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Math
+              Calculator</strong><small>Perform basic arithmetic with addition, subtraction, multiplication, division,
+              pare…</small></span></a><a class="cp-related-link" href="../percent-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Percent Calculator</strong><small>Calculate a percentage of a
+              number, find what percent one value is of another, calc…</small></span></a><a class="cp-related-link"
+          href="../scientific-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Scientific
+              Calculator</strong><small>Calculate trigonometric functions, inverse trig, logarithms, roots, powers,
+              factori…</small></span></a><a class="cp-related-link" href="../random-number-generator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Random Number Generator</strong><small>Generate one or many
+              random integers or decimals between custom limits, with option…</small></span></a><a
+          class="cp-related-link" href="../standard-deviation-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Standard Deviation Calculator</strong><small>Calculate sample
+              or population standard deviation, variance, mean, sum, count, stan…</small></span></a><a
+          class="cp-related-link" href="../triangle-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Triangle Calculator</strong><small>Solve triangles from SSS,
+              SAS, or ASA/AAS inputs and calculate missing sides, angle…</small></span></a><a class="cp-related-link"
+          href="../volume-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Volume
+              Calculator</strong><small>Calculate volume for common 3D solids including cube, rectangular prism,
+              cylinder,…</small></span></a></div><a class="cp-side-category" href="../math/index.html"><span>View
+          category</span><span>→</span></a>
+    </aside>
+  </div>
+  <footer>
+    <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+  </footer>
+  <script>
+    let mode = 'events';
+    const $ = id => document.getElementById(id), fmt = n => Number.isFinite(n) ? Number(n.toPrecision(10)).toString() : '—';
+    function err(m = '') { const e = $('error'); e.textContent = m; e.classList.toggle('show', !!m) }
+    function render() {
+      err('');
+      if (mode === 'simple') {
+        const f = +$('fav').value, t = +$('total').value;
+        if (!Number.isInteger(f) || !Number.isInteger(t) || f < 0 || t <= 0 || f > t) { err('Enter whole numbers with 0 ≤ favorable outcomes ≤ total outcomes.'); return }
+        const p = f / t;
+        $('mainResult').textContent = fmt(p); $('mainLabel').textContent = 'Probability as a decimal';
+        $('metrics').innerHTML = `<div class="metric"><b>Fraction</b><span>${f}/${t}</span></div><div class="metric"><b>Percentage</b><span>${fmt(p * 100)}%</span></div><div class="metric"><b>Complement</b><span>${fmt(1 - p)}</span></div><div class="metric"><b>Odds form</b><span>${f}:${t - f}</span></div>`;
+        return;
+      }
+      const a = +$('pa').value, b = +$('pb').value;
+      if (!Number.isFinite(a) || !Number.isFinite(b) || a < 0 || a > 1 || b < 0 || b > 1) { err('Probabilities must be between 0 and 1.'); return }
+      const both = a * b, either = a + b - both, xor = a * (1 - b) + (1 - a) * b, neither = (1 - a) * (1 - b);
+      $('mainResult').textContent = fmt(both); $('mainLabel').textContent = 'P(A ∩ B) — both events occur';
+      $('metrics').innerHTML = `<div class="metric"><b>P(A ∪ B)</b><span>${fmt(either)}</span></div><div class="metric"><b>Exactly one (XOR)</b><span>${fmt(xor)}</span></div><div class="metric"><b>Neither event</b><span>${fmt(neither)}</span></div><div class="metric"><b>P(A′), P(B′)</b><span>${fmt(1 - a)}, ${fmt(1 - b)}</span></div>`;
+    }
+    document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => { mode = b.dataset.mode; document.querySelectorAll('.tab').forEach(x => x.classList.toggle('active', x === b)); $('eventsMode').hidden = mode !== 'events'; $('simpleMode').hidden = mode !== 'simple'; render() }));
+    $('calcBtn').onclick = render; $('resetBtn').onclick = () => { if (mode === 'events') { $('pa').value = .5; $('pb').value = .4 } else { $('fav').value = 1; $('total').value = 6 } render() }; render();
+  </script>
+  <script defer="" src="../assets/js/global.js"></script>
+  <script defer="" src="../assets/js/taxonomy.js"></script>
+  <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

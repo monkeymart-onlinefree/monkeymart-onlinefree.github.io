@@ -1,13 +1,1008 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
-<title>Down Payment Calculator | CalcPro</title><meta content="Calculate a home down payment, loan amount, LTV, estimated closing costs, total cash needed, and cash remaining." name="description"/><meta content="index,follow" name="robots"/><link href="../down-payment-calculator/" rel="canonical"/><meta content="Down Payment Calculator | CalcPro" property="og:title"/><meta content="Calculate a home down payment, loan amount, LTV, estimated closing costs, total cash needed, and cash remaining." property="og:description"/><meta content="website" property="og:type"/><meta content="#1477ff" name="theme-color"/><style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}button,input,select{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}.wrap{width:min(1160px,92vw);margin:auto}.crumb{font-size:.86rem;opacity:.78}.eyebrow{font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:800}.btn.secondary{background:transparent;border:1px solid currentColor}.field{display:grid;gap:7px}.field label{font-size:.88rem;font-weight:750}.field input,.field select{width:100%;border-radius:14px;padding:12px 13px;border:1px solid rgba(127,127,127,.25);background:rgba(255,255,255,.76);color:#111;outline:none}.field input:focus,.field select:focus{box-shadow:0 0 0 4px rgba(99,102,241,.14)}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.actions{display:flex;gap:10px;flex-wrap:wrap}.error{display:none;padding:10px 12px;border-radius:12px;background:#fee2e2;color:#991b1b;font-weight:700;margin:10px 0}.error.show{display:block}.result-num{font-size:clamp(2rem,6vw,3.6rem);font-weight:900;letter-spacing:-.05em}.stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{padding:12px;border-radius:14px;background:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.7)}.stat b{display:block;font-size:1.08rem}.content{padding:56px 0}.article{max-width:860px;margin:auto}.article h2{font-size:clamp(1.5rem,3vw,2.05rem);margin:34px 0 10px;line-height:1.2}.article h3{margin:24px 0 8px}.article p,.article li{color:var(--muted,#4b5563)}.formula{padding:16px 18px;border-radius:16px;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.14);font-weight:800;overflow:auto}.source-list a{text-decoration:underline;text-underline-offset:3px}.faq details{border-top:1px solid rgba(127,127,127,.2);padding:14px 0}.faq summary{font-weight:800;cursor:pointer}footer{padding:34px 0;border-top:1px solid rgba(127,127,127,.18);font-size:.9rem;opacity:.75}@media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}.stat-grid{grid-template-columns:1fr}.wrap{width:min(94vw,1160px)}}
+<html lang="en">
 
-:root{--muted:#665e55}body{background:#fff9f0;color:#30261e}.hero-down{padding:26px 0 64px;background:linear-gradient(135deg,#fff1d6,#ffd6a8);position:relative;overflow:hidden}.hero-down h1{font-size:clamp(3rem,8vw,6.4rem);line-height:.92;letter-spacing:-.08em;margin:58px 0 12px;max-width:760px}.key{position:absolute;right:10%;top:95px;width:260px;height:80px;background:#e99c2b;border-radius:999px;transform:rotate(-18deg);box-shadow:0 25px 45px #7d4b122f}.key:before{content:"";position:absolute;left:-88px;top:-34px;width:120px;height:120px;border-radius:50%;border:28px solid #e99c2b}.key:after{content:"";position:absolute;right:-35px;bottom:-28px;width:95px;height:45px;background:#e99c2b;clip-path:polygon(0 0,100% 0,74% 48%,100% 100%,0 100%)}.calc-down{padding:34px 0}.down-board{display:grid;grid-template-columns:360px 1fr;gap:22px;align-items:start}.down-input{background:#30261e;color:#fff;border-radius:28px;padding:25px}.down-input .field input{background:#fff7}.down-result{background:#fff;border:1px solid #f1dfc7;border-radius:28px;padding:25px;box-shadow:0 30px 60px #6d481421}.range-bar{height:18px;border-radius:999px;background:linear-gradient(90deg,#f59e0b 0 20%,#86b87d 20% 100%);position:relative;margin:18px 0}.range-bar i{position:absolute;top:-7px;width:32px;height:32px;border-radius:50%;background:#30261e;border:5px solid #fff;box-shadow:0 4px 12px #0003;left:20%;transform:translateX(-50%)}.btn{background:#f2a33a;color:#241a12}.btn.secondary{color:#fff;border-color:#fff}.content{background:#fff}@media(max-width:800px){.down-board{grid-template-columns:1fr}.key{opacity:.22;right:-60px}.hero-down h1{margin-top:48px}}
-</style><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Down Payment Calculator", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "description": "Calculate a home down payment, loan amount, LTV, estimated closing costs, total cash needed, and cash remaining.", "url": "/calculators/down-payment-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Mortgages & Real Estate", "item": "/finance/mortgages-real-estate/"}, {"@type": "ListItem", "position": 4, "name": "Down Payment Calculator", "item": "/down-payment-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does a larger down payment affect LTV?", "acceptedAnswer": {"@type": "Answer", "text": "A larger down payment reduces the amount financed and therefore lowers the loan-to-value ratio. CFPB notes that LTV can affect approval, pricing, and mortgage-insurance requirements."}}, {"@type": "Question", "name": "Is 20% down always required?", "acceptedAnswer": {"@type": "Answer", "text": "No. CFPB says down-payment requirements vary by loan and lender. Many programs allow less than 20%, though mortgage insurance or a government-backed loan may be involved."}}, {"@type": "Question", "name": "Does the down payment include closing costs?", "acceptedAnswer": {"@type": "Answer", "text": "No. Down payment and closing costs are separate. This calculator estimates both so you can plan total upfront cash."}}]}]}</script><link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head><body data-cp-category="finance" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header><nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../finance/index.html">Finance</a></li><li><a aria-current="page" href="index.html">Down Payment Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main"><h1 class="page-title">Down Payment Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="calc-down"><div class="wrap down-board"><div class="down-input"><h2>Plan your cash</h2><div class="field"><label for="dpPrice">Home price</label><input id="dpPrice" min="1" type="number" value="400000"/></div><div class="field"><label for="dpPct">Down payment (%)</label><input id="dpPct" max="100" min="0" step="0.1" type="number" value="20"/></div><div class="field"><label for="dpClose">Estimated closing costs (%)</label><input id="dpClose" min="0" step="0.1" type="number" value="3"/></div><div class="field"><label for="dpCash">Cash available</label><input id="dpCash" min="0" type="number" value="100000"/></div><div class="error" id="dpErr"></div><div class="actions"><button class="btn" onclick="calcDP()">Calculate</button><button class="btn secondary" onclick="resetDP()">Reset</button></div></div><aside class="down-result"><div class="eyebrow" style="color:#a3620b">Down payment</div><div class="result-num" id="dpAmt">—</div><div class="range-bar"><i id="dpMarker"></i></div><div class="stat-grid"><div class="stat">Loan amount<b id="dpLoan">—</b></div><div class="stat">Loan-to-value<b id="dpLtv">—</b></div><div class="stat">Est. closing costs<b id="dpClosing">—</b></div><div class="stat">Total upfront cash<b id="dpTotal">—</b></div><div class="stat">Cash after upfront costs<b id="dpRemain">—</b></div><div class="stat">20% benchmark difference<b id="dp20">—</b></div></div></aside></div></section><section class="content"><article class="article wrap"><h2>What Is a Down Payment Calculator?</h2><p>A down payment calculator converts a percentage of the purchase price into a dollar amount and shows how much of the home would be financed. It also estimates closing costs separately so you can plan total upfront cash rather than focusing on the down payment alone.</p><h2>Down Payment and LTV Formula</h2><div class="formula">Down Payment = Home Price × Down Payment %<br/>Loan Amount = Home Price − Down Payment<br/>LTV = Loan Amount ÷ Home Price × 100</div><p>CFPB explains that a higher down payment generally means a lower LTV and can affect the loan options, rate, and costs offered by lenders.</p><h2>Do You Need 20% Down?</h2><p>No. CFPB notes that many mortgages allow less than 20% down, and some options can require much less. However, putting less than 20% down on a conventional mortgage often means mortgage insurance may apply, while FHA, VA, or USDA programs follow different rules.</p><h2>Closing Costs Are Separate</h2><p>The closing-cost percentage in this calculator is only a planning assumption. Actual closing costs depend on the lender, property, location, taxes, insurance, points, title services, and other transaction details.</p><h2>Frequently Asked Questions</h2><div class="faq"><details><summary>How does a larger down payment affect LTV?</summary><p>A larger down payment reduces the amount financed and therefore lowers the loan-to-value ratio. CFPB notes that LTV can affect approval, pricing, and mortgage-insurance requirements.</p></details><details><summary>Is 20% down always required?</summary><p>No. CFPB says down-payment requirements vary by loan and lender. Many programs allow less than 20%, though mortgage insurance or a government-backed loan may be involved.</p></details><details><summary>Does the down payment include closing costs?</summary><p>No. Down payment and closing costs are separate. This calculator estimates both so you can plan total upfront cash.</p></details></div><h2>Sources and Methodology</h2><ul class="source-list"><li><a href="https://www.consumerfinance.gov/owning-a-home/prepare/determine-your-down-payment/">CFPB — Determine your down payment</a></li><li><a href="https://www.consumerfinance.gov/ask-cfpb/what-is-a-loan-to-value-ratio-and-how-does-it-relate-to-my-costs-en-121/">CFPB — Loan-to-value ratio</a></li></ul></article></section>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+   <!-- Primary Meta Tags -->
+<title>Down Payment Calculator – Estimate Loan Amount &amp; LTV</title>
+<meta name="title" content="Down Payment Calculator – Estimate Loan Amount &amp; LTV">
+<meta name="description" content="Use the Down Payment Calculator to estimate your down payment, loan amount, LTV, closing-cost planning figures, total cash needed, and cash remaining.">
 
-<script class="cp-calculator-data" type="application/json">{"index":"101","Batch":"11","Calculator / Page":"Down Payment Calculator","Slug":"down-payment-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Calculate a home down payment, loan amount, LTV, estimated closing costs, total cash needed, and cash remaining.","Formula / Algorithm Used in Tool":"Down Payment and LTV Formula: Down Payment = Home Price × Down Payment % Loan Amount = Home Price − Down Payment LTV = Loan Amount ÷ Home Price × 100 CFPB explains that a higher down payment generally means a lower LTV and can affect the loan options, rate, and costs offered by lenders.","Required User Inputs":"Home price; Down payment (%); Estimated closing costs (%); Cash available","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Home price, Down payment (%), Estimated closing costs (%), Cash available. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"Explain formula domain, unit consistency, rounding, input validation and real-world limitations.","Current Source URLs in Page":"https://www.consumerfinance.gov/owning-a-home/prepare/determine-your-down-payment/ | https://www.consumerfinance.gov/ask-cfpb/what-is-a-loan-to-value-ratio-and-how-does-it-relate-to-my-costs-en-121/","Implementation Path":"/down-payment-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Finance</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../refinance-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Refinance Calculator</strong><small>Compare an existing fixed-rate loan with a proposed refinance, including payment ch…</small></span></a><a class="cp-related-link" href="../boat-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Boat Loan Calculator</strong><small>Estimate a boat loan payment, amount financed, tax, trade-in equity, total interest…</small></span></a><a class="cp-related-link" href="../personal-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Personal Loan Calculator</strong><small>Calculate personal loan monthly payment, total interest, origination fee, net proce…</small></span></a><a class="cp-related-link" href="../home-equity-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Home Equity Loan Calculator</strong><small>Estimate a home equity loan payment, current equity, available borrowing room, CLTV…</small></span></a><a class="cp-related-link" href="../auto-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Auto Loan Calculator</strong><small>Estimate a car loan payment using vehicle price, down payment, trade-in, tax, fees,…</small></span></a><a class="cp-related-link" href="../loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Loan Calculator</strong><small>Calculate a fixed-rate amortized loan payment, total payments, total interest, and…</small></span></a><a class="cp-related-link" href="../interest-rate-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Interest Rate Calculator</strong><small>Estimate the nominal annual interest rate implied by a loan amount, fixed monthly p…</small></span></a><a class="cp-related-link" href="../repayment-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Repayment Calculator</strong><small>Calculate fixed-loan repayment time, monthly payment, total interest, and the impac…</small></span></a></div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script>const dm=v=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(v);function calcDP(){const p=+dpPrice.value,d=+dpPct.value,c=+dpClose.value,a=+dpCash.value,er=dpErr;if(!(p>0)||d<0||d>100||c<0||a<0){er.textContent='Enter a positive home price and valid non-negative percentages.';er.classList.add('show');return}er.classList.remove('show');const down=p*d/100,loan=p-down,ltv=100-d,close=p*c/100,total=down+close,remain=a-total,bench=p*.2-down;dpAmt.textContent=dm(down);dpLoan.textContent=dm(loan);dpLtv.textContent=ltv.toFixed(1)+'%';dpClosing.textContent=dm(close);dpTotal.textContent=dm(total);dpRemain.textContent=dm(remain);dp20.textContent=(bench>0?dm(bench)+' more':bench<0?dm(-bench)+' above 20%':'At 20%');dpMarker.style.left=Math.max(0,Math.min(100,d))+'%'}function resetDP(){dpPrice.value=400000;dpPct.value=20;dpClose.value=3;dpCash.value=100000;calcDP()}calcDP();</script><script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/down-payment-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/down-payment-calculator/">
+<meta property="og:title" content="Down Payment Calculator – Estimate Loan Amount &amp; LTV">
+<meta property="og:description" content="Use the Down Payment Calculator to estimate your down payment, loan amount, LTV, closing-cost planning figures, total cash needed, and cash remaining.">
+<meta property="og:site_name" content="Down Payment Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/down-payment-calculator/">
+<meta name="twitter:title" content="Down Payment Calculator – Estimate Loan Amount &amp; LTV">
+<meta name="twitter:description" content="Use the Down Payment Calculator to estimate your down payment, loan amount, LTV, closing-cost planning figures, total cash needed, and cash remaining.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6
+        }
+
+        button,
+        input,
+        select {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        .wrap {
+            width: min(1160px, 92vw);
+            margin: auto
+        }
+
+        .crumb {
+            font-size: .86rem;
+            opacity: .78
+        }
+
+        .eyebrow {
+            font-size: .78rem;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-weight: 800
+        }
+
+        .btn.secondary {
+            background: transparent;
+            border: 1px solid currentColor
+        }
+
+        .field {
+            display: grid;
+            gap: 7px
+        }
+
+        .field label {
+            font-size: .88rem;
+            font-weight: 750
+        }
+
+        .field input,
+        .field select {
+            width: 100%;
+            border-radius: 14px;
+            padding: 12px 13px;
+            border: 1px solid rgba(127, 127, 127, .25);
+            background: rgba(255, 255, 255, .76);
+            color: #111;
+            outline: none
+        }
+
+        .field input:focus,
+        .field select:focus {
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, .14)
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .grid3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .error {
+            display: none;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: #fee2e2;
+            color: #991b1b;
+            font-weight: 700;
+            margin: 10px 0
+        }
+
+        .error.show {
+            display: block
+        }
+
+        .result-num {
+            font-size: clamp(2rem, 6vw, 3.6rem);
+            font-weight: 900;
+            letter-spacing: -.05em
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px
+        }
+
+        .stat {
+            padding: 12px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, .65);
+            border: 1px solid rgba(255, 255, 255, .7)
+        }
+
+        .stat b {
+            display: block;
+            font-size: 1.08rem
+        }
+
+        .content {
+            padding: 56px 0
+        }
+
+        .article {
+            max-width: 860px;
+            margin: auto
+        }
+
+        .article h2 {
+            font-size: clamp(1.5rem, 3vw, 2.05rem);
+            margin: 34px 0 10px;
+            line-height: 1.2
+        }
+
+        .article h3 {
+            margin: 24px 0 8px
+        }
+
+        .article p,
+        .article li {
+            color: var(--muted, #4b5563)
+        }
+
+        .formula {
+            padding: 16px 18px;
+            border-radius: 16px;
+            background: rgba(99, 102, 241, .08);
+            border: 1px solid rgba(99, 102, 241, .14);
+            font-weight: 800;
+            overflow: auto
+        }
+
+        .source-list a {
+            text-decoration: underline;
+            text-underline-offset: 3px
+        }
+
+        .faq details {
+            border-top: 1px solid rgba(127, 127, 127, .2);
+            padding: 14px 0
+        }
+
+        .faq summary {
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        footer {
+            padding: 34px 0;
+            border-top: 1px solid rgba(127, 127, 127, .18);
+            font-size: .9rem;
+            opacity: .75
+        }
+
+        @media(max-width:760px) {
+
+            .grid2,
+            .grid3 {
+                grid-template-columns: 1fr
+            }
+
+            .stat-grid {
+                grid-template-columns: 1fr
+            }
+
+            .wrap {
+                width: min(94vw, 1160px)
+            }
+        }
+
+        :root {
+            --muted: #665e55
+        }
+
+        body {
+            background: #fff9f0;
+            color: #30261e
+        }
+
+        .hero-down {
+            padding: 26px 0 64px;
+            background: linear-gradient(135deg, #fff1d6, #ffd6a8);
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero-down h1 {
+            font-size: clamp(3rem, 8vw, 6.4rem);
+            line-height: .92;
+            letter-spacing: -.08em;
+            margin: 58px 0 12px;
+            max-width: 760px
+        }
+
+        .key {
+            position: absolute;
+            right: 10%;
+            top: 95px;
+            width: 260px;
+            height: 80px;
+            background: #e99c2b;
+            border-radius: 999px;
+            transform: rotate(-18deg);
+            box-shadow: 0 25px 45px #7d4b122f
+        }
+
+        .key:before {
+            content: "";
+            position: absolute;
+            left: -88px;
+            top: -34px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 28px solid #e99c2b
+        }
+
+        .key:after {
+            content: "";
+            position: absolute;
+            right: -35px;
+            bottom: -28px;
+            width: 95px;
+            height: 45px;
+            background: #e99c2b;
+            clip-path: polygon(0 0, 100% 0, 74% 48%, 100% 100%, 0 100%)
+        }
+
+        .calc-down {
+            padding: 34px 0
+        }
+
+        .down-board {
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            gap: 22px;
+            align-items: start
+        }
+
+        .down-input {
+            background: #30261e;
+            color: #fff;
+            border-radius: 28px;
+            padding: 25px
+        }
+
+        .down-input .field input {
+            background: #fff7
+        }
+
+        .down-result {
+            background: #fff;
+            border: 1px solid #f1dfc7;
+            border-radius: 28px;
+            padding: 25px;
+            box-shadow: 0 30px 60px #6d481421
+        }
+
+        .range-bar {
+            height: 18px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #f59e0b 0 20%, #86b87d 20% 100%);
+            position: relative;
+            margin: 18px 0
+        }
+
+        .range-bar i {
+            position: absolute;
+            top: -7px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #30261e;
+            border: 5px solid #fff;
+            box-shadow: 0 4px 12px #0003;
+            left: 20%;
+            transform: translateX(-50%)
+        }
+
+        .btn {
+            background: #f2a33a;
+            color: #241a12
+        }
+
+        .btn.secondary {
+            color: #fff;
+            border-color: #fff
+        }
+ 
+
+        @media(max-width:800px) {
+            .down-board {
+                grid-template-columns: 1fr
+            }
+
+            .key {
+                opacity: .22;
+                right: -60px
+            }
+
+            .hero-down h1 {
+                margin-top: 48px
+            }
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/down-payment-calculator/#webapplication",
+      "name": "Down Payment Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/down-payment-calculator/",
+      "description": "Use the Down Payment Calculator to estimate your down payment, loan amount, LTV, closing-cost planning figures, total cash needed, and cash remaining.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/down-payment-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Down Payment Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/down-payment-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/down-payment-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate a down payment on a house?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiply the home price by the down payment percentage expressed as a decimal. For example, $350,000 × 0.10 = $35,000. A 10% down payment on a $350,000 home is $35,000."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is the loan amount calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The calculator subtracts the down payment from the home price: Loan Amount = Home Price − Down Payment. A $400,000 home with an $80,000 down payment leaves an estimated $320,000 to finance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is LTV calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Divide the loan amount by the home price and multiply the result by 100: LTV = (Loan Amount ÷ Home Price) × 100. A $320,000 loan on a $400,000 home produces an 80% LTV."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a larger down payment reduce LTV?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. If the home price stays the same, increasing the down payment reduces the amount that must be financed, which lowers the calculated LTV. CFPB also notes that lenders may consider LTV when determining loan terms and costs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are closing costs the same as the down payment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The down payment is the portion of the home's price you pay upfront, while closing costs are expenses associated with completing the mortgage and home purchase. Actual closing costs depend on several transaction-specific factors."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can my lender's LTV differ from this calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This calculator calculates LTV from the entered home price and calculated loan amount. CFPB describes mortgage LTV as comparing the amount financed with the property's appraised value, so an appraisal or lender-specific calculation method can produce a different result."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this calculator tell me whether I will qualify for a mortgage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Mortgage approval can depend on factors not included in this calculator, such as income, debts, credit history, property appraisal, loan program requirements, and lender underwriting."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart OnlineFree",
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="finance" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../finance/index.html">Finance</a></li>
+            <li><a aria-current="page" href="index.html">Down Payment Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Down Payment Calculator</h1>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="calc-down">
+                <div class="wrap down-board">
+                    <div class="down-input">
+                        <h2>Plan your cash</h2>
+                        <div class="field"><label for="dpPrice">Home price</label><input id="dpPrice" min="1"
+                                type="number" value="400000" /></div>
+                        <div class="field"><label for="dpPct">Down payment (%)</label><input id="dpPct" max="100"
+                                min="0" step="0.1" type="number" value="20" /></div>
+                        <div class="field"><label for="dpClose">Estimated closing costs (%)</label><input id="dpClose"
+                                min="0" step="0.1" type="number" value="3" /></div>
+                        <div class="field"><label for="dpCash">Cash available</label><input id="dpCash" min="0"
+                                type="number" value="100000" /></div>
+                        <div class="error" id="dpErr"></div>
+                        <div class="actions"><button class="btn" onclick="calcDP()">Calculate</button><button
+                                class="btn secondary" onclick="resetDP()">Reset</button></div>
+                    </div>
+                    <aside class="down-result">
+                        <div class="eyebrow" style="color:#a3620b">Down payment</div>
+                        <div class="result-num" id="dpAmt">—</div>
+                        <div class="range-bar"><i id="dpMarker"></i></div>
+                        <div class="stat-grid">
+                            <div class="stat">Loan amount<b id="dpLoan">—</b></div>
+                            <div class="stat">Loan-to-value<b id="dpLtv">—</b></div>
+                            <div class="stat">Est. closing costs<b id="dpClosing">—</b></div>
+                            <div class="stat">Total upfront cash<b id="dpTotal">—</b></div>
+                            <div class="stat">Cash after upfront costs<b id="dpRemain">—</b></div>
+                            <div class="stat">20% benchmark difference<b id="dp20">—</b></div>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+            <section class="content">
+                
+ 
+
+
+<article class="article">
+<p>Use the Down Payment Calculator to estimate how much money you may put down on a home, the remaining loan amount, and the resulting loan-to-value (LTV) ratio. Enter the home price, down payment percentage, estimated closing-cost percentage, and cash available to view key home-purchase planning results.</p>
+
+  <section id="what">
+    <h2>What Is the Down Payment Calculator?</h2>
+
+    <p class="direct">A Down Payment Calculator helps you estimate the upfront amount you plan to pay toward a home purchase and how much of the purchase price would remain to be financed.</p>
+
+    <p>It also provides an LTV estimate and cash-planning information related to estimated closing costs and available cash. This can be useful when comparing different down payment percentages or checking how a larger or smaller down payment changes the amount you may need to borrow.</p>
+
+    <p>A larger down payment generally produces a lower LTV because less of the property's price needs to be financed.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Down Payment Calculator</h2>
+
+    <p>Enter the following information in the calculator:</p>
+
+    <h3>Home Price</h3>
+
+    <p>Enter the purchase price of the home. This is the base amount used to calculate the down payment and loan amount.</p>
+
+    <h3>Down Payment (%)</h3>
+
+    <p>Enter the percentage of the home price you plan to pay upfront.</p>
+
+    <p>For example, entering <strong>20%</strong> on a $400,000 home represents an $80,000 down payment.</p>
+
+    <h3>Estimated Closing Costs (%)</h3>
+
+    <p>Enter the percentage you want to use when estimating closing-related expenses.</p>
+
+    <p>Actual closing costs can vary based on the property's price, lender charges, loan type, down payment, and location, so this field is intended for planning rather than determining an exact closing amount.</p>
+
+    <h3>Cash Available</h3>
+
+    <p>Enter the amount of cash you currently have available for the purchase. The calculator uses this input for its cash-planning results, including total cash needed and cash remaining.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <p>The calculator uses the home price and down payment percentage to calculate the down payment amount, remaining loan amount, and LTV.</p>
+
+    <h3>Main Formula</h3>
+
+    <p><strong>Down Payment</strong></p>
+
+    <div class="formula">D=P×d100D = P \times \frac{d}{100}</div>
+
+    <p><strong>Loan Amount</strong></p>
+
+    <div class="formula">L=P−DL = P - D</div>
+
+    <p><strong>Loan-to-Value Ratio</strong></p>
+
+    <div class="formula">LTV=LP×100LTV = \frac{L}{P} \times 100</div>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>P</strong></td>
+          <td>Home price</td>
+          <td>Currency</td>
+        </tr>
+        <tr>
+          <td><strong>d</strong></td>
+          <td>Down payment percentage</td>
+          <td>%</td>
+        </tr>
+        <tr>
+          <td><strong>D</strong></td>
+          <td>Down payment amount</td>
+          <td>Currency</td>
+        </tr>
+        <tr>
+          <td><strong>L</strong></td>
+          <td>Loan amount</td>
+          <td>Currency</td>
+        </tr>
+        <tr>
+          <td><strong>LTV</strong></td>
+          <td>Loan-to-value ratio</td>
+          <td>%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The estimated closing-cost percentage and cash available are additional inputs used for the calculator's cash-planning results.</p>
+
+    <h3>Calculation Sequence</h3>
+
+    <ol>
+      <li>Enter the home price.</li>
+      <li>Convert the entered down payment percentage to a decimal.</li>
+      <li>Multiply the home price by the down payment rate to calculate the down payment.</li>
+      <li>Subtract the down payment from the home price to calculate the loan amount.</li>
+      <li>Divide the loan amount by the home price and multiply by 100 to calculate LTV.</li>
+      <li>Use the closing-cost and available-cash inputs to display the calculator's additional cash-planning results.</li>
+    </ol>
+
+    <h3>Down Payment</h3>
+
+    <p>The down payment is the portion of the home's price paid upfront.</p>
+
+    <div class="formula">Down Payment=Home Price×Down Payment PercentageDown\ Payment = Home\ Price \times Down\ Payment\ Percentage</div>
+
+    <p>For a 20% down payment, the percentage is converted to <strong>0.20</strong> before multiplication.</p>
+
+    <h3>Loan Amount</h3>
+
+    <p>The estimated loan amount is the portion of the home price left after subtracting the calculated down payment.</p>
+
+    <div class="formula">Loan Amount=Home Price−Down PaymentLoan\ Amount = Home\ Price - Down\ Payment</div>
+
+    <p>This is a purchase-price calculation and does not represent a lender's final approved loan amount.</p>
+
+    <h3>Loan-to-Value Ratio</h3>
+
+    <p>LTV compares the calculated loan amount with the entered home price.</p>
+
+    <div class="formula">LTV=Loan AmountHome Price×100LTV = \frac{Loan\ Amount}{Home\ Price} \times 100</div>
+
+    <p>For example, financing $320,000 of a $400,000 home gives an LTV of 80%.</p>
+
+    <p>Lenders may calculate LTV using the property's appraised value rather than simply the purchase price, so a lender's final LTV can differ from this calculator's estimate.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose you enter the following values.</p>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li>Home price: <strong>$400,000</strong></li>
+      <li>Down payment: <strong>20%</strong></li>
+      <li>Estimated closing costs: <strong>3%</strong></li>
+      <li>Cash available: <strong>$110,000</strong></li>
+    </ul>
+
+    <p>The following steps show the core down payment, loan amount, and LTV calculations.</p>
+
+    <h3>Step 1: Calculate the Down Payment</h3>
+
+    <p>Convert 20% to decimal form:</p>
+
+    <div class="formula">20%=0.2020\\% = 0.20</div>
+
+    <p>Then:</p>
+
+    <div class="formula">400,000×0.20=80,000\\$400,000 \times 0.20 = \\$80,000</div>
+
+    <p><strong>Down payment = $80,000</strong></p>
+
+    <h3>Step 2: Calculate the Loan Amount</h3>
+
+    <div class="formula">400,000-80,000=$320,000\\$400,000 - \\$80,000 = \\$320,000</div>
+
+    <p><strong>Loan amount = $320,000</strong></p>
+
+    <h3>Step 3: Calculate LTV</h3>
+
+    <div class="formula">320,000400,000×100=80%\frac{\\$320,000}{\\$400,000} \times 100 = 80\\%</div>
+
+    <p><strong>LTV = 80%</strong></p>
+
+    <h3>Final Result</h3>
+
+    <p>For a $400,000 home with a 20% down payment:</p>
+
+    <ul>
+      <li>Down payment: <strong>$80,000</strong></li>
+      <li>Estimated loan amount: <strong>$320,000</strong></li>
+      <li>LTV: <strong>80%</strong></li>
+    </ul>
+
+    <p>The calculator also uses your closing-cost percentage and cash available to provide its additional cash-planning results.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Down Payment Amount</h3>
+
+    <p>This is the calculated amount of the home price you plan to pay upfront.</p>
+
+    <p>Increasing the down payment percentage increases the upfront payment while reducing the calculated loan amount.</p>
+
+    <h3>Loan Amount</h3>
+
+    <p>This is the home price minus the calculated down payment.</p>
+
+    <p>It is an estimate of how much of the purchase price would remain to be financed. It does not include lender approval decisions or other financing adjustments.</p>
+
+    <h3>LTV</h3>
+
+    <p>LTV shows the relationship between the estimated loan amount and the home price.</p>
+
+    <p>For example:</p>
+
+    <ul>
+      <li>$300,000 loan on a $400,000 home = <strong>75% LTV</strong></li>
+      <li>$360,000 loan on a $400,000 home = <strong>90% LTV</strong></li>
+    </ul>
+
+    <p>A higher down payment results in a lower LTV when the home price remains unchanged. Lenders may use LTV when evaluating mortgage options, interest rates, and mortgage-insurance requirements.</p>
+
+    <h3>Estimated Closing Costs</h3>
+
+    <p>This result is intended to help plan for expenses associated with completing the home purchase.</p>
+
+    <p>Closing costs are separate from the down payment and actual charges can vary significantly between transactions. CFPB notes that closing costs depend on factors such as home price, lender costs, loan type, down payment, and location.</p>
+
+    <h3>Total Cash Needed</h3>
+
+    <p>This result helps show the estimated amount of cash required for the purchase based on the information entered into the calculator.</p>
+
+    <p>Use it as a planning figure rather than a lender's final cash-to-close amount.</p>
+
+    <h3>Cash Remaining</h3>
+
+    <p>Cash remaining helps you compare your entered available cash with the calculator's estimated upfront cash requirement.</p>
+
+    <p>Keeping additional funds available may also be useful for expenses that are outside the calculator, such as moving costs, repairs, furnishings, or emergency savings. CFPB recommends considering these other financial needs when deciding how much cash to commit to a home purchase.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The Down Payment Calculator provides estimates based only on the values you enter.</p>
+
+    <p>The core down payment and loan calculations assume that the entered home price is the purchase-price basis used for the calculation.</p>
+
+    <p>The calculator's LTV uses the entered home price as the denominator. A mortgage lender may instead use an appraised property value or another value required by its underwriting process, which can produce a different LTV.</p>
+
+    <p>Estimated closing costs are planning figures. Actual costs can differ because lender fees, third-party charges, loan programs, insurance, taxes, location, and other transaction details may affect the final amount.</p>
+
+    <p>The calculator does not determine:</p>
+
+    <ul>
+      <li>Mortgage approval</li>
+      <li>Final interest rates</li>
+      <li>Loan-program eligibility</li>
+      <li>Private mortgage insurance requirements</li>
+      <li>Government-backed loan eligibility</li>
+      <li>Final lender fees</li>
+      <li>Final cash-to-close amounts</li>
+    </ul>
+
+    <p>Results should therefore be used for comparison and planning rather than as a loan offer, approval, or final closing statement.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>How do I calculate a down payment on a house?</summary>
+
+      <p>Multiply the home price by the down payment percentage expressed as a decimal.</p>
+
+      <p>For example:</p>
+
+      <div class="formula">350,000×0.10=35,000\\$350,000 \times 0.10 = \\$35,000</div>
+
+      <p>A 10% down payment on a $350,000 home is $35,000.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How is the loan amount calculated?</summary>
+
+      <p>The calculator subtracts the down payment from the home price:</p>
+
+      <div class="formula">Loan Amount=Home Price−Down PaymentLoan\ Amount = Home\ Price - Down\ Payment</div>
+
+      <p>A $400,000 home with an $80,000 down payment leaves an estimated $320,000 to finance.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How is LTV calculated?</summary>
+
+      <p>Divide the loan amount by the home price and multiply the result by 100:</p>
+
+      <div class="formula">LTV=Loan AmountHome Price×100LTV = \frac{Loan\ Amount}{Home\ Price} \times 100</div>
+
+      <p>A $320,000 loan on a $400,000 home produces an 80% LTV.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does a larger down payment reduce LTV?</summary>
+
+      <p>Yes. If the home price stays the same, increasing the down payment reduces the amount that must be financed, which lowers the calculated LTV. CFPB also notes that lenders may consider LTV when determining loan terms and costs.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Are closing costs the same as the down payment?</summary>
+
+      <p>No. The down payment is the portion of the home's price you pay upfront, while closing costs are expenses associated with completing the mortgage and home purchase.</p>
+
+      <p>Actual closing costs depend on several transaction-specific factors.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why can my lender's LTV differ from this calculator?</summary>
+
+      <p>This calculator calculates LTV from the entered home price and calculated loan amount. CFPB describes mortgage LTV as comparing the amount financed with the property's appraised value, so an appraisal or lender-specific calculation method can produce a different result.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does this calculator tell me whether I will qualify for a mortgage?</summary>
+
+      <p>No. Mortgage approval can depend on factors not included in this calculator, such as income, debts, credit history, property appraisal, loan program requirements, and lender underwriting.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://www.consumerfinance.gov/owning-a-home/prepare/determine-your-down-payment/" rel="noopener" target="_blank">Consumer Financial Protection Bureau — Determine Your Down Payment</a><br>
+        Supports guidance on down payments, available cash, closing-cost planning, and factors that can cause actual closing costs to vary.
+      </li>
+
+      <li>
+        <a href="https://www.consumerfinance.gov/ask-cfpb/what-is-a-loan-to-value-ratio-and-how-does-it-relate-to-my-costs-en-121/" rel="noopener" target="_blank">Consumer Financial Protection Bureau — Loan-to-Value Ratio and Mortgage Costs</a><br>
+        Supports the definition and interpretation of LTV and explains how down payment size relates to LTV and mortgage costs.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/mortgage-calculator/?utm_source=chatgpt.com">Mortgage Calculator</a></li>
+      <li><a href="https://example.com/loan-calculator/?utm_source=chatgpt.com">Loan Calculator</a></li>
+      <li><a href="https://example.com/amortization-calculator/?utm_source=chatgpt.com">Amortization Calculator</a></li>
+      <li><a href="https://example.com/payment-calculator/?utm_source=chatgpt.com">Payment Calculator</a></li>
+      <li><a href="https://example.com/interest-rate-calculator/?utm_source=chatgpt.com">Interest Rate Calculator</a></li>
+      <li><a href="https://example.com/mortgage-payoff-calculator/?utm_source=chatgpt.com">Mortgage Payoff Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+
+            </section>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"101","Batch":"11","Calculator / Page":"Down Payment Calculator","Slug":"down-payment-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Calculate a home down payment, loan amount, LTV, estimated closing costs, total cash needed, and cash remaining.","Formula / Algorithm Used in Tool":"Down Payment and LTV Formula: Down Payment = Home Price × Down Payment % Loan Amount = Home Price − Down Payment LTV = Loan Amount ÷ Home Price × 100 CFPB explains that a higher down payment generally means a lower LTV and can affect the loan options, rate, and costs offered by lenders.","Required User Inputs":"Home price; Down payment (%); Estimated closing costs (%); Cash available","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Home price, Down payment (%), Estimated closing costs (%), Cash available. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"Explain formula domain, unit consistency, rounding, input validation and real-world limitations.","Current Source URLs in Page":"https://www.consumerfinance.gov/owning-a-home/prepare/determine-your-down-payment/ | https://www.consumerfinance.gov/ask-cfpb/what-is-a-loan-to-value-ratio-and-how-does-it-relate-to-my-costs-en-121/","Implementation Path":"/down-payment-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Finance</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../refinance-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Refinance Calculator</strong><small>Compare an
+                            existing fixed-rate loan with a proposed refinance, including payment
+                            ch…</small></span></a><a class="cp-related-link"
+                    href="../boat-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Boat
+                            Loan Calculator</strong><small>Estimate a boat loan payment, amount financed, tax, trade-in
+                            equity, total interest…</small></span></a><a class="cp-related-link"
+                    href="../personal-loan-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Personal Loan Calculator</strong><small>Calculate
+                            personal loan monthly payment, total interest, origination fee, net
+                            proce…</small></span></a><a class="cp-related-link"
+                    href="../home-equity-loan-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Home Equity Loan Calculator</strong><small>Estimate
+                            a home equity loan payment, current equity, available borrowing room,
+                            CLTV…</small></span></a><a class="cp-related-link"
+                    href="../auto-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Auto
+                            Loan Calculator</strong><small>Estimate a car loan payment using vehicle price, down
+                            payment, trade-in, tax, fees,…</small></span></a><a class="cp-related-link"
+                    href="../loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Loan
+                            Calculator</strong><small>Calculate a fixed-rate amortized loan payment, total payments,
+                            total interest, and…</small></span></a><a class="cp-related-link"
+                    href="../interest-rate-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Interest Rate Calculator</strong><small>Estimate
+                            the nominal annual interest rate implied by a loan amount, fixed monthly
+                            p…</small></span></a><a class="cp-related-link"
+                    href="../repayment-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Repayment Calculator</strong><small>Calculate
+                            fixed-loan repayment time, monthly payment, total interest, and the
+                            impac…</small></span></a></div><a class="cp-side-category"
+                href="../finance/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>const dm = v => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(v); function calcDP() { const p = +dpPrice.value, d = +dpPct.value, c = +dpClose.value, a = +dpCash.value, er = dpErr; if (!(p > 0) || d < 0 || d > 100 || c < 0 || a < 0) { er.textContent = 'Enter a positive home price and valid non-negative percentages.'; er.classList.add('show'); return } er.classList.remove('show'); const down = p * d / 100, loan = p - down, ltv = 100 - d, close = p * c / 100, total = down + close, remain = a - total, bench = p * .2 - down; dpAmt.textContent = dm(down); dpLoan.textContent = dm(loan); dpLtv.textContent = ltv.toFixed(1) + '%'; dpClosing.textContent = dm(close); dpTotal.textContent = dm(total); dpRemain.textContent = dm(remain); dp20.textContent = (bench > 0 ? dm(bench) + ' more' : bench < 0 ? dm(-bench) + ' above 20%' : 'At 20%'); dpMarker.style.left = Math.max(0, Math.min(100, d)) + '%' } function resetDP() { dpPrice.value = 400000; dpPct.value = 20; dpClose.value = 3; dpCash.value = 100000; calcDP() } calcDP();</script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

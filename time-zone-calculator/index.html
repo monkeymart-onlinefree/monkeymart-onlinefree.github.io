@@ -1,108 +1,1290 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>Time Zone Calculator | CalcPro</title>
-<meta content="Convert a date and time between major IANA time zones with browser-supported daylight-saving rules." name="description"/>
-<meta content="index,follow" name="robots"/>
-<link href="../time-zone-calculator/" rel="canonical"/>
-<meta content="Time Zone Calculator | CalcPro" property="og:title"/>
-<meta content="Convert a date and time between major IANA time zones with browser-supported daylight-saving rules." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="/time-zone-calculator/" property="og:url"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>:root{--bg:#100b27;--text:#f5f3ff;--muted:#bcb4dd;--bodyText:#d3cfee;--accent:#a78bfa;--accentText:#160b34;--accentShadow:#a78bfa44;--hero:radial-gradient(circle at 70% 45%,#312e81,#1e1b4b 35%,#100b27 68%);--heroText:#d6d0f3;--panel:#211747c9;--article:#19123a;--input:#160f34;--result:linear-gradient(135deg,#2e2360,#171033);--mini:#251b4f;--chip:#ffffff0f;--code:#140d31;--line:#c4b5fd22;--lineStrong:#c4b5fd44;--focus:#a78bfa30;--shadow:0 35px 90px #05020fb3;--softShadow:0 20px 50px #05020f75}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.62}
-a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
-.container{width:min(1180px,calc(100% - 32px));margin:auto}
-.sitebar{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:16px}.brand{font-weight:900;letter-spacing:-.04em;font-size:1.25rem}.brand span{color:var(--accent)}
-.crumbs{font-size:.9rem;color:var(--muted);margin:12px 0 0}.crumbs a{color:inherit}
-.hero{position:relative;overflow:hidden;margin:12px auto 30px;border-radius:32px;padding:clamp(28px,5vw,70px);background:var(--hero);box-shadow:var(--shadow);border:1px solid var(--line);isolation:isolate}
-.hero h1{font-size:clamp(2.35rem,5.7vw,5.2rem);line-height:.96;letter-spacing:-.065em;margin:12px 0 20px;max-width:800px}.hero p{font-size:clamp(1rem,1.5vw,1.18rem);max-width:720px;color:var(--heroText,var(--muted));margin:0}
-.eyebrow{display:inline-flex;gap:8px;align-items:center;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.76rem;padding:8px 12px;border-radius:99px;background:var(--chip);border:1px solid var(--line)}
-.hero-art{position:absolute;right:3%;top:50%;transform:translateY(-50%);width:min(34vw,360px);height:min(34vw,360px);pointer-events:none;opacity:.96}
-.calc-zone{margin:0 auto 34px}.calc-shell{position:relative;background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:28px;padding:clamp(20px,3vw,34px);backdrop-filter:blur(14px)}
-.calc-title{margin:0 0 5px;font-size:1.5rem;letter-spacing:-.03em}.calc-note{margin:0 0 22px;color:var(--muted)}
-.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
-label{font-size:.9rem;font-weight:750}.input-row{display:flex;gap:8px}input,select,textarea,button{font:inherit}
-input,select,textarea{width:100%;border:1px solid var(--lineStrong);background:var(--input);color:var(--text);border-radius:14px;padding:13px 14px;outline:none;transition:.2s}
-input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}
-.unit{max-width:122px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-button{border:0;border-radius:14px;padding:13px 18px;font-weight:850;cursor:pointer;transition:transform .18s,box-shadow .18s}
-button:hover{transform:translateY(-2px)}.primary{background:var(--accent);color:var(--accentText,#fff);box-shadow:0 10px 25px var(--accentShadow)}.secondary{background:var(--chip);color:var(--text);border:1px solid var(--line)}
-.error{min-height:24px;margin-top:12px;color:#c33;font-weight:700}.result{margin-top:24px;padding:24px;border-radius:24px;background:var(--result);border:1px solid var(--line);position:relative;overflow:hidden}
-.result .big{font-size:clamp(2rem,5vw,3.7rem);font-weight:950;letter-spacing:-.055em;line-height:1;margin:.25rem 0}.result .sub{color:var(--muted)}
-.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.stat{background:var(--mini);border:1px solid var(--line);border-radius:16px;padding:14px}.stat b{display:block;font-size:1.13rem}
-.content-grid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:28px;align-items:start}.article{background:var(--article);border:1px solid var(--line);box-shadow:var(--softShadow);border-radius:28px;padding:clamp(22px,4vw,42px)}
-.article h2{font-size:clamp(1.55rem,3vw,2.2rem);line-height:1.1;letter-spacing:-.035em;margin:2.2rem 0 .7rem}.article h2:first-child{margin-top:0}.article h3{margin:1.5rem 0 .5rem}.article p,.article li{color:var(--bodyText)}
-.aside{position:sticky;top:18px;background:var(--panel);border:1px solid var(--line);box-shadow:var(--softShadow);border-radius:22px;padding:20px}.aside h3{margin-top:0}.aside ul{padding-left:18px;margin-bottom:0}
-.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--code);padding:16px;border-radius:16px;overflow:auto;border:1px solid var(--line);font-weight:750}
-.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px}table{width:100%;border-collapse:collapse;min-width:560px}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line)}th{background:var(--chip)}
-.faq details{border-top:1px solid var(--line);padding:14px 0}.faq summary{font-weight:850;cursor:pointer}.sources li{margin:.45rem 0}
-.footer{padding:34px 0 50px;color:var(--muted);font-size:.9rem}
-.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.pill{padding:7px 11px;border-radius:999px;background:var(--chip);border:1px solid var(--line);font-size:.82rem;font-weight:750}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.tab{padding:9px 13px;border-radius:12px;background:var(--chip);border:1px solid var(--line);font-weight:800;cursor:pointer}.tab.active{background:var(--accent);color:var(--accentText,#fff)}
-.hidden{display:none!important}
-@media(max-width:860px){.content-grid{grid-template-columns:1fr}.aside{position:static}.hero-art{opacity:.28;width:250px;height:250px}.hero h1{max-width:95%}}
-@media(max-width:650px){.container{width:min(100% - 20px,1180px)}.hero{border-radius:22px;padding:26px 20px}.calc-shell,.article{border-radius:22px;padding:20px}.form-grid,.stat-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.input-row{flex-direction:column}.unit{max-width:none}.hero-art{right:-60px}}
-.theme-timezone .hero{border-radius:50px}.theme-timezone .calc-shell{border-radius:36px}.theme-timezone .result{border-radius:36px;background-image:radial-gradient(circle at 90% 20%,#a78bfa35,transparent 25%),linear-gradient(135deg,#2e2360,#171033)}.globe{position:absolute;inset:12%;border:2px solid #a78bfa;border-radius:50%;box-shadow:0 0 60px #8b5cf655,inset 0 0 45px #8b5cf633}.globe:before{content:"";position:absolute;inset:18% -8%;border:2px solid #7dd3fc;border-radius:50%;transform:rotate(18deg)}.globe:after{content:"";position:absolute;inset:-8% 18%;border:2px solid #f0abfc;border-radius:50%;transform:rotate(-18deg)}</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Time Zone Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Convert a date and time between major IANA time zones with browser-supported daylight-saving rules.", "url": "/time-zone-calculator/", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Date & Time", "item": "/date-time/"}, {"@type": "ListItem", "position": 3, "name": "Time & Duration", "item": "/date-time/time-duration/"}, {"@type": "ListItem", "position": 4, "name": "Time Zone Calculator", "item": "/time-zone-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does the calculator account for daylight saving time?", "acceptedAnswer": {"@type": "Answer", "text": "It uses the browser's IANA-compatible time-zone data through Intl.DateTimeFormat. For dates where the browser has current rules, daylight-saving offsets are applied automatically."}}, {"@type": "Question", "name": "Why use city-style time-zone names instead of fixed UTC offsets?", "acceptedAnswer": {"@type": "Answer", "text": "IANA zones such as America/New_York can encode historical and daylight-saving changes. A fixed UTC offset cannot represent those seasonal rule changes."}}, {"@type": "Question", "name": "Can governments change time-zone rules?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. IANA notes that governments can change time-zone boundaries and daylight-saving rules, sometimes with little notice. Updated browser and operating-system data may therefore matter for future dates."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body class="theme-timezone" data-cp-category="date-time" data-cp-page-type="Calculator">
-<header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header><nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../date-time/index.html">Date &amp; Time</a></li><li><a aria-current="page" href="index.html">Time Zone Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../date-time/index.html">Browse Date &amp; Time</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main"><h1 class="page-title">Time Zone Calculator</h1>
+    <!-- Primary Meta Tags -->
+    <title>Time Zone Calculator – Convert Time Between Zones</title>
+    <meta name="title" content="Time Zone Calculator – Convert Time Between Zones">
+    <meta name="description"
+        content="Convert a date and local time between IANA time zones using browser-supported daylight-saving rules. See the matching date and time in another zone.">
 
-<section aria-labelledby="calculator-heading" class="container calc-zone">
-<div class="calc-shell">
-<h2 class="calc-title" id="calculator-heading">Time Zone Calculator</h2>
-<p class="calc-note">Convert a local date and time between named IANA time zones, including daylight-saving rules supported by your browser.</p>
-<div class="form-grid">
-<div class="field"><label for="date">Date</label><input id="date" type="date" value="2026-09-23"/></div>
-<div class="field"><label for="time">Local time</label><input id="time" step="60" type="time" value="09:00"/></div>
-<div class="field"><label for="from">From time zone</label><select id="from"><option value="Asia/Karachi">Karachi (PKT)</option><option value="UTC">UTC</option><option value="America/New_York">New York</option><option value="America/Chicago">Chicago</option><option value="America/Denver">Denver</option><option value="America/Los_Angeles">Los Angeles</option><option value="Europe/London">London</option><option value="Europe/Paris">Paris</option><option value="Europe/Berlin">Berlin</option><option value="Asia/Dubai">Dubai</option><option value="Asia/Kolkata">India</option><option value="Asia/Singapore">Singapore</option><option value="Asia/Tokyo">Tokyo</option><option value="Australia/Sydney">Sydney</option><option value="Pacific/Auckland">Auckland</option></select></div>
-<div class="field"><label for="to">To time zone</label><select id="to"><option value="Asia/Karachi">Karachi (PKT)</option><option value="UTC">UTC</option><option selected="" value="America/New_York">New York</option><option value="America/Chicago">Chicago</option><option value="America/Denver">Denver</option><option value="America/Los_Angeles">Los Angeles</option><option value="Europe/London">London</option><option value="Europe/Paris">Paris</option><option value="Europe/Berlin">Berlin</option><option value="Asia/Dubai">Dubai</option><option value="Asia/Kolkata">India</option><option value="Asia/Singapore">Singapore</option><option value="Asia/Tokyo">Tokyo</option><option value="Australia/Sydney">Sydney</option><option value="Pacific/Auckland">Auckland</option></select></div>
-</div>
-<div class="actions"><button class="primary" id="calcBtn">Convert Time</button><button class="secondary" id="swapBtn">Swap Zones</button></div><div class="error" id="error" role="alert"></div>
-<div class="result"><span class="sub">Converted local time</span><div class="big" id="converted">12:00 AM</div><div class="stat-grid"><div class="stat"><span>Converted date</span><b id="convertedDate">Sep 23, 2026</b></div><div class="stat"><span>From offset</span><b id="fromOffset">GMT+5</b></div><div class="stat"><span>To offset</span><b id="toOffset">GMT-4</b></div></div></div>
-</div>
-</section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<section class="container content-grid">
-<article class="article">
-<h2>What Is a Time Zone Calculator?</h2><p>A time zone calculator converts a local wall-clock date and time in one region to the corresponding date and time in another. Named time zones are more reliable than fixed offsets for many use cases because they can include daylight-saving and historical offset rules.</p>
-<h2>How This Converter Works</h2><p>The page interprets the entered local time in the selected source zone, resolves it to a UTC instant, then formats that same instant in the destination zone. It uses JavaScript's <code>Intl.DateTimeFormat</code> and IANA-style identifiers such as <code>Asia/Karachi</code> and <code>America/New_York</code>.</p>
-<h2>UTC, Time Zones, and DST</h2><p>UTC is a global time standard. Civil time zones apply an offset from UTC, and some zones change that offset seasonally for daylight saving time. IANA maintains the widely used tz database containing time-zone histories and rule changes.</p>
-<h3>Example</h3><p>On September 23, 2026, 9:00 AM in Karachi (UTC+5) corresponds to 12:00 AM in New York while New York is on daylight time (UTC−4), a nine-hour difference.</p>
-<h2>Limitations</h2><p>Future time-zone law can change. The calculator depends on the time-zone data shipped with the user's browser or operating system. Ambiguous or nonexistent local times around DST clock changes can also require special care; for critical scheduling, confirm with an up-to-date official source.</p>
-<h2 id="faq">Frequently Asked Questions</h2>
-<div class="faq"><details><summary>Does the calculator account for daylight saving time?</summary><p>It uses the browser's IANA-compatible time-zone data through Intl.DateTimeFormat. For dates where the browser has current rules, daylight-saving offsets are applied automatically.</p></details>
-<details><summary>Why use city-style time-zone names instead of fixed UTC offsets?</summary><p>IANA zones such as America/New_York can encode historical and daylight-saving changes. A fixed UTC offset cannot represent those seasonal rule changes.</p></details>
-<details><summary>Can governments change time-zone rules?</summary><p>Yes. IANA notes that governments can change time-zone boundaries and daylight-saving rules, sometimes with little notice. Updated browser and operating-system data may therefore matter for future dates.</p></details></div>
-<h2>Sources and Methodology</h2>
-<p>CalcPro uses the formulas and assumptions described above. References below were used to cross-check the calculator method and terminology. Results are estimates unless a definition or unit conversion is mathematically exact.</p>
-<ul class="sources"><li><a href="https://www.iana.org/time-zones/tz-link" rel="noopener noreferrer">IANA Time Zone Database</a> — time-zone histories, UTC offsets, and daylight-saving rules.</li>
-<li><a href="https://www.calculator.net/time-zone-calculator.html" rel="noopener noreferrer">Calculator.net Time Zone Calculator</a> — cross-check of date/time/from/to converter intent.</li></ul>
-</article>
-<aside class="aside">
-<h3>Quick reference</h3>
-<div class="formula">Local time → UTC instant → target local time</div><div class="pills"><span class="pill">IANA zones</span><span class="pill">DST-aware</span><span class="pill">browser-native</span></div>
-</aside>
-</section>
+    <!-- Canonical -->
+    <link rel="canonical" href="https://monkeymart-onlinefree.github.io/time-zone-calculator/">
 
-<script class="cp-calculator-data" type="application/json">{"index":"168","Batch":"17","Calculator / Page":"Time Zone Calculator","Slug":"time-zone-calculator","Site Category (Current)":"Date & Time","Recommended Content Domain":"Date / Time","Page Type":"Calculator","Search Intent / Purpose":"Convert a date and time between major IANA time zones with browser-supported daylight-saving rules.","Formula / Algorithm Used in Tool":"Resolve source local wall-clock date/time in the selected IANA zone to a UTC instant, then format that same instant in the destination IANA zone. DST/historical offsets come from the browser/OS time-zone database.","Required User Inputs":"Date; Local time; From time zone; To time zone","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Date, Local time, From time zone, To time zone. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Current IANA time-zone database/DST rules for future dates.","Fresh Data Required?":"Yes","Recommended Update Frequency":"When IANA/browser time-zone rules change","Important Assumptions / Limitations":"Future time-zone law can change. The calculator depends on the time-zone data shipped with the user's browser or operating system. Ambiguous or nonexistent local times around DST clock changes can also require special care; for critical scheduling, confirm with an up-to-date official source.","Current Source URLs in Page":"https://www.iana.org/time-zones/tz-link | https://www.calculator.net/time-zone-calculator.html","Implementation Path":"/time-zone-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Date &amp; Time</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../time-duration-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time Duration Calculator</strong><small>Calculate exact elapsed time between two local date-times in days, hours, minutes,…</small></span></a><a class="cp-related-link" href="../age-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Age Calculator</strong><small>Calculate age between two dates in years, months, and days, plus total days, weeks,…</small></span></a><a class="cp-related-link" href="../date-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Date Calculator</strong><small>Calculate days between dates or add and subtract years, months, weeks, and days fro…</small></span></a><a class="cp-related-link" href="../hours-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Hours Calculator</strong><small>Calculate hours and minutes between two clock times, with an overnight option and d…</small></span></a><a class="cp-related-link" href="../time-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time Calculator</strong><small>Add or subtract two time durations in hours, minutes, and seconds and view the norm…</small></span></a><a class="cp-related-link" href="../time-card-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time Card Calculator</strong><small>Total weekly work hours, unpaid breaks, configurable overtime, and estimated gross…</small></span></a><a class="cp-related-link" href="../mileage-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Mileage Calculator</strong><small>Calculate trip mileage from odometer readings and estimate driving time, fuel use,…</small></span></a><a class="cp-related-link" href="../day-counter/index.html"><span class="cp-related-dot">›</span><span><strong>Day Counter</strong><small>Count calendar days between two dates, with inclusive/exclusive options plus weekda…</small></span></a></div><a class="cp-side-category" href="../date-time/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
+    <!-- Facebook / Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://monkeymart-onlinefree.github.io/time-zone-calculator/">
+    <meta property="og:title" content="Time Zone Calculator – Convert Time Between Zones">
+    <meta property="og:description"
+        content="Convert a date and local time between IANA time zones using browser-supported daylight-saving rules. See the matching date and time in another zone.">
+    <meta property="og:site_name" content="Time Zone Calculator">
 
-const $=id=>document.getElementById(id);
-function parts(date,tz){let p=new Intl.DateTimeFormat("en-CA",{timeZone:tz,year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit",hourCycle:"h23"}).formatToParts(date);let o={};p.forEach(x=>o[x.type]=x.value);return o}
-function zonedToUTC(y,m,d,h,min,tz){let guess=Date.UTC(y,m-1,d,h,min,0);for(let i=0;i<3;i++){let p=parts(new Date(guess),tz);let shown=Date.UTC(+p.year,+p.month-1,+p.day,+p.hour,+p.minute,+p.second);let target=Date.UTC(y,m-1,d,h,min,0);guess+=target-shown}return new Date(guess)}
-function offsetLabel(date,tz){return new Intl.DateTimeFormat("en-US",{timeZone:tz,timeZoneName:"shortOffset",hour:"2-digit"}).formatToParts(date).find(x=>x.type==="timeZoneName")?.value||tz}
-function run(){try{let [y,m,d]=$("date").value.split("-").map(Number),[h,mi]=$("time").value.split(":").map(Number);if(!y||isNaN(h))throw Error();let utc=zonedToUTC(y,m,d,h,mi,$("from").value);let target=new Intl.DateTimeFormat("en-US",{timeZone:$("to").value,hour:"numeric",minute:"2-digit",hour12:true}).format(utc);let dt=new Intl.DateTimeFormat("en-US",{timeZone:$("to").value,year:"numeric",month:"short",day:"numeric"}).format(utc);$("error").textContent="";$("converted").textContent=target;$("convertedDate").textContent=dt;$("fromOffset").textContent=offsetLabel(utc,$("from").value);$("toOffset").textContent=offsetLabel(utc,$("to").value)}catch(e){$("error").textContent="Enter a valid date and time."}}
-$("calcBtn").onclick=run;$("swapBtn").onclick=()=>{let a=$("from").value;$("from").value=$("to").value;$("to").value=a;run()};run();
+    <!-- X / Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/time-zone-calculator/">
+    <meta name="twitter:title" content="Time Zone Calculator – Convert Time Between Zones">
+    <meta name="twitter:description"
+        content="Convert a date and local time between IANA time zones using browser-supported daylight-saving rules. See the matching date and time in another zone.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        :root {
+            --bg: #100b27;
+            --text: #f5f3ff;
+            --muted: #bcb4dd;
+            --bodyText: #d3cfee;
+            --accent: #a78bfa;
+            --accentText: #160b34;
+            --accentShadow: #a78bfa44;
+            --hero: radial-gradient(circle at 70% 45%, #312e81, #1e1b4b 35%, #100b27 68%);
+            --heroText: #d6d0f3;
+            --panel: #211747c9;
+            --article: #19123a;
+            --input: #160f34;
+            --result: linear-gradient(135deg, #2e2360, #171033);
+            --mini: #251b4f;
+            --chip: #ffffff0f;
+            --code: #140d31;
+            --line: #c4b5fd22;
+            --lineStrong: #c4b5fd44;
+            --focus: #a78bfa30;
+            --shadow: 0 35px 90px #05020fb3;
+            --softShadow: 0 20px 50px #05020f75
+        }
 
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.62
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .sitebar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            gap: 16px
+        }
+
+        .brand {
+            font-weight: 900;
+            letter-spacing: -.04em;
+            font-size: 1.25rem
+        }
+
+        .brand span {
+            color: var(--accent)
+        }
+
+        .crumbs {
+            font-size: .9rem;
+            color: var(--muted);
+            margin: 12px 0 0
+        }
+
+        .crumbs a {
+            color: inherit
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            margin: 12px auto 30px;
+            border-radius: 32px;
+            padding: clamp(28px, 5vw, 70px);
+            background: var(--hero);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--line);
+            isolation: isolate
+        }
+
+        .hero h1 {
+            font-size: clamp(2.35rem, 5.7vw, 5.2rem);
+            line-height: .96;
+            letter-spacing: -.065em;
+            margin: 12px 0 20px;
+            max-width: 800px
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 1.5vw, 1.18rem);
+            max-width: 720px;
+            color: var(--heroText, var(--muted));
+            margin: 0
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            font-size: .76rem;
+            padding: 8px 12px;
+            border-radius: 99px;
+            background: var(--chip);
+            border: 1px solid var(--line)
+        }
+
+        .hero-art {
+            position: absolute;
+            right: 3%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: min(34vw, 360px);
+            height: min(34vw, 360px);
+            pointer-events: none;
+            opacity: .96
+        }
+
+        .calc-zone {
+            margin: 0 auto 34px
+        }
+
+        .calc-shell {
+            position: relative;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            border-radius: 28px;
+            padding: clamp(20px, 3vw, 34px);
+            backdrop-filter: blur(14px)
+        }
+
+        .calc-title {
+            margin: 0 0 5px;
+            font-size: 1.5rem;
+            letter-spacing: -.03em
+        }
+
+        .calc-note {
+            margin: 0 0 22px;
+            color: var(--muted)
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px
+        }
+
+        .field.full {
+            grid-column: 1/-1
+        }
+
+        label {
+            font-size: .9rem;
+            font-weight: 750
+        }
+
+        .input-row {
+            display: flex;
+            gap: 8px
+        }
+
+        input,
+        select,
+        textarea,
+        button {
+            font: inherit
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--lineStrong);
+            background: var(--input);
+            color: var(--text);
+            border-radius: 14px;
+            padding: 13px 14px;
+            outline: none;
+            transition: .2s
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--focus)
+        }
+
+        .unit {
+            max-width: 122px
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px
+        }
+
+        button {
+            border: 0;
+            border-radius: 14px;
+            padding: 13px 18px;
+            font-weight: 850;
+            cursor: pointer;
+            transition: transform .18s, box-shadow .18s
+        }
+
+        button:hover {
+            transform: translateY(-2px)
+        }
+
+        .primary {
+            background: var(--accent);
+            color: var(--accentText, #fff);
+            box-shadow: 0 10px 25px var(--accentShadow)
+        }
+
+        .secondary {
+            background: var(--chip);
+            color: var(--text);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            min-height: 24px;
+            margin-top: 12px;
+            color: #c33;
+            font-weight: 700
+        }
+
+        .result {
+            margin-top: 24px;
+            padding: 24px;
+            border-radius: 24px;
+            background: var(--result);
+            border: 1px solid var(--line);
+            position: relative;
+            overflow: hidden
+        }
+
+        .result .big {
+            font-size: clamp(2rem, 5vw, 3.7rem);
+            font-weight: 950;
+            letter-spacing: -.055em;
+            line-height: 1;
+            margin: .25rem 0
+        }
+
+        .result .sub {
+            color: var(--muted)
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .stat {
+            background: var(--mini);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 14px
+        }
+
+        .stat b {
+            display: block;
+            font-size: 1.13rem
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 290px;
+            gap: 28px;
+            align-items: start
+        }
+
+        .article {
+            background: var(--article);
+            border: 1px solid var(--line);
+             border-radius: 28px;
+            padding: clamp(22px, 4vw, 42px)
+        }
+
+        .article h2 {
+            font-size: clamp(1.55rem, 3vw, 2.2rem);
+            line-height: 1.1;
+            letter-spacing: -.035em;
+            margin: 2.2rem 0 .7rem
+        }
+
+        .article h2:first-child {
+            margin-top: 0
+        }
+
+        .article h3 {
+            margin: 1.5rem 0 .5rem
+        }
+
+        .article p,
+        .article li {
+            color: var(--bodyText)
+        }
+
+        .aside {
+            position: sticky;
+            top: 18px;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--softShadow);
+            border-radius: 22px;
+            padding: 20px
+        }
+
+        .aside h3 {
+            margin-top: 0
+        }
+
+        .aside ul {
+            padding-left: 18px;
+            margin-bottom: 0
+        }
+
+        .formula {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: var(--code);
+            padding: 16px;
+            border-radius: 16px;
+            overflow: auto;
+            border: 1px solid var(--line);
+            font-weight: 750
+        }
+
+        .table-wrap {
+            overflow: auto;
+            border: 1px solid var(--line);
+            border-radius: 18px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 560px
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--line)
+        }
+
+        th {
+            background: var(--chip)
+        }
+
+        .faq details {
+            border-top: 1px solid var(--line);
+            padding: 14px 0
+        }
+
+        .faq summary {
+            font-weight: 850;
+            cursor: pointer
+        }
+
+        .sources li {
+            margin: .45rem 0
+        }
+
+        .footer {
+            padding: 34px 0 50px;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 16px
+        }
+
+        .pill {
+            padding: 7px 11px;
+            border-radius: 999px;
+            background: var(--chip);
+            border: 1px solid var(--line);
+            font-size: .82rem;
+            font-weight: 750
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 0 0 18px
+        }
+
+        .tab {
+            padding: 9px 13px;
+            border-radius: 12px;
+            background: var(--chip);
+            border: 1px solid var(--line);
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .tab.active {
+            background: var(--accent);
+            color: var(--accentText, #fff)
+        }
+
+        .hidden {
+            display: none !important
+        }
+
+        @media(max-width:860px) {
+            .content-grid {
+                grid-template-columns: 1fr
+            }
+
+            .aside {
+                position: static
+            }
+
+            .hero-art {
+                opacity: .28;
+                width: 250px;
+                height: 250px
+            }
+
+            .hero h1 {
+                max-width: 95%
+            }
+        }
+
+        @media(max-width:650px) {
+            .container {
+                width: min(100% - 20px, 1180px)
+            }
+
+            .hero {
+                border-radius: 22px;
+                padding: 26px 20px
+            }
+
+            .calc-shell,
+            .article {
+                border-radius: 22px;
+                padding: 20px
+            }
+
+            .form-grid,
+            .stat-grid {
+                grid-template-columns: 1fr
+            }
+
+            .field.full {
+                grid-column: auto
+            }
+
+            .input-row {
+                flex-direction: column
+            }
+
+            .unit {
+                max-width: none
+            }
+
+            .hero-art {
+                right: -60px
+            }
+        }
+
+        .theme-timezone .hero {
+            border-radius: 50px
+        }
+
+        .theme-timezone .calc-shell {
+            border-radius: 36px
+        }
+
+        .theme-timezone .result {
+            border-radius: 36px;
+            background-image: radial-gradient(circle at 90% 20%, #a78bfa35, transparent 25%), linear-gradient(135deg, #2e2360, #171033)
+        }
+
+        .globe {
+            position: absolute;
+            inset: 12%;
+            border: 2px solid #a78bfa;
+            border-radius: 50%;
+            box-shadow: 0 0 60px #8b5cf655, inset 0 0 45px #8b5cf633
+        }
+
+        .globe:before {
+            content: "";
+            position: absolute;
+            inset: 18% -8%;
+            border: 2px solid #7dd3fc;
+            border-radius: 50%;
+            transform: rotate(18deg)
+        }
+
+        .globe:after {
+            content: "";
+            position: absolute;
+            inset: -8% 18%;
+            border: 2px solid #f0abfc;
+            border-radius: 50%;
+            transform: rotate(-18deg)
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/time-zone-calculator/#webapplication",
+      "name": "Time Zone Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/time-zone-calculator/",
+      "description": "Convert a date and local time between IANA time zones using browser-supported daylight-saving rules. See the matching date and time in another zone.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/time-zone-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Time Zone Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/time-zone-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/time-zone-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does the Time Zone Calculator account for daylight saving time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The calculator uses the time-zone rules available through the browser or operating system, so applicable DST offsets can be reflected for the selected date. The result still depends on how current the device's time-zone database is."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can the time difference between two cities change?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The UTC offset of one or both locations may change during the year. If the locations start or end daylight saving on different dates, the difference between their local clock times can temporarily change."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can two devices give different time-zone results?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Different devices may contain different versions of the IANA time-zone data. This is most likely to matter shortly after a government announces or implements a time-zone or daylight-saving change."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I convert a future date?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The calculator can apply the future rules currently contained in the device's time-zone data. However, future rules can later change, so important future travel, meetings, or deadlines should be checked again closer to the event."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I enter a time during a daylight-saving clock change?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Some local times can be duplicated when clocks move backward or skipped when clocks move forward. Because these times can be ambiguous or nonexistent, verify critical conversions around DST transition periods."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is UTC affected by daylight saving time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. UTC itself does not move forward or backward for daylight saving. Local time zones may change their offset relative to UTC."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why are named time zones better than using a fixed UTC offset?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A fixed offset such as UTC−05:00 describes only a numerical difference from UTC. A named time zone such as America/New_York can represent date-dependent offset changes and historical or future rules stored in the time-zone database."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body class="theme-timezone" data-cp-category="date-time" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../date-time/index.html">Date &amp; Time</a></li>
+            <li><a aria-current="page" href="index.html">Time Zone Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../date-time/index.html">Browse Date &amp; Time</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Time Zone Calculator</h1>
+
+            <section aria-labelledby="calculator-heading" class="container calc-zone">
+                <div class="calc-shell">
+                    <h2 class="calc-title" id="calculator-heading">Time Zone Calculator</h2>
+                    <p class="calc-note">Convert a local date and time between named IANA time zones, including
+                        daylight-saving rules supported by your browser.</p>
+                    <div class="form-grid">
+                        <div class="field"><label for="date">Date</label><input id="date" type="date"
+                                value="2026-09-23" /></div>
+                        <div class="field"><label for="time">Local time</label><input id="time" step="60" type="time"
+                                value="09:00" /></div>
+                        <div class="field"><label for="from">From time zone</label><select id="from">
+                                <option value="Asia/Karachi">Karachi (PKT)</option>
+                                <option value="UTC">UTC</option>
+                                <option value="America/New_York">New York</option>
+                                <option value="America/Chicago">Chicago</option>
+                                <option value="America/Denver">Denver</option>
+                                <option value="America/Los_Angeles">Los Angeles</option>
+                                <option value="Europe/London">London</option>
+                                <option value="Europe/Paris">Paris</option>
+                                <option value="Europe/Berlin">Berlin</option>
+                                <option value="Asia/Dubai">Dubai</option>
+                                <option value="Asia/Kolkata">India</option>
+                                <option value="Asia/Singapore">Singapore</option>
+                                <option value="Asia/Tokyo">Tokyo</option>
+                                <option value="Australia/Sydney">Sydney</option>
+                                <option value="Pacific/Auckland">Auckland</option>
+                            </select></div>
+                        <div class="field"><label for="to">To time zone</label><select id="to">
+                                <option value="Asia/Karachi">Karachi (PKT)</option>
+                                <option value="UTC">UTC</option>
+                                <option selected="" value="America/New_York">New York</option>
+                                <option value="America/Chicago">Chicago</option>
+                                <option value="America/Denver">Denver</option>
+                                <option value="America/Los_Angeles">Los Angeles</option>
+                                <option value="Europe/London">London</option>
+                                <option value="Europe/Paris">Paris</option>
+                                <option value="Europe/Berlin">Berlin</option>
+                                <option value="Asia/Dubai">Dubai</option>
+                                <option value="Asia/Kolkata">India</option>
+                                <option value="Asia/Singapore">Singapore</option>
+                                <option value="Asia/Tokyo">Tokyo</option>
+                                <option value="Australia/Sydney">Sydney</option>
+                                <option value="Pacific/Auckland">Auckland</option>
+                            </select></div>
+                    </div>
+                    <div class="actions"><button class="primary" id="calcBtn">Convert Time</button><button
+                            class="secondary" id="swapBtn">Swap Zones</button></div>
+                    <div class="error" id="error" role="alert"></div>
+                    <div class="result"><span class="sub">Converted local time</span>
+                        <div class="big" id="converted">12:00 AM</div>
+                        <div class="stat-grid">
+                            <div class="stat"><span>Converted date</span><b id="convertedDate">Sep 23, 2026</b></div>
+                            <div class="stat"><span>From offset</span><b id="fromOffset">GMT+5</b></div>
+                            <div class="stat"><span>To offset</span><b id="toOffset">GMT-4</b></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="container content-grid">
+
+
+                <article class="article">
+
+
+
+                    <p>The Time Zone Calculator converts a specific date and local time from one time zone to another.
+                        Enter the date, local time, source time zone, and destination time zone to find the
+                        corresponding local date and time in the selected destination zone.</p>
+
+                    <section id="what">
+                        <h2>What Is the Time Zone Calculator?</h2>
+
+                        <p>The Time Zone Calculator helps you find what a local date and time in one time zone becomes
+                            in another time zone.</p>
+
+                        <p>Instead of applying a fixed hour difference, the calculator uses named time zones and the
+                            time-zone information available through your browser or operating system. This allows the
+                            conversion to account for applicable daylight-saving and historical offset rules.</p>
+
+                        <p>It can be useful for international meetings, travel planning, remote work, online events,
+                            calls, deadlines, and other situations where people are in different time zones.</p>
+                    </section>
+
+                    <section id="how">
+                        <h2>How to Use the Time Zone Calculator</h2>
+
+                        <p>Enter the following information:</p>
+
+                        <h3>Date</h3>
+
+                        <p>Select the calendar date that applies to the time you want to convert.</p>
+
+                        <p>Time-zone offsets can change depending on the date, so the date is an important part of the
+                            calculation.</p>
+
+                        <h3>Local Time</h3>
+
+                        <p>Enter the local clock time in the source time zone.</p>
+
+                        <p>This is the wall-clock time that someone in the selected <strong>From time zone</strong>
+                            would see.</p>
+
+                        <h3>From Time Zone</h3>
+
+                        <p>Select the time zone in which the entered date and local time occur.</p>
+
+                        <p>For example, a location may use an IANA-style identifier such as <code>Asia/Karachi</code> or
+                            <code>America/New_York</code>.</p>
+
+                        <h3>To Time Zone</h3>
+
+                        <p>Select the destination time zone.</p>
+
+                        <p>The calculator converts the source date and time to the corresponding local date and time in
+                            this zone.</p>
+                    </section>
+
+                    <section id="formula">
+                        <h2>Formula / Calculation Method</h2>
+
+                        <p>A time-zone conversion does not always use one fixed difference between two locations. UTC
+                            offsets can change according to daylight-saving rules, government decisions, and historical
+                            time-zone changes.</p>
+
+                        <p>The calculator therefore converts the source local time to a single UTC instant and then
+                            expresses that same instant in the destination time zone.</p>
+
+                        <h3>Main Formula</h3>
+
+                        <p>For an ordinary, unambiguous local time:</p>
+
+                        <div class="formula"><strong>UTC Instant = Source Local Time − Source UTC Offset</strong></div>
+
+                        <p>Then:</p>
+
+                        <div class="formula"><strong>Destination Local Time = UTC Instant + Destination UTC
+                                Offset</strong></div>
+
+                        <p>The important point is that both offsets are determined for the relevant date and instant
+                            using the selected time-zone rules.</p>
+
+                        <h3>Variables</h3>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th><strong>Symbol</strong></th>
+                                    <th><strong>Meaning</strong></th>
+                                    <th><strong>Unit</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Lₛ</strong></td>
+                                    <td>Source local date and time</td>
+                                    <td>Date and time</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Oₛ</strong></td>
+                                    <td>UTC offset for the source time zone</td>
+                                    <td>Hours/minutes from UTC</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>U</strong></td>
+                                    <td>Resolved UTC instant</td>
+                                    <td>UTC date and time</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Oₑ</strong></td>
+                                    <td>UTC offset for the destination zone at that instant</td>
+                                    <td>Hours/minutes from UTC</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Lₑ</strong></td>
+                                    <td>Destination local date and time</td>
+                                    <td>Date and time</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p>The calculation can be represented as:</p>
+
+                        <div class="formula"><strong>U = Lₛ − Oₛ</strong></div>
+
+                        <div class="formula"><strong>Lₑ = U + Oₑ</strong></div>
+
+                        <h3>Calculation Sequence</h3>
+
+                        <ol>
+                            <li>Read the selected date and local time.</li>
+                            <li>Interpret that wall-clock date and time in the selected <strong>From time zone</strong>.
+                            </li>
+                            <li>Determine the applicable source UTC offset using the time-zone data available to the
+                                browser or operating system.</li>
+                            <li>Resolve the source value to a UTC instant.</li>
+                            <li>Determine the destination zone's UTC offset for that same instant.</li>
+                            <li>Convert the UTC instant to the local date and time in the <strong>To time zone</strong>.
+                            </li>
+                            <li>Display the resulting destination date and time.</li>
+                        </ol>
+
+                        <p>This method is important because the time difference between two places can vary during the
+                            year if their daylight-saving schedules differ.</p>
+                    </section>
+
+                    <section id="example">
+                        <h2>Worked Example</h2>
+
+                        <p>Suppose you want to convert a time from Karachi to New York.</p>
+
+                        <h3>Inputs</h3>
+
+                        <ul>
+                            <li><strong>Date:</strong> September 24, 2026</li>
+                            <li><strong>Local time:</strong> 3:00 PM</li>
+                            <li><strong>From time zone:</strong> Asia/Karachi</li>
+                            <li><strong>To time zone:</strong> America/New_York</li>
+                        </ul>
+
+                        <h3>Step 1: Resolve the Source Offset</h3>
+
+                        <p>For this example date, Karachi is UTC+05:00.</p>
+
+                        <p>So:</p>
+
+                        <div class="formula"><strong>UTC = 15:00 − 05:00</strong></div>
+
+                        <h3>Step 2: Convert to UTC</h3>
+
+                        <div class="formula"><strong>UTC = 10:00</strong></div>
+
+                        <p>The source time therefore represents <strong>10:00 UTC on September 24, 2026</strong>.</p>
+
+                        <h3>Step 3: Apply the Destination Offset</h3>
+
+                        <p>On this date, New York is using UTC−04:00.</p>
+
+                        <div class="formula"><strong>Destination time = 10:00 − 04:00</strong></div>
+
+                        <h3>Final Result</h3>
+
+                        <div class="formula"><strong>6:00 AM on September 24, 2026 in New York</strong></div>
+
+                        <p>The same instant is therefore 3:00 PM in Karachi and 6:00 AM in New York on this date. The
+                            applicable offsets can change on other dates because daylight-saving and time-zone rules are
+                            date-dependent.</p>
+                    </section>
+
+                    <section id="results">
+                        <h2>Understanding Your Results</h2>
+
+                        <p>The main result is the local date and time in the destination time zone.</p>
+
+                        <h3>The Date Can Change</h3>
+
+                        <p>A conversion can move into the previous or next calendar day.</p>
+
+                        <p>For example, converting an evening time from Asia to a time zone far to the west may produce
+                            a morning time on the same date or, depending on the locations and time, the previous date.
+                        </p>
+
+                        <h3>The Time Difference Is Not Always Fixed</h3>
+
+                        <p>Two locations can be a certain number of hours apart during one part of the year and a
+                            different number of hours apart later.</p>
+
+                        <p>This happens when one location changes clocks for daylight saving while another location does
+                            not, or when their clock-change dates differ.</p>
+
+                        <h3>The Conversion Represents the Same Instant</h3>
+
+                        <p>Changing time zones does not change the moment in time. It changes only the local date and
+                            clock time used to represent that instant.</p>
+                    </section>
+
+                    <section id="current-data">
+                        <h2>Current Time-Zone Data</h2>
+
+                        <p>As of <strong>September 24, 2026</strong>, the latest published IANA Time Zone Database
+                            release is <strong>2026d</strong>, released on <strong>September 11, 2026</strong>. IANA
+                            updates the database when governments or regions change UTC offsets, daylight-saving rules,
+                            zone definitions, or related timekeeping information.</p>
+
+                        <p>JavaScript internationalization standards require time-zone-aware implementations to use IANA
+                            Time Zone Database information for named time-zone identifiers and time-zone calculations.
+                            However, the exact data available to this calculator depends on the version included with
+                            the user's browser or operating system.</p>
+
+                        <p>Because software updates may not adopt a new IANA release immediately, two devices with
+                            different time-zone database versions can occasionally produce different results after a
+                            recent government time-zone change.</p>
+                    </section>
+
+                    <section id="limits">
+                        <h2>Assumptions and Limitations</h2>
+
+                        <h3>Browser and Operating-System Data</h3>
+
+                        <p>The calculator depends on the time-zone information supplied by the user's browser or
+                            operating system. It does not guarantee that the device has adopted the newest IANA database
+                            release.</p>
+
+                        <h3>Future Time-Zone Changes</h3>
+
+                        <p>Future conversions use the rules currently known to the installed time-zone database.</p>
+
+                        <p>Governments can change time zones or daylight-saving rules after a future event has already
+                            been scheduled. IANA specifically notes that future predictions can become incorrect when
+                            governments change their rules.</p>
+
+                        <h3>Ambiguous Local Times</h3>
+
+                        <p>When clocks move backward, some local clock times can occur twice.</p>
+
+                        <p>For example, a time such as 1:30 AM may correspond to two different UTC instants during
+                            certain daylight-saving transitions.</p>
+
+                        <p>The calculator's available specification does not define a separate user-controlled option
+                            for choosing between two occurrences of an ambiguous time. For critical scheduling near a
+                            clock change, verify the intended UTC instant and current local rules.</p>
+
+                        <h3>Nonexistent Local Times</h3>
+
+                        <p>When clocks move forward, some local clock times may not occur at all.</p>
+
+                        <p>A local time entered inside that skipped period can therefore require special interpretation
+                            by the underlying time-zone implementation. Avoid DST transition gaps for safety-critical
+                            scheduling unless the result is independently confirmed.</p>
+
+                        <h3>Historical Time-Zone Accuracy</h3>
+
+                        <p>IANA maintains extensive historical time-zone information, but it states that its database is
+                            not authoritative and that historical coverage, particularly before 1970, can be incomplete
+                            or uncertain in some regions.</p>
+
+                        <h3>Time-Zone Abbreviations Can Be Ambiguous</h3>
+
+                        <p>Short abbreviations such as CST or IST can refer to different time zones in different
+                            regions. IANA recommends more precise identifiers or numeric UTC offsets when ambiguity
+                            matters.</p>
+                    </section>
+
+                    <section id="faq">
+                        <h2>Frequently Asked Questions</h2>
+
+                        <details class="faq">
+                            <summary>Does the Time Zone Calculator account for daylight saving time?</summary>
+
+                            <p>Yes. The calculator uses the time-zone rules available through the browser or operating
+                                system, so applicable DST offsets can be reflected for the selected date.</p>
+
+                            <p>The result still depends on how current the device's time-zone database is.</p>
+                        </details>
+
+                        <details class="faq">
+                            <summary>Why can the time difference between two cities change?</summary>
+
+                            <p>The UTC offset of one or both locations may change during the year.</p>
+
+                            <p>If the locations start or end daylight saving on different dates, the difference between
+                                their local clock times can temporarily change.</p>
+                        </details>
+
+                        <details class="faq">
+                            <summary>Why can two devices give different time-zone results?</summary>
+
+                            <p>Different devices may contain different versions of the IANA time-zone data.</p>
+
+                            <p>This is most likely to matter shortly after a government announces or implements a
+                                time-zone or daylight-saving change.</p>
+                        </details>
+
+                        <details class="faq">
+                            <summary>Can I convert a future date?</summary>
+
+                            <p>Yes. The calculator can apply the future rules currently contained in the device's
+                                time-zone data.</p>
+
+                            <p>However, future rules can later change, so important future travel, meetings, or
+                                deadlines should be checked again closer to the event.</p>
+                        </details>
+
+                        <details class="faq">
+                            <summary>What happens if I enter a time during a daylight-saving clock change?</summary>
+
+                            <p>Some local times can be duplicated when clocks move backward or skipped when clocks move
+                                forward.</p>
+
+                            <p>Because these times can be ambiguous or nonexistent, verify critical conversions around
+                                DST transition periods.</p>
+                        </details>
+
+                        <details class="faq">
+                            <summary>Is UTC affected by daylight saving time?</summary>
+
+                            <p>No. UTC itself does not move forward or backward for daylight saving.</p>
+
+                            <p>Local time zones may change their offset relative to UTC.</p>
+                        </details>
+
+                        <details class="faq">
+                            <summary>Why are named time zones better than using a fixed UTC offset?</summary>
+
+                            <p>A fixed offset such as UTC−05:00 describes only a numerical difference from UTC.</p>
+
+                            <p>A named time zone such as <code>America/New_York</code> can represent date-dependent
+                                offset changes and historical or future rules stored in the time-zone database.</p>
+                        </details>
+                    </section>
+
+                    <section id="sources">
+                        <h2>Sources &amp; Methodology</h2>
+
+                        <h3>Formula / Methodology Sources</h3>
+
+                        <ul class="sources">
+                            <li>
+                                <a href="https://www.iana.org/time-zones/tz-link?utm_source=chatgpt.com" rel="noopener"
+                                    target="_blank">IANA — Time Zone and Daylight Saving Time Data</a>
+                                <br>
+                                Provides the official IANA Time Zone Database resources used for geographic time-zone
+                                rules and UTC-offset transitions.
+                            </li>
+
+                            <li>
+                                <a href="https://www.iana.org/time-zones/theory?utm_source=chatgpt.com" rel="noopener"
+                                    target="_blank">IANA — Theory and Pragmatics of the tz Database</a>
+                                <br>
+                                Explains the scope, limitations, future-rule uncertainty, historical data, and
+                                interpretation of geographic time zones.
+                            </li>
+
+                            <li>
+                                <a href="https://tc39.es/ecma402/?utm_source=chatgpt.com" rel="noopener"
+                                    target="_blank">ECMAScript Internationalization API — IANA Time Zone Database</a>
+                                <br>
+                                Defines how time-zone-aware JavaScript implementations use IANA time-zone identifiers
+                                and data.
+                            </li>
+                        </ul>
+
+                        <h3>Current Data / Rule Sources</h3>
+
+                        <ul class="sources">
+                            <li>
+                                <a href="https://www.iana.org/time-zones/releases?utm_source=chatgpt.com" rel="noopener"
+                                    target="_blank">IANA — Time Zone Database Releases</a>
+                                <br>
+                                Used to verify the current IANA database release. As of September 24, 2026, the latest
+                                listed release is <strong>2026d</strong>, published September 11, 2026.
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section id="related">
+                        <h2>Related Tools</h2>
+
+                        <ul>
+                            <li><a href="https://example.com/date-calculator/?utm_source=chatgpt.com">Date
+                                    Calculator</a></li>
+                            <li><a href="https://example.com/time-calculator/?utm_source=chatgpt.com">Time
+                                    Calculator</a></li>
+                            <li><a href="https://example.com/hours-calculator/?utm_source=chatgpt.com">Hours
+                                    Calculator</a></li>
+                            <li><a href="https://example.com/time-duration-calculator/?utm_source=chatgpt.com">Time
+                                    Duration Calculator</a></li>
+                            <li><a href="https://example.com/day-counter/?utm_source=chatgpt.com">Day Counter</a></li>
+                            <li><a href="https://example.com/age-calculator/?utm_source=chatgpt.com">Age Calculator</a>
+                            </li>
+                        </ul>
+                    </section>
+
+                </article>
+
+
+
+            </section>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"168","Batch":"17","Calculator / Page":"Time Zone Calculator","Slug":"time-zone-calculator","Site Category (Current)":"Date & Time","Recommended Content Domain":"Date / Time","Page Type":"Calculator","Search Intent / Purpose":"Convert a date and time between major IANA time zones with browser-supported daylight-saving rules.","Formula / Algorithm Used in Tool":"Resolve source local wall-clock date/time in the selected IANA zone to a UTC instant, then format that same instant in the destination IANA zone. DST/historical offsets come from the browser/OS time-zone database.","Required User Inputs":"Date; Local time; From time zone; To time zone","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Date, Local time, From time zone, To time zone. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Current IANA time-zone database/DST rules for future dates.","Fresh Data Required?":"Yes","Recommended Update Frequency":"When IANA/browser time-zone rules change","Important Assumptions / Limitations":"Future time-zone law can change. The calculator depends on the time-zone data shipped with the user's browser or operating system. Ambiguous or nonexistent local times around DST clock changes can also require special care; for critical scheduling, confirm with an up-to-date official source.","Current Source URLs in Page":"https://www.iana.org/time-zones/tz-link | https://www.calculator.net/time-zone-calculator.html","Implementation Path":"/time-zone-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Date &amp; Time</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../time-duration-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Time Duration Calculator</strong><small>Calculate
+                            exact elapsed time between two local date-times in days, hours,
+                            minutes,…</small></span></a><a class="cp-related-link"
+                    href="../age-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Age
+                            Calculator</strong><small>Calculate age between two dates in years, months, and days, plus
+                            total days, weeks,…</small></span></a><a class="cp-related-link"
+                    href="../date-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Date
+                            Calculator</strong><small>Calculate days between dates or add and subtract years, months,
+                            weeks, and days fro…</small></span></a><a class="cp-related-link"
+                    href="../hours-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Hours
+                            Calculator</strong><small>Calculate hours and minutes between two clock times, with an
+                            overnight option and d…</small></span></a><a class="cp-related-link"
+                    href="../time-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time
+                            Calculator</strong><small>Add or subtract two time durations in hours, minutes, and seconds
+                            and view the norm…</small></span></a><a class="cp-related-link"
+                    href="../time-card-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time
+                            Card Calculator</strong><small>Total weekly work hours, unpaid breaks, configurable
+                            overtime, and estimated gross…</small></span></a><a class="cp-related-link"
+                    href="../mileage-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Mileage
+                            Calculator</strong><small>Calculate trip mileage from odometer readings and estimate driving
+                            time, fuel use,…</small></span></a><a class="cp-related-link"
+                    href="../day-counter/index.html"><span class="cp-related-dot">›</span><span><strong>Day
+                            Counter</strong><small>Count calendar days between two dates, with inclusive/exclusive
+                            options plus weekda…</small></span></a></div><a class="cp-side-category"
+                href="../date-time/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+
+        const $ = id => document.getElementById(id);
+        function parts(date, tz) { let p = new Intl.DateTimeFormat("en-CA", { timeZone: tz, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23" }).formatToParts(date); let o = {}; p.forEach(x => o[x.type] = x.value); return o }
+        function zonedToUTC(y, m, d, h, min, tz) { let guess = Date.UTC(y, m - 1, d, h, min, 0); for (let i = 0; i < 3; i++) { let p = parts(new Date(guess), tz); let shown = Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour, +p.minute, +p.second); let target = Date.UTC(y, m - 1, d, h, min, 0); guess += target - shown } return new Date(guess) }
+        function offsetLabel(date, tz) { return new Intl.DateTimeFormat("en-US", { timeZone: tz, timeZoneName: "shortOffset", hour: "2-digit" }).formatToParts(date).find(x => x.type === "timeZoneName")?.value || tz }
+        function run() { try { let [y, m, d] = $("date").value.split("-").map(Number), [h, mi] = $("time").value.split(":").map(Number); if (!y || isNaN(h)) throw Error(); let utc = zonedToUTC(y, m, d, h, mi, $("from").value); let target = new Intl.DateTimeFormat("en-US", { timeZone: $("to").value, hour: "numeric", minute: "2-digit", hour12: true }).format(utc); let dt = new Intl.DateTimeFormat("en-US", { timeZone: $("to").value, year: "numeric", month: "short", day: "numeric" }).format(utc); $("error").textContent = ""; $("converted").textContent = target; $("convertedDate").textContent = dt; $("fromOffset").textContent = offsetLabel(utc, $("from").value); $("toOffset").textContent = offsetLabel(utc, $("to").value) } catch (e) { $("error").textContent = "Enter a valid date and time." } }
+        $("calcBtn").onclick = run; $("swapBtn").onclick = () => { let a = $("from").value; $("from").value = $("to").value; $("to").value = a; run() }; run();
+
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

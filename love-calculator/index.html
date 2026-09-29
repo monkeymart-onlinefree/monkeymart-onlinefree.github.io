@@ -1,104 +1,1078 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>Love Calculator | CalcPro</title>
-<meta content="Generate a repeatable, just-for-fun name match percentage with a transparent entertainment-only method." name="description"/>
-<meta content="index,follow" name="robots"/>
-<link href="../love-calculator/" rel="canonical"/>
-<meta content="Love Calculator | CalcPro" property="og:title"/>
-<meta content="Generate a repeatable, just-for-fun name match percentage with a transparent entertainment-only method." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="/love-calculator/" property="og:url"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>:root{--bg:#fff1f5;--text:#3a1724;--muted:#8c6070;--bodyText:#684252;--accent:#e11d48;--accentText:#fff;--accentShadow:#e11d4833;--hero:linear-gradient(145deg,#fff1f2,#ffe4e6 50%,#fce7f3);--heroText:#795162;--panel:#fffafce8;--article:#fffafb;--input:#fff;--result:linear-gradient(135deg,#fff,#ffe4e6);--mini:#fff6f8;--chip:#ffffffaa;--code:#fff1f2;--line:#be123c18;--lineStrong:#be123c36;--focus:#fb71852b;--shadow:0 30px 75px #9f123924;--softShadow:0 16px 40px #9f123914}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.62}
-a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
-.container{width:min(1180px,calc(100% - 32px));margin:auto}
-.sitebar{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:16px}.brand{font-weight:900;letter-spacing:-.04em;font-size:1.25rem}.brand span{color:var(--accent)}
-.crumbs{font-size:.9rem;color:var(--muted);margin:12px 0 0}.crumbs a{color:inherit}
-.hero{position:relative;overflow:hidden;margin:12px auto 30px;border-radius:32px;padding:clamp(28px,5vw,70px);background:var(--hero);box-shadow:var(--shadow);border:1px solid var(--line);isolation:isolate}
-.hero h1{font-size:clamp(2.35rem,5.7vw,5.2rem);line-height:.96;letter-spacing:-.065em;margin:12px 0 20px;max-width:800px}.hero p{font-size:clamp(1rem,1.5vw,1.18rem);max-width:720px;color:var(--heroText,var(--muted));margin:0}
-.eyebrow{display:inline-flex;gap:8px;align-items:center;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.76rem;padding:8px 12px;border-radius:99px;background:var(--chip);border:1px solid var(--line)}
-.hero-art{position:absolute;right:3%;top:50%;transform:translateY(-50%);width:min(34vw,360px);height:min(34vw,360px);pointer-events:none;opacity:.96}
-.calc-zone{margin:0 auto 34px}.calc-shell{position:relative;background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:28px;padding:clamp(20px,3vw,34px);backdrop-filter:blur(14px)}
-.calc-title{margin:0 0 5px;font-size:1.5rem;letter-spacing:-.03em}.calc-note{margin:0 0 22px;color:var(--muted)}
-.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
-label{font-size:.9rem;font-weight:750}.input-row{display:flex;gap:8px}input,select,textarea,button{font:inherit}
-input,select,textarea{width:100%;border:1px solid var(--lineStrong);background:var(--input);color:var(--text);border-radius:14px;padding:13px 14px;outline:none;transition:.2s}
-input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}
-.unit{max-width:122px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-button{border:0;border-radius:14px;padding:13px 18px;font-weight:850;cursor:pointer;transition:transform .18s,box-shadow .18s}
-button:hover{transform:translateY(-2px)}.primary{background:var(--accent);color:var(--accentText,#fff);box-shadow:0 10px 25px var(--accentShadow)}.secondary{background:var(--chip);color:var(--text);border:1px solid var(--line)}
-.error{min-height:24px;margin-top:12px;color:#c33;font-weight:700}.result{margin-top:24px;padding:24px;border-radius:24px;background:var(--result);border:1px solid var(--line);position:relative;overflow:hidden}
-.result .big{font-size:clamp(2rem,5vw,3.7rem);font-weight:950;letter-spacing:-.055em;line-height:1;margin:.25rem 0}.result .sub{color:var(--muted)}
-.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.stat{background:var(--mini);border:1px solid var(--line);border-radius:16px;padding:14px}.stat b{display:block;font-size:1.13rem}
-.content-grid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:28px;align-items:start}.article{background:var(--article);border:1px solid var(--line);box-shadow:var(--softShadow);border-radius:28px;padding:clamp(22px,4vw,42px)}
-.article h2{font-size:clamp(1.55rem,3vw,2.2rem);line-height:1.1;letter-spacing:-.035em;margin:2.2rem 0 .7rem}.article h2:first-child{margin-top:0}.article h3{margin:1.5rem 0 .5rem}.article p,.article li{color:var(--bodyText)}
-.aside{position:sticky;top:18px;background:var(--panel);border:1px solid var(--line);box-shadow:var(--softShadow);border-radius:22px;padding:20px}.aside h3{margin-top:0}.aside ul{padding-left:18px;margin-bottom:0}
-.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--code);padding:16px;border-radius:16px;overflow:auto;border:1px solid var(--line);font-weight:750}
-.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px}table{width:100%;border-collapse:collapse;min-width:560px}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line)}th{background:var(--chip)}
-.faq details{border-top:1px solid var(--line);padding:14px 0}.faq summary{font-weight:850;cursor:pointer}.sources li{margin:.45rem 0}
-.footer{padding:34px 0 50px;color:var(--muted);font-size:.9rem}
-.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.pill{padding:7px 11px;border-radius:999px;background:var(--chip);border:1px solid var(--line);font-size:.82rem;font-weight:750}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.tab{padding:9px 13px;border-radius:12px;background:var(--chip);border:1px solid var(--line);font-weight:800;cursor:pointer}.tab.active{background:var(--accent);color:var(--accentText,#fff)}
-.hidden{display:none!important}
-@media(max-width:860px){.content-grid{grid-template-columns:1fr}.aside{position:static}.hero-art{opacity:.28;width:250px;height:250px}.hero h1{max-width:95%}}
-@media(max-width:650px){.container{width:min(100% - 20px,1180px)}.hero{border-radius:22px;padding:26px 20px}.calc-shell,.article{border-radius:22px;padding:20px}.form-grid,.stat-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.input-row{flex-direction:column}.unit{max-width:none}.hero-art{right:-60px}}
-.theme-love .hero{border-radius:90px 28px 90px 28px}.theme-love .calc-shell{border-radius:32px;transform:rotate(.15deg)}.theme-love .result{border-radius:999px;text-align:center;padding:34px}.heart{position:absolute;left:50%;top:50%;width:150px;height:150px;background:#e11d48;transform:translate(-50%,-42%) rotate(45deg);border-radius:26px 0 26px 0;box-shadow:25px 25px 0 #fb718555,50px 50px 0 #f9a8d455}.heart:before,.heart:after{content:"";position:absolute;width:150px;height:150px;background:#e11d48;border-radius:50%}.heart:before{left:-75px}.heart:after{top:-75px}</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Love Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Generate a repeatable, just-for-fun name match percentage with a transparent entertainment-only method.", "url": "/love-calculator/", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Lifestyle & Other", "item": "/other/"}, {"@type": "ListItem", "position": 3, "name": "Fun & Entertainment", "item": "/other/fun-entertainment/"}, {"@type": "ListItem", "position": 4, "name": "Love Calculator", "item": "/love-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is a love calculator scientifically accurate?", "acceptedAnswer": {"@type": "Answer", "text": "No. A name-based compatibility score is not a scientific measurement of relationship quality or romantic compatibility."}}, {"@type": "Question", "name": "Why does the same pair get the same result here?", "acceptedAnswer": {"@type": "Answer", "text": "CalcPro uses a deterministic entertainment-only name hash, so the same two normalized names produce the same playful score rather than a new random number each time."}}, {"@type": "Question", "name": "Should I make relationship decisions from this score?", "acceptedAnswer": {"@type": "Answer", "text": "No. The score is for amusement only and does not measure communication, trust, values, safety, attraction, goals, or any other real relationship factor."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body class="theme-love" data-cp-category="other" data-cp-page-type="Calculator">
-<header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header><nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../other/index.html">Other Tools</a></li><li><a aria-current="page" href="index.html">Love Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../other/index.html">Browse Other Tools</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main"><h1 class="page-title">Love Calculator</h1>
+    <!-- Primary Meta Tags -->
+<title>Love Calculator – Fun Name Match Percentage Online</title>
+<meta name="title" content="Love Calculator – Fun Name Match Percentage Online">
+<meta name="description" content="Use the Love Calculator to enter two names and get a repeatable match percentage from a fixed entertainment-only algorithm. Results are just for fun.">
 
-<section aria-labelledby="calculator-heading" class="container calc-zone">
-<div class="calc-shell">
-<h2 class="calc-title" id="calculator-heading">Love Calculator</h2>
-<p class="calc-note">A deterministic, entertainment-only name match. It does not measure real relationship compatibility.</p>
-<div class="form-grid">
-<div class="field"><label for="name1">First name</label><input autocomplete="off" id="name1" maxlength="80" type="text" value="Alex"/></div>
-<div class="field"><label for="name2">Second name</label><input autocomplete="off" id="name2" maxlength="80" type="text" value="Sam"/></div>
-</div>
-<div class="actions"><button class="primary" id="calcBtn">Make a Fun Match</button><button class="secondary" id="resetBtn">Clear</button></div><div class="error" id="error" role="alert"></div>
-<div class="result"><span class="sub">Just-for-fun name score</span><div class="big" id="score">—</div><div class="sub" id="message">Enter two names. Real relationships cannot be measured by a name formula.</div></div>
-</div>
-</section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<section class="container content-grid">
-<article class="article">
-<h2>What Is a Love Calculator?</h2><p>A love calculator is a novelty tool that turns two names into a playful percentage. Name-based scores have no scientific basis for measuring romantic compatibility, relationship quality, or future outcomes. This page is deliberately designed as entertainment, not relationship advice.</p>
-<h2>How This Love Calculator Works</h2><p>The calculator normalizes the two names, sorts them so order does not matter, and runs the combined text through a deterministic hash. The resulting integer is mapped to 0–100%. This makes the output repeatable for the same pair without pretending the number is evidence about the people.</p>
-<div class="formula">score = deterministic(name 1 + name 2) mod 101</div>
-<h2>What the Score Does Not Measure</h2><p>The output does not assess communication, emotional safety, values, life goals, trust, attraction, conflict style, consent, or any other real relationship characteristic. Those factors cannot be inferred from names.</p>
-<h2>Why Keep It Entertainment-Only?</h2><p>Calculator.net similarly describes its love calculator as amusement rather than a real indication of love. CalcPro follows that framing and makes the methodology transparent instead of claiming predictive accuracy.</p>
-<h2>Limitations</h2><p>Every percentage is an arbitrary output of the chosen entertainment algorithm. It should never be used to judge a person, end or start a relationship, or make a high-stakes personal decision.</p>
-<h2 id="faq">Frequently Asked Questions</h2>
-<div class="faq"><details><summary>Is a love calculator scientifically accurate?</summary><p>No. A name-based compatibility score is not a scientific measurement of relationship quality or romantic compatibility.</p></details>
-<details><summary>Why does the same pair get the same result here?</summary><p>CalcPro uses a deterministic entertainment-only name hash, so the same two normalized names produce the same playful score rather than a new random number each time.</p></details>
-<details><summary>Should I make relationship decisions from this score?</summary><p>No. The score is for amusement only and does not measure communication, trust, values, safety, attraction, goals, or any other real relationship factor.</p></details></div>
-<h2>Sources and Methodology</h2>
-<p>CalcPro uses the formulas and assumptions described above. References below were used to cross-check the calculator method and terminology. Results are estimates unless a definition or unit conversion is mathematically exact.</p>
-<ul class="sources"><li><a href="https://www.calculator.net/love-calculator.html" rel="noopener noreferrer">Calculator.net Love Calculator</a> — used only to cross-check search intent and the explicit entertainment-only framing.</li></ul>
-</article>
-<aside class="aside">
-<h3>Quick reference</h3>
-<div class="formula">Names → stable hash → 0–100%</div><div class="pills"><span class="pill">entertainment only</span><span class="pill">repeatable</span><span class="pill">not scientific</span></div>
-</aside>
-</section>
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/love-calculator/">
 
-<script class="cp-calculator-data" type="application/json">{"index":"165","Batch":"17","Calculator / Page":"Love Calculator","Slug":"love-calculator","Site Category (Current)":"Other Tools","Recommended Content Domain":"Other Tools","Page Type":"Calculator","Search Intent / Purpose":"Generate a repeatable, just-for-fun name match percentage with a transparent entertainment-only method.","Formula / Algorithm Used in Tool":"Entertainment-only deterministic score from normalized names using a repeatable hash/modulo method. No scientific relationship formula is claimed.","Required User Inputs":"First name; Second name","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: First name, Second name. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"Every percentage is an arbitrary output of the chosen entertainment algorithm. It should never be used to judge a person, end or start a relationship, or make a high-stakes personal decision.","Current Source URLs in Page":"https://www.calculator.net/love-calculator.html","Implementation Path":"/love-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Other Tools</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../love-calculator-for-your-site/index.html"><span class="cp-related-dot">›</span><span><strong>Love Calculator for Your Site</strong><small>Create a deterministic name-based compatibility score for entertainment only and ge…</small></span></a><a class="cp-related-link" href="../height-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Height Calculator</strong><small>Estimate a child's adult height from parental height using the mid-parental method…</small></span></a><a class="cp-related-link" href="../heat-index-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Heat Index Calculator</strong><small>Calculate heat index from air temperature and relative humidity using the National…</small></span></a><a class="cp-related-link" href="../calculators-for-your-site/index.html"><span class="cp-related-dot">›</span><span><strong>Calculators for Your Site</strong><small>Browse CalcPro embeddable calculator pages and generate responsive iframe code for…</small></span></a><a class="cp-related-link" href="../tip-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Tip Calculator</strong><small>Calculate tip amount, total bill, and per-person split with custom or quick-select…</small></span></a><a class="cp-related-link" href="../golf-handicap-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Golf Handicap Calculator</strong><small>Calculate Course Handicap and estimate a base Handicap Index using current World Ha…</small></span></a><a class="cp-related-link" href="../dew-point-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Dew Point Calculator</strong><small>Calculate dew point from air temperature and relative humidity using a NOAA/NCEP sa…</small></span></a><a class="cp-related-link" href="../wind-chill-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Wind Chill Calculator</strong><small>Calculate National Weather Service wind chill from air temperature and wind speed w…</small></span></a></div><a class="cp-side-category" href="../other/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/love-calculator/">
+<meta property="og:title" content="Love Calculator – Fun Name Match Percentage Online">
+<meta property="og:description" content="Use the Love Calculator to enter two names and get a repeatable match percentage from a fixed entertainment-only algorithm. Results are just for fun.">
+<meta property="og:site_name" content="Love Calculator">
 
-const $=id=>document.getElementById(id);
-function hash(s){let h=2166136261>>>0;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
-function run(){let a=$("name1").value.trim().toLowerCase().replace(/\s+/g," "),b=$("name2").value.trim().toLowerCase().replace(/\s+/g," ");if(!a||!b){$("error").textContent="Enter both names.";return}let pair=[a,b].sort().join("|calcpro|");let n=hash(pair)%101;$("error").textContent="";$("score").textContent=n+"%";$("message").textContent="Entertainment-only result — not a scientific compatibility score."}
-$("calcBtn").onclick=run;$("resetBtn").onclick=()=>{$("name1").value="";$("name2").value="";$("score").textContent="—";$("message").textContent="Enter two names. Real relationships cannot be measured by a name formula."; $("error").textContent=""};
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/love-calculator/">
+<meta name="twitter:title" content="Love Calculator – Fun Name Match Percentage Online">
+<meta name="twitter:description" content="Use the Love Calculator to enter two names and get a repeatable match percentage from a fixed entertainment-only algorithm. Results are just for fun.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        :root {
+            --bg: #fff1f5;
+            --text: #3a1724;
+            --muted: #8c6070;
+            --bodyText: #684252;
+            --accent: #e11d48;
+            --accentText: #fff;
+            --accentShadow: #e11d4833;
+            --hero: linear-gradient(145deg, #fff1f2, #ffe4e6 50%, #fce7f3);
+            --heroText: #795162;
+            --panel: #fffafce8;
+            --article: #fffafb;
+            --input: #fff;
+            --result: linear-gradient(135deg, #fff, #ffe4e6);
+            --mini: #fff6f8;
+            --chip: #ffffffaa;
+            --code: #fff1f2;
+            --line: #be123c18;
+            --lineStrong: #be123c36;
+            --focus: #fb71852b;
+            --shadow: 0 30px 75px #9f123924;
+            --softShadow: 0 16px 40px #9f123914
+        }
 
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.62
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .sitebar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            gap: 16px
+        }
+
+        .brand {
+            font-weight: 900;
+            letter-spacing: -.04em;
+            font-size: 1.25rem
+        }
+
+        .brand span {
+            color: var(--accent)
+        }
+
+        .crumbs {
+            font-size: .9rem;
+            color: var(--muted);
+            margin: 12px 0 0
+        }
+
+        .crumbs a {
+            color: inherit
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            margin: 12px auto 30px;
+            border-radius: 32px;
+            padding: clamp(28px, 5vw, 70px);
+            background: var(--hero);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--line);
+            isolation: isolate
+        }
+
+        .hero h1 {
+            font-size: clamp(2.35rem, 5.7vw, 5.2rem);
+            line-height: .96;
+            letter-spacing: -.065em;
+            margin: 12px 0 20px;
+            max-width: 800px
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 1.5vw, 1.18rem);
+            max-width: 720px;
+            color: var(--heroText, var(--muted));
+            margin: 0
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            font-size: .76rem;
+            padding: 8px 12px;
+            border-radius: 99px;
+            background: var(--chip);
+            border: 1px solid var(--line)
+        }
+
+        .hero-art {
+            position: absolute;
+            right: 3%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: min(34vw, 360px);
+            height: min(34vw, 360px);
+            pointer-events: none;
+            opacity: .96
+        }
+
+        .calc-zone {
+            margin: 0 auto 34px
+        }
+
+        .calc-shell {
+            position: relative;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            border-radius: 28px;
+            padding: clamp(20px, 3vw, 34px);
+            backdrop-filter: blur(14px)
+        }
+
+        .calc-title {
+            margin: 0 0 5px;
+            font-size: 1.5rem;
+            letter-spacing: -.03em
+        }
+
+        .calc-note {
+            margin: 0 0 22px;
+            color: var(--muted)
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px
+        }
+
+        .field.full {
+            grid-column: 1/-1
+        }
+
+        label {
+            font-size: .9rem;
+            font-weight: 750
+        }
+
+        .input-row {
+            display: flex;
+            gap: 8px
+        }
+
+        input,
+        select,
+        textarea,
+        button {
+            font: inherit
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--lineStrong);
+            background: var(--input);
+            color: var(--text);
+            border-radius: 14px;
+            padding: 13px 14px;
+            outline: none;
+            transition: .2s
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--focus)
+        }
+
+        .unit {
+            max-width: 122px
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px
+        }
+
+        button {
+            border: 0;
+            border-radius: 14px;
+            padding: 13px 18px;
+            font-weight: 850;
+            cursor: pointer;
+            transition: transform .18s, box-shadow .18s
+        }
+
+        button:hover {
+            transform: translateY(-2px)
+        }
+
+        .primary {
+            background: var(--accent);
+            color: var(--accentText, #fff);
+            box-shadow: 0 10px 25px var(--accentShadow)
+        }
+
+        .secondary {
+            background: var(--chip);
+            color: var(--text);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            min-height: 24px;
+            margin-top: 12px;
+            color: #c33;
+            font-weight: 700
+        }
+
+        .result {
+            margin-top: 24px;
+            padding: 24px;
+            border-radius: 24px;
+            background: var(--result);
+            border: 1px solid var(--line);
+            position: relative;
+            overflow: hidden
+        }
+
+        .result .big {
+            font-size: clamp(2rem, 5vw, 3.7rem);
+            font-weight: 950;
+            letter-spacing: -.055em;
+            line-height: 1;
+            margin: .25rem 0
+        }
+
+        .result .sub {
+            color: var(--muted)
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .stat {
+            background: var(--mini);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 14px
+        }
+
+        .stat b {
+            display: block;
+            font-size: 1.13rem
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 290px;
+            gap: 28px;
+            align-items: start
+        }
+
+        .article {
+            background: var(--article);
+            border: 1px solid var(--line);
+            box-shadow: var(--softShadow);
+            border-radius: 28px;
+            padding: clamp(22px, 4vw, 42px)
+        }
+
+        .article h2 {
+            font-size: clamp(1.55rem, 3vw, 2.2rem);
+            line-height: 1.1;
+            letter-spacing: -.035em;
+            margin: 2.2rem 0 .7rem
+        }
+
+        .article h2:first-child {
+            margin-top: 0
+        }
+
+        .article h3 {
+            margin: 1.5rem 0 .5rem
+        }
+
+        .article p,
+        .article li {
+            color: var(--bodyText)
+        }
+
+        .aside {
+            position: sticky;
+            top: 18px;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--softShadow);
+            border-radius: 22px;
+            padding: 20px
+        }
+
+        .aside h3 {
+            margin-top: 0
+        }
+
+        .aside ul {
+            padding-left: 18px;
+            margin-bottom: 0
+        }
+
+        .formula {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: var(--code);
+            padding: 16px;
+            border-radius: 16px;
+            overflow: auto;
+            border: 1px solid var(--line);
+            font-weight: 750
+        }
+
+        .table-wrap {
+            overflow: auto;
+            border: 1px solid var(--line);
+            border-radius: 18px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 560px
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--line)
+        }
+
+        th {
+            background: var(--chip)
+        }
+
+        .faq details {
+            border-top: 1px solid var(--line);
+            padding: 14px 0
+        }
+
+        .faq summary {
+            font-weight: 850;
+            cursor: pointer
+        }
+
+        .sources li {
+            margin: .45rem 0
+        }
+
+        .footer {
+            padding: 34px 0 50px;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 16px
+        }
+
+        .pill {
+            padding: 7px 11px;
+            border-radius: 999px;
+            background: var(--chip);
+            border: 1px solid var(--line);
+            font-size: .82rem;
+            font-weight: 750
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 0 0 18px
+        }
+
+        .tab {
+            padding: 9px 13px;
+            border-radius: 12px;
+            background: var(--chip);
+            border: 1px solid var(--line);
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .tab.active {
+            background: var(--accent);
+            color: var(--accentText, #fff)
+        }
+
+        .hidden {
+            display: none !important
+        }
+
+        @media(max-width:860px) {
+            .content-grid {
+                grid-template-columns: 1fr
+            }
+
+            .aside {
+                position: static
+            }
+
+            .hero-art {
+                opacity: .28;
+                width: 250px;
+                height: 250px
+            }
+
+            .hero h1 {
+                max-width: 95%
+            }
+        }
+
+        @media(max-width:650px) {
+            .container {
+                width: min(100% - 20px, 1180px)
+            }
+
+            .hero {
+                border-radius: 22px;
+                padding: 26px 20px
+            }
+
+            .calc-shell,
+            .article {
+                border-radius: 22px;
+                padding: 20px
+            }
+
+            .form-grid,
+            .stat-grid {
+                grid-template-columns: 1fr
+            }
+
+            .field.full {
+                grid-column: auto
+            }
+
+            .input-row {
+                flex-direction: column
+            }
+
+            .unit {
+                max-width: none
+            }
+
+            .hero-art {
+                right: -60px
+            }
+        }
+
+        .theme-love .hero {
+            border-radius: 90px 28px 90px 28px
+        }
+
+        .theme-love .calc-shell {
+            border-radius: 32px;
+            transform: rotate(.15deg)
+        }
+
+        .theme-love .result {
+            border-radius: 999px;
+            text-align: center;
+            padding: 34px
+        }
+
+        .heart {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 150px;
+            height: 150px;
+            background: #e11d48;
+            transform: translate(-50%, -42%) rotate(45deg);
+            border-radius: 26px 0 26px 0;
+            box-shadow: 25px 25px 0 #fb718555, 50px 50px 0 #f9a8d455
+        }
+
+        .heart:before,
+        .heart:after {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: #e11d48;
+            border-radius: 50%
+        }
+
+        .heart:before {
+            left: -75px
+        }
+
+        .heart:after {
+            top: -75px
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/love-calculator/#webapplication",
+      "name": "Love Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/love-calculator/",
+      "description": "Use the Love Calculator to enter two names and get a repeatable match percentage from a fixed entertainment-only algorithm. Results are just for fun.",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/love-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Love Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/love-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/love-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does the Love Calculator calculate the percentage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It processes the two entered names using a fixed normalization method, converts the processed names into a deterministic hash value, and then maps that value to the displayed percentage using a modulo-based calculation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the Love Calculator scientifically accurate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The percentage is generated for entertainment and is not a scientific measurement of love or compatibility. Calculator.net also states that its love calculator is intended for amusement rather than as a real indication of love."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do the same names produce a repeatable result?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The calculator uses a deterministic algorithm rather than generating a new random value for each calculation. The same normalized inputs are therefore processed using the same mathematical procedure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can changing a nickname or spelling change the percentage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. If the change produces a different normalized name input, the hash calculation can also change, resulting in a different percentage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the calculator use birthdays or zodiac signs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This calculator's required inputs are only the first name and second name."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a 100% love score mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It only means that the entertainment algorithm produced the top percentage value for that name pair. It does not mean there is a 100% probability of a successful relationship."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I make relationship decisions based on the result?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The score is an entertainment output based on names alone and should not be used for important personal or relationship decisions."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body class="theme-love" data-cp-category="other" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../other/index.html">Other Tools</a></li>
+            <li><a aria-current="page" href="index.html">Love Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../other/index.html">Browse Other Tools</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Love Calculator</h1>
+
+            <section aria-labelledby="calculator-heading" class="container calc-zone">
+                <div class="calc-shell">
+                    <h2 class="calc-title" id="calculator-heading">Love Calculator</h2>
+                    <p class="calc-note">A deterministic, entertainment-only name match. It does not measure real
+                        relationship compatibility.</p>
+                    <div class="form-grid">
+                        <div class="field"><label for="name1">First name</label><input autocomplete="off" id="name1"
+                                maxlength="80" type="text" value="Alex" /></div>
+                        <div class="field"><label for="name2">Second name</label><input autocomplete="off" id="name2"
+                                maxlength="80" type="text" value="Sam" /></div>
+                    </div>
+                    <div class="actions"><button class="primary" id="calcBtn">Make a Fun Match</button><button
+                            class="secondary" id="resetBtn">Clear</button></div>
+                    <div class="error" id="error" role="alert"></div>
+                    <div class="result"><span class="sub">Just-for-fun name score</span>
+                        <div class="big" id="score">—</div>
+                        <div class="sub" id="message">Enter two names. Real relationships cannot be measured by a name
+                            formula.</div>
+                    </div>
+                </div>
+            </section>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="container content-grid">
+                 
+
+<article class="article">
+
+ 
+
+  <p>The Love Calculator turns two entered names into a repeatable match percentage using a fixed, name-based entertainment algorithm. Enter a first name and second name to generate the result. The percentage is for fun only and is not a scientific measure of relationship compatibility.</p>
+
+  <section id="what">
+    <h2>What Is the Love Calculator?</h2>
+
+    <p class="direct">The Love Calculator is a simple entertainment tool that converts two names into a match percentage. It can be used for fun with partners, friends, fictional characters, or any other pair of names.</p>
+
+    <p>The calculation is deterministic, meaning the same normalized name inputs are processed with the same method each time. The resulting percentage does not measure attraction, personality, communication, or real relationship compatibility.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Love Calculator</h2>
+
+    <ol>
+      <li><strong>First name:</strong> Enter the first person's name.</li>
+      <li><strong>Second name:</strong> Enter the second person's name.</li>
+      <li>Run the calculation to generate the name match percentage.</li>
+      <li>Read the result as an entertainment score rather than a prediction or relationship assessment.</li>
+    </ol>
+
+    <p>Only the two name fields are used by this calculator. It does not require birthdays, zodiac signs, personality information, or relationship details.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Method</h3>
+
+    <p>This Love Calculator uses a deterministic name-processing method rather than a scientific relationship formula.</p>
+
+    <p>Conceptually, the calculation is:</p>
+
+    <div class="formula">Score = Modulo(Hash(Normalize(Name 1, Name 2)))</div>
+
+    <p>The calculator:</p>
+
+    <ol>
+      <li>Takes the two entered names.</li>
+      <li>Processes them through its built-in normalization rules.</li>
+      <li>Applies the calculator's fixed deterministic hash routine.</li>
+      <li>Maps the resulting hash to the displayed percentage using a fixed modulo-based method.</li>
+      <li>Returns the percentage as the primary result.</li>
+    </ol>
+
+    <p>Because the method is deterministic rather than random, identical normalized inputs are processed consistently.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Variable</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Name 1</td>
+          <td>First entered name</td>
+          <td>Text</td>
+        </tr>
+        <tr>
+          <td>Name 2</td>
+          <td>Second entered name</td>
+          <td>Text</td>
+        </tr>
+        <tr>
+          <td>Normalize()</td>
+          <td>Applies the calculator's consistent name-processing rules</td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td>Hash()</td>
+          <td>Converts the processed name pair into a deterministic numeric value</td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td>Modulo()</td>
+          <td>Maps the hash value into the calculator's percentage output range</td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td>Score</td>
+          <td>Final displayed name match result</td>
+          <td>%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The percentage is an arbitrary output of this entertainment algorithm. It is not a probability that a relationship will succeed.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose the inputs are:</p>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li>First name: <strong>Alex</strong></li>
+      <li>Second name: <strong>Sam</strong></li>
+    </ul>
+
+    <h3>Step 1: Process the Names</h3>
+
+    <p>The calculator applies its built-in normalization method to both entered names.</p>
+
+    <div class="formula">N₁ = Normalize("Alex")</div>
+
+    <div class="formula">N₂ = Normalize("Sam")</div>
+
+    <h3>Step 2: Generate the Deterministic Value</h3>
+
+    <p>The processed names are passed through the fixed hash routine:</p>
+
+    <div class="formula">H = Hash(N₁, N₂)</div>
+
+    <h3>Step 3: Generate the Percentage</h3>
+
+    <p>The hash is mapped to the calculator's percentage output:</p>
+
+    <div class="formula">Score = Modulo(H)</div>
+
+    <h3>Final Result</h3>
+
+    <p>The live calculator displays the resulting percentage. Repeating the calculation with the same normalized pair produces the same algorithmic result.</p>
+
+    <p>The numeric example is intentionally generated by the calculator itself rather than hard-coded into the page, so the example always stays consistent with the implemented calculation method.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p>The main result is a <strong>name match percentage</strong>.</p>
+
+    <p>For example, a higher percentage means the algorithm assigned a higher numerical value to that particular pair of name inputs. A lower percentage simply means the algorithm produced a lower value.</p>
+
+    <p>It does <strong>not</strong> mean that one couple is objectively more compatible than another. Calculator.net similarly describes its name-based love score as an amusement-only result rather than a real indication of love.</p>
+
+    <p>Any supporting output displayed with the result should also be interpreted as part of the entertainment experience rather than an independent psychological or scientific measurement.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>This calculator has several important limitations:</p>
+
+    <ul>
+      <li>The calculation uses only the two entered names.</li>
+      <li>It does not analyze personality, behavior, communication, attraction, shared values, relationship history, or other real-world factors.</li>
+      <li>The result comes from a predetermined mathematical text-processing method.</li>
+      <li>Different spellings, nicknames, or other changes that affect the processed name input can produce a different result.</li>
+      <li>The percentage has no scientifically established relationship to romantic compatibility.</li>
+      <li>Results should not be used to decide whether to begin, continue, or end a relationship.</li>
+      <li>A 100% result does not guarantee compatibility, just as a low percentage does not indicate that two people are incompatible.</li>
+    </ul>
+
+    <p>Online love calculators are commonly presented as entertainment rather than scientific relationship tests.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>How does the Love Calculator calculate the percentage?</summary>
+      <p>It processes the two entered names using a fixed normalization method, converts the processed names into a deterministic hash value, and then maps that value to the displayed percentage using a modulo-based calculation.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is the Love Calculator scientifically accurate?</summary>
+      <p>No. The percentage is generated for entertainment and is not a scientific measurement of love or compatibility. Calculator.net also states that its love calculator is intended for amusement rather than as a real indication of love.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why do the same names produce a repeatable result?</summary>
+      <p>The calculator uses a deterministic algorithm rather than generating a new random value for each calculation. The same normalized inputs are therefore processed using the same mathematical procedure.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can changing a nickname or spelling change the percentage?</summary>
+      <p>Yes. If the change produces a different normalized name input, the hash calculation can also change, resulting in a different percentage.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does the calculator use birthdays or zodiac signs?</summary>
+      <p>No. This calculator's required inputs are only the first name and second name.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What does a 100% love score mean?</summary>
+      <p>It only means that the entertainment algorithm produced the top percentage value for that name pair. It does not mean there is a 100% probability of a successful relationship.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Should I make relationship decisions based on the result?</summary>
+      <p>No. The score is an entertainment output based on names alone and should not be used for important personal or relationship decisions.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://www.calculator.net/love-calculator.html?utm_source=chatgpt.com" rel="noopener" target="_blank">Calculator.net — Love Calculator</a><br>
+        Used to cross-check the standard two-name love-calculator concept and the important limitation that these percentages are intended for amusement rather than as scientific measures of love.
+      </li>
+    </ul>
+
+    <p>The calculation described on this page follows this calculator's own deterministic normalized-name hash/modulo method. No scientific relationship formula or externally standardized compatibility equation is claimed.</p>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/love-calculator-for-your-site/">Love Calculator for Your Site</a></li>
+      <li><a href="https://example.com/age-calculator/">Age Calculator</a></li>
+      <li><a href="https://example.com/date-calculator/">Date Calculator</a></li>
+      <li><a href="https://example.com/time-calculator/">Time Calculator</a></li>
+      <li><a href="https://example.com/random-number-generator/">Random Number Generator</a></li>
+      <li><a href="https://example.com/dice-roller/">Dice Roller</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+
+            </section>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"165","Batch":"17","Calculator / Page":"Love Calculator","Slug":"love-calculator","Site Category (Current)":"Other Tools","Recommended Content Domain":"Other Tools","Page Type":"Calculator","Search Intent / Purpose":"Generate a repeatable, just-for-fun name match percentage with a transparent entertainment-only method.","Formula / Algorithm Used in Tool":"Entertainment-only deterministic score from normalized names using a repeatable hash/modulo method. No scientific relationship formula is claimed.","Required User Inputs":"First name; Second name","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: First name, Second name. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"Every percentage is an arbitrary output of the chosen entertainment algorithm. It should never be used to judge a person, end or start a relationship, or make a high-stakes personal decision.","Current Source URLs in Page":"https://www.calculator.net/love-calculator.html","Implementation Path":"/love-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Other Tools</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link"
+                    href="../love-calculator-for-your-site/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Love Calculator for Your Site</strong><small>Create
+                            a deterministic name-based compatibility score for entertainment only and
+                            ge…</small></span></a><a class="cp-related-link"
+                    href="../height-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Height
+                            Calculator</strong><small>Estimate a child's adult height from parental height using the
+                            mid-parental method…</small></span></a><a class="cp-related-link"
+                    href="../heat-index-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Heat
+                            Index Calculator</strong><small>Calculate heat index from air temperature and relative
+                            humidity using the National…</small></span></a><a class="cp-related-link"
+                    href="../calculators-for-your-site/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Calculators for Your Site</strong><small>Browse
+                            CalcPro embeddable calculator pages and generate responsive iframe code
+                            for…</small></span></a><a class="cp-related-link" href="../tip-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Tip Calculator</strong><small>Calculate tip amount,
+                            total bill, and per-person split with custom or quick-select…</small></span></a><a
+                    class="cp-related-link" href="../golf-handicap-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Golf Handicap Calculator</strong><small>Calculate
+                            Course Handicap and estimate a base Handicap Index using current World
+                            Ha…</small></span></a><a class="cp-related-link"
+                    href="../dew-point-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Dew
+                            Point Calculator</strong><small>Calculate dew point from air temperature and relative
+                            humidity using a NOAA/NCEP sa…</small></span></a><a class="cp-related-link"
+                    href="../wind-chill-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Wind
+                            Chill Calculator</strong><small>Calculate National Weather Service wind chill from air
+                            temperature and wind speed w…</small></span></a></div><a class="cp-side-category"
+                href="../other/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+
+        const $ = id => document.getElementById(id);
+        function hash(s) { let h = 2166136261 >>> 0; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619) } return h >>> 0 }
+        function run() { let a = $("name1").value.trim().toLowerCase().replace(/\s+/g, " "), b = $("name2").value.trim().toLowerCase().replace(/\s+/g, " "); if (!a || !b) { $("error").textContent = "Enter both names."; return } let pair = [a, b].sort().join("|calcpro|"); let n = hash(pair) % 101; $("error").textContent = ""; $("score").textContent = n + "%"; $("message").textContent = "Entertainment-only result — not a scientific compatibility score." }
+        $("calcBtn").onclick = run; $("resetBtn").onclick = () => { $("name1").value = ""; $("name2").value = ""; $("score").textContent = "—"; $("message").textContent = "Enter two names. Real relationships cannot be measured by a name formula."; $("error").textContent = "" };
+
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

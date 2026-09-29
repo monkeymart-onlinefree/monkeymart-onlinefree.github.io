@@ -1,83 +1,1284 @@
 <!DOCTYPE html>
 
 <html lang="en-US">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>Ratio Calculator | CalcPro</title>
-<meta content="Solve a proportion A:B = C:D when one value is unknown, and simplify two-number ratios." name="description"/>
-<meta content="index,follow" name="robots"/>
-<link href="../ratio-calculator/" rel="canonical"/>
-<meta content="Ratio Calculator | CalcPro" property="og:title"/>
-<meta content="Solve a proportion A:B = C:D when one value is unknown, and simplify two-number ratios." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="/ratio-calculator/" property="og:url"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
-:root{--max:1180px}a{color:inherit}.wrap{width:min(var(--max),calc(100% - 32px));margin:auto}.sitebar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:18px}.brand{font-weight:900;letter-spacing:-.04em;font-size:1.25rem;text-decoration:none}.brand span{color:var(--accent)}.topnav{display:flex;gap:10px;flex-wrap:wrap}.topnav a{text-decoration:none;font-size:.9rem;padding:9px 12px;border-radius:999px;background:var(--glass);border:1px solid var(--line)}
-.breadcrumb{font-size:.85rem;opacity:.78;margin-bottom:14px}.breadcrumb a{text-decoration:none}.hero{position:relative;overflow:hidden}.hero h1{font-size:clamp(2.35rem,5vw,5rem);line-height:.98;letter-spacing:-.065em;margin:0 0 18px;max-width:860px}.hero p{font-size:clamp(1rem,1.8vw,1.18rem);max-width:720px;margin:0;color:var(--muted)}
-.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:var(--glass);border:1px solid var(--line);font-size:.82rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:18px}
-main{padding-bottom:60px}.calc-shell{position:relative;margin-top:-28px;z-index:4}.panel{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-.calc-card{border-radius:30px;padding:clamp(20px,4vw,38px)}.calc-title{font-size:1.45rem;font-weight:900;letter-spacing:-.03em;margin:0 0 6px}.calc-sub{margin:0 0 24px;color:var(--muted)}
-label{display:block;font-weight:800;font-size:.9rem;margin-bottom:7px}.field{margin-bottom:15px}.input,select,textarea{width:100%;border:1px solid var(--input-line);background:var(--input-bg);color:var(--text);border-radius:16px;padding:14px 15px;font:inherit;outline:none;transition:.2s}textarea{min-height:126px;resize:vertical}.input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}
-.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.btn{appearance:none;border:0;border-radius:16px;padding:13px 18px;font-weight:900;font:inherit;cursor:pointer;transition:.18s;box-shadow:0 8px 18px rgba(0,0,0,.12)}.btn:hover{transform:translateY(-2px)}.btn.primary{background:var(--accent);color:var(--accentText)}.btn.secondary{background:var(--button2);color:var(--text);border:1px solid var(--line)}
-.error{display:none;margin-top:14px;padding:11px 13px;border-radius:14px;background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.22);color:#b91c1c;font-weight:700}.error.show{display:block}
-.result-card{border-radius:26px;padding:24px;background:var(--result-bg);border:1px solid var(--line);position:relative;overflow:hidden}.result-kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;font-weight:900;color:var(--muted)}.result-big{font-size:clamp(2rem,5vw,4rem);font-weight:950;letter-spacing:-.06em;line-height:1.02;margin:8px 0 6px;word-break:break-word}.muted{color:var(--muted)}.metric-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.metric{padding:13px;border-radius:16px;background:var(--metric-bg);border:1px solid var(--line)}.metric b{display:block;font-size:.8rem;color:var(--muted);margin-bottom:2px}.metric span{font-size:1.08rem;font-weight:900;word-break:break-word}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.tab{border:1px solid var(--line);background:var(--button2);color:var(--text);border-radius:999px;padding:9px 13px;font-weight:850;cursor:pointer}.tab.active{background:var(--accent);color:var(--accentText);border-color:transparent}
-.content{padding-top:70px}.article-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:32px;align-items:start}.article{min-width:0}.article h2{font-size:clamp(1.55rem,2.7vw,2.25rem);letter-spacing:-.04em;margin:44px 0 12px}.article h3{font-size:1.18rem;margin:28px 0 8px}.article p,.article li{color:var(--bodyText)}.formula{padding:18px 20px;border-radius:18px;background:var(--formula-bg);border:1px solid var(--line);font-weight:850;overflow:auto}.aside{position:sticky;top:18px;border-radius:24px;padding:20px}.aside h3{margin:0 0 10px}.aside a{display:block;text-decoration:none;padding:8px 0;border-bottom:1px solid var(--line);font-size:.92rem}.faq details{border:1px solid var(--line);background:var(--panel);border-radius:18px;padding:14px 16px;margin:10px 0}.faq summary{font-weight:900;cursor:pointer}.sources a{word-break:break-word}
-footer{border-top:1px solid var(--line);padding:28px 0 38px;color:var(--muted);font-size:.9rem}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-@media(max-width:860px){.article-grid{grid-template-columns:1fr}.aside{position:relative}.row3{grid-template-columns:1fr}.calc-shell{margin-top:-10px}}@media(max-width:620px){.row,.metric-grid{grid-template-columns:1fr}.topnav{display:none}.sitebar{padding:14px 0}.calc-card{border-radius:24px}.wrap{width:min(var(--max),calc(100% - 22px))}}
+    <!-- Primary Meta Tags -->
+<title>Ratio Calculator – Solve Proportions &amp; Missing Values</title>
+<meta name="title" content="Ratio Calculator – Solve Proportions &amp; Missing Values">
+<meta name="description" content="Ratio Calculator solves A:B = C:D when one value is missing. Enter any three terms to find the fourth and understand equivalent ratio relationships.">
 
-:root{--bg:#fff6f0;--text:#422018;--muted:#8d665c;--bodyText:#66453c;--panel:rgba(255,252,249,.92);--glass:#ffe9de;--line:#efcfbf;--accent:#d85b38;--accentText:#fff;--input-bg:#fffdfb;--input-line:#e9c4b3;--focus:rgba(216,91,56,.14);--button2:#ffe9df;--result-bg:linear-gradient(145deg,#ffe5d7,#fffaf7);--metric-bg:#fffaf7;--formula-bg:#ffe8dc;--shadow:0 28px 70px rgba(129,60,40,.13)}
-.hero{padding:42px 0 122px;background:linear-gradient(135deg,#fff3ec,#ffd8c6)}.hero-layout{display:grid;grid-template-columns:1.08fr .92fr;gap:40px;align-items:center}.balance{height:330px;position:relative;display:grid;place-items:center}.beam{position:absolute;width:310px;height:18px;border-radius:999px;background:#793a2a;transform:rotate(-3deg);box-shadow:0 10px 20px rgba(90,44,31,.2)}.stand{position:absolute;width:20px;height:180px;background:linear-gradient(#ba6449,#6d3224);bottom:25px;border-radius:12px}.base{position:absolute;width:150px;height:28px;bottom:14px;border-radius:50%;background:#8e402e}.scale{position:absolute;width:110px;height:75px;border-radius:0 0 60px 60px;background:linear-gradient(#ffb08e,#e97a58);top:126px;box-shadow:0 20px 30px rgba(156,71,46,.18)}.s1{left:45px}.s2{right:40px;top:106px}.ratio-layout{display:grid;grid-template-columns:1.fr;gap:22px}.ratio-equation{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:8px;align-items:end}.ratio-symbol{font-size:1.6rem;font-weight:950;padding-bottom:14px}@media(max-width:820px){.hero-layout,.ratio-layout{grid-template-columns:1fr}.ratio-equation{grid-template-columns:1fr 20px 1fr}.ratio-symbol.eq{grid-column:1/-1;text-align:center;padding:0}}
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Ratio Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Solve a proportion A:B = C:D when one value is unknown, and simplify two-number ratios.", "url": "/ratio-calculator/", "browserRequirements": "Requires JavaScript"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Math & Statistics", "item": "/math/"}, {"@type": "ListItem", "position": 3, "name": "Algebra", "item": "/math/algebra/"}, {"@type": "ListItem", "position": 4, "name": "Ratio Calculator", "item": "/ratio-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do you solve a missing value in a ratio?", "acceptedAnswer": {"@type": "Answer", "text": "Write the relationship as A/B = C/D, set the cross products equal, and isolate the missing variable."}}, {"@type": "Question", "name": "Can the denominator of a ratio be zero?", "acceptedAnswer": {"@type": "Answer", "text": "No. A fraction-style ratio with zero in the denominator is undefined, so B and D must be nonzero."}}, {"@type": "Question", "name": "Are 2:3 and 10:15 equivalent?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Both ratios equal two-thirds, and their cross products are equal: 2 × 15 = 3 × 10."}}, {"@type": "Question", "name": "Do ratios need units?", "acceptedAnswer": {"@type": "Answer", "text": "Ratios can compare quantities with the same or different units, but the units should be interpreted consistently. A rate such as km/h keeps its units meaningful."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/><link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body data-cp-category="math" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../math/index.html">Math &amp; Statistics</a></li><li><a aria-current="page" href="index.html">Ratio Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a href="../calculators/index.html">All calculators</a></div><header class="hero">
-<div class="wrap">
-<nav aria-label="Primary navigation" class="sitebar"><a class="brand" href="#">Calc<span>Pro</span></a><div class="topnav"><a href="#calculator">Calculator</a><a href="#guide">Guide</a><a href="#faq">FAQ</a></div></nav>
-<div class="hero-layout">
-<div><div class="breadcrumb"><a href="#">Home</a> / <a href="#">Math</a> / Ratio Calculator</div><div class="pill">CalcPro · Statistics + Geometry</div><h1>Ratio Calculator</h1><p>Balance proportions visually. Enter any three terms of A:B = C:D and solve the missing value with cross products.</p></div>
-<div aria-hidden="true" class="balance"><div class="beam"></div><div class="stand"></div><div class="base"></div><div class="scale s1"></div><div class="scale s2"></div></div>
-</div>
-</div>
-</header>
-<div class="cp-page-layout"><main id="main"><h1 class="page-title">Ratio Calculator</h1>
-<div class="wrap calc-shell" id="calculator"><section class="panel calc-card"><h2 class="calc-title">Ratio Calculator</h2><p class="calc-sub">Solve a proportion A:B = C:D when one value is unknown, and simplify two-number ratios.</p>
-<div class="ratio-layout">
-<section>
-<div class="ratio-equation">
-<div class="field"><label for="a">A</label><input class="input" id="a" step="any" type="number" value="2"/></div><div class="ratio-symbol">:</div>
-<div class="field"><label for="b">B</label><input class="input" id="b" step="any" type="number" value="3"/></div><div class="ratio-symbol eq">=</div>
-<div class="field"><label for="c">C</label><input class="input" id="c" step="any" type="number" value="10"/></div><div class="ratio-symbol">:</div>
-<div class="field"><label for="d">D (leave one field blank)</label><input class="input" id="d" placeholder="?" step="any" type="number"/></div>
-</div>
-<div class="buttons"><button class="btn primary" id="calcBtn">Solve proportion</button><button class="btn secondary" id="resetBtn">Reset</button></div><div class="error" id="error"></div>
-</section>
-<section aria-live="polite" class="result-card"><div class="result-kicker">Solved proportion</div><div class="result-big" id="result">—</div><div class="muted" id="work">Enter exactly three values.</div><div class="metric-grid"><div class="metric"><b>A:B as decimal</b><span id="left">—</span></div><div class="metric"><b>C:D as decimal</b><span id="right">—</span></div></div></section>
-</div>
-</section></div><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<div class="wrap content" id="guide">
-<div class="article-grid">
-<article class="article">
-<section id="s1"><h2>What Is a Ratio Calculator?</h2><p>A ratio calculator solves proportions in the form A:B = C:D. If any three terms are known, the fourth can be found using the fact that equivalent ratios have equal cross products.</p></section><section id="s2"><h2>How to Use the Ratio Calculator</h2><p>Enter values for any three of A, B, C, and D and leave exactly one field blank. Select Solve Proportion. The calculator fills the relationship numerically and shows the decimal value of each side.</p></section><section id="s3"><h2>Ratio and Proportion Formula</h2><div class="formula">A:B = C:D is equivalent to A/B = C/D, provided B and D are not zero. For a true proportion, the cross products are equal: A × D = B × C.</div></section><section id="s4"><h2>Calculation Example</h2><p>For 2:3 = 10:D, cross multiplication gives 2D = 30. Dividing by 2 gives D = 15, so 2:3 = 10:15.</p></section><section id="s5"><h2>Ratios vs. Rates</h2><p>A ratio compares two quantities by division. A rate is a ratio that often compares quantities with different units, such as kilometers per hour. A proportion states that two ratios or rates are equal.</p></section><section id="s6"><h2>Limitations</h2><p>The calculator solves one four-term proportion at a time. It does not automatically verify unit compatibility, so make sure corresponding numerators and denominators represent compatible quantities.</p></section>
-<section class="faq" id="faq"><h2>Frequently Asked Questions</h2><details><summary>How do you solve a missing value in a ratio?</summary><p>Write the relationship as A/B = C/D, set the cross products equal, and isolate the missing variable.</p></details><details><summary>Can the denominator of a ratio be zero?</summary><p>No. A fraction-style ratio with zero in the denominator is undefined, so B and D must be nonzero.</p></details><details><summary>Are 2:3 and 10:15 equivalent?</summary><p>Yes. Both ratios equal two-thirds, and their cross products are equal: 2 × 15 = 3 × 10.</p></details><details><summary>Do ratios need units?</summary><p>Ratios can compare quantities with the same or different units, but the units should be interpreted consistently. A rate such as km/h keeps its units meaningful.</p></details></section>
-<section class="sources" id="sources"><h2>Sources and Methodology</h2><p>Formulas and calculator behavior were cross-checked against the sources below. Page copy and visual design are original. Results are computed locally in your browser.</p><ul><li><a href="https://www.calculator.net/ratio-calculator.html" rel="noopener" target="_blank">Calculator.net Ratio Calculator</a></li><li><a href="https://openstax.org/books/prealgebra-2e/pages/6-5-solve-proportions-and-their-applications" rel="noopener" target="_blank">OpenStax – Solve Proportions and Applications</a></li></ul></section>
-</article>
-<aside class="aside panel"><h3>On this page</h3><a href="#s1">What Is a Ratio Calculator?</a><a href="#s2">How to Use the Ratio Calculator</a><a href="#s3">Ratio and Proportion Formula</a><a href="#s4">Calculation Example</a><a href="#s5">Ratios vs. Rates</a><a href="#s6">Limitations</a><a href="#faq">Frequently Asked Questions</a><a href="#sources">Sources &amp; Methodology</a></aside>
-</div>
-</div>
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/ratio-calculator/">
 
-<script class="cp-calculator-data" type="application/json">{"index":"146","Batch":"15","Calculator / Page":"Ratio Calculator","Slug":"ratio-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Solve a proportion A:B = C:D when one value is unknown, and simplify two-number ratios.","Formula / Algorithm Used in Tool":"Ratio and Proportion Formula: A:B = C:D is equivalent to A/B = C/D, provided B and D are not zero. For a true proportion, the cross products are equal: A × D = B × C.","Required User Inputs":"A; B; C; D (leave one field blank)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: A, B, C, D (leave one field blank). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"The calculator solves one four-term proportion at a time. It does not automatically verify unit compatibility, so make sure corresponding numerators and denominators represent compatible quantities.","Current Source URLs in Page":"https://www.calculator.net/ratio-calculator.html | https://openstax.org/books/prealgebra-2e/pages/6-5-solve-proportions-and-their-applications","Implementation Path":"/ratio-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Math &amp; Statistics</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../percent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Percent Calculator</strong><small>Calculate a percentage of a number, find what percent one value is of another, calc…</small></span></a><a class="cp-related-link" href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the simplified fraction, m…</small></span></a><a class="cp-related-link" href="../random-number-generator/index.html"><span class="cp-related-dot">›</span><span><strong>Random Number Generator</strong><small>Generate one or many random integers or decimals between custom limits, with option…</small></span></a><a class="cp-related-link" href="../pythagorean-theorem-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Pythagorean Theorem Calculator</strong><small>Find a missing side of a right triangle using a² + b² = c². Free, fast and responsi…</small></span></a><a class="cp-related-link" href="../p-value-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>P-Value Calculator</strong><small>Calculate left-tail, right-tail, center, between, or two-tail p-values from a z-sco…</small></span></a><a class="cp-related-link" href="../math-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Math Calculator</strong><small>Perform basic arithmetic with addition, subtraction, multiplication, division, pare…</small></span></a><a class="cp-related-link" href="../triangle-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Triangle Calculator</strong><small>Solve triangles from SSS, SAS, or ASA/AAS inputs and calculate missing sides, angle…</small></span></a><a class="cp-related-link" href="../number-sequence-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Number Sequence Calculator</strong><small>Calculate arithmetic, geometric, and Fibonacci sequence terms, previews, and finite…</small></span></a></div><a class="cp-side-category" href="../math/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-const $=id=>document.getElementById(id),fmt=n=>Number.isFinite(n)?Number(n.toPrecision(12)).toString():'—';
-function render(){const ids=['a','b','c','d'],raw=ids.map(id=>$(id).value.trim()),blank=raw.map((v,i)=>v===''?i:-1).filter(i=>i>=0),v=raw.map(Number),e=$('error');e.classList.remove('show');if(blank.length!==1||v.some((x,i)=>i!==blank[0]&&!Number.isFinite(x))){e.textContent='Leave exactly one of A, B, C, or D blank and fill the other three with numbers.';e.classList.add('show');return}let x,i=blank[0];if((i!==1&&v[1]===0)||(i!==3&&v[3]===0)){e.textContent='B and D cannot be zero in a proportion.';e.classList.add('show');return}if(i===0){if(v[3]===0){e.textContent='D cannot be zero.';e.classList.add('show');return}x=v[1]*v[2]/v[3]}if(i===1){if(v[2]===0){e.textContent='C cannot be zero when solving B.';e.classList.add('show');return}x=v[0]*v[3]/v[2]}if(i===2){if(v[1]===0){e.textContent='B cannot be zero.';e.classList.add('show');return}x=v[0]*v[3]/v[1]}if(i===3){if(v[0]===0){e.textContent='A cannot be zero when solving D.';e.classList.add('show');return}x=v[1]*v[2]/v[0]}v[i]=x;$('result').textContent=`${fmt(v[0])}:${fmt(v[1])} = ${fmt(v[2])}:${fmt(v[3])}`;$('work').textContent=`Solved ${ids[i].toUpperCase()} = ${fmt(x)} using A × D = B × C.`;$('left').textContent=v[1]!==0?fmt(v[0]/v[1]):'undefined';$('right').textContent=v[3]!==0?fmt(v[2]/v[3]):'undefined'}
-$('calcBtn').onclick=render;$('resetBtn').onclick=()=>{$('a').value=2;$('b').value=3;$('c').value=10;$('d').value='';render()};render();
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/ratio-calculator/">
+<meta property="og:title" content="Ratio Calculator – Solve Proportions &amp; Missing Values">
+<meta property="og:description" content="Ratio Calculator solves A:B = C:D when one value is missing. Enter any three terms to find the fourth and understand equivalent ratio relationships.">
+<meta property="og:site_name" content="Ratio Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/ratio-calculator/">
+<meta name="twitter:title" content="Ratio Calculator – Solve Proportions &amp; Missing Values">
+<meta name="twitter:description" content="Ratio Calculator solves A:B = C:D when one value is missing. Enter any three terms to find the fourth and understand equivalent ratio relationships.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65
+        }
+
+        :root {
+            --max: 1180px
+        }
+
+        a {
+            color: inherit
+        }
+
+        .wrap {
+            width: min(var(--max), calc(100% - 32px));
+            margin: auto
+        }
+
+        .sitebar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            gap: 18px
+        }
+
+        .brand {
+            font-weight: 900;
+            letter-spacing: -.04em;
+            font-size: 1.25rem;
+            text-decoration: none
+        }
+
+        .brand span {
+            color: var(--accent)
+        }
+
+        .topnav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .topnav a {
+            text-decoration: none;
+            font-size: .9rem;
+            padding: 9px 12px;
+            border-radius: 999px;
+            background: var(--glass);
+            border: 1px solid var(--line)
+        }
+
+        .breadcrumb {
+            font-size: .85rem;
+            opacity: .78;
+            margin-bottom: 14px
+        }
+
+        .breadcrumb a {
+            text-decoration: none
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero h1 {
+            font-size: clamp(2.35rem, 5vw, 5rem);
+            line-height: .98;
+            letter-spacing: -.065em;
+            margin: 0 0 18px;
+            max-width: 860px
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 1.8vw, 1.18rem);
+            max-width: 720px;
+            margin: 0;
+            color: var(--muted)
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: var(--glass);
+            border: 1px solid var(--line);
+            font-size: .82rem;
+            font-weight: 800;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            margin-bottom: 18px
+        }
+
+        main {
+            padding-bottom: 60px
+        }
+
+        .calc-shell {
+            position: relative;
+             z-index: 4
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px)
+        }
+
+        .calc-card {
+            border-radius: 30px;
+            padding: clamp(20px, 4vw, 38px)
+        }
+
+        .calc-title {
+            font-size: 1.45rem;
+            font-weight: 900;
+            letter-spacing: -.03em;
+            margin: 0 0 6px
+        }
+
+        .calc-sub {
+            margin: 0 0 24px;
+            color: var(--muted)
+        }
+
+        label {
+            display: block;
+            font-weight: 800;
+            font-size: .9rem;
+            margin-bottom: 7px
+        }
+
+        .field {
+            margin-bottom: 15px
+        }
+
+        .input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--input-line);
+            background: var(--input-bg);
+            color: var(--text);
+            border-radius: 16px;
+            padding: 14px 15px;
+            font: inherit;
+            outline: none;
+            transition: .2s
+        }
+
+        textarea {
+            min-height: 126px;
+            resize: vertical
+        }
+
+        .input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--focus)
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .row3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .btn {
+            appearance: none;
+            border: 0;
+            border-radius: 16px;
+            padding: 13px 18px;
+            font-weight: 900;
+            font: inherit;
+            cursor: pointer;
+            transition: .18s;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, .12)
+        }
+
+        .btn:hover {
+            transform: translateY(-2px)
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            color: var(--accentText)
+        }
+
+        .btn.secondary {
+            background: var(--button2);
+            color: var(--text);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            display: none;
+            margin-top: 14px;
+            padding: 11px 13px;
+            border-radius: 14px;
+            background: rgba(220, 38, 38, .1);
+            border: 1px solid rgba(220, 38, 38, .22);
+            color: #b91c1c;
+            font-weight: 700
+        }
+
+        .error.show {
+            display: block
+        }
+
+        .result-card {
+            border-radius: 26px;
+            padding: 24px;
+            background: var(--result-bg);
+            border: 1px solid var(--line);
+            position: relative;
+            overflow: hidden
+        }
+
+        .result-kicker {
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            font-weight: 900;
+            color: var(--muted)
+        }
+
+        .result-big {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 950;
+            letter-spacing: -.06em;
+            line-height: 1.02;
+            margin: 8px 0 6px;
+            word-break: break-word
+        }
+
+        .muted {
+            color: var(--muted)
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 14px
+        }
+
+        .metric {
+            padding: 13px;
+            border-radius: 16px;
+            background: var(--metric-bg);
+            border: 1px solid var(--line)
+        }
+
+        .metric b {
+            display: block;
+            font-size: .8rem;
+            color: var(--muted);
+            margin-bottom: 2px
+        }
+
+        .metric span {
+            font-size: 1.08rem;
+            font-weight: 900;
+            word-break: break-word
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 0 0 18px
+        }
+
+        .tab {
+            border: 1px solid var(--line);
+            background: var(--button2);
+            color: var(--text);
+            border-radius: 999px;
+            padding: 9px 13px;
+            font-weight: 850;
+            cursor: pointer
+        }
+
+        .tab.active {
+            background: var(--accent);
+            color: var(--accentText);
+            border-color: transparent
+        }
+
+        .content {
+            padding-top: 70px
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 300px;
+            gap: 32px;
+            align-items: start
+        }
+
+        .article {
+            min-width: 0
+        }
+
+        .article h2 {
+            font-size: clamp(1.55rem, 2.7vw, 2.25rem);
+            letter-spacing: -.04em;
+            margin: 44px 0 12px
+        }
+
+        .article h3 {
+            font-size: 1.18rem;
+            margin: 28px 0 8px
+        }
+
+        .article p,
+        .article li {
+            color: var(--bodyText)
+        }
+
+        .formula {
+            padding: 18px 20px;
+            border-radius: 18px;
+            background: var(--formula-bg);
+            border: 1px solid var(--line);
+            font-weight: 850;
+            overflow: auto
+        }
+
+        .aside {
+            position: sticky;
+            top: 18px;
+            border-radius: 24px;
+            padding: 20px
+        }
+
+        .aside h3 {
+            margin: 0 0 10px
+        }
+
+        .aside a {
+            display: block;
+            text-decoration: none;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--line);
+            font-size: .92rem
+        }
+
+        .faq details {
+            border: 1px solid var(--line);
+            background: var(--panel);
+            border-radius: 18px;
+            padding: 14px 16px;
+            margin: 10px 0
+        }
+
+        .faq summary {
+            font-weight: 900;
+            cursor: pointer
+        }
+
+        .sources a {
+            word-break: break-word
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 28px 0 38px;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0
+        }
+
+        @media(max-width:860px) {
+            .article-grid {
+                grid-template-columns: 1fr
+            }
+
+            .aside {
+                position: relative
+            }
+
+            .row3 {
+                grid-template-columns: 1fr
+            } 
+        }
+
+        @media(max-width:620px) {
+
+            .row,
+            .metric-grid {
+                grid-template-columns: 1fr
+            }
+
+            .topnav {
+                display: none
+            }
+
+            .sitebar {
+                padding: 14px 0
+            }
+
+            .calc-card {
+                border-radius: 24px
+            }
+
+            .wrap {
+                width: min(var(--max), calc(100% - 22px))
+            }
+        }
+
+        :root {
+            --bg: #fff6f0;
+            --text: #422018;
+            --muted: #8d665c;
+            --bodyText: #66453c;
+            --panel: rgba(255, 252, 249, .92);
+            --glass: #ffe9de;
+            --line: #efcfbf;
+            --accent: #d85b38;
+            --accentText: #fff;
+            --input-bg: #fffdfb;
+            --input-line: #e9c4b3;
+            --focus: rgba(216, 91, 56, .14);
+            --button2: #ffe9df;
+            --result-bg: linear-gradient(145deg, #ffe5d7, #fffaf7);
+            --metric-bg: #fffaf7;
+            --formula-bg: #ffe8dc;
+            --shadow: 0 28px 70px rgba(129, 60, 40, .13)
+        }
+
+        .hero {
+            padding: 42px 0 122px;
+            background: linear-gradient(135deg, #fff3ec, #ffd8c6)
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1.08fr .92fr;
+            gap: 40px;
+            align-items: center
+        }
+
+        .balance {
+            height: 330px;
+            position: relative;
+            display: grid;
+            place-items: center
+        }
+
+        .beam {
+            position: absolute;
+            width: 310px;
+            height: 18px;
+            border-radius: 999px;
+            background: #793a2a;
+            transform: rotate(-3deg);
+            box-shadow: 0 10px 20px rgba(90, 44, 31, .2)
+        }
+
+        .stand {
+            position: absolute;
+            width: 20px;
+            height: 180px;
+            background: linear-gradient(#ba6449, #6d3224);
+            bottom: 25px;
+            border-radius: 12px
+        }
+
+        .base {
+            position: absolute;
+            width: 150px;
+            height: 28px;
+            bottom: 14px;
+            border-radius: 50%;
+            background: #8e402e
+        }
+
+        .scale {
+            position: absolute;
+            width: 110px;
+            height: 75px;
+            border-radius: 0 0 60px 60px;
+            background: linear-gradient(#ffb08e, #e97a58);
+            top: 126px;
+            box-shadow: 0 20px 30px rgba(156, 71, 46, .18)
+        }
+
+        .s1 {
+            left: 45px
+        }
+
+        .s2 {
+            right: 40px;
+            top: 106px
+        }
+
+        .ratio-layout {
+            display: grid;
+            grid-template-columns: 1.fr;
+            gap: 22px
+        }
+
+        .ratio-equation {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+            gap: 8px;
+            align-items: end
+        }
+
+        .ratio-symbol {
+            font-size: 1.6rem;
+            font-weight: 950;
+            padding-bottom: 14px
+        }
+
+        @media(max-width:820px) {
+
+            .hero-layout,
+            .ratio-layout {
+                grid-template-columns: 1fr
+            }
+
+            .ratio-equation {
+                grid-template-columns: 1fr 20px 1fr
+            }
+
+            .ratio-symbol.eq {
+                grid-column: 1/-1;
+                text-align: center;
+                padding: 0
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/ratio-calculator/#webapplication",
+      "name": "Ratio Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/ratio-calculator/",
+      "description": "Ratio Calculator solves A:B = C:D when one value is missing. Enter any three terms to find the fourth and understand equivalent ratio relationships.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/ratio-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Ratio Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/ratio-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/ratio-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What formula does the Ratio Calculator use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It uses: A / B = C / D and the cross-product relationship: A × D = B × C. The equation is rearranged depending on which of the four values is missing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I leave two values blank?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The calculator is designed to solve one unknown in a four-term proportion. With more than one unknown, there is usually not enough information to determine one unique solution."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can't B or D equal zero?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "B and D are denominator terms in A/B = C/D. Division by zero is undefined, so a valid proportion requires both denominator terms to be nonzero."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you simplify a ratio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For a whole-number ratio, divide both terms by a common factor. Dividing by their greatest common factor gives a fully reduced equivalent ratio. For example, 16 : 24 divided by 8 becomes 2 : 3."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do units matter in a proportion?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, when the numbers represent measurements. Corresponding terms should use compatible quantities and remain in the same order. For example, if the first ratio is distance to time, the second ratio should also be distance to time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is cross multiplication always valid?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cross multiplication is appropriate when two ratios are set equal as a proportion. It should not be treated as a general rule for every equation containing fractions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I check the calculated answer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Substitute the result back into the original proportion and compare the cross products. If A × D = B × C, the completed ratios are equivalent."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart OnlineFree",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script><script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="math" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../math/index.html">Math &amp; Statistics</a></li>
+            <li><a aria-current="page" href="index.html">Ratio Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Ratio Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+            <div class="wrap calc-shell" id="calculator">
+                <section class="panel calc-card">
+                    <h2 class="calc-title">Ratio Calculator</h2>
+                    <p class="calc-sub">Solve a proportion A:B = C:D when one value is unknown, and simplify two-number
+                        ratios.</p>
+                    <div class="ratio-layout">
+                        <section>
+                            <div class="ratio-equation">
+                                <div class="field"><label for="a">A</label><input class="input" id="a" step="any"
+                                        type="number" value="2" /></div>
+                                <div class="ratio-symbol">:</div>
+                                <div class="field"><label for="b">B</label><input class="input" id="b" step="any"
+                                        type="number" value="3" /></div>
+                                <div class="ratio-symbol eq">=</div>
+                                <div class="field"><label for="c">C</label><input class="input" id="c" step="any"
+                                        type="number" value="10" /></div>
+                                <div class="ratio-symbol">:</div>
+                                <div class="field"><label for="d">D (leave one field blank)</label><input class="input"
+                                        id="d" placeholder="?" step="any" type="number" /></div>
+                            </div>
+                            <div class="buttons"><button class="btn primary" id="calcBtn">Solve
+                                    proportion</button><button class="btn secondary" id="resetBtn">Reset</button></div>
+                            <div class="error" id="error"></div>
+                        </section>
+                        <section aria-live="polite" class="result-card">
+                            <div class="result-kicker">Solved proportion</div>
+                            <div class="result-big" id="result">—</div>
+                            <div class="muted" id="work">Enter exactly three values.</div>
+                            <div class="metric-grid">
+                                <div class="metric"><b>A:B as decimal</b><span id="left">—</span></div>
+                                <div class="metric"><b>C:D as decimal</b><span id="right">—</span></div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <div class="wrap content" id="guide">
+       
+<article class="article">
+
+  <p><strong>Use the Ratio Calculator to solve a proportion in the form A:B = C:D when one of the four values is unknown. Enter any three values and leave one field blank to calculate the missing term. The calculator can also help express equivalent two-number ratios in a simpler form.</strong></p>
+
+  <section id="what">
+    <h2>What Is the Ratio Calculator?</h2>
+
+    <p><strong>A ratio compares two quantities, while a proportion states that two ratios are equal. A proportion can be written as:</strong></p>
+
+    <div class="formula"><strong>A:B = C:D</strong></div>
+
+    <p><strong>or:</strong></p>
+
+    <div class="formula"><strong>A / B = C / D</strong></div>
+
+    <p><strong>The Ratio Calculator finds the missing value that makes both ratios equivalent. It is useful for scaling quantities, recipes, measurements, maps, rates, and other situations where two ratios should remain proportional.</strong></p>
+
+    <p><strong>OpenStax defines a proportion as an equation in which two ratios or rates are equal.</strong></p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Ratio Calculator</h2>
+
+    <p><strong>The calculator uses four fields arranged as:</strong></p>
+
+    <div class="formula"><strong>A : B = C : D</strong></div>
+
+    <p><strong>Enter values in any three fields and leave the value you want to calculate blank.</strong></p>
+
+    <p><strong>A — the first term of the first ratio.</strong></p>
+
+    <p><strong>B — the second term of the first ratio. Because it acts as a denominator in A/B, it cannot be zero.</strong></p>
+
+    <p><strong>C — the first term of the second ratio.</strong></p>
+
+    <p><strong>D — the second term of the second ratio. Because it acts as a denominator in C/D, it cannot be zero.</strong></p>
+
+    <p><strong>For example, to solve:</strong></p>
+
+    <div class="formula"><strong>3 : 5 = 12 : ?</strong></div>
+
+    <p><strong>enter:</strong></p>
+
+    <ul>
+      <li><strong>A = 3</strong></li>
+      <li><strong>B = 5</strong></li>
+      <li><strong>C = 12</strong></li>
+      <li><strong>D = blank</strong></li>
+    </ul>
+
+    <p><strong>The calculator then finds the value of D that makes the two ratios equal.</strong></p>
+
+    <p><strong>When ratios represent measured quantities, keep corresponding terms consistent. For example, if A represents miles and B represents hours, C and D should follow the same miles-to-hours order.</strong></p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+
+    <p><strong>The calculator is based on the proportion:</strong></p>
+
+    <div class="formula"><strong>A / B = C / D</strong></div>
+
+    <p><strong>where:</strong></p>
+
+    <div class="formula"><strong>B ≠ 0 and D ≠ 0</strong></div>
+
+    <p><strong>A true proportion has equal cross products:</strong></p>
+
+    <div class="formula"><strong>A × D = B × C</strong></div>
+
+    <p><strong>This cross-product relationship is the main calculation used to solve for a missing term.</strong></p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Variable</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>A</strong></td>
+          <td><strong>First term of the first ratio</strong></td>
+          <td><strong>Same unit type as C, when units apply</strong></td>
+        </tr>
+        <tr>
+          <td><strong>B</strong></td>
+          <td><strong>Second term of the first ratio</strong></td>
+          <td><strong>Same unit type as D, when units apply</strong></td>
+        </tr>
+        <tr>
+          <td><strong>C</strong></td>
+          <td><strong>First term of the second ratio</strong></td>
+          <td><strong>Same unit type as A, when units apply</strong></td>
+        </tr>
+        <tr>
+          <td><strong>D</strong></td>
+          <td><strong>Second term of the second ratio</strong></td>
+          <td><strong>Same unit type as B, when units apply</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Ratios may also be unitless when they simply compare numbers.</strong></p>
+
+    <h3>Solving for A</h3>
+
+    <p><strong>Starting with:</strong></p>
+
+    <div class="formula"><strong>A × D = B × C</strong></div>
+
+    <p><strong>divide both sides by D:</strong></p>
+
+    <div class="formula"><strong>A = (B × C) / D</strong></div>
+
+    <h3>Solving for B</h3>
+
+    <p><strong>Starting with:</strong></p>
+
+    <div class="formula"><strong>A × D = B × C</strong></div>
+
+    <p><strong>divide both sides by C:</strong></p>
+
+    <div class="formula"><strong>B = (A × D) / C</strong></div>
+
+    <h3>Solving for C</h3>
+
+    <p><strong>Starting with:</strong></p>
+
+    <div class="formula"><strong>A × D = B × C</strong></div>
+
+    <p><strong>divide both sides by B:</strong></p>
+
+    <div class="formula"><strong>C = (A × D) / B</strong></div>
+
+    <h3>Solving for D</h3>
+
+    <p><strong>Starting with:</strong></p>
+
+    <div class="formula"><strong>A × D = B × C</strong></div>
+
+    <p><strong>divide both sides by A:</strong></p>
+
+    <div class="formula"><strong>D = (B × C) / A</strong></div>
+
+    <p><strong>These rearrangements follow directly from the cross-product equation. Values used as divisors must be nonzero.</strong></p>
+
+    <h3>Calculation Sequence</h3>
+
+    <ol>
+      <li><strong>Read the three entered values and identify the blank term.</strong></li>
+      <li><strong>Represent the ratios as A/B = C/D.</strong></li>
+      <li><strong>Set the cross products equal: A × D = B × C.</strong></li>
+      <li><strong>Rearrange the equation for the missing variable.</strong></li>
+      <li><strong>Calculate the unknown value.</strong></li>
+      <li><strong>Use the completed values to represent the equivalent ratios.</strong></li>
+    </ol>
+
+    <h3>Simplifying a Ratio</h3>
+
+    <p><strong>A ratio can also be written as a fraction. For whole-number ratios, an equivalent simpler ratio can be produced by dividing both terms by a common factor. Dividing by the greatest common factor reduces the ratio as far as possible while preserving the same relationship.</strong></p>
+
+    <p><strong>For example:</strong></p>
+
+    <div class="formula"><strong>12 : 20</strong></div>
+
+    <p><strong>The greatest common factor of 12 and 20 is 4.</strong></p>
+
+    <div class="formula"><strong>12 ÷ 4 : 20 ÷ 4 = 3 : 5</strong></div>
+
+    <p><strong>Therefore:</strong></p>
+
+    <div class="formula"><strong>12 : 20 = 3 : 5</strong></div>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p><strong>Suppose you want to find the missing value in:</strong></p>
+
+    <div class="formula"><strong>3 : 5 = 12 : D</strong></div>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li><strong>A = 3</strong></li>
+      <li><strong>B = 5</strong></li>
+      <li><strong>C = 12</strong></li>
+      <li><strong>D = unknown</strong></li>
+    </ul>
+
+    <h3>Step 1</h3>
+
+    <p><strong>Write the proportion:</strong></p>
+
+    <div class="formula"><strong>3 / 5 = 12 / D</strong></div>
+
+    <h3>Step 2</h3>
+
+    <p><strong>Cross multiply:</strong></p>
+
+    <div class="formula"><strong>3 × D = 5 × 12</strong></div>
+
+    <div class="formula"><strong>3D = 60</strong></div>
+
+    <h3>Step 3</h3>
+
+    <p><strong>Divide both sides by 3:</strong></p>
+
+    <div class="formula"><strong>D = 60 / 3</strong></div>
+
+    <div class="formula"><strong>D = 20</strong></div>
+
+    <h3>Final Result</h3>
+
+    <div class="formula"><strong>D = 20</strong></div>
+
+    <p><strong>The completed proportion is:</strong></p>
+
+    <div class="formula"><strong>3 : 5 = 12 : 20</strong></div>
+
+    <p><strong>Check the cross products:</strong></p>
+
+    <div class="formula"><strong>3 × 20 = 60</strong></div>
+
+    <div class="formula"><strong>5 × 12 = 60</strong></div>
+
+    <p><strong>Because both cross products are equal, the proportion is valid.</strong></p>
+
+    <p><strong>The second ratio also simplifies:</strong></p>
+
+    <div class="formula"><strong>12 : 20 = 3 : 5</strong></div>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Missing Value</h3>
+
+    <p><strong>The main result is the number required to make the two ratios equal.</strong></p>
+
+    <p><strong>For example:</strong></p>
+
+    <div class="formula"><strong>4 : 7 = 20 : 35</strong></div>
+
+    <p><strong>Both ratios describe the same proportion because:</strong></p>
+
+    <div class="formula"><strong>4 / 7 = 20 / 35</strong></div>
+
+    <p><strong>and their cross products are equal.</strong></p>
+
+    <h3>Completed Proportion</h3>
+
+    <p><strong>After the missing term is calculated, the four values form a complete proportion:</strong></p>
+
+    <div class="formula"><strong>A : B = C : D</strong></div>
+
+    <p><strong>The result means the relationship between A and B is equal to the relationship between C and D.</strong></p>
+
+    <h3>Simplified Ratio</h3>
+
+    <p><strong>When a ratio is reduced, the values become smaller while maintaining the same proportional relationship.</strong></p>
+
+    <p><strong>For example:</strong></p>
+
+    <div class="formula"><strong>18 : 24 = 3 : 4</strong></div>
+
+    <p><strong>The numbers change, but the ratio remains equivalent.</strong></p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p><strong>The Ratio Calculator solves one four-term proportion at a time. Enter three known terms and leave only one term unknown.</strong></p>
+
+    <p><strong>The denominator positions B and D cannot be zero, because division by zero is undefined. OpenStax likewise defines a proportion A/B = C/D with nonzero denominators.</strong></p>
+
+    <p><strong>Some zero-value combinations can also produce undefined or non-unique solutions when solving for a term requires division by zero.</strong></p>
+
+    <p><strong>The calculator does not determine whether the quantities you enter are logically compatible. When units are involved, corresponding terms should represent compatible quantities and should remain in the same order.</strong></p>
+
+    <p><strong>Cross multiplication applies when two ratios are set equal as a proportion. It should not automatically be applied to unrelated equations that do not have this structure.</strong></p>
+
+    <p><strong>The mathematical result is meaningful for real-world scaling only when the quantities actually have a proportional relationship.</strong></p>
+
+    <p><strong>If a result is displayed as a rounded decimal, the exact mathematical value may contain additional digits.</strong></p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What formula does the Ratio Calculator use?</summary>
+
+      <p><strong>It uses:</strong></p>
+
+      <div class="formula"><strong>A / B = C / D</strong></div>
+
+      <p><strong>and the cross-product relationship:</strong></p>
+
+      <div class="formula"><strong>A × D = B × C</strong></div>
+
+      <p><strong>The equation is rearranged depending on which of the four values is missing.</strong></p>
+    </details>
+
+    <details class="faq">
+      <summary>Can I leave two values blank?</summary>
+
+      <p><strong>The calculator is designed to solve one unknown in a four-term proportion. With more than one unknown, there is usually not enough information to determine one unique solution.</strong></p>
+    </details>
+
+    <details class="faq">
+      <summary>Why can't B or D equal zero?</summary>
+
+      <p><strong>B and D are denominator terms in A/B = C/D. Division by zero is undefined, so a valid proportion requires both denominator terms to be nonzero.</strong></p>
+    </details>
+
+    <details class="faq">
+      <summary>How do you simplify a ratio?</summary>
+
+      <p><strong>For a whole-number ratio, divide both terms by a common factor. Dividing by their greatest common factor gives a fully reduced equivalent ratio.</strong></p>
+
+      <p><strong>For example:</strong></p>
+
+      <div class="formula"><strong>16 : 24</strong></div>
+
+      <p><strong>Divide both numbers by 8:</strong></p>
+
+      <div class="formula"><strong>2 : 3</strong></div>
+    </details>
+
+    <details class="faq">
+      <summary>Do units matter in a proportion?</summary>
+
+      <p><strong>Yes, when the numbers represent measurements. Corresponding terms should use compatible quantities and remain in the same order. For example, if the first ratio is distance to time, the second ratio should also be distance to time.</strong></p>
+    </details>
+
+    <details class="faq">
+      <summary>Is cross multiplication always valid?</summary>
+
+      <p><strong>Cross multiplication is appropriate when two ratios are set equal as a proportion. It should not be treated as a general rule for every equation containing fractions.</strong></p>
+    </details>
+
+    <details class="faq">
+      <summary>How can I check the calculated answer?</summary>
+
+      <p><strong>Substitute the result back into the original proportion and compare the cross products.</strong></p>
+
+      <p><strong>If:</strong></p>
+
+      <div class="formula"><strong>A × D = B × C</strong></div>
+
+      <p><strong>the completed ratios are equivalent.</strong></p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <strong>OpenStax — Solve Proportions and Their Applications</strong>
+        <p><strong>Defines proportions in the form A/B = C/D, states the nonzero denominator requirement, and explains equal cross products.</strong></p>
+        <a href="https://openstax.org/books/prealgebra-2e/pages/6-5-solve-proportions-and-their-applications?utm_source=chatgpt.com" rel="noopener" target="_blank"><strong>OpenStax: Solve Proportions and Their Applications</strong></a>
+      </li>
+
+      <li>
+        <strong>OpenStax — Ratios and Rate</strong>
+        <p><strong>Supports ratio notation, ratio-as-fraction interpretation, and simplified ratio representation.</strong></p>
+        <a href="https://openstax.org/books/prealgebra-2e/pages/5-6-ratios-and-rate?utm_source=chatgpt.com" rel="noopener" target="_blank"><strong>OpenStax: Ratios and Rate</strong></a>
+      </li>
+
+      <li>
+        <strong>OpenStax — Finding the Greatest Common Factor</strong>
+        <p><strong>Supports the definition and calculation of the greatest common factor used when reducing whole-number ratios.</strong></p>
+        <a href="https://openstax.org/books/algebra-1/pages/6-4-2-finding-the-gcf-of-two-or-more-expressions?utm_source=chatgpt.com" rel="noopener" target="_blank"><strong>OpenStax: Finding the GCF</strong></a>
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/fraction-calculator/?utm_source=chatgpt.com"><strong>Fraction Calculator</strong></a><strong>&#x20;— calculate and work with fractions.</strong></li>
+      <li><a href="https://example.com/percent-calculator/?utm_source=chatgpt.com"><strong>Percent Calculator</strong></a><strong>&#x20;— calculate percentages and percentage relationships.</strong></li>
+      <li><a href="https://example.com/gcf-calculator/?utm_source=chatgpt.com"><strong>GCF Calculator</strong></a><strong>&#x20;— find the greatest common factor for simplifying whole-number ratios.</strong></li>
+      <li><a href="https://example.com/lcm-calculator/?utm_source=chatgpt.com"><strong>LCM Calculator</strong></a><strong>&#x20;— find the least common multiple of numbers.</strong></li>
+      <li><a href="https://example.com/factor-calculator/?utm_source=chatgpt.com"><strong>Factor Calculator</strong></a><strong>&#x20;— find the factors of an integer.</strong></li>
+      <li><a href="https://example.com/math-calculator/?utm_source=chatgpt.com"><strong>Math Calculator</strong></a><strong>&#x20;— perform general mathematical calculations.</strong></li>
+    </ul>
+  </section>
+</article>
+
+
+
+            </div>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"146","Batch":"15","Calculator / Page":"Ratio Calculator","Slug":"ratio-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Solve a proportion A:B = C:D when one value is unknown, and simplify two-number ratios.","Formula / Algorithm Used in Tool":"Ratio and Proportion Formula: A:B = C:D is equivalent to A/B = C/D, provided B and D are not zero. For a true proportion, the cross products are equal: A × D = B × C.","Required User Inputs":"A; B; C; D (leave one field blank)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: A, B, C, D (leave one field blank). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"The calculator solves one four-term proportion at a time. It does not automatically verify unit compatibility, so make sure corresponding numerators and denominators represent compatible quantities.","Current Source URLs in Page":"https://www.calculator.net/ratio-calculator.html | https://openstax.org/books/prealgebra-2e/pages/6-5-solve-proportions-and-their-applications","Implementation Path":"/ratio-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Math &amp; Statistics</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../percent-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Percent Calculator</strong><small>Calculate a
+                            percentage of a number, find what percent one value is of another,
+                            calc…</small></span></a><a class="cp-related-link"
+                    href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction
+                            Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the
+                            simplified fraction, m…</small></span></a><a class="cp-related-link"
+                    href="../random-number-generator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Random Number Generator</strong><small>Generate one
+                            or many random integers or decimals between custom limits, with option…</small></span></a><a
+                    class="cp-related-link" href="../pythagorean-theorem-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Pythagorean Theorem Calculator</strong><small>Find
+                            a missing side of a right triangle using a² + b² = c². Free, fast and
+                            responsi…</small></span></a><a class="cp-related-link"
+                    href="../p-value-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>P-Value
+                            Calculator</strong><small>Calculate left-tail, right-tail, center, between, or two-tail
+                            p-values from a z-sco…</small></span></a><a class="cp-related-link"
+                    href="../math-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Math
+                            Calculator</strong><small>Perform basic arithmetic with addition, subtraction,
+                            multiplication, division, pare…</small></span></a><a class="cp-related-link"
+                    href="../triangle-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Triangle
+                            Calculator</strong><small>Solve triangles from SSS, SAS, or ASA/AAS inputs and calculate
+                            missing sides, angle…</small></span></a><a class="cp-related-link"
+                    href="../number-sequence-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Number Sequence Calculator</strong><small>Calculate
+                            arithmetic, geometric, and Fibonacci sequence terms, previews, and
+                            finite…</small></span></a></div><a class="cp-side-category"
+                href="../math/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const $ = id => document.getElementById(id), fmt = n => Number.isFinite(n) ? Number(n.toPrecision(12)).toString() : '—';
+        function render() { const ids = ['a', 'b', 'c', 'd'], raw = ids.map(id => $(id).value.trim()), blank = raw.map((v, i) => v === '' ? i : -1).filter(i => i >= 0), v = raw.map(Number), e = $('error'); e.classList.remove('show'); if (blank.length !== 1 || v.some((x, i) => i !== blank[0] && !Number.isFinite(x))) { e.textContent = 'Leave exactly one of A, B, C, or D blank and fill the other three with numbers.'; e.classList.add('show'); return } let x, i = blank[0]; if ((i !== 1 && v[1] === 0) || (i !== 3 && v[3] === 0)) { e.textContent = 'B and D cannot be zero in a proportion.'; e.classList.add('show'); return } if (i === 0) { if (v[3] === 0) { e.textContent = 'D cannot be zero.'; e.classList.add('show'); return } x = v[1] * v[2] / v[3] } if (i === 1) { if (v[2] === 0) { e.textContent = 'C cannot be zero when solving B.'; e.classList.add('show'); return } x = v[0] * v[3] / v[2] } if (i === 2) { if (v[1] === 0) { e.textContent = 'B cannot be zero.'; e.classList.add('show'); return } x = v[0] * v[3] / v[1] } if (i === 3) { if (v[0] === 0) { e.textContent = 'A cannot be zero when solving D.'; e.classList.add('show'); return } x = v[1] * v[2] / v[0] } v[i] = x; $('result').textContent = `${fmt(v[0])}:${fmt(v[1])} = ${fmt(v[2])}:${fmt(v[3])}`; $('work').textContent = `Solved ${ids[i].toUpperCase()} = ${fmt(x)} using A × D = B × C.`; $('left').textContent = v[1] !== 0 ? fmt(v[0] / v[1]) : 'undefined'; $('right').textContent = v[3] !== 0 ? fmt(v[2] / v[3]) : 'undefined' }
+        $('calcBtn').onclick = render; $('resetBtn').onclick = () => { $('a').value = 2; $('b').value = 3; $('c').value = 10; $('d').value = ''; render() }; render();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

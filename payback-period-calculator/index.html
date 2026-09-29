@@ -1,13 +1,961 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
-<title>Payback Period Calculator | CalcPro</title><meta content="Calculate simple and discounted payback periods from an initial investment, annual cash flow, and discount rate." name="description"/><meta content="index,follow" name="robots"/><link href="../payback-period-calculator/" rel="canonical"/><meta content="Payback Period Calculator | CalcPro" property="og:title"/><meta content="Calculate simple and discounted payback periods from an initial investment, annual cash flow, and discount rate." property="og:description"/><meta content="website" property="og:type"/><meta content="#1477ff" name="theme-color"/><style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}button,input,select{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}.wrap{width:min(1160px,92vw);margin:auto}.crumb{font-size:.86rem;opacity:.78}.eyebrow{font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:800}.btn.secondary{background:transparent;border:1px solid currentColor}.field{display:grid;gap:7px}.field label{font-size:.88rem;font-weight:750}.field input,.field select{width:100%;border-radius:14px;padding:12px 13px;border:1px solid rgba(127,127,127,.25);background:rgba(255,255,255,.76);color:#111;outline:none}.field input:focus,.field select:focus{box-shadow:0 0 0 4px rgba(99,102,241,.14)}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.actions{display:flex;gap:10px;flex-wrap:wrap}.error{display:none;padding:10px 12px;border-radius:12px;background:#fee2e2;color:#991b1b;font-weight:700;margin:10px 0}.error.show{display:block}.result-num{font-size:clamp(2rem,6vw,3.6rem);font-weight:900;letter-spacing:-.05em}.stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{padding:12px;border-radius:14px;background:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.7)}.stat b{display:block;font-size:1.08rem}.content{padding:56px 0}.article{max-width:860px;margin:auto}.article h2{font-size:clamp(1.5rem,3vw,2.05rem);margin:34px 0 10px;line-height:1.2}.article h3{margin:24px 0 8px}.article p,.article li{color:var(--muted,#4b5563)}.formula{padding:16px 18px;border-radius:16px;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.14);font-weight:800;overflow:auto}.source-list a{text-decoration:underline;text-underline-offset:3px}.faq details{border-top:1px solid rgba(127,127,127,.2);padding:14px 0}.faq summary{font-weight:800;cursor:pointer}footer{padding:34px 0;border-top:1px solid rgba(127,127,127,.18);font-size:.9rem;opacity:.75}@media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}.stat-grid{grid-template-columns:1fr}.wrap{width:min(94vw,1160px)}}
+<html lang="en">
 
-:root{--muted:#5b5a6a}body{background:#0d0c17;color:#f5f3ff}.hero-pb{padding:28px 0 78px;background:radial-gradient(circle at 50% 20%,#4c1d95 0 5%,transparent 32%),#0d0c17}.hero-pb h1{font-size:clamp(3rem,8vw,6.3rem);line-height:.92;letter-spacing:-.08em;text-align:center;margin:55px 0 14px}.hero-pb p{text-align:center;max-width:680px;margin:auto;color:#c7bfdc}.timeline{display:flex;gap:8px;justify-content:center;margin:36px auto 0;max-width:760px}.timeline span{height:18px;flex:1;border-radius:999px;background:#30264a}.timeline span:nth-child(-n+4){background:linear-gradient(90deg,#8b5cf6,#22d3ee)}.calc-pb{background:#f5f3ff;color:#1f1830;padding:38px 0}.pb-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:20px}.pb-form{background:#fff;border-radius:24px;padding:24px}.pb-result{background:#181126;color:#fff;border-radius:24px;padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:16px}.dial{border:1px solid #ffffff17;border-radius:22px;padding:20px;display:grid;place-items:center;text-align:center}.dial .result-num{color:#67e8f9}.pb-result .stat{background:#ffffff0e;border-color:#ffffff19}.btn{background:#6d28d9;color:#fff}.btn.secondary{color:#6d28d9}.content{background:#fff;color:#221b2d}@media(max-width:800px){.pb-wrap,.pb-result{grid-template-columns:1fr}}
-</style><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Payback Period Calculator", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "description": "Calculate simple and discounted payback periods from an initial investment, annual cash flow, and discount rate.", "url": "/calculators/payback-period-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Business & Economics", "item": "/finance/business-economics/"}, {"@type": "ListItem", "position": 4, "name": "Payback Period Calculator", "item": "/payback-period-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the payback period?", "acceptedAnswer": {"@type": "Answer", "text": "The payback period is the time needed for cumulative project cash inflows to recover the initial investment."}}, {"@type": "Question", "name": "What is the simple payback formula?", "acceptedAnswer": {"@type": "Answer", "text": "When net cash inflow is constant each year, simple payback equals the initial investment divided by annual net cash flow."}}, {"@type": "Question", "name": "Why calculate discounted payback?", "acceptedAnswer": {"@type": "Answer", "text": "Simple payback ignores the time value of money. Discounted payback first reduces future cash flows to present value using a discount rate before measuring when the initial investment is recovered."}}]}]}</script><link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head><body data-cp-category="health" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header><nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../health/index.html">Health &amp; Fitness</a></li><li><a aria-current="page" href="index.html">Payback Period Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../health/index.html">Browse Health &amp; Fitness</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main"><h1 class="page-title">Payback Period Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="calc-pb"><div class="wrap pb-wrap"><div class="pb-form"><h2>Project cash flow</h2><div class="field"><label for="pbInv">Initial investment</label><input id="pbInv" min="0.01" type="number" value="100000"/></div><div class="field"><label for="pbCF">Annual net cash flow</label><input id="pbCF" min="0.01" type="number" value="25000"/></div><div class="field"><label for="pbRate">Discount rate (%/yr)</label><input id="pbRate" min="0" step="0.1" type="number" value="8"/></div><div class="error" id="pbErr"></div><div class="actions"><button class="btn" onclick="calcPB()">Calculate Payback</button><button class="btn secondary" onclick="resetPB()">Reset</button></div></div><aside class="pb-result"><div class="dial"><div><div class="eyebrow">Simple payback</div><div class="result-num" id="pbSimple">—</div><div>years</div></div></div><div class="dial"><div><div class="eyebrow">Discounted payback</div><div class="result-num" id="pbDisc">—</div><div id="pbDiscUnit">years</div></div></div><div class="stat" style="grid-column:1/-1">Simple payback in months<b id="pbMonths">—</b></div></aside></div></section><section class="content"><article class="article wrap"><h2>What Is a Payback Period Calculator?</h2><p>A payback period calculator estimates how long it takes an investment or project to recover its initial cash outlay from net cash inflows. It is often used as a simple capital-budgeting screening measure.</p><h2>Simple Payback Formula</h2><div class="formula">Payback Period = Initial Investment ÷ Annual Net Cash Flow</div><p>OpenStax uses this formula when net annual cash flows are even from period to period. For example, a $100,000 investment producing $25,000 per year has a simple payback of 4 years.</p><h2>Discounted Payback</h2><p>Discounted payback recognizes the time value of money. This calculator discounts each future year’s cash flow at the entered rate, accumulates those present values, and interpolates within the year in which the investment is recovered.</p><h2>Key Limitation</h2><p>Simple payback ignores cash flows after the payback point and does not measure total profitability. Even discounted payback remains a recovery-time metric, so it should be considered alongside NPV, IRR, ROI, risk, and strategic factors.</p><h2>Frequently Asked Questions</h2><div class="faq"><details><summary>What is the payback period?</summary><p>The payback period is the time needed for cumulative project cash inflows to recover the initial investment.</p></details><details><summary>What is the simple payback formula?</summary><p>When net cash inflow is constant each year, simple payback equals the initial investment divided by annual net cash flow.</p></details><details><summary>Why calculate discounted payback?</summary><p>Simple payback ignores the time value of money. Discounted payback first reduces future cash flows to present value using a discount rate before measuring when the initial investment is recovered.</p></details></div><h2>Sources and Methodology</h2><ul class="source-list"><li><a href="https://openstax.org/books/principles-managerial-accounting/pages/11-2-evaluate-the-payback-and-accounting-rate-of-return-in-capital-investment-decisions">OpenStax — Payback method</a></li></ul></article></section>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <!-- Primary Meta Tags -->
+<title>Payback Period Calculator – Simple &amp; Discounted Payback</title>
+<meta name="title" content="Payback Period Calculator – Simple &amp; Discounted Payback">
+<meta name="description" content="Calculate simple and discounted payback periods from initial investment, annual net cash flow, and discount rate to estimate investment recovery time.">
 
-<script class="cp-calculator-data" type="application/json">{"index":"105","Batch":"11","Calculator / Page":"Payback Period Calculator","Slug":"payback-period-calculator","Site Category (Current)":"Health & Fitness","Recommended Content Domain":"Pregnancy / Reproductive Health","Page Type":"Calculator","Search Intent / Purpose":"Calculate simple and discounted payback periods from an initial investment, annual cash flow, and discount rate.","Formula / Algorithm Used in Tool":"Simple Payback Formula: Payback Period = Initial Investment ÷ Annual Net Cash Flow OpenStax uses this formula when net annual cash flows are even from period to period. For example, a $100,000 investment producing $25,000 per year has a simple payback of 4 years.","Required User Inputs":"Initial investment; Annual net cash flow; Discount rate (%/yr)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Initial investment, Annual net cash flow, Discount rate (%/yr). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Authoritative obstetric/reproductive formula source, gestational assumptions, date conventions, population scope and clinical limitations.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When clinical guidance changes","Important Assumptions / Limitations":"Simple payback ignores cash flows after the payback point and does not measure total profitability. Even discounted payback remains a recovery-time metric, so it should be considered alongside NPV, IRR, ROI, risk, and strategic factors.","Current Source URLs in Page":"https://openstax.org/books/principles-managerial-accounting/pages/11-2-evaluate-the-payback-and-accounting-rate-of-return-in-capital-investment-decisions","Implementation Path":"/payback-period-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Health &amp; Fitness</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../pregnancy-conception-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Pregnancy Conception Calculator</strong><small>Estimate a likely conception date from an estimated due date or from the first day…</small></span></a><a class="cp-related-link" href="../period-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Period Calculator</strong><small>Predict upcoming period dates and an approximate ovulation date from your usual cyc…</small></span></a><a class="cp-related-link" href="../due-date-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Due Date Calculator</strong><small>Estimate pregnancy due date from the last menstrual period, conception date, or IVF…</small></span></a><a class="cp-related-link" href="../pregnancy-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Pregnancy Calculator</strong><small>Estimate pregnancy due date, current gestational age, trimester, and key dates from…</small></span></a><a class="cp-related-link" href="../conception-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Conception Calculator</strong><small>Estimate a fertile window and peak conception days from the last menstrual period a…</small></span></a><a class="cp-related-link" href="../ovulation-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Ovulation Calculator</strong><small>Estimate ovulation, fertile-window dates, and the next period from the last menstru…</small></span></a><a class="cp-related-link" href="../pregnancy-weight-gain-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Pregnancy Weight Gain Calculator</strong><small>Calculate pre-pregnancy BMI and see CDC-referenced total pregnancy weight-gain rang…</small></span></a><a class="cp-related-link" href="../cash-back-or-low-interest-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Cash Back vs Low Interest Calculator</strong><small>Compare an auto cash-back rebate with a low-interest financing offer using monthly…</small></span></a></div><a class="cp-side-category" href="../health/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script>function calcPB(){const I=+pbInv.value,C=+pbCF.value,r=+pbRate.value/100,er=pbErr;if(!(I>0)||!(C>0)||r<0){er.textContent='Enter a positive investment and annual cash flow, and a non-negative discount rate.';er.classList.add('show');return}er.classList.remove('show');const s=I/C;pbSimple.textContent=s.toFixed(2);pbMonths.textContent=(s*12).toFixed(1)+' months';if(r===0){pbDisc.textContent=s.toFixed(2);pbDiscUnit.textContent='years';return}const maxPV=C/r;if(I>=maxPV){pbDisc.textContent='Never';pbDiscUnit.textContent='at this rate';return}let cum=0,year=0;while(cum<I&&year<10000){year++;let pv=C/Math.pow(1+r,year);if(cum+pv>=I){let frac=(I-cum)/pv;pbDisc.textContent=((year-1)+frac).toFixed(2);pbDiscUnit.textContent='years';return}cum+=pv}pbDisc.textContent='—'}function resetPB(){pbInv.value=100000;pbCF.value=25000;pbRate.value=8;calcPB()}calcPB();</script><script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/payback-period-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/payback-period-calculator/">
+<meta property="og:title" content="Payback Period Calculator – Simple &amp; Discounted Payback">
+<meta property="og:description" content="Calculate simple and discounted payback periods from initial investment, annual net cash flow, and discount rate to estimate investment recovery time.">
+<meta property="og:site_name" content="Payback Period Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/payback-period-calculator/">
+<meta name="twitter:title" content="Payback Period Calculator – Simple &amp; Discounted Payback">
+<meta name="twitter:description" content="Calculate simple and discounted payback periods from initial investment, annual net cash flow, and discount rate to estimate investment recovery time.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6
+        }
+
+        button,
+        input,
+        select {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        .wrap {
+            width: min(1160px, 92vw);
+            margin: auto
+        }
+
+        .crumb {
+            font-size: .86rem;
+            opacity: .78
+        }
+
+        .eyebrow {
+            font-size: .78rem;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-weight: 800
+        }
+
+        .btn.secondary {
+            background: transparent;
+            border: 1px solid currentColor
+        }
+
+        .field {
+            display: grid;
+            gap: 7px
+        }
+
+        .field label {
+            font-size: .88rem;
+            font-weight: 750
+        }
+
+        .field input,
+        .field select {
+            width: 100%;
+            border-radius: 14px;
+            padding: 12px 13px;
+            border: 1px solid rgba(127, 127, 127, .25);
+            background: rgba(255, 255, 255, .76);
+            color: #111;
+            outline: none
+        }
+
+        .field input:focus,
+        .field select:focus {
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, .14)
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .grid3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .error {
+            display: none;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: #fee2e2;
+            color: #991b1b;
+            font-weight: 700;
+            margin: 10px 0
+        }
+
+        .error.show {
+            display: block
+        }
+
+        .result-num {
+            font-size: clamp(2rem, 6vw, 3.6rem);
+            font-weight: 900;
+            letter-spacing: -.05em
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px
+        }
+
+        .stat {
+            padding: 12px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, .65);
+            border: 1px solid rgba(255, 255, 255, .7)
+        }
+
+        .stat b {
+            display: block;
+            font-size: 1.08rem
+        }
+
+        .content {
+            padding: 56px 0
+        }
+
+        .article {
+            max-width: 860px;
+            margin: auto
+        }
+
+        .article h2 {
+            font-size: clamp(1.5rem, 3vw, 2.05rem);
+            margin: 34px 0 10px;
+            line-height: 1.2
+        }
+
+        .article h3 {
+            margin: 24px 0 8px
+        }
+
+        .article p,
+        .article li {
+            color: var(--muted, #4b5563)
+        }
+
+        .formula {
+            padding: 16px 18px;
+            border-radius: 16px;
+            background: rgba(99, 102, 241, .08);
+            border: 1px solid rgba(99, 102, 241, .14);
+            font-weight: 800;
+            overflow: auto
+        }
+
+        .source-list a {
+            text-decoration: underline;
+            text-underline-offset: 3px
+        }
+
+        .faq details {
+            border-top: 1px solid rgba(127, 127, 127, .2);
+            padding: 14px 0
+        }
+
+        .faq summary {
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        footer {
+            padding: 34px 0;
+            border-top: 1px solid rgba(127, 127, 127, .18);
+            font-size: .9rem;
+            opacity: .75
+        }
+
+        @media(max-width:760px) {
+
+            .grid2,
+            .grid3 {
+                grid-template-columns: 1fr
+            }
+
+            .stat-grid {
+                grid-template-columns: 1fr
+            }
+
+            .wrap {
+                width: min(94vw, 1160px)
+            }
+        }
+
+        :root {
+            --muted: #5b5a6a
+        }
+
+        body {
+            background: #0d0c17;
+            color: #f5f3ff
+        }
+
+        .hero-pb {
+            padding: 28px 0 78px;
+            background: radial-gradient(circle at 50% 20%, #4c1d95 0 5%, transparent 32%), #0d0c17
+        }
+
+        .hero-pb h1 {
+            font-size: clamp(3rem, 8vw, 6.3rem);
+            line-height: .92;
+            letter-spacing: -.08em;
+            text-align: center;
+            margin: 55px 0 14px
+        }
+
+        .hero-pb p {
+            text-align: center;
+            max-width: 680px;
+            margin: auto;
+            color: #c7bfdc
+        }
+
+        .timeline {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin: 36px auto 0;
+            max-width: 760px
+        }
+
+        .timeline span {
+            height: 18px;
+            flex: 1;
+            border-radius: 999px;
+            background: #30264a
+        }
+
+        .timeline span:nth-child(-n+4) {
+            background: linear-gradient(90deg, #8b5cf6, #22d3ee)
+        }
+
+        .calc-pb {
+            background: #f5f3ff;
+            color: #1f1830;
+            padding: 38px 0
+        }
+
+        .pb-wrap {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 20px
+        }
+
+        .pb-form {
+            background: #fff;
+            border-radius: 24px;
+            padding: 24px
+        }
+
+        .pb-result {
+            background: #181126;
+            color: #fff;
+            border-radius: 24px;
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px
+        }
+
+        .dial {
+            border: 1px solid #ffffff17;
+            border-radius: 22px;
+            padding: 20px;
+            display: grid;
+            place-items: center;
+            text-align: center
+        }
+
+        .dial .result-num {
+            color: #67e8f9
+        }
+
+        .pb-result .stat {
+            background: #ffffff0e;
+            border-color: #ffffff19
+        }
+
+        .btn {
+            background: #6d28d9;
+            color: #fff
+        }
+
+        .btn.secondary {
+            color: #6d28d9
+        } 
+
+        @media(max-width:800px) {
+
+            .pb-wrap,
+            .pb-result {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/payback-period-calculator/#webapplication",
+      "name": "Payback Period Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/payback-period-calculator/",
+      "description": "Calculate simple and discounted payback periods from initial investment, annual net cash flow, and discount rate to estimate investment recovery time.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/payback-period-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Payback Period Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/payback-period-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/payback-period-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the formula for the payback period?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For equal annual net cash flows: Payback Period = Initial Investment ÷ Annual Net Cash Flow. For example, a $60,000 investment generating $15,000 per year has a simple payback period of four years."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between simple and discounted payback?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Simple payback uses the future cash flows at their stated amounts. Discounted payback first converts future cash flows to present value using the entered discount rate, then determines when those discounted amounts recover the investment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is the discounted payback period usually longer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "With a positive discount rate, a future cash flow has a lower present value than the same amount received today. Therefore, more time may be required for discounted cash flows to recover the original investment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I enter a 0% discount rate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At a 0% discount rate, future annual cash flows are not reduced for time value. With equal annual cash flows, the discounted calculation therefore matches the simple payback calculation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can an investment fail to reach discounted payback?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. If the present value of future cash flows never becomes large enough to cover the initial investment, there is no discounted payback within that cash-flow pattern. A high discount rate or relatively small annual cash flow can produce this situation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a shorter payback period mean an investment is more profitable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not necessarily. Payback measures recovery time, not total profit. It ignores cash flows occurring after the recovery point, so an investment with a longer payback could still generate more value over its full life."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should payback period be used by itself for an investment decision?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Payback can provide useful information about recovery time and liquidity, but it does not capture every financial factor. NPV, IRR, ROI, risk, and expected cash flows over the full project life may provide additional information for evaluating an investment."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart OnlineFree",
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="health" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../health/index.html">Health &amp; Fitness</a></li>
+            <li><a aria-current="page" href="index.html">Payback Period Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../health/index.html">Browse Health &amp; Fitness</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Payback Period Calculator</h1>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="calc-pb">
+                <div class="wrap pb-wrap">
+                    <div class="pb-form">
+                        <h2>Project cash flow</h2>
+                        <div class="field"><label for="pbInv">Initial investment</label><input id="pbInv" min="0.01"
+                                type="number" value="100000" /></div>
+                        <div class="field"><label for="pbCF">Annual net cash flow</label><input id="pbCF" min="0.01"
+                                type="number" value="25000" /></div>
+                        <div class="field"><label for="pbRate">Discount rate (%/yr)</label><input id="pbRate" min="0"
+                                step="0.1" type="number" value="8" /></div>
+                        <div class="error" id="pbErr"></div>
+                        <div class="actions"><button class="btn" onclick="calcPB()">Calculate Payback</button><button
+                                class="btn secondary" onclick="resetPB()">Reset</button></div>
+                    </div>
+                    <aside class="pb-result">
+                        <div class="dial">
+                            <div>
+                                <div class="eyebrow">Simple payback</div>
+                                <div class="result-num" id="pbSimple">—</div>
+                                <div>years</div>
+                            </div>
+                        </div>
+                        <div class="dial">
+                            <div>
+                                <div class="eyebrow">Discounted payback</div>
+                                <div class="result-num" id="pbDisc">—</div>
+                                <div id="pbDiscUnit">years</div>
+                            </div>
+                        </div>
+                        <div class="stat" style="grid-column:1/-1">Simple payback in months<b id="pbMonths">—</b></div>
+                    </aside>
+                </div>
+            </section>
+            <section class="content">
+                 
+<article class="article">
+
+<p>The Payback Period Calculator estimates how long it takes for an investment to recover its initial cost. Enter the initial investment, annual net cash flow, and annual discount rate to calculate the simple payback period and evaluate discounted recovery time.</p>
+
+
+  <section id="what">
+    <h2>What Is the Payback Period Calculator?</h2>
+
+    <p class="direct">A payback period measures the time required for cash generated by an investment to recover its initial cost. This calculator is useful for comparing projects, equipment purchases, business investments, or other decisions with an upfront cost and a steady annual net cash flow.</p>
+
+    <p>The simple payback method focuses on recovery time without adjusting for the time value of money. The discounted method reduces future cash flows to their present values before determining when the investment has been recovered.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Payback Period Calculator</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Input</th>
+          <th>What to Enter</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Initial Investment</strong></td>
+          <td>The total upfront amount invested in the project.</td>
+        </tr>
+        <tr>
+          <td><strong>Annual Net Cash Flow</strong></td>
+          <td>The expected net cash generated each year after relevant operating cash inflows and outflows.</td>
+        </tr>
+        <tr>
+          <td><strong>Discount Rate (%/yr)</strong></td>
+          <td>The annual percentage rate used to discount future cash flows for the discounted payback calculation.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Use the same currency for the initial investment and annual net cash flow. For example, if the initial investment is entered in dollars, the annual cash flow should also be entered in dollars.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+
+    <p>When annual net cash flow is the same each year, the simple payback period is:</p>
+
+    <div class="formula"><strong>Payback Period = Initial Investment ÷ Annual Net Cash Flow</strong></div>
+
+    <p>Or:</p>
+
+    <div class="formula"><strong>PP = I ÷ C</strong></div>
+
+    <p>OpenStax describes this calculation for projects with even annual net cash flows.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>PP</strong></td>
+          <td>Simple payback period</td>
+          <td>Years</td>
+        </tr>
+        <tr>
+          <td><strong>I</strong></td>
+          <td>Initial investment</td>
+          <td>Currency</td>
+        </tr>
+        <tr>
+          <td><strong>C</strong></td>
+          <td>Annual net cash flow</td>
+          <td>Currency per year</td>
+        </tr>
+        <tr>
+          <td><strong>r</strong></td>
+          <td>Annual discount rate as a decimal</td>
+          <td>Decimal per year</td>
+        </tr>
+        <tr>
+          <td><strong>t</strong></td>
+          <td>Year number</td>
+          <td>Years</td>
+        </tr>
+        <tr>
+          <td><strong>DCFₜ</strong></td>
+          <td>Present value of the cash flow received in year <em>t</em></td>
+          <td>Currency</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Calculation Sequence</h3>
+
+    <p>The calculator first determines the simple payback period by dividing the initial investment by the annual net cash flow.</p>
+
+    <p>For discounted payback, the percentage discount rate is converted to a decimal:</p>
+
+    <div class="formula"><strong>r = Discount Rate (%) ÷ 100</strong></div>
+
+    <p>Each future annual cash flow is then discounted:</p>
+
+    <div class="formula"><strong>DCFₜ = C ÷ (1 + r)ᵗ</strong></div>
+
+    <p>The discounted cash flows are accumulated year by year until their cumulative present value reaches the initial investment. OpenStax defines discounted payback using this time-value-of-money approach.</p>
+
+    <h3>Discounted Payback Period</h3>
+
+    <p>If recovery occurs during a year rather than exactly at year-end, the fractional-year method can be expressed as:</p>
+
+    <div class="formula"><strong>Discounted Payback = Full Years Before Recovery + (Amount Still Unrecovered ÷ Discounted Cash Flow in Recovery Year)</strong></div>
+
+    <p>This identifies the point during the recovery year when the discounted cash flows have covered the original investment.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Assume an investment has the following values:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Input</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Initial investment</td>
+          <td>$100,000</td>
+        </tr>
+        <tr>
+          <td>Annual net cash flow</td>
+          <td>$25,000</td>
+        </tr>
+        <tr>
+          <td>Discount rate</td>
+          <td>8% per year</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Step 1: Calculate the Simple Payback Period</h3>
+
+    <div class="formula"><strong>PP = $100,000 ÷ $25,000</strong></div>
+
+    <div class="formula"><strong>PP = 4 years</strong></div>
+
+    <p>Without discounting future cash flows, the investment recovers its initial cost in four years.</p>
+
+    <h3>Step 2: Discount the Annual Cash Flows</h3>
+
+    <p>The annual discount rate is:</p>
+
+    <div class="formula"><strong>r = 8 ÷ 100 = 0.08</strong></div>
+
+    <p>The first-year discounted cash flow is:</p>
+
+    <div class="formula"><strong>DCF₁ = $25,000 ÷ 1.08 = $23,148.15</strong></div>
+
+    <p>Applying the same calculation each year gives:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Discounted Cash Flow</th>
+          <th>Cumulative Discounted Cash Flow</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>$23,148.15</td>
+          <td>$23,148.15</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>$21,433.47</td>
+          <td>$44,581.62</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>$19,845.81</td>
+          <td>$64,427.42</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>$18,375.75</td>
+          <td>$82,803.17</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>$17,014.58</td>
+          <td>$99,817.75</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>$15,754.24</td>
+          <td>$115,571.99</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>After five years, $182.25 of the original investment remains unrecovered on a discounted basis.</p>
+
+    <h3>Step 3: Calculate the Fraction of the Recovery Year</h3>
+
+    <div class="formula"><strong>Fraction = $182.25 ÷ $15,754.24</strong></div>
+
+    <div class="formula"><strong>Fraction ≈ 0.0116 years</strong></div>
+
+    <h3>Final Result</h3>
+
+    <div class="formula"><strong>Simple payback period: 4 years</strong></div>
+
+    <p><strong>Discounted payback period: approximately 5.01 years</strong>, with discounted recovery occurring during year 6.</p>
+
+    <p>The discounted period is longer because future cash flows are worth less when converted to present value.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p><strong>Simple Payback Period</strong> shows how many years of equal annual net cash flow are required to recover the original investment without discounting future money.</p>
+
+    <p><strong>Discounted Payback Period</strong> measures recovery using the present value of future cash flows. A positive discount rate generally makes the discounted recovery time longer than the simple payback time because later cash flows receive a lower present value.</p>
+
+    <p>The result is a recovery-time measure rather than a complete measure of profitability. Two investments can have similar payback periods but produce very different total cash flows after the initial investment has been recovered.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The simple formula assumes the annual net cash flow remains constant from year to year. If actual cash flows vary substantially, dividing the initial investment by one annual cash-flow figure may not represent the true recovery schedule.</p>
+
+    <p>Simple payback does not account for the time value of money. Discounted payback addresses that issue by discounting future cash flows, but it still focuses only on how long recovery takes. Both methods can ignore important cash flows occurring after the payback point.</p>
+
+    <p>The calculator does not by itself measure total profitability, net present value, internal rate of return, investment risk, financing costs, taxes, or strategic benefits. Payback results are therefore most useful as one part of a broader investment analysis.</p>
+
+    <p>Results also depend directly on the cash-flow and discount-rate assumptions entered. Actual business cash flows can differ from projections.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What is the formula for the payback period?</summary>
+
+      <p>For equal annual net cash flows:</p>
+
+      <div class="formula"><strong>Payback Period = Initial Investment ÷ Annual Net Cash Flow</strong></div>
+
+      <p>For example, a $60,000 investment generating $15,000 per year has a simple payback period of four years.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What is the difference between simple and discounted payback?</summary>
+
+      <p>Simple payback uses the future cash flows at their stated amounts. Discounted payback first converts future cash flows to present value using the entered discount rate, then determines when those discounted amounts recover the investment.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why is the discounted payback period usually longer?</summary>
+
+      <p>With a positive discount rate, a future cash flow has a lower present value than the same amount received today. Therefore, more time may be required for discounted cash flows to recover the original investment.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What happens if I enter a 0% discount rate?</summary>
+
+      <p>At a 0% discount rate, future annual cash flows are not reduced for time value. With equal annual cash flows, the discounted calculation therefore matches the simple payback calculation.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can an investment fail to reach discounted payback?</summary>
+
+      <p>Yes. If the present value of future cash flows never becomes large enough to cover the initial investment, there is no discounted payback within that cash-flow pattern. A high discount rate or relatively small annual cash flow can produce this situation.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does a shorter payback period mean an investment is more profitable?</summary>
+
+      <p>Not necessarily. Payback measures recovery time, not total profit. It ignores cash flows occurring after the recovery point, so an investment with a longer payback could still generate more value over its full life.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Should payback period be used by itself for an investment decision?</summary>
+
+      <p>Payback can provide useful information about recovery time and liquidity, but it does not capture every financial factor. NPV, IRR, ROI, risk, and expected cash flows over the full project life may provide additional information for evaluating an investment.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://openstax.org/books/principles-finance-2e/pages/16-1-payback-period-method?utm_source=chatgpt.com" rel="noopener" target="_blank">OpenStax — Payback Period Method, Principles of Finance 2e</a><br>
+        Supports the definition, calculation, interpretation, and limitations of the standard payback-period method.
+      </li>
+
+      <li>
+        <a href="https://openstax.org/books/principles-finance-2e/pages/16-4-alternative-methods?utm_source=chatgpt.com" rel="noopener" target="_blank">OpenStax — Discounted Payback Period, Principles of Finance 2e</a><br>
+        Supports discounting future cash flows, accumulating their present values, and calculating recovery within a partial year.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/roi-calculator/?utm_source=chatgpt.com">ROI Calculator</a></li>
+      <li><a href="https://example.com/irr-calculator/?utm_source=chatgpt.com">IRR Calculator</a></li>
+      <li><a href="https://example.com/present-value-calculator/?utm_source=chatgpt.com">Present Value Calculator</a></li>
+      <li><a href="https://example.com/future-value-calculator/?utm_source=chatgpt.com">Future Value Calculator</a></li>
+      <li><a href="https://example.com/investment-calculator/?utm_source=chatgpt.com">Investment Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+            </section>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"105","Batch":"11","Calculator / Page":"Payback Period Calculator","Slug":"payback-period-calculator","Site Category (Current)":"Health & Fitness","Recommended Content Domain":"Pregnancy / Reproductive Health","Page Type":"Calculator","Search Intent / Purpose":"Calculate simple and discounted payback periods from an initial investment, annual cash flow, and discount rate.","Formula / Algorithm Used in Tool":"Simple Payback Formula: Payback Period = Initial Investment ÷ Annual Net Cash Flow OpenStax uses this formula when net annual cash flows are even from period to period. For example, a $100,000 investment producing $25,000 per year has a simple payback of 4 years.","Required User Inputs":"Initial investment; Annual net cash flow; Discount rate (%/yr)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Initial investment, Annual net cash flow, Discount rate (%/yr). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Authoritative obstetric/reproductive formula source, gestational assumptions, date conventions, population scope and clinical limitations.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When clinical guidance changes","Important Assumptions / Limitations":"Simple payback ignores cash flows after the payback point and does not measure total profitability. Even discounted payback remains a recovery-time metric, so it should be considered alongside NPV, IRR, ROI, risk, and strategic factors.","Current Source URLs in Page":"https://openstax.org/books/principles-managerial-accounting/pages/11-2-evaluate-the-payback-and-accounting-rate-of-return-in-capital-investment-decisions","Implementation Path":"/payback-period-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Health &amp; Fitness</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link"
+                    href="../pregnancy-conception-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Pregnancy Conception
+                            Calculator</strong><small>Estimate a likely conception date from an estimated due date or
+                            from the first day…</small></span></a><a class="cp-related-link"
+                    href="../period-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Period
+                            Calculator</strong><small>Predict upcoming period dates and an approximate ovulation date
+                            from your usual cyc…</small></span></a><a class="cp-related-link"
+                    href="../due-date-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Due Date
+                            Calculator</strong><small>Estimate pregnancy due date from the last menstrual period,
+                            conception date, or IVF…</small></span></a><a class="cp-related-link"
+                    href="../pregnancy-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Pregnancy Calculator</strong><small>Estimate
+                            pregnancy due date, current gestational age, trimester, and key dates
+                            from…</small></span></a><a class="cp-related-link"
+                    href="../conception-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Conception Calculator</strong><small>Estimate a
+                            fertile window and peak conception days from the last menstrual period
+                            a…</small></span></a><a class="cp-related-link"
+                    href="../ovulation-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Ovulation Calculator</strong><small>Estimate
+                            ovulation, fertile-window dates, and the next period from the last
+                            menstru…</small></span></a><a class="cp-related-link"
+                    href="../pregnancy-weight-gain-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Pregnancy Weight Gain
+                            Calculator</strong><small>Calculate pre-pregnancy BMI and see CDC-referenced total pregnancy
+                            weight-gain rang…</small></span></a><a class="cp-related-link"
+                    href="../cash-back-or-low-interest-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Cash Back vs Low Interest
+                            Calculator</strong><small>Compare an auto cash-back rebate with a low-interest financing
+                            offer using monthly…</small></span></a></div><a class="cp-side-category"
+                href="../health/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>function calcPB() { const I = +pbInv.value, C = +pbCF.value, r = +pbRate.value / 100, er = pbErr; if (!(I > 0) || !(C > 0) || r < 0) { er.textContent = 'Enter a positive investment and annual cash flow, and a non-negative discount rate.'; er.classList.add('show'); return } er.classList.remove('show'); const s = I / C; pbSimple.textContent = s.toFixed(2); pbMonths.textContent = (s * 12).toFixed(1) + ' months'; if (r === 0) { pbDisc.textContent = s.toFixed(2); pbDiscUnit.textContent = 'years'; return } const maxPV = C / r; if (I >= maxPV) { pbDisc.textContent = 'Never'; pbDiscUnit.textContent = 'at this rate'; return } let cum = 0, year = 0; while (cum < I && year < 10000) { year++; let pv = C / Math.pow(1 + r, year); if (cum + pv >= I) { let frac = (I - cum) / pv; pbDisc.textContent = ((year - 1) + frac).toFixed(2); pbDiscUnit.textContent = 'years'; return } cum += pv } pbDisc.textContent = '—' } function resetPB() { pbInv.value = 100000; pbCF.value = 25000; pbRate.value = 8; calcPB() } calcPB();</script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

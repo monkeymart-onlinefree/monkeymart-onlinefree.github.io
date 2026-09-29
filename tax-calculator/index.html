@@ -1,145 +1,1351 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>2026 Federal Income Tax Calculator | CalcPro</title>
-<meta content="Estimate 2026 U.S. federal ordinary income tax using IRS tax brackets and standard deductions, with optional itemized deductions and withholding." name="description"/>
-<meta content="index,follow" name="robots"/>
-<link href="../tax-calculator/" rel="canonical"/>
-<meta content="2026 Federal Income Tax Calculator | CalcPro" property="og:title"/>
-<meta content="Estimate 2026 U.S. federal ordinary income tax using IRS tax brackets and standard deductions, with optional itemized deductions and withholding." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="/tax-calculator/" property="og:url"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-:root{--bg:#07111f;--panel:rgba(255,255,255,.09);--panel2:rgba(255,255,255,.06);--text:#f7fbff;--muted:#b8c6d8;--line:rgba(255,255,255,.14);--a:#67e8f9;--b:#34d399;--c:#fbbf24;--danger:#fb7185;--shadow:0 30px 80px rgba(0,0,0,.32)}
-body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
-a{color:var(--a)}button,input,select{font:inherit}
-.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
-.site-nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0;position:relative;z-index:10}
-.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.3px;color:var(--text);text-decoration:none}
-.brand-mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,var(--a),var(--b));display:grid;place-items:center;color:#04111f;box-shadow:inset 0 1px 0 #fff8,0 10px 25px #0004;transform:rotate(-7deg)}
-.nav-links{display:flex;gap:18px;align-items:center}.nav-links a{color:var(--muted);text-decoration:none;font-size:.92rem}.nav-links a:hover{color:var(--text)}
-.breadcrumb{font-size:.9rem;color:var(--muted);margin-bottom:18px}.breadcrumb a{color:inherit;text-decoration:none}
-.hero{position:relative;min-height:440px;padding:48px 0 72px;display:grid;grid-template-columns:1fr;gap:42px;align-items:center}
-.hero h1{font-size:clamp(2.5rem,6vw,5.8rem);line-height:.92;letter-spacing:-.055em;margin:0 0 22px;max-width:800px}
-.hero p{font-size:1.08rem;color:var(--muted);max-width:700px;margin:0}
-.kicker{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:7px 12px;margin-bottom:18px;color:var(--a);font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
-.scene{min-height:330px;position:relative;perspective:900px;filter:drop-shadow(0 30px 40px #0005)}
-.orb{position:absolute;border-radius:50%;filter:blur(1px);opacity:.9}
-.calc-shell{margin-top:-25px;position:relative;z-index:4}
-.calculator{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);gap:24px;align-items:stretch}
-.card{background:linear-gradient(180deg,var(--panel),rgba(255,255,255,.045));border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.1);backdrop-filter:blur(18px)}
-.form-card{padding:28px}.result-card{padding:28px;position:relative;overflow:hidden}
-.result-card:after{content:"";position:absolute;inset:auto -80px -100px auto;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,var(--a),transparent 70%);opacity:.12}
-.section-title{font-size:1.35rem;margin:0 0 7px}.subtle{color:var(--muted);font-size:.92rem;margin:0 0 20px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
-label{font-weight:750;font-size:.88rem;color:#e8f0f8}
-input,select{width:100%;border:1px solid var(--line);background:rgba(4,10,20,.48);color:var(--text);border-radius:14px;padding:12px 13px;outline:none;box-shadow:inset 0 1px 8px #0003}
-input:focus,select:focus{border-color:var(--a);box-shadow:0 0 0 3px color-mix(in srgb,var(--a) 22%,transparent)}
-option{color:#111}
-.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:900;cursor:pointer;transition:.2s;box-shadow:0 12px 24px #0003}
-.btn-primary{background:linear-gradient(135deg,var(--a),var(--b));color:#04111a}.btn-secondary{background:rgba(255,255,255,.08);color:var(--text);border:1px solid var(--line)}
-.btn:hover{transform:translateY(-2px)}
-.error{display:none;color:#fff;background:color-mix(in srgb,var(--danger) 26%,transparent);border:1px solid color-mix(in srgb,var(--danger) 52%,transparent);padding:11px 13px;border-radius:13px;margin-top:15px;font-size:.9rem}.error.show{display:block}
-.result-big{font-size:clamp(2.2rem,5vw,4.2rem);font-weight:950;line-height:1;letter-spacing:-.04em;margin:10px 0 12px;color:var(--a);word-break:break-word}
-.metric-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}.metric{padding:14px;border-radius:17px;background:rgba(255,255,255,.055);border:1px solid var(--line)}.metric b{display:block;font-size:1.08rem}.metric span{font-size:.78rem;color:var(--muted)}
-.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line);font-size:.78rem;color:var(--muted)}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tab{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);padding:8px 12px;border-radius:999px;cursor:pointer;font-weight:800}.tab.active{background:var(--a);color:#06111c;border-color:transparent}
-.tab-panel{display:none}.tab-panel.active{display:block}
-.table-wrap{overflow:auto;border-radius:16px;border:1px solid var(--line);margin-top:16px}table{border-collapse:collapse;width:100%;min-width:520px;background:rgba(2,8,16,.28)}th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;font-size:.88rem}th{color:var(--a);background:rgba(255,255,255,.045)}
-.content{padding:80px 0}.content-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:32px}.article{background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:30px;padding:34px}.article h2{font-size:1.8rem;line-height:1.2;margin:38px 0 12px}.article h2:first-child{margin-top:0}.article h3{margin-top:24px}.article p,.article li{color:#c8d3df}.article code{background:#0004;padding:3px 6px;border-radius:6px}
-.aside{position:sticky;top:20px;height:max-content;padding:22px}.aside h3{margin-top:0}.aside a{display:block;color:var(--muted);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--line)}.aside a:hover{color:var(--text)}
-.faq details{border-top:1px solid var(--line);padding:15px 0}.faq summary{font-weight:850;cursor:pointer}.faq p{margin-bottom:0}
-.source-list a{overflow-wrap:anywhere}
-footer{border-top:1px solid var(--line);padding:32px 0 50px;color:var(--muted);font-size:.9rem}
-.small{font-size:.82rem;color:var(--muted)}
-.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.pill{padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.055);border:1px solid var(--line);font-size:.78rem}
-.rangebar{height:11px;border-radius:999px;background:rgba(255,255,255,.09);overflow:hidden;margin-top:14px}.rangebar>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--b),var(--c));transition:.4s}
-@media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:28px}.scene{min-height:250px}.calculator,.content-grid{grid-template-columns:1fr}.aside{position:relative}.hero h1{font-size:clamp(2.7rem,12vw,5.2rem)}}
-@media(max-width:620px){.wrap{width:min(100% - 20px,1180px)}.nav-links{display:none}.grid,.grid3,.metric-row{grid-template-columns:1fr}.form-card,.result-card,.article{padding:20px}.hero{padding-bottom:46px}.content{padding:55px 0}}
+    <!-- Primary Meta Tags -->
+<title>2026 Federal Income Tax Calculator | Estimate Tax</title>
+<meta name="title" content="2026 Federal Income Tax Calculator | Estimate Tax">
+<meta name="description" content="Estimate 2026 U.S. federal income tax from filing status, income, deductions, and tax paid. See taxable income and estimated refund or amount due.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/tax-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/tax-calculator/">
+<meta property="og:title" content="2026 Federal Income Tax Calculator | Estimate Tax">
+<meta property="og:description" content="Estimate 2026 U.S. federal income tax from filing status, income, deductions, and tax paid. See taxable income and estimated refund or amount due.">
+<meta property="og:site_name" content="2026 Federal Income Tax Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/tax-calculator/">
+<meta name="twitter:title" content="2026 Federal Income Tax Calculator | Estimate Tax">
+<meta name="twitter:description" content="Estimate 2026 U.S. federal income tax from filing status, income, deductions, and tax paid. See taxable income and estimated refund or amount due.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        :root {
+            --bg: #07111f;
+            --panel: rgba(255, 255, 255, .09);
+            --panel2: rgba(255, 255, 255, .06);
+            --text: #f7fbff;
+            --muted: #b8c6d8;
+            --line: rgba(255, 255, 255, .14);
+            --a: #67e8f9;
+            --b: #34d399;
+            --c: #fbbf24;
+            --danger: #fb7185;
+            --shadow: 0 30px 80px rgba(0, 0, 0, .32)
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+            overflow-x: hidden
+        }
+
+        a {
+            color: var(--a)
+        }
+
+        button,
+        input,
+        select {
+            font: inherit
+        }
+
+        .wrap {
+            width: min(1180px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .site-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 0;
+            position: relative;
+            z-index: 10
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 900;
+            letter-spacing: .3px;
+            color: var(--text);
+            text-decoration: none
+        }
+
+        .brand-mark {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: linear-gradient(145deg, var(--a), var(--b));
+            display: grid;
+            place-items: center;
+            color: #04111f;
+            box-shadow: inset 0 1px 0 #fff8, 0 10px 25px #0004;
+            transform: rotate(-7deg)
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            align-items: center
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: .92rem
+        }
+
+        .nav-links a:hover {
+            color: var(--text)
+        }
+
+        .breadcrumb {
+            font-size: .9rem;
+            color: var(--muted);
+            margin-bottom: 18px
+        }
+
+        .breadcrumb a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .hero {
+            position: relative;
+            min-height: 440px;
+            padding: 48px 0 72px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 42px;
+            align-items: center
+        }
+
+        .hero h1 {
+            font-size: clamp(2.6rem,5vw,4.5rem);
+line-height: 1.05;
+margin: 0 auto 18px;
+text-align: center;
+letter-spacing: -.06em;
+font-weight: 900;
+        }
+
+        .hero p {
+            font-size: 1.08rem;
+            color: var(--muted);
+            max-width: 700px;
+            margin: 0
+        }
+
+        .kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--line);
+            background: var(--panel2);
+            border-radius: 999px;
+            padding: 7px 12px;
+            margin-bottom: 18px;
+            color: var(--a);
+            font-weight: 800;
+            font-size: .8rem;
+            letter-spacing: .08em;
+            text-transform: uppercase
+        }
+
+        .scene {
+            min-height: 330px;
+            position: relative;
+            perspective: 900px;
+            filter: drop-shadow(0 30px 40px #0005)
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(1px);
+            opacity: .9
+        }
+
+        .calc-shell {
+            margin-top: -25px;
+            position: relative;
+            z-index: 4
+        }
+
+        .calculator {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(300px, .9fr);
+            gap: 24px;
+            align-items: stretch
+        }
+
+        .card {
+            background: linear-gradient(180deg, var(--panel), rgba(255, 255, 255, .045));
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, .1);
+            backdrop-filter: blur(18px)
+        }
+
+        .form-card {
+            padding: 28px
+        }
+
+        .result-card {
+            padding: 28px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .result-card:after {
+            content: "";
+            position: absolute;
+            inset: auto -80px -100px auto;
+            width: 230px;
+            height: 230px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--a), transparent 70%);
+            opacity: .12
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            margin: 0 0 7px
+        }
+
+        .subtle {
+            color: var(--muted);
+            font-size: .92rem;
+            margin: 0 0 20px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px
+        }
+
+        .grid3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px
+        }
+
+        .field.full {
+            grid-column: 1/-1
+        }
+
+        label {
+            font-weight: 750;
+            font-size: .88rem;
+            color: #e8f0f8
+        }
+
+        input,
+        select {
+            width: 100%;
+            border: 1px solid var(--line);
+            background: rgba(4, 10, 20, .48);
+            color: var(--text);
+            border-radius: 14px;
+            padding: 12px 13px;
+            outline: none;
+            box-shadow: inset 0 1px 8px #0003
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--a);
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--a) 22%, transparent)
+        }
+
+        option {
+            color: #111
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: .2s;
+            box-shadow: 0 12px 24px #0003
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--a), var(--b));
+            color: #04111a
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, .08);
+            color: var(--text);
+            border: 1px solid var(--line)
+        }
+
+        .btn:hover {
+            transform: translateY(-2px)
+        }
+
+        .error {
+            display: none;
+            color: #fff;
+            background: color-mix(in srgb, var(--danger) 26%, transparent);
+            border: 1px solid color-mix(in srgb, var(--danger) 52%, transparent);
+            padding: 11px 13px;
+            border-radius: 13px;
+            margin-top: 15px;
+            font-size: .9rem
+        }
+
+        .error.show {
+            display: block
+        }
+
+        .result-big {
+            font-size: clamp(2.2rem, 5vw, 4.2rem);
+            font-weight: 950;
+            line-height: 1;
+            letter-spacing: -.04em;
+            margin: 10px 0 12px;
+            color: var(--a);
+            word-break: break-word
+        }
+
+        .metric-row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 18px
+        }
+
+        .metric {
+            padding: 14px;
+            border-radius: 17px;
+            background: rgba(255, 255, 255, .055);
+            border: 1px solid var(--line)
+        }
+
+        .metric b {
+            display: block;
+            font-size: 1.08rem
+        }
+
+        .metric span {
+            font-size: .78rem;
+            color: var(--muted)
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 9px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid var(--line);
+            font-size: .78rem;
+            color: var(--muted)
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 18px
+        }
+
+        .tab {
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .04);
+            color: var(--muted);
+            padding: 8px 12px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 800
+        }
+
+        .tab.active {
+            background: var(--a);
+            color: #06111c;
+            border-color: transparent
+        }
+
+        .tab-panel {
+            display: none
+        }
+
+        .tab-panel.active {
+            display: block
+        }
+
+        .table-wrap {
+            overflow: auto;
+            border-radius: 16px;
+            border: 1px solid var(--line);
+            margin-top: 16px
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 520px;
+            background: rgba(2, 8, 16, .28)
+        }
+
+        th,
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--line);
+            text-align: left;
+            font-size: .88rem
+        }
+
+        th {
+            color: var(--a);
+            background: rgba(255, 255, 255, .045)
+        }
+
+        .content {
+            padding: 80px 0
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px
+        }
+
+        .article {
+            background: rgba(255, 255, 255, .035);
+            border: 1px solid var(--line);
+            border-radius: 30px;
+            padding: 34px
+        }
+
+        .article h2 {
+            font-size: 1.8rem;
+            line-height: 1.2;
+            margin: 38px 0 12px
+        }
+
+        .article h2:first-child {
+            margin-top: 0
+        }
+
+        .article h3 {
+            margin-top: 24px
+        }
+
+        .article p,
+        .article li {
+            color: #c8d3df
+        }
+
+        .article code {
+            background: #0004;
+            padding: 3px 6px;
+            border-radius: 6px
+        }
+
+        .aside {
+            position: sticky;
+            top: 20px;
+            height: max-content;
+            padding: 22px
+        }
+
+        .aside h3 {
+            margin-top: 0
+        }
+
+        .aside a {
+            display: block;
+            color: var(--muted);
+            text-decoration: none;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .aside a:hover {
+            color: var(--text)
+        }
+
+        .faq details {
+            border-top: 1px solid var(--line);
+            padding: 15px 0
+        }
+
+        .faq summary {
+            font-weight: 850;
+            cursor: pointer
+        }
+
+        .faq p {
+            margin-bottom: 0
+        }
+
+        .source-list a {
+            overflow-wrap: anywhere
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 32px 0 50px;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .small {
+            font-size: .82rem;
+            color: var(--muted)
+        }
+
+        .pill-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 14px
+        }
+
+        .pill {
+            padding: 7px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .055);
+            border: 1px solid var(--line);
+            font-size: .78rem
+        }
+
+        .rangebar {
+            height: 11px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .09);
+            overflow: hidden;
+            margin-top: 14px
+        }
+
+        .rangebar>span {
+            display: block;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--a), var(--b), var(--c));
+            transition: .4s
+        }
+
+        @media(max-width:900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 28px
+            }
+
+            .scene {
+                min-height: 250px
+            }
+
+            .calculator,
+            .content-grid {
+                grid-template-columns: 1fr
+            }
+
+            .aside {
+                position: relative
+            }
+
+            .hero h1 {
+                font-size: clamp(2.7rem, 12vw, 5.2rem)
+            }
+        }
+
+        @media(max-width:620px) {
+            .wrap {
+                width: min(100% - 20px, 1180px)
+            }
+
+            .nav-links {
+                display: none
+            }
+
+            .grid,
+            .grid3,
+            .metric-row {
+                grid-template-columns: 1fr
+            }
+
+            .form-card,
+            .result-card,
+            .article {
+                padding: 20px
+            }
+
+            .hero {
+                padding-bottom: 46px
+            }
+
+            .content {
+                padding: 55px 0
+            }
+        }
 
 
-body{--bg:#10141c;--panel:rgba(29,38,52,.78);--panel2:rgba(47,64,81,.33);--a:#8cc8ff;--b:#ff817d;--c:#f2d26b;background:linear-gradient(120deg,#11151d,#17202d 55%,#11151d)}
-.tax-calculator .hero{grid-template-columns:1fr .9fr}.taxdoc{position:absolute;right:12%;top:28px;width:245px;height:295px;border-radius:20px;background:linear-gradient(160deg,#f5f8fb,#cbd5df);transform:rotate(8deg) rotateY(-12deg);box-shadow:25px 35px 55px #0006;color:#17202d;padding:28px}.taxdoc b{font-size:2.2rem}.taxdoc i{display:block;height:8px;border-radius:9px;background:#8394a6;margin:18px 0}.stamp{position:absolute;right:-18px;bottom:38px;width:100px;height:100px;border-radius:50%;border:9px double #d95158;color:#d95158;display:grid;place-items:center;font-weight:950;transform:rotate(-14deg)}
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/tax-calculator/#app", "name": "2026 Federal Income Tax Calculator", "url": "/tax-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Estimate 2026 U.S. federal ordinary income tax using IRS tax brackets and standard deductions, with optional itemized deductions and withholding."}, {"@type": "BreadcrumbList", "@id": "/tax-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Taxes & Paycheck", "item": "/finance/taxes-paycheck/"}, {"@type": "ListItem", "position": 4, "name": "2026 Federal Income Tax Calculator", "item": "/tax-calculator/"}]}, {"@type": "FAQPage", "@id": "/tax-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "What are the 2026 federal tax rates?", "acceptedAnswer": {"@type": "Answer", "text": "For individual ordinary income, the 2026 marginal rates are 10%, 12%, 22%, 24%, 32%, 35%, and 37%, with income thresholds depending on filing status."}}, {"@type": "Question", "name": "Does this calculator include tax credits?", "acceptedAnswer": {"@type": "Answer", "text": "No. It estimates ordinary income tax before credits and excludes many special taxes and deductions."}}, {"@type": "Question", "name": "Why is my effective tax rate lower than my top bracket?", "acceptedAnswer": {"@type": "Answer", "text": "Because U.S. federal income tax is progressive. Only the income inside each bracket is taxed at that bracket's marginal rate."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/><link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body class="tax-calculator" data-cp-category="finance" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../finance/index.html">Finance</a></li><li><a aria-current="page" href="index.html">2026 Federal Income Tax Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a href="../calculators/index.html">All calculators</a></div><header>
-<div class="wrap">
+        body {
+            --bg: #10141c;
+            --panel: rgba(29, 38, 52, .78);
+            --panel2: rgba(47, 64, 81, .33);
+            --a: #8cc8ff;
+            --b: #ff817d;
+            --c: #f2d26b;
+            background: linear-gradient(120deg, #11151d, #17202d 55%, #11151d)
+        }
 
-</div>
-</header>
-<div class="cp-page-layout"><main id="main"><h1 class="page-title">2026 Federal Income Tax Calculator</h1>
-<section class="calc-shell" id="calculator">
-<div class="wrap calculator">
-<div class="card form-card">
-<h2 class="section-title">Estimate 2026 federal income tax</h2><p class="subtle">A simplified ordinary-income estimator based on IRS 2026 brackets and standard deductions.</p>
-<div class="grid">
-<div class="field"><label for="tStatus">Filing status</label><select id="tStatus"><option value="single">Single</option><option value="mfj">Married filing jointly</option><option value="hoh">Head of household</option><option value="mfs">Married filing separately</option></select></div>
-<div class="field"><label for="tIncome">Ordinary gross income</label><input id="tIncome" min="0" step="any" type="number" value="85000"/></div>
-<div class="field"><label for="tAdjust">Above-the-line adjustments</label><input id="tAdjust" min="0" step="any" type="number" value="0"/></div>
-<div class="field"><label for="tItem">Itemized deductions</label><input id="tItem" min="0" step="any" type="number" value="0"/></div>
-<div class="field"><label for="tWithheld">Federal tax withheld / estimated paid</label><input id="tWithheld" min="0" step="any" type="number" value="10000"/></div>
-</div>
-<div class="actions"><button class="btn btn-primary" id="tGo">Estimate tax</button></div><div class="error" id="tErr"></div>
-<p class="small">Scope: ordinary federal income tax only. Credits, payroll tax, self-employment tax, capital-gain rates, AMT, NIIT, QBI, senior deductions, tips/overtime/car-loan deductions, and many other rules are not modeled.</p>
-</div>
-<aside aria-live="polite" class="card result-card">
-<span class="badge">2026 estimate</span><div class="result-big" id="tBig">—</div><p class="subtle" id="tText">Estimated tax before credits.</p>
-<div class="metric-row"><div class="metric"><span>Taxable income</span><b id="tTaxable">—</b></div><div class="metric"><span>Deduction used</span><b id="tDed">—</b></div><div class="metric"><span>Effective rate</span><b id="tEff">—</b></div><div class="metric"><span>Estimated refund / due</span><b id="tDue">—</b></div></div>
-</aside>
-</div>
-</section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<section class="content" id="guide">
-<div class="wrap content-grid">
-<article class="article">
-<h2>What Is the 2026 Federal Income Tax Calculator?</h2>
-<p>This page estimates U.S. federal ordinary income tax for tax year 2026 using the IRS ordinary-income rate schedule and 2026 standard deductions. It is designed for planning, not return preparation.</p>
-<h2>2026 Standard Deductions Used</h2>
-<p>The calculator uses $16,100 for Single or Married Filing Separately, $32,200 for Married Filing Jointly, and $24,150 for Head of Household. It compares the standard deduction with the itemized-deduction amount you enter and uses the larger value.</p>
-<h2>How Progressive Tax Brackets Work</h2>
-<p>A marginal rate applies only to the portion of taxable income inside that bracket. Reaching a higher bracket does not cause all taxable income to be taxed at the higher rate.</p>
-<h2>Important Limitations</h2>
-<p>This simplified estimator excludes many return-specific provisions, including tax credits, self-employment tax, preferential capital-gain rates, AMT, NIIT, QBI, and special deductions or phaseouts. Use IRS forms, instructions, or qualified tax help for filing decisions.</p>
-<h2 id="faq">Frequently Asked Questions</h2>
-<div class="faq"><details><summary>What are the 2026 federal tax rates?</summary><p>For individual ordinary income, the 2026 marginal rates are 10%, 12%, 22%, 24%, 32%, 35%, and 37%, with income thresholds depending on filing status.</p></details><details><summary>Does this calculator include tax credits?</summary><p>No. It estimates ordinary income tax before credits and excludes many special taxes and deductions.</p></details><details><summary>Why is my effective tax rate lower than my top bracket?</summary><p>Because U.S. federal income tax is progressive. Only the income inside each bracket is taxed at that bracket's marginal rate.</p></details></div>
-<h2>Sources and Methodology</h2>
-<p>The calculator logic and explanatory content were cross-checked against the following references. Estimates are separated from official data where applicable.</p>
-<ul class="source-list"><li><a href="https://www.calculator.net/tax-calculator.html" rel="noopener noreferrer">Calculator.net Income Tax Calculator</a></li><li><a href="https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill" rel="noopener noreferrer">IRS 2026 inflation adjustments</a></li><li><a href="https://www.irs.gov/irb/2025-45_IRB" rel="noopener noreferrer">IRS Revenue Procedure 2025-32 / IRB 2025-45</a></li><li><a href="https://www.irs.gov/publications/p505" rel="noopener noreferrer">IRS Publication 505 (2026)</a></li></ul>
-</article>
-<aside class="card aside">
-<h3>On this page</h3>
-<a href="#calculator">Calculator</a>
-<a href="#guide">How it works</a>
-<a href="#faq">FAQs</a>
-<p class="small">Educational calculator. For regulated financial, tax, medical, engineering, or network changes, verify the result against the relevant professional or official source.</p>
-</aside>
-</div>
-</section>
+        .tax-calculator .hero {
+            grid-template-columns: 1fr .9fr
+        }
 
-<script class="cp-calculator-data" type="application/json">{"index":"49","Batch":"5","Calculator / Page":"2026 Federal Income Tax Calculator","Slug":"tax-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Estimate 2026 U.S. federal ordinary income tax using IRS tax brackets and standard deductions, with optional itemized deductions and withholding.","Formula / Algorithm Used in Tool":"Taxable income = max(0, gross income − above-the-line adjustments − max(itemized deductions, applicable standard deduction)). Ordinary federal tax = sum of each progressive bracket portion × its marginal rate. Estimated refund/due = withholding/estimated payments − calculated tax.","Required User Inputs":"Filing status; Ordinary gross income; Above-the-line adjustments; Itemized deductions; Federal tax withheld / estimated paid","Primary Outputs":"Taxable income; Deduction used; Effective rate; Estimated refund / due","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Filing status, Ordinary gross income, Above-the-line adjustments, Itemized deductions, Federal tax withheld / estimated paid. Explain outputs: Taxable income, Deduction used, Effective rate, Estimated refund / due. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Current official thresholds, limits, eligibility rules, effective tax year/date and authoritative government source.","Fresh Data Required?":"Yes","Recommended Update Frequency":"At least annually / whenever rules change","Important Assumptions / Limitations":"This simplified estimator excludes many return-specific provisions, including tax credits, self-employment tax, preferential capital-gain rates, AMT, NIIT, QBI, and special deductions or phaseouts. Use IRS forms, instructions, or qualified tax help for filing decisions.","Current Source URLs in Page":"https://www.calculator.net/tax-calculator.html | https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill | https://www.irs.gov/irb/2025-45_IRB | https://www.irs.gov/publications/p505","Implementation Path":"/tax-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Finance</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../salary-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Salary Calculator</strong><small>Estimate 2026 U.S. annual and per-paycheck take-home pay using gross salary, pre-ta…</small></span></a><a class="cp-related-link" href="../estate-tax-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Estate Tax Calculator</strong><small>Estimate a simplified 2026 U.S. federal estate tax using estate assets, deductible…</small></span></a><a class="cp-related-link" href="../401k-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>401(k) Calculator</strong><small>Project a 401(k) balance using salary, contribution percentage, employer match, sal…</small></span></a><a class="cp-related-link" href="../inflation-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Inflation Calculator</strong><small>Compare U.S. dollar purchasing power with CPI-U data or project inflation forward a…</small></span></a><a class="cp-related-link" href="../social-security-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Social Security Calculator</strong><small>Estimate U.S. Social Security retirement benefits by claim age using SSA early-reti…</small></span></a><a class="cp-related-link" href="../take-home-pay-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Take Home Pay Calculator</strong><small>Estimate 2026 U.S. take-home pay using federal tax brackets, standard or custom ded…</small></span></a><a class="cp-related-link" href="../auto-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Auto Loan Calculator</strong><small>Estimate a car loan payment using vehicle price, down payment, trade-in, tax, fees,…</small></span></a><a class="cp-related-link" href="../interest-rate-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Interest Rate Calculator</strong><small>Estimate the nominal annual interest rate implied by a loan amount, fixed monthly p…</small></span></a></div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-const std={single:16100,mfj:32200,hoh:24150,mfs:16100};
-const brackets={
-single:[[12400,.10],[50400,.12],[105700,.22],[201775,.24],[256225,.32],[640600,.35],[Infinity,.37]],
-mfj:[[24800,.10],[100800,.12],[211400,.22],[403550,.24],[512450,.32],[768700,.35],[Infinity,.37]],
-hoh:[[17700,.10],[67450,.12],[105700,.22],[201750,.24],[256200,.32],[640600,.35],[Infinity,.37]],
-mfs:[[12400,.10],[50400,.12],[105700,.22],[201775,.24],[256225,.32],[384350,.35],[Infinity,.37]]
-};
-function tax(x,arr){let prev=0,total=0;for(const [cap,rate] of arr){let slice=Math.min(x,cap)-prev;if(slice>0)total+=slice*rate;if(x<=cap)break;prev=cap}return total}
-tGo.onclick=()=>{tErr.classList.remove('show');let s=tStatus.value,g=+tIncome.value,a=+tAdjust.value,it=+tItem.value,w=+tWithheld.value;if([g,a,it,w].some(x=>!isFinite(x)||x<0)) {tErr.textContent="Enter valid non-negative amounts.";tErr.classList.add('show');return}
-let agi=Math.max(0,g-a),ded=Math.max(std[s],it),ti=Math.max(0,agi-ded),tx=tax(ti,brackets[s]),eff=g>0?tx/g*100:0,diff=w-tx;tBig.textContent="$"+tx.toLocaleString(undefined,{maximumFractionDigits:2});tTaxable.textContent="$"+ti.toLocaleString(undefined,{maximumFractionDigits:2});tDed.textContent="$"+ded.toLocaleString(undefined,{maximumFractionDigits:2});tEff.textContent=eff.toFixed(2)+"%";tDue.textContent=(diff>=0?"Refund ~ $":"Due ~ $")+Math.abs(diff).toLocaleString(undefined,{maximumFractionDigits:2});tText.textContent=`Uses the larger of the 2026 standard deduction or your itemized deduction.`};
+        .taxdoc {
+            position: absolute;
+            right: 12%;
+            top: 28px;
+            width: 245px;
+            height: 295px;
+            border-radius: 20px;
+            background: linear-gradient(160deg, #f5f8fb, #cbd5df);
+            transform: rotate(8deg) rotateY(-12deg);
+            box-shadow: 25px 35px 55px #0006;
+            color: #17202d;
+            padding: 28px
+        }
+
+        .taxdoc b {
+            font-size: 2.2rem
+        }
+
+        .taxdoc i {
+            display: block;
+            height: 8px;
+            border-radius: 9px;
+            background: #8394a6;
+            margin: 18px 0
+        }
+
+        .stamp {
+            position: absolute;
+            right: -18px;
+            bottom: 38px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 9px double #d95158;
+            color: #d95158;
+            display: grid;
+            place-items: center;
+            font-weight: 950;
+            transform: rotate(-14deg)
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/tax-calculator/#webapplication",
+      "name": "2026 Federal Income Tax Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/tax-calculator/",
+      "description": "Estimate 2026 U.S. federal income tax from filing status, income, deductions, and tax paid. See taxable income and estimated refund or amount due.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/tax-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "2026 Federal Income Tax Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/tax-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/tax-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is taxable income calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The calculator subtracts entered above-the-line adjustments and the larger of itemized deductions or the applicable standard deduction from gross income. If the result is below zero, taxable income is treated as zero."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does entering a higher tax bracket mean all my income is taxed at that rate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Federal income tax uses progressive brackets. Each rate applies only to the portion of taxable income within that bracket."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the calculator automatically choose between itemized and standard deductions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. It compares your entered itemized deduction with the applicable standard deduction and uses the larger value."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a negative refund/due result mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The calculator subtracts calculated federal tax from withholding or estimated payments. If the result is negative, the absolute value represents the estimated amount still due."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this calculator include tax credits?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Credits and several other return-specific federal tax provisions are excluded from this simplified estimator."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the calculator include capital gains tax?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It estimates ordinary federal income tax. Preferential long-term capital-gain rates are not included in the calculation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use the result to file my tax return?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The result can help with planning, but it is not a completed tax return or individualized tax advice. Actual filing calculations may require IRS forms, schedules, instructions, and additional taxpayer information."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script><script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body class="tax-calculator" data-cp-category="finance" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../finance/index.html">Finance</a></li>
+            <li><a aria-current="page" href="index.html">2026 Federal Income Tax Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <header>
+        <div class="wrap">
+
+        </div>
+    </header>
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">2026 Federal Income Tax Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+            <section class="calc-shell" id="calculator">
+                <div class="wrap calculator">
+                    <div class="card form-card">
+                        <h2 class="section-title">Estimate 2026 federal income tax</h2>
+                        <p class="subtle">A simplified ordinary-income estimator based on IRS 2026 brackets and standard
+                            deductions.</p>
+                        <div class="grid">
+                            <div class="field"><label for="tStatus">Filing status</label><select id="tStatus">
+                                    <option value="single">Single</option>
+                                    <option value="mfj">Married filing jointly</option>
+                                    <option value="hoh">Head of household</option>
+                                    <option value="mfs">Married filing separately</option>
+                                </select></div>
+                            <div class="field"><label for="tIncome">Ordinary gross income</label><input id="tIncome"
+                                    min="0" step="any" type="number" value="85000" /></div>
+                            <div class="field"><label for="tAdjust">Above-the-line adjustments</label><input
+                                    id="tAdjust" min="0" step="any" type="number" value="0" /></div>
+                            <div class="field"><label for="tItem">Itemized deductions</label><input id="tItem" min="0"
+                                    step="any" type="number" value="0" /></div>
+                            <div class="field"><label for="tWithheld">Federal tax withheld / estimated
+                                    paid</label><input id="tWithheld" min="0" step="any" type="number" value="10000" />
+                            </div>
+                        </div>
+                        <div class="actions"><button class="btn btn-primary" id="tGo">Estimate tax</button></div>
+                        <div class="error" id="tErr"></div>
+                        <p class="small">Scope: ordinary federal income tax only. Credits, payroll tax, self-employment
+                            tax, capital-gain rates, AMT, NIIT, QBI, senior deductions, tips/overtime/car-loan
+                            deductions, and many other rules are not modeled.</p>
+                    </div>
+                    <aside aria-live="polite" class="card result-card">
+                        <span class="badge">2026 estimate</span>
+                        <div class="result-big" id="tBig">—</div>
+                        <p class="subtle" id="tText">Estimated tax before credits.</p>
+                        <div class="metric-row">
+                            <div class="metric"><span>Taxable income</span><b id="tTaxable">—</b></div>
+                            <div class="metric"><span>Deduction used</span><b id="tDed">—</b></div>
+                            <div class="metric"><span>Effective rate</span><b id="tEff">—</b></div>
+                            <div class="metric"><span>Estimated refund / due</span><b id="tDue">—</b></div>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="content" id="guide">
+                <div class="wrap content-grid">
+ <article class="article">
+
+ 
+  <p>The 2026 Federal Income Tax Calculator estimates U.S. federal ordinary income tax using your filing status, gross income, adjustments, deductions, and federal tax already paid. It calculates taxable income, applies the 2026 progressive tax brackets, and estimates whether you may have a refund or an amount due.</p>
+
+  <section id="what">
+    <h2>What Is the 2026 Federal Income Tax Calculator?</h2>
+
+    <p class="direct">This calculator provides a simplified estimate of federal ordinary income tax for tax year 2026. It is useful for checking how deductions affect taxable income, estimating federal tax liability, and comparing calculated tax with federal withholding or estimated payments.</p>
+
+    <p>It is an estimator rather than a complete federal tax return. It does not calculate every credit, deduction, additional tax, or special tax treatment that may apply to an actual Form 1040.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Tax Calculator</h2>
+
+    <h3>Filing Status</h3>
+    <p>Select the filing status available in the calculator that applies to your situation. Filing status determines which 2026 federal tax brackets and standard deduction are used.</p>
+
+    <h3>Ordinary Gross Income</h3>
+    <p>Enter your ordinary gross income in dollars. This is the income amount the calculator starts with before subtracting the adjustments and deduction entered in the tool.</p>
+
+    <h3>Above-the-Line Adjustments</h3>
+    <p>Enter the total dollar amount of applicable adjustments you want the calculator to subtract from gross income before calculating the deduction and taxable income.</p>
+
+    <h3>Itemized Deductions</h3>
+    <p>Enter your total itemized deductions. The calculator compares this amount with the applicable standard deduction and uses the larger amount.</p>
+
+    <h3>Federal Tax Withheld / Estimated Paid</h3>
+    <p>Enter federal income tax already withheld or estimated federal tax payments already made. This value is compared with calculated federal tax to estimate a refund or remaining amount due.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+
+    <p>The calculator first determines the deduction to use:</p>
+
+    <div class="formula"><strong>Deduction Used = max(Itemized Deductions, Standard Deduction)</strong></div>
+
+    <p>Taxable income is then calculated as:</p>
+
+    <div class="formula"><strong>Taxable Income = max(0, Gross Income − Above-the-Line Adjustments − Deduction Used)</strong></div>
+
+    <p>Federal ordinary income tax is calculated progressively:</p>
+
+    <div class="formula"><strong>Federal Tax = Σ(Income within each tax bracket × that bracket's tax rate)</strong></div>
+
+    <p>Finally:</p>
+
+    <div class="formula"><strong>Refund / Due = Federal Tax Withheld or Estimated Paid − Calculated Federal Tax</strong></div>
+
+    <p>A positive final value indicates an estimated refund. A negative value indicates an estimated amount due.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>G</td><td>Ordinary gross income</td><td>U.S. dollars</td></tr>
+        <tr><td>A</td><td>Above-the-line adjustments</td><td>U.S. dollars</td></tr>
+        <tr><td>I</td><td>Itemized deductions</td><td>U.S. dollars</td></tr>
+        <tr><td>S</td><td>Applicable 2026 standard deduction</td><td>U.S. dollars</td></tr>
+        <tr><td>D</td><td>Deduction used</td><td>U.S. dollars</td></tr>
+        <tr><td>TI</td><td>Taxable income</td><td>U.S. dollars</td></tr>
+        <tr><td>T</td><td>Calculated ordinary federal income tax</td><td>U.S. dollars</td></tr>
+        <tr><td>P</td><td>Federal tax withheld or estimated paid</td><td>U.S. dollars</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Calculation Sequence</h3>
+
+    <ol>
+      <li>Determine the applicable standard deduction from filing status.</li>
+      <li>Compare the standard deduction with entered itemized deductions.</li>
+      <li>Use the larger deduction.</li>
+      <li>Subtract adjustments and the selected deduction from gross income.</li>
+      <li>Do not allow taxable income to fall below zero.</li>
+      <li>Divide taxable income across the applicable 2026 federal tax brackets.</li>
+      <li>Apply each marginal rate only to income within that bracket.</li>
+      <li>Add the bracket amounts to calculate ordinary federal income tax.</li>
+      <li>Compare calculated tax with federal tax already paid.</li>
+    </ol>
+
+    <h3>Progressive Tax Calculation</h3>
+
+    <p>Federal income tax is progressive. Moving into a higher bracket does not cause all taxable income to be taxed at the higher percentage. Only the portion of taxable income inside each bracket is taxed at that bracket's rate. The IRS keeps seven individual rates for 2026: 10%, 12%, 22%, 24%, 32%, 35%, and 37%.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Assume a single filer enters the following values.</p>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li>Ordinary gross income: <strong>$90,000</strong></li>
+      <li>Above-the-line adjustments: <strong>$5,000</strong></li>
+      <li>Itemized deductions: <strong>$12,000</strong></li>
+      <li>Federal tax withheld / estimated paid: <strong>$9,500</strong></li>
+    </ul>
+
+    <h3>Step 1: Choose the Deduction</h3>
+
+    <p>The 2026 base standard deduction for a single filer is <strong>$16,100</strong>, which is greater than the entered $12,000 itemized deduction.</p>
+
+    <div class="formula"><strong>Deduction Used = max($12,000, $16,100) = $16,100</strong></div>
+
+    <h3>Step 2: Calculate Taxable Income</h3>
+
+    <div class="formula"><strong>Taxable Income = $90,000 − $5,000 − $16,100</strong></div>
+
+    <div class="formula"><strong>Taxable Income = $68,900</strong></div>
+
+    <h3>Step 3: Apply the 2026 Single Tax Brackets</h3>
+
+    <p>For this example:</p>
+
+    <ul>
+      <li>First 12,400×10%=<strong>1,240</strong></li>
+      <li>Next 38,000×12%=<strong>4,560</strong></li>
+      <li>Remaining 18,500×22%=<strong>4,070</strong></li>
+    </ul>
+
+    <p>The applicable 2026 single-filer bracket thresholds come from the IRS 2026 tax rate tables.</p>
+
+    <div class="formula"><strong>Calculated Federal Tax = $1,240 + $4,560 + $4,070 = $9,870</strong></div>
+
+    <h3>Step 4: Estimate Refund or Amount Due</h3>
+
+    <div class="formula"><strong>Refund / Due = $9,500 − 9,870=-370</strong></div>
+
+    <h3>Final Result</h3>
+
+    <ul>
+      <li>Taxable income: <strong>$68,900</strong></li>
+      <li>Deduction used: <strong>$16,100</strong></li>
+      <li>Calculated ordinary federal tax: <strong>$9,870</strong></li>
+      <li>Estimated amount due: <strong>$370</strong></li>
+    </ul>
+
+    <p>This example covers only the simplified ordinary federal income tax calculation used by this calculator.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Taxable Income</h3>
+
+    <p>Taxable income is the amount remaining after the calculator subtracts entered above-the-line adjustments and the larger of the itemized deduction or applicable standard deduction. Federal tax brackets are applied to this amount.</p>
+
+    <h3>Deduction Used</h3>
+
+    <p>This shows whether the calculator used your entered itemized deductions or the applicable base standard deduction. The larger value is used in the calculation.</p>
+
+    <h3>Effective Rate</h3>
+
+    <p>The effective rate is a percentage summary associated with the calculated tax result. It should not be confused with your marginal tax rate, which applies only to the portion of taxable income falling inside a particular bracket.</p>
+
+    <h3>Estimated Refund</h3>
+
+    <p>If federal tax withheld or estimated payments are greater than calculated tax, the difference is displayed as an estimated refund.</p>
+
+    <h3>Estimated Amount Due</h3>
+
+    <p>If calculated tax is greater than tax already withheld or paid, the difference is displayed as an estimated amount due.</p>
+
+    <p>This estimate does not guarantee the refund or balance that would appear on an actual federal tax return.</p>
+  </section>
+
+  <section id="tax-rules">
+    <h2>2026 Federal Tax Rules Used</h2>
+
+    <p><strong>Tax year:</strong> 2026<br>
+      <strong>Current data checked:</strong> September 24, 2026</p>
+
+    <p>The IRS confirms the following base standard deductions for taxable years beginning in 2026: <strong>16,100</strong>forsingleandmarriedfilingseparately,<strong>32,200</strong> for married filing jointly, and <strong>$24,150</strong> for head of household.</p>
+
+    <h3>2026 Standard Deductions</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Filing Status</th>
+          <th>Base Standard Deduction</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Single</td><td>$16,100</td></tr>
+        <tr><td>Married Filing Separately</td><td>$16,100</td></tr>
+        <tr><td>Married Filing Jointly</td><td>$32,200</td></tr>
+        <tr><td>Head of Household</td><td>$24,150</td></tr>
+      </tbody>
+    </table>
+
+    <p>These are the IRS base standard deduction amounts. Special rules and additional deductions can apply in real tax returns.</p>
+
+    <h3>2026 Federal Ordinary Income Tax Brackets</h3>
+
+    <p>The following thresholds apply to taxable income for tax year 2026.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Rate</th>
+          <th>Single</th>
+          <th>Married Filing Jointly</th>
+          <th>Head of Household</th>
+          <th>Married Filing Separately</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>10%</td>
+          <td>Up to $12,400</td>
+          <td>Up to $24,800</td>
+          <td>Up to $17,700</td>
+          <td>Up to $12,400</td>
+        </tr>
+        <tr>
+          <td>12%</td>
+          <td>Over $12,400 to $50,400</td>
+          <td>Over $24,800 to $100,800</td>
+          <td>Over $17,700 to $67,450</td>
+          <td>Over $12,400 to $50,400</td>
+        </tr>
+        <tr>
+          <td>22%</td>
+          <td>Over $50,400 to $105,700</td>
+          <td>Over $100,800 to $211,400</td>
+          <td>Over $67,450 to $105,700</td>
+          <td>Over $50,400 to $105,700</td>
+        </tr>
+        <tr>
+          <td>24%</td>
+          <td>Over $105,700 to $201,775</td>
+          <td>Over $211,400 to $403,550</td>
+          <td>Over $105,700 to $201,750</td>
+          <td>Over $105,700 to $201,775</td>
+        </tr>
+        <tr>
+          <td>32%</td>
+          <td>Over $201,775 to $256,225</td>
+          <td>Over $403,550 to $512,450</td>
+          <td>Over $201,750 to $256,200</td>
+          <td>Over $201,775 to $256,225</td>
+        </tr>
+        <tr>
+          <td>35%</td>
+          <td>Over $256,225 to $640,600</td>
+          <td>Over $512,450 to $768,700</td>
+          <td>Over $256,200 to $640,600</td>
+          <td>Over $256,225 to $384,350</td>
+        </tr>
+        <tr>
+          <td>37%</td>
+          <td>Over $640,600</td>
+          <td>Over $768,700</td>
+          <td>Over $640,600</td>
+          <td>Over $384,350</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>This calculator is a simplified estimator of 2026 federal ordinary income tax. It uses entered ordinary income, adjustments, deductions, filing status, and federal tax already paid.</p>
+
+    <p>It does not calculate many provisions that can change an actual federal tax return, including:</p>
+
+    <ul>
+      <li>Tax credits</li>
+      <li>Self-employment tax</li>
+      <li>Preferential long-term capital-gain or qualified-dividend tax rates</li>
+      <li>Alternative Minimum Tax</li>
+      <li>Net Investment Income Tax</li>
+      <li>Qualified Business Income deduction</li>
+      <li>Special deductions, eligibility rules, or phaseouts</li>
+      <li>State or local income tax</li>
+    </ul>
+
+    <p>The calculator also does not verify whether a deduction or adjustment entered by the user is legally allowable. Actual tax results can differ because federal tax returns contain additional income categories, deductions, credits, elections, limitations, and taxpayer-specific rules.</p>
+
+    <p>Use IRS forms and instructions or qualified tax assistance when making filing decisions.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>How is taxable income calculated?</summary>
+      <p>The calculator subtracts entered above-the-line adjustments and the larger of itemized deductions or the applicable standard deduction from gross income. If the result is below zero, taxable income is treated as zero.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does entering a higher tax bracket mean all my income is taxed at that rate?</summary>
+      <p>No. Federal income tax uses progressive brackets. Each rate applies only to the portion of taxable income within that bracket.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does the calculator automatically choose between itemized and standard deductions?</summary>
+      <p>Yes. It compares your entered itemized deduction with the applicable standard deduction and uses the larger value.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What does a negative refund/due result mean?</summary>
+      <p>The calculator subtracts calculated federal tax from withholding or estimated payments. If the result is negative, the absolute value represents the estimated amount still due.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does this calculator include tax credits?</summary>
+      <p>No. Credits and several other return-specific federal tax provisions are excluded from this simplified estimator.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does the calculator include capital gains tax?</summary>
+      <p>It estimates ordinary federal income tax. Preferential long-term capital-gain rates are not included in the calculation.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can I use the result to file my tax return?</summary>
+      <p>The result can help with planning, but it is not a completed tax return or individualized tax advice. Actual filing calculations may require IRS forms, schedules, instructions, and additional taxpayer information.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://www.irs.gov/irb/2025-45_IRB?utm_source=chatgpt.com" rel="noopener" target="_blank">IRS Internal Revenue Bulletin 2025-45 — 2026 Tax Rate Tables</a><br>
+        Provides the official 2026 ordinary federal income tax brackets and standard deduction amounts.
+      </li>
+
+      <li>
+        <a href="https://www.irs.gov/publications/p505?utm_source=chatgpt.com" rel="noopener" target="_blank">IRS Publication 505 (2026) — Tax Withholding and Estimated Tax</a><br>
+        Provides IRS guidance on federal withholding, estimated tax, and 2026 standard deduction amounts.
+      </li>
+    </ul>
+
+    <h3>Current Data / Rule Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill?utm_source=chatgpt.com" rel="noopener" target="_blank">IRS — Tax Inflation Adjustments for Tax Year 2026</a><br>
+        Confirms the 2026 federal marginal tax rates and updated standard deductions.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/salary-calculator/?utm_source=chatgpt.com">Salary Calculator</a></li>
+      <li><a href="https://example.com/401k-calculator/?utm_source=chatgpt.com">401K Calculator</a></li>
+      <li><a href="https://example.com/retirement-calculator/?utm_source=chatgpt.com">Retirement Calculator</a></li>
+      <li><a href="https://example.com/sales-tax-calculator/?utm_source=chatgpt.com">Sales Tax Calculator</a></li>
+      <li><a href="https://example.com/inflation-calculator/?utm_source=chatgpt.com">Inflation Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+                </div>
+            </section>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"49","Batch":"5","Calculator / Page":"2026 Federal Income Tax Calculator","Slug":"tax-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Estimate 2026 U.S. federal ordinary income tax using IRS tax brackets and standard deductions, with optional itemized deductions and withholding.","Formula / Algorithm Used in Tool":"Taxable income = max(0, gross income − above-the-line adjustments − max(itemized deductions, applicable standard deduction)). Ordinary federal tax = sum of each progressive bracket portion × its marginal rate. Estimated refund/due = withholding/estimated payments − calculated tax.","Required User Inputs":"Filing status; Ordinary gross income; Above-the-line adjustments; Itemized deductions; Federal tax withheld / estimated paid","Primary Outputs":"Taxable income; Deduction used; Effective rate; Estimated refund / due","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Filing status, Ordinary gross income, Above-the-line adjustments, Itemized deductions, Federal tax withheld / estimated paid. Explain outputs: Taxable income, Deduction used, Effective rate, Estimated refund / due. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Current official thresholds, limits, eligibility rules, effective tax year/date and authoritative government source.","Fresh Data Required?":"Yes","Recommended Update Frequency":"At least annually / whenever rules change","Important Assumptions / Limitations":"This simplified estimator excludes many return-specific provisions, including tax credits, self-employment tax, preferential capital-gain rates, AMT, NIIT, QBI, and special deductions or phaseouts. Use IRS forms, instructions, or qualified tax help for filing decisions.","Current Source URLs in Page":"https://www.calculator.net/tax-calculator.html | https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill | https://www.irs.gov/irb/2025-45_IRB | https://www.irs.gov/publications/p505","Implementation Path":"/tax-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Finance</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../salary-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Salary Calculator</strong><small>Estimate 2026 U.S.
+                            annual and per-paycheck take-home pay using gross salary, pre-ta…</small></span></a><a
+                    class="cp-related-link" href="../estate-tax-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Estate Tax Calculator</strong><small>Estimate a
+                            simplified 2026 U.S. federal estate tax using estate assets,
+                            deductible…</small></span></a><a class="cp-related-link"
+                    href="../401k-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>401(k)
+                            Calculator</strong><small>Project a 401(k) balance using salary, contribution percentage,
+                            employer match, sal…</small></span></a><a class="cp-related-link"
+                    href="../inflation-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Inflation Calculator</strong><small>Compare U.S.
+                            dollar purchasing power with CPI-U data or project inflation forward a…</small></span></a><a
+                    class="cp-related-link" href="../social-security-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Social Security Calculator</strong><small>Estimate
+                            U.S. Social Security retirement benefits by claim age using SSA
+                            early-reti…</small></span></a><a class="cp-related-link"
+                    href="../take-home-pay-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Take Home Pay Calculator</strong><small>Estimate
+                            2026 U.S. take-home pay using federal tax brackets, standard or custom
+                            ded…</small></span></a><a class="cp-related-link"
+                    href="../auto-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Auto
+                            Loan Calculator</strong><small>Estimate a car loan payment using vehicle price, down
+                            payment, trade-in, tax, fees,…</small></span></a><a class="cp-related-link"
+                    href="../interest-rate-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Interest Rate Calculator</strong><small>Estimate
+                            the nominal annual interest rate implied by a loan amount, fixed monthly
+                            p…</small></span></a></div><a class="cp-side-category"
+                href="../finance/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const std = { single: 16100, mfj: 32200, hoh: 24150, mfs: 16100 };
+        const brackets = {
+            single: [[12400, .10], [50400, .12], [105700, .22], [201775, .24], [256225, .32], [640600, .35], [Infinity, .37]],
+            mfj: [[24800, .10], [100800, .12], [211400, .22], [403550, .24], [512450, .32], [768700, .35], [Infinity, .37]],
+            hoh: [[17700, .10], [67450, .12], [105700, .22], [201750, .24], [256200, .32], [640600, .35], [Infinity, .37]],
+            mfs: [[12400, .10], [50400, .12], [105700, .22], [201775, .24], [256225, .32], [384350, .35], [Infinity, .37]]
+        };
+        function tax(x, arr) { let prev = 0, total = 0; for (const [cap, rate] of arr) { let slice = Math.min(x, cap) - prev; if (slice > 0) total += slice * rate; if (x <= cap) break; prev = cap } return total }
+        tGo.onclick = () => {
+            tErr.classList.remove('show'); let s = tStatus.value, g = +tIncome.value, a = +tAdjust.value, it = +tItem.value, w = +tWithheld.value; if ([g, a, it, w].some(x => !isFinite(x) || x < 0)) { tErr.textContent = "Enter valid non-negative amounts."; tErr.classList.add('show'); return }
+            let agi = Math.max(0, g - a), ded = Math.max(std[s], it), ti = Math.max(0, agi - ded), tx = tax(ti, brackets[s]), eff = g > 0 ? tx / g * 100 : 0, diff = w - tx; tBig.textContent = "$" + tx.toLocaleString(undefined, { maximumFractionDigits: 2 }); tTaxable.textContent = "$" + ti.toLocaleString(undefined, { maximumFractionDigits: 2 }); tDed.textContent = "$" + ded.toLocaleString(undefined, { maximumFractionDigits: 2 }); tEff.textContent = eff.toFixed(2) + "%"; tDue.textContent = (diff >= 0 ? "Refund ~ $" : "Due ~ $") + Math.abs(diff).toLocaleString(undefined, { maximumFractionDigits: 2 }); tText.textContent = `Uses the larger of the 2026 standard deduction or your itemized deduction.`
+        };
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
 </html>

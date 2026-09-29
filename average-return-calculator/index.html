@@ -1,21 +1,1228 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
-<title>Average Return Calculator | CalcPro</title><meta content="Calculate arithmetic, geometric, cumulative, or money-weighted annualized investment returns with clear compounding logic." name="description"/><meta content="index,follow" name="robots"/><link href="../average-return-calculator/" rel="canonical"/><meta content="Average Return Calculator | CalcPro" property="og:title"/><meta content="Calculate arithmetic, geometric, cumulative, or money-weighted annualized investment returns with clear compounding logic." property="og:description"/><meta content="website" property="og:type"/><meta content="/average-return-calculator/" property="og:url"/><meta content="#1477ff" name="theme-color"/><style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.6}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}.crumb{font-size:.9rem;color:var(--muted);padding:18px 0}.hero{position:relative;overflow:hidden;border-radius:34px;background:var(--hero);box-shadow:0 30px 80px rgba(0,0,0,.18);padding:clamp(28px,5vw,64px);min-height:340px;display:grid;grid-template-columns:1.fr;gap:34px;align-items:center}.hero h1{font-size:clamp(2.2rem,5vw,4.6rem);line-height:1.02;margin:.15em 0 .3em;letter-spacing:-.04em}.hero p{font-size:1.08rem;max-width:720px;color:var(--hero-muted)}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.08);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}.visual{min-height:240px;position:relative;display:grid;place-items:center}.orb,.tile,.coin,.ring,.cube{position:absolute;filter:drop-shadow(0 18px 22px rgba(0,0,0,.24))}.orb{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff9 0 8%,transparent 9%),linear-gradient(145deg,var(--accent2),var(--accent));box-shadow:inset -18px -24px 36px #0003}.ring{width:190px;height:190px;border:28px solid var(--accent);border-radius:50%;transform:rotateX(62deg) rotateZ(-12deg);opacity:.9}.tile{width:190px;height:118px;border-radius:24px;background:linear-gradient(145deg,#ffffff22,#ffffff08);border:1px solid #ffffff35;backdrop-filter:blur(12px);transform:rotate(-8deg) skewY(4deg);display:grid;place-items:center;font-weight:800;font-size:2rem}.coin{width:78px;height:78px;border-radius:50%;background:linear-gradient(145deg,#fff7aa,#e6a800);border:8px solid #ffd14b;display:grid;place-items:center;color:#5d3c00;font-weight:900}.cube{width:94px;height:94px;border-radius:20px;background:linear-gradient(145deg,var(--accent),var(--accent2));transform:rotate(26deg);box-shadow:inset -16px -16px 24px #0002}.main-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(300px,.88fr);gap:28px;margin:34px auto}.panel{background:var(--panel);border:1px solid var(--panel-line);border-radius:28px;box-shadow:0 20px 48px rgba(0,0,0,.1);padding:clamp(20px,3vw,32px)}.panel h2{margin-top:0}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}label{font-weight:700;font-size:.92rem}.hint{font-size:.78rem;color:var(--muted)}input,select,textarea{width:100%;border:1px solid var(--input-line);background:var(--input);color:var(--text);border-radius:14px;padding:12px 13px;font:inherit;outline:none;box-shadow:inset 0 2px 10px rgba(0,0,0,.04)}input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:800;cursor:pointer}.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--button-text);box-shadow:0 12px 25px color-mix(in srgb,var(--accent) 28%,transparent)}.btn.ghost{background:var(--input);color:var(--text);border:1px solid var(--input-line)}.error{display:none;margin-top:12px;padding:11px 13px;border-radius:12px;background:#ffefef;color:#9c1c1c;font-weight:700}.results{position:sticky;top:18px;align-self:start}.result-hero{border-radius:24px;padding:22px;background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 16%,var(--panel)),color-mix(in srgb,var(--accent2) 10%,var(--panel)));border:1px solid color-mix(in srgb,var(--accent) 24%,var(--panel-line));margin-bottom:16px}.result-label{font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800}.result-big{font-size:clamp(2rem,4vw,3.4rem);font-weight:900;letter-spacing:-.04em;margin-top:4px}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{padding:14px;border-radius:16px;background:var(--soft);border:1px solid var(--panel-line)}.stat b{display:block;font-size:1.05rem}.stat span{font-size:.78rem;color:var(--muted)}.bar{height:12px;background:var(--soft);border-radius:999px;overflow:hidden;margin:8px 0}.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:inherit}.table-wrap{overflow:auto;margin-top:16px;border-radius:16px;border:1px solid var(--panel-line)}table{width:100%;border-collapse:collapse;min-width:560px}th,td{padding:10px 12px;border-bottom:1px solid var(--panel-line);text-align:right;font-size:.88rem}th:first-child,td:first-child{text-align:left}th{background:var(--soft);position:sticky;top:0}article.content{margin:40px auto 72px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:32px}.copy{background:var(--panel);border:1px solid var(--panel-line);border-radius:30px;padding:clamp(24px,4vw,46px);box-shadow:0 18px 50px rgba(0,0,0,.07)}.copy h2{font-size:clamp(1.45rem,3vw,2.25rem);margin-top:1.7em;letter-spacing:-.02em}.copy h2:first-child{margin-top:0}.copy h3{margin-top:1.4em}.copy p,.copy li{color:var(--copy)}.copy code{background:var(--soft);padding:2px 7px;border-radius:8px}.toc{position:sticky;top:20px;align-self:start;background:var(--panel);border:1px solid var(--panel-line);border-radius:22px;padding:20px}.toc strong{display:block;margin-bottom:8px}.toc a{display:block;padding:5px 0;color:var(--muted)}.callout{padding:16px 18px;border-left:4px solid var(--accent);background:var(--soft);border-radius:12px;margin:18px 0}.faq details{border-top:1px solid var(--panel-line);padding:14px 0}.faq summary{font-weight:800;cursor:pointer}.sources li{margin:8px 0}footer{padding:30px 0 50px;color:var(--muted);text-align:center}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.tab{padding:9px 12px;border-radius:12px;border:1px solid var(--input-line);background:var(--input);cursor:pointer;font-weight:800}.tab.active{background:var(--accent);color:var(--button-text);border-color:transparent}.hidden{display:none!important}.badge{display:inline-block;padding:4px 9px;border-radius:999px;background:var(--soft);font-size:.76rem;font-weight:800;color:var(--muted)}.switchline{display:flex;gap:10px;align-items:center}.switchline input{width:auto}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.mini-note{font-size:.82rem;color:var(--muted);margin-top:10px}
-@media(max-width:860px){.hero,.main-grid,article.content{grid-template-columns:1fr}.visual{min-height:180px}.results,.toc{position:static}.toc{display:none}}@media(max-width:560px){.wrap{width:min(100% - 20px,1180px)}.hero{border-radius:24px;padding:24px 20px}.panel{border-radius:22px;padding:18px}.form-grid,.stats,.three{grid-template-columns:1fr}.field.full{grid-column:auto}.result-big{font-size:2.25rem}}
+<html lang="en">
 
-:root{--bg:#07101c;--text:#edf8ff;--copy:#cedbe5;--muted:#91a5b7;--panel:#0c1827;--panel-line:#1a314a;--soft:#102239;--input:#081421;--input-line:#24405c;--accent:#27c2ff;--accent2:#8a5cff;--button-text:#05111c;--hero:radial-gradient(circle at 70% 10%,#234e8a,transparent 34%),linear-gradient(135deg,#07121f,#0b2238 58%,#2c1f51);--hero-muted:#c5d8e8;--line:#ffffff22}.hero{min-height:380px}.visual:before{content:'';position:absolute;width:250px;height:150px;border-left:4px solid #74dcff;border-bottom:4px solid #74dcff;transform:skewY(-8deg);opacity:.8}.visual:after{content:'↗';position:absolute;font-size:8rem;color:#bb9cff;right:12%;top:2%;text-shadow:0 20px 25px #0007}.visual .orb{width:62px;height:62px;left:20%;bottom:22%}
-</style><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Average Return Calculator", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "description": "Calculate arithmetic, geometric, cumulative, or money-weighted annualized investment returns with clear compounding logic.", "url": "/average-return-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Investing & Interest", "item": "/finance/investing-interest/"}, {"@type": "ListItem", "position": 4, "name": "Average Return Calculator", "item": "/average-return-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why is geometric average usually lower than arithmetic average?", "acceptedAnswer": {"@type": "Answer", "text": "Volatility creates a compounding drag. A gain and an equal percentage loss do not cancel because they apply to different bases. Geometric averaging captures this compounding effect, while arithmetic averaging does not."}}, {"@type": "Question", "name": "What is a money-weighted return?", "acceptedAnswer": {"@type": "Answer", "text": "A money-weighted return accounts for the timing and size of deposits and withdrawals. It solves for the annualized rate that makes the present value of all dated cash flows equal to zero."}}, {"@type": "Question", "name": "Can average return predict future performance?", "acceptedAnswer": {"@type": "Answer", "text": "No. Historical average return is a description of past observations under a chosen method. Future returns can differ significantly and can be negative."}}]}]}</script><link href="../assets/css/global.css" rel="stylesheet"/><link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head><body data-cp-category="finance" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../finance/index.html">Finance</a></li><li><a aria-current="page" href="index.html">Average Return Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a href="../calculators/index.html">All calculators</a></div>
-<div class="cp-page-layout"><main class="wrap" id="main"><h1 class="page-title">Average Return Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="main-grid"><section class="panel"><h2>Average Investment Return</h2><div class="tabs"><button class="tab active" id="retTab" onclick="setReturnMode('returns')">Periodic Returns</button><button class="tab" id="flowTab" onclick="setReturnMode('cashflow')">Dated Cash Flows</button></div><div id="returnInputs"><div class="field"><label for="returnsList">Returns (%) separated by commas</label><textarea id="returnsList" rows="4">10,-5,12,8</textarea><span class="hint">Example: 10, -5, 12, 8</span></div></div><div class="hidden" id="flowInputs"><div class="form-grid"><div class="field"><label for="startBal">Starting balance</label><input id="startBal" type="number" value="10000"/></div><div class="field"><label for="startDate">Start date</label><input id="startDate" type="date" value="2022-01-01"/></div><div class="field"><label for="endBal">Ending balance</label><input id="endBal" type="number" value="15000"/></div><div class="field"><label for="endDate">End date</label><input id="endDate" type="date" value="2026-01-01"/></div><div class="field"><label for="flow1">Deposit (+) / withdrawal (-)</label><input id="flow1" type="number" value="1000"/></div><div class="field"><label for="flowDate1">Cash-flow date</label><input id="flowDate1" type="date" value="2024-01-01"/></div></div></div><div class="error" id="error"></div><div class="actions"><button class="btn primary" onclick="calcReturn()">Calculate Return</button><button class="btn ghost" onclick="resetReturn()">Reset</button></div></section><aside class="panel results"><div class="result-hero"><div class="result-label" id="avgLabel">Geometric average return</div><div class="result-big" id="avgOut">0.00%</div></div><div class="stats"><div class="stat"><span>Arithmetic mean</span><b id="arithOut">0.00%</b></div><div class="stat"><span>Cumulative return</span><b id="cumOut">0.00%</b></div><div class="stat"><span>Periods</span><b id="periodOut">0</b></div><div class="stat"><span>Method</span><b id="methodOut">Geometric</b></div></div></aside></section><article class="content"><div class="copy"><h2 id="how">What Is an Average Return Calculator?</h2><p>An average return calculator summarizes investment performance. This page provides a geometric average for a series of periodic returns and a money-weighted annualized return for dated cash flows.</p><h2 id="formula">Return Formulas</h2><p>The arithmetic mean is the sum of period returns divided by the number of periods. The geometric mean compounds each growth factor and then takes the nth root: <code>[(1+r1)(1+r2)…(1+rn)]^(1/n) − 1</code>. The dated cash-flow mode solves for the annual rate that makes discounted cash flows sum to zero.</p><h2 id="example">Example</h2><p>Returns of 10%, −5%, 12%, and 8% do not compound to the same answer as their arithmetic average. The geometric average captures the compounding path and is therefore useful for multi-period growth comparisons.</p><h2>Arithmetic vs Geometric Average</h2><p>Arithmetic mean describes the simple average of observations. Geometric mean reflects compound growth across periods. For volatile returns, geometric average is usually lower than arithmetic average because losses and gains compound asymmetrically.</p><h2 id="limits">Limitations</h2><p>This calculator does not adjust for inflation, taxes, fees, benchmark risk, volatility, or irregular multiple cash flows beyond the single optional intermediate flow provided. Past returns do not guarantee future performance.</p><section class="faq" id="faq"><h2>Frequently Asked Questions</h2><details><summary>Why is geometric average usually lower than arithmetic average?</summary><p>Volatility creates a compounding drag. A gain and an equal percentage loss do not cancel because they apply to different bases. Geometric averaging captures this compounding effect, while arithmetic averaging does not.</p></details><details><summary>What is a money-weighted return?</summary><p>A money-weighted return accounts for the timing and size of deposits and withdrawals. It solves for the annualized rate that makes the present value of all dated cash flows equal to zero.</p></details><details><summary>Can average return predict future performance?</summary><p>No. Historical average return is a description of past observations under a chosen method. Future returns can differ significantly and can be negative.</p></details></section><section class="sources" id="sources"><h2>Sources and Methodology</h2><p>The calculator logic is implemented locally in your browser. Formulas and terminology were cross-checked against the references below. Estimates can differ from lender, tax-authority, plan-administrator, or contract calculations because real-world rules may add timing, rounding, eligibility, fees, or jurisdiction-specific treatment.</p><ul><li><a href="https://www.calculator.net/average-return-calculator.html" rel="noopener" target="_blank">Calculator.net — Average Return Calculator</a></li></ul></section></div></article>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+   <!-- Primary Meta Tags -->
+<title>Average Return Calculator – Calculate Investment Returns</title>
+<meta name="title" content="Average Return Calculator – Calculate Investment Returns">
+<meta name="description" content="Calculate arithmetic, geometric, cumulative, or money-weighted investment returns from period returns, balances, dates, deposits, and withdrawals.">
 
-<script class="cp-calculator-data" type="application/json">{"index":"81","Batch":"9","Calculator / Page":"Average Return Calculator","Slug":"average-return-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Calculate arithmetic, geometric, cumulative, or money-weighted annualized investment returns with clear compounding logic.","Formula / Algorithm Used in Tool":"Return Formulas: The arithmetic mean is the sum of period returns divided by the number of periods. The geometric mean compounds each growth factor and then takes the nth root: [(1+r1)(1+r2)…(1+rn)]^(1/n) − 1 . The dated cash-flow mode solves for the annual rate that makes discounted cash flows sum to zero.","Required User Inputs":"Returns (%) separated by commas; Starting balance; Start date; Ending balance; End date; Deposit (+) / withdrawal (-); Cash-flow date","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Returns (%) separated by commas, Starting balance, Start date, Ending balance, End date, Deposit (+) / withdrawal (-), Cash-flow date. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"This calculator does not adjust for inflation, taxes, fees, benchmark risk, volatility, or irregular multiple cash flows beyond the single optional intermediate flow provided. Past returns do not guarantee future performance. Frequently Asked Questions Why is geometric average usually lower than arithmetic average? Volatility creates a compounding drag. A gain and an equal percentage loss do not cancel because they apply to different bases. Geometric averaging captures this compounding effect, while arithmetic averaging does not. What is a money-weighted return? A money-weighted return accounts for the timing and size of deposits and withdrawals. It solves for the annualized rate that makes the present value of all dated cash flows equal to zero. Can average return predict future performance? No. Historical average return is a description of past observations under a chosen method. Future returns can differ significantly and can be negative. Sources and Methodology The calculator logic is implemented locally in your browser. Formulas and terminology were cross-checked against the references below. Estimates can differ from lender, tax-authority, plan-administrator, or contract calculations because real-world rules may add timing, rounding, eligibility, fees, or jurisdiction-speci","Current Source URLs in Page":"https://www.calculator.net/average-return-calculator.html","Implementation Path":"/average-return-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Finance</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../roi-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>ROI Calculator</strong><small>Calculate return on investment, net gain, value multiple, and annualized ROI with a…</small></span></a><a class="cp-related-link" href="../investment-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Investment Calculator</strong><small>Project an investment balance from a starting amount, monthly contributions, time h…</small></span></a><a class="cp-related-link" href="../retirement-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Retirement Calculator</strong><small>Project retirement savings from current balance, monthly contributions, time to ret…</small></span></a><a class="cp-related-link" href="../401k-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>401(k) Calculator</strong><small>Project a 401(k) balance using salary, contribution percentage, employer match, sal…</small></span></a><a class="cp-related-link" href="../annuity-payout-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Annuity Payout Calculator</strong><small>Estimate a level annuity payout for a fixed term or estimate how long a starting ba…</small></span></a><a class="cp-related-link" href="../mutual-fund-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Mutual Fund Calculator</strong><small>Project mutual fund growth using starting investment, monthly contributions, assume…</small></span></a><a class="cp-related-link" href="../ira-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>IRA Calculator</strong><small>Estimate IRA growth and compare Traditional, Roth-style, and taxable savings under…</small></span></a><a class="cp-related-link" href="../irr-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>IRR Calculator</strong><small>Calculate internal rate of return for periodic cash flows, view NPV at the solved r…</small></span></a></div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script>
-const $=s=>document.querySelector(s);const n=id=>Number(document.getElementById(id).value);const money=(v,c='$')=>c+Number(v).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});const pct=v=>Number(v).toFixed(2)+'%';
-function err(msg){const e=$('#error');e.textContent=msg;e.style.display='block'}function clearErr(){const e=$('#error');e.style.display='none';e.textContent=''}
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/average-return-calculator/">
 
-let returnMode='returns';function setReturnMode(m){returnMode=m;document.getElementById('retTab').classList.toggle('active',m==='returns');document.getElementById('flowTab').classList.toggle('active',m==='cashflow');document.getElementById('returnInputs').classList.toggle('hidden',m!=='returns');document.getElementById('flowInputs').classList.toggle('hidden',m!=='cashflow');calcReturn()}
-function xnpv(rate,flows){const d0=flows[0].date;return flows.reduce((s,f)=>s+f.amount/Math.pow(1+rate,(f.date-d0)/86400000/365),0)}function xirr(flows){let lo=-.9999,hi=10;let flo=xnpv(lo,flows),fhi=xnpv(hi,flows);for(let e=0;e<20&&flo*fhi>0;e++){hi*=2;fhi=xnpv(hi,flows)}if(flo*fhi>0)return NaN;for(let i=0;i<160;i++){let mid=(lo+hi)/2,fm=xnpv(mid,flows);if(Math.abs(fm)<1e-9)return mid;if(flo*fm<=0){hi=mid;fhi=fm}else{lo=mid;flo=fm}}return (lo+hi)/2}
-function calcReturn(){clearErr();if(returnMode==='returns'){const arr=document.getElementById('returnsList').value.split(',').map(x=>Number(x.trim())).filter(x=>Number.isFinite(x));if(!arr.length||arr.some(x=>x<=-100))return err('Enter one or more valid returns greater than -100%.');const ar=arr.reduce((a,b)=>a+b,0)/arr.length;const prod=arr.reduce((a,b)=>a*(1+b/100),1);const geo=(Math.pow(prod,1/arr.length)-1)*100;document.getElementById('avgOut').textContent=pct(geo);document.getElementById('arithOut').textContent=pct(ar);document.getElementById('cumOut').textContent=pct((prod-1)*100);document.getElementById('periodOut').textContent=arr.length;document.getElementById('avgLabel').textContent='Geometric average return';document.getElementById('methodOut').textContent='Geometric'}else{const sb=n('startBal'),eb=n('endBal'),f=n('flow1');const sd=new Date(document.getElementById('startDate').value),ed=new Date(document.getElementById('endDate').value),fd=new Date(document.getElementById('flowDate1').value);if(sb<=0||eb<0||isNaN(sd)||isNaN(ed)||ed<=sd||fd<=sd||fd>=ed)return err('Use valid balances and dates, with the cash flow between start and end dates.');const flows=[{amount:-sb,date:sd},{amount:-f,date:fd},{amount:eb,date:ed}];const r=xirr(flows);if(!Number.isFinite(r))return err('A unique annualized return could not be solved from these cash flows.');const yrs=(ed-sd)/86400000/365;document.getElementById('avgOut').textContent=pct(r*100);document.getElementById('arithOut').textContent='—';document.getElementById('cumOut').textContent='—';document.getElementById('periodOut').textContent=yrs.toFixed(2)+' yrs';document.getElementById('avgLabel').textContent='Money-weighted annual return';document.getElementById('methodOut').textContent='XIRR-style'}}function resetReturn(){document.getElementById('returnsList').value='10,-5,12,8';document.getElementById('startBal').value=10000;document.getElementById('startDate').value='2022-01-01';document.getElementById('endBal').value=15000;document.getElementById('endDate').value='2026-01-01';document.getElementById('flow1').value=1000;document.getElementById('flowDate1').value='2024-01-01';setReturnMode('returns')}calcReturn();
-</script><script defer="" src="../assets/js/global.js"></script><script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/average-return-calculator/">
+<meta property="og:title" content="Average Return Calculator – Calculate Investment Returns">
+<meta property="og:description" content="Calculate arithmetic, geometric, cumulative, or money-weighted investment returns from period returns, balances, dates, deposits, and withdrawals.">
+<meta property="og:site_name" content="Average Return Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/average-return-calculator/">
+<meta name="twitter:title" content="Average Return Calculator – Calculate Investment Returns">
+<meta name="twitter:description" content="Calculate arithmetic, geometric, cumulative, or money-weighted investment returns from period returns, balances, dates, deposits, and withdrawals.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .wrap {
+            width: min(1180px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .crumb {
+            font-size: .9rem;
+            color: var(--muted);
+            padding: 18px 0
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            border-radius: 34px;
+            background: var(--hero);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, .18);
+            padding: clamp(28px, 5vw, 64px);
+            min-height: 340px;
+            display: grid;
+            grid-template-columns: 1.fr;
+            gap: 34px;
+            align-items: center
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 4.6rem);
+            line-height: 1.02;
+            margin: .15em 0 .3em;
+            letter-spacing: -.04em
+        }
+
+        .hero p {
+            font-size: 1.08rem;
+            max-width: 720px;
+            color: var(--hero-muted)
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            padding: 7px 11px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .08);
+            font-size: .78rem;
+            letter-spacing: .08em;
+            text-transform: uppercase
+        }
+
+        .visual {
+            min-height: 240px;
+            position: relative;
+            display: grid;
+            place-items: center
+        }
+
+        .orb,
+        .tile,
+        .coin,
+        .ring,
+        .cube {
+            position: absolute;
+            filter: drop-shadow(0 18px 22px rgba(0, 0, 0, .24))
+        }
+
+        .orb {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 25%, #fff9 0 8%, transparent 9%), linear-gradient(145deg, var(--accent2), var(--accent));
+            box-shadow: inset -18px -24px 36px #0003
+        }
+
+        .ring {
+            width: 190px;
+            height: 190px;
+            border: 28px solid var(--accent);
+            border-radius: 50%;
+            transform: rotateX(62deg) rotateZ(-12deg);
+            opacity: .9
+        }
+
+        .tile {
+            width: 190px;
+            height: 118px;
+            border-radius: 24px;
+            background: linear-gradient(145deg, #ffffff22, #ffffff08);
+            border: 1px solid #ffffff35;
+            backdrop-filter: blur(12px);
+            transform: rotate(-8deg) skewY(4deg);
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            font-size: 2rem
+        }
+
+        .coin {
+            width: 78px;
+            height: 78px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #fff7aa, #e6a800);
+            border: 8px solid #ffd14b;
+            display: grid;
+            place-items: center;
+            color: #5d3c00;
+            font-weight: 900
+        }
+
+        .cube {
+            width: 94px;
+            height: 94px;
+            border-radius: 20px;
+            background: linear-gradient(145deg, var(--accent), var(--accent2));
+            transform: rotate(26deg);
+            box-shadow: inset -16px -16px 24px #0002
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.12fr) minmax(300px, .88fr);
+            gap: 28px;
+            margin: 34px auto
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--panel-line);
+            border-radius: 28px;
+            box-shadow: 0 20px 48px rgba(0, 0, 0, .1);
+            padding: clamp(20px, 3vw, 32px)
+        }
+
+        .panel h2 {
+            margin-top: 0
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px
+        }
+
+        .field.full {
+            grid-column: 1/-1
+        }
+
+        label {
+            font-weight: 700;
+            font-size: .92rem
+        }
+
+        .hint {
+            font-size: .78rem;
+            color: var(--muted)
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--input-line);
+            background: var(--input);
+            color: var(--text);
+            border-radius: 14px;
+            padding: 12px 13px;
+            font: inherit;
+            outline: none;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, .04)
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent)
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 18px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .btn.primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: var(--button-text);
+            box-shadow: 0 12px 25px color-mix(in srgb, var(--accent) 28%, transparent)
+        }
+
+        .btn.ghost {
+            background: var(--input);
+            color: var(--text);
+            border: 1px solid var(--input-line)
+        }
+
+        .error {
+            display: none;
+            margin-top: 12px;
+            padding: 11px 13px;
+            border-radius: 12px;
+            background: #ffefef;
+            color: #9c1c1c;
+            font-weight: 700
+        }
+
+        .results {
+            position: sticky;
+            top: 18px;
+            align-self: start
+        }
+
+        .result-hero {
+            border-radius: 24px;
+            padding: 22px;
+            background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 16%, var(--panel)), color-mix(in srgb, var(--accent2) 10%, var(--panel)));
+            border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--panel-line));
+            margin-bottom: 16px
+        }
+
+        .result-label {
+            font-size: .82rem;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: var(--muted);
+            font-weight: 800
+        }
+
+        .result-big {
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            font-weight: 900;
+            letter-spacing: -.04em;
+            margin-top: 4px
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px
+        }
+
+        .stat {
+            padding: 14px;
+            border-radius: 16px;
+            background: var(--soft);
+            border: 1px solid var(--panel-line)
+        }
+
+        .stat b {
+            display: block;
+            font-size: 1.05rem
+        }
+
+        .stat span {
+            font-size: .78rem;
+            color: var(--muted)
+        }
+
+        .bar {
+            height: 12px;
+            background: var(--soft);
+            border-radius: 999px;
+            overflow: hidden;
+            margin: 8px 0
+        }
+
+        .bar>i {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            border-radius: inherit
+        }
+
+        .table-wrap {
+            overflow: auto;
+            margin-top: 16px;
+            border-radius: 16px;
+            border: 1px solid var(--panel-line)
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 560px
+        }
+
+        th,
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--panel-line);
+            text-align: right;
+            font-size: .88rem
+        }
+
+        th:first-child,
+        td:first-child {
+            text-align: left
+        }
+
+        th {
+            background: var(--soft);
+            position: sticky;
+            top: 0
+        }
+
+        article.content {
+            margin: 40px auto 72px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 300px;
+            gap: 32px
+        }
+
+        .copy {
+            background: var(--panel);
+            border: 1px solid var(--panel-line);
+            border-radius: 30px;
+            padding: clamp(24px, 4vw, 46px);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, .07)
+        }
+
+        .copy h2 {
+            font-size: clamp(1.45rem, 3vw, 2.25rem);
+            margin-top: 1.7em;
+            letter-spacing: -.02em
+        }
+
+        .copy h2:first-child {
+            margin-top: 0
+        }
+
+        .copy h3 {
+            margin-top: 1.4em
+        }
+
+        .copy p,
+        .copy li {
+            color: var(--copy)
+        }
+
+        .copy code {
+            background: var(--soft);
+            padding: 2px 7px;
+            border-radius: 8px
+        }
+
+        .toc {
+            position: sticky;
+            top: 20px;
+            align-self: start;
+            background: var(--panel);
+            border: 1px solid var(--panel-line);
+            border-radius: 22px;
+            padding: 20px
+        }
+
+        .toc strong {
+            display: block;
+            margin-bottom: 8px
+        }
+
+        .toc a {
+            display: block;
+            padding: 5px 0;
+            color: var(--muted)
+        }
+
+        .callout {
+            padding: 16px 18px;
+            border-left: 4px solid var(--accent);
+            background: var(--soft);
+            border-radius: 12px;
+            margin: 18px 0
+        }
+
+        .faq details {
+            border-top: 1px solid var(--panel-line);
+            padding: 14px 0
+        }
+
+        .faq summary {
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .sources li {
+            margin: 8px 0
+        }
+
+        footer {
+            padding: 30px 0 50px;
+            color: var(--muted);
+            text-align: center
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 16px
+        }
+
+        .tab {
+            padding: 9px 12px;
+            border-radius: 12px;
+            border: 1px solid var(--input-line);
+            background: var(--input);
+            cursor: pointer;
+            font-weight: 800
+        }
+
+        .tab.active {
+            background: var(--accent);
+            color: var(--button-text);
+            border-color: transparent
+        }
+
+        .hidden {
+            display: none !important
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 9px;
+            border-radius: 999px;
+            background: var(--soft);
+            font-size: .76rem;
+            font-weight: 800;
+            color: var(--muted)
+        }
+
+        .switchline {
+            display: flex;
+            gap: 10px;
+            align-items: center
+        }
+
+        .switchline input {
+            width: auto
+        }
+
+        .three {
+            grid-template-columns: repeat(3, minmax(0, 1fr))
+        }
+
+        .mini-note {
+            font-size: .82rem;
+            color: var(--muted);
+            margin-top: 10px
+        }
+
+        @media(max-width:860px) {
+
+            .hero,
+            .main-grid,
+            article.content {
+                grid-template-columns: 1fr
+            }
+
+            .visual {
+                min-height: 180px
+            }
+
+            .results,
+            .toc {
+                position: static
+            }
+
+            .toc {
+                display: none
+            }
+        }
+
+        @media(max-width:560px) {
+            .wrap {
+                width: min(100% - 20px, 1180px)
+            }
+
+            .hero {
+                border-radius: 24px;
+                padding: 24px 20px
+            }
+
+            .panel {
+                border-radius: 22px;
+                padding: 18px
+            }
+
+            .form-grid,
+            .stats,
+            .three {
+                grid-template-columns: 1fr
+            }
+
+            .field.full {
+                grid-column: auto
+            }
+
+            .result-big {
+                font-size: 2.25rem
+            }
+        }
+
+        :root {
+            --bg: #07101c;
+            --text: #edf8ff;
+            --copy: #cedbe5;
+            --muted: #91a5b7;
+            --panel: #0c1827;
+            --panel-line: #1a314a;
+            --soft: #102239;
+            --input: #081421;
+            --input-line: #24405c;
+            --accent: #27c2ff;
+            --accent2: #8a5cff;
+            --button-text: #05111c;
+            --hero: radial-gradient(circle at 70% 10%, #234e8a, transparent 34%), linear-gradient(135deg, #07121f, #0b2238 58%, #2c1f51);
+            --hero-muted: #c5d8e8;
+            --line: #ffffff22
+        }
+
+        .hero {
+            min-height: 380px
+        }
+
+        .visual:before {
+            content: '';
+            position: absolute;
+            width: 250px;
+            height: 150px;
+            border-left: 4px solid #74dcff;
+            border-bottom: 4px solid #74dcff;
+            transform: skewY(-8deg);
+            opacity: .8
+        }
+
+        .visual:after {
+            content: '↗';
+            position: absolute;
+            font-size: 8rem;
+            color: #bb9cff;
+            right: 12%;
+            top: 2%;
+            text-shadow: 0 20px 25px #0007
+        }
+
+        .visual .orb {
+            width: 62px;
+            height: 62px;
+            left: 20%;
+            bottom: 22%
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/average-return-calculator/#webapplication",
+      "name": "Average Return Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/average-return-calculator/",
+      "description": "Calculate arithmetic, geometric, cumulative, or money-weighted investment returns from period returns, balances, dates, deposits, and withdrawals.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/average-return-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Average Return Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/average-return-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/average-return-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between arithmetic and geometric average return?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Arithmetic return is the simple average of the individual returns. Geometric return compounds the returns and calculates the constant per-period rate that would produce the same overall growth."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is the geometric return often lower than the arithmetic return?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When returns fluctuate, losses and gains compound on different account values. This creates a compounding effect that the arithmetic average does not capture. CFA Institute materials note that the geometric mean is below the arithmetic mean when observations have variation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does cumulative return mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cumulative return is the investment's combined percentage gain or loss across all entered periods after compounding. It is a total-period result rather than an average for one period."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a money-weighted return?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A money-weighted return measures performance while accounting for the size and timing of cash flows. Deposits and withdrawals can therefore change the calculated return even when the beginning and ending balances remain the same."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do deposits increase the investment return?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not automatically. A deposit increases the account balance, but the money-weighted calculation separates the effect of added capital from investment performance by considering when that deposit occurred."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the calculator include fees, taxes, or inflation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No separate adjustment for fees, taxes, or inflation is included in this calculator. If those costs have already affected the return or balance values you enter, their effects may already be reflected indirectly in the result."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can average return predict future investment performance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. An average return summarizes the values entered into the calculator. Historical investment performance does not predict future returns, and actual future gains or losses can differ substantially."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="finance" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../finance/index.html">Finance</a></li>
+            <li><a aria-current="page" href="index.html">Average Return Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main class="wrap" id="main">
+            <h1 class="page-title">Average Return Calculator</h1>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="main-grid">
+                <section class="panel">
+                    <h2>Average Investment Return</h2>
+                    <div class="tabs"><button class="tab active" id="retTab" onclick="setReturnMode('returns')">Periodic
+                            Returns</button><button class="tab" id="flowTab" onclick="setReturnMode('cashflow')">Dated
+                            Cash Flows</button></div>
+                    <div id="returnInputs">
+                        <div class="field"><label for="returnsList">Returns (%) separated by commas</label><textarea
+                                id="returnsList" rows="4">10,-5,12,8</textarea><span class="hint">Example: 10, -5, 12,
+                                8</span></div>
+                    </div>
+                    <div class="hidden" id="flowInputs">
+                        <div class="form-grid">
+                            <div class="field"><label for="startBal">Starting balance</label><input id="startBal"
+                                    type="number" value="10000" /></div>
+                            <div class="field"><label for="startDate">Start date</label><input id="startDate"
+                                    type="date" value="2022-01-01" /></div>
+                            <div class="field"><label for="endBal">Ending balance</label><input id="endBal"
+                                    type="number" value="15000" /></div>
+                            <div class="field"><label for="endDate">End date</label><input id="endDate" type="date"
+                                    value="2026-01-01" /></div>
+                            <div class="field"><label for="flow1">Deposit (+) / withdrawal (-)</label><input id="flow1"
+                                    type="number" value="1000" /></div>
+                            <div class="field"><label for="flowDate1">Cash-flow date</label><input id="flowDate1"
+                                    type="date" value="2024-01-01" /></div>
+                        </div>
+                    </div>
+                    <div class="error" id="error"></div>
+                    <div class="actions"><button class="btn primary" onclick="calcReturn()">Calculate
+                            Return</button><button class="btn ghost" onclick="resetReturn()">Reset</button></div>
+                </section>
+                <aside class="panel results">
+                    <div class="result-hero">
+                        <div class="result-label" id="avgLabel">Geometric average return</div>
+                        <div class="result-big" id="avgOut">0.00%</div>
+                    </div>
+                    <div class="stats">
+                        <div class="stat"><span>Arithmetic mean</span><b id="arithOut">0.00%</b></div>
+                        <div class="stat"><span>Cumulative return</span><b id="cumOut">0.00%</b></div>
+                        <div class="stat"><span>Periods</span><b id="periodOut">0</b></div>
+                        <div class="stat"><span>Method</span><b id="methodOut">Geometric</b></div>
+                    </div>
+                </aside>
+            </section>
+            
+
+
+
+<article class="article">
+<p>The Average Return Calculator helps measure investment performance using a series of returns or dated account values and cash flows. Enter return percentages or starting and ending balances, dates, and an optional deposit or withdrawal to calculate the applicable average, cumulative, or money-weighted return.</p>
+  <section id="what">
+    <h2>What Is the Average Return Calculator?</h2>
+
+    <p class="direct">An Average Return Calculator measures how an investment performed over multiple periods or across dated cash flows.</p>
+
+    <p>It can be useful when comparing a sequence of investment returns, measuring compounded growth, finding the total cumulative return, or estimating an annualized return when money was deposited or withdrawn during the investment period.</p>
+
+    <p>Arithmetic and geometric averages answer different questions. Arithmetic mean measures the simple average of individual returns, while geometric mean reflects compounding across periods.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Average Return Calculator</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Input</th>
+          <th>What to Enter</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Returns (%) separated by commas</strong></td>
+          <td>Enter the individual percentage returns for the periods you want to analyze, such as <code>10, -5, 8</code>.</td>
+        </tr>
+        <tr>
+          <td><strong>Starting balance</strong></td>
+          <td>Enter the investment or account value at the beginning of the measurement period.</td>
+        </tr>
+        <tr>
+          <td><strong>Start date</strong></td>
+          <td>Enter the date associated with the starting balance.</td>
+        </tr>
+        <tr>
+          <td><strong>Ending balance</strong></td>
+          <td>Enter the investment or account value at the end of the measurement period.</td>
+        </tr>
+        <tr>
+          <td><strong>End date</strong></td>
+          <td>Enter the date associated with the ending balance.</td>
+        </tr>
+        <tr>
+          <td><strong>Deposit (+) / withdrawal (-)</strong></td>
+          <td>Enter an intermediate cash movement. A deposit is entered as a positive amount and a withdrawal as a negative amount.</td>
+        </tr>
+        <tr>
+          <td><strong>Cash-flow date</strong></td>
+          <td>Enter the date on which the deposit or withdrawal occurred.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Use the return-percentage inputs when analyzing a series of returns. Use the balance, date, and cash-flow inputs when the timing of money entering or leaving the account needs to be reflected in the return calculation.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Arithmetic Average Return</h3>
+
+    <p>The arithmetic mean adds the individual period returns and divides the total by the number of returns:</p>
+
+    <div class="formula">Arithmetic Average = (r₁ + r₂ + ... + rₙ) / n</div>
+
+    <p>Where:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Variable</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>r₁, r₂ ... rₙ</strong></td>
+          <td>Individual period returns converted from percentages to decimals</td>
+          <td>Decimal return</td>
+        </tr>
+        <tr>
+          <td><strong>n</strong></td>
+          <td>Number of return periods</td>
+          <td>Periods</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The arithmetic average does not compound one period's gain or loss into the next period.</p>
+
+    <h3>Geometric Average Return</h3>
+
+    <p>The geometric mean compounds the growth factor for every return and then takes the nth root:</p>
+
+    <div class="formula">Geometric Average = [(1 + r₁)(1 + r₂)...(1 + rₙ)]^(1/n) − 1</div>
+
+    <p>The result represents the constant compounded return that would produce the same ending growth over the same number of equal periods.</p>
+
+    <p>Geometric averaging is particularly useful for compound growth across time-series observations. When returns vary, the geometric mean is generally below the arithmetic mean.</p>
+
+    <h3>Cumulative Return</h3>
+
+    <p>For a series of returns, cumulative return measures the combined gain or loss after compounding the periods:</p>
+
+    <div class="formula">Cumulative Return = [(1 + r₁)(1 + r₂)...(1 + rₙ)] − 1</div>
+
+    <p>Unlike an average return, cumulative return describes the total compounded change across the complete sequence rather than a typical return for one period.</p>
+
+    <h3>Money-Weighted Annualized Return</h3>
+
+    <p>When starting and ending balances, dates, and an intermediate deposit or withdrawal are used, the calculator solves for an annual rate that makes the discounted dated cash flows balance to zero:</p>
+
+    <div class="formula">Σ [CFᵢ / (1 + R)^tᵢ] = 0</div>
+
+    <p>Where:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Variable</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>CFᵢ</strong></td>
+          <td>Signed cash flow included in the calculation</td>
+          <td>Currency</td>
+        </tr>
+        <tr>
+          <td><strong>R</strong></td>
+          <td>Money-weighted annualized return being solved for</td>
+          <td>Decimal annual rate</td>
+        </tr>
+        <tr>
+          <td><strong>tᵢ</strong></td>
+          <td>Elapsed time associated with each dated cash flow</td>
+          <td>Years as determined from dates</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>This type of calculation considers both the amount and timing of cash entering or leaving an investment. Irregular-dated internal-rate-of-return methods similarly solve for a rate that makes the discounted cash-flow value equal to zero.</p>
+
+    <h3>Calculation Sequence</h3>
+
+    <ol>
+      <li>Percentage returns are converted to decimal form.</li>
+      <li>For arithmetic return, the returns are added and divided by the number of periods.</li>
+      <li>For geometric return, each return is converted to a growth factor, the factors are multiplied, and the nth root is applied.</li>
+      <li>Cumulative return uses the compounded growth factors without converting the total into an average per period.</li>
+      <li>For dated cash-flow calculations, the starting balance, ending balance, dates, and optional deposit or withdrawal are used to numerically solve for the money-weighted annualized rate.</li>
+    </ol>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Assume an investment has three annual returns:</p>
+
+    <h3>Inputs</h3>
+
+    <p><strong>Year 1:</strong> 10%<br>
+      <strong>Year 2:</strong> -5%<br>
+      <strong>Year 3:</strong> 8%</p>
+
+    <h3>Step 1: Arithmetic Average</h3>
+
+    <div class="formula">(10% − 5% + 8%) / 3</div>
+
+    <div class="formula">= 13% / 3</div>
+
+    <div class="formula">= 4.33%</div>
+
+    <h3>Step 2: Cumulative Return</h3>
+
+    <p>Convert the returns to growth factors:</p>
+
+    <div class="formula">1.10 × 0.95 × 1.08 = 1.1286</div>
+
+    <p>Therefore:</p>
+
+    <div class="formula">Cumulative Return = 1.1286 − 1 = 0.1286</div>
+
+    <div class="formula">Cumulative Return = 12.86%</div>
+
+    <h3>Step 3: Geometric Average</h3>
+
+    <div class="formula">Geometric Average = (1.1286)^(1/3) − 1</div>
+
+    <div class="formula">≈ 0.041150</div>
+
+    <h3>Final Result</h3>
+
+    <p>For these three annual returns:</p>
+
+    <p><strong>Arithmetic Average Return: 4.33%</strong></p>
+
+    <p><strong>Geometric Average Return: approximately 4.12% per year</strong></p>
+
+    <p><strong>Cumulative Return: 12.86%</strong></p>
+
+    <p>The arithmetic average is higher because it does not account for the compounding effect of the negative and positive returns.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p><strong>Arithmetic average return</strong> is the simple mean of the entered returns. It can help summarize a set of observations but does not show the exact compounded growth of an investment.</p>
+
+    <p><strong>Geometric average return</strong> represents the constant compound return that would create the same overall growth over equal periods. For annual return observations, it can be interpreted as the compound average annual return.</p>
+
+    <p><strong>Cumulative return</strong> shows the total percentage gain or loss produced by the entire sequence of compounded returns.</p>
+
+    <p><strong>Money-weighted annualized return</strong> considers when money was added to or removed from the account. Because cash-flow timing affects this result, it can differ from an average based only on period returns. Calculator.net similarly separates return calculations based on account cash flows from calculations based on multiple investment returns.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>This calculator does not adjust investment returns for inflation, taxes, investment fees, benchmark performance, risk, or volatility unless those effects are already reflected in the values you enter.</p>
+
+    <p>The dated cash-flow calculation supports the starting balance, ending balance, dates, and the optional intermediate cash flow provided by the calculator. It should not be treated as a model for a more complex sequence of irregular cash flows beyond the functionality available in the tool.</p>
+
+    <p>Arithmetic and geometric returns can produce noticeably different results when returns fluctuate. The arithmetic mean does not reproduce compounded account growth.</p>
+
+    <p>Calculated historical returns describe past performance. They are not forecasts or guarantees of future investment results. The SEC also notes that fees, methodology, economic conditions, and other assumptions can materially affect how investment performance should be interpreted.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What is the difference between arithmetic and geometric average return?</summary>
+      <p>Arithmetic return is the simple average of the individual returns. Geometric return compounds the returns and calculates the constant per-period rate that would produce the same overall growth.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why is the geometric return often lower than the arithmetic return?</summary>
+      <p>When returns fluctuate, losses and gains compound on different account values. This creates a compounding effect that the arithmetic average does not capture. CFA Institute materials note that the geometric mean is below the arithmetic mean when observations have variation.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What does cumulative return mean?</summary>
+      <p>Cumulative return is the investment's combined percentage gain or loss across all entered periods after compounding. It is a total-period result rather than an average for one period.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What is a money-weighted return?</summary>
+      <p>A money-weighted return measures performance while accounting for the size and timing of cash flows. Deposits and withdrawals can therefore change the calculated return even when the beginning and ending balances remain the same.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Do deposits increase the investment return?</summary>
+      <p>Not automatically. A deposit increases the account balance, but the money-weighted calculation separates the effect of added capital from investment performance by considering when that deposit occurred.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does the calculator include fees, taxes, or inflation?</summary>
+      <p>No separate adjustment for fees, taxes, or inflation is included in this calculator. If those costs have already affected the return or balance values you enter, their effects may already be reflected indirectly in the result.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can average return predict future investment performance?</summary>
+      <p>No. An average return summarizes the values entered into the calculator. Historical investment performance does not predict future returns, and actual future gains or losses can differ substantially.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <p>The calculation explanations follow the calculator's implemented return methods; public references are used to verify investment-return terminology and methodology.</p>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://www.calculator.net/average-return-calculator.html?utm_source=chatgpt.com" rel="noopener" target="_blank">Calculator.net — Average Return Calculator</a><br>
+        Used to cross-check average-return, cumulative-return, and cash-flow return terminology.
+      </li>
+
+      <li>
+        <a href="https://support.microsoft.com/en-us/Excel/functions/xirr-function?utm_source=chatgpt.com" rel="noopener" target="_blank">Microsoft Support — XIRR Function</a><br>
+        Used to verify the general irregular-dated cash-flow method in which an annualized rate is solved by setting discounted cash flows to zero.
+      </li>
+
+      <li>
+        <a href="https://rpc.cfainstitute.org/research/financial-analysts-journal/2003/geometric-or-arithmetic-mean-a-reconsideration?utm_source=chatgpt.com" rel="noopener" target="_blank">CFA Institute — Geometric or Arithmetic Mean: A Reconsideration</a><br>
+        Used to verify the distinction between arithmetic and geometric return measures.
+      </li>
+
+      <li>
+        <a href="https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-47?utm_source=chatgpt.com" rel="noopener" target="_blank">Investor.gov — Performance Claims</a><br>
+        Used to verify limitations surrounding historical investment performance, fees, methodology, and future-return expectations.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/investment-calculator/?utm_source=chatgpt.com">Investment Calculator</a></li>
+      <li><a href="https://example.com/roi-calculator/?utm_source=chatgpt.com">ROI Calculator</a></li>
+      <li><a href="https://example.com/irr-calculator/?utm_source=chatgpt.com">IRR Calculator</a></li>
+      <li><a href="https://example.com/compound-interest-calculator/?utm_source=chatgpt.com">Compound Interest Calculator</a></li>
+      <li><a href="https://example.com/future-value-calculator/?utm_source=chatgpt.com">Future Value Calculator</a></li>
+      <li><a href="https://example.com/savings-calculator/?utm_source=chatgpt.com">Savings Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"81","Batch":"9","Calculator / Page":"Average Return Calculator","Slug":"average-return-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Calculate arithmetic, geometric, cumulative, or money-weighted annualized investment returns with clear compounding logic.","Formula / Algorithm Used in Tool":"Return Formulas: The arithmetic mean is the sum of period returns divided by the number of periods. The geometric mean compounds each growth factor and then takes the nth root: [(1+r1)(1+r2)…(1+rn)]^(1/n) − 1 . The dated cash-flow mode solves for the annual rate that makes discounted cash flows sum to zero.","Required User Inputs":"Returns (%) separated by commas; Starting balance; Start date; Ending balance; End date; Deposit (+) / withdrawal (-); Cash-flow date","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Returns (%) separated by commas, Starting balance, Start date, Ending balance, End date, Deposit (+) / withdrawal (-), Cash-flow date. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"This calculator does not adjust for inflation, taxes, fees, benchmark risk, volatility, or irregular multiple cash flows beyond the single optional intermediate flow provided. Past returns do not guarantee future performance. Frequently Asked Questions Why is geometric average usually lower than arithmetic average? Volatility creates a compounding drag. A gain and an equal percentage loss do not cancel because they apply to different bases. Geometric averaging captures this compounding effect, while arithmetic averaging does not. What is a money-weighted return? A money-weighted return accounts for the timing and size of deposits and withdrawals. It solves for the annualized rate that makes the present value of all dated cash flows equal to zero. Can average return predict future performance? No. Historical average return is a description of past observations under a chosen method. Future returns can differ significantly and can be negative. Sources and Methodology The calculator logic is implemented locally in your browser. Formulas and terminology were cross-checked against the references below. Estimates can differ from lender, tax-authority, plan-administrator, or contract calculations because real-world rules may add timing, rounding, eligibility, fees, or jurisdiction-speci","Current Source URLs in Page":"https://www.calculator.net/average-return-calculator.html","Implementation Path":"/average-return-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Finance</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../roi-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>ROI Calculator</strong><small>Calculate return on
+                            investment, net gain, value multiple, and annualized ROI with a…</small></span></a><a
+                    class="cp-related-link" href="../investment-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Investment Calculator</strong><small>Project an
+                            investment balance from a starting amount, monthly contributions, time
+                            h…</small></span></a><a class="cp-related-link"
+                    href="../retirement-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Retirement Calculator</strong><small>Project
+                            retirement savings from current balance, monthly contributions, time to
+                            ret…</small></span></a><a class="cp-related-link" href="../401k-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>401(k) Calculator</strong><small>Project a 401(k)
+                            balance using salary, contribution percentage, employer match, sal…</small></span></a><a
+                    class="cp-related-link" href="../annuity-payout-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Annuity Payout Calculator</strong><small>Estimate a
+                            level annuity payout for a fixed term or estimate how long a starting
+                            ba…</small></span></a><a class="cp-related-link"
+                    href="../mutual-fund-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Mutual Fund Calculator</strong><small>Project
+                            mutual fund growth using starting investment, monthly contributions,
+                            assume…</small></span></a><a class="cp-related-link"
+                    href="../ira-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>IRA
+                            Calculator</strong><small>Estimate IRA growth and compare Traditional, Roth-style, and
+                            taxable savings under…</small></span></a><a class="cp-related-link"
+                    href="../irr-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>IRR
+                            Calculator</strong><small>Calculate internal rate of return for periodic cash flows, view
+                            NPV at the solved r…</small></span></a></div><a class="cp-side-category"
+                href="../finance/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const $ = s => document.querySelector(s); const n = id => Number(document.getElementById(id).value); const money = (v, c = '$') => c + Number(v).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }); const pct = v => Number(v).toFixed(2) + '%';
+        function err(msg) { const e = $('#error'); e.textContent = msg; e.style.display = 'block' } function clearErr() { const e = $('#error'); e.style.display = 'none'; e.textContent = '' }
+
+        let returnMode = 'returns'; function setReturnMode(m) { returnMode = m; document.getElementById('retTab').classList.toggle('active', m === 'returns'); document.getElementById('flowTab').classList.toggle('active', m === 'cashflow'); document.getElementById('returnInputs').classList.toggle('hidden', m !== 'returns'); document.getElementById('flowInputs').classList.toggle('hidden', m !== 'cashflow'); calcReturn() }
+        function xnpv(rate, flows) { const d0 = flows[0].date; return flows.reduce((s, f) => s + f.amount / Math.pow(1 + rate, (f.date - d0) / 86400000 / 365), 0) } function xirr(flows) { let lo = -.9999, hi = 10; let flo = xnpv(lo, flows), fhi = xnpv(hi, flows); for (let e = 0; e < 20 && flo * fhi > 0; e++) { hi *= 2; fhi = xnpv(hi, flows) } if (flo * fhi > 0) return NaN; for (let i = 0; i < 160; i++) { let mid = (lo + hi) / 2, fm = xnpv(mid, flows); if (Math.abs(fm) < 1e-9) return mid; if (flo * fm <= 0) { hi = mid; fhi = fm } else { lo = mid; flo = fm } } return (lo + hi) / 2 }
+        function calcReturn() { clearErr(); if (returnMode === 'returns') { const arr = document.getElementById('returnsList').value.split(',').map(x => Number(x.trim())).filter(x => Number.isFinite(x)); if (!arr.length || arr.some(x => x <= -100)) return err('Enter one or more valid returns greater than -100%.'); const ar = arr.reduce((a, b) => a + b, 0) / arr.length; const prod = arr.reduce((a, b) => a * (1 + b / 100), 1); const geo = (Math.pow(prod, 1 / arr.length) - 1) * 100; document.getElementById('avgOut').textContent = pct(geo); document.getElementById('arithOut').textContent = pct(ar); document.getElementById('cumOut').textContent = pct((prod - 1) * 100); document.getElementById('periodOut').textContent = arr.length; document.getElementById('avgLabel').textContent = 'Geometric average return'; document.getElementById('methodOut').textContent = 'Geometric' } else { const sb = n('startBal'), eb = n('endBal'), f = n('flow1'); const sd = new Date(document.getElementById('startDate').value), ed = new Date(document.getElementById('endDate').value), fd = new Date(document.getElementById('flowDate1').value); if (sb <= 0 || eb < 0 || isNaN(sd) || isNaN(ed) || ed <= sd || fd <= sd || fd >= ed) return err('Use valid balances and dates, with the cash flow between start and end dates.'); const flows = [{ amount: -sb, date: sd }, { amount: -f, date: fd }, { amount: eb, date: ed }]; const r = xirr(flows); if (!Number.isFinite(r)) return err('A unique annualized return could not be solved from these cash flows.'); const yrs = (ed - sd) / 86400000 / 365; document.getElementById('avgOut').textContent = pct(r * 100); document.getElementById('arithOut').textContent = '—'; document.getElementById('cumOut').textContent = '—'; document.getElementById('periodOut').textContent = yrs.toFixed(2) + ' yrs'; document.getElementById('avgLabel').textContent = 'Money-weighted annual return'; document.getElementById('methodOut').textContent = 'XIRR-style' } } function resetReturn() { document.getElementById('returnsList').value = '10,-5,12,8'; document.getElementById('startBal').value = 10000; document.getElementById('startDate').value = '2022-01-01'; document.getElementById('endBal').value = 15000; document.getElementById('endDate').value = '2026-01-01'; document.getElementById('flow1').value = 1000; document.getElementById('flowDate1').value = '2024-01-01'; setReturnMode('returns') } calcReturn();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

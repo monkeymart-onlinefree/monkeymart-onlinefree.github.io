@@ -1,49 +1,976 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<title>Slope Calculator | CalcPro</title>
-<meta content="Calculate slope from two points and view rise, run, line equation, angle, distance, and direction." name="description"/>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="index,follow" name="robots"/>
-<link href="../slope-calculator/" rel="canonical"/>
-<meta content="website" property="og:type"/>
-<meta content="Slope Calculator" property="og:title"/>
-<meta content="Calculate slope from two points and view rise, run, line equation, angle, distance, and direction." property="og:description"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}
-a{color:inherit}button,input,select{font:inherit}button{cursor:pointer}.wrap{width:min(1160px,92vw);margin:auto}.crumbs{font-size:.88rem;opacity:.78;margin-bottom:18px}h1,h2,h3{line-height:1.15;margin:0 0 14px}h1{font-size:clamp(2.3rem,5vw,4.9rem);letter-spacing:-.045em}h2{font-size:clamp(1.6rem,3vw,2.25rem);letter-spacing:-.025em}h3{font-size:1.1rem}p{margin:0 0 14px}.muted{opacity:.74}label{font-weight:750;font-size:.92rem;display:block;margin-bottom:7px}input,select{width:100%;padding:13px 14px;border-radius:14px;border:1px solid var(--line);background:var(--field);color:var(--ink);outline:none}input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.btn{border:0;border-radius:14px;padding:13px 18px;font-weight:800;box-shadow:var(--btnshadow)}.primary{background:var(--accent);color:var(--onaccent)}.secondary{background:var(--soft);color:var(--ink);border:1px solid var(--line)}.error{min-height:24px;color:var(--danger);font-weight:700;margin-top:10px}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--formula);border:1px solid var(--line);padding:14px 16px;border-radius:16px;overflow:auto}.result-main{font-size:clamp(1.9rem,4vw,3.2rem);font-weight:900;letter-spacing:-.04em;word-break:break-word}.result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.result-chip{padding:12px 13px;border-radius:14px;background:var(--soft);border:1px solid var(--line)}.result-chip b{display:block;font-size:.8rem;opacity:.65;margin-bottom:2px}.content{padding:72px 0 40px}.article-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}article section{margin-bottom:38px}aside{position:sticky;top:18px}.toc,.sourcebox{border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow);border-radius:24px;padding:20px}.toc a{display:block;text-decoration:none;padding:6px 0;opacity:.78}.toc a:hover{opacity:1}ul,ol{padding-left:22px}table{width:100%;border-collapse:collapse;border-radius:18px;overflow:hidden}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left}th{background:var(--soft)}footer{padding:36px 0 50px;opacity:.7;font-size:.9rem}.sr{position:absolute;left:-9999px}
-@media(max-width:860px){.article-grid{grid-template-columns:1fr}aside{position:static}.result-grid{grid-template-columns:1fr}}
-</style>
-<style>
-:root{--bg:#f7fcff;--ink:#13323d;--panel:#fff;--field:#fff;--soft:#eef9fd;--formula:#edfaff;--line:#d4eaf2;--accent:#087fa8;--onaccent:#fff;--focus:#087fa81c;--danger:#b42318;--shadow:0 30px 80px #0a536f1b;--btnshadow:0 12px 28px #087fa82a;}
+<meta charset="utf-8" />
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<meta http-equiv="content-language" content="en">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
 
-.sl-hero{padding:54px 0 115px;background:linear-gradient(155deg,#effaff,#d8f3ff 50%,#b7e6ff);overflow:hidden}.sl-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:40px}.sl-tag{font-weight:900;letter-spacing:.16em;font-size:.76rem;color:#126083}.coord-card{height:270px;border-radius:30px;background:linear-gradient(#1c769318 1px,transparent 1px),linear-gradient(90deg,#1c769318 1px,transparent 1px),#f9fdff;background-size:30px 30px;position:relative;box-shadow:0 30px 60px #11506f25;transform:rotate(-3deg);border:1px solid #fff}.xaxis{position:absolute;left:8%;right:8%;top:65%;height:2px;background:#1d596d66}.yaxis{position:absolute;top:8%;bottom:8%;left:35%;width:2px;background:#1d596d66}.trend{position:absolute;left:20%;bottom:25%;width:65%;height:5px;background:#0787b8;transform:rotate(-24deg);transform-origin:left;border-radius:5px;box-shadow:0 8px 15px #0787b844}.pt{position:absolute;width:17px;height:17px;border-radius:50%;background:#ff6847;box-shadow:0 0 0 7px #ff684724}.pta{left:30%;bottom:27%}.ptb{right:19%;top:24%}.sl-zone{margin-top:-65px}.sl-card{padding:28px;background:var(--panel);border:1px solid var(--line);border-radius:32px;box-shadow:var(--shadow)}.point-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.pointbox{padding:18px;background:var(--soft);border-radius:20px}.xy{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sl-results{display:grid;grid-template-columns:230px 1fr;gap:15px;margin-top:18px}.slope-big{border-radius:22px;background:#083b4e;color:white;padding:20px;display:flex;flex-direction:column;justify-content:center}.slope-big span{font-size:.78rem;font-weight:900;letter-spacing:.14em;color:#8ce2ff}.slope-big strong{font-size:3.4rem}@media(max-width:760px){.sl-grid,.point-grid,.sl-results,.xy{grid-template-columns:1fr}.coord-card{height:220px}}
 
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/slope-calculator/#app", "name": "Slope Calculator", "url": "/slope-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate slope from two points and view rise, run, line equation, angle, distance, and direction."}, {"@type": "BreadcrumbList", "@id": "/slope-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Math & Statistics", "item": "/math/"}, {"@type": "ListItem", "position": 3, "name": "Algebra", "item": "/math/algebra/"}, {"@type": "ListItem", "position": 4, "name": "Slope Calculator", "item": "/slope-calculator/"}]}, {"@type": "FAQPage", "@id": "/slope-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "How do you calculate slope from two points?", "acceptedAnswer": {"@type": "Answer", "text": "Subtract the y-coordinates and divide by the corresponding difference in x-coordinates: m=(y2−y1)/(x2−x1)."}}, {"@type": "Question", "name": "What is the slope of a vertical line?", "acceptedAnswer": {"@type": "Answer", "text": "A vertical line has undefined slope because x2−x1 equals zero, making the slope ratio a division by zero."}}, {"@type": "Question", "name": "What does a zero slope mean?", "acceptedAnswer": {"@type": "Answer", "text": "A slope of zero means the line is horizontal, so y does not change as x changes."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body data-cp-category="math" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../math/index.html">Math &amp; Statistics</a></li><li><a aria-current="page" href="index.html">Slope Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a href="../calculators/index.html">All calculators</a></div><header><div class="sl-hero"><div class="wrap sl-grid"><div><nav class="crumbs">Home / Algebra / Slope Calculator</nav><span class="sl-tag">COORDINATE GEOMETRY</span><h1>Slope Calculator</h1><p>Find the slope, line equation, rise, run, angle, and distance between two coordinate points.</p></div><div aria-hidden="true" class="coord-card"><span class="xaxis"></span><span class="yaxis"></span><span class="trend"></span><i class="pt pta"></i><i class="pt ptb"></i></div></div></div></header>
-<div class="cp-page-layout"><main id="main"><h1 class="page-title">Slope Calculator</h1>
-<section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="sl-zone"><div class="wrap sl-card"><div class="point-grid"><div class="pointbox"><h3>Point 1</h3><div class="xy"><div><label for="x1">x₁</label><input id="x1" step="any" type="number" value="1"/></div><div><label for="y1">y₁</label><input id="y1" step="any" type="number" value="2"/></div></div></div><div class="pointbox"><h3>Point 2</h3><div class="xy"><div><label for="x2">x₂</label><input id="x2" step="any" type="number" value="3"/></div><div><label for="y2">y₂</label><input id="y2" step="any" type="number" value="6"/></div></div></div></div><div class="actions"><button class="btn primary" onclick="calcSlope()">Calculate Slope</button><button class="btn secondary" onclick="resetSlope()">Reset</button></div><div class="error" id="slErr"></div><div class="sl-results"><div class="slope-big"><span>SLOPE m</span><strong id="slMain">2</strong></div><div class="result-grid"><div class="result-chip"><b>Rise</b><span id="rise">4</span></div><div class="result-chip"><b>Run</b><span id="run">2</span></div><div class="result-chip"><b>Line equation</b><span id="lineEq">y = 2x</span></div><div class="result-chip"><b>Angle</b><span id="angle">63.4349°</span></div><div class="result-chip"><b>Distance</b><span id="dist">4.47214</span></div><div class="result-chip"><b>Direction</b><span id="dir">Increasing</span></div></div></div></div></section>
-<div class="content"><div class="wrap article-grid">
-<article><section id="about"><h2>What Is a Slope Calculator?</h2><p>A slope calculator finds the steepness and direction of the line through two points. From (x₁,y₁) and (x₂,y₂), it also derives the rise, run, line equation when defined, inclination angle, and straight-line distance.</p></section><section id="use"><h2>How to Use the Slope Calculator</h2><ol><li>Enter x and y for the first point.</li><li>Enter x and y for the second point.</li><li>Calculate to see the slope and related line information.</li></ol></section><section id="formula"><h2>Slope Formula</h2><div class="formula">m = (y₂ − y₁) / (x₂ − x₁)</div><p>The numerator is the rise and the denominator is the run. OpenStax gives this two-point slope formula along with point-slope and related line equations.</p></section><section id="example"><h2>Calculation Example</h2><p>For (1,2) and (3,6), rise = 4 and run = 2, so m = 4/2 = <strong>2</strong>. The line is y = 2x.</p></section><section id="limits"><h2>Limitations</h2><p>If both points are identical, they do not define a unique line. If x₁ = x₂ but y values differ, the line is vertical and its slope is undefined.</p></section><section id="faq"><h2>Frequently Asked Questions</h2><h3>What does a negative slope mean?</h3><p>A negative slope means y decreases as x increases when moving from left to right.</p><h3>How is the angle calculated?</h3><p>For a nonvertical line, the inclination angle shown here is arctan(m) converted from radians to degrees.</p></section><section id="sources"><h2>Sources and Methodology</h2><ul><li><a href="https://openstax.org/books/college-algebra-2e/pages/2-key-equations" rel="noopener" target="_blank">OpenStax College Algebra 2e — Slope and Line Equations</a></li></ul></section></article>
-<aside><div class="toc"><h3>On this page</h3>
-<a href="#about">What it calculates</a><a href="#use">How to use it</a><a href="#formula">Formula</a>
-<a href="#example">Example</a><a href="#limits">Limitations</a><a href="#faq">FAQs</a><a href="#sources">Sources</a>
-</div></aside>
-</div></div>
+<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" /><title>Slope Calculator – Find Slope, Rise, Run &amp; Equation</title>
+<meta name="title" content="Slope Calculator – Find Slope, Rise, Run &amp; Equation">
+<meta name="description" content="Calculate slope from two points using x₁, y₁, x₂, and y₂. See slope, rise, run, line equation, distance, angle, and direction with clear results.">
 
-<script class="cp-calculator-data" type="application/json">{"index":"139","Batch":"14","Calculator / Page":"Slope Calculator","Slug":"slope-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Calculate slope from two points and view rise, run, line equation, angle, distance, and direction.","Formula / Algorithm Used in Tool":"Slope Formula: m = (y₂ − y₁) / (x₂ − x₁) The numerator is the rise and the denominator is the run. OpenStax gives this two-point slope formula along with point-slope and related line equations.","Required User Inputs":"x₁; y₁; x₂; y₂","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: x₁, y₁, x₂, y₂. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"If both points are identical, they do not define a unique line. If x₁ = x₂ but y values differ, the line is vertical and its slope is undefined.","Current Source URLs in Page":"https://openstax.org/books/college-algebra-2e/pages/2-key-equations","Implementation Path":"/slope-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Math &amp; Statistics</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../distance-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Distance Calculator</strong><small>Calculate distance between two points in 2D, 3D, or between latitude-longitude coor…</small></span></a><a class="cp-related-link" href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the simplified fraction, m…</small></span></a><a class="cp-related-link" href="../exponent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Exponent Calculator</strong><small>Calculate a number raised to any valid real exponent and view the result in standar…</small></span></a><a class="cp-related-link" href="../quadratic-formula-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Quadratic Formula Calculator</strong><small>Solve quadratic equations with the quadratic formula and view roots, discriminant,…</small></span></a><a class="cp-related-link" href="../confidence-interval-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Confidence Interval Calculator</strong><small>Calculate a two-sided confidence interval for a mean using a t interval for sample…</small></span></a><a class="cp-related-link" href="../ratio-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Ratio Calculator</strong><small>Solve a proportion A:B = C:D when one value is unknown, and simplify two-number rat…</small></span></a><a class="cp-related-link" href="../gcf-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>GCF Calculator</strong><small>Find the greatest common factor of two or more integers. Free, fast and responsive…</small></span></a><a class="cp-related-link" href="../lcm-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>LCM Calculator</strong><small>Find the least common multiple of two or more integers. Free, fast and responsive l…</small></span></a></div><a class="cp-side-category" href="../math/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-const sf=n=>Math.abs(n)<1e-12?'0':parseFloat(n.toFixed(8)).toString();
-function calcSlope(){const X1=Number(x1.value),Y1=Number(y1.value),X2=Number(x2.value),Y2=Number(y2.value);slErr.textContent='';if(![X1,Y1,X2,Y2].every(Number.isFinite)){slErr.textContent='Enter valid coordinates.';return}const dy=Y2-Y1,dx=X2-X1;rise.textContent=sf(dy);run.textContent=sf(dx);dist.textContent=sf(Math.hypot(dx,dy));if(dx===0){if(dy===0){slMain.textContent='Indeterminate';lineEq.textContent='Same point';angle.textContent='—';dir.textContent='No unique line';slErr.textContent='Identical points do not determine a unique line.'}else{slMain.textContent='Undefined';lineEq.textContent='x = '+sf(X1);angle.textContent='90°';dir.textContent='Vertical'}return}const m=dy/dx,b=Y1-m*X1;slMain.textContent=sf(m);angle.textContent=sf(Math.atan(m)*180/Math.PI)+'°';dir.textContent=m>0?'Increasing':m<0?'Decreasing':'Horizontal';lineEq.textContent=Math.abs(b)<1e-12?`y = ${sf(m)}x`:`y = ${sf(m)}x ${b>=0?'+':'−'} ${sf(Math.abs(b))}`}
-function resetSlope(){x1.value=1;y1.value=2;x2.value=3;y2.value=6;calcSlope()}calcSlope();
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/slope-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/slope-calculator/">
+<meta property="og:title" content="Slope Calculator – Find Slope, Rise, Run &amp; Equation">
+<meta property="og:description" content="Calculate slope from two points using x₁, y₁, x₂, and y₂. See slope, rise, run, line equation, distance, angle, and direction with clear results.">
+<meta property="og:site_name" content="Slope Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/slope-calculator/">
+<meta name="twitter:title" content="Slope Calculator – Find Slope, Rise, Run &amp; Equation">
+<meta name="twitter:description" content="Calculate slope from two points using x₁, y₁, x₂, and y₂. See slope, rise, run, line equation, distance, angle, and direction with clear results.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.65
+        }
+
+        a {
+            color: inherit
+        }
+
+        button,
+        input,
+        select {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        .wrap {
+            width: min(1160px, 92vw);
+            margin: auto
+        }
+
+        .crumbs {
+            font-size: .88rem;
+            opacity: .78;
+            margin-bottom: 18px
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.15;
+            margin: 0 0 14px
+        }
+
+        h1 {
+            font-size: clamp(2.3rem, 5vw, 4.9rem);
+            letter-spacing: -.045em
+        }
+
+        h2 {
+            font-size: clamp(1.6rem, 3vw, 2.25rem);
+            letter-spacing: -.025em
+        }
+
+        h3 {
+            font-size: 1.1rem
+        }
+
+        p {
+            margin: 0 0 14px
+        }
+
+        .muted {
+            opacity: .74
+        }
+
+        label {
+            font-weight: 750;
+            font-size: .92rem;
+            display: block;
+            margin-bottom: 7px
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 13px 14px;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            background: var(--field);
+            color: var(--ink);
+            outline: none
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--focus)
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 13px 18px;
+            font-weight: 800;
+            box-shadow: var(--btnshadow)
+        }
+
+        .primary {
+            background: var(--accent);
+            color: var(--onaccent)
+        }
+
+        .secondary {
+            background: var(--soft);
+            color: var(--ink);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            min-height: 24px;
+            color: var(--danger);
+            font-weight: 700;
+            margin-top: 10px
+        }
+
+        .formula {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: var(--formula);
+            border: 1px solid var(--line);
+            padding: 14px 16px;
+            border-radius: 16px;
+            overflow: auto
+        }
+
+        .result-main {
+            font-size: clamp(1.9rem, 4vw, 3.2rem);
+            font-weight: 900;
+            letter-spacing: -.04em;
+            word-break: break-word
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 14px
+        }
+
+        .result-chip {
+            padding: 12px 13px;
+            border-radius: 14px;
+            background: var(--soft);
+            border: 1px solid var(--line)
+        }
+
+        .result-chip b {
+            display: block;
+            font-size: .8rem;
+            opacity: .65;
+            margin-bottom: 2px
+        }
+
+        .content {
+            padding: 72px 0 40px
+        }
+
+        .article-grid {
+            display: grid;
+             gap: 28px;
+            align-items: start
+        }
+
+        article section {
+            margin-bottom: 38px
+        }
+
+        aside {
+            position: sticky;
+            top: 18px
+        }
+
+        .toc,
+        .sourcebox {
+            border: 1px solid var(--line);
+            background: var(--panel);
+            box-shadow: var(--shadow);
+            border-radius: 24px;
+            padding: 20px
+        }
+
+        .toc a {
+            display: block;
+            text-decoration: none;
+            padding: 6px 0;
+            opacity: .78
+        }
+
+        .toc a:hover {
+            opacity: 1
+        }
+
+        ul,
+        ol {
+            padding-left: 22px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 18px;
+            overflow: hidden
+        }
+
+        th,
+        td {
+            padding: 11px;
+            border-bottom: 1px solid var(--line);
+            text-align: left
+        }
+
+        th {
+            background: var(--soft)
+        }
+
+        footer {
+            padding: 36px 0 50px;
+            opacity: .7;
+            font-size: .9rem
+        }
+
+        .sr {
+            position: absolute;
+            left: -9999px
+        }
+
+        @media(max-width:860px) {
+            .article-grid {
+                grid-template-columns: 1fr
+            }
+
+            aside {
+                position: static
+            }
+
+            .result-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+    <style>
+        :root {
+            --bg: #f7fcff;
+            --ink: #13323d;
+            --panel: #fff;
+            --field: #fff;
+            --soft: #eef9fd;
+            --formula: #edfaff;
+            --line: #d4eaf2;
+            --accent: #087fa8;
+            --onaccent: #fff;
+            --focus: #087fa81c;
+            --danger: #b42318;
+            --shadow: 0 30px 80px #0a536f1b;
+            --btnshadow: 0 12px 28px #087fa82a;
+        }
+
+        .sl-hero {
+            padding: 54px 0 115px;
+            background: linear-gradient(155deg, #effaff, #d8f3ff 50%, #b7e6ff);
+            overflow: hidden
+        }
+
+        .sl-grid {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            align-items: center;
+            gap: 40px
+        }
+
+        .sl-tag {
+            font-weight: 900;
+            letter-spacing: .16em;
+            font-size: .76rem;
+            color: #126083
+        }
+
+        .coord-card {
+            height: 270px;
+            border-radius: 30px;
+            background: linear-gradient(#1c769318 1px, transparent 1px), linear-gradient(90deg, #1c769318 1px, transparent 1px), #f9fdff;
+            background-size: 30px 30px;
+            position: relative;
+            box-shadow: 0 30px 60px #11506f25;
+            transform: rotate(-3deg);
+            border: 1px solid #fff
+        }
+
+        .xaxis {
+            position: absolute;
+            left: 8%;
+            right: 8%;
+            top: 65%;
+            height: 2px;
+            background: #1d596d66
+        }
+
+        .yaxis {
+            position: absolute;
+            top: 8%;
+            bottom: 8%;
+            left: 35%;
+            width: 2px;
+            background: #1d596d66
+        }
+
+        .trend {
+            position: absolute;
+            left: 20%;
+            bottom: 25%;
+            width: 65%;
+            height: 5px;
+            background: #0787b8;
+            transform: rotate(-24deg);
+            transform-origin: left;
+            border-radius: 5px;
+            box-shadow: 0 8px 15px #0787b844
+        }
+
+        .pt {
+            position: absolute;
+            width: 17px;
+            height: 17px;
+            border-radius: 50%;
+            background: #ff6847;
+            box-shadow: 0 0 0 7px #ff684724
+        }
+
+        .pta {
+            left: 30%;
+            bottom: 27%
+        }
+
+        .ptb {
+            right: 19%;
+            top: 24%
+        }
+
+        .sl-zone {
+            margin-top: -65px
+        }
+
+        .sl-card {
+            padding: 28px;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 32px;
+            box-shadow: var(--shadow)
+        }
+
+        .point-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px
+        }
+
+        .pointbox {
+            padding: 18px;
+            background: var(--soft);
+            border-radius: 20px
+        }
+
+        .xy {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px
+        }
+
+        .sl-results {
+            display: grid;
+            grid-template-columns: 230px 1fr;
+            gap: 15px;
+            margin-top: 18px
+        }
+
+        .slope-big {
+            border-radius: 22px;
+            background: #083b4e;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center
+        }
+
+        .slope-big span {
+            font-size: .78rem;
+            font-weight: 900;
+            letter-spacing: .14em;
+            color: #8ce2ff
+        }
+
+        .slope-big strong {
+            font-size: 3.4rem
+        }
+
+        @media(max-width:760px) {
+
+            .sl-grid,
+            .point-grid,
+            .sl-results,
+            .xy {
+                grid-template-columns: 1fr
+            }
+
+            .coord-card {
+                height: 220px
+            }
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/slope-calculator/#webapplication",
+      "name": "Slope Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/slope-calculator/",
+      "description": "Calculate slope from two points using x₁, y₁, x₂, and y₂. See slope, rise, run, line equation, distance, angle, and direction with clear results.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/slope-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Slope Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/slope-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/slope-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the formula for slope between two points?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The formula is: m = (y₂ − y₁) / (x₂ − x₁). Subtract the first y-value from the second to get the rise, then divide it by the corresponding change in x."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do rise and run mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rise is the change in the y-coordinate, while run is the change in the x-coordinate. Slope is rise divided by run."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a positive slope mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A positive slope means the line rises from left to right as x increases."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a negative slope mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A negative slope means the line falls from left to right as x increases."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a slope of zero mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A zero slope occurs when the two points have the same y-coordinate but different x-coordinates. The resulting line is horizontal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is the slope of a vertical line undefined?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A vertical line has x₂ − x₁ = 0. The slope formula would therefore require division by zero, so no finite slope is defined."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does switching the two points change the slope?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Reversing the point order changes the signs of both the rise and run, so their ratio remains the same as long as the points define a nonvertical line."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="math" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../math/index.html">Math &amp; Statistics</a></li>
+            <li><a aria-current="page" href="index.html">Slope Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a
+            href="../calculators/index.html">All calculators</a></div>
+     <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Slope Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="sl-zone">
+                <div class="wrap sl-card">
+                    <div class="point-grid">
+                        <div class="pointbox">
+                            <h3>Point 1</h3>
+                            <div class="xy">
+                                <div><label for="x1">x₁</label><input id="x1" step="any" type="number" value="1" />
+                                </div>
+                                <div><label for="y1">y₁</label><input id="y1" step="any" type="number" value="2" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pointbox">
+                            <h3>Point 2</h3>
+                            <div class="xy">
+                                <div><label for="x2">x₂</label><input id="x2" step="any" type="number" value="3" />
+                                </div>
+                                <div><label for="y2">y₂</label><input id="y2" step="any" type="number" value="6" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions"><button class="btn primary" onclick="calcSlope()">Calculate
+                            Slope</button><button class="btn secondary" onclick="resetSlope()">Reset</button></div>
+                    <div class="error" id="slErr"></div>
+                    <div class="sl-results">
+                        <div class="slope-big"><span>SLOPE m</span><strong id="slMain">2</strong></div>
+                        <div class="result-grid">
+                            <div class="result-chip"><b>Rise</b><span id="rise">4</span></div>
+                            <div class="result-chip"><b>Run</b><span id="run">2</span></div>
+                            <div class="result-chip"><b>Line equation</b><span id="lineEq">y = 2x</span></div>
+                            <div class="result-chip"><b>Angle</b><span id="angle">63.4349°</span></div>
+                            <div class="result-chip"><b>Distance</b><span id="dist">4.47214</span></div>
+                            <div class="result-chip"><b>Direction</b><span id="dir">Increasing</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="content">
+                <div class="wrap article-grid">
+                   
+
+<article class="article">
+
+ 
+  <p>Use the Slope Calculator to find the slope of a line from two coordinate points: (x₁, y₁) and (x₂, y₂). The calculator uses the change in y divided by the change in x and also provides supporting values such as rise, run, line information, distance, angle, and direction.</p>
+
+  <section id="what">
+    <h2>What Is the Slope Calculator?</h2>
+    <p>The Slope Calculator calculates the slope of the straight line passing through two points on a coordinate plane. Slope measures how much the y-value changes for each unit of change in the x-value.</p>
+    <p>This calculator is useful for coordinate geometry, algebra, graphing, rate-of-change problems, and checking calculations involving straight lines.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Slope Calculator</h2>
+    <p>Enter the coordinates of two points:</p>
+
+    <ol>
+      <li><strong>x₁</strong> – Enter the x-coordinate of the first point.</li>
+      <li><strong>y₁</strong> – Enter the y-coordinate of the first point.</li>
+      <li><strong>x₂</strong> – Enter the x-coordinate of the second point.</li>
+      <li><strong>y₂</strong> – Enter the y-coordinate of the second point.</li>
+    </ol>
+
+    <p>Coordinates do not have a fixed unit. If they represent measured quantities, use consistent units for both points.</p>
+
+    <p>The calculator then determines the slope and supporting information for the line defined by the two points.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Slope Formula</h3>
+    <p>The calculator uses:</p>
+
+    <div class="formula">m = (y₂ − y₁) / (x₂ − x₁)</div>
+
+    <p>The difference between the y-values is the <strong>rise</strong>, while the difference between the x-values is the <strong>run</strong>. This is the standard two-point slope formula.</p>
+
+    <h3>Variables</h3>
+    <ul>
+      <li><strong>m</strong> = slope of the line</li>
+      <li><strong>x₁</strong> = x-coordinate of the first point</li>
+      <li><strong>y₁</strong> = y-coordinate of the first point</li>
+      <li><strong>x₂</strong> = x-coordinate of the second point</li>
+      <li><strong>y₂</strong> = y-coordinate of the second point</li>
+      <li><strong>Δy = y₂ − y₁</strong> = rise</li>
+      <li><strong>Δx = x₂ − x₁</strong> = run</li>
+    </ul>
+
+    <p>When units are attached to the coordinates, slope is expressed as y-units per x-unit.</p>
+
+    <h3>Calculation Sequence</h3>
+    <ol>
+      <li>Calculate the rise:<br>
+        <strong>Rise = y₂ − y₁</strong>
+      </li>
+      <li>Calculate the run:<br>
+        <strong>Run = x₂ − x₁</strong>
+      </li>
+      <li>Divide the rise by the run:<br>
+        <strong>Slope = Rise / Run</strong>
+      </li>
+      <li>If the run is zero, the two points form a vertical line and the slope is undefined.</li>
+    </ol>
+
+    <h3>Rise</h3>
+    <p>The rise is the vertical change between the two points:</p>
+
+    <div class="formula">Rise = y₂ − y₁</div>
+
+    <p>A positive rise means the second point is higher than the first when read in the selected point order. A negative rise means it is lower.</p>
+
+    <h3>Run</h3>
+    <p>The run is the horizontal change:</p>
+
+    <div class="formula">Run = x₂ − x₁</div>
+
+    <p>The run is also the denominator of the slope formula. If the run equals zero, division cannot produce a finite slope.</p>
+
+    <h3>Line Equation</h3>
+    <p>After a finite slope is known, a line through one of the points can be represented using the point-slope equation:</p>
+
+    <div class="formula">y − y₁ = m(x − x₁)</div>
+
+    <p>This equation uses the calculated slope and one known point on the line.</p>
+
+    <h3>Distance Between the Points</h3>
+    <p>The straight-line distance between the two coordinates can be calculated as:</p>
+
+    <div class="formula">d = √[(x₂ − x₁)² + (y₂ − y₁)²]</div>
+
+    <p>This measures the direct distance from the first point to the second point on the coordinate plane.</p>
+
+    <h3>Direction</h3>
+    <p>The slope helps describe the line's direction as x increases. A positive slope rises from left to right, a negative slope falls, a zero slope is horizontal, and a vertical line has undefined slope.</p>
+
+    <p>The calculator also displays an angle as supporting line information. The exact angle normalization is not expanded here because the available calculator specification does not document that secondary calculation in enough detail to state its implementation formula without adding assumptions.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+    <p>Suppose the two points are:</p>
+
+    <h3>Inputs</h3>
+    <ul>
+      <li>x₁ = 2</li>
+      <li>y₁ = 3</li>
+      <li>x₂ = 6</li>
+      <li>y₂ = 11</li>
+    </ul>
+
+    <h3>Step 1: Calculate the Rise</h3>
+    <div class="formula">Rise = 11 − 3 = 8</div>
+
+    <h3>Step 2: Calculate the Run</h3>
+    <div class="formula">Run = 6 − 2 = 4</div>
+
+    <h3>Step 3: Calculate the Slope</h3>
+    <div class="formula">m = 8 / 4</div>
+    <div class="formula">m = 2</div>
+
+    <h3>Supporting Calculations</h3>
+    <p>Using the point-slope equation:</p>
+
+    <div class="formula">y − 3 = 2(x − 2)</div>
+
+    <p>This simplifies to:</p>
+
+    <div class="formula">y = 2x − 1</div>
+
+    <p>The distance between the points is:</p>
+
+    <div class="formula">d = √[(6 − 2)² + (11 − 3)²]</div>
+    <div class="formula">d = √(16 + 64)</div>
+    <div class="formula">d = √80 ≈ 8.944</div>
+
+    <h3>Final Result</h3>
+    <p>The slope is <strong>2</strong>.</p>
+
+    <p>This means y increases by 2 units for every 1-unit increase in x. Because the slope is positive, the line rises from left to right.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p><strong>Slope</strong> is the main result. It measures the rate of vertical change compared with horizontal change.</p>
+
+    <p><strong>Rise</strong> shows the change in y between the two points.</p>
+
+    <p><strong>Run</strong> shows the change in x between the two points.</p>
+
+    <p><strong>Line equation</strong> represents the straight line passing through the supplied coordinates.</p>
+
+    <p><strong>Distance</strong> represents the straight-line distance between the two points.</p>
+
+    <p><strong>Angle</strong> gives additional information about the line's inclination.</p>
+
+    <p><strong>Direction</strong> describes whether the line rises, falls, remains horizontal, or is vertical as x increases.</p>
+
+    <p>A larger absolute slope means a steeper nonvertical line. For example, a slope of 5 is steeper than a slope of 1, while −5 and 5 have the same slope magnitude but opposite directions.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The calculator treats the entered values as two points in a standard Cartesian coordinate plane.</p>
+
+    <p>If <strong>x₁ = x₂</strong> and the y-values are different, the line is vertical and its slope is undefined because the run equals zero.</p>
+
+    <p>If both entered points are identical, they do not define one unique line. Infinitely many different lines can pass through a single point.</p>
+
+    <p>Decimal and irrational supporting results may be rounded for display, so the displayed value can differ slightly from the full mathematical value.</p>
+
+    <p>The calculator determines the line from the entered coordinates only. It does not determine whether measured real-world data follows an exact linear relationship.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What is the formula for slope between two points?</summary>
+      <p>The formula is:</p>
+      <div class="formula">m = (y₂ − y₁) / (x₂ − x₁)</div>
+      <p>Subtract the first y-value from the second to get the rise, then divide it by the corresponding change in x.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What do rise and run mean?</summary>
+      <p>Rise is the change in the y-coordinate, while run is the change in the x-coordinate. Slope is rise divided by run.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What does a positive slope mean?</summary>
+      <p>A positive slope means the line rises from left to right as x increases.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What does a negative slope mean?</summary>
+      <p>A negative slope means the line falls from left to right as x increases.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What does a slope of zero mean?</summary>
+      <p>A zero slope occurs when the two points have the same y-coordinate but different x-coordinates. The resulting line is horizontal.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why is the slope of a vertical line undefined?</summary>
+      <p>A vertical line has <strong>x₂ − x₁ = 0</strong>. The slope formula would therefore require division by zero, so no finite slope is defined.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does switching the two points change the slope?</summary>
+      <p>No. Reversing the point order changes the signs of both the rise and run, so their ratio remains the same as long as the points define a nonvertical line.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+    <ul class="sources">
+      <li>
+        <a href="https://openstax.org/books/college-algebra-2e/pages/2-key-equations?utm_source=chatgpt.com" rel="noopener" target="_blank">OpenStax College Algebra 2e — Chapter 2 Key Equations</a><br>
+        Supports the two-point slope formula, distance formula, and point-slope equation.
+      </li>
+      <li>
+        <a href="https://openstax.org/books/college-algebra-2e/pages/4-1-linear-functions?utm_source=chatgpt.com" rel="noopener" target="_blank">OpenStax College Algebra 2e — Linear Functions</a><br>
+        Supports the interpretation of slope as rise over run and the meaning of positive, negative, zero, and undefined slopes.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="https://example.com/distance-calculator/?utm_source=chatgpt.com">Distance Calculator</a></li>
+      <li><a href="https://example.com/triangle-calculator/?utm_source=chatgpt.com">Triangle Calculator</a></li>
+      <li><a href="https://example.com/pythagorean-theorem-calculator/?utm_source=chatgpt.com">Pythagorean Theorem Calculator</a></li>
+      <li><a href="https://example.com/right-triangle-calculator/?utm_source=chatgpt.com">Right Triangle Calculator</a></li>
+      <li><a href="https://example.com/circle-calculator/?utm_source=chatgpt.com">Circle Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+
+                </div>
+            </div>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"139","Batch":"14","Calculator / Page":"Slope Calculator","Slug":"slope-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Calculate slope from two points and view rise, run, line equation, angle, distance, and direction.","Formula / Algorithm Used in Tool":"Slope Formula: m = (y₂ − y₁) / (x₂ − x₁) The numerator is the rise and the denominator is the run. OpenStax gives this two-point slope formula along with point-slope and related line equations.","Required User Inputs":"x₁; y₁; x₂; y₂","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: x₁, y₁, x₂, y₂. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"If both points are identical, they do not define a unique line. If x₁ = x₂ but y values differ, the line is vertical and its slope is undefined.","Current Source URLs in Page":"https://openstax.org/books/college-algebra-2e/pages/2-key-equations","Implementation Path":"/slope-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Math &amp; Statistics</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../distance-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Distance Calculator</strong><small>Calculate
+                            distance between two points in 2D, 3D, or between latitude-longitude
+                            coor…</small></span></a><a class="cp-related-link"
+                    href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction
+                            Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the
+                            simplified fraction, m…</small></span></a><a class="cp-related-link"
+                    href="../exponent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Exponent
+                            Calculator</strong><small>Calculate a number raised to any valid real exponent and view the
+                            result in standar…</small></span></a><a class="cp-related-link"
+                    href="../quadratic-formula-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Quadratic Formula Calculator</strong><small>Solve
+                            quadratic equations with the quadratic formula and view roots,
+                            discriminant,…</small></span></a><a class="cp-related-link"
+                    href="../confidence-interval-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Confidence Interval
+                            Calculator</strong><small>Calculate a two-sided confidence interval for a mean using a t
+                            interval for sample…</small></span></a><a class="cp-related-link"
+                    href="../ratio-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Ratio
+                            Calculator</strong><small>Solve a proportion A:B = C:D when one value is unknown, and
+                            simplify two-number rat…</small></span></a><a class="cp-related-link"
+                    href="../gcf-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>GCF
+                            Calculator</strong><small>Find the greatest common factor of two or more integers. Free,
+                            fast and responsive…</small></span></a><a class="cp-related-link"
+                    href="../lcm-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>LCM
+                            Calculator</strong><small>Find the least common multiple of two or more integers. Free, fast
+                            and responsive l…</small></span></a></div><a class="cp-side-category"
+                href="../math/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const sf = n => Math.abs(n) < 1e-12 ? '0' : parseFloat(n.toFixed(8)).toString();
+        function calcSlope() { const X1 = Number(x1.value), Y1 = Number(y1.value), X2 = Number(x2.value), Y2 = Number(y2.value); slErr.textContent = ''; if (![X1, Y1, X2, Y2].every(Number.isFinite)) { slErr.textContent = 'Enter valid coordinates.'; return } const dy = Y2 - Y1, dx = X2 - X1; rise.textContent = sf(dy); run.textContent = sf(dx); dist.textContent = sf(Math.hypot(dx, dy)); if (dx === 0) { if (dy === 0) { slMain.textContent = 'Indeterminate'; lineEq.textContent = 'Same point'; angle.textContent = '—'; dir.textContent = 'No unique line'; slErr.textContent = 'Identical points do not determine a unique line.' } else { slMain.textContent = 'Undefined'; lineEq.textContent = 'x = ' + sf(X1); angle.textContent = '90°'; dir.textContent = 'Vertical' } return } const m = dy / dx, b = Y1 - m * X1; slMain.textContent = sf(m); angle.textContent = sf(Math.atan(m) * 180 / Math.PI) + '°'; dir.textContent = m > 0 ? 'Increasing' : m < 0 ? 'Decreasing' : 'Horizontal'; lineEq.textContent = Math.abs(b) < 1e-12 ? `y = ${sf(m)}x` : `y = ${sf(m)}x ${b >= 0 ? '+' : '−'} ${sf(Math.abs(b))}` }
+        function resetSlope() { x1.value = 1; y1.value = 2; x2.value = 3; y2.value = 6; calcSlope() } calcSlope();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

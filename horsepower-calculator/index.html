@@ -1,110 +1,1115 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>Horsepower Calculator | CalcPro</title>
-<meta content="Calculate mechanical horsepower from torque and RPM, or convert between hp, kilowatts, watts, and metric horsepower." name="description"/>
-<meta content="index,follow" name="robots"/>
-<link href="../horsepower-calculator/" rel="canonical"/>
-<meta content="Horsepower Calculator | CalcPro" property="og:title"/>
-<meta content="Calculate mechanical horsepower from torque and RPM, or convert between hp, kilowatts, watts, and metric horsepower." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="/horsepower-calculator/" property="og:url"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>:root{--bg:#120c08;--text:#fff7ed;--muted:#c8ae99;--bodyText:#dbc5b3;--accent:#f97316;--accentText:#211006;--accentShadow:#f9731640;--hero:radial-gradient(circle at 72% 45%,#7c2d12,#431407 34%,#160b06 68%);--heroText:#e2c7b2;--panel:#2a140bd9;--article:#211008;--input:#1a0d07;--result:linear-gradient(135deg,#481c0d,#1a0c06);--mini:#30170b;--chip:#ffffff0d;--code:#1d0d06;--line:#fdba7422;--lineStrong:#fdba7442;--focus:#f9731630;--shadow:0 34px 90px #000b;--softShadow:0 20px 50px #0007}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.62}
-a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
-.container{width:min(1180px,calc(100% - 32px));margin:auto}
-.sitebar{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:16px}.brand{font-weight:900;letter-spacing:-.04em;font-size:1.25rem}.brand span{color:var(--accent)}
-.crumbs{font-size:.9rem;color:var(--muted);margin:12px 0 0}.crumbs a{color:inherit}
-.hero{position:relative;overflow:hidden;margin:12px auto 30px;border-radius:32px;padding:clamp(28px,5vw,70px);background:var(--hero);box-shadow:var(--shadow);border:1px solid var(--line);isolation:isolate}
-.hero h1{font-size:clamp(2.35rem,5.7vw,5.2rem);line-height:.96;letter-spacing:-.065em;margin:12px 0 20px;max-width:800px}.hero p{font-size:clamp(1rem,1.5vw,1.18rem);max-width:720px;color:var(--heroText,var(--muted));margin:0}
-.eyebrow{display:inline-flex;gap:8px;align-items:center;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.76rem;padding:8px 12px;border-radius:99px;background:var(--chip);border:1px solid var(--line)}
-.hero-art{position:absolute;right:3%;top:50%;transform:translateY(-50%);width:min(34vw,360px);height:min(34vw,360px);pointer-events:none;opacity:.96}
-.calc-zone{margin:0 auto 34px}.calc-shell{position:relative;background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:28px;padding:clamp(20px,3vw,34px);backdrop-filter:blur(14px)}
-.calc-title{margin:0 0 5px;font-size:1.5rem;letter-spacing:-.03em}.calc-note{margin:0 0 22px;color:var(--muted)}
-.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
-label{font-size:.9rem;font-weight:750}.input-row{display:flex;gap:8px}input,select,textarea,button{font:inherit}
-input,select,textarea{width:100%;border:1px solid var(--lineStrong);background:var(--input);color:var(--text);border-radius:14px;padding:13px 14px;outline:none;transition:.2s}
-input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}
-.unit{max-width:122px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-button{border:0;border-radius:14px;padding:13px 18px;font-weight:850;cursor:pointer;transition:transform .18s,box-shadow .18s}
-button:hover{transform:translateY(-2px)}.primary{background:var(--accent);color:var(--accentText,#fff);box-shadow:0 10px 25px var(--accentShadow)}.secondary{background:var(--chip);color:var(--text);border:1px solid var(--line)}
-.error{min-height:24px;margin-top:12px;color:#c33;font-weight:700}.result{margin-top:24px;padding:24px;border-radius:24px;background:var(--result);border:1px solid var(--line);position:relative;overflow:hidden}
-.result .big{font-size:clamp(2rem,5vw,3.7rem);font-weight:950;letter-spacing:-.055em;line-height:1;margin:.25rem 0}.result .sub{color:var(--muted)}
-.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.stat{background:var(--mini);border:1px solid var(--line);border-radius:16px;padding:14px}.stat b{display:block;font-size:1.13rem}
-.content-grid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:28px;align-items:start}.article{background:var(--article);border:1px solid var(--line);box-shadow:var(--softShadow);border-radius:28px;padding:clamp(22px,4vw,42px)}
-.article h2{font-size:clamp(1.55rem,3vw,2.2rem);line-height:1.1;letter-spacing:-.035em;margin:2.2rem 0 .7rem}.article h2:first-child{margin-top:0}.article h3{margin:1.5rem 0 .5rem}.article p,.article li{color:var(--bodyText)}
-.aside{position:sticky;top:18px;background:var(--panel);border:1px solid var(--line);box-shadow:var(--softShadow);border-radius:22px;padding:20px}.aside h3{margin-top:0}.aside ul{padding-left:18px;margin-bottom:0}
-.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--code);padding:16px;border-radius:16px;overflow:auto;border:1px solid var(--line);font-weight:750}
-.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px}table{width:100%;border-collapse:collapse;min-width:560px}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line)}th{background:var(--chip)}
-.faq details{border-top:1px solid var(--line);padding:14px 0}.faq summary{font-weight:850;cursor:pointer}.sources li{margin:.45rem 0}
-.footer{padding:34px 0 50px;color:var(--muted);font-size:.9rem}
-.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.pill{padding:7px 11px;border-radius:999px;background:var(--chip);border:1px solid var(--line);font-size:.82rem;font-weight:750}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.tab{padding:9px 13px;border-radius:12px;background:var(--chip);border:1px solid var(--line);font-weight:800;cursor:pointer}.tab.active{background:var(--accent);color:var(--accentText,#fff)}
-.hidden{display:none!important}
-@media(max-width:860px){.content-grid{grid-template-columns:1fr}.aside{position:static}.hero-art{opacity:.28;width:250px;height:250px}.hero h1{max-width:95%}}
-@media(max-width:650px){.container{width:min(100% - 20px,1180px)}.hero{border-radius:22px;padding:26px 20px}.calc-shell,.article{border-radius:22px;padding:20px}.form-grid,.stat-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.input-row{flex-direction:column}.unit{max-width:none}.hero-art{right:-60px}}
-.theme-horse .hero{border-radius:16px;clip-path:polygon(0 0,100% 0,97% 100%,3% 100%)}.theme-horse .calc-shell{border-radius:14px;box-shadow:0 28px 70px #0009,inset 0 1px 0 #fdba7433}.theme-horse .result{border-radius:10px;border-right:8px solid #f97316}.tach{position:absolute;inset:12%;border:16px solid #3f2418;border-radius:50%;box-shadow:inset 0 0 0 4px #f97316,0 0 45px #f9731644}.tach:before{content:"0  1  2  3  4  5  6  7";position:absolute;inset:0;display:grid;place-items:center;font:bold 20px ui-monospace;color:#fdba74;word-spacing:7px;transform:rotate(-14deg)}.tach:after{content:"";position:absolute;width:8px;height:39%;background:#ef4444;left:49%;bottom:50%;transform-origin:bottom;transform:rotate(57deg);border-radius:9px}</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Horsepower Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate mechanical horsepower from torque and RPM, or convert between hp, kilowatts, watts, and metric horsepower.", "url": "/horsepower-calculator/", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Engineering & Science", "item": "/engineering/"}, {"@type": "ListItem", "position": 3, "name": "Physics & Mechanics", "item": "/engineering/physics-mechanics/"}, {"@type": "ListItem", "position": 4, "name": "Horsepower Calculator", "item": "/horsepower-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I calculate horsepower from torque and RPM?", "acceptedAnswer": {"@type": "Answer", "text": "For torque in pound-feet, mechanical horsepower is approximately torque × RPM ÷ 5252. The constant comes from the relationship between rotational work and 550 foot-pounds per second per horsepower."}}, {"@type": "Question", "name": "How many watts are in one mechanical horsepower?", "acceptedAnswer": {"@type": "Answer", "text": "NIST lists mechanical horsepower, defined as 550 ft·lbf/s, as approximately 745.6999 watts."}}, {"@type": "Question", "name": "Is crank horsepower the same as wheel horsepower?", "acceptedAnswer": {"@type": "Answer", "text": "No. Engine or crank horsepower is measured before drivetrain losses, while wheel horsepower is measured at the driven wheels. Test method and correction standards matter when comparing values."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body class="theme-horse" data-cp-category="engineering" data-cp-page-type="Calculator">
-<header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header><nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../engineering/index.html">Engineering &amp; Construction</a></li><li><a aria-current="page" href="index.html">Horsepower Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../engineering/index.html">Browse Engineering &amp; Construction</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main"><h1 class="page-title">Horsepower Calculator</h1>
+   <!-- Primary Meta Tags -->
+<title>Horsepower Calculator – Torque, RPM &amp; Power Conversion</title>
+<meta name="title" content="Horsepower Calculator – Torque, RPM &amp; Power Conversion">
+<meta name="description" content="Calculate mechanical horsepower from torque and RPM, or convert between horsepower, kilowatts, watts, and metric horsepower using standard power units.">
 
-<section aria-labelledby="calculator-heading" class="container calc-zone">
-<div class="calc-shell">
-<h2 class="calc-title" id="calculator-heading">Horsepower Calculator</h2>
-<p class="calc-note">Calculate mechanical horsepower from torque and RPM, or convert common power units.</p>
-<div class="tabs"><button class="tab active" data-pane="torque">Torque × RPM</button><button class="tab" data-pane="convert">Power Converter</button></div>
-<div class="form-grid" id="torquePane">
-<div class="field"><label for="torque">Torque (lb·ft)</label><input id="torque" min="0" step="any" type="number" value="300"/></div>
-<div class="field"><label for="rpm">Engine speed (RPM)</label><input id="rpm" min="0" step="any" type="number" value="5000"/></div>
-</div>
-<div class="form-grid hidden" id="convertPane">
-<div class="field"><label for="amount">Amount</label><input id="amount" step="any" type="number" value="100"/></div>
-<div class="field"><label for="fromUnit">From</label><select id="fromUnit"><option value="hp">mechanical hp</option><option value="kw">kilowatts</option><option value="w">watts</option><option value="ps">metric hp (PS)</option></select></div>
-</div>
-<div class="actions"><button class="primary" id="calcBtn">Calculate Horsepower</button><button class="secondary" id="resetBtn">Reset</button></div><div class="error" id="error" role="alert"></div>
-<div class="result"><span class="sub" id="resultLabel">Mechanical horsepower</span><div class="big" id="hp">285.61 hp</div><div class="stat-grid"><div class="stat"><span>Kilowatts</span><b id="kw">213.00 kW</b></div><div class="stat"><span>Watts</span><b id="w">213,000 W</b></div><div class="stat"><span>Metric horsepower</span><b id="ps">289.57 PS</b></div></div></div>
-</div>
-</section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<section class="container content-grid">
-<article class="article">
-<h2>What Is a Horsepower Calculator?</h2><p>A horsepower calculator converts rotational torque and engine speed into mechanical power and also converts between horsepower, watts, kilowatts, and metric horsepower. Mechanical horsepower is a unit of power, which is the rate at which work is done.</p>
-<h2>Torque and RPM Horsepower Formula</h2><div class="formula">hp = Torque (lb·ft) × RPM ÷ 5252.113</div><p>The constant comes from the mechanical-horsepower definition of 550 foot-pound-force per second combined with one revolution equaling 2π radians.</p>
-<h3>Example</h3><p>An engine producing 300 lb·ft at 5,000 RPM develops about 285.6 mechanical horsepower using the torque-RPM relationship. That is roughly 213 kW.</p>
-<h2>Horsepower to Watts</h2><p>NIST lists mechanical horsepower (550 ft·lbf/s) at approximately 745.6999 W. Metric horsepower (PS) is smaller, at approximately 735.4988 W. Because multiple horsepower definitions exist, always identify the convention being used.</p>
-<h2>Limitations</h2><p>Torque-based power is only as accurate as the torque and RPM measurement. Engine dynamometer, chassis dynamometer, correction method, drivetrain loss, atmospheric conditions, and whether the figure is gross, net, crank, or wheel horsepower can change reported values.</p>
-<h2 id="faq">Frequently Asked Questions</h2>
-<div class="faq"><details><summary>How do I calculate horsepower from torque and RPM?</summary><p>For torque in pound-feet, mechanical horsepower is approximately torque × RPM ÷ 5252. The constant comes from the relationship between rotational work and 550 foot-pounds per second per horsepower.</p></details>
-<details><summary>How many watts are in one mechanical horsepower?</summary><p>NIST lists mechanical horsepower, defined as 550 ft·lbf/s, as approximately 745.6999 watts.</p></details>
-<details><summary>Is crank horsepower the same as wheel horsepower?</summary><p>No. Engine or crank horsepower is measured before drivetrain losses, while wheel horsepower is measured at the driven wheels. Test method and correction standards matter when comparing values.</p></details></div>
-<h2>Sources and Methodology</h2>
-<p>CalcPro uses the formulas and assumptions described above. References below were used to cross-check the calculator method and terminology. Results are estimates unless a definition or unit conversion is mathematically exact.</p>
-<ul class="sources"><li><a href="https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9" rel="noopener noreferrer">NIST Guide to the SI — Power conversions</a> — mechanical and metric horsepower-to-watt conversion factors.</li>
-<li><a href="https://www.calculator.net/horsepower-calculator.html" rel="noopener noreferrer">Calculator.net Horsepower Calculator</a> — cross-check of horsepower definition and converter intent.</li></ul>
-</article>
-<aside class="aside">
-<h3>Quick reference</h3>
-<div class="formula">hp = torque × RPM ÷ 5252.113</div><div class="pills"><span class="pill">mechanical hp</span><span class="pill">kW</span><span class="pill">PS</span></div>
-</aside>
-</section>
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/horsepower-calculator/">
 
-<script class="cp-calculator-data" type="application/json">{"index":"164","Batch":"17","Calculator / Page":"Horsepower Calculator","Slug":"horsepower-calculator","Site Category (Current)":"Engineering & Construction","Recommended Content Domain":"Engineering / Construction","Page Type":"Calculator","Search Intent / Purpose":"Calculate mechanical horsepower from torque and RPM, or convert between hp, kilowatts, watts, and metric horsepower.","Formula / Algorithm Used in Tool":"Torque and RPM Horsepower Formula: hp = Torque (lb·ft) × RPM ÷ 5252.113 The constant comes from the mechanical-horsepower definition of 550 foot-pound-force per second combined with one revolution equaling 2π radians.","Required User Inputs":"Torque (lb·ft); Engine speed (RPM); Amount; From","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Torque (lb·ft), Engine speed (RPM), Amount, From. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Exact engineering/geometry formula, units, standards; document any default density, waste factor, safety factor or material assumption.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When standards/default factors change","Important Assumptions / Limitations":"Torque-based power is only as accurate as the torque and RPM measurement. Engine dynamometer, chassis dynamometer, correction method, drivetrain loss, atmospheric conditions, and whether the figure is gross, net, crank, or wheel horsepower can change reported values.","Current Source URLs in Page":"https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9 | https://www.calculator.net/horsepower-calculator.html","Implementation Path":"/horsepower-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Engineering &amp; Construction</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../concrete-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Concrete Calculator</strong><small>Calculate concrete volume for slabs, round columns, or tubes, convert to cubic yard…</small></span></a><a class="cp-related-link" href="../engine-horsepower-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Engine Horsepower Calculator</strong><small>Estimate engine horsepower from quarter-mile elapsed time or trap speed with weight…</small></span></a><a class="cp-related-link" href="../fuel-cost-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fuel Cost Calculator</strong><small>Estimate trip fuel use and fuel cost from distance, fuel efficiency, and gas or die…</small></span></a><a class="cp-related-link" href="../voltage-drop-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Voltage Drop Calculator</strong><small>Estimate conductor voltage drop, percentage drop, and load voltage for DC, single-p…</small></span></a><a class="cp-related-link" href="../resistor-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Resistor Calculator</strong><small>Decode 4-, 5-, or 6-band resistor colors and calculate equivalent resistance for se…</small></span></a><a class="cp-related-link" href="../mulch-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Mulch Calculator</strong><small>Estimate mulch volume in cubic yards or cubic meters, plus bag counts, from area an…</small></span></a><a class="cp-related-link" href="../btu-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>BTU Calculator</strong><small>Estimate room air-conditioner cooling capacity in BTU per hour using ENERGY STAR ro…</small></span></a><a class="cp-related-link" href="../electricity-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Electricity Calculator</strong><small>Estimate appliance electricity use in kWh and daily, monthly, and yearly energy cos…</small></span></a></div><a class="cp-side-category" href="../engineering/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/horsepower-calculator/">
+<meta property="og:title" content="Horsepower Calculator – Torque, RPM &amp; Power Conversion">
+<meta property="og:description" content="Calculate mechanical horsepower from torque and RPM, or convert between horsepower, kilowatts, watts, and metric horsepower using standard power units.">
+<meta property="og:site_name" content="Horsepower Calculator">
 
-const $=id=>document.getElementById(id);let pane="torque";const W_PER_HP=745.6999,W_PER_PS=735.4988;
-document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");pane=b.dataset.pane;$("torquePane").classList.toggle("hidden",pane!=="torque");$("convertPane").classList.toggle("hidden",pane!=="convert");run()});
-function show(hp){let watts=hp*W_PER_HP;$("hp").textContent=hp.toFixed(2)+" hp";$("kw").textContent=(watts/1000).toFixed(2)+" kW";$("w").textContent=Math.round(watts).toLocaleString()+" W";$("ps").textContent=(watts/W_PER_PS).toFixed(2)+" PS"}
-function run(){if(pane==="torque"){let t=+$("torque").value,r=+$("rpm").value;if(!(t>=0)||!(r>=0)){$("error").textContent="Enter valid non-negative torque and RPM.";return}let hp=t*r/5252.113122;$("resultLabel").textContent="Mechanical horsepower from torque and RPM";$("error").textContent="";show(hp)}else{let a=+$("amount").value;if(Number.isNaN(a)){$("error").textContent="Enter a valid power amount.";return}let watts=$("fromUnit").value==="hp"?a*W_PER_HP:$("fromUnit").value==="kw"?a*1000:$("fromUnit").value==="ps"?a*W_PER_PS:a;$("resultLabel").textContent="Converted mechanical horsepower";$("error").textContent="";show(watts/W_PER_HP)}}
-$("calcBtn").onclick=run;$("resetBtn").onclick=()=>location.reload();run();
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/horsepower-calculator/">
+<meta name="twitter:title" content="Horsepower Calculator – Torque, RPM &amp; Power Conversion">
+<meta name="twitter:description" content="Calculate mechanical horsepower from torque and RPM, or convert between horsepower, kilowatts, watts, and metric horsepower using standard power units.">
+    <style>
+        :root {
+            --bg: #120c08;
+            --text: #fff7ed;
+            --muted: #c8ae99;
+            --bodyText: #dbc5b3;
+            --accent: #f97316;
+            --accentText: #211006;
+            --accentShadow: #f9731640;
+            --hero: radial-gradient(circle at 72% 45%, #7c2d12, #431407 34%, #160b06 68%);
+            --heroText: #e2c7b2;
+            --panel: #2a140bd9;
+            --article: #211008;
+            --input: #1a0d07;
+            --result: linear-gradient(135deg, #481c0d, #1a0c06);
+            --mini: #30170b;
+            --chip: #ffffff0d;
+            --code: #1d0d06;
+            --line: #fdba7422;
+            --lineStrong: #fdba7442;
+            --focus: #f9731630;
+            --shadow: 0 34px 90px #000b;
+            --softShadow: 0 20px 50px #0007
+        }
 
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.62
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .sitebar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            gap: 16px
+        }
+
+        .brand {
+            font-weight: 900;
+            letter-spacing: -.04em;
+            font-size: 1.25rem
+        }
+
+        .brand span {
+            color: var(--accent)
+        }
+
+        .crumbs {
+            font-size: .9rem;
+            color: var(--muted);
+            margin: 12px 0 0
+        }
+
+        .crumbs a {
+            color: inherit
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            margin: 12px auto 30px;
+            border-radius: 32px;
+            padding: clamp(28px, 5vw, 70px);
+            background: var(--hero);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--line);
+            isolation: isolate
+        }
+
+        .hero h1 {
+            font-size: clamp(2.35rem, 5.7vw, 5.2rem);
+            line-height: .96;
+            letter-spacing: -.065em;
+            margin: 12px 0 20px;
+            max-width: 800px
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 1.5vw, 1.18rem);
+            max-width: 720px;
+            color: var(--heroText, var(--muted));
+            margin: 0
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            font-size: .76rem;
+            padding: 8px 12px;
+            border-radius: 99px;
+            background: var(--chip);
+            border: 1px solid var(--line)
+        }
+
+        .hero-art {
+            position: absolute;
+            right: 3%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: min(34vw, 360px);
+            height: min(34vw, 360px);
+            pointer-events: none;
+            opacity: .96
+        }
+
+        .calc-zone {
+            margin: 0 auto 34px
+        }
+
+        .calc-shell {
+            position: relative;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            border-radius: 28px;
+            padding: clamp(20px, 3vw, 34px);
+            backdrop-filter: blur(14px)
+        }
+
+        .calc-title {
+            margin: 0 0 5px;
+            font-size: 1.5rem;
+            letter-spacing: -.03em
+        }
+
+        .calc-note {
+            margin: 0 0 22px;
+            color: var(--muted)
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px
+        }
+
+        .field.full {
+            grid-column: 1/-1
+        }
+
+        label {
+            font-size: .9rem;
+            font-weight: 750
+        }
+
+        .input-row {
+            display: flex;
+            gap: 8px
+        }
+
+        input,
+        select,
+        textarea,
+        button {
+            font: inherit
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--lineStrong);
+            background: var(--input);
+            color: var(--text);
+            border-radius: 14px;
+            padding: 13px 14px;
+            outline: none;
+            transition: .2s
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--focus)
+        }
+
+        .unit {
+            max-width: 122px
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px
+        }
+
+        button {
+            border: 0;
+            border-radius: 14px;
+            padding: 13px 18px;
+            font-weight: 850;
+            cursor: pointer;
+            transition: transform .18s, box-shadow .18s
+        }
+
+        button:hover {
+            transform: translateY(-2px)
+        }
+
+        .primary {
+            background: var(--accent);
+            color: var(--accentText, #fff);
+            box-shadow: 0 10px 25px var(--accentShadow)
+        }
+
+        .secondary {
+            background: var(--chip);
+            color: var(--text);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            min-height: 24px;
+            margin-top: 12px;
+            color: #c33;
+            font-weight: 700
+        }
+
+        .result {
+            margin-top: 24px;
+            padding: 24px;
+            border-radius: 24px;
+            background: var(--result);
+            border: 1px solid var(--line);
+            position: relative;
+            overflow: hidden
+        }
+
+        .result .big {
+            font-size: clamp(2rem, 5vw, 3.7rem);
+            font-weight: 950;
+            letter-spacing: -.055em;
+            line-height: 1;
+            margin: .25rem 0
+        }
+
+        .result .sub {
+            color: var(--muted)
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .stat {
+            background: var(--mini);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 14px
+        }
+
+        .stat b {
+            display: block;
+            font-size: 1.13rem
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 290px;
+            gap: 28px;
+            align-items: start
+        }
+
+        .article {
+            background: var(--article);
+            border: 1px solid var(--line);
+             border-radius: 28px;
+            padding: clamp(22px, 4vw, 42px)
+        }
+
+        .article h2 {
+            font-size: clamp(1.55rem, 3vw, 2.2rem);
+            line-height: 1.1;
+            letter-spacing: -.035em;
+            margin: 2.2rem 0 .7rem
+        }
+
+        .article h2:first-child {
+            margin-top: 0
+        }
+
+        .article h3 {
+            margin: 1.5rem 0 .5rem
+        }
+
+        .article p,
+        .article li {
+            color: var(--bodyText)
+        }
+
+        .aside {
+            position: sticky;
+            top: 18px;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--softShadow);
+            border-radius: 22px;
+            padding: 20px
+        }
+
+        .aside h3 {
+            margin-top: 0
+        }
+
+        .aside ul {
+            padding-left: 18px;
+            margin-bottom: 0
+        }
+
+        .formula {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: var(--code);
+            padding: 16px;
+            border-radius: 16px;
+            overflow: auto;
+            border: 1px solid var(--line);
+            font-weight: 750
+        }
+
+        .table-wrap {
+            overflow: auto;
+            border: 1px solid var(--line);
+            border-radius: 18px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 560px
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--line)
+        }
+
+        th {
+            background: var(--chip)
+        }
+
+        .faq details {
+            border-top: 1px solid var(--line);
+            padding: 14px 0
+        }
+
+        .faq summary {
+            font-weight: 850;
+            cursor: pointer
+        }
+
+        .sources li {
+            margin: .45rem 0
+        }
+
+        .footer {
+            padding: 34px 0 50px;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 16px
+        }
+
+        .pill {
+            padding: 7px 11px;
+            border-radius: 999px;
+            background: var(--chip);
+            border: 1px solid var(--line);
+            font-size: .82rem;
+            font-weight: 750
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 0 0 18px
+        }
+
+        .tab {
+            padding: 9px 13px;
+            border-radius: 12px;
+            background: var(--chip);
+            border: 1px solid var(--line);
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .tab.active {
+            background: var(--accent);
+            color: var(--accentText, #fff)
+        }
+
+        .hidden {
+            display: none !important
+        }
+
+        @media(max-width:860px) {
+            .content-grid {
+                grid-template-columns: 1fr
+            }
+
+            .aside {
+                position: static
+            }
+
+            .hero-art {
+                opacity: .28;
+                width: 250px;
+                height: 250px
+            }
+
+            .hero h1 {
+                max-width: 95%
+            }
+        }
+
+        @media(max-width:650px) {
+            .container {
+                width: min(100% - 20px, 1180px)
+            }
+
+            .hero {
+                border-radius: 22px;
+                padding: 26px 20px
+            }
+
+            .calc-shell,
+            .article {
+                border-radius: 22px;
+                padding: 20px
+            }
+
+            .form-grid,
+            .stat-grid {
+                grid-template-columns: 1fr
+            }
+
+            .field.full {
+                grid-column: auto
+            }
+
+            .input-row {
+                flex-direction: column
+            }
+
+            .unit {
+                max-width: none
+            }
+
+            .hero-art {
+                right: -60px
+            }
+        }
+
+        .theme-horse .hero {
+            border-radius: 16px;
+            clip-path: polygon(0 0, 100% 0, 97% 100%, 3% 100%)
+        }
+
+        .theme-horse .calc-shell {
+            border-radius: 14px;
+            box-shadow: 0 28px 70px #0009, inset 0 1px 0 #fdba7433
+        }
+
+        .theme-horse .result {
+            border-radius: 10px;
+            border-right: 8px solid #f97316
+        }
+
+        .tach {
+            position: absolute;
+            inset: 12%;
+            border: 16px solid #3f2418;
+            border-radius: 50%;
+            box-shadow: inset 0 0 0 4px #f97316, 0 0 45px #f9731644
+        }
+
+        .tach:before {
+            content: "0  1  2  3  4  5  6  7";
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            font: bold 20px ui-monospace;
+            color: #fdba74;
+            word-spacing: 7px;
+            transform: rotate(-14deg)
+        }
+
+        .tach:after {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 39%;
+            background: #ef4444;
+            left: 49%;
+            bottom: 50%;
+            transform-origin: bottom;
+            transform: rotate(57deg);
+            border-radius: 9px
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/horsepower-calculator/#webapplication",
+      "name": "Horsepower Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/horsepower-calculator/",
+      "description": "Calculate mechanical horsepower from torque and RPM, or convert between horsepower, kilowatts, watts, and metric horsepower using standard power units.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/horsepower-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Horsepower Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/horsepower-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/horsepower-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why is 5252.113 used in the horsepower formula?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The value comes from combining the mechanical horsepower definition of 33,000 foot-pound-force per minute with the 2π radians in one complete revolution: 33,000 ÷ 2π ≈ 5252.113. That gives the commonly used relationship: hp = Torque × RPM ÷ 5252.113."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why are horsepower and torque equal near 5,252 RPM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When torque is measured in lb·ft and power is measured in mechanical horsepower, setting RPM to approximately 5252.113 causes the divisor and RPM to cancel: hp ≈ Torque. This numerical crossover depends on these specific units."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is one horsepower equal to one metric horsepower?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. NIST lists mechanical horsepower at approximately 745.6999 W and metric horsepower at approximately 735.4988 W."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many kilowatts are in one mechanical horsepower?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Using the NIST mechanical horsepower conversion: 1 hp ≈ 745.6999 W ≈ 0.7456999 kW."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can this calculator determine wheel horsepower?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It calculates horsepower from the torque and RPM you enter. If the torque measurement represents wheel torque under an appropriate measurement method, the result relates to that measurement point. The calculator itself does not estimate or correct drivetrain losses."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can a dynamometer result differ from this calculation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Differences can come from torque measurement accuracy, test equipment, drivetrain losses, atmospheric conditions, correction standards, and the location where power is measured."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does more torque always mean more horsepower?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not by itself. Horsepower depends on both torque and RPM. An engine can produce less torque at a higher RPM and still produce more horsepower because rotational speed is part of the formula."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body class="theme-horse" data-cp-category="engineering" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../engineering/index.html">Engineering &amp; Construction</a></li>
+            <li><a aria-current="page" href="index.html">Horsepower Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../engineering/index.html">Browse Engineering &amp; Construction</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Horsepower Calculator</h1>
+
+            <section aria-labelledby="calculator-heading" class="container calc-zone">
+                <div class="calc-shell">
+                    <h2 class="calc-title" id="calculator-heading">Horsepower Calculator</h2>
+                    <p class="calc-note">Calculate mechanical horsepower from torque and RPM, or convert common power
+                        units.</p>
+                    <div class="tabs"><button class="tab active" data-pane="torque">Torque × RPM</button><button
+                            class="tab" data-pane="convert">Power Converter</button></div>
+                    <div class="form-grid" id="torquePane">
+                        <div class="field"><label for="torque">Torque (lb·ft)</label><input id="torque" min="0"
+                                step="any" type="number" value="300" /></div>
+                        <div class="field"><label for="rpm">Engine speed (RPM)</label><input id="rpm" min="0" step="any"
+                                type="number" value="5000" /></div>
+                    </div>
+                    <div class="form-grid hidden" id="convertPane">
+                        <div class="field"><label for="amount">Amount</label><input id="amount" step="any" type="number"
+                                value="100" /></div>
+                        <div class="field"><label for="fromUnit">From</label><select id="fromUnit">
+                                <option value="hp">mechanical hp</option>
+                                <option value="kw">kilowatts</option>
+                                <option value="w">watts</option>
+                                <option value="ps">metric hp (PS)</option>
+                            </select></div>
+                    </div>
+                    <div class="actions"><button class="primary" id="calcBtn">Calculate Horsepower</button><button
+                            class="secondary" id="resetBtn">Reset</button></div>
+                    <div class="error" id="error" role="alert"></div>
+                    <div class="result"><span class="sub" id="resultLabel">Mechanical horsepower</span>
+                        <div class="big" id="hp">285.61 hp</div>
+                        <div class="stat-grid">
+                            <div class="stat"><span>Kilowatts</span><b id="kw">213.00 kW</b></div>
+                            <div class="stat"><span>Watts</span><b id="w">213,000 W</b></div>
+                            <div class="stat"><span>Metric horsepower</span><b id="ps">289.57 PS</b></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="container content-grid">
+                
+
+<article class="article">
+
+ 
+  <p>Use the Horsepower Calculator to calculate mechanical horsepower from torque and engine speed, or convert a power value between horsepower, kilowatts, watts, and metric horsepower. Enter torque in pound-feet and RPM for the horsepower calculation, or enter an amount and select its starting power unit for conversion.</p>
+
+  <section id="what">
+    <h2>What Is the Horsepower Calculator?</h2>
+    <p>The Horsepower Calculator measures mechanical power using torque and rotational speed. It is useful for engines, motors, rotating machinery, and other applications where torque in lb·ft and speed in RPM are known.</p>
+    <p>The calculator also converts power values between supported horsepower and metric/SI power units.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Horsepower Calculator</h2>
+    <p>For the torque and RPM calculation:</p>
+    <ol>
+      <li><strong>Torque (lb·ft):</strong> Enter the measured or specified torque in pound-feet.</li>
+      <li><strong>Engine speed (RPM):</strong> Enter the rotational speed in revolutions per minute.</li>
+    </ol>
+
+    <p>For power conversion:</p>
+    <ol start="3">
+      <li><strong>Amount:</strong> Enter the numerical power value you want to convert.</li>
+      <li><strong>From:</strong> Select the unit of the entered amount, such as mechanical horsepower, kilowatts, watts, or metric horsepower.</li>
+    </ol>
+
+    <p>Use measurements from the same operating condition when calculating horsepower from torque and RPM. For example, torque measured at one RPM should not be combined with an unrelated RPM value.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+    <p>Mechanical horsepower is calculated as:</p>
+
+    <div class="formula">hp = Torque × RPM ÷ 5252.113</div>
+
+    <p>Where:</p>
+    <ul>
+      <li><strong>hp</strong> = mechanical horsepower</li>
+      <li><strong>Torque</strong> = torque in pound-feet (lb·ft)</li>
+      <li><strong>RPM</strong> = revolutions per minute</li>
+      <li><strong>5252.113</strong> = conversion constant connecting lb·ft, revolutions per minute, and mechanical horsepower</li>
+    </ul>
+
+    <p>The constant is based on mechanical horsepower being defined as 550 foot-pound-force per second and one revolution representing 2π radians. NIST lists mechanical horsepower as approximately 745.6999 watts.</p>
+
+    <p>The equivalent expanded relationship is:</p>
+
+    <div class="formula">hp = (Torque × 2π × RPM) ÷ 33,000</div>
+
+    <p>because:</p>
+
+    <div class="formula">550 ft·lb/s × 60 s/min = 33,000 ft·lb/min</div>
+
+    <p>and:</p>
+
+    <div class="formula">33,000 ÷ 2π ≈ 5252.113</div>
+
+    <h3>Variables</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Variable</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>hp</td>
+          <td>Mechanical power</td>
+          <td>horsepower</td>
+        </tr>
+        <tr>
+          <td>Torque</td>
+          <td>Rotational torque</td>
+          <td>lb·ft</td>
+        </tr>
+        <tr>
+          <td>RPM</td>
+          <td>Rotational speed</td>
+          <td>revolutions per minute</td>
+        </tr>
+        <tr>
+          <td>π</td>
+          <td>Mathematical constant pi</td>
+          <td>dimensionless</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Calculation Sequence</h3>
+    <ol>
+      <li>Read the torque value in lb·ft.</li>
+      <li>Read the rotational speed in RPM.</li>
+      <li>Multiply torque by RPM.</li>
+      <li>Divide the result by 5252.113.</li>
+      <li>Return the mechanical horsepower result.</li>
+    </ol>
+
+    <h3>Power Unit Conversion</h3>
+    <p>The converter uses standard power-unit relationships. A watt is the SI derived unit of power and is equivalent to one joule per second.</p>
+
+    <p>NIST provides these conversion factors:</p>
+    <ul>
+      <li><strong>1 mechanical hp ≈ 745.6999 W</strong></li>
+      <li><strong>1 metric hp ≈ 735.4988 W</strong></li>
+      <li><strong>1 kW = 1,000 W</strong></li>
+    </ul>
+
+    <p>A power value can therefore be converted through watts as the common reference unit.</p>
+
+    <p>For example:</p>
+
+    <div class="formula">Watts = Mechanical hp × 745.6999</div>
+    <div class="formula">Mechanical hp = Watts ÷ 745.6999</div>
+    <div class="formula">Kilowatts = Watts ÷ 1,000</div>
+    <div class="formula">Metric hp = Watts ÷ 735.4988</div>
+
+    <p>Mechanical horsepower and metric horsepower are different units, so they should not be treated as identical.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+    <p>Suppose an engine produces <strong>300 lb·ft of torque at 4,000 RPM</strong>.</p>
+
+    <h3>Inputs</h3>
+    <ul>
+      <li>Torque = 300 lb·ft</li>
+      <li>Engine speed = 4,000 RPM</li>
+    </ul>
+
+    <h3>Step 1</h3>
+    <p>Apply the horsepower formula:</p>
+    <div class="formula">hp = Torque × RPM ÷ 5252.113</div>
+
+    <h3>Step 2</h3>
+    <p>Substitute the values:</p>
+    <div class="formula">hp = 300 × 4,000 ÷ 5252.113</div>
+    <div class="formula">hp = 1,200,000 ÷ 5252.113</div>
+
+    <h3>Step 3</h3>
+    <p>Calculate the result:</p>
+    <div class="formula">hp ≈ 228.4795</div>
+
+    <h3>Final Result</h3>
+    <p><strong>≈ 228.48 horsepower</strong></p>
+    <p>Based on these inputs, 300 lb·ft of torque at 4,000 RPM corresponds to approximately <strong>228.48 mechanical horsepower</strong>.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Mechanical Horsepower</h3>
+    <p>The horsepower result represents the rate of mechanical work implied by the entered torque and rotational speed.</p>
+
+    <p>Higher torque does not automatically mean higher horsepower because RPM is also part of the calculation. Increasing either torque or RPM increases horsepower when the other value remains unchanged.</p>
+
+    <h3>Converted Power Values</h3>
+    <p>The conversion result expresses the same amount of power in another supported unit. Changing from horsepower to watts or kilowatts changes the numerical unit representation, not the underlying amount of power.</p>
+
+    <p>Mechanical horsepower should also be distinguished from metric horsepower because they use different definitions and conversion factors.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The horsepower result is only as accurate as the torque and RPM values entered.</p>
+
+    <p>The formula calculates power from torque at a specific rotational speed. It does not determine where or how the torque was measured.</p>
+
+    <p>Reported engine power can vary depending on whether measurements are taken at the engine or wheels. Dynamometer type, drivetrain losses, atmospheric conditions, correction procedures, and whether a figure is described as gross, net, crank, or wheel horsepower can also affect published values.</p>
+
+    <p>The calculator does not automatically estimate drivetrain losses or convert a wheel-horsepower measurement into crank horsepower.</p>
+
+    <p>Power-unit conversions are mathematical conversions between unit definitions. They do not change or estimate the physical performance of an engine.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>Why is 5252.113 used in the horsepower formula?</summary>
+      <p>The value comes from combining the mechanical horsepower definition of 33,000 foot-pound-force per minute with the 2π radians in one complete revolution:</p>
+      <div class="formula">33,000 ÷ 2π ≈ 5252.113</div>
+      <p>That gives the commonly used relationship:</p>
+      <div class="formula">hp = Torque × RPM ÷ 5252.113</div>
+    </details>
+
+    <details class="faq">
+      <summary>Why are horsepower and torque equal near 5,252 RPM?</summary>
+      <p>When torque is measured in lb·ft and power is measured in mechanical horsepower, setting RPM to approximately 5252.113 causes the divisor and RPM to cancel:</p>
+      <div class="formula">hp ≈ Torque</div>
+      <p>This numerical crossover depends on these specific units.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is one horsepower equal to one metric horsepower?</summary>
+      <p>No. NIST lists mechanical horsepower at approximately <strong>745.6999 W</strong> and metric horsepower at approximately <strong>735.4988 W</strong>.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How many kilowatts are in one mechanical horsepower?</summary>
+      <p>Using the NIST mechanical horsepower conversion:</p>
+      <div class="formula">1 hp ≈ 745.6999 W ≈ 0.7456999 kW</div>
+      <p>.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can this calculator determine wheel horsepower?</summary>
+      <p>It calculates horsepower from the torque and RPM you enter. If the torque measurement represents wheel torque under an appropriate measurement method, the result relates to that measurement point. The calculator itself does not estimate or correct drivetrain losses.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why can a dynamometer result differ from this calculation?</summary>
+      <p>Differences can come from torque measurement accuracy, test equipment, drivetrain losses, atmospheric conditions, correction standards, and the location where power is measured.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does more torque always mean more horsepower?</summary>
+      <p>Not by itself. Horsepower depends on both torque and RPM. An engine can produce less torque at a higher RPM and still produce more horsepower because rotational speed is part of the formula.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+    <ul class="sources">
+      <li>
+        <a href="https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9?utm_source=chatgpt.com" rel="noopener" target="_blank">NIST Guide to the SI — Appendix B.9 Conversion Factors</a><br>
+        Supports the mechanical horsepower definition and conversion between mechanical horsepower, metric horsepower, and watts.
+      </li>
+      <li>
+        <a href="https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-4-two-classes-si-units-and-si-prefixes?utm_source=chatgpt.com" rel="noopener" target="_blank">NIST Guide to the SI — SI Units and Prefixes</a><br>
+        Supports the watt as the SI derived unit of power and the relationship between watts and SI unit notation.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="https://example.com/engine-horsepower-calculator/">Engine Horsepower Calculator</a></li>
+      <li><a href="https://example.com/conversion-calculator/">Conversion Calculator</a></li>
+      <li><a href="https://example.com/electricity-calculator/">Electricity Calculator</a></li>
+      <li><a href="https://example.com/ohms-law-calculator/">Ohm's Law Calculator</a></li>
+      <li><a href="https://example.com/voltage-drop-calculator/">Voltage Drop Calculator</a></li>
+      <li><a href="https://example.com/speed-calculator/">Speed Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+
+            </section>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"164","Batch":"17","Calculator / Page":"Horsepower Calculator","Slug":"horsepower-calculator","Site Category (Current)":"Engineering & Construction","Recommended Content Domain":"Engineering / Construction","Page Type":"Calculator","Search Intent / Purpose":"Calculate mechanical horsepower from torque and RPM, or convert between hp, kilowatts, watts, and metric horsepower.","Formula / Algorithm Used in Tool":"Torque and RPM Horsepower Formula: hp = Torque (lb·ft) × RPM ÷ 5252.113 The constant comes from the mechanical-horsepower definition of 550 foot-pound-force per second combined with one revolution equaling 2π radians.","Required User Inputs":"Torque (lb·ft); Engine speed (RPM); Amount; From","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Torque (lb·ft), Engine speed (RPM), Amount, From. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Exact engineering/geometry formula, units, standards; document any default density, waste factor, safety factor or material assumption.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When standards/default factors change","Important Assumptions / Limitations":"Torque-based power is only as accurate as the torque and RPM measurement. Engine dynamometer, chassis dynamometer, correction method, drivetrain loss, atmospheric conditions, and whether the figure is gross, net, crank, or wheel horsepower can change reported values.","Current Source URLs in Page":"https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9 | https://www.calculator.net/horsepower-calculator.html","Implementation Path":"/horsepower-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Engineering &amp; Construction</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../concrete-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Concrete Calculator</strong><small>Calculate
+                            concrete volume for slabs, round columns, or tubes, convert to cubic
+                            yard…</small></span></a><a class="cp-related-link"
+                    href="../engine-horsepower-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Engine Horsepower
+                            Calculator</strong><small>Estimate engine horsepower from quarter-mile elapsed time or trap
+                            speed with weight…</small></span></a><a class="cp-related-link"
+                    href="../fuel-cost-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fuel
+                            Cost Calculator</strong><small>Estimate trip fuel use and fuel cost from distance, fuel
+                            efficiency, and gas or die…</small></span></a><a class="cp-related-link"
+                    href="../voltage-drop-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Voltage Drop Calculator</strong><small>Estimate
+                            conductor voltage drop, percentage drop, and load voltage for DC,
+                            single-p…</small></span></a><a class="cp-related-link"
+                    href="../resistor-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Resistor
+                            Calculator</strong><small>Decode 4-, 5-, or 6-band resistor colors and calculate equivalent
+                            resistance for se…</small></span></a><a class="cp-related-link"
+                    href="../mulch-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Mulch
+                            Calculator</strong><small>Estimate mulch volume in cubic yards or cubic meters, plus bag
+                            counts, from area an…</small></span></a><a class="cp-related-link"
+                    href="../btu-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>BTU
+                            Calculator</strong><small>Estimate room air-conditioner cooling capacity in BTU per hour
+                            using ENERGY STAR ro…</small></span></a><a class="cp-related-link"
+                    href="../electricity-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Electricity Calculator</strong><small>Estimate
+                            appliance electricity use in kWh and daily, monthly, and yearly energy
+                            cos…</small></span></a></div><a class="cp-side-category"
+                href="../engineering/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+
+        const $ = id => document.getElementById(id); let pane = "torque"; const W_PER_HP = 745.6999, W_PER_PS = 735.4988;
+        document.querySelectorAll(".tab").forEach(b => b.onclick = () => { document.querySelectorAll(".tab").forEach(x => x.classList.remove("active")); b.classList.add("active"); pane = b.dataset.pane; $("torquePane").classList.toggle("hidden", pane !== "torque"); $("convertPane").classList.toggle("hidden", pane !== "convert"); run() });
+        function show(hp) { let watts = hp * W_PER_HP; $("hp").textContent = hp.toFixed(2) + " hp"; $("kw").textContent = (watts / 1000).toFixed(2) + " kW"; $("w").textContent = Math.round(watts).toLocaleString() + " W"; $("ps").textContent = (watts / W_PER_PS).toFixed(2) + " PS" }
+        function run() { if (pane === "torque") { let t = +$("torque").value, r = +$("rpm").value; if (!(t >= 0) || !(r >= 0)) { $("error").textContent = "Enter valid non-negative torque and RPM."; return } let hp = t * r / 5252.113122; $("resultLabel").textContent = "Mechanical horsepower from torque and RPM"; $("error").textContent = ""; show(hp) } else { let a = +$("amount").value; if (Number.isNaN(a)) { $("error").textContent = "Enter a valid power amount."; return } let watts = $("fromUnit").value === "hp" ? a * W_PER_HP : $("fromUnit").value === "kw" ? a * 1000 : $("fromUnit").value === "ps" ? a * W_PER_PS : a; $("resultLabel").textContent = "Converted mechanical horsepower"; $("error").textContent = ""; show(watts / W_PER_HP) } }
+        $("calcBtn").onclick = run; $("resetBtn").onclick = () => location.reload(); run();
+
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

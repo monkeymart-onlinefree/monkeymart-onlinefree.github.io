@@ -1,89 +1,961 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>Molecular Weight Calculator – Free Accurate Online Calculator | CalcPro</title>
-<meta content="Calculate molar mass from a chemical formula, including grouped formulas and common hydrates." name="description"/>
-<meta content="index,follow" name="robots"/>
-<link href="../molecular-weight-calculator/" rel="canonical"/>
-<meta content="Molecular Weight Calculator | CalcPro" property="og:title"/>
-<meta content="Calculate molar mass from a chemical formula, including grouped formulas and common hydrates." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="/molecular-weight-calculator/" property="og:url"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
-button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
-.wrap{width:min(1160px,calc(100% - 32px));margin:auto}
-.crumbs{font-size:.9rem;opacity:.78;margin-bottom:14px}.crumbs a{text-decoration:none}
-.card{border-radius:24px}.field label{display:block;font-weight:700;font-size:.9rem;margin-bottom:7px}
-.field input,.field select,.field textarea{width:100%;border:1px solid rgba(127,127,127,.28);border-radius:14px;padding:12px 13px;background:rgba(255,255,255,.84);color:#151515;outline:none}
-.field input:focus,.field select:focus,.field textarea:focus{box-shadow:0 0 0 4px rgba(89,130,246,.15)}
-.btns{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:800}
-.btn.secondary{background:transparent;border:1px solid currentColor;opacity:.78}
-.error{min-height:22px;margin-top:10px;font-weight:700;color:#b42318}
-.result-title{font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;font-weight:900;opacity:.72}
-.result-main{font-size:clamp(2rem,6vw,4rem);line-height:1;font-weight:950;letter-spacing:-.05em;margin:8px 0 14px}
-.statgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.stat{border-radius:16px;padding:12px;background:rgba(255,255,255,.12)}
-.stat b{display:block;font-size:1.05rem}.stat span{font-size:.8rem;opacity:.75}
-.content{padding:66px 0}.prose{max-width:860px;margin:auto}.prose h2{font-size:clamp(1.5rem,3vw,2rem);line-height:1.2;margin:42px 0 12px}.prose h3{margin:28px 0 8px}.prose p,.prose li{color:var(--muted,#4c5564)}
-.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;padding:15px 17px;border-radius:16px;background:var(--soft,#f3f4f6);overflow:auto}
-.note{border-left:4px solid var(--accent,#4f46e5);padding:12px 16px;background:var(--soft,#f6f7fb);border-radius:0 14px 14px 0}
-.table-wrap{overflow:auto;border-radius:18px;border:1px solid rgba(127,127,127,.18)}table{width:100%;border-collapse:collapse;min-width:560px}th,td{text-align:left;padding:11px 13px;border-bottom:1px solid rgba(127,127,127,.15)}th{background:var(--soft,#f5f5f5)}
-.faq details{border:1px solid rgba(127,127,127,.18);border-radius:16px;margin:10px 0;padding:12px 15px;background:#fff}.faq summary{font-weight:800;cursor:pointer}
-.sources a{word-break:break-word}.footer{padding:28px 0;border-top:1px solid rgba(127,127,127,.18);font-size:.88rem;opacity:.75}
-.sr{position:absolute;left:-10000px}
-@media(max-width:780px){.statgrid{grid-template-columns:1fr}.content{padding:46px 0}.wrap{width:min(100% - 22px,1160px)}}
+    <!-- Primary Meta Tags -->
+    <title>Molecular Weight Calculator – Molar Mass from Formula</title>
+    <meta name="title" content="Molecular Weight Calculator – Molar Mass from Formula">
+    <meta name="description"
+        content="Calculate molecular weight (molar mass) from a chemical formula using standard atomic weights. Supports grouped formulas and common hydrate notation.">
 
-:root{--accent:#7ce6c4;--muted:#a1b6b1;--soft:#10231f}body{background:#07110f;color:#effbf7}.prose p,.prose li{color:#abc1ba}.atom-hero{padding:26px 0 70px;background:radial-gradient(circle at 72% 40%,#2b8b6f33,transparent 28%),linear-gradient(130deg,#08130f,#0d211b 60%,#07100e);overflow:hidden}.atom-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:28px;align-items:center}.atom-grid h1{font-size:clamp(2.9rem,7vw,6rem);line-height:.9;letter-spacing:-.065em;margin:10px 0}.orbit{height:360px;position:relative;display:grid;place-items:center}.nucleus{width:96px;height:96px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff,#7ce6c4 26%,#15866b);box-shadow:0 0 60px #5df4c07a,0 20px 50px #000}.ring{position:absolute;width:300px;height:120px;border:2px solid #85f1d155;border-radius:50%;transform:rotate(20deg)}.ring.r2{transform:rotate(140deg)}.ring.r3{transform:rotate(80deg)}.electron{position:absolute;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 0 18px #fff}.e1{left:50px;top:155px}.e2{right:52px;top:120px}.e3{left:180px;bottom:35px}
-.mw-shell{display:grid;grid-template-columns:.95fr 1.05fr;gap:18px;margin-top:-44px;position:relative}.mw-card{background:#0d1d19;border:1px solid #20473c;border-radius:28px;padding:28px;box-shadow:0 30px 80px #0007}.mw-card .field input,.mw-card .field select{background:#07110f;color:#fff;border-color:#315247}.mw-card .btn{background:#82e8c8;color:#062019}.composition{border-radius:28px;padding:28px;background:linear-gradient(160deg,#153d33,#0b1e19);border:1px solid #2a584b}.chip{display:inline-flex;padding:7px 10px;border-radius:999px;background:#7ce6c41c;border:1px solid #7ce6c44a;margin:4px;font-weight:800}
-@media(max-width:780px){.atom-grid,.mw-shell{grid-template-columns:1fr}.orbit{height:280px}.ring{width:250px;height:100px}}
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Molecular Weight Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate molar mass from a chemical formula, including grouped formulas and common hydrates.", "url": "/molecular-weight-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Engineering & Science", "item": "/engineering/"}, {"@type": "ListItem", "position": 3, "name": "Chemistry", "item": "/engineering/chemistry/"}, {"@type": "ListItem", "position": 4, "name": "Molecular Weight Calculator", "item": "/molecular-weight-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How is molecular weight calculated?", "acceptedAnswer": {"@type": "Answer", "text": "Count each element in the chemical formula, multiply the count by that element's standard atomic weight, then add the contributions."}}, {"@type": "Question", "name": "What is the molar mass of water?", "acceptedAnswer": {"@type": "Answer", "text": "Using common abridged standard atomic weights H = 1.008 and O = 15.999, H₂O has a molar mass of about 18.015 g/mol."}}, {"@type": "Question", "name": "Does the formula parser support parentheses?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. This calculator supports common nested grouping symbols and hydrate separators such as the middle dot in CuSO4·5H2O."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body data-cp-category="engineering" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../engineering/index.html">Engineering &amp; Construction</a></li><li><a aria-current="page" href="index.html">Molecular Weight Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../engineering/index.html">Browse Engineering &amp; Construction</a><a href="../calculators/index.html">All calculators</a></div><header>
-<nav class="wrap" style="padding-top:18px"><div class="crumbs"><a href="../index.html">Home</a> / Molecular Weight Calculator</div></nav>
+    <!-- Canonical -->
+    <link rel="canonical" href="https://monkeymart-onlinefree.github.io/molecular-weight-calculator/">
 
-</header>
-<div class="cp-page-layout"><main id="main"><h1 class="page-title">Molecular Weight Calculator</h1>
-<section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="wrap mw-shell"><div class="mw-card"><h2>Enter molecular formula</h2><div class="field"><label for="mwFormula">Formula (case-sensitive)</label><input id="mwFormula" placeholder="e.g. H2O, Al2(SO4)3, CuSO4·5H2O" value="H2O"/></div><div class="field"><label for="mwCommon">Common compound</label><select id="mwCommon" onchange="if(this.value){mwFormula.value=this.value;calcMW()}"><option value="">Choose…</option><option>H2O</option><option>NaCl</option><option>C6H12O6</option><option>H2SO4</option><option>CaCO3</option><option>Al2(SO4)3</option><option>CuSO4·5H2O</option></select></div><div class="btns"><button class="btn" onclick="calcMW()">Calculate</button><button class="btn secondary" onclick="mwFormula.value='';mwResult.textContent='—';mwComp.innerHTML='';mwErr.textContent=''">Clear</button></div><div class="error" id="mwErr"></div></div>
-<div class="composition"><div class="result-title">Molar mass</div><div class="result-main" id="mwResult">18.015 g/mol</div><h3>Composition</h3><div id="mwComp"></div></div></section>
-<!--CONTENT-->
-<h2>What Is a Molecular Weight Calculator?</h2><p>This calculator parses a chemical formula, counts its atoms, and sums the standard atomic-weight contributions. In classroom and laboratory contexts, the numerical result is commonly reported as molar mass in grams per mole (g/mol).</p>
-<h2>Molecular Weight Formula</h2><div class="formula">molar mass ≈ Σ (number of atoms of element i × standard atomic weight of element i)</div>
-<h2>Example: Water</h2><p>H₂O contains two hydrogen atoms and one oxygen atom. Using H = 1.008 and O = 15.999, the total is (2 × 1.008) + 15.999 = 18.015 g/mol.</p>
-<h2>Parentheses and Hydrates</h2><p>Grouped formulas multiply the contents of parentheses by the following subscript. Hydrates such as CuSO₄·5H₂O add the specified number of water molecules to the anhydrous compound.</p>
-<div class="note"><strong>Precision note:</strong> natural isotopic composition can make standard atomic weights vary for some elements. This tool uses practical abridged values suitable for general calculations, not isotope-specific exact masses.</div>
-<!--FAQ-->
-<section class="content"><article class="wrap prose">
-<h2>What Is a Molecular Weight Calculator?</h2><p>This calculator parses a chemical formula, counts its atoms, and sums the standard atomic-weight contributions. In classroom and laboratory contexts, the numerical result is commonly reported as molar mass in grams per mole (g/mol).</p>
-<h2>Molecular Weight Formula</h2><div class="formula">molar mass ≈ Σ (number of atoms of element i × standard atomic weight of element i)</div>
-<h2>Example: Water</h2><p>H₂O contains two hydrogen atoms and one oxygen atom. Using H = 1.008 and O = 15.999, the total is (2 × 1.008) + 15.999 = 18.015 g/mol.</p>
-<h2>Parentheses and Hydrates</h2><p>Grouped formulas multiply the contents of parentheses by the following subscript. Hydrates such as CuSO₄·5H₂O add the specified number of water molecules to the anhydrous compound.</p>
-<div class="note"><strong>Precision note:</strong> natural isotopic composition can make standard atomic weights vary for some elements. This tool uses practical abridged values suitable for general calculations, not isotope-specific exact masses.</div>
-<h2 id="faq">Frequently Asked Questions</h2>
-<div class="faq"><details><summary>How is molecular weight calculated?</summary><p>Count each element in the chemical formula, multiply the count by that element's standard atomic weight, then add the contributions.</p></details>
-<details><summary>What is the molar mass of water?</summary><p>Using common abridged standard atomic weights H = 1.008 and O = 15.999, H₂O has a molar mass of about 18.015 g/mol.</p></details>
-<details><summary>Does the formula parser support parentheses?</summary><p>Yes. This calculator supports common nested grouping symbols and hydrate separators such as the middle dot in CuSO4·5H2O.</p></details></div>
-<h2>Sources and Methodology</h2>
-<div class="sources"><p><strong>IUPAC:</strong> standard atomic weights are based on internationally evaluated elemental data. <a href="https://iupac.qmul.ac.uk/AtWt/AtWt21.html" rel="nofollow">IUPAC atomic weights table</a>.</p><p><strong>Calculator.net:</strong> Molecular Weight Calculator reviewed to cross-check common formula behavior and practical abridged values.</p></div>
-</article></section>
+    <!-- Facebook / Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://monkeymart-onlinefree.github.io/molecular-weight-calculator/">
+    <meta property="og:title" content="Molecular Weight Calculator – Molar Mass from Formula">
+    <meta property="og:description"
+        content="Calculate molecular weight (molar mass) from a chemical formula using standard atomic weights. Supports grouped formulas and common hydrate notation.">
+    <meta property="og:site_name" content="Molecular Weight Calculator">
 
-<script class="cp-calculator-data" type="application/json">{"index":"182","Batch":"19","Calculator / Page":"Molecular Weight Calculator","Slug":"molecular-weight-calculator","Site Category (Current)":"Engineering & Construction","Recommended Content Domain":"Health / Fitness / Nutrition","Page Type":"Calculator","Search Intent / Purpose":"Calculate molar mass from a chemical formula, including grouped formulas and common hydrates.","Formula / Algorithm Used in Tool":"Molecular Weight Formula: molar mass ≈ Σ (number of atoms of element i × standard atomic weight of element i)","Required User Inputs":"Formula (case-sensitive); Common compound","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Formula (case-sensitive), Common compound. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Authoritative formula source, population/age/sex applicability, units, cutoffs/reference ranges and limitations; avoid diagnostic claims.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When clinical/exercise guidance changes","Important Assumptions / Limitations":"Precision note: natural isotopic composition can make standard atomic weights vary for some elements. This tool uses practical abridged values suitable for general calculations, not isotope-specific exact masses.","Current Source URLs in Page":"https://iupac.qmul.ac.uk/AtWt/AtWt21.html","Implementation Path":"/molecular-weight-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Engineering &amp; Construction</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../weight-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Weight Calculator</strong><small>Convert between kilograms, pounds, ounces, grams, stones, tonnes, and other common…</small></span></a><a class="cp-related-link" href="../density-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Density Calculator</strong><small>Calculate density, mass, or volume from any two known values with common metric and…</small></span></a><a class="cp-related-link" href="../molarity-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Molarity Calculator</strong><small>Calculate molarity, solute mass, molar mass, or solution volume with chemistry unit…</small></span></a><a class="cp-related-link" href="../concrete-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Concrete Calculator</strong><small>Calculate concrete volume for slabs, round columns, or tubes, convert to cubic yard…</small></span></a><a class="cp-related-link" href="../btu-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>BTU Calculator</strong><small>Estimate room air-conditioner cooling capacity in BTU per hour using ENERGY STAR ro…</small></span></a><a class="cp-related-link" href="../engine-horsepower-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Engine Horsepower Calculator</strong><small>Estimate engine horsepower from quarter-mile elapsed time or trap speed with weight…</small></span></a><a class="cp-related-link" href="../mass-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Mass Calculator</strong><small>Calculate mass from density and volume with metric and imperial unit conversion and…</small></span></a><a class="cp-related-link" href="../ohms-law-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Ohm’s Law Calculator</strong><small>Solve voltage, current, resistance, and electrical power from any two known values…</small></span></a></div><a class="cp-side-category" href="../engineering/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-const AW={H:1.008,He:4.0026,Li:6.94,Be:9.0122,B:10.81,C:12.011,N:14.007,O:15.999,F:18.998,Ne:20.180,Na:22.990,Mg:24.305,Al:26.982,Si:28.085,P:30.974,S:32.06,Cl:35.45,Ar:39.95,K:39.098,Ca:40.078,Sc:44.956,Ti:47.867,V:50.942,Cr:51.996,Mn:54.938,Fe:55.845,Co:58.933,Ni:58.693,Cu:63.546,Zn:65.38,Ga:69.723,Ge:72.630,As:74.922,Se:78.971,Br:79.904,Kr:83.798,Rb:85.468,Sr:87.62,Y:88.906,Zr:91.224,Nb:92.906,Mo:95.95,Tc:98,Ru:101.07,Rh:102.91,Pd:106.42,Ag:107.87,Cd:112.41,In:114.82,Sn:118.71,Sb:121.76,Te:127.60,I:126.90,Xe:131.29,Cs:132.91,Ba:137.33,La:138.91,Ce:140.12,Pr:140.91,Nd:144.24,Pm:145,Sm:150.36,Eu:151.96,Gd:157.25,Tb:158.93,Dy:162.50,Ho:164.93,Er:167.26,Tm:168.93,Yb:173.05,Lu:174.97,Hf:178.49,Ta:180.95,W:183.84,Re:186.21,Os:190.23,Ir:192.22,Pt:195.08,Au:196.97,Hg:200.59,Tl:204.38,Pb:207.2,Bi:208.98,Po:209,At:210,Rn:222,Fr:223,Ra:226,Ac:227,Th:232.04,Pa:231.04,U:238.03,Np:237,Pu:244,Am:243,Cm:247,Bk:247,Cf:251,Es:252,Fm:257,Md:258,No:259,Lr:266,Rf:267,Db:268,Sg:269,Bh:270,Hs:277,Mt:278,Ds:281,Rg:282,Cn:285,Nh:286,Fl:289,Mc:290,Lv:293,Ts:294,Og:294};
-function merge(a,b,m=1){for(const k in b)a[k]=(a[k]||0)+b[k]*m;return a}
-function parseCore(s){let i=0;function group(close){let out={};while(i<s.length){if(close&&s[i]===close){i++;return out}if("([{".includes(s[i])){const c={ "(":")","[":"]","{":"}" }[s[i++]];let sub=group(c),num=numRead();merge(out,sub,num)}else{let m=s.slice(i).match(/^([A-Z][a-z]?)/);if(!m)throw Error("Invalid formula near "+s.slice(i));let el=m[1];if(!(el in AW))throw Error("Unknown element: "+el);i+=el.length;out[el]=(out[el]||0)+numRead()}}if(close)throw Error("Missing "+close);return out}function numRead(){let m=s.slice(i).match(/^\d+/);if(!m)return 1;i+=m[0].length;return +m[0]}return group(null)}
-function parseFormula(s){s=s.trim().replace(/\s+/g,"").replace(/·/g,".");if(!s)throw Error("Enter a formula.");let total={};for(let part of s.split(".")){let mm=part.match(/^(\d+)(.*)$/),mult=1;if(mm){mult=+mm[1];part=mm[2]}merge(total,parseCore(part),mult)}return total}
-function calcMW(){mwErr.textContent="";mwComp.innerHTML="";try{const c=parseFormula(mwFormula.value);let total=0;Object.entries(c).forEach(([el,n])=>total+=AW[el]*n);mwResult.textContent=total.toFixed(4).replace(/0+$/,"").replace(/\.$/,"")+" g/mol";Object.entries(c).forEach(([el,n])=>{const x=document.createElement("span");x.className="chip";x.textContent=`${el} × ${n} = ${(AW[el]*n).toFixed(3)} g/mol`;mwComp.appendChild(x)})}catch(e){mwErr.textContent=e.message;mwResult.textContent="—"}}calcMW();
+    <!-- X / Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/molecular-weight-calculator/">
+    <meta name="twitter:title" content="Molecular Weight Calculator – Molar Mass from Formula">
+    <meta name="twitter:description"
+        content="Calculate molecular weight (molar mass) from a chemical formula using standard atomic weights. Supports grouped formulas and common hydrate notation.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        a {
+            color: inherit
+        }
+
+        .wrap {
+            width: min(1160px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .crumbs {
+            font-size: .9rem;
+            opacity: .78;
+            margin-bottom: 14px
+        }
+
+        .crumbs a {
+            text-decoration: none
+        }
+
+        .card {
+            border-radius: 24px
+        }
+
+        .field label {
+            display: block;
+            font-weight: 700;
+            font-size: .9rem;
+            margin-bottom: 7px
+        }
+
+        .field input,
+        .field select,
+        .field textarea {
+            width: 100%;
+            border: 1px solid rgba(127, 127, 127, .28);
+            border-radius: 14px;
+            padding: 12px 13px;
+            background: rgba(255, 255, 255, .84);
+            color: #151515;
+            outline: none
+        }
+
+        .field input:focus,
+        .field select:focus,
+        .field textarea:focus {
+            box-shadow: 0 0 0 4px rgba(89, 130, 246, .15)
+        }
+
+        .btns {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-weight: 800
+        }
+
+        .btn.secondary {
+            background: transparent;
+            border: 1px solid currentColor;
+            opacity: .78
+        }
+
+        .error {
+            min-height: 22px;
+            margin-top: 10px;
+            font-weight: 700;
+            color: #b42318
+        }
+
+        .result-title {
+            font-size: .82rem;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            font-weight: 900;
+            opacity: .72
+        }
+
+        .result-main {
+            font-size: clamp(2rem, 6vw, 4rem);
+            line-height: 1;
+            font-weight: 950;
+            letter-spacing: -.05em;
+            margin: 8px 0 14px
+        }
+
+        .statgrid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px
+        }
+
+        .stat {
+            border-radius: 16px;
+            padding: 12px;
+            background: rgba(255, 255, 255, .12)
+        }
+
+        .stat b {
+            display: block;
+            font-size: 1.05rem
+        }
+
+        .stat span {
+            font-size: .8rem;
+            opacity: .75
+        }
+
+        .content {
+            padding: 66px 0
+        }
+
+        .prose {
+            max-width: 860px;
+            margin: auto
+        }
+
+        .prose h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            line-height: 1.2;
+            margin: 42px 0 12px
+        }
+
+        .prose h3 {
+            margin: 28px 0 8px
+        }
+
+        .prose p,
+        .prose li {
+            color: var(--muted, #4c5564)
+        }
+
+        .formula {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            padding: 15px 17px;
+            border-radius: 16px;
+            background: var(--soft, #f3f4f6);
+            overflow: auto
+        }
+
+        .note {
+            border-left: 4px solid var(--accent, #4f46e5);
+            padding: 12px 16px;
+            background: var(--soft, #f6f7fb);
+            border-radius: 0 14px 14px 0
+        }
+
+        .table-wrap {
+            overflow: auto;
+            border-radius: 18px;
+            border: 1px solid rgba(127, 127, 127, .18)
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 560px
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 11px 13px;
+            border-bottom: 1px solid rgba(127, 127, 127, .15)
+        }
+
+        th {
+            background: var(--soft, #f5f5f5)
+        }
+
+        .faq details {
+            border: 1px solid rgba(127, 127, 127, .18);
+            border-radius: 16px;
+            margin: 10px 0;
+            padding: 12px 15px;
+            background: #fff
+        }
+
+        .faq summary {
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .sources a {
+            word-break: break-word
+        }
+
+        .footer {
+            padding: 28px 0;
+            border-top: 1px solid rgba(127, 127, 127, .18);
+            font-size: .88rem;
+            opacity: .75
+        }
+
+        .sr {
+            position: absolute;
+            left: -10000px
+        }
+
+        @media(max-width:780px) {
+            .statgrid {
+                grid-template-columns: 1fr
+            }
+
+            .content {
+                padding: 46px 0
+            }
+
+            .wrap {
+                width: min(100% - 22px, 1160px)
+            }
+        }
+
+        :root {
+            --accent: #7ce6c4;
+            --muted: #a1b6b1;
+            --soft: #10231f
+        }
+
+        body {
+            background: #07110f;
+            color: #effbf7
+        }
+
+        .prose p,
+        .prose li {
+            color: #abc1ba
+        }
+
+        .atom-hero {
+            padding: 26px 0 70px;
+            background: radial-gradient(circle at 72% 40%, #2b8b6f33, transparent 28%), linear-gradient(130deg, #08130f, #0d211b 60%, #07100e);
+            overflow: hidden
+        }
+
+        .atom-grid {
+            display: grid;
+            grid-template-columns: 1.08fr .92fr;
+            gap: 28px;
+            align-items: center
+        }
+
+        .atom-grid h1 {
+            font-size: clamp(2.9rem, 7vw, 6rem);
+            line-height: .9;
+            letter-spacing: -.065em;
+            margin: 10px 0
+        }
+
+        .orbit {
+            height: 360px;
+            position: relative;
+            display: grid;
+            place-items: center
+        }
+
+        .nucleus {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 25%, #fff, #7ce6c4 26%, #15866b);
+            box-shadow: 0 0 60px #5df4c07a, 0 20px 50px #000
+        }
+
+        .ring {
+            position: absolute;
+            width: 300px;
+            height: 120px;
+            border: 2px solid #85f1d155;
+            border-radius: 50%;
+            transform: rotate(20deg)
+        }
+
+        .ring.r2 {
+            transform: rotate(140deg)
+        }
+
+        .ring.r3 {
+            transform: rotate(80deg)
+        }
+
+        .electron {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 0 18px #fff
+        }
+
+        .e1 {
+            left: 50px;
+            top: 155px
+        }
+
+        .e2 {
+            right: 52px;
+            top: 120px
+        }
+
+        .e3 {
+            left: 180px;
+            bottom: 35px
+        }
+
+        .mw-shell {
+            display: grid;
+            grid-template-columns: .95fr 1.05fr;
+            gap: 18px;
+            margin-top: -44px;
+            position: relative
+        }
+
+        .mw-card {
+            background: #0d1d19;
+            border: 1px solid #20473c;
+            border-radius: 28px;
+            padding: 28px;
+            box-shadow: 0 30px 80px #0007
+        }
+
+        .mw-card .field input,
+        .mw-card .field select {
+            background: #07110f;
+            color: #fff;
+            border-color: #315247
+        }
+
+        .mw-card .btn {
+            background: #82e8c8;
+            color: #062019
+        }
+
+        .composition {
+            border-radius: 28px;
+            padding: 28px;
+            background: linear-gradient(160deg, #153d33, #0b1e19);
+            border: 1px solid #2a584b
+        }
+
+        .chip {
+            display: inline-flex;
+            padding: 7px 10px;
+            border-radius: 999px;
+            background: #7ce6c41c;
+            border: 1px solid #7ce6c44a;
+            margin: 4px;
+            font-weight: 800
+        }
+
+        @media(max-width:780px) {
+
+            .atom-grid,
+            .mw-shell {
+                grid-template-columns: 1fr
+            }
+
+            .orbit {
+                height: 280px
+            }
+
+            .ring {
+                width: 250px;
+                height: 100px
+            }
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/molecular-weight-calculator/#webapplication",
+      "name": "Molecular Weight Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/molecular-weight-calculator/",
+      "description": "Calculate molecular weight (molar mass) from a chemical formula using standard atomic weights. Supports grouped formulas and common hydrate notation.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/molecular-weight-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Molecular Weight Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/molecular-weight-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/molecular-weight-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What formula does the Molecular Weight Calculator use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It uses M ≈ Σ(nᵢ × Aᵢ). Each element’s atomic weight is multiplied by the number of atoms of that element, and all contributions are added."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is molecular weight the same as molar mass?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They are closely related but technically different quantities. Relative molecular mass, sometimes called molecular weight, is dimensionless. Molar mass has units such as g/mol. When molar mass is expressed in g/mol, the numerical values are equal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is the chemical formula case-sensitive?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Element symbols depend on capitalization. For example, Co is the symbol for cobalt, while C and O represent carbon and oxygen separately."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the calculator support parentheses?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The calculator supports grouped chemical formulas. A multiplier after a group applies to the elements inside that group, such as the 2 in Ca(OH)2."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can it calculate hydrated compounds?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The calculator supports common hydrate formulas. The hydrate components are included in the total atom count before the molar-mass contributions are summed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why might my result differ from another source?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Different sources may use different atomic-weight editions, abridged values, or rounding precision. Natural isotopic variation can also produce ranges for the standard atomic weights of some elements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this calculate exact isotopic mass?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The calculator uses practical standard atomic-weight values. Isotope-specific exact-mass calculations require isotope-specific atomic masses rather than ordinary standard atomic weights."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart OnlineFree",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="engineering" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../engineering/index.html">Engineering &amp; Construction</a></li>
+            <li><a aria-current="page" href="index.html">Molecular Weight Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../engineering/index.html">Browse Engineering &amp; Construction</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <header>
+        <nav class="wrap" style="padding-top:18px">
+            <div class="crumbs"><a href="../index.html">Home</a> / Molecular Weight Calculator</div>
+        </nav>
+
+    </header>
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Molecular Weight Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="wrap mw-shell">
+                <div class="mw-card">
+                    <h2>Enter molecular formula</h2>
+                    <div class="field"><label for="mwFormula">Formula (case-sensitive)</label><input id="mwFormula"
+                            placeholder="e.g. H2O, Al2(SO4)3, CuSO4·5H2O" value="H2O" /></div>
+                    <div class="field"><label for="mwCommon">Common compound</label><select id="mwCommon"
+                            onchange="if(this.value){mwFormula.value=this.value;calcMW()}">
+                            <option value="">Choose…</option>
+                            <option>H2O</option>
+                            <option>NaCl</option>
+                            <option>C6H12O6</option>
+                            <option>H2SO4</option>
+                            <option>CaCO3</option>
+                            <option>Al2(SO4)3</option>
+                            <option>CuSO4·5H2O</option>
+                        </select></div>
+                    <div class="btns"><button class="btn" onclick="calcMW()">Calculate</button><button
+                            class="btn secondary"
+                            onclick="mwFormula.value='';mwResult.textContent='—';mwComp.innerHTML='';mwErr.textContent=''">Clear</button>
+                    </div>
+                    <div class="error" id="mwErr"></div>
+                </div>
+                <div class="composition">
+                    <div class="result-title">Molar mass</div>
+                    <div class="result-main" id="mwResult">18.015 g/mol</div>
+                    <h3>Composition</h3>
+                    <div id="mwComp"></div>
+                </div>
+            </section>
+           
+            <section class="content">
+               <article class="article">
+  <h1>Molecular Weight Calculator</h1>
+
+  <p>Use the Molecular Weight Calculator to calculate the molar mass of a chemical formula from the standard atomic weights of its elements. Enter a case-sensitive chemical formula or select a common compound to get the calculated molecular weight.</p>
+
+  <section id="what">
+    <h2>What Is the Molecular Weight Calculator?</h2>
+
+    <p>The Molecular Weight Calculator determines the molar mass of a compound by counting each element in its chemical formula, multiplying that count by the element’s standard atomic weight, and adding the results.</p>
+
+    <p>The calculator can be useful for chemistry calculations involving compounds, solution preparation, stoichiometry, and conversions between mass and amount of substance. It also supports grouped formulas and common hydrates.</p>
+
+    <p>IUPAC defines molar mass as mass divided by amount of substance and commonly expresses it in g/mol or kg/mol. When g/mol is used, its numerical value is equal to the relative molecular mass for the same composition.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Molecular Weight Calculator</h2>
+
+    <h3>Formula</h3>
+
+    <p>Enter the chemical formula of the compound.</p>
+
+    <p>Chemical formulas are <strong>case-sensitive</strong>, so element symbols must use the correct capitalization. For example, <code>Co</code> represents cobalt, while <code>CO</code> represents carbon and oxygen.</p>
+
+    <p>The calculator can process formulas containing grouped elements, such as:</p>
+
+    <div class="formula">Ca(OH)2</div>
+
+    <h3>Common Compound</h3>
+
+    <p>Use the <strong>Common compound</strong> option to select a preset compound instead of manually entering its formula.</p>
+
+    <p>After the formula is entered or selected, the calculator determines its molar mass from the atomic weights and the number of atoms represented in the formula.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+
+    <p>The calculator uses:</p>
+
+    <div class="formula">M ≈ Σ(nᵢ × Aᵢ)</div>
+
+    <p>where the contributions from every element in the chemical formula are added together.</p>
+
+    <h3>Variables</h3>
+
+    <ul>
+      <li><strong>M</strong> = calculated molar mass, typically expressed in g/mol</li>
+      <li><strong>nᵢ</strong> = number of atoms of element <em>i</em> in the chemical formula</li>
+      <li><strong>Aᵢ</strong> = standard atomic weight used for element <em>i</em></li>
+      <li><strong>Σ</strong> = sum of the contributions from all elements</li>
+    </ul>
+
+    <h3>Calculation Sequence</h3>
+
+    <ol>
+      <li>Read the case-sensitive chemical formula.</li>
+      <li>Identify each element in the formula.</li>
+      <li>Apply subscripts and grouped-formula multipliers.</li>
+      <li>Count the total number of atoms of each element.</li>
+      <li>Multiply each element count by its atomic weight.</li>
+      <li>Add all element contributions.</li>
+      <li>Return the calculated molar mass.</li>
+    </ol>
+
+    <p>For grouped formulas, a multiplier outside parentheses applies to every element inside that group.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Calculate the molecular weight of calcium hydroxide:</p>
+
+    <div class="formula">Ca(OH)2</div>
+
+    <h3>Inputs</h3>
+
+    <p>Formula: <code>Ca(OH)2</code></p>
+
+    <p>Using practical abridged atomic-weight values:</p>
+
+    <ul>
+      <li>Ca ≈ 40.078</li>
+      <li>O ≈ 15.999</li>
+      <li>H ≈ 1.008</li>
+    </ul>
+
+    <h3>Step 1: Count the Atoms</h3>
+
+    <p><code>Ca(OH)2</code> contains:</p>
+
+    <ul>
+      <li>1 calcium atom</li>
+      <li>2 oxygen atoms</li>
+      <li>2 hydrogen atoms</li>
+    </ul>
+
+    <h3>Step 2: Calculate Each Contribution</h3>
+
+    <p>Calcium:</p>
+
+    <div class="formula">1 × 40.078 = 40.078</div>
+
+    <p>Oxygen:</p>
+
+    <div class="formula">2 × 15.999 = 31.998</div>
+
+    <p>Hydrogen:</p>
+
+    <div class="formula">2 × 1.008 = 2.016</div>
+
+    <h3>Step 3: Add the Contributions</h3>
+
+    <div class="formula">M = 40.078 + 31.998 + 2.016</div>
+
+    <div class="formula">M = 74.092 g/mol</div>
+
+    <h3>Final Result</h3>
+
+    <p>The calculated molar mass of <strong>Ca(OH)2</strong> is approximately:</p>
+
+    <div class="formula">74.092 g/mol</div>
+
+    <p>The final digits can vary slightly when a different valid atomic-weight table or rounding convention is used.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p>The main calculated result is the compound’s <strong>molar mass</strong>.</p>
+
+    <p>A result such as:</p>
+
+    <div class="formula">74.092 g/mol</div>
+
+    <p>means that one mole of formula units represented by that chemical formula has a calculated mass of approximately 74.092 grams when using the atomic weights applied by the calculator.</p>
+
+    <p>The page is called a Molecular Weight Calculator, but “molecular weight” is commonly used as a synonym for relative molecular mass. Strictly, relative molecular mass is dimensionless, while molar mass has units such as g/mol. Their numerical values are equal when molar mass is expressed in g/mol.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The calculator uses practical abridged atomic weights suitable for general chemical calculations. It does not calculate isotope-specific exact masses.</p>
+
+    <p>Standard atomic weights can vary because the isotopic composition of some elements is not identical in every natural material. CIAAW therefore reports intervals or uncertainties for a number of elements rather than treating every atomic weight as an absolutely fixed value.</p>
+
+    <p>The entered chemical formula must also correctly represent the intended compound. Because formulas are case-sensitive, incorrect capitalization can change the elements being interpreted.</p>
+
+    <p>Results can differ slightly from another textbook, laboratory system, or calculator because of differences in the atomic-weight table and the number of decimal places retained.</p>
+  </section>
+
+  <section id="current-data">
+    <h2>Current Atomic-Weight Data</h2>
+
+    <p>The Commission on Isotopic Abundances and Atomic Weights (CIAAW) currently publishes its <strong>Abridged Standard Atomic Weights 2024</strong> table for practical calculations. The table uses abridged recommended values and uncertainties, while the full standard atomic-weight table provides additional detail for elements whose natural isotopic composition varies.</p>
+
+    <p>CIAAW revised the recommended standard atomic weights of gadolinium, lutetium, and zirconium in 2024. This illustrates why atomic-weight reference data should be reviewed periodically even though the calculation method itself remains unchanged.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What formula does the Molecular Weight Calculator use?</summary>
+
+      <p>It uses:</p>
+
+      <div class="formula">M ≈ Σ(nᵢ × Aᵢ)</div>
+
+      <p>Each element’s atomic weight is multiplied by the number of atoms of that element, and all contributions are added.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is molecular weight the same as molar mass?</summary>
+
+      <p>They are closely related but technically different quantities. Relative molecular mass, sometimes called molecular weight, is dimensionless. Molar mass has units such as g/mol. When molar mass is expressed in g/mol, the numerical values are equal.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why is the chemical formula case-sensitive?</summary>
+
+      <p>Element symbols depend on capitalization. For example, <code>Co</code> is the symbol for cobalt, while <code>C</code> and <code>O</code> represent carbon and oxygen separately.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does the calculator support parentheses?</summary>
+
+      <p>Yes. The calculator supports grouped chemical formulas. A multiplier after a group applies to the elements inside that group, such as the <code>2</code> in <code>Ca(OH)2</code>.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can it calculate hydrated compounds?</summary>
+
+      <p>The calculator supports common hydrate formulas. The hydrate components are included in the total atom count before the molar-mass contributions are summed.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why might my result differ from another source?</summary>
+
+      <p>Different sources may use different atomic-weight editions, abridged values, or rounding precision. Natural isotopic variation can also produce ranges for the standard atomic weights of some elements.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does this calculate exact isotopic mass?</summary>
+
+      <p>No. The calculator uses practical standard atomic-weight values. Isotope-specific exact-mass calculations require isotope-specific atomic masses rather than ordinary standard atomic weights.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://goldbook.iupac.org/terms/view/12214?utm_source=chatgpt.com" rel="noopener" target="_blank">IUPAC Gold Book — Molar Mass</a><br>
+        Supports the definition, units, and relationship between molar mass and relative molecular mass.
+      </li>
+      <li>
+        <a href="https://goldbook.iupac.org/terms/view/R05271?utm_source=chatgpt.com" rel="noopener" target="_blank">IUPAC Gold Book — Relative Molecular Mass</a><br>
+        Supports the technical definition of relative molecular mass and the use of “molecular weight” as a synonym.
+      </li>
+      <li>
+        <a href="https://ciaaw.org/abridged-atomic-weights.htm?utm_source=chatgpt.com" rel="noopener" target="_blank">CIAAW — Abridged Standard Atomic Weights</a><br>
+        Supports the use of practical abridged atomic-weight values and their associated precision.
+      </li>
+    </ul>
+
+    <h3>Current Data / Rule Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://ciaaw.org/atomic-weights.htm?utm_source=chatgpt.com" rel="noopener" target="_blank">CIAAW — Standard Atomic Weights 2024</a><br>
+        Provides the current definitive standard atomic-weight table.
+      </li>
+      <li>
+        <a href="https://iupac.org/standard-atomic-weights-of-three-technology-critical-elements-revised/?utm_source=chatgpt.com" rel="noopener" target="_blank">IUPAC — 2024 Standard Atomic Weight Revisions</a><br>
+        Documents the 2024 revisions for gadolinium, lutetium, and zirconium.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/molarity-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Molarity Calculator</a></li>
+      <li><a href="https://example.com/mass-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Mass Calculator</a></li>
+      <li><a href="https://example.com/density-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Density Calculator</a></li>
+      <li><a href="https://example.com/conversion-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Conversion Calculator</a></li>
+      <li><a href="https://example.com/scientific-calculator/?utm_source=chatgpt.com" rel="noopener" target="_blank">Scientific Calculator</a></li>
+    </ul>
+  </section>
+</article>
+            </section>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"182","Batch":"19","Calculator / Page":"Molecular Weight Calculator","Slug":"molecular-weight-calculator","Site Category (Current)":"Engineering & Construction","Recommended Content Domain":"Health / Fitness / Nutrition","Page Type":"Calculator","Search Intent / Purpose":"Calculate molar mass from a chemical formula, including grouped formulas and common hydrates.","Formula / Algorithm Used in Tool":"Molecular Weight Formula: molar mass ≈ Σ (number of atoms of element i × standard atomic weight of element i)","Required User Inputs":"Formula (case-sensitive); Common compound","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Formula (case-sensitive), Common compound. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Authoritative formula source, population/age/sex applicability, units, cutoffs/reference ranges and limitations; avoid diagnostic claims.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When clinical/exercise guidance changes","Important Assumptions / Limitations":"Precision note: natural isotopic composition can make standard atomic weights vary for some elements. This tool uses practical abridged values suitable for general calculations, not isotope-specific exact masses.","Current Source URLs in Page":"https://iupac.qmul.ac.uk/AtWt/AtWt21.html","Implementation Path":"/molecular-weight-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Engineering &amp; Construction</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../weight-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Weight Calculator</strong><small>Convert between
+                            kilograms, pounds, ounces, grams, stones, tonnes, and other common…</small></span></a><a
+                    class="cp-related-link" href="../density-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Density Calculator</strong><small>Calculate
+                            density, mass, or volume from any two known values with common metric
+                            and…</small></span></a><a class="cp-related-link"
+                    href="../molarity-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Molarity
+                            Calculator</strong><small>Calculate molarity, solute mass, molar mass, or solution volume
+                            with chemistry unit…</small></span></a><a class="cp-related-link"
+                    href="../concrete-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Concrete
+                            Calculator</strong><small>Calculate concrete volume for slabs, round columns, or tubes,
+                            convert to cubic yard…</small></span></a><a class="cp-related-link"
+                    href="../btu-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>BTU
+                            Calculator</strong><small>Estimate room air-conditioner cooling capacity in BTU per hour
+                            using ENERGY STAR ro…</small></span></a><a class="cp-related-link"
+                    href="../engine-horsepower-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Engine Horsepower
+                            Calculator</strong><small>Estimate engine horsepower from quarter-mile elapsed time or trap
+                            speed with weight…</small></span></a><a class="cp-related-link"
+                    href="../mass-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Mass
+                            Calculator</strong><small>Calculate mass from density and volume with metric and imperial
+                            unit conversion and…</small></span></a><a class="cp-related-link"
+                    href="../ohms-law-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Ohm’s
+                            Law Calculator</strong><small>Solve voltage, current, resistance, and electrical power from
+                            any two known values…</small></span></a></div><a class="cp-side-category"
+                href="../engineering/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const AW = { H: 1.008, He: 4.0026, Li: 6.94, Be: 9.0122, B: 10.81, C: 12.011, N: 14.007, O: 15.999, F: 18.998, Ne: 20.180, Na: 22.990, Mg: 24.305, Al: 26.982, Si: 28.085, P: 30.974, S: 32.06, Cl: 35.45, Ar: 39.95, K: 39.098, Ca: 40.078, Sc: 44.956, Ti: 47.867, V: 50.942, Cr: 51.996, Mn: 54.938, Fe: 55.845, Co: 58.933, Ni: 58.693, Cu: 63.546, Zn: 65.38, Ga: 69.723, Ge: 72.630, As: 74.922, Se: 78.971, Br: 79.904, Kr: 83.798, Rb: 85.468, Sr: 87.62, Y: 88.906, Zr: 91.224, Nb: 92.906, Mo: 95.95, Tc: 98, Ru: 101.07, Rh: 102.91, Pd: 106.42, Ag: 107.87, Cd: 112.41, In: 114.82, Sn: 118.71, Sb: 121.76, Te: 127.60, I: 126.90, Xe: 131.29, Cs: 132.91, Ba: 137.33, La: 138.91, Ce: 140.12, Pr: 140.91, Nd: 144.24, Pm: 145, Sm: 150.36, Eu: 151.96, Gd: 157.25, Tb: 158.93, Dy: 162.50, Ho: 164.93, Er: 167.26, Tm: 168.93, Yb: 173.05, Lu: 174.97, Hf: 178.49, Ta: 180.95, W: 183.84, Re: 186.21, Os: 190.23, Ir: 192.22, Pt: 195.08, Au: 196.97, Hg: 200.59, Tl: 204.38, Pb: 207.2, Bi: 208.98, Po: 209, At: 210, Rn: 222, Fr: 223, Ra: 226, Ac: 227, Th: 232.04, Pa: 231.04, U: 238.03, Np: 237, Pu: 244, Am: 243, Cm: 247, Bk: 247, Cf: 251, Es: 252, Fm: 257, Md: 258, No: 259, Lr: 266, Rf: 267, Db: 268, Sg: 269, Bh: 270, Hs: 277, Mt: 278, Ds: 281, Rg: 282, Cn: 285, Nh: 286, Fl: 289, Mc: 290, Lv: 293, Ts: 294, Og: 294 };
+        function merge(a, b, m = 1) { for (const k in b) a[k] = (a[k] || 0) + b[k] * m; return a }
+        function parseCore(s) { let i = 0; function group(close) { let out = {}; while (i < s.length) { if (close && s[i] === close) { i++; return out } if ("([{".includes(s[i])) { const c = { "(": ")", "[": "]", "{": "}" }[s[i++]]; let sub = group(c), num = numRead(); merge(out, sub, num) } else { let m = s.slice(i).match(/^([A-Z][a-z]?)/); if (!m) throw Error("Invalid formula near " + s.slice(i)); let el = m[1]; if (!(el in AW)) throw Error("Unknown element: " + el); i += el.length; out[el] = (out[el] || 0) + numRead() } } if (close) throw Error("Missing " + close); return out } function numRead() { let m = s.slice(i).match(/^\d+/); if (!m) return 1; i += m[0].length; return +m[0] } return group(null) }
+        function parseFormula(s) { s = s.trim().replace(/\s+/g, "").replace(/·/g, "."); if (!s) throw Error("Enter a formula."); let total = {}; for (let part of s.split(".")) { let mm = part.match(/^(\d+)(.*)$/), mult = 1; if (mm) { mult = +mm[1]; part = mm[2] } merge(total, parseCore(part), mult) } return total }
+        function calcMW() { mwErr.textContent = ""; mwComp.innerHTML = ""; try { const c = parseFormula(mwFormula.value); let total = 0; Object.entries(c).forEach(([el, n]) => total += AW[el] * n); mwResult.textContent = total.toFixed(4).replace(/0+$/, "").replace(/\.$/, "") + " g/mol"; Object.entries(c).forEach(([el, n]) => { const x = document.createElement("span"); x.className = "chip"; x.textContent = `${el} × ${n} = ${(AW[el] * n).toFixed(3)} g/mol`; mwComp.appendChild(x) }) } catch (e) { mwErr.textContent = e.message; mwResult.textContent = "—" } } calcMW();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

@@ -1,90 +1,1694 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+<html lang="en">
 
-<title>Mutual Fund Calculator – Contributions, Fees &amp; Growth | CalcPro</title><meta content="Project mutual fund growth using starting investment, monthly contributions, assumed return, expense ratio, sales load, and investment horizon." name="description"/><meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/><link href="../mutual-fund-calculator/" rel="canonical"/><meta content="website" property="og:type"/><meta content="Mutual Fund Calculator" property="og:title"/><meta content="Project mutual fund growth using starting investment, monthly contributions, assumed return, expense ratio, sales load, and investment horizon." property="og:description"/><meta content="#1477ff" name="theme-color"/>
-<style>
-:root{
-  --ink:#0b1933;--muted:#60708a;--line:#dbe8f6;--blue:#0a6ff2;--blue2:#20a5ff;
-  --green:#16b86b;--yellow:#f6b51f;--red:#ef4f58;
-  --shadow:0 18px 45px rgba(25,74,123,.16),inset 0 1px 0 rgba(255,255,255,.95);
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width,initial-scale=1" name="viewport" />
+  <meta http-equiv="content-language" content="en">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+  <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+
+  <!-- Primary Meta Tags -->
+<title>Mutual Fund Calculator – Project Growth After Fees</title>
+<meta name="title" content="Mutual Fund Calculator – Project Growth After Fees">
+<meta name="description" content="Use this mutual fund calculator to project ending value from your initial investment, monthly contributions, return, expense ratio, sales load, and years.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/mutual-fund-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/mutual-fund-calculator/">
+<meta property="og:title" content="Mutual Fund Calculator – Project Growth After Fees">
+<meta property="og:description" content="Use this mutual fund calculator to project ending value from your initial investment, monthly contributions, return, expense ratio, sales load, and years.">
+<meta property="og:site_name" content="Mutual Fund Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/mutual-fund-calculator/">
+<meta name="twitter:title" content="Mutual Fund Calculator – Project Growth After Fees">
+<meta name="twitter:description" content="Use this mutual fund calculator to project ending value from your initial investment, monthly contributions, return, expense ratio, sales load, and years.">
+  <meta content="#1477ff" name="theme-color" />
+  <style>
+    :root {
+      --ink: #0b1933;
+      --muted: #60708a;
+      --line: #dbe8f6;
+      --blue: #0a6ff2;
+      --blue2: #20a5ff;
+      --green: #16b86b;
+      --yellow: #f6b51f;
+      --red: #ef4f58;
+      --shadow: 0 18px 45px rgba(25, 74, 123, .16), inset 0 1px 0 rgba(255, 255, 255, .95);
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at 12% 6%, rgba(32, 165, 255, .18), transparent 28%),
+        radial-gradient(circle at 88% 15%, rgba(35, 205, 153, .13), transparent 24%),
+        linear-gradient(180deg, #f8fcff, #eef7ff 48%, #f7fbff);
+      line-height: 1.65
+    }
+
+    a {
+      color: #0967d8;
+      text-decoration: none
+    }
+
+    a:hover {
+      text-decoration: underline
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: auto
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(248, 252, 255, .82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(196, 219, 241, .72)
+    }
+
+    .nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      gap: 28px
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 23px;
+      font-weight: 850;
+      color: var(--ink)
+    }
+
+    .brand i {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      color: #fff;
+      font-style: normal;
+      background: linear-gradient(145deg, #27b3ff, #0562d7);
+      box-shadow: 0 9px 18px rgba(10, 111, 242, .28), inset 0 2px 2px rgba(255, 255, 255, .45)
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 20px;
+      margin-left: 18px;
+      font-size: 14px;
+      font-weight: 700
+    }
+
+    .navlinks a {
+      color: #20324e
+    }
+
+    .search {
+      margin-left: auto;
+      background: #fff;
+      border: 1px solid #e0ebf6;
+      border-radius: 999px;
+      padding: 10px 15px;
+      min-width: 210px;
+      color: #6d7d93;
+      font-size: 13px;
+      box-shadow: 0 8px 20px rgba(26, 70, 112, .08)
+    }
+
+    .hero {
+      padding: 28px 0 18px
+    }
+
+    .breadcrumb {
+      font-size: 13px;
+      color: #6c7b91;
+      margin-bottom: 18px
+    }
+
+    .breadcrumb span {
+      margin: 0 8px;
+      color: #a1aec0
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.03fr .97fr;
+      gap: 28px;
+      align-items: center
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      margin: 0 auto 18px;
+      text-align: center;
+      letter-spacing: -.06em;
+      font-weight: 900;
+    }
+
+    h1 b {
+      color: var(--blue)
+    }
+
+    .lead {
+      font-size: 17px;
+      color: #42546e;
+      max-width: 700px;
+      margin: 0
+    }
+
+    .chips {
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+      margin-top: 18px
+    }
+
+    .chip {
+      background: #fff;
+      border: 1px solid #dceafa;
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #35506f;
+      box-shadow: 0 8px 18px rgba(37, 86, 137, .07)
+    }
+
+    .hero-art {
+      height: 270px;
+      position: relative;
+      perspective: 900px
+    }
+
+    .floor {
+      position: absolute;
+      left: 9%;
+      right: 7%;
+      bottom: 12px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(32, 75, 115, .14);
+      filter: blur(15px)
+    }
+
+    .obj {
+      position: absolute;
+      box-shadow: var(--shadow)
+    }
+
+    .calc-shell {
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 32px;
+      background: rgba(255, 255, 255, .5);
+      border: 1px solid rgba(255, 255, 255, .92);
+      box-shadow: 0 28px 70px rgba(37, 86, 137, .15);
+      backdrop-filter: blur(20px)
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 16px
+    }
+
+    .card {
+      background: linear-gradient(145deg, rgba(255, 255, 255, .97), rgba(244, 249, 255, .86));
+      border: 1px solid rgba(218, 231, 245, .92);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow)
+    }
+
+    .card h2 {
+      font-size: 21px;
+      margin: 0 0 4px;
+      letter-spacing: -.5px
+    }
+
+    .sub {
+      font-size: 13px;
+      color: #687990;
+      margin: 0 0 15px
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px
+    }
+
+    .field.full {
+      grid-column: 1/-1
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 800;
+      color: #263a56
+    }
+
+    .input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid #cddff1;
+      background: #fbfdff;
+      border-radius: 12px;
+      padding: 11px 12px;
+      font: inherit;
+      color: #152641;
+      box-shadow: inset 0 2px 4px rgba(26, 77, 123, .05);
+      outline: none
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #66b5ff;
+      box-shadow: 0 0 0 3px rgba(32, 165, 255, .12)
+    }
+
+    .unit {
+      font-size: 12px;
+      color: #667890;
+      white-space: nowrap
+    }
+
+    .hint {
+      font-size: 11px;
+      color: #75859a
+    }
+
+    .tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      background: #edf5ff;
+      border: 1px solid #dceafb;
+      padding: 4px;
+      border-radius: 15px;
+      margin-bottom: 16px
+    }
+
+    .tab {
+      border: 0;
+      background: transparent;
+      padding: 9px 12px;
+      border-radius: 11px;
+      font-weight: 800;
+      color: #334866;
+      cursor: pointer
+    }
+
+    .tab.active {
+      background: linear-gradient(145deg, #2aa8ff, #0668df);
+      color: #fff;
+      box-shadow: 0 9px 17px rgba(8, 111, 240, .26)
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1.5fr .8fr;
+      gap: 10px;
+      margin-top: 18px
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 14px;
+      padding: 13px 14px;
+      font-weight: 800;
+      cursor: pointer
+    }
+
+    .primary {
+      color: #fff;
+      background: linear-gradient(145deg, #25a9ff, #0064dc);
+      box-shadow: 0 12px 22px rgba(6, 104, 221, .28)
+    }
+
+    .secondary {
+      background: #edf3f9;
+      color: #273a55
+    }
+
+    .danger {
+      background: #fff1f2;
+      color: #b4232b
+    }
+
+    .error {
+      color: #b4232b;
+      font-size: 12px;
+      margin-top: 10px;
+      min-height: 18px
+    }
+
+    .result-hero {
+      padding: 18px;
+      border-radius: 19px;
+      background: linear-gradient(135deg, #edfff7, #eef8ff);
+      position: relative;
+      overflow: hidden
+    }
+
+    .result-hero:after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      right: -30px;
+      top: -45px;
+      background: radial-gradient(circle, #55d7ff, #0b79ef);
+      opacity: .17
+    }
+
+    .result-hero small {
+      color: #60728b
+    }
+
+    .big {
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: -1.8px;
+      line-height: 1.1;
+      margin-top: 3px;
+      word-break: break-word
+    }
+
+    .accent {
+      color: var(--green);
+      font-weight: 850;
+      font-size: 18px
+    }
+
+    .stats {
+      margin-top: 13px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid #e3edf7;
+      overflow: hidden
+    }
+
+    .stat {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 12px;
+      border-bottom: 1px solid #e8f0f7;
+      font-size: 13px
+    }
+
+    .stat:last-child {
+      border-bottom: 0
+    }
+
+    .stat b {
+      text-align: right
+    }
+
+    .answerbox {
+      margin: 14px 0 0;
+      padding: 15px 16px;
+      border-radius: 16px;
+      background: #0e2544;
+      color: #fff;
+      box-shadow: 0 15px 28px rgba(12, 37, 68, .18);
+      font-size: 13px
+    }
+
+    .answerbox strong {
+      color: #73d3ff
+    }
+
+    .progress {
+      height: 14px;
+      border-radius: 999px;
+      background: #e7f1fb;
+      overflow: hidden;
+      margin-top: 14px
+    }
+
+    .progress span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue), var(--green));
+      border-radius: inherit
+    }
+
+    .table-wrap {
+      overflow: auto;
+      border-radius: 16px;
+      border: 1px solid #dce7f2;
+      margin-top: 14px;
+      max-height: 330px
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 560px;
+      background: #fff
+    }
+
+    th,
+    td {
+      padding: 9px 11px;
+      text-align: right;
+      border-bottom: 1px solid #e7eef5;
+      font-size: 12px
+    }
+
+    th:first-child,
+    td:first-child {
+      text-align: left
+    }
+
+    th {
+      background: #f1f7fd;
+      position: sticky;
+      top: 0;
+      z-index: 1
+    }
+
+    .row4 {
+      display: grid;
+      grid-template-columns: 1.25fr .8fr .75fr .75fr auto;
+      gap: 8px;
+      align-items: end;
+      margin-bottom: 9px
+    }
+
+    .remove {
+      width: 40px;
+      height: 40px;
+      border: 0;
+      border-radius: 10px;
+      background: #fff0f0;
+      color: #b4232b;
+      font-weight: 900;
+      cursor: pointer
+    }
+
+    .note {
+      background: #fff9e9;
+      border: 1px solid #f5df9c;
+      padding: 15px 17px;
+      border-radius: 14px;
+      color: #5c4d22
+    }
+
+    .good {
+      background: #edfff7;
+      border: 1px solid #bdecd5;
+      padding: 13px 15px;
+      border-radius: 14px;
+      color: #176342
+    }
+
+    .content {
+      padding: 38px 0 70px
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.fr;
+      gap: 22px
+    }
+
+    .article,
+    .toc {
+      background: rgba(255, 255, 255, .9);
+      border: 1px solid #dfeaf6;
+      border-radius: 25px;
+      box-shadow: var(--shadow)
+    }
+
+    .article {
+      padding: 30px
+    }
+
+    .toc {
+      padding: 24px;
+      align-self: start;
+      position: sticky;
+      top: 94px
+    }
+
+    .article h2 {
+      font-size: 28px;
+      line-height: 1.2;
+      margin: 38px 0 12px;
+      letter-spacing: -.8px
+    }
+
+    .article h2:first-child {
+      margin-top: 0
+    }
+
+    .article h3 {
+      font-size: 20px;
+      margin: 24px 0 8px
+    }
+
+    .article p,
+    .article li {
+      color: #42536d
+    }
+
+    .direct {
+      border-left: 5px solid var(--blue);
+      background: #f0f7ff;
+      padding: 16px 18px;
+      border-radius: 14px;
+      color: #263a56
+    }
+
+    .formula {
+      font: 800 15px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace;
+      background: #0d213c;
+      color: #eef8ff;
+      padding: 16px;
+      border-radius: 15px;
+      overflow: auto;
+      white-space: pre-wrap
+    }
+
+    .faq {
+      border-top: 1px solid #e4edf6;
+      padding: 15px 0
+    }
+
+    .faq summary {
+      font-weight: 800;
+      cursor: pointer
+    }
+
+    .faq p {
+      margin-bottom: 0
+    }
+
+    .toc h3 {
+      margin-top: 0
+    }
+
+    .toc a {
+      display: block;
+      padding: 7px 0;
+      color: #34506f;
+      font-size: 14px
+    }
+
+    .sources li {
+      margin: 8px 0
+    }
+
+    footer {
+      padding: 28px 0 42px;
+      color: #63748a;
+      font-size: 13px;
+      text-align: center
+    }
+
+    @media(max-width:960px) {
+
+      .navlinks,
+      .search {
+        display: none
+      }
+
+      .hero-grid,
+      .calc-grid,
+      .content-grid {
+        grid-template-columns: 1fr
+      }
+
+      .hero-art {
+        height: 235px
+      }
+
+      .toc {
+        position: static
+      }
+    }
+
+    @media(max-width:680px) {
+      .wrap {
+        width: min(100% - 20px, 1180px)
+      }
+
+      .hero {
+        padding-top: 18px
+      }
+
+      .hero-art {
+        transform: scale(.86);
+        transform-origin: center top;
+        margin-bottom: -28px
+      }
+
+      .calc-shell {
+        padding: 8px;
+        border-radius: 23px
+      }
+
+      .card {
+        padding: 16px;
+        border-radius: 19px
+      }
+
+      .form-grid,
+      .actions {
+        grid-template-columns: 1fr
+      }
+
+      .field.full {
+        grid-column: auto
+      }
+
+      .article {
+        padding: 21px
+      }
+
+      .nav {
+        height: 64px
+      }
+
+      .row4 {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .row4 .remove {
+        grid-column: 2
+      }
+    }
+
+    /* unique 3D scenes */
+    .scene-payoff .stair {
+      right: 30px;
+      bottom: 35px;
+      width: 340px;
+      height: 195px
+    }
+
+    .scene-payoff .stair i {
+      position: absolute;
+      right: 0;
+      height: 42px;
+      border-radius: 12px 0 0 12px;
+      background: linear-gradient(145deg, #cce9ff, #55b2f7);
+      box-shadow: 0 12px 20px rgba(30, 105, 170, .15)
+    }
+
+    .scene-payoff .stair i:nth-child(1) {
+      bottom: 0;
+      width: 330px
+    }
+
+    .scene-payoff .stair i:nth-child(2) {
+      bottom: 48px;
+      width: 250px
+    }
+
+    .scene-payoff .stair i:nth-child(3) {
+      bottom: 96px;
+      width: 170px
+    }
+
+    .scene-payoff .stair i:nth-child(4) {
+      bottom: 144px;
+      width: 90px
+    }
+
+    .scene-payoff .arrow {
+      right: 260px;
+      top: 20px;
+      font-size: 74px;
+      color: #16b86b;
+      font-weight: 900;
+      transform: rotate(90deg)
+    }
+
+    .scene-consolidate .cards {
+      right: 35px;
+      top: 42px;
+      width: 330px;
+      height: 190px
+    }
+
+    .scene-consolidate .cards i {
+      position: absolute;
+      width: 150px;
+      height: 95px;
+      border-radius: 22px;
+      background: linear-gradient(145deg, #fff, #c8e6fb);
+      border: 1px solid #fff
+    }
+
+    .scene-consolidate .cards i:nth-child(1) {
+      left: 0;
+      top: 0;
+      transform: rotate(-8deg)
+    }
+
+    .scene-consolidate .cards i:nth-child(2) {
+      right: 0;
+      top: 0;
+      transform: rotate(8deg)
+    }
+
+    .scene-consolidate .cards i:nth-child(3) {
+      left: 90px;
+      bottom: 0;
+      background: linear-gradient(145deg, #2db3ff, #0766db)
+    }
+
+    .scene-consolidate .cards:after {
+      content: "1 PAYMENT";
+      position: absolute;
+      left: 120px;
+      bottom: 34px;
+      color: #fff;
+      font-weight: 900;
+      z-index: 3
+    }
+
+    .scene-repay .calendar {
+      right: 70px;
+      top: 35px;
+      width: 255px;
+      height: 190px;
+      border-radius: 28px;
+      background: #fff;
+      border: 1px solid #dce8f4;
+      transform: rotate(-4deg)
+    }
+
+    .scene-repay .calendar:before {
+      content: "PAYOFF";
+      position: absolute;
+      left: 25px;
+      right: 25px;
+      top: 24px;
+      padding: 10px;
+      border-radius: 14px;
+      background: #0a6ff2;
+      color: #fff;
+      text-align: center;
+      font-weight: 900
+    }
+
+    .scene-repay .calendar:after {
+      content: "↓";
+      position: absolute;
+      inset: 70px 30px 20px;
+      display: grid;
+      place-items: center;
+      font-size: 70px;
+      color: #16b86b;
+      font-weight: 900
+    }
+
+    .scene-student .cap {
+      right: 55px;
+      top: 48px;
+      width: 290px;
+      height: 175px;
+      clip-path: polygon(50% 0, 100% 34%, 77% 50%, 77% 80%, 23% 80%, 23% 50%, 0 34%);
+      background: linear-gradient(145deg, #168df4, #0d315f);
+      filter: drop-shadow(18px 25px 20px rgba(15, 67, 120, .18))
+    }
+
+    .scene-student .coin {
+      right: 35px;
+      bottom: 20px;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 25%, #fff9b8, #ffd442 55%, #dda500);
+      border: 7px solid #ffe770;
+      display: grid;
+      place-items: center;
+      font-size: 27px;
+      font-weight: 900;
+      color: #8a6200
+    }
+
+    .scene-college .campus {
+      right: 55px;
+      top: 80px;
+      width: 285px;
+      height: 120px;
+      background: linear-gradient(145deg, #fff, #c6e5fa);
+      border-radius: 15px;
+      box-shadow: 0 25px 35px rgba(25, 75, 125, .16)
+    }
+
+    .scene-college .campus:before {
+      content: "";
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      top: -65px;
+      border-left: 122px solid transparent;
+      border-right: 122px solid transparent;
+      border-bottom: 65px solid #0a6ff2
+    }
+
+    .scene-college .campus:after {
+      content: "$";
+      position: absolute;
+      inset: 22px;
+      display: grid;
+      place-items: center;
+      font-size: 55px;
+      font-weight: 900;
+      color: #0a6ff2
+    }
+
+    .scene-simple .line {
+      right: 40px;
+      bottom: 42px;
+      width: 330px;
+      height: 170px;
+      border-left: 6px solid #284b70;
+      border-bottom: 6px solid #284b70
+    }
+
+    .scene-simple .line:after {
+      content: "";
+      position: absolute;
+      left: 20px;
+      bottom: 15px;
+      width: 290px;
+      height: 12px;
+      background: linear-gradient(90deg, #20a5ff, #16b86b);
+      transform: rotate(-24deg);
+      transform-origin: left;
+      border-radius: 8px
+    }
+
+    .scene-simple .tag {
+      right: 220px;
+      top: 35px;
+      padding: 14px 18px;
+      border-radius: 18px;
+      background: #fff;
+      color: #0a6ff2;
+      font-size: 22px;
+      font-weight: 900
+    }
+
+    .scene-cd .disc {
+      right: 80px;
+      top: 38px;
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #0e2544 0 14%, #eaf6ff 15% 26%, #64c1ff 27% 57%, #0a6ff2 58% 70%, #d8efff 71%);
+      box-shadow: 0 28px 50px rgba(10, 111, 242, .23)
+    }
+
+    .scene-cd .disc:after {
+      content: "APY";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 25px;
+      font-weight: 900;
+      transform: translateY(53px)
+    }
+
+    .scene-bond .ticket {
+      right: 70px;
+      top: 52px;
+      width: 260px;
+      height: 160px;
+      border-radius: 24px;
+      background: linear-gradient(145deg, #fff, #d8ebfa);
+      transform: rotate(-6deg);
+      border: 1px solid #d7e7f3
+    }
+
+    .scene-bond .ticket:before {
+      content: "BOND\A $1,000";
+      white-space: pre;
+      position: absolute;
+      left: 28px;
+      top: 30px;
+      color: #0a6ff2;
+      font-size: 25px;
+      font-weight: 900;
+      line-height: 1.5
+    }
+
+    .scene-bond .coupon {
+      right: 24px;
+      top: 138px;
+      width: 145px;
+      height: 70px;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #1fb0ff, #0a63d6);
+      transform: rotate(9deg);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 900
+    }
+
+    .scene-fund .pie {
+      right: 80px;
+      top: 35px;
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      background: conic-gradient(#0a6ff2 0 42%, #16b86b 42% 70%, #f6b51f 70% 87%, #7cc9ff 87%);
+      box-shadow: 0 28px 48px rgba(26, 76, 123, .18);
+      border: 10px solid #fff
+    }
+
+    .scene-fund .pie:after {
+      content: "FUND";
+      position: absolute;
+      inset: 58px;
+      border-radius: 50%;
+      background: #f8fcff;
+      display: grid;
+      place-items: center;
+      color: #15395b;
+      font-weight: 900;
+      font-size: 21px
+    }
+
+    .scene-roth .vault {
+      right: 75px;
+      top: 48px;
+      width: 235px;
+      height: 190px;
+      border-radius: 32px;
+      background: linear-gradient(145deg, #e8f6ff, #9fcff3);
+      border: 7px solid #fff;
+      transform: rotateY(-12deg)
+    }
+
+    .scene-roth .vault:before {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      left: 60px;
+      top: 38px;
+      background: radial-gradient(circle, #fff 0 14%, #1c8dea 15% 22%, #dceaf6 23% 46%, #0d315f 47%)
+    }
+
+    .scene-roth .badge {
+      right: 22px;
+      bottom: 20px;
+      padding: 14px 20px;
+      border-radius: 20px;
+      background: #16b86b;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 900;
+      transform: rotate(6deg)
+    }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/mutual-fund-calculator/#webapplication",
+      "name": "Mutual Fund Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/mutual-fund-calculator/",
+      "description": "Use this mutual fund calculator to project ending value from your initial investment, monthly contributions, return, expense ratio, sales load, and years.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/mutual-fund-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Mutual Fund Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/mutual-fund-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/mutual-fund-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does the Mutual Fund Calculator account for the expense ratio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It subtracts the entered annual expense ratio from the assumed gross annual return to create a simplified modeled annual rate, then converts that rate to a monthly rate for the projection."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a front-end sales load?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A front-end sales load is an upfront charge paid when mutual fund shares are purchased. It reduces the amount of the purchase available for investment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is an expense ratio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The expense ratio measures the percentage of a fund's average net assets used each year for operating expenses such as management and certain distribution or service expenses. It is normally disclosed in the fund's prospectus fee table."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a lower expense ratio guarantee a better investment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Lower expenses reduce one source of investment cost, but investment performance, risk, portfolio holdings, objectives, taxes, and other factors also matter. Mutual fund values can rise or fall."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this calculator predict actual mutual fund returns?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The calculator uses the constant annual return you enter. Actual market returns fluctuate, so the result should be treated as a projection rather than a forecast or guaranteed outcome."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is the zero-expense-ratio value useful?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It provides a comparison scenario showing how the projection changes when the modeled annual expense ratio is removed while the other assumptions remain the same."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where can I find a fund's expense ratio and other fees?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Review the mutual fund's prospectus and its standardized fee table. Investor.gov notes that mutual fund fees and expenses vary by fund and can include both shareholder transaction fees and recurring operating expenses."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
 }
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-background:radial-gradient(circle at 12% 6%,rgba(32,165,255,.18),transparent 28%),
-radial-gradient(circle at 88% 15%,rgba(35,205,153,.13),transparent 24%),
-linear-gradient(180deg,#f8fcff,#eef7ff 48%,#f7fbff);line-height:1.65}
-a{color:#0967d8;text-decoration:none}a:hover{text-decoration:underline}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
-.topbar{position:sticky;top:0;z-index:20;background:rgba(248,252,255,.82);backdrop-filter:blur(18px);border-bottom:1px solid rgba(196,219,241,.72)}
-.nav{height:72px;display:flex;align-items:center;gap:28px}.brand{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:850;color:var(--ink)}
-.brand i{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;color:#fff;font-style:normal;background:linear-gradient(145deg,#27b3ff,#0562d7);box-shadow:0 9px 18px rgba(10,111,242,.28),inset 0 2px 2px rgba(255,255,255,.45)}
-.navlinks{display:flex;gap:20px;margin-left:18px;font-size:14px;font-weight:700}.navlinks a{color:#20324e}.search{margin-left:auto;background:#fff;border:1px solid #e0ebf6;border-radius:999px;padding:10px 15px;min-width:210px;color:#6d7d93;font-size:13px;box-shadow:0 8px 20px rgba(26,70,112,.08)}
-.hero{padding:28px 0 18px}.breadcrumb{font-size:13px;color:#6c7b91;margin-bottom:18px}.breadcrumb span{margin:0 8px;color:#a1aec0}.hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:28px;align-items:center}
-h1{font-size: clamp(2.6rem,5vw,4.5rem);
-line-height: 1.05;
-margin: 0 auto 18px;
-text-align: center;
-letter-spacing: -.06em;
-font-weight: 900;}h1 b{color:var(--blue)}.lead{font-size:17px;color:#42546e;max-width:700px;margin:0}
-.chips{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.chip{background:#fff;border:1px solid #dceafa;border-radius:999px;padding:7px 11px;font-size:12px;font-weight:800;color:#35506f;box-shadow:0 8px 18px rgba(37,86,137,.07)}
-.hero-art{height:270px;position:relative;perspective:900px}.floor{position:absolute;left:9%;right:7%;bottom:12px;height:34px;border-radius:50%;background:rgba(32,75,115,.14);filter:blur(15px)}.obj{position:absolute;box-shadow:var(--shadow)}
-.calc-shell{margin-top:20px;padding:16px;border-radius:32px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.92);box-shadow:0 28px 70px rgba(37,86,137,.15);backdrop-filter:blur(20px)}
-.calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}.card{background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(244,249,255,.86));border:1px solid rgba(218,231,245,.92);border-radius:24px;padding:22px;box-shadow:var(--shadow)}
-.card h2{font-size:21px;margin:0 0 4px;letter-spacing:-.5px}.sub{font-size:13px;color:#687990;margin:0 0 15px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}
-label{font-size:13px;font-weight:800;color:#263a56}.input-wrap{display:flex;align-items:center;gap:8px}
-input,select,textarea{width:100%;border:1px solid #cddff1;background:#fbfdff;border-radius:12px;padding:11px 12px;font:inherit;color:#152641;box-shadow:inset 0 2px 4px rgba(26,77,123,.05);outline:none}
-textarea{resize:vertical;min-height:90px}input:focus,select:focus,textarea:focus{border-color:#66b5ff;box-shadow:0 0 0 3px rgba(32,165,255,.12)}.unit{font-size:12px;color:#667890;white-space:nowrap}.hint{font-size:11px;color:#75859a}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;background:#edf5ff;border:1px solid #dceafb;padding:4px;border-radius:15px;margin-bottom:16px}.tab{border:0;background:transparent;padding:9px 12px;border-radius:11px;font-weight:800;color:#334866;cursor:pointer}.tab.active{background:linear-gradient(145deg,#2aa8ff,#0668df);color:#fff;box-shadow:0 9px 17px rgba(8,111,240,.26)}
-.actions{display:grid;grid-template-columns:1.5fr .8fr;gap:10px;margin-top:18px}.btn{border:0;border-radius:14px;padding:13px 14px;font-weight:800;cursor:pointer}.primary{color:#fff;background:linear-gradient(145deg,#25a9ff,#0064dc);box-shadow:0 12px 22px rgba(6,104,221,.28)}.secondary{background:#edf3f9;color:#273a55}.danger{background:#fff1f2;color:#b4232b}
-.error{color:#b4232b;font-size:12px;margin-top:10px;min-height:18px}
-.result-hero{padding:18px;border-radius:19px;background:linear-gradient(135deg,#edfff7,#eef8ff);position:relative;overflow:hidden}.result-hero:after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;right:-30px;top:-45px;background:radial-gradient(circle,#55d7ff,#0b79ef);opacity:.17}.result-hero small{color:#60728b}.big{font-size:36px;font-weight:900;letter-spacing:-1.8px;line-height:1.1;margin-top:3px;word-break:break-word}.accent{color:var(--green);font-weight:850;font-size:18px}
-.stats{margin-top:13px;border-radius:16px;background:#fff;border:1px solid #e3edf7;overflow:hidden}.stat{display:flex;justify-content:space-between;gap:12px;padding:10px 12px;border-bottom:1px solid #e8f0f7;font-size:13px}.stat:last-child{border-bottom:0}.stat b{text-align:right}
-.answerbox{margin:14px 0 0;padding:15px 16px;border-radius:16px;background:#0e2544;color:#fff;box-shadow:0 15px 28px rgba(12,37,68,.18);font-size:13px}.answerbox strong{color:#73d3ff}
-.progress{height:14px;border-radius:999px;background:#e7f1fb;overflow:hidden;margin-top:14px}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--green));border-radius:inherit}
-.table-wrap{overflow:auto;border-radius:16px;border:1px solid #dce7f2;margin-top:14px;max-height:330px}table{border-collapse:collapse;width:100%;min-width:560px;background:#fff}th,td{padding:9px 11px;text-align:right;border-bottom:1px solid #e7eef5;font-size:12px}th:first-child,td:first-child{text-align:left}th{background:#f1f7fd;position:sticky;top:0;z-index:1}
-.row4{display:grid;grid-template-columns:1.25fr .8fr .75fr .75fr auto;gap:8px;align-items:end;margin-bottom:9px}.remove{width:40px;height:40px;border:0;border-radius:10px;background:#fff0f0;color:#b4232b;font-weight:900;cursor:pointer}
-.note{background:#fff9e9;border:1px solid #f5df9c;padding:15px 17px;border-radius:14px;color:#5c4d22}.good{background:#edfff7;border:1px solid #bdecd5;padding:13px 15px;border-radius:14px;color:#176342}
-.content{padding:38px 0 70px}.content-grid{display:grid;grid-template-columns:1.fr;gap:22px}.article,.toc{background:rgba(255,255,255,.9);border:1px solid #dfeaf6;border-radius:25px;box-shadow:var(--shadow)}.article{padding:30px}.toc{padding:24px;align-self:start;position:sticky;top:94px}
-.article h2{font-size:28px;line-height:1.2;margin:38px 0 12px;letter-spacing:-.8px}.article h2:first-child{margin-top:0}.article h3{font-size:20px;margin:24px 0 8px}.article p,.article li{color:#42536d}.direct{border-left:5px solid var(--blue);background:#f0f7ff;padding:16px 18px;border-radius:14px;color:#263a56}.formula{font:800 15px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;background:#0d213c;color:#eef8ff;padding:16px;border-radius:15px;overflow:auto;white-space:pre-wrap}.faq{border-top:1px solid #e4edf6;padding:15px 0}.faq summary{font-weight:800;cursor:pointer}.faq p{margin-bottom:0}.toc h3{margin-top:0}.toc a{display:block;padding:7px 0;color:#34506f;font-size:14px}.sources li{margin:8px 0}
-footer{padding:28px 0 42px;color:#63748a;font-size:13px;text-align:center}
-@media(max-width:960px){.navlinks,.search{display:none}.hero-grid,.calc-grid,.content-grid{grid-template-columns:1fr}.hero-art{height:235px}.toc{position:static}}
-@media(max-width:680px){.wrap{width:min(100% - 20px,1180px)}.hero{padding-top:18px}.hero-art{transform:scale(.86);transform-origin:center top;margin-bottom:-28px}.calc-shell{padding:8px;border-radius:23px}.card{padding:16px;border-radius:19px}.form-grid,.actions{grid-template-columns:1fr}.field.full{grid-column:auto}.article{padding:21px}.nav{height:64px}.row4{grid-template-columns:1fr 1fr}.row4 .remove{grid-column:2}}
-/* unique 3D scenes */
-.scene-payoff .stair{right:30px;bottom:35px;width:340px;height:195px}.scene-payoff .stair i{position:absolute;right:0;height:42px;border-radius:12px 0 0 12px;background:linear-gradient(145deg,#cce9ff,#55b2f7);box-shadow:0 12px 20px rgba(30,105,170,.15)}.scene-payoff .stair i:nth-child(1){bottom:0;width:330px}.scene-payoff .stair i:nth-child(2){bottom:48px;width:250px}.scene-payoff .stair i:nth-child(3){bottom:96px;width:170px}.scene-payoff .stair i:nth-child(4){bottom:144px;width:90px}.scene-payoff .arrow{right:260px;top:20px;font-size:74px;color:#16b86b;font-weight:900;transform:rotate(90deg)}
-.scene-consolidate .cards{right:35px;top:42px;width:330px;height:190px}.scene-consolidate .cards i{position:absolute;width:150px;height:95px;border-radius:22px;background:linear-gradient(145deg,#fff,#c8e6fb);border:1px solid #fff}.scene-consolidate .cards i:nth-child(1){left:0;top:0;transform:rotate(-8deg)}.scene-consolidate .cards i:nth-child(2){right:0;top:0;transform:rotate(8deg)}.scene-consolidate .cards i:nth-child(3){left:90px;bottom:0;background:linear-gradient(145deg,#2db3ff,#0766db)}.scene-consolidate .cards:after{content:"1 PAYMENT";position:absolute;left:120px;bottom:34px;color:#fff;font-weight:900;z-index:3}
-.scene-repay .calendar{right:70px;top:35px;width:255px;height:190px;border-radius:28px;background:#fff;border:1px solid #dce8f4;transform:rotate(-4deg)}.scene-repay .calendar:before{content:"PAYOFF";position:absolute;left:25px;right:25px;top:24px;padding:10px;border-radius:14px;background:#0a6ff2;color:#fff;text-align:center;font-weight:900}.scene-repay .calendar:after{content:"↓";position:absolute;inset:70px 30px 20px;display:grid;place-items:center;font-size:70px;color:#16b86b;font-weight:900}
-.scene-student .cap{right:55px;top:48px;width:290px;height:175px;clip-path:polygon(50% 0,100% 34%,77% 50%,77% 80%,23% 80%,23% 50%,0 34%);background:linear-gradient(145deg,#168df4,#0d315f);filter:drop-shadow(18px 25px 20px rgba(15,67,120,.18))}.scene-student .coin{right:35px;bottom:20px;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff9b8,#ffd442 55%,#dda500);border:7px solid #ffe770;display:grid;place-items:center;font-size:27px;font-weight:900;color:#8a6200}
-.scene-college .campus{right:55px;top:80px;width:285px;height:120px;background:linear-gradient(145deg,#fff,#c6e5fa);border-radius:15px;box-shadow:0 25px 35px rgba(25,75,125,.16)}.scene-college .campus:before{content:"";position:absolute;left:20px;right:20px;top:-65px;border-left:122px solid transparent;border-right:122px solid transparent;border-bottom:65px solid #0a6ff2}.scene-college .campus:after{content:"$";position:absolute;inset:22px;display:grid;place-items:center;font-size:55px;font-weight:900;color:#0a6ff2}
-.scene-simple .line{right:40px;bottom:42px;width:330px;height:170px;border-left:6px solid #284b70;border-bottom:6px solid #284b70}.scene-simple .line:after{content:"";position:absolute;left:20px;bottom:15px;width:290px;height:12px;background:linear-gradient(90deg,#20a5ff,#16b86b);transform:rotate(-24deg);transform-origin:left;border-radius:8px}.scene-simple .tag{right:220px;top:35px;padding:14px 18px;border-radius:18px;background:#fff;color:#0a6ff2;font-size:22px;font-weight:900}
-.scene-cd .disc{right:80px;top:38px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,#0e2544 0 14%,#eaf6ff 15% 26%,#64c1ff 27% 57%,#0a6ff2 58% 70%,#d8efff 71%);box-shadow:0 28px 50px rgba(10,111,242,.23)}.scene-cd .disc:after{content:"APY";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:25px;font-weight:900;transform:translateY(53px)}
-.scene-bond .ticket{right:70px;top:52px;width:260px;height:160px;border-radius:24px;background:linear-gradient(145deg,#fff,#d8ebfa);transform:rotate(-6deg);border:1px solid #d7e7f3}.scene-bond .ticket:before{content:"BOND\A $1,000";white-space:pre;position:absolute;left:28px;top:30px;color:#0a6ff2;font-size:25px;font-weight:900;line-height:1.5}.scene-bond .coupon{right:24px;top:138px;width:145px;height:70px;border-radius:18px;background:linear-gradient(145deg,#1fb0ff,#0a63d6);transform:rotate(9deg);display:grid;place-items:center;color:#fff;font-weight:900}
-.scene-fund .pie{right:80px;top:35px;width:230px;height:230px;border-radius:50%;background:conic-gradient(#0a6ff2 0 42%,#16b86b 42% 70%,#f6b51f 70% 87%,#7cc9ff 87%);box-shadow:0 28px 48px rgba(26,76,123,.18);border:10px solid #fff}.scene-fund .pie:after{content:"FUND";position:absolute;inset:58px;border-radius:50%;background:#f8fcff;display:grid;place-items:center;color:#15395b;font-weight:900;font-size:21px}
-.scene-roth .vault{right:75px;top:48px;width:235px;height:190px;border-radius:32px;background:linear-gradient(145deg,#e8f6ff,#9fcff3);border:7px solid #fff;transform:rotateY(-12deg)}.scene-roth .vault:before{content:"";position:absolute;width:100px;height:100px;border-radius:50%;left:60px;top:38px;background:radial-gradient(circle,#fff 0 14%,#1c8dea 15% 22%,#dceaf6 23% 46%,#0d315f 47%)}.scene-roth .badge{right:22px;bottom:20px;padding:14px 20px;border-radius:20px;background:#16b86b;color:#fff;font-size:22px;font-weight:900;transform:rotate(6deg)}
-</style><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Mutual Fund Calculator", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "description": "Project mutual fund growth using starting investment, monthly contributions, assumed return, expense ratio, sales load, and investment horizon.", "url": "/mutual-fund-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Investing & Interest", "item": "/finance/investing-interest/"}, {"@type": "ListItem", "position": 4, "name": "Mutual Fund Calculator", "item": "/mutual-fund-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is an expense ratio?", "acceptedAnswer": {"@type": "Answer", "text": "Investor.gov defines it as the percentage of a fund’s average net assets used each year to pay operating expenses."}}, {"@type": "Question", "name": "Why do fees matter?", "acceptedAnswer": {"@type": "Answer", "text": "SEC investor guidance notes that even small fee differences can create meaningful return differences over time."}}, {"@type": "Question", "name": "Are mutual fund returns guaranteed?", "acceptedAnswer": {"@type": "Answer", "text": "No. Mutual funds carry investment risk and their returns can be positive or negative."}}]}]}</script><link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head><body data-cp-category="finance" data-cp-page-type="Calculator">
-<header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../finance/index.html">Finance</a></li><li><a aria-current="page" href="index.html">Mutual Fund Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main"><h1 class="page-title">Mutual Fund Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="calc-shell" id="calculator"><div class="calc-grid"><div class="card"><h2>Mutual fund projection</h2><div class="form-grid"><div class="field"><label for="start">Initial investment ($)</label><input id="start" min="0" type="number" value="10000"/></div><div class="field"><label for="monthly">Monthly contribution ($)</label><input id="monthly" min="0" type="number" value="500"/></div><div class="field"><label for="years">Years</label><input id="years" min="0" type="number" value="15"/></div><div class="field"><label for="returnRate">Assumed gross annual return (%)</label><input id="returnRate" step=".01" type="number" value="7"/></div><div class="field"><label for="expense">Annual expense ratio (%)</label><input id="expense" min="0" step=".01" type="number" value=".5"/></div><div class="field"><label for="load">Front-end sales load (%)</label><input id="load" max="100" min="0" step=".01" type="number" value="0"/></div></div>
-<div class="actions"><button class="btn primary" id="calculate">Project Fund Growth →</button><button class="btn secondary" id="clear">Reset</button></div><div class="error" id="error"></div></div><div class="card"><div class="result-hero"><small>Projected ending value</small><div class="big" id="ending">—</div><div class="accent" id="netRate">—</div></div><div class="stats"><div class="stat"><span>Total cash contributed</span><b id="contrib">—</b></div><div class="stat"><span>Initial sales-load cost</span><b id="loadCost">—</b></div><div class="stat"><span>Projected growth after modeled expenses</span><b id="growth">—</b></div><div class="stat"><span>Approx. value with zero expense ratio*</span><b id="noFee">—</b></div></div><div class="answerbox"><strong>*Illustration:</strong> actual fund returns and expense effects vary; use the prospectus fee table for a real fund’s costs.</div></div></div></section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<section class="content"><div class="wrap content-grid"><article class="article">
-<section id="what"><h2>What Is a Mutual Fund Calculator?</h2><p class="direct"><strong>Answer:</strong> A mutual fund calculator projects investment growth from an initial amount and recurring contributions while illustrating the effect of a user-entered expense ratio and sales load.</p></section>
-<section id="how"><h2>How to Use the Mutual Fund Calculator</h2><ol><li>Enter the starting investment and monthly contribution.</li><li>Enter the investment horizon and an assumed gross return.</li><li>Add the fund’s expense ratio and any front-end sales load.</li><li>Review the modeled ending value and fee comparison.</li></ol></section>
-<section id="formula"><h2>Mutual Fund Projection Method</h2><p>The calculator deducts the entered front-end load from the initial investment, approximates annual operating expenses by subtracting the expense ratio from the assumed annual return, and compounds monthly with contributions.</p></section>
-<section id="example"><h2>Calculation Example</h2><p>A fund with a 7% gross return assumption and a 0.50% expense ratio is modeled here with an approximate 6.50% annual net return before other costs and taxes.</p></section>
-<section id="limits"><h2>Assumptions and Limitations</h2><p>Subtracting the expense ratio from return is a simplified illustration, not a forecast of actual NAV accounting. Mutual funds can have transaction fees, loads, taxes, varying returns, distributions, and other costs.</p></section>
-<section id="faq"><h2>Mutual Fund Calculator FAQs</h2><details class="faq"><summary>What is an expense ratio?</summary><p>Investor.gov defines it as the percentage of a fund’s average net assets used each year to pay operating expenses.</p></details><details class="faq"><summary>Why do fees matter?</summary><p>SEC investor guidance notes that even small fee differences can create meaningful return differences over time.</p></details><details class="faq"><summary>Are mutual fund returns guaranteed?</summary><p>No. Mutual funds carry investment risk and their returns can be positive or negative.</p></details></section>
-<section id="sources"><h2>Sources and Methodology</h2><p>The calculator logic and supporting explanations were cross-checked against the following sources.</p><ul class="sources"><li><a href="https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-funds-etfs/mutual-funds" rel="noopener" target="_blank">Investor.gov — Mutual Funds</a></li><li><a href="https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/mutual-fund-and-etf-fees-and-expenses-investor-bulletin" rel="noopener" target="_blank">Investor.gov — Mutual Fund and ETF Fees and Expenses</a></li><li><a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/expense-ratio" rel="noopener" target="_blank">Investor.gov — Expense Ratio</a></li></ul><p style="font-size:13px;color:#687990"><strong>Important:</strong> Results are estimates for education and planning. Verify account, lender, tax, school, and investment terms before making financial decisions.</p></section>
-</article></div></section>
+</script>
 
-<script class="cp-calculator-data" type="application/json">{"index":"75","Batch":"8","Calculator / Page":"Mutual Fund Calculator","Slug":"mutual-fund-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Project mutual fund growth using starting investment, monthly contributions, assumed return, expense ratio, sales load, and investment horizon.","Formula / Algorithm Used in Tool":"Mutual Fund Projection Method: The calculator deducts the entered front-end load from the initial investment, approximates annual operating expenses by subtracting the expense ratio from the assumed annual return, and compounds monthly with contributions.","Required User Inputs":"Initial investment ($); Monthly contribution ($); Years; Assumed gross annual return (%); Annual expense ratio (%); Front-end sales load (%)","Primary Outputs":"Projected ending value; Total cash contributed; Initial sales-load cost; Projected growth after modeled expenses; Approx. value with zero expense ratio*","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Initial investment ($), Monthly contribution ($), Years, Assumed gross annual return (%), Annual expense ratio (%), Front-end sales load (%). Explain outputs: Projected ending value, Total cash contributed, Initial sales-load cost, Projected growth after modeled expenses, Approx. value with zero expense ratio*. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"Subtracting the expense ratio from return is a simplified illustration, not a forecast of actual NAV accounting. Mutual funds can have transaction fees, loads, taxes, varying returns, distributions, and other costs.","Current Source URLs in Page":"https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-funds-etfs/mutual-funds | https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/mutual-fund-and-etf-fees-and-expenses-investor-bulletin | https://www.investor.gov/introduction-investing/investing-basics/glossary/expense-ratio","Implementation Path":"/mutual-fund-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Finance</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../investment-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Investment Calculator</strong><small>Project an investment balance from a starting amount, monthly contributions, time h…</small></span></a><a class="cp-related-link" href="../roth-ira-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Roth IRA Calculator</strong><small>Estimate 2026 Roth IRA contribution eligibility and project account growth using ag…</small></span></a><a class="cp-related-link" href="../retirement-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Retirement Calculator</strong><small>Project retirement savings from current balance, monthly contributions, time to ret…</small></span></a><a class="cp-related-link" href="../401k-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>401(k) Calculator</strong><small>Project a 401(k) balance using salary, contribution percentage, employer match, sal…</small></span></a><a class="cp-related-link" href="../annuity-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Annuity Calculator</strong><small>Estimate the accumulation value of an annuity-style investment using starting princ…</small></span></a><a class="cp-related-link" href="../rent-vs-buy-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Rent vs Buy Calculator</strong><small>Compare renting versus buying using mortgage amortization, home appreciation, rent…</small></span></a><a class="cp-related-link" href="../interest-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Interest Calculator</strong><small>Calculate compound interest with an initial balance, monthly contributions, annual…</small></span></a><a class="cp-related-link" href="../interest-rate-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Interest Rate Calculator</strong><small>Estimate the nominal annual interest rate implied by a loan amount, fixed monthly p…</small></span></a></div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script>
-const $=id=>document.getElementById(id);
-const money=n=>Number.isFinite(n)?new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(n):'—';
-const fmt=(n,d=2)=>Number.isFinite(n)?Number(n).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
-const val=id=>parseFloat($(id).value);
-function setErr(m=''){if($('error'))$('error').textContent=m}
-function payment(P,annual,n){const r=annual/12;return r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1)}
 
-function grow(start,monthly,annual,years){let bal=start,r=annual/12,n=Math.round(years*12);for(let i=0;i<n;i++){bal*=1+r;bal+=monthly}return bal}
-function calculate(){try{const start=val('start'),monthly=val('monthly'),yrs=val('years'),gross=val('returnRate')/100,expense=val('expense')/100,load=val('load')/100;if(!(start>=0&&monthly>=0&&yrs>=0&&gross>-1&&expense>=0&&load>=0&&load<=1))throw Error('Check investment, return, fees, and time.');const investedStart=start*(1-load),loadCost=start*load,net=gross-expense,end=grow(investedStart,monthly,net,yrs),nofee=grow(investedStart,monthly,gross,yrs),cash=start+monthly*Math.round(yrs*12),growth=end-(cash-loadCost);$('ending').textContent=money(end);$('netRate').textContent=`Modeled net annual return ≈ ${fmt(net*100,3)}%`;$('contrib').textContent=money(cash);$('loadCost').textContent=money(loadCost);$('growth').textContent=money(growth);$('noFee').textContent=money(nofee);setErr('')}catch(e){setErr(e.message)}}$('calculate').onclick=calculate;$('clear').onclick=()=>location.reload();calculate();
-</script><script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+  <link href="../assets/css/global.css" rel="stylesheet" />
+  <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+  <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="finance" data-cp-page-type="Calculator">
+  <header class="cp-site-header" data-cp-header="">
+    <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+          class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+      <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+          href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+          href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+          href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+          href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+          href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+          data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+          class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+      <div class="cp-header-actions">
+        <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search">
+          <input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+            placeholder="Search calculators…" type="search" />
+          <div class="cp-search-results" hidden="" role="listbox"></div>
+        </form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a>
+      </div>
+    </div>
+  </header>
+  <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+    <ol>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../finance/index.html">Finance</a></li>
+      <li><a aria-current="page" href="index.html">Mutual Fund Calculator</a></li>
+    </ol>
+  </nav>
+  <div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a
+      href="../calculators/index.html">All calculators</a></div>
+  <div class="cp-page-layout">
+    <main id="main">
+      <h1 class="page-title">Mutual Fund Calculator</h1>
+      <div class="cp-ad-slot cp-ad-wide">
+        <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+      </div>
+      <section class="calc-shell" id="calculator">
+        <div class="calc-grid">
+          <div class="card">
+            <h2>Mutual fund projection</h2>
+            <div class="form-grid">
+              <div class="field"><label for="start">Initial investment ($)</label><input id="start" min="0"
+                  type="number" value="10000" /></div>
+              <div class="field"><label for="monthly">Monthly contribution ($)</label><input id="monthly" min="0"
+                  type="number" value="500" /></div>
+              <div class="field"><label for="years">Years</label><input id="years" min="0" type="number" value="15" />
+              </div>
+              <div class="field"><label for="returnRate">Assumed gross annual return (%)</label><input id="returnRate"
+                  step=".01" type="number" value="7" /></div>
+              <div class="field"><label for="expense">Annual expense ratio (%)</label><input id="expense" min="0"
+                  step=".01" type="number" value=".5" /></div>
+              <div class="field"><label for="load">Front-end sales load (%)</label><input id="load" max="100" min="0"
+                  step=".01" type="number" value="0" /></div>
+            </div>
+            <div class="actions"><button class="btn primary" id="calculate">Project Fund Growth →</button><button
+                class="btn secondary" id="clear">Reset</button></div>
+            <div class="error" id="error"></div>
+          </div>
+          <div class="card">
+            <div class="result-hero"><small>Projected ending value</small>
+              <div class="big" id="ending">—</div>
+              <div class="accent" id="netRate">—</div>
+            </div>
+            <div class="stats">
+              <div class="stat"><span>Total cash contributed</span><b id="contrib">—</b></div>
+              <div class="stat"><span>Initial sales-load cost</span><b id="loadCost">—</b></div>
+              <div class="stat"><span>Projected growth after modeled expenses</span><b id="growth">—</b></div>
+              <div class="stat"><span>Approx. value with zero expense ratio*</span><b id="noFee">—</b></div>
+            </div>
+            <div class="answerbox"><strong>*Illustration:</strong> actual fund returns and expense effects vary; use the
+              prospectus fee table for a real fund’s costs.</div>
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+        <div class="cp-visual-top">
+          <div><span class="cp-visual-kicker">Visual breakdown</span>
+            <h2 id="cp-visual-title">Calculation Graph</h2>
+            <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+          </div><span class="cp-chart-badge">Live view</span>
+        </div>
+        <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+        <div aria-label="Calculation method flow" class="cp-flow">
+          <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+            class="cp-flow-arrow">→</span>
+          <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+            class="cp-flow-arrow">→</span>
+          <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+        </div>
+      </section>
+      <div class="cp-ad-slot cp-ad-wide">
+        <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+      </div>
+      <section class="content">
+        <div class="wrap content-grid">
+           
+
+
+<article class="article">
+<p>The Mutual Fund Calculator projects how an investment may grow using your initial investment, monthly contributions, investment period, assumed annual return, expense ratio, and front-end sales load. It estimates the projected ending value and shows how modeled fees can affect long-term growth.</p>
+
+  <section id="what">
+    <h2>What Is the Mutual Fund Calculator?</h2>
+
+    <p class="direct">A Mutual Fund Calculator is a planning tool for estimating the future value of money invested in a mutual fund. It can help you compare an assumed return with the effect of an annual expense ratio and an upfront sales load.</p>
+
+    <p>A mutual fund pools money from multiple investors into a professionally managed portfolio. Mutual funds may generate gains or losses, and their fees can reduce investor returns over time.</p>
+
+    <p>This calculator is useful for testing investment scenarios before comparing them with the fees, risks, and terms disclosed in a specific fund's prospectus.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Mutual Fund Calculator</h2>
+
+    <ol>
+      <li><strong>Initial investment ($):</strong> Enter the amount you plan to invest at the beginning.</li>
+      <li><strong>Monthly contribution ($):</strong> Enter the amount you plan to add each month.</li>
+      <li><strong>Years:</strong> Enter the length of the projection.</li>
+      <li><strong>Assumed gross annual return (%):</strong> Enter the annual return assumption before the calculator's modeled expense-ratio adjustment.</li>
+      <li><strong>Annual expense ratio (%):</strong> Enter the fund's annual operating-expense percentage. Investor.gov defines the expense ratio as the percentage of average net assets used each year to pay fund operating expenses.</li>
+      <li><strong>Front-end sales load (%):</strong> Enter the upfront sales-load percentage. A front-end load reduces the amount of the purchase available to buy fund shares.</li>
+    </ol>
+
+    <p>The calculator then projects the ending value and supporting figures using the entered assumptions.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Calculation Model</h3>
+
+    <p>The calculator follows three main steps: it deducts the entered front-end load from the initial investment, approximates annual operating expenses by subtracting the expense ratio from the assumed gross annual return, and then compounds the investment monthly while incorporating monthly contributions.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>P</strong></td>
+          <td>Initial investment</td>
+          <td>Dollars</td>
+        </tr>
+        <tr>
+          <td><strong>C</strong></td>
+          <td>Monthly contribution</td>
+          <td>Dollars per month</td>
+        </tr>
+        <tr>
+          <td><strong>Y</strong></td>
+          <td>Investment period</td>
+          <td>Years</td>
+        </tr>
+        <tr>
+          <td><strong>R</strong></td>
+          <td>Assumed gross annual return</td>
+          <td>Decimal annual rate</td>
+        </tr>
+        <tr>
+          <td><strong>E</strong></td>
+          <td>Annual expense ratio</td>
+          <td>Decimal annual rate</td>
+        </tr>
+        <tr>
+          <td><strong>L</strong></td>
+          <td>Front-end sales load</td>
+          <td>Decimal</td>
+        </tr>
+        <tr>
+          <td><strong>N</strong></td>
+          <td>Number of monthly periods</td>
+          <td>Months</td>
+        </tr>
+        <tr>
+          <td><strong>i</strong></td>
+          <td>Modeled monthly net rate</td>
+          <td>Decimal monthly rate</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Percentages are converted to decimals before the calculations are performed.</p>
+
+    <h3>Initial Sales-Load Cost</h3>
+
+    <p>The modeled upfront sales-load cost is:</p>
+
+    <div class="formula"><strong>Sales-load cost = P × L</strong></div>
+
+    <p>The amount remaining from the initial investment is:</p>
+
+    <div class="formula"><strong>Starting invested amount = P × (1 − L)</strong></div>
+
+    <p>This treatment is consistent with the way a front-end sales load reduces the amount available for investment.</p>
+
+    <h3>Modeled Return After Expense Ratio</h3>
+
+    <p>The calculator uses a simplified annual net-rate approximation:</p>
+
+    <div class="formula"><strong>Modeled annual rate = R − E</strong></div>
+
+    <p>The corresponding monthly rate is:</p>
+
+    <div class="formula"><strong>i = (R − E) ÷ 12</strong></div>
+
+    <p>This is a simplified projection method. A real mutual fund's expense ratio is an operating expense reflected in fund assets and performance; actual NAV accounting is more detailed than simply subtracting one percentage from another.</p>
+
+    <h3>Number of Periods</h3>
+
+    <p>For a projection lasting <strong>Y</strong> years:</p>
+
+    <div class="formula"><strong>N = 12 × Y</strong></div>
+
+    <p>The calculator applies monthly compounding across these periods while including the entered monthly contributions.</p>
+
+    <p>The available calculation method does not separately specify whether a monthly contribution is applied at the beginning or end of each monthly period. Therefore, this explanation does not introduce an unsupported annuity-timing assumption.</p>
+
+    <h3>Projection With No Monthly Contributions</h3>
+
+    <p>When the monthly contribution is zero, the supported calculation reduces to:</p>
+
+    <div class="formula"><strong>FV = P(1 − L) × [1 + (R − E) / 12]^(12Y)</strong></div>
+
+    <p>where <strong>FV</strong> is the projected ending value.</p>
+
+    <h3>Approximate Zero-Expense-Ratio Comparison</h3>
+
+    <p>The calculator also provides an approximate comparison value with a zero expense ratio. Under the same projection assumptions, the entered expense ratio is removed from the modeled rate so the user can see the effect of the expense-ratio assumption.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>To make the arithmetic fully reproducible without assuming beginning- or end-of-month contribution timing, this example uses a monthly contribution of $0.</p>
+
+    <h3>Inputs</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Input</th>
+          <th>Example Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Initial investment</td>
+          <td>$10,000</td>
+        </tr>
+        <tr>
+          <td>Monthly contribution</td>
+          <td>$0</td>
+        </tr>
+        <tr>
+          <td>Investment period</td>
+          <td>10 years</td>
+        </tr>
+        <tr>
+          <td>Assumed gross annual return</td>
+          <td>8.00%</td>
+        </tr>
+        <tr>
+          <td>Annual expense ratio</td>
+          <td>0.50%</td>
+        </tr>
+        <tr>
+          <td>Front-end sales load</td>
+          <td>5.00%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Step 1: Calculate the Front-End Sales Load</h3>
+
+    <div class="formula"><strong>$10,000 × 5% = $500</strong></div>
+
+    <p>The initial sales-load cost is <strong>$500</strong>.</p>
+
+    <p>Amount remaining for the projection:</p>
+
+    <div class="formula"><strong>$10,000 − $500 = $9,500</strong></div>
+
+    <h3>Step 2: Calculate the Modeled Rate</h3>
+
+    <p>Gross annual return:</p>
+
+    <div class="formula"><strong>8.00%</strong></div>
+
+    <p>Less annual expense ratio:</p>
+
+    <div class="formula"><strong>8.00% − 0.50% = 7.50%</strong></div>
+
+    <p>Monthly modeled rate:</p>
+
+    <div class="formula"><strong>7.50% ÷ 12 = 0.625%</strong></div>
+
+    <p>As a decimal:</p>
+
+    <div class="formula"><strong>i = 0.00625</strong></div>
+
+    <h3>Step 3: Calculate the Number of Monthly Periods</h3>
+
+    <div class="formula"><strong>10 × 12 = 120 months</strong></div>
+
+    <h3>Step 4: Calculate the Projected Ending Value</h3>
+
+    <div class="formula"><strong>FV = $9,500 × (1.00625)^120</strong></div>
+
+    <div class="formula"><strong>FV ≈ $20,064.61</strong></div>
+
+    <h3>Final Result</h3>
+
+    <p>Under these assumptions, the projected ending value is approximately <strong>$20,064.61</strong>.</p>
+
+    <p>For comparison, setting the modeled expense ratio to 0% while keeping the 8% gross return and 5% initial sales load gives:</p>
+
+    <div class="formula"><strong>$9,500 × (1 + 0.08/12)^120 ≈ $21,086.58</strong></div>
+
+    <p>This comparison illustrates how the calculator's expense-ratio assumption affects the projection. It is not a prediction of actual mutual fund performance.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Projected Ending Value</h3>
+
+    <p>This is the estimated investment value at the end of the selected period after applying the calculator's front-end-load treatment, modeled expense-ratio adjustment, monthly compounding, and contributions.</p>
+
+    <h3>Total Cash Contributed</h3>
+
+    <p>This represents the cash entered into the investment scenario through the initial investment and recurring contributions. It helps separate money supplied by the investor from projected investment growth.</p>
+
+    <h3>Initial Sales-Load Cost</h3>
+
+    <p>This is the dollar amount deducted from the initial investment using the entered front-end sales-load percentage.</p>
+
+    <p>Investor.gov notes that a front-end sales load is deducted when shares are purchased and reduces the amount available for investment.</p>
+
+    <h3>Projected Growth After Modeled Expenses</h3>
+
+    <p>This is the calculator's displayed growth estimate after its modeled fee and return treatment. A separate secondary formula for this output is not stated here because its exact standalone calculation is not independently specified by the calculation method.</p>
+
+    <h3>Approx. Value With Zero Expense Ratio</h3>
+
+    <p>This comparison shows an approximate projection with the annual expense ratio removed while retaining the other projection assumptions. It helps illustrate the potential long-term effect of the expense-ratio assumption.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The calculator assumes the entered gross annual return remains constant throughout the projection and uses monthly compounding. Real mutual fund returns vary over time and can be positive or negative; mutual funds are not guaranteed investments.</p>
+
+    <p>The expense ratio is modeled by subtracting it from the assumed annual return. This is a simplified illustration and should not be interpreted as an exact simulation of mutual-fund NAV accounting.</p>
+
+    <p>The front-end sales load is modeled against the initial investment. Actual funds can have different share classes, breakpoint discounts, transaction charges, redemption fees, account fees, or other expenses. Investor.gov recommends reviewing the fund's prospectus fee table because fees vary between funds.</p>
+
+    <p>The calculator does not attempt to model changing market returns, taxes, distributions, trading costs, changing fee schedules, or every fund-specific charge.</p>
+
+    <p>If the assumed gross return is below the entered expense ratio, the calculator's simplified modeled annual rate becomes negative before the effect of additional contributions.</p>
+
+    <p>No separate intermediate rounding convention or monthly contribution-timing rule is stated in the calculation method, so this page does not introduce one.</p>
+
+    <p>Results are estimates for planning and comparison. They do not guarantee future returns and are not personalized investment, tax, or legal advice.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>How does the Mutual Fund Calculator account for the expense ratio?</summary>
+      <p>It subtracts the entered annual expense ratio from the assumed gross annual return to create a simplified modeled annual rate, then converts that rate to a monthly rate for the projection.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What is a front-end sales load?</summary>
+      <p>A front-end sales load is an upfront charge paid when mutual fund shares are purchased. It reduces the amount of the purchase available for investment.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What is an expense ratio?</summary>
+      <p>The expense ratio measures the percentage of a fund's average net assets used each year for operating expenses such as management and certain distribution or service expenses. It is normally disclosed in the fund's prospectus fee table.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does a lower expense ratio guarantee a better investment?</summary>
+      <p>No. Lower expenses reduce one source of investment cost, but investment performance, risk, portfolio holdings, objectives, taxes, and other factors also matter. Mutual fund values can rise or fall.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does this calculator predict actual mutual fund returns?</summary>
+      <p>No. The calculator uses the constant annual return you enter. Actual market returns fluctuate, so the result should be treated as a projection rather than a forecast or guaranteed outcome.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why is the zero-expense-ratio value useful?</summary>
+      <p>It provides a comparison scenario showing how the projection changes when the modeled annual expense ratio is removed while the other assumptions remain the same.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Where can I find a fund's expense ratio and other fees?</summary>
+      <p>Review the mutual fund's prospectus and its standardized fee table. Investor.gov notes that mutual fund fees and expenses vary by fund and can include both shareholder transaction fees and recurring operating expenses.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-funds-etfs/mutual-funds?utm_source=chatgpt.com" rel="noopener" target="_blank">Investor.gov — Mutual Funds</a><br>
+        Used to verify mutual fund structure, investment risks, NAV expenses, and general fee considerations.
+      </li>
+
+      <li>
+        <a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/expense-ratio?utm_source=chatgpt.com" rel="noopener" target="_blank">Investor.gov — Expense Ratio</a><br>
+        Used to verify the definition and meaning of a mutual fund expense ratio.
+      </li>
+
+      <li>
+        <a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/front-end-load?utm_source=chatgpt.com" rel="noopener" target="_blank">Investor.gov — Front-End Sales Load</a><br>
+        Used to verify how an upfront sales load reduces the amount available for investment.
+      </li>
+
+      <li>
+        <a href="https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/mutual-fund-and-etf-fees-and-expenses-investor-bulletin?utm_source=chatgpt.com" rel="noopener" target="_blank">Investor.gov — Mutual Fund and ETF Fees and Expenses Investor Bulletin</a><br>
+        Used to verify common fund fees, sales-load treatment, fee-table disclosures, and the effect of expenses on returns.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/investment-calculator/">Investment Calculator</a></li>
+      <li><a href="https://example.com/interest-calculator/">Interest Calculator</a></li>
+      <li><a href="https://example.com/compound-interest-calculator/">Compound Interest Calculator</a></li>
+      <li><a href="https://example.com/savings-calculator/">Savings Calculator</a></li>
+      <li><a href="https://example.com/average-return-calculator/">Average Return Calculator</a></li>
+      <li><a href="https://example.com/roi-calculator/">ROI Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+        </div>
+      </section>
+
+      <script class="cp-calculator-data"
+        type="application/json">{"index":"75","Batch":"8","Calculator / Page":"Mutual Fund Calculator","Slug":"mutual-fund-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Project mutual fund growth using starting investment, monthly contributions, assumed return, expense ratio, sales load, and investment horizon.","Formula / Algorithm Used in Tool":"Mutual Fund Projection Method: The calculator deducts the entered front-end load from the initial investment, approximates annual operating expenses by subtracting the expense ratio from the assumed annual return, and compounds monthly with contributions.","Required User Inputs":"Initial investment ($); Monthly contribution ($); Years; Assumed gross annual return (%); Annual expense ratio (%); Front-end sales load (%)","Primary Outputs":"Projected ending value; Total cash contributed; Initial sales-load cost; Projected growth after modeled expenses; Approx. value with zero expense ratio*","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Initial investment ($), Monthly contribution ($), Years, Assumed gross annual return (%), Annual expense ratio (%), Front-end sales load (%). Explain outputs: Projected ending value, Total cash contributed, Initial sales-load cost, Projected growth after modeled expenses, Approx. value with zero expense ratio*. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"Subtracting the expense ratio from return is a simplified illustration, not a forecast of actual NAV accounting. Mutual funds can have transaction fees, loads, taxes, varying returns, distributions, and other costs.","Current Source URLs in Page":"https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-funds-etfs/mutual-funds | https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/mutual-fund-and-etf-fees-and-expenses-investor-bulletin | https://www.investor.gov/introduction-investing/investing-basics/glossary/expense-ratio","Implementation Path":"/mutual-fund-calculator/index.html"}</script>
+      <div class="cp-ad-slot cp-ad-wide">
+        <div>Advertisement<small>Responsive lower-page placement</small></div>
+      </div>
+    </main>
+    <aside aria-label="Related calculators" class="cp-related-sidebar">
+      <div class="cp-ad-slot cp-ad-sidebar">
+        <div>Advertisement<small>300 × 250 / responsive</small></div>
+      </div><span class="cp-side-kicker">Related tools</span>
+      <h2>Finance</h2>
+      <p>More tools from the same Calculator Data category.</p>
+      <div class="cp-related-list"><a class="cp-related-link" href="../investment-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Investment Calculator</strong><small>Project an investment
+              balance from a starting amount, monthly contributions, time h…</small></span></a><a
+          class="cp-related-link" href="../roth-ira-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Roth IRA Calculator</strong><small>Estimate 2026 Roth IRA
+              contribution eligibility and project account growth using ag…</small></span></a><a class="cp-related-link"
+          href="../retirement-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Retirement
+              Calculator</strong><small>Project retirement savings from current balance, monthly contributions, time to
+              ret…</small></span></a><a class="cp-related-link" href="../401k-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>401(k) Calculator</strong><small>Project a 401(k) balance using
+              salary, contribution percentage, employer match, sal…</small></span></a><a class="cp-related-link"
+          href="../annuity-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Annuity
+              Calculator</strong><small>Estimate the accumulation value of an annuity-style investment using starting
+              princ…</small></span></a><a class="cp-related-link" href="../rent-vs-buy-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Rent vs Buy Calculator</strong><small>Compare renting versus
+              buying using mortgage amortization, home appreciation, rent…</small></span></a><a class="cp-related-link"
+          href="../interest-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Interest
+              Calculator</strong><small>Calculate compound interest with an initial balance, monthly contributions,
+              annual…</small></span></a><a class="cp-related-link" href="../interest-rate-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Interest Rate Calculator</strong><small>Estimate the nominal
+              annual interest rate implied by a loan amount, fixed monthly p…</small></span></a></div><a
+        class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a>
+    </aside>
+  </div>
+  <footer>
+    <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+  </footer>
+  <script>
+    const $ = id => document.getElementById(id);
+    const money = n => Number.isFinite(n) ? new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 }).format(n) : '—';
+    const fmt = (n, d = 2) => Number.isFinite(n) ? Number(n).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }) : '—';
+    const val = id => parseFloat($(id).value);
+    function setErr(m = '') { if ($('error')) $('error').textContent = m }
+    function payment(P, annual, n) { const r = annual / 12; return r === 0 ? P / n : P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1) }
+
+    function grow(start, monthly, annual, years) { let bal = start, r = annual / 12, n = Math.round(years * 12); for (let i = 0; i < n; i++) { bal *= 1 + r; bal += monthly } return bal }
+    function calculate() { try { const start = val('start'), monthly = val('monthly'), yrs = val('years'), gross = val('returnRate') / 100, expense = val('expense') / 100, load = val('load') / 100; if (!(start >= 0 && monthly >= 0 && yrs >= 0 && gross > -1 && expense >= 0 && load >= 0 && load <= 1)) throw Error('Check investment, return, fees, and time.'); const investedStart = start * (1 - load), loadCost = start * load, net = gross - expense, end = grow(investedStart, monthly, net, yrs), nofee = grow(investedStart, monthly, gross, yrs), cash = start + monthly * Math.round(yrs * 12), growth = end - (cash - loadCost); $('ending').textContent = money(end); $('netRate').textContent = `Modeled net annual return ≈ ${fmt(net * 100, 3)}%`; $('contrib').textContent = money(cash); $('loadCost').textContent = money(loadCost); $('growth').textContent = money(growth); $('noFee').textContent = money(nofee); setErr('') } catch (e) { setErr(e.message) } } $('calculate').onclick = calculate; $('clear').onclick = () => location.reload(); calculate();
+  </script>
+  <script defer="" src="../assets/js/global.js"></script>
+  <script defer="" src="../assets/js/taxonomy.js"></script>
+  <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

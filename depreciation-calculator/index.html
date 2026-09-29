@@ -1,21 +1,1239 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
-<title>Depreciation Calculator | CalcPro</title><meta content="Build straight-line, declining-balance, or sum-of-years-digits depreciation schedules with book value and accumulated depreciation." name="description"/><meta content="index,follow" name="robots"/><link href="../depreciation-calculator/" rel="canonical"/><meta content="Depreciation Calculator | CalcPro" property="og:title"/><meta content="Build straight-line, declining-balance, or sum-of-years-digits depreciation schedules with book value and accumulated depreciation." property="og:description"/><meta content="website" property="og:type"/><meta content="/depreciation-calculator/" property="og:url"/><meta content="#1477ff" name="theme-color"/><style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.6}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}.crumb{font-size:.9rem;color:var(--muted);padding:18px 0}.hero{position:relative;overflow:hidden;border-radius:34px;background:var(--hero);box-shadow:0 30px 80px rgba(0,0,0,.18);padding:clamp(28px,5vw,64px);min-height:340px;display:grid;grid-template-columns:1.fr;gap:34px;align-items:center}.hero h1{font-size:clamp(2.2rem,5vw,4.6rem);line-height:1.02;margin:.15em 0 .3em;letter-spacing:-.04em}.hero p{font-size:1.08rem;max-width:720px;color:var(--hero-muted)}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.08);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}.visual{min-height:240px;position:relative;display:grid;place-items:center}.orb,.tile,.coin,.ring,.cube{position:absolute;filter:drop-shadow(0 18px 22px rgba(0,0,0,.24))}.orb{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff9 0 8%,transparent 9%),linear-gradient(145deg,var(--accent2),var(--accent));box-shadow:inset -18px -24px 36px #0003}.ring{width:190px;height:190px;border:28px solid var(--accent);border-radius:50%;transform:rotateX(62deg) rotateZ(-12deg);opacity:.9}.tile{width:190px;height:118px;border-radius:24px;background:linear-gradient(145deg,#ffffff22,#ffffff08);border:1px solid #ffffff35;backdrop-filter:blur(12px);transform:rotate(-8deg) skewY(4deg);display:grid;place-items:center;font-weight:800;font-size:2rem}.coin{width:78px;height:78px;border-radius:50%;background:linear-gradient(145deg,#fff7aa,#e6a800);border:8px solid #ffd14b;display:grid;place-items:center;color:#5d3c00;font-weight:900}.cube{width:94px;height:94px;border-radius:20px;background:linear-gradient(145deg,var(--accent),var(--accent2));transform:rotate(26deg);box-shadow:inset -16px -16px 24px #0002}.main-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(300px,.88fr);gap:28px;margin:34px auto}.panel{background:var(--panel);border:1px solid var(--panel-line);border-radius:28px;box-shadow:0 20px 48px rgba(0,0,0,.1);padding:clamp(20px,3vw,32px)}.panel h2{margin-top:0}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}label{font-weight:700;font-size:.92rem}.hint{font-size:.78rem;color:var(--muted)}input,select,textarea{width:100%;border:1px solid var(--input-line);background:var(--input);color:var(--text);border-radius:14px;padding:12px 13px;font:inherit;outline:none;box-shadow:inset 0 2px 10px rgba(0,0,0,.04)}input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:800;cursor:pointer}.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--button-text);box-shadow:0 12px 25px color-mix(in srgb,var(--accent) 28%,transparent)}.btn.ghost{background:var(--input);color:var(--text);border:1px solid var(--input-line)}.error{display:none;margin-top:12px;padding:11px 13px;border-radius:12px;background:#ffefef;color:#9c1c1c;font-weight:700}.results{position:sticky;top:18px;align-self:start}.result-hero{border-radius:24px;padding:22px;background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 16%,var(--panel)),color-mix(in srgb,var(--accent2) 10%,var(--panel)));border:1px solid color-mix(in srgb,var(--accent) 24%,var(--panel-line));margin-bottom:16px}.result-label{font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800}.result-big{font-size:clamp(2rem,4vw,3.4rem);font-weight:900;letter-spacing:-.04em;margin-top:4px}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{padding:14px;border-radius:16px;background:var(--soft);border:1px solid var(--panel-line)}.stat b{display:block;font-size:1.05rem}.stat span{font-size:.78rem;color:var(--muted)}.bar{height:12px;background:var(--soft);border-radius:999px;overflow:hidden;margin:8px 0}.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:inherit}.table-wrap{overflow:auto;margin-top:16px;border-radius:16px;border:1px solid var(--panel-line)}table{width:100%;border-collapse:collapse;min-width:560px}th,td{padding:10px 12px;border-bottom:1px solid var(--panel-line);text-align:right;font-size:.88rem}th:first-child,td:first-child{text-align:left}th{background:var(--soft);position:sticky;top:0}article.content{margin:40px auto 72px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:32px}.copy{background:var(--panel);border:1px solid var(--panel-line);border-radius:30px;padding:clamp(24px,4vw,46px);box-shadow:0 18px 50px rgba(0,0,0,.07)}.copy h2{font-size:clamp(1.45rem,3vw,2.25rem);margin-top:1.7em;letter-spacing:-.02em}.copy h2:first-child{margin-top:0}.copy h3{margin-top:1.4em}.copy p,.copy li{color:var(--copy)}.copy code{background:var(--soft);padding:2px 7px;border-radius:8px}.toc{position:sticky;top:20px;align-self:start;background:var(--panel);border:1px solid var(--panel-line);border-radius:22px;padding:20px}.toc strong{display:block;margin-bottom:8px}.toc a{display:block;padding:5px 0;color:var(--muted)}.callout{padding:16px 18px;border-left:4px solid var(--accent);background:var(--soft);border-radius:12px;margin:18px 0}.faq details{border-top:1px solid var(--panel-line);padding:14px 0}.faq summary{font-weight:800;cursor:pointer}.sources li{margin:8px 0}footer{padding:30px 0 50px;color:var(--muted);text-align:center}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.tab{padding:9px 12px;border-radius:12px;border:1px solid var(--input-line);background:var(--input);cursor:pointer;font-weight:800}.tab.active{background:var(--accent);color:var(--button-text);border-color:transparent}.hidden{display:none!important}.badge{display:inline-block;padding:4px 9px;border-radius:999px;background:var(--soft);font-size:.76rem;font-weight:800;color:var(--muted)}.switchline{display:flex;gap:10px;align-items:center}.switchline input{width:auto}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.mini-note{font-size:.82rem;color:var(--muted);margin-top:10px}
-@media(max-width:860px){.hero,.main-grid,article.content{grid-template-columns:1fr}.visual{min-height:180px}.results,.toc{position:static}.toc{display:none}}@media(max-width:560px){.wrap{width:min(100% - 20px,1180px)}.hero{border-radius:24px;padding:24px 20px}.panel{border-radius:22px;padding:18px}.form-grid,.stats,.three{grid-template-columns:1fr}.field.full{grid-column:auto}.result-big{font-size:2.25rem}}
+<html lang="en">
 
-:root{--bg:#f0f0ed;--text:#232621;--copy:#50554c;--muted:#777d73;--panel:#fafbf8;--panel-line:#d5dacd;--soft:#ecefe7;--input:#fff;--input-line:#ccd4c4;--accent:#5f7a45;--accent2:#b56e3f;--button-text:#fff;--hero:linear-gradient(135deg,#314332,#5a6847 58%,#9a6842);--hero-muted:#e7eee2;--line:#ffffff25}.hero{border-radius:18px 80px 18px 80px}.visual .tile{width:220px;height:150px;transform:rotate(-7deg);font-size:1.2rem}.visual:after{content:'↘';position:absolute;font-size:8rem;color:#f2d6a6;right:7%;top:0;text-shadow:0 15px 25px #0005}
-</style><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Depreciation Calculator", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "description": "Build straight-line, declining-balance, or sum-of-years-digits depreciation schedules with book value and accumulated depreciation.", "url": "/depreciation-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Business & Economics", "item": "/finance/business-economics/"}, {"@type": "ListItem", "position": 4, "name": "Depreciation Calculator", "item": "/depreciation-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is salvage value?", "acceptedAnswer": {"@type": "Answer", "text": "Salvage value, also called residual or scrap value, is the estimated amount an asset is expected to be worth at the end of its useful life. In a basic depreciation model, cost minus salvage value is the depreciable base."}}, {"@type": "Question", "name": "What factor should I use for double-declining balance?", "acceptedAnswer": {"@type": "Answer", "text": "Use a factor of 2. The annual declining-balance rate is then 2 divided by the useful life in years. This page also prevents book value from falling below the entered salvage value."}}, {"@type": "Question", "name": "Is this the same as MACRS tax depreciation?", "acceptedAnswer": {"@type": "Answer", "text": "No. MACRS uses specific recovery classes, conventions, rates, and switching rules under U.S. tax law. This page provides general accounting methods and should not be used as a substitute for tax-preparation guidance."}}]}]}</script><link href="../assets/css/global.css" rel="stylesheet"/><link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head><body data-cp-category="finance" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../finance/index.html">Finance</a></li><li><a aria-current="page" href="index.html">Depreciation Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a href="../calculators/index.html">All calculators</a></div>
-<div class="cp-page-layout"><main class="wrap" id="main"><h1 class="page-title">Depreciation Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="main-grid"><section class="panel"><h2>Asset Depreciation Schedule</h2><div class="form-grid"><div class="field"><label for="depMethod">Method</label><select id="depMethod" onchange="toggleDepFactor()"><option value="sl">Straight-line</option><option value="db">Declining balance</option><option value="syd">Sum-of-years' digits</option></select></div><div class="field" id="factorField"><label for="depFactor">Declining-balance factor</label><input id="depFactor" min="0.1" step="0.1" type="number" value="2"/><span class="hint">2 = double-declining balance</span></div><div class="field"><label for="assetCost">Asset cost</label><input id="assetCost" min="0" type="number" value="50000"/></div><div class="field"><label for="salvage">Salvage value</label><input id="salvage" min="0" type="number" value="5000"/></div><div class="field full"><label for="life">Useful life (years)</label><input id="life" max="100" min="1" type="number" value="5"/></div></div><div class="error" id="error"></div><div class="actions"><button class="btn primary" onclick="calcDep()">Build Schedule</button><button class="btn ghost" onclick="resetDep()">Reset</button></div></section><aside class="panel results"><div class="result-hero"><div class="result-label">First-year depreciation</div><div class="result-big" id="firstDep">$0.00</div></div><div class="stats"><div class="stat"><span>Depreciable base</span><b id="depBase">$0.00</b></div><div class="stat"><span>Ending book value</span><b id="endingBook">$0.00</b></div></div><div class="table-wrap"><table><thead><tr><th>Year</th><th>Beginning value</th><th>Depreciation</th><th>Accumulated</th><th>Ending value</th></tr></thead><tbody id="depRows"></tbody></table></div></aside></section><article class="content"><div class="copy"><h2 id="how">What Is a Depreciation Calculator?</h2><p>A depreciation calculator spreads an asset’s depreciable cost across its useful life. This page supports straight-line, declining-balance, and sum-of-years’-digits methods and displays annual depreciation, accumulated depreciation, and ending book value.</p><h2 id="formula">Depreciation Formulas</h2><p><strong>Straight-line:</strong> <code>(cost − salvage) ÷ useful life</code>. <strong>Declining balance:</strong> beginning book value multiplied by a rate derived from the chosen factor and useful life, without reducing below salvage. <strong>SYD:</strong> depreciable base multiplied by a declining year fraction.</p><h2 id="example">Example</h2><p>A $50,000 asset with a $5,000 salvage value and five-year useful life has a $45,000 depreciable base. Straight-line depreciation is $9,000 per year.</p><h2>Accounting vs Tax Depreciation</h2><p>Book depreciation methods are not automatically the same as tax depreciation. U.S. tax depreciation can require MACRS classes, conventions, method switching, bonus depreciation, or special elections. This calculator is a general accounting schedule, not a tax return engine.</p><h2 id="limits">Limitations</h2><p>The model assumes full-year depreciation and a fixed salvage value. It does not apply mid-month, mid-quarter, or half-year conventions, MACRS tables, impairment, revaluation, component depreciation, or asset-disposal rules.</p><section class="faq" id="faq"><h2>Frequently Asked Questions</h2><details><summary>What is salvage value?</summary><p>Salvage value, also called residual or scrap value, is the estimated amount an asset is expected to be worth at the end of its useful life. In a basic depreciation model, cost minus salvage value is the depreciable base.</p></details><details><summary>What factor should I use for double-declining balance?</summary><p>Use a factor of 2. The annual declining-balance rate is then 2 divided by the useful life in years. This page also prevents book value from falling below the entered salvage value.</p></details><details><summary>Is this the same as MACRS tax depreciation?</summary><p>No. MACRS uses specific recovery classes, conventions, rates, and switching rules under U.S. tax law. This page provides general accounting methods and should not be used as a substitute for tax-preparation guidance.</p></details></section><section class="sources" id="sources"><h2>Sources and Methodology</h2><p>The calculator logic is implemented locally in your browser. Formulas and terminology were cross-checked against the references below. Estimates can differ from lender, tax-authority, plan-administrator, or contract calculations because real-world rules may add timing, rounding, eligibility, fees, or jurisdiction-specific treatment.</p><ul><li><a href="https://www.irs.gov/publications/p946" rel="noopener" target="_blank">IRS Publication 946 — How To Depreciate Property</a></li><li><a href="https://www.calculator.net/depreciation-calculator.html" rel="noopener" target="_blank">Calculator.net — Depreciation Calculator</a></li></ul></section></div></article>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <!-- Primary Meta Tags -->
+<title>Depreciation Calculator – Straight-Line, DB &amp; SYD</title>
+<meta name="title" content="Depreciation Calculator – Straight-Line, DB &amp; SYD">
+<meta name="description" content="Calculate straight-line, declining-balance, or sum-of-years-digits depreciation and see annual depreciation, accumulated depreciation, and book value.">
 
-<script class="cp-calculator-data" type="application/json">{"index":"84","Batch":"9","Calculator / Page":"Depreciation Calculator","Slug":"depreciation-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Build straight-line, declining-balance, or sum-of-years-digits depreciation schedules with book value and accumulated depreciation.","Formula / Algorithm Used in Tool":"Depreciation Formulas: Straight-line: (cost − salvage) ÷ useful life . Declining balance: beginning book value multiplied by a rate derived from the chosen factor and useful life, without reducing below salvage. SYD: depreciable base multiplied by a declining year fraction.","Required User Inputs":"Method; Declining-balance factor; Asset cost; Salvage value; Useful life (years)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Method, Declining-balance factor, Asset cost, Salvage value, Useful life (years). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"The model assumes full-year depreciation and a fixed salvage value. It does not apply mid-month, mid-quarter, or half-year conventions, MACRS tables, impairment, revaluation, component depreciation, or asset-disposal rules. Frequently Asked Questions What is salvage value? Salvage value, also called residual or scrap value, is the estimated amount an asset is expected to be worth at the end of its useful life. In a basic depreciation model, cost minus salvage value is the depreciable base. What factor should I use for double-declining balance? Use a factor of 2. The annual declining-balance rate is then 2 divided by the useful life in years. This page also prevents book value from falling below the entered salvage value. Is this the same as MACRS tax depreciation? No. MACRS uses specific recovery classes, conventions, rates, and switching rules under U.S. tax law. This page provides general accounting methods and should not be used as a substitute for tax-preparation guidance. Sources and Methodology The calculator logic is implemented locally in your browser. Formulas and terminology were cross-checked against the references below. Estimates can differ from lender, tax-authority, plan-administrator, or contract calculations because real-world rules may add timing, rounding, elig","Current Source URLs in Page":"https://www.irs.gov/publications/p946 | https://www.calculator.net/depreciation-calculator.html","Implementation Path":"/depreciation-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Finance</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../annuity-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Annuity Calculator</strong><small>Estimate the accumulation value of an annuity-style investment using starting princ…</small></span></a><a class="cp-related-link" href="../annuity-payout-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Annuity Payout Calculator</strong><small>Estimate a level annuity payout for a fixed term or estimate how long a starting ba…</small></span></a><a class="cp-related-link" href="../lease-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Lease Calculator</strong><small>Calculate a level monthly lease payment from asset value, residual value, term, and…</small></span></a><a class="cp-related-link" href="../interest-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Interest Calculator</strong><small>Calculate compound interest with an initial balance, monthly contributions, annual…</small></span></a><a class="cp-related-link" href="../investment-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Investment Calculator</strong><small>Project an investment balance from a starting amount, monthly contributions, time h…</small></span></a><a class="cp-related-link" href="../payment-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Payment Calculator</strong><small>Calculate a monthly loan payment for a fixed term or estimate how long a loan takes…</small></span></a><a class="cp-related-link" href="../retirement-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Retirement Calculator</strong><small>Project retirement savings from current balance, monthly contributions, time to ret…</small></span></a><a class="cp-related-link" href="../401k-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>401(k) Calculator</strong><small>Project a 401(k) balance using salary, contribution percentage, employer match, sal…</small></span></a></div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script>
-const $=s=>document.querySelector(s);const n=id=>Number(document.getElementById(id).value);const money=(v,c='$')=>c+Number(v).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});const pct=v=>Number(v).toFixed(2)+'%';
-function err(msg){const e=$('#error');e.textContent=msg;e.style.display='block'}function clearErr(){const e=$('#error');e.style.display='none';e.textContent=''}
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/depreciation-calculator/">
 
-function toggleDepFactor(){document.getElementById('factorField').style.opacity=document.getElementById('depMethod').value==='db'?1:.45}
-function calcDep(){clearErr();const method=document.getElementById('depMethod').value,c=n('assetCost'),s=n('salvage'),life=n('life'),factor=n('depFactor');if(c<=0||s<0||s>=c||!Number.isInteger(life)||life<1||life>100||factor<=0)return err('Asset cost must exceed salvage value. Use a whole-number useful life from 1 to 100 years.');let book=c,acc=0,rows='',first=0;const base=c-s,den=life*(life+1)/2;for(let y=1;y<=life;y++){let d;if(method==='sl')d=base/life;else if(method==='syd')d=base*(life-y+1)/den;else{const rate=factor/life;d=book*rate;d=Math.min(d,book-s)}d=Math.max(0,Math.min(d,book-s));if(y===life)d=book-s;if(y===1)first=d;const begin=book;book-=d;acc+=d;rows+=`<tr><td>${y}</td><td>${money(begin)}</td><td>${money(d)}</td><td>${money(acc)}</td><td>${money(book)}</td></tr>`}document.getElementById('firstDep').textContent=money(first);document.getElementById('depBase').textContent=money(base);document.getElementById('endingBook').textContent=money(book);document.getElementById('depRows').innerHTML=rows}
-function resetDep(){document.getElementById('depMethod').value='sl';document.getElementById('depFactor').value=2;document.getElementById('assetCost').value=50000;document.getElementById('salvage').value=5000;document.getElementById('life').value=5;toggleDepFactor();calcDep()}toggleDepFactor();calcDep();
-</script><script defer="" src="../assets/js/global.js"></script><script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/depreciation-calculator/">
+<meta property="og:title" content="Depreciation Calculator – Straight-Line, DB &amp; SYD">
+<meta property="og:description" content="Calculate straight-line, declining-balance, or sum-of-years-digits depreciation and see annual depreciation, accumulated depreciation, and book value.">
+<meta property="og:site_name" content="Depreciation Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/depreciation-calculator/">
+<meta name="twitter:title" content="Depreciation Calculator – Straight-Line, DB &amp; SYD">
+<meta name="twitter:description" content="Calculate straight-line, declining-balance, or sum-of-years-digits depreciation and see annual depreciation, accumulated depreciation, and book value.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .wrap {
+            width: min(1180px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .crumb {
+            font-size: .9rem;
+            color: var(--muted);
+            padding: 18px 0
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            border-radius: 34px;
+            background: var(--hero);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, .18);
+            padding: clamp(28px, 5vw, 64px);
+            min-height: 340px;
+            display: grid;
+            grid-template-columns: 1.fr;
+            gap: 34px;
+            align-items: center
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 4.6rem);
+            line-height: 1.02;
+            margin: .15em 0 .3em;
+            letter-spacing: -.04em
+        }
+
+        .hero p {
+            font-size: 1.08rem;
+            max-width: 720px;
+            color: var(--hero-muted)
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            padding: 7px 11px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .08);
+            font-size: .78rem;
+            letter-spacing: .08em;
+            text-transform: uppercase
+        }
+
+        .visual {
+            min-height: 240px;
+            position: relative;
+            display: grid;
+            place-items: center
+        }
+
+        .orb,
+        .tile,
+        .coin,
+        .ring,
+        .cube {
+            position: absolute;
+            filter: drop-shadow(0 18px 22px rgba(0, 0, 0, .24))
+        }
+
+        .orb {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 25%, #fff9 0 8%, transparent 9%), linear-gradient(145deg, var(--accent2), var(--accent));
+            box-shadow: inset -18px -24px 36px #0003
+        }
+
+        .ring {
+            width: 190px;
+            height: 190px;
+            border: 28px solid var(--accent);
+            border-radius: 50%;
+            transform: rotateX(62deg) rotateZ(-12deg);
+            opacity: .9
+        }
+
+        .tile {
+            width: 190px;
+            height: 118px;
+            border-radius: 24px;
+            background: linear-gradient(145deg, #ffffff22, #ffffff08);
+            border: 1px solid #ffffff35;
+            backdrop-filter: blur(12px);
+            transform: rotate(-8deg) skewY(4deg);
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            font-size: 2rem
+        }
+
+        .coin {
+            width: 78px;
+            height: 78px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #fff7aa, #e6a800);
+            border: 8px solid #ffd14b;
+            display: grid;
+            place-items: center;
+            color: #5d3c00;
+            font-weight: 900
+        }
+
+        .cube {
+            width: 94px;
+            height: 94px;
+            border-radius: 20px;
+            background: linear-gradient(145deg, var(--accent), var(--accent2));
+            transform: rotate(26deg);
+            box-shadow: inset -16px -16px 24px #0002
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.12fr) minmax(300px, .88fr);
+            gap: 28px;
+            margin: 34px auto
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--panel-line);
+            border-radius: 28px;
+            box-shadow: 0 20px 48px rgba(0, 0, 0, .1);
+            padding: clamp(20px, 3vw, 32px)
+        }
+
+        .panel h2 {
+            margin-top: 0
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px
+        }
+
+        .field.full {
+            grid-column: 1/-1
+        }
+
+        label {
+            font-weight: 700;
+            font-size: .92rem
+        }
+
+        .hint {
+            font-size: .78rem;
+            color: var(--muted)
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--input-line);
+            background: var(--input);
+            color: var(--text);
+            border-radius: 14px;
+            padding: 12px 13px;
+            font: inherit;
+            outline: none;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, .04)
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent)
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 18px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .btn.primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: var(--button-text);
+            box-shadow: 0 12px 25px color-mix(in srgb, var(--accent) 28%, transparent)
+        }
+
+        .btn.ghost {
+            background: var(--input);
+            color: var(--text);
+            border: 1px solid var(--input-line)
+        }
+
+        .error {
+            display: none;
+            margin-top: 12px;
+            padding: 11px 13px;
+            border-radius: 12px;
+            background: #ffefef;
+            color: #9c1c1c;
+            font-weight: 700
+        }
+
+        .results {
+            position: sticky;
+            top: 18px;
+            align-self: start
+        }
+
+        .result-hero {
+            border-radius: 24px;
+            padding: 22px;
+            background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 16%, var(--panel)), color-mix(in srgb, var(--accent2) 10%, var(--panel)));
+            border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--panel-line));
+            margin-bottom: 16px
+        }
+
+        .result-label {
+            font-size: .82rem;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: var(--muted);
+            font-weight: 800
+        }
+
+        .result-big {
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            font-weight: 900;
+            letter-spacing: -.04em;
+            margin-top: 4px
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px
+        }
+
+        .stat {
+            padding: 14px;
+            border-radius: 16px;
+            background: var(--soft);
+            border: 1px solid var(--panel-line)
+        }
+
+        .stat b {
+            display: block;
+            font-size: 1.05rem
+        }
+
+        .stat span {
+            font-size: .78rem;
+            color: var(--muted)
+        }
+
+        .bar {
+            height: 12px;
+            background: var(--soft);
+            border-radius: 999px;
+            overflow: hidden;
+            margin: 8px 0
+        }
+
+        .bar>i {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            border-radius: inherit
+        }
+
+        .table-wrap {
+            overflow: auto;
+            margin-top: 16px;
+            border-radius: 16px;
+            border: 1px solid var(--panel-line)
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 560px
+        }
+
+        th,
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--panel-line);
+            text-align: right;
+            font-size: .88rem
+        }
+
+        th:first-child,
+        td:first-child {
+            text-align: left
+        }
+
+        th {
+            background: var(--soft);
+            position: sticky;
+            top: 0
+        }
+
+        article.content {
+            margin: 40px auto 72px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 300px;
+            gap: 32px
+        }
+
+        .copy {
+            background: var(--panel);
+            border: 1px solid var(--panel-line);
+            border-radius: 30px;
+            padding: clamp(24px, 4vw, 46px);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, .07)
+        }
+
+        .copy h2 {
+            font-size: clamp(1.45rem, 3vw, 2.25rem);
+            margin-top: 1.7em;
+            letter-spacing: -.02em
+        }
+
+        .copy h2:first-child {
+            margin-top: 0
+        }
+
+        .copy h3 {
+            margin-top: 1.4em
+        }
+
+        .copy p,
+        .copy li {
+            color: var(--copy)
+        }
+
+        .copy code {
+            background: var(--soft);
+            padding: 2px 7px;
+            border-radius: 8px
+        }
+
+        .toc {
+            position: sticky;
+            top: 20px;
+            align-self: start;
+            background: var(--panel);
+            border: 1px solid var(--panel-line);
+            border-radius: 22px;
+            padding: 20px
+        }
+
+        .toc strong {
+            display: block;
+            margin-bottom: 8px
+        }
+
+        .toc a {
+            display: block;
+            padding: 5px 0;
+            color: var(--muted)
+        }
+
+        .callout {
+            padding: 16px 18px;
+            border-left: 4px solid var(--accent);
+            background: var(--soft);
+            border-radius: 12px;
+            margin: 18px 0
+        }
+
+        .faq details {
+            border-top: 1px solid var(--panel-line);
+            padding: 14px 0
+        }
+
+        .faq summary {
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .sources li {
+            margin: 8px 0
+        }
+
+        footer {
+            padding: 30px 0 50px;
+            color: var(--muted);
+            text-align: center
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 16px
+        }
+
+        .tab {
+            padding: 9px 12px;
+            border-radius: 12px;
+            border: 1px solid var(--input-line);
+            background: var(--input);
+            cursor: pointer;
+            font-weight: 800
+        }
+
+        .tab.active {
+            background: var(--accent);
+            color: var(--button-text);
+            border-color: transparent
+        }
+
+        .hidden {
+            display: none !important
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 9px;
+            border-radius: 999px;
+            background: var(--soft);
+            font-size: .76rem;
+            font-weight: 800;
+            color: var(--muted)
+        }
+
+        .switchline {
+            display: flex;
+            gap: 10px;
+            align-items: center
+        }
+
+        .switchline input {
+            width: auto
+        }
+
+        .three {
+            grid-template-columns: repeat(3, minmax(0, 1fr))
+        }
+
+        .mini-note {
+            font-size: .82rem;
+            color: var(--muted);
+            margin-top: 10px
+        }
+
+        @media(max-width:860px) {
+
+            .hero,
+            .main-grid,
+            article.content {
+                grid-template-columns: 1fr
+            }
+
+            .visual {
+                min-height: 180px
+            }
+
+            .results,
+            .toc {
+                position: static
+            }
+
+            .toc {
+                display: none
+            }
+        }
+
+        @media(max-width:560px) {
+            .wrap {
+                width: min(100% - 20px, 1180px)
+            }
+
+            .hero {
+                border-radius: 24px;
+                padding: 24px 20px
+            }
+
+            .panel {
+                border-radius: 22px;
+                padding: 18px
+            }
+
+            .form-grid,
+            .stats,
+            .three {
+                grid-template-columns: 1fr
+            }
+
+            .field.full {
+                grid-column: auto
+            }
+
+            .result-big {
+                font-size: 2.25rem
+            }
+        }
+
+        :root {
+            --bg: #f0f0ed;
+            --text: #232621;
+            --copy: #50554c;
+            --muted: #777d73;
+            --panel: #fafbf8;
+            --panel-line: #d5dacd;
+            --soft: #ecefe7;
+            --input: #fff;
+            --input-line: #ccd4c4;
+            --accent: #5f7a45;
+            --accent2: #b56e3f;
+            --button-text: #fff;
+            --hero: linear-gradient(135deg, #314332, #5a6847 58%, #9a6842);
+            --hero-muted: #e7eee2;
+            --line: #ffffff25
+        }
+
+        .hero {
+            border-radius: 18px 80px 18px 80px
+        }
+
+        .visual .tile {
+            width: 220px;
+            height: 150px;
+            transform: rotate(-7deg);
+            font-size: 1.2rem
+        }
+
+        .visual:after {
+            content: '↘';
+            position: absolute;
+            font-size: 8rem;
+            color: #f2d6a6;
+            right: 7%;
+            top: 0;
+            text-shadow: 0 15px 25px #0005
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/depreciation-calculator/#webapplication",
+      "name": "Depreciation Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/depreciation-calculator/",
+      "description": "Calculate straight-line, declining-balance, or sum-of-years-digits depreciation and see annual depreciation, accumulated depreciation, and book value.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/depreciation-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Depreciation Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/depreciation-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/depreciation-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between straight-line and declining-balance depreciation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Straight-line depreciation divides the depreciable base evenly over the useful life. Declining balance applies a rate to the remaining book value, so depreciation is usually higher in earlier years."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What factor should I use for double-declining balance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use a declining-balance factor of 2. For example, with a five-year useful life: Rate = 2 ÷ 5 = 40%. A factor of 2 represents twice the straight-line rate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is salvage value?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Salvage value is the estimated amount the asset will be worth at the end of its useful life. For straight-line and SYD depreciation: Depreciable Base = Asset Cost − Salvage Value."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can declining-balance depreciation reduce book value below salvage value?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This calculator limits depreciation when necessary so the book value does not fall below the entered salvage value."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this calculator the same as MACRS depreciation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. MACRS is a U.S. federal tax depreciation system with prescribed recovery periods, depreciation methods, conventions, and other rules. This calculator uses general straight-line, declining-balance, and SYD methods rather than MACRS tables."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the calculator support partial-year depreciation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The model assumes full-year depreciation. It does not apply half-year, mid-quarter, mid-month, or other partial-year conventions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do accelerated methods show more depreciation in early years?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Declining-balance and SYD methods are designed to allocate a greater portion of depreciation to earlier periods. Straight-line depreciation instead allocates the depreciable base evenly across the useful life."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="finance" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../finance/index.html">Finance</a></li>
+            <li><a aria-current="page" href="index.html">Depreciation Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main class="wrap" id="main">
+            <h1 class="page-title">Depreciation Calculator</h1>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="main-grid">
+                <section class="panel">
+                    <h2>Asset Depreciation Schedule</h2>
+                    <div class="form-grid">
+                        <div class="field"><label for="depMethod">Method</label><select id="depMethod"
+                                onchange="toggleDepFactor()">
+                                <option value="sl">Straight-line</option>
+                                <option value="db">Declining balance</option>
+                                <option value="syd">Sum-of-years' digits</option>
+                            </select></div>
+                        <div class="field" id="factorField"><label for="depFactor">Declining-balance
+                                factor</label><input id="depFactor" min="0.1" step="0.1" type="number" value="2" /><span
+                                class="hint">2 = double-declining balance</span></div>
+                        <div class="field"><label for="assetCost">Asset cost</label><input id="assetCost" min="0"
+                                type="number" value="50000" /></div>
+                        <div class="field"><label for="salvage">Salvage value</label><input id="salvage" min="0"
+                                type="number" value="5000" /></div>
+                        <div class="field full"><label for="life">Useful life (years)</label><input id="life" max="100"
+                                min="1" type="number" value="5" /></div>
+                    </div>
+                    <div class="error" id="error"></div>
+                    <div class="actions"><button class="btn primary" onclick="calcDep()">Build Schedule</button><button
+                            class="btn ghost" onclick="resetDep()">Reset</button></div>
+                </section>
+                <aside class="panel results">
+                    <div class="result-hero">
+                        <div class="result-label">First-year depreciation</div>
+                        <div class="result-big" id="firstDep">$0.00</div>
+                    </div>
+                    <div class="stats">
+                        <div class="stat"><span>Depreciable base</span><b id="depBase">$0.00</b></div>
+                        <div class="stat"><span>Ending book value</span><b id="endingBook">$0.00</b></div>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Year</th>
+                                    <th>Beginning value</th>
+                                    <th>Depreciation</th>
+                                    <th>Accumulated</th>
+                                    <th>Ending value</th>
+                                </tr>
+                            </thead>
+                            <tbody id="depRows"></tbody>
+                        </table>
+                    </div>
+                </aside>
+            </section>
+             
+<article class="article">
+
+<p>Use this Depreciation Calculator to build a full-year depreciation schedule using the straight-line, declining-balance, or sum-of-years-digits method. Enter the asset cost, salvage value, useful life, and—when using declining balance—the depreciation factor to calculate annual depreciation and book value.</p>
+
+
+    <section id="what">
+        <h2>What Is the Depreciation Calculator?</h2>
+        <p class="direct">The Depreciation Calculator estimates how an asset's depreciable cost is allocated over its useful life.</p>
+
+        <p>It supports three methods:</p>
+        <ul>
+            <li><strong>Straight-line depreciation</strong> spreads depreciation evenly across the asset's useful life.</li>
+            <li><strong>Declining-balance depreciation</strong> applies a fixed rate to the asset's beginning book value, producing larger depreciation amounts in earlier years.</li>
+            <li><strong>Sum-of-years-digits (SYD)</strong> applies a decreasing fraction to the depreciable base, creating another accelerated depreciation schedule.</li>
+        </ul>
+
+        <p>The calculator is useful for comparing depreciation methods and reviewing annual depreciation expense, accumulated depreciation, and remaining book value.</p>
+    </section>
+
+    <section id="how">
+        <h2>How to Use the Depreciation Calculator</h2>
+        <ol>
+            <li><strong>Method:</strong> Select straight-line, declining balance, or sum-of-years-digits.</li>
+            <li><strong>Declining-balance factor:</strong> Enter the factor used to calculate the declining-balance rate. This input applies to the declining-balance method.</li>
+            <li><strong>Asset cost:</strong> Enter the original cost of the asset.</li>
+            <li><strong>Salvage value:</strong> Enter the estimated value remaining at the end of the asset's useful life.</li>
+            <li><strong>Useful life:</strong> Enter the number of years over which the asset will be depreciated.</li>
+        </ol>
+
+        <p>For a conventional depreciation schedule, useful life must be greater than zero and salvage value normally should not exceed asset cost.</p>
+    </section>
+
+    <section id="formula">
+        <h2>Formula / Calculation Method</h2>
+
+        <h3>Main Variables</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Meaning</th>
+                    <th>Unit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>C</strong></td><td>Asset cost</td><td>Currency</td></tr>
+                <tr><td><strong>S</strong></td><td>Salvage value</td><td>Currency</td></tr>
+                <tr><td><strong>n</strong></td><td>Useful life</td><td>Years</td></tr>
+                <tr><td><strong>f</strong></td><td>Declining-balance factor</td><td>Number</td></tr>
+                <tr><td><strong>t</strong></td><td>Current depreciation year</td><td>Year</td></tr>
+                <tr><td><strong>Dₜ</strong></td><td>Depreciation in year t</td><td>Currency</td></tr>
+                <tr><td><strong>Bₜ</strong></td><td>Book value at the end of year t</td><td>Currency</td></tr>
+            </tbody>
+        </table>
+
+        <p>The depreciable base is:</p>
+        <div class="formula">Depreciable Base = C − S</div>
+
+        <h3>Straight-Line Depreciation</h3>
+        <p>Straight-line depreciation allocates the depreciable base equally across the useful life.</p>
+
+        <div class="formula">Annual Depreciation = (C − S) ÷ n</div>
+
+        <p>Therefore:</p>
+        <div class="formula">Dₜ = (C − S) / n</div>
+
+        <p>The same depreciation amount is applied for each full year.</p>
+        <p>This standard straight-line relationship is also described by the IRS and accounting references.</p>
+
+        <h3>Declining-Balance Depreciation</h3>
+        <p>The calculator derives the annual declining-balance rate from the selected factor and useful life:</p>
+
+        <div class="formula">r = f ÷ n</div>
+
+        <p>Annual depreciation is then based on the book value at the beginning of the year:</p>
+        <div class="formula">Dₜ = Beginning Book Value × r</div>
+
+        <p>The depreciation amount is limited so that the asset's book value does not fall below the entered salvage value:</p>
+        <div class="formula">Dₜ = min(Bₜ₋₁ × r, Bₜ₋₁ − S)</div>
+
+        <p>The ending book value is:</p>
+        <div class="formula">Bₜ = Bₜ₋₁ − Dₜ</div>
+
+        <p>For example, a factor of <strong>2</strong> produces a double-declining rate. A five-year useful life with a factor of 2 gives:</p>
+        <div class="formula">2 ÷ 5 = 0.40 = 40% per year</div>
+
+        <p>Applying the rate to beginning book value and stopping at salvage value is consistent with standard declining-balance methodology.</p>
+
+        <h3>Sum-of-Years-Digits Depreciation</h3>
+        <p>First calculate the sum of the years' digits:</p>
+
+        <div class="formula">SYD = n(n + 1) ÷ 2</div>
+
+        <p>Annual depreciation is:</p>
+        <div class="formula">Dₜ = (C − S) × (n − t + 1) ÷ [n(n + 1) ÷ 2]</div>
+
+        <p>For a five-year asset:</p>
+        <div class="formula">SYD = 5 × 6 ÷ 2 = 15</div>
+
+        <p>The yearly fractions are therefore:</p>
+        <ul>
+            <li>Year 1: 5/15</li>
+            <li>Year 2: 4/15</li>
+            <li>Year 3: 3/15</li>
+            <li>Year 4: 2/15</li>
+            <li>Year 5: 1/15</li>
+        </ul>
+
+        <p>This makes depreciation larger in earlier years and smaller in later years.</p>
+
+        <h3>Accumulated Depreciation</h3>
+        <p>After year <strong>t</strong>:</p>
+        <div class="formula">Accumulated Depreciation = D₁ + D₂ + ... + Dₜ</div>
+
+        <h3>Book Value</h3>
+        <p>The asset's book value after depreciation is:</p>
+        <div class="formula">Book Value = Asset Cost − Accumulated Depreciation</div>
+
+        <p>Under this calculator's model, depreciation does not reduce the ending book value below the entered salvage value.</p>
+    </section>
+
+    <section id="example">
+        <h2>Worked Example</h2>
+        <p>Assume an asset has:</p>
+
+        <h3>Inputs</h3>
+        <ul>
+            <li>Asset cost: <strong>$50,000</strong></li>
+            <li>Salvage value: <strong>$5,000</strong></li>
+            <li>Useful life: <strong>5 years</strong></li>
+            <li>Declining-balance factor: <strong>2</strong></li>
+        </ul>
+
+        <p>The depreciable base is:</p>
+        <div class="formula">$50,000 − $5,000 = $45,000</div>
+
+        <h3>Step 1: Straight-Line Method</h3>
+        <div class="formula">Annual depreciation = $45,000 ÷ 5 = $9,000</div>
+        <p>Each year receives $9,000 of depreciation.</p>
+
+        <h3>Step 2: Declining-Balance Method</h3>
+        <p>First calculate the rate:</p>
+        <div class="formula">2 ÷ 5 = 40%</div>
+
+        <p>Year 1:</p>
+        <div class="formula">$50,000 × 40% = $20,000</div>
+
+        <p>Ending book value:</p>
+        <div class="formula">$50,000 − $20,000 = $30,000</div>
+
+        <p>Year 2:</p>
+        <div class="formula">$30,000 × 40% = $12,000</div>
+
+        <p>The same process continues using each year's beginning book value. In the final year, depreciation is limited to the amount required to reach the $5,000 salvage value.</p>
+
+        <h3>Step 3: Sum-of-Years-Digits Method</h3>
+        <p>The sum of the years is:</p>
+        <div class="formula">5 × (5 + 1) ÷ 2 = 15</div>
+
+        <p>Year 1 depreciation:</p>
+        <div class="formula">$45,000 × 5/15 = $15,000</div>
+
+        <p>Year 2 depreciation:</p>
+        <div class="formula">$45,000 × 4/15 = $12,000</div>
+
+        <p>The fraction continues decreasing until the fifth year.</p>
+
+        <h3>Depreciation Comparison</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Straight-Line</th>
+                    <th>Declining Balance, Factor 2</th>
+                    <th>SYD</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>9,000</td><td>20,000</td><td>$15,000</td></tr>
+                <tr><td>2</td><td>9,000</td><td>12,000</td><td>$12,000</td></tr>
+                <tr><td>3</td><td>9,000</td><td>7,200</td><td>$9,000</td></tr>
+                <tr><td>4</td><td>9,000</td><td>4,320</td><td>$6,000</td></tr>
+                <tr><td>5</td><td>9,000</td><td>1,480</td><td>$3,000</td></tr>
+                <tr>
+                    <td><strong>Total Depreciation</strong></td>
+                    <td><strong>$45,000</strong></td>
+                    <td><strong>$45,000</strong></td>
+                    <td><strong>$45,000</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Ending Book Value</strong></td>
+                    <td><strong>$5,000</strong></td>
+                    <td><strong>$5,000</strong></td>
+                    <td><strong>$5,000</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Final Result</h3>
+        <p>All three methods depreciate the same <strong>$45,000 depreciable base</strong> in this example. The difference is when depreciation is recognized: straight-line spreads it evenly, while declining balance and SYD recognize more depreciation in earlier years.</p>
+    </section>
+
+    <section id="results">
+        <h2>Understanding Your Results</h2>
+
+        <h3>Annual Depreciation</h3>
+        <p>Annual depreciation is the amount allocated to depreciation for a specific year.</p>
+        <p>Straight-line normally produces the same annual amount, while declining-balance and SYD generally produce larger amounts in the first years and smaller amounts later.</p>
+
+        <h3>Accumulated Depreciation</h3>
+        <p>Accumulated depreciation is the total depreciation calculated from the first year through the selected year.</p>
+
+        <p>For example:</p>
+        <div class="formula">Accumulated Depreciation after Year 3 = Year 1 + Year 2 + Year 3 depreciation</div>
+
+        <h3>Book Value</h3>
+        <p>Book value is the portion of the asset's original cost remaining after accumulated depreciation:</p>
+        <div class="formula">Book Value = Cost − Accumulated Depreciation</div>
+
+        <p>Book value in this calculator is an accounting calculation. It is not necessarily the asset's current resale or market value.</p>
+
+        <h3>Salvage Value</h3>
+        <p>Salvage value, also called residual or scrap value, is the estimated value expected to remain at the end of the useful life. It reduces the amount depreciated under the straight-line and SYD calculations and acts as the minimum book-value floor in the declining-balance calculation.</p>
+    </section>
+
+    <section id="limits">
+        <h2>Assumptions and Limitations</h2>
+        <p>This calculator uses a simplified full-year depreciation model.</p>
+
+        <p>It assumes:</p>
+        <ul>
+            <li>A fixed asset cost.</li>
+            <li>A fixed salvage value.</li>
+            <li>A useful life stated in years.</li>
+            <li>Full-year depreciation periods.</li>
+            <li>The selected depreciation method remains in use throughout the schedule.</li>
+        </ul>
+
+        <p>The calculator does <strong>not</strong> apply:</p>
+        <ul>
+            <li>Half-year conventions.</li>
+            <li>Mid-quarter conventions.</li>
+            <li>Mid-month conventions.</li>
+            <li>Partial-year depreciation.</li>
+            <li>MACRS depreciation tables.</li>
+            <li>Automatic switching from declining balance to straight-line.</li>
+            <li>Asset impairment.</li>
+            <li>Revaluation.</li>
+            <li>Component depreciation.</li>
+            <li>Asset-disposal rules.</li>
+        </ul>
+
+        <p>For U.S. tax purposes, depreciation can involve recovery classes, conventions, statutory rates, eligibility requirements, and method-switching rules. IRS Publication 946 (2025) describes those rules, so this general calculator should not be treated as a MACRS or tax-return calculator.</p>
+
+        <p>Actual accounting or tax depreciation can therefore differ from this calculator's estimates.</p>
+    </section>
+
+    <section id="faq">
+        <h2>Frequently Asked Questions</h2>
+
+        <details class="faq">
+            <summary>What is the difference between straight-line and declining-balance depreciation?</summary>
+            <p>Straight-line depreciation divides the depreciable base evenly over the useful life. Declining balance applies a rate to the remaining book value, so depreciation is usually higher in earlier years.</p>
+        </details>
+
+        <details class="faq">
+            <summary>What factor should I use for double-declining balance?</summary>
+            <p>Use a declining-balance factor of <strong>2</strong>.</p>
+            <p>For example, with a five-year useful life:</p>
+            <div class="formula">Rate = 2 ÷ 5 = 40%</div>
+            <p>A factor of 2 represents twice the straight-line rate.</p>
+        </details>
+
+        <details class="faq">
+            <summary>What is salvage value?</summary>
+            <p>Salvage value is the estimated amount the asset will be worth at the end of its useful life. For straight-line and SYD depreciation:</p>
+            <div class="formula">Depreciable Base = Asset Cost − Salvage Value</div>
+        </details>
+
+        <details class="faq">
+            <summary>Can declining-balance depreciation reduce book value below salvage value?</summary>
+            <p>No. This calculator limits depreciation when necessary so the book value does not fall below the entered salvage value.</p>
+        </details>
+
+        <details class="faq">
+            <summary>Is this calculator the same as MACRS depreciation?</summary>
+            <p>No. MACRS is a U.S. federal tax depreciation system with prescribed recovery periods, depreciation methods, conventions, and other rules. This calculator uses general straight-line, declining-balance, and SYD methods rather than MACRS tables.</p>
+        </details>
+
+        <details class="faq">
+            <summary>Does the calculator support partial-year depreciation?</summary>
+            <p>No. The model assumes full-year depreciation. It does not apply half-year, mid-quarter, mid-month, or other partial-year conventions.</p>
+        </details>
+
+        <details class="faq">
+            <summary>Why do accelerated methods show more depreciation in early years?</summary>
+            <p>Declining-balance and SYD methods are designed to allocate a greater portion of depreciation to earlier periods. Straight-line depreciation instead allocates the depreciable base evenly across the useful life.</p>
+        </details>
+    </section>
+
+    <section id="sources">
+        <h2>Sources &amp; Methodology</h2>
+
+        <h3>Formula / Methodology Sources</h3>
+        <ul class="sources">
+            <li>
+                OpenStax — <em>When Should a Company Capitalize or Expense an Item?</em><br>
+                Covers straight-line and double-declining-balance formulas, book value, salvage value, and accumulated depreciation.
+                <a href="https://openstax.org/books/principles-finance-2e/pages/4-4-when-should-a-company-capitalize-or-expense-an-item?utm_source=chatgpt.com" rel="noopener" target="_blank">OpenStax depreciation methods</a>
+            </li>
+            <li>
+                Ohio University — <em>Engineering Economics: Depreciation, Taxes, Inflation</em><br>
+                Supports the sum-of-years-digits formula, including the declining annual fraction and the n(n+1)/2 denominator.
+                <a href="https://people.ohio.edu/melkonia/math3200/civil-and-environmental-systems-engineering.pdf?utm_source=chatgpt.com" rel="noopener" target="_blank">Ohio University SYD depreciation reference</a>
+            </li>
+            <li>
+                Internal Revenue Service — <em>Publication 946 (2025), How To Depreciate Property</em><br>
+                Supports straight-line and declining-balance concepts and explains why U.S. MACRS tax depreciation can require additional recovery periods, conventions, rates, and switching rules.
+                <a href="https://www.irs.gov/publications/p946?utm_source=chatgpt.com" rel="noopener" target="_blank">IRS Publication 946</a>
+            </li>
+        </ul>
+    </section>
+
+    <section id="related-tools">
+        <h2>Related Tools</h2>
+        <ul>
+            <li><a href="https://example.com/investment-calculator/">Investment Calculator</a></li>
+            <li><a href="https://example.com/finance-calculator/">Finance Calculator</a></li>
+            <li><a href="https://example.com/roi-calculator/">ROI Calculator</a></li>
+            <li><a href="https://example.com/margin-calculator/">Margin Calculator</a></li>
+            <li><a href="https://example.com/present-value-calculator/">Present Value Calculator</a></li>
+            <li><a href="https://example.com/future-value-calculator/">Future Value Calculator</a></li>
+        </ul>
+    </section>
+
+</article>
+
+
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"84","Batch":"9","Calculator / Page":"Depreciation Calculator","Slug":"depreciation-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Build straight-line, declining-balance, or sum-of-years-digits depreciation schedules with book value and accumulated depreciation.","Formula / Algorithm Used in Tool":"Depreciation Formulas: Straight-line: (cost − salvage) ÷ useful life . Declining balance: beginning book value multiplied by a rate derived from the chosen factor and useful life, without reducing below salvage. SYD: depreciable base multiplied by a declining year fraction.","Required User Inputs":"Method; Declining-balance factor; Asset cost; Salvage value; Useful life (years)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Method, Declining-balance factor, Asset cost, Salvage value, Useful life (years). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"The model assumes full-year depreciation and a fixed salvage value. It does not apply mid-month, mid-quarter, or half-year conventions, MACRS tables, impairment, revaluation, component depreciation, or asset-disposal rules. Frequently Asked Questions What is salvage value? Salvage value, also called residual or scrap value, is the estimated amount an asset is expected to be worth at the end of its useful life. In a basic depreciation model, cost minus salvage value is the depreciable base. What factor should I use for double-declining balance? Use a factor of 2. The annual declining-balance rate is then 2 divided by the useful life in years. This page also prevents book value from falling below the entered salvage value. Is this the same as MACRS tax depreciation? No. MACRS uses specific recovery classes, conventions, rates, and switching rules under U.S. tax law. This page provides general accounting methods and should not be used as a substitute for tax-preparation guidance. Sources and Methodology The calculator logic is implemented locally in your browser. Formulas and terminology were cross-checked against the references below. Estimates can differ from lender, tax-authority, plan-administrator, or contract calculations because real-world rules may add timing, rounding, elig","Current Source URLs in Page":"https://www.irs.gov/publications/p946 | https://www.calculator.net/depreciation-calculator.html","Implementation Path":"/depreciation-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Finance</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../annuity-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Annuity Calculator</strong><small>Estimate the
+                            accumulation value of an annuity-style investment using starting princ…</small></span></a><a
+                    class="cp-related-link" href="../annuity-payout-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Annuity Payout Calculator</strong><small>Estimate a
+                            level annuity payout for a fixed term or estimate how long a starting
+                            ba…</small></span></a><a class="cp-related-link" href="../lease-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Lease Calculator</strong><small>Calculate a level
+                            monthly lease payment from asset value, residual value, term, and…</small></span></a><a
+                    class="cp-related-link" href="../interest-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Interest Calculator</strong><small>Calculate
+                            compound interest with an initial balance, monthly contributions,
+                            annual…</small></span></a><a class="cp-related-link"
+                    href="../investment-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Investment Calculator</strong><small>Project an
+                            investment balance from a starting amount, monthly contributions, time
+                            h…</small></span></a><a class="cp-related-link"
+                    href="../payment-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Payment
+                            Calculator</strong><small>Calculate a monthly loan payment for a fixed term or estimate how
+                            long a loan takes…</small></span></a><a class="cp-related-link"
+                    href="../retirement-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Retirement Calculator</strong><small>Project
+                            retirement savings from current balance, monthly contributions, time to
+                            ret…</small></span></a><a class="cp-related-link" href="../401k-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>401(k) Calculator</strong><small>Project a 401(k)
+                            balance using salary, contribution percentage, employer match, sal…</small></span></a></div>
+            <a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const $ = s => document.querySelector(s); const n = id => Number(document.getElementById(id).value); const money = (v, c = '$') => c + Number(v).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }); const pct = v => Number(v).toFixed(2) + '%';
+        function err(msg) { const e = $('#error'); e.textContent = msg; e.style.display = 'block' } function clearErr() { const e = $('#error'); e.style.display = 'none'; e.textContent = '' }
+
+        function toggleDepFactor() { document.getElementById('factorField').style.opacity = document.getElementById('depMethod').value === 'db' ? 1 : .45 }
+        function calcDep() { clearErr(); const method = document.getElementById('depMethod').value, c = n('assetCost'), s = n('salvage'), life = n('life'), factor = n('depFactor'); if (c <= 0 || s < 0 || s >= c || !Number.isInteger(life) || life < 1 || life > 100 || factor <= 0) return err('Asset cost must exceed salvage value. Use a whole-number useful life from 1 to 100 years.'); let book = c, acc = 0, rows = '', first = 0; const base = c - s, den = life * (life + 1) / 2; for (let y = 1; y <= life; y++) { let d; if (method === 'sl') d = base / life; else if (method === 'syd') d = base * (life - y + 1) / den; else { const rate = factor / life; d = book * rate; d = Math.min(d, book - s) } d = Math.max(0, Math.min(d, book - s)); if (y === life) d = book - s; if (y === 1) first = d; const begin = book; book -= d; acc += d; rows += `<tr><td>${y}</td><td>${money(begin)}</td><td>${money(d)}</td><td>${money(acc)}</td><td>${money(book)}</td></tr>` } document.getElementById('firstDep').textContent = money(first); document.getElementById('depBase').textContent = money(base); document.getElementById('endingBook').textContent = money(book); document.getElementById('depRows').innerHTML = rows }
+        function resetDep() { document.getElementById('depMethod').value = 'sl'; document.getElementById('depFactor').value = 2; document.getElementById('assetCost').value = 50000; document.getElementById('salvage').value = 5000; document.getElementById('life').value = 5; toggleDepFactor(); calcDep() } toggleDepFactor(); calcDep();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

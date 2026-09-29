@@ -1,13 +1,1093 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
-<title>Present Value Calculator | CalcPro</title><meta content="Calculate the present value of a future lump sum using a discount rate, time horizon, and compounding frequency." name="description"/><meta content="index,follow" name="robots"/><link href="../present-value-calculator/" rel="canonical"/><meta content="Present Value Calculator | CalcPro" property="og:title"/><meta content="Calculate the present value of a future lump sum using a discount rate, time horizon, and compounding frequency." property="og:description"/><meta content="website" property="og:type"/><meta content="#1477ff" name="theme-color"/><style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}button,input,select{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}.wrap{width:min(1160px,92vw);margin:auto}.crumb{font-size:.86rem;opacity:.78}.eyebrow{font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:800}.btn.secondary{background:transparent;border:1px solid currentColor}.field{display:grid;gap:7px}.field label{font-size:.88rem;font-weight:750}.field input,.field select{width:100%;border-radius:14px;padding:12px 13px;border:1px solid rgba(127,127,127,.25);background:rgba(255,255,255,.76);color:#111;outline:none}.field input:focus,.field select:focus{box-shadow:0 0 0 4px rgba(99,102,241,.14)}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.actions{display:flex;gap:10px;flex-wrap:wrap}.error{display:none;padding:10px 12px;border-radius:12px;background:#fee2e2;color:#991b1b;font-weight:700;margin:10px 0}.error.show{display:block}.result-num{font-size:clamp(2rem,6vw,3.6rem);font-weight:900;letter-spacing:-.05em}.stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{padding:12px;border-radius:14px;background:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.7)}.stat b{display:block;font-size:1.08rem}.content{padding:56px 0}.article{max-width:860px;margin:auto}.article h2{font-size:clamp(1.5rem,3vw,2.05rem);margin:34px 0 10px;line-height:1.2}.article h3{margin:24px 0 8px}.article p,.article li{color:var(--muted,#4b5563)}.formula{padding:16px 18px;border-radius:16px;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.14);font-weight:800;overflow:auto}.source-list a{text-decoration:underline;text-underline-offset:3px}.faq details{border-top:1px solid rgba(127,127,127,.2);padding:14px 0}.faq summary{font-weight:800;cursor:pointer}footer{padding:34px 0;border-top:1px solid rgba(127,127,127,.18);font-size:.9rem;opacity:.75}@media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}.stat-grid{grid-template-columns:1fr}.wrap{width:min(94vw,1160px)}}
+<html lang="en">
 
-:root{--muted:#53607a}body{background:#f2f5fb;color:#17233a}.hero-pv{padding:28px 0 80px;background:linear-gradient(150deg,#07152f,#0c2857 58%,#0e7490);color:#fff;overflow:hidden}.pv-hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;padding-top:48px}.hero-pv h1{font-size:clamp(3rem,7vw,6rem);line-height:.94;letter-spacing:-.07em;margin:15px 0}.time-tunnel{height:310px;position:relative;perspective:800px}.ring{position:absolute;left:50%;top:50%;border:4px solid #67e8f9;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 30px #22d3ee55}.ring:nth-child(1){width:260px;height:260px;opacity:.25}.ring:nth-child(2){width:190px;height:190px;opacity:.45}.ring:nth-child(3){width:120px;height:120px;opacity:.7}.ring:nth-child(4){width:56px;height:56px;background:#fff;color:#0e7490;display:grid;place-items:center;font-weight:950;border:0}.calc-pv{margin-top:-34px;position:relative}.pv-card{background:#fff;border-radius:30px;box-shadow:0 30px 80px #0b214828;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}.pv-form{padding:28px}.pv-result{padding:28px;background:linear-gradient(180deg,#e9f7fb,#d7eff8)}.pv-factor{height:100px;border-radius:20px;background:#0e7490;color:#fff;display:grid;place-items:center;margin-top:16px;text-align:center}.btn{background:#0e7490;color:#fff}.btn.secondary{color:#0e7490}.content{background:#fff}@media(max-width:800px){.pv-hero,.pv-card{grid-template-columns:1fr}.time-tunnel{height:210px}.calc-pv{margin-top:-18px}}
-</style><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Present Value Calculator", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "description": "Calculate the present value of a future lump sum using a discount rate, time horizon, and compounding frequency.", "url": "/calculators/present-value-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Investing & Interest", "item": "/finance/investing-interest/"}, {"@type": "ListItem", "position": 4, "name": "Present Value Calculator", "item": "/present-value-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is present value?", "acceptedAnswer": {"@type": "Answer", "text": "Present value is the value today of a future cash amount after discounting it at a required return or interest rate over time."}}, {"@type": "Question", "name": "Why does a higher discount rate reduce present value?", "acceptedAnswer": {"@type": "Answer", "text": "A higher discount rate means you require more return for waiting or bearing risk, so a given future amount is worth less today."}}, {"@type": "Question", "name": "How does compounding frequency affect present value?", "acceptedAnswer": {"@type": "Answer", "text": "When a nominal annual discount rate is compounded more frequently, the number of discounting periods increases and the periodic rate changes. For a positive nominal rate, more frequent compounding generally lowers present value slightly."}}]}]}</script><link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head><body data-cp-category="finance" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header><nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../finance/index.html">Finance</a></li><li><a aria-current="page" href="index.html">Present Value Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main"><h1 class="page-title">Present Value Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="calc-pv"><div class="wrap pv-card"><div class="pv-form"><h2>Discounting inputs</h2><div class="grid2"><div class="field"><label for="pvFV">Future value</label><input id="pvFV" min="0" type="number" value="25000"/></div><div class="field"><label for="pvRate">Annual discount rate (%)</label><input id="pvRate" min="0" step="0.01" type="number" value="6"/></div><div class="field"><label for="pvYears">Years</label><input id="pvYears" min="0" step="0.01" type="number" value="10"/></div><div class="field"><label for="pvFreq">Compounding</label><select id="pvFreq"><option value="1">Annually</option><option value="2">Semiannually</option><option value="4">Quarterly</option><option selected="" value="12">Monthly</option><option value="365">Daily</option></select></div></div><div class="error" id="pvErr"></div><div class="actions"><button class="btn" onclick="calcPV()">Calculate Present Value</button><button class="btn secondary" onclick="resetPV()">Reset</button></div></div><aside class="pv-result"><div class="eyebrow" style="color:#0e7490">Present value today</div><div class="result-num" id="pvOut">—</div><div class="stat-grid"><div class="stat">Discount amount<b id="pvDiscount">—</b></div><div class="stat">Total periods<b id="pvPeriods">—</b></div></div><div class="pv-factor"><div>Present value factor<br/><b id="pvFactor" style="font-size:1.5rem">—</b></div></div></aside></div></section><section class="content"><article class="article wrap"><h2>What Is a Present Value Calculator?</h2><p>A present value calculator converts a future lump sum into an equivalent value today using a discount rate. It applies the time value of money: a future dollar is generally worth less than a dollar available now when a positive required return is assumed.</p><h2>Present Value Formula</h2><div class="formula">PV = FV ÷ (1 + r / m)<sup>m × t</sup></div><p>PV is present value, FV is future value, r is the nominal annual discount rate, m is compounding periods per year, and t is time in years. When compounding is annual, the familiar form is PV = FV ÷ (1 + r)<sup>n</sup>.</p><h2>Calculation Example</h2><p>If you expect $25,000 in 10 years and use a 6% nominal annual discount rate compounded monthly, the calculator discounts all 120 monthly periods to estimate what that future amount is worth today under the selected assumption.</p><h2>Choosing a Discount Rate</h2><p>The math is precise for the inputs entered, but the discount rate is an assumption. Depending on the use case, it may represent an expected return, financing rate, hurdle rate, opportunity cost, or risk-adjusted required return.</p><h2>Frequently Asked Questions</h2><div class="faq"><details><summary>What is present value?</summary><p>Present value is the value today of a future cash amount after discounting it at a required return or interest rate over time.</p></details><details><summary>Why does a higher discount rate reduce present value?</summary><p>A higher discount rate means you require more return for waiting or bearing risk, so a given future amount is worth less today.</p></details><details><summary>How does compounding frequency affect present value?</summary><p>When a nominal annual discount rate is compounded more frequently, the number of discounting periods increases and the periodic rate changes. For a positive nominal rate, more frequent compounding generally lowers present value slightly.</p></details></div><h2>Sources and Methodology</h2><ul class="source-list"><li><a href="https://www.pearson.com/channels/macroeconomics/asset/08a2c327/how-do-you-calculate-present-value-and-future-value">Pearson — Present value and future value formula</a></li><li><a href="https://www.calculatorsoup.com/calculators/financial/present-value-calculator-basic.php">CalculatorSoup — Present value formula and compounding</a></li></ul></article></section>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+   <!-- Primary Meta Tags -->
+<title>Present Value Calculator – Discount Future Money</title>
+<meta name="title" content="Present Value Calculator – Discount Future Money">
+<meta name="description" content="Calculate the present value of a future lump sum using an annual discount rate, time in years, and compounding frequency to estimate its value today.">
 
-<script class="cp-calculator-data" type="application/json">{"index":"106","Batch":"11","Calculator / Page":"Present Value Calculator","Slug":"present-value-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance","Page Type":"Calculator","Search Intent / Purpose":"Calculate the present value of a future lump sum using a discount rate, time horizon, and compounding frequency.","Formula / Algorithm Used in Tool":"Present Value Formula: PV = FV ÷ (1 + r / m) m × t PV is present value, FV is future value, r is the nominal annual discount rate, m is compounding periods per year, and t is time in years. When compounding is annual, the familiar form is PV = FV ÷ (1 + r) n .","Required User Inputs":"Future value; Annual discount rate (%); Years; Compounding","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Future value, Annual discount rate (%), Years, Compounding. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"Explain formula domain, unit consistency, rounding, input validation and real-world limitations.","Current Source URLs in Page":"https://www.pearson.com/channels/macroeconomics/asset/08a2c327/how-do-you-calculate-present-value-and-future-value | https://www.calculatorsoup.com/calculators/financial/present-value-calculator-basic.php","Implementation Path":"/present-value-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Finance</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../financial-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Financial Calculator</strong><small>Use this financial calculator for time value of money calculations including future…</small></span></a><a class="cp-related-link" href="../future-value-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Future Value Calculator</strong><small>Calculate the future value of a lump sum and periodic deposits with compound growth…</small></span></a><a class="cp-related-link" href="../take-home-pay-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Take Home Pay Calculator</strong><small>Estimate 2026 U.S. take-home pay using federal tax brackets, standard or custom ded…</small></span></a><a class="cp-related-link" href="../rmd-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>RMD Calculator</strong><small>Estimate a required minimum distribution using IRS life-expectancy factors and the…</small></span></a><a class="cp-related-link" href="../house-affordability-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>House Affordability Calculator</strong><small>Estimate an affordable home price from income and debt-to-income limits or from a f…</small></span></a><a class="cp-related-link" href="../finance-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Finance Calculator</strong><small>Solve time-value-of-money variables including future value, present value, payment,…</small></span></a><a class="cp-related-link" href="../pension-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Pension Calculator</strong><small>Compare pension lump sums, monthly pension income, joint-survivor options, and dela…</small></span></a><a class="cp-related-link" href="../interest-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Interest Calculator</strong><small>Calculate compound interest with an initial balance, monthly contributions, annual…</small></span></a></div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script>const cv=v=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(v);function calcPV(){const FV=+pvFV.value,r=+pvRate.value/100,t=+pvYears.value,m=+pvFreq.value,er=pvErr;if(FV<0||r<0||t<0||!(m>0)){er.textContent='Enter non-negative values for future value, rate, and years.';er.classList.add('show');return}er.classList.remove('show');const n=m*t,pv=n===0?FV:FV/Math.pow(1+r/m,n),factor=FV===0?0:pv/FV;pvOut.textContent=cv(pv);pvDiscount.textContent=cv(FV-pv);pvPeriods.textContent=Number.isInteger(n)?n:n.toFixed(2);pvFactor.textContent=factor.toFixed(6)}function resetPV(){pvFV.value=25000;pvRate.value=6;pvYears.value=10;pvFreq.value=12;calcPV()}calcPV();</script><script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/present-value-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/present-value-calculator/">
+<meta property="og:title" content="Present Value Calculator – Discount Future Money">
+<meta property="og:description" content="Calculate the present value of a future lump sum using an annual discount rate, time in years, and compounding frequency to estimate its value today.">
+<meta property="og:site_name" content="Present Value Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/present-value-calculator/">
+<meta name="twitter:title" content="Present Value Calculator – Discount Future Money">
+<meta name="twitter:description" content="Calculate the present value of a future lump sum using an annual discount rate, time in years, and compounding frequency to estimate its value today.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6
+        }
+
+        button,
+        input,
+        select {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        .wrap {
+            width: min(1160px, 92vw);
+            margin: auto
+        }
+
+        .crumb {
+            font-size: .86rem;
+            opacity: .78
+        }
+
+        .eyebrow {
+            font-size: .78rem;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-weight: 800
+        }
+
+        .btn.secondary {
+            background: transparent;
+            border: 1px solid currentColor
+        }
+
+        .field {
+            display: grid;
+            gap: 7px
+        }
+
+        .field label {
+            font-size: .88rem;
+            font-weight: 750
+        }
+
+        .field input,
+        .field select {
+            width: 100%;
+            border-radius: 14px;
+            padding: 12px 13px;
+            border: 1px solid rgba(127, 127, 127, .25);
+            background: rgba(255, 255, 255, .76);
+            color: #111;
+            outline: none
+        }
+
+        .field input:focus,
+        .field select:focus {
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, .14)
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .grid3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .error {
+            display: none;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: #fee2e2;
+            color: #991b1b;
+            font-weight: 700;
+            margin: 10px 0
+        }
+
+        .error.show {
+            display: block
+        }
+
+        .result-num {
+            font-size: clamp(2rem, 6vw, 3.6rem);
+            font-weight: 900;
+            letter-spacing: -.05em
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px
+        }
+
+        .stat {
+            padding: 12px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, .65);
+            border: 1px solid rgba(255, 255, 255, .7)
+        }
+
+        .stat b {
+            display: block;
+            font-size: 1.08rem
+        }
+
+        .content {
+            padding: 56px 0
+        }
+
+        .article {
+            max-width: 860px;
+            margin: auto
+        }
+
+        .article h2 {
+            font-size: clamp(1.5rem, 3vw, 2.05rem);
+            margin: 34px 0 10px;
+            line-height: 1.2
+        }
+
+        .article h3 {
+            margin: 24px 0 8px
+        }
+
+        .article p,
+        .article li {
+            color: var(--muted, #4b5563)
+        }
+
+        .formula {
+            padding: 16px 18px;
+            border-radius: 16px;
+            background: rgba(99, 102, 241, .08);
+            border: 1px solid rgba(99, 102, 241, .14);
+            font-weight: 800;
+            overflow: auto
+        }
+
+        .source-list a {
+            text-decoration: underline;
+            text-underline-offset: 3px
+        }
+
+        .faq details {
+            border-top: 1px solid rgba(127, 127, 127, .2);
+            padding: 14px 0
+        }
+
+        .faq summary {
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        footer {
+            padding: 34px 0;
+            border-top: 1px solid rgba(127, 127, 127, .18);
+            font-size: .9rem;
+            opacity: .75
+        }
+
+        @media(max-width:760px) {
+
+            .grid2,
+            .grid3 {
+                grid-template-columns: 1fr
+            }
+
+            .stat-grid {
+                grid-template-columns: 1fr
+            }
+
+            .wrap {
+                width: min(94vw, 1160px)
+            }
+        }
+
+        :root {
+            --muted: #53607a
+        }
+
+        body {
+            background: #f2f5fb;
+            color: #17233a
+        }
+
+        .hero-pv {
+            padding: 28px 0 80px;
+            background: linear-gradient(150deg, #07152f, #0c2857 58%, #0e7490);
+            color: #fff;
+            overflow: hidden
+        }
+
+        .pv-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding-top: 48px
+        }
+
+        .hero-pv h1 {
+            font-size: clamp(3rem, 7vw, 6rem);
+            line-height: .94;
+            letter-spacing: -.07em;
+            margin: 15px 0
+        }
+
+        .time-tunnel {
+            height: 310px;
+            position: relative;
+            perspective: 800px
+        }
+
+        .ring {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            border: 4px solid #67e8f9;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 30px #22d3ee55
+        }
+
+        .ring:nth-child(1) {
+            width: 260px;
+            height: 260px;
+            opacity: .25
+        }
+
+        .ring:nth-child(2) {
+            width: 190px;
+            height: 190px;
+            opacity: .45
+        }
+
+        .ring:nth-child(3) {
+            width: 120px;
+            height: 120px;
+            opacity: .7
+        }
+
+        .ring:nth-child(4) {
+            width: 56px;
+            height: 56px;
+            background: #fff;
+            color: #0e7490;
+            display: grid;
+            place-items: center;
+            font-weight: 950;
+            border: 0
+        }
+
+        .calc-pv {
+            margin-top: -34px;
+            position: relative
+        }
+
+        .pv-card {
+            background: #fff;
+            border-radius: 30px;
+            box-shadow: 0 30px 80px #0b214828;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden
+        }
+
+        .pv-form {
+            padding: 28px
+        }
+
+        .pv-result {
+            padding: 28px;
+            background: linear-gradient(180deg, #e9f7fb, #d7eff8)
+        }
+
+        .pv-factor {
+            height: 100px;
+            border-radius: 20px;
+            background: #0e7490;
+            color: #fff;
+            display: grid;
+            place-items: center;
+            margin-top: 16px;
+            text-align: center
+        }
+
+        .btn {
+            background: #0e7490;
+            color: #fff
+        }
+
+        .btn.secondary {
+            color: #0e7490
+        }
+ 
+
+        @media(max-width:800px) {
+
+            .pv-hero,
+            .pv-card {
+                grid-template-columns: 1fr
+            }
+
+            .time-tunnel {
+                height: 210px
+            }
+
+            .calc-pv {
+                margin-top: -18px
+            }
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/present-value-calculator/#webapplication",
+      "name": "Present Value Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/present-value-calculator/",
+      "description": "Calculate the present value of a future lump sum using an annual discount rate, time in years, and compounding frequency to estimate its value today.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/present-value-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Present Value Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/present-value-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/present-value-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does a Present Value Calculator calculate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Present Value Calculator estimates the equivalent current value of a future lump sum using a discount rate, time horizon, and compounding frequency. It answers how much a specified future amount is worth today under the selected discounting assumptions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between present value and future value?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Present value expresses an amount in today's terms, while future value represents its value at a specified future date. Present value calculations work backward from a known future amount, while future value calculations project an amount forward through compound growth."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What discount rate should I enter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Enter the nominal annual rate appropriate for the financial scenario being evaluated. Depending on the purpose, a discount rate may represent an assumed return, required rate of return, or opportunity cost of capital. The calculator does not determine which rate is appropriate for a particular investment or financial decision."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does monthly compounding change the present value?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Monthly compounding divides the nominal annual discount rate by 12 and applies it over 12 periods per year. For a fixed positive nominal discount rate, monthly compounding produces a slightly lower present value than annual compounding when the other inputs remain unchanged."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens when the discount rate is zero?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When the discount rate is zero, no compound discounting occurs. The formula simplifies to: PV=FV. The present value therefore equals the entered future value, regardless of the selected time horizon."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use this calculator for monthly payments?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The calculator is designed to discount a single future lump sum, not a sequence of monthly payments. For recurring equal payments, an annuity-based present value calculation is generally more appropriate because each payment occurs at a different point in time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does present value account for inflation automatically?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The calculator applies the annual discount rate entered by the user. If inflation is relevant to the analysis, it must be reflected appropriately in the discounting assumptions. The calculator does not independently retrieve inflation data or automatically add an inflation adjustment."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart OnlineFree",
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="finance" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../finance/index.html">Finance</a></li>
+            <li><a aria-current="page" href="index.html">Present Value Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Present Value Calculator</h1>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="calc-pv">
+                <div class="wrap pv-card">
+                    <div class="pv-form">
+                        <h2>Discounting inputs</h2>
+                        <div class="grid2">
+                            <div class="field"><label for="pvFV">Future value</label><input id="pvFV" min="0"
+                                    type="number" value="25000" /></div>
+                            <div class="field"><label for="pvRate">Annual discount rate (%)</label><input id="pvRate"
+                                    min="0" step="0.01" type="number" value="6" /></div>
+                            <div class="field"><label for="pvYears">Years</label><input id="pvYears" min="0" step="0.01"
+                                    type="number" value="10" /></div>
+                            <div class="field"><label for="pvFreq">Compounding</label><select id="pvFreq">
+                                    <option value="1">Annually</option>
+                                    <option value="2">Semiannually</option>
+                                    <option value="4">Quarterly</option>
+                                    <option selected="" value="12">Monthly</option>
+                                    <option value="365">Daily</option>
+                                </select></div>
+                        </div>
+                        <div class="error" id="pvErr"></div>
+                        <div class="actions"><button class="btn" onclick="calcPV()">Calculate Present
+                                Value</button><button class="btn secondary" onclick="resetPV()">Reset</button></div>
+                    </div>
+                    <aside class="pv-result">
+                        <div class="eyebrow" style="color:#0e7490">Present value today</div>
+                        <div class="result-num" id="pvOut">—</div>
+                        <div class="stat-grid">
+                            <div class="stat">Discount amount<b id="pvDiscount">—</b></div>
+                            <div class="stat">Total periods<b id="pvPeriods">—</b></div>
+                        </div>
+                        <div class="pv-factor">
+                            <div>Present value factor<br /><b id="pvFactor" style="font-size:1.5rem">—</b></div>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+            <section class="content">
+                 
+
+<article class="article">
+
+ 
+
+  <p>Use the Present Value Calculator to estimate how much a future amount of money is worth today. Enter the future value, annual discount rate, number of years, and compounding frequency to calculate the present value of a single future lump sum.</p>
+
+  <section id="what">
+    <h2>What Is the Present Value Calculator?</h2>
+
+    <p>A Present Value Calculator determines the current equivalent value of a specified amount of money expected at a future date. It uses a discount rate to account for the time value of money.</p>
+
+    <p>Present value calculations are useful for comparing money received at different times, evaluating future payments, and estimating how much an amount available today would need to grow to reach a future financial target.</p>
+
+    <p>The calculator discounts one future lump sum rather than a series of recurring payments.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Present Value Calculator</h2>
+
+    <p>Enter the following information:</p>
+
+    <ol>
+      <li><strong>Future Value:</strong> Enter the amount of money expected or required at the end of the selected period. Use a consistent currency throughout the calculation.</li>
+      <li><strong>Annual Discount Rate (%):</strong> Enter the nominal annual percentage rate used to discount the future amount. For example, enter 5 for a 5% annual rate.</li>
+      <li><strong>Years:</strong> Enter the number of years between the present date and the future payment date.</li>
+      <li><strong>Compounding:</strong> Select the available compounding frequency. This determines how many discounting periods occur each year.</li>
+    </ol>
+
+    <p>After entering the values, calculate the result to see the estimated present value.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Present Value Formula / Calculation Method</h2>
+
+    <p>The calculator uses the compound discounting formula to convert a future lump sum into its present value.</p>
+
+    <h3>Main Formula</h3>
+
+    <div class="formula">
+      \[ \boxed{PV=\frac{FV}{(1+\frac{r}{m})^{m\times t}}} \]
+    </div>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PV</td>
+          <td>Present value</td>
+          <td>Currency</td>
+        </tr>
+        <tr>
+          <td>FV</td>
+          <td>Future value</td>
+          <td>Currency</td>
+        </tr>
+        <tr>
+          <td>r</td>
+          <td>Nominal annual discount rate</td>
+          <td>Decimal</td>
+        </tr>
+        <tr>
+          <td>m</td>
+          <td>Number of compounding periods per year</td>
+          <td>Periods/year</td>
+        </tr>
+        <tr>
+          <td>t</td>
+          <td>Time until the future payment</td>
+          <td>Years</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Calculation Sequence</h3>
+
+    <p>The calculator determines present value using these steps:</p>
+
+    <ol>
+      <li>Convert the annual discount rate from a percentage to a decimal.</li>
+      <li>Divide the annual rate by the compounding frequency to determine the periodic rate.</li>
+      <li>Multiply the number of years by the compounding frequency to determine the total number of periods.</li>
+      <li>Calculate the compound discounting factor.</li>
+      <li>Divide the future value by that factor to obtain the present value.</li>
+    </ol>
+
+    <p>The intermediate calculations are:</p>
+
+    <p>Annual rate conversion:</p>
+
+    <div class="formula">
+      \[ r=\frac{\text{Annual Discount Rate (\%)}}{100} \]
+    </div>
+
+    <p>Periodic discount rate:</p>
+
+    <div class="formula">i=rm</div>
+
+    <p>Total compounding periods:</p>
+
+    <div class="formula">n=mt</div>
+
+    <p>Final present value:</p>
+
+    <div class="formula">PV=FV(1+i)n</div>
+
+    <h3>Annual Compounding Formula</h3>
+
+    <p>When interest is compounded once per year, the formula simplifies to:</p>
+
+    <div class="formula">PV=FV(1+r)t</div>
+
+    <p>Annual compounding uses one discounting period per year.</p>
+
+    <h3>How Compounding Frequency Affects Present Value</h3>
+
+    <p>Compounding frequency determines how often the annual discount rate is applied.</p>
+
+    <p>For example, the number of periods per year is:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Compounding Frequency</th>
+          <th>Periods per Year (m)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Annually</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Semiannually</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>Quarterly</td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td>Monthly</td>
+          <td>12</td>
+        </tr>
+        <tr>
+          <td>Daily (365-day basis)</td>
+          <td>365</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>These values illustrate common discrete compounding conventions. The calculation uses the frequency selected in the calculator.</p>
+
+    <p>For a positive nominal annual discount rate, more frequent compounding produces a slightly lower present value when the future value and time horizon remain unchanged.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose you expect to receive $10,000 after 10 years and want to calculate its present value using a 5% annual discount rate with annual compounding.</p>
+
+    <h3>Inputs</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Input</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Future Value (FV)</td>
+          <td>$10,000</td>
+        </tr>
+        <tr>
+          <td>Annual Discount Rate</td>
+          <td>5%</td>
+        </tr>
+        <tr>
+          <td>Years</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>Compounding</td>
+          <td>Annually</td>
+        </tr>
+        <tr>
+          <td>Periods per Year (m)</td>
+          <td>1</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Step 1: Convert the Discount Rate</h3>
+
+    <div class="formula">r=5100=0.05</div>
+
+    <h3>Step 2: Determine the Number of Periods</h3>
+
+    <div class="formula">n=110=10</div>
+
+    <h3>Step 3: Apply the Present Value Formula</h3>
+
+    <div class="formula">PV=10,000(1+0.051)110</div>
+
+    <p>Simplifying:</p>
+
+    <div class="formula">PV=10,000(1.05)10</div>
+
+    <div class="formula">PV=10,0001.6288946268</div>
+
+    <h3>Final Result</h3>
+
+    <div class="formula">
+      \[ \boxed{PV\approx \$6,139.13} \]
+    </div>
+
+    <p>A future payment of $10,000 received after 10 years has an estimated present value of $6,139.13 when discounted at 5% annually.</p>
+
+    <p>This means $6,139.13 is the theoretical amount today that would grow to approximately $10,000 over 10 years at the assumed compound rate.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Present Value</h3>
+
+    <p>The primary result represents the current equivalent of the future amount based on the entered discount rate, time horizon, and compounding frequency.</p>
+
+    <p>The result uses the same currency unit as the future value entered.</p>
+
+    <p>For example, if a future amount is entered in dollars, the calculated present value is also expressed in dollars.</p>
+
+    <h3>Why Is Present Value Usually Lower Than Future Value?</h3>
+
+    <p>When the discount rate is positive and the time horizon is greater than zero, the future payment is divided by a compound factor greater than one.</p>
+
+    <p>Consequently, its present value is lower than its future value.</p>
+
+    <h3>How Different Inputs Affect the Result</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Input Change</th>
+          <th>Effect on Present Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Higher future value</td>
+          <td>Increases present value</td>
+        </tr>
+        <tr>
+          <td>Higher positive discount rate</td>
+          <td>Decreases present value</td>
+        </tr>
+        <tr>
+          <td>Longer time horizon</td>
+          <td>Decreases present value when the rate is positive</td>
+        </tr>
+        <tr>
+          <td>More frequent compounding</td>
+          <td>Decreases present value for a fixed positive nominal rate</td>
+        </tr>
+        <tr>
+          <td>Zero discount rate</td>
+          <td>Present value equals future value</td>
+        </tr>
+        <tr>
+          <td>Zero years</td>
+          <td>Present value equals future value</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>These relationships assume that the other inputs remain unchanged.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The Present Value Calculator uses a mathematical discounting model. Its results depend on the following assumptions and limitations.</p>
+
+    <ul>
+      <li><strong>Constant Discount Rate:</strong> The entered nominal annual discount rate is assumed to remain unchanged throughout the calculation.</li>
+
+      <li><strong>Single Future Payment:</strong> The formula discounts one future lump sum. It does not account for recurring deposits, withdrawals, or multiple future cash flows.</li>
+
+      <li><strong>Compounding Frequency:</strong> The calculation uses the selected number of compounding periods per year.</li>
+
+      <li><strong>Nominal Annual Rate:</strong> The annual rate is divided by the compounding frequency before discounting. It is not treated as an effective annual rate.</li>
+
+      <li><strong>Unit Consistency:</strong> The future value and present value use the same currency. Time is expressed in years.</li>
+
+      <li><strong>Rounding:</strong> Displayed currency values may be rounded, so manually reproducing the calculation with prematurely rounded intermediate values may produce a small difference.</li>
+
+      <li><strong>Zero Rate:</strong> A zero discount rate makes the present value equal to the future value.</li>
+
+      <li><strong>Formula Domain:</strong> The compounding frequency must be positive, and the periodic discounting base must satisfy 1+r/m&gt;0. The calculator's input validation determines which entered values are accepted.</li>
+
+      <li><strong>Real-World Limitations:</strong> Actual investment performance, taxes, transaction fees, changing interest rates, and inflation are not separately modeled by this formula.</li>
+    </ul>
+
+    <p>The result is a mathematical estimate based on the supplied assumptions, not a guaranteed investment return or an independently determined market valuation.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>1. What does a Present Value Calculator calculate?</summary>
+
+      <p>A Present Value Calculator estimates the equivalent current value of a future lump sum using a discount rate, time horizon, and compounding frequency.</p>
+
+      <p>It answers how much a specified future amount is worth today under the selected discounting assumptions.</p>
+    </details>
+
+    <details class="faq">
+      <summary>2. What is the difference between present value and future value?</summary>
+
+      <p>Present value expresses an amount in today's terms, while future value represents its value at a specified future date.</p>
+
+      <p>Present value calculations work backward from a known future amount, while future value calculations project an amount forward through compound growth.</p>
+    </details>
+
+    <details class="faq">
+      <summary>3. What discount rate should I enter?</summary>
+
+      <p>Enter the nominal annual rate appropriate for the financial scenario being evaluated.</p>
+
+      <p>Depending on the purpose, a discount rate may represent an assumed return, required rate of return, or opportunity cost of capital.</p>
+
+      <p>The calculator does not determine which rate is appropriate for a particular investment or financial decision.</p>
+    </details>
+
+    <details class="faq">
+      <summary>4. Does monthly compounding change the present value?</summary>
+
+      <p>Yes. Monthly compounding divides the nominal annual discount rate by 12 and applies it over 12 periods per year.</p>
+
+      <p>For a fixed positive nominal discount rate, monthly compounding produces a slightly lower present value than annual compounding when the other inputs remain unchanged.</p>
+    </details>
+
+    <details class="faq">
+      <summary>5. What happens when the discount rate is zero?</summary>
+
+      <p>When the discount rate is zero, no compound discounting occurs.</p>
+
+      <p>The formula simplifies to:</p>
+
+      <div class="formula">PV=FV</div>
+
+      <p>The present value therefore equals the entered future value, regardless of the selected time horizon.</p>
+    </details>
+
+    <details class="faq">
+      <summary>6. Can I use this calculator for monthly payments?</summary>
+
+      <p>The calculator is designed to discount a single future lump sum, not a sequence of monthly payments.</p>
+
+      <p>For recurring equal payments, an annuity-based present value calculation is generally more appropriate because each payment occurs at a different point in time.</p>
+    </details>
+
+    <details class="faq">
+      <summary>7. Does present value account for inflation automatically?</summary>
+
+      <p>No. The calculator applies the annual discount rate entered by the user.</p>
+
+      <p>If inflation is relevant to the analysis, it must be reflected appropriately in the discounting assumptions. The calculator does not independently retrieve inflation data or automatically add an inflation adjustment.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://openstax.org/books/contemporary-mathematics/pages/6-4-compound-interest" rel="noopener" target="_blank">OpenStax — Contemporary Mathematics: Compound Interest</a>
+        Explains the compound present value formula, including annual interest rates, compounding frequency, time, and the calculation of an initial amount from a future target.
+      </li>
+
+      <li>
+        <a href="https://openstax.org/books/principles-finance-2e/pages/7-4-applications-of-tvm-in-finance" rel="noopener" target="_blank">OpenStax — Principles of Finance: Applications of Time Value of Money</a>
+        Explains present value, discount rates, and the relationship between present and future cash flows.
+      </li>
+
+      <li>
+        <a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/PVPrimer/pvprimer.htm" rel="noopener" target="_blank">NYU Stern — Present Value Primer</a>
+        Provides financial valuation methodology and explains how compounding frequency affects effective interest rates and present value calculations.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li>
+        <a href="https://example.com/future-value-calculator/">Future Value Calculator</a>
+        – Calculate how an initial amount and recurring deposits can grow over time.
+      </li>
+
+      <li>
+        <a href="https://example.com/compound-interest-calculator/">Compound Interest Calculator</a>
+        – Explore how principal grows through compound interest.
+      </li>
+
+      <li>
+        <a href="https://example.com/investment-calculator/">Investment Calculator</a>
+        – Estimate investment growth using specified financial assumptions.
+      </li>
+
+      <li>
+        <a href="https://example.com/interest-calculator/">Interest Calculator</a>
+        – Calculate interest using the applicable rate and time period.
+      </li>
+
+      <li>
+        <a href="https://example.com/annuity-calculator/">Annuity Calculator</a>
+        – Evaluate a series of recurring payments rather than a single future lump sum.
+      </li>
+
+      <li>
+        <a href="https://example.com/savings-calculator/">Savings Calculator</a>
+        – Estimate savings growth over a selected period.
+      </li>
+    </ul>
+  </section>
+
+</article>
+
+
+            </section>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"106","Batch":"11","Calculator / Page":"Present Value Calculator","Slug":"present-value-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance","Page Type":"Calculator","Search Intent / Purpose":"Calculate the present value of a future lump sum using a discount rate, time horizon, and compounding frequency.","Formula / Algorithm Used in Tool":"Present Value Formula: PV = FV ÷ (1 + r / m) m × t PV is present value, FV is future value, r is the nominal annual discount rate, m is compounding periods per year, and t is time in years. When compounding is annual, the familiar form is PV = FV ÷ (1 + r) n .","Required User Inputs":"Future value; Annual discount rate (%); Years; Compounding","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Future value, Annual discount rate (%), Years, Compounding. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"Explain formula domain, unit consistency, rounding, input validation and real-world limitations.","Current Source URLs in Page":"https://www.pearson.com/channels/macroeconomics/asset/08a2c327/how-do-you-calculate-present-value-and-future-value | https://www.calculatorsoup.com/calculators/financial/present-value-calculator-basic.php","Implementation Path":"/present-value-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Finance</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../financial-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Financial Calculator</strong><small>Use this
+                            financial calculator for time value of money calculations including
+                            future…</small></span></a><a class="cp-related-link"
+                    href="../future-value-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Future Value Calculator</strong><small>Calculate
+                            the future value of a lump sum and periodic deposits with compound
+                            growth…</small></span></a><a class="cp-related-link"
+                    href="../take-home-pay-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Take Home Pay Calculator</strong><small>Estimate
+                            2026 U.S. take-home pay using federal tax brackets, standard or custom
+                            ded…</small></span></a><a class="cp-related-link" href="../rmd-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>RMD Calculator</strong><small>Estimate a required
+                            minimum distribution using IRS life-expectancy factors and the…</small></span></a><a
+                    class="cp-related-link" href="../house-affordability-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>House Affordability
+                            Calculator</strong><small>Estimate an affordable home price from income and debt-to-income
+                            limits or from a f…</small></span></a><a class="cp-related-link"
+                    href="../finance-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Finance
+                            Calculator</strong><small>Solve time-value-of-money variables including future value,
+                            present value, payment,…</small></span></a><a class="cp-related-link"
+                    href="../pension-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Pension
+                            Calculator</strong><small>Compare pension lump sums, monthly pension income, joint-survivor
+                            options, and dela…</small></span></a><a class="cp-related-link"
+                    href="../interest-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Interest
+                            Calculator</strong><small>Calculate compound interest with an initial balance, monthly
+                            contributions, annual…</small></span></a></div><a class="cp-side-category"
+                href="../finance/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>const cv = v => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(v); function calcPV() { const FV = +pvFV.value, r = +pvRate.value / 100, t = +pvYears.value, m = +pvFreq.value, er = pvErr; if (FV < 0 || r < 0 || t < 0 || !(m > 0)) { er.textContent = 'Enter non-negative values for future value, rate, and years.'; er.classList.add('show'); return } er.classList.remove('show'); const n = m * t, pv = n === 0 ? FV : FV / Math.pow(1 + r / m, n), factor = FV === 0 ? 0 : pv / FV; pvOut.textContent = cv(pv); pvDiscount.textContent = cv(FV - pv); pvPeriods.textContent = Number.isInteger(n) ? n : n.toFixed(2); pvFactor.textContent = factor.toFixed(6) } function resetPV() { pvFV.value = 25000; pvRate.value = 6; pvYears.value = 10; pvFreq.value = 12; calcPV() } calcPV();</script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

@@ -1,21 +1,1327 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
-<title>Business Loan Calculator | CalcPro</title><meta content="Estimate fixed monthly business loan payments, total interest, fees, amortization, and an illustrative fee-adjusted APR." name="description"/><meta content="index,follow" name="robots"/><link href="../business-loan-calculator/" rel="canonical"/><meta content="Business Loan Calculator | CalcPro" property="og:title"/><meta content="Estimate fixed monthly business loan payments, total interest, fees, amortization, and an illustrative fee-adjusted APR." property="og:description"/><meta content="website" property="og:type"/><meta content="/business-loan-calculator/" property="og:url"/><meta content="#1477ff" name="theme-color"/><style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.6}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}.crumb{font-size:.9rem;color:var(--muted);padding:18px 0}.hero{position:relative;overflow:hidden;border-radius:34px;background:var(--hero);box-shadow:0 30px 80px rgba(0,0,0,.18);padding:clamp(28px,5vw,64px);min-height:340px;display:grid;grid-template-columns:1.fr;gap:34px;align-items:center}.hero h1{font-size:clamp(2.2rem,5vw,4.6rem);line-height:1.02;margin:.15em 0 .3em;letter-spacing:-.04em}.hero p{font-size:1.08rem;max-width:720px;color:var(--hero-muted)}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.08);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}.visual{min-height:240px;position:relative;display:grid;place-items:center}.orb,.tile,.coin,.ring,.cube{position:absolute;filter:drop-shadow(0 18px 22px rgba(0,0,0,.24))}.orb{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff9 0 8%,transparent 9%),linear-gradient(145deg,var(--accent2),var(--accent));box-shadow:inset -18px -24px 36px #0003}.ring{width:190px;height:190px;border:28px solid var(--accent);border-radius:50%;transform:rotateX(62deg) rotateZ(-12deg);opacity:.9}.tile{width:190px;height:118px;border-radius:24px;background:linear-gradient(145deg,#ffffff22,#ffffff08);border:1px solid #ffffff35;backdrop-filter:blur(12px);transform:rotate(-8deg) skewY(4deg);display:grid;place-items:center;font-weight:800;font-size:2rem}.coin{width:78px;height:78px;border-radius:50%;background:linear-gradient(145deg,#fff7aa,#e6a800);border:8px solid #ffd14b;display:grid;place-items:center;color:#5d3c00;font-weight:900}.cube{width:94px;height:94px;border-radius:20px;background:linear-gradient(145deg,var(--accent),var(--accent2));transform:rotate(26deg);box-shadow:inset -16px -16px 24px #0002}.main-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(300px,.88fr);gap:28px;margin:34px auto}.panel{background:var(--panel);border:1px solid var(--panel-line);border-radius:28px;box-shadow:0 20px 48px rgba(0,0,0,.1);padding:clamp(20px,3vw,32px)}.panel h2{margin-top:0}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}label{font-weight:700;font-size:.92rem}.hint{font-size:.78rem;color:var(--muted)}input,select,textarea{width:100%;border:1px solid var(--input-line);background:var(--input);color:var(--text);border-radius:14px;padding:12px 13px;font:inherit;outline:none;box-shadow:inset 0 2px 10px rgba(0,0,0,.04)}input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:800;cursor:pointer}.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--button-text);box-shadow:0 12px 25px color-mix(in srgb,var(--accent) 28%,transparent)}.btn.ghost{background:var(--input);color:var(--text);border:1px solid var(--input-line)}.error{display:none;margin-top:12px;padding:11px 13px;border-radius:12px;background:#ffefef;color:#9c1c1c;font-weight:700}.results{position:sticky;top:18px;align-self:start}.result-hero{border-radius:24px;padding:22px;background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 16%,var(--panel)),color-mix(in srgb,var(--accent2) 10%,var(--panel)));border:1px solid color-mix(in srgb,var(--accent) 24%,var(--panel-line));margin-bottom:16px}.result-label{font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800}.result-big{font-size:clamp(2rem,4vw,3.4rem);font-weight:900;letter-spacing:-.04em;margin-top:4px}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{padding:14px;border-radius:16px;background:var(--soft);border:1px solid var(--panel-line)}.stat b{display:block;font-size:1.05rem}.stat span{font-size:.78rem;color:var(--muted)}.bar{height:12px;background:var(--soft);border-radius:999px;overflow:hidden;margin:8px 0}.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:inherit}.table-wrap{overflow:auto;margin-top:16px;border-radius:16px;border:1px solid var(--panel-line)}table{width:100%;border-collapse:collapse;min-width:560px}th,td{padding:10px 12px;border-bottom:1px solid var(--panel-line);text-align:right;font-size:.88rem}th:first-child,td:first-child{text-align:left}th{background:var(--soft);position:sticky;top:0}article.content{margin:40px auto 72px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:32px}.copy{background:var(--panel);border:1px solid var(--panel-line);border-radius:30px;padding:clamp(24px,4vw,46px);box-shadow:0 18px 50px rgba(0,0,0,.07)}.copy h2{font-size:clamp(1.45rem,3vw,2.25rem);margin-top:1.7em;letter-spacing:-.02em}.copy h2:first-child{margin-top:0}.copy h3{margin-top:1.4em}.copy p,.copy li{color:var(--copy)}.copy code{background:var(--soft);padding:2px 7px;border-radius:8px}.toc{position:sticky;top:20px;align-self:start;background:var(--panel);border:1px solid var(--panel-line);border-radius:22px;padding:20px}.toc strong{display:block;margin-bottom:8px}.toc a{display:block;padding:5px 0;color:var(--muted)}.callout{padding:16px 18px;border-left:4px solid var(--accent);background:var(--soft);border-radius:12px;margin:18px 0}.faq details{border-top:1px solid var(--panel-line);padding:14px 0}.faq summary{font-weight:800;cursor:pointer}.sources li{margin:8px 0}footer{padding:30px 0 50px;color:var(--muted);text-align:center}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.tab{padding:9px 12px;border-radius:12px;border:1px solid var(--input-line);background:var(--input);cursor:pointer;font-weight:800}.tab.active{background:var(--accent);color:var(--button-text);border-color:transparent}.hidden{display:none!important}.badge{display:inline-block;padding:4px 9px;border-radius:999px;background:var(--soft);font-size:.76rem;font-weight:800;color:var(--muted)}.switchline{display:flex;gap:10px;align-items:center}.switchline input{width:auto}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.mini-note{font-size:.82rem;color:var(--muted);margin-top:10px}
-@media(max-width:860px){.hero,.main-grid,article.content{grid-template-columns:1fr}.visual{min-height:180px}.results,.toc{position:static}.toc{display:none}}@media(max-width:560px){.wrap{width:min(100% - 20px,1180px)}.hero{border-radius:24px;padding:24px 20px}.panel{border-radius:22px;padding:18px}.form-grid,.stats,.three{grid-template-columns:1fr}.field.full{grid-column:auto}.result-big{font-size:2.25rem}}
+<html lang="en">
 
-:root{--bg:#eef4f7;--text:#13242d;--copy:#405761;--muted:#6a7f88;--panel:#f9fcfd;--panel-line:#cfdee4;--soft:#e9f1f4;--input:#fff;--input-line:#c6d7dd;--accent:#126782;--accent2:#37a66c;--button-text:#fff;--hero:linear-gradient(120deg,#082d3a,#0e5369 56%,#267d5a);--hero-muted:#d4edf3;--line:#ffffff27}.hero{border-radius:28px 28px 90px 28px}.visual .tile{width:220px;height:145px;transform:rotate(7deg);font-size:1.1rem}.visual .coin:nth-child(2){right:13%;top:9%;transform:scale(.72)}.visual:after{content:'▦';position:absolute;font-size:7rem;color:#ffffff55;left:5%;bottom:-10%}
-</style><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Business Loan Calculator", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "description": "Estimate fixed monthly business loan payments, total interest, fees, amortization, and an illustrative fee-adjusted APR.", "url": "/business-loan-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Loans & Debt", "item": "/finance/loans-debt/"}, {"@type": "ListItem", "position": 4, "name": "Business Loan Calculator", "item": "/business-loan-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why can APR be higher than the stated interest rate?", "acceptedAnswer": {"@type": "Answer", "text": "Upfront finance charges reduce the amount of usable proceeds while the scheduled payments may stay the same. When those fees are included in the cost calculation, the annualized borrowing rate can be higher than the note rate."}}, {"@type": "Question", "name": "Does this calculator work for daily or weekly business loans?", "acceptedAnswer": {"@type": "Answer", "text": "No. This version assumes monthly amortizing payments. Short-term products with daily or weekly debits can use different pricing methods, so their stated factor rate or fee should not be treated as directly equivalent to APR."}}, {"@type": "Question", "name": "Does a lower monthly payment mean a cheaper loan?", "acceptedAnswer": {"@type": "Answer", "text": "Not always. Extending the term can lower each payment while increasing total interest. Compare total payments, fees, annualized cost, and loan structure—not only the monthly amount."}}]}]}</script><link href="../assets/css/global.css" rel="stylesheet"/><link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head><body data-cp-category="finance" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../finance/index.html">Finance</a></li><li><a aria-current="page" href="index.html">Business Loan Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a href="../calculators/index.html">All calculators</a></div>
-<div class="cp-page-layout"><main class="wrap" id="main"><h1 class="page-title">Business Loan Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="main-grid"><section class="panel"><h2>Business Loan Payment</h2><div class="form-grid"><div class="field"><label for="loanAmount">Loan amount</label><input id="loanAmount" min="0" type="number" value="10000"/></div><div class="field"><label for="loanRate">Interest rate (APR %, before fees)</label><input id="loanRate" min="0" step="0.01" type="number" value="10"/></div><div class="field"><label for="loanYears">Term (years)</label><input id="loanYears" min="0" step="1" type="number" value="5"/></div><div class="field"><label for="loanMonths">Extra months</label><input id="loanMonths" max="11" min="0" type="number" value="0"/></div><div class="field"><label for="origFee">Origination fee</label><input id="origFee" min="0" type="number" value="1000"/></div><div class="field"><label for="docFee">Documentation fee</label><input id="docFee" min="0" type="number" value="150"/></div><div class="field full"><label for="otherFee">Other upfront fees</label><input id="otherFee" min="0" type="number" value="100"/></div></div><div class="error" id="error"></div><div class="actions"><button class="btn primary" onclick="calcBusinessLoan()">Calculate Loan</button><button class="btn ghost" onclick="resetBusinessLoan()">Reset</button></div></section><aside class="panel results"><div class="result-hero"><div class="result-label">Monthly payment</div><div class="result-big" id="bizPayment">$0.00</div></div><div class="stats"><div class="stat"><span>Total payments</span><b id="bizTotal">$0.00</b></div><div class="stat"><span>Total interest</span><b id="bizInterest">$0.00</b></div><div class="stat"><span>Interest + fees</span><b id="bizCost">$0.00</b></div><div class="stat"><span>Fee-adjusted APR*</span><b id="bizApr">—</b></div></div><div class="table-wrap"><table><thead><tr><th>Month</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody id="bizRows"></tbody></table></div><div class="mini-note">*Approximate APR assumes fees are deducted upfront from proceeds while scheduled payments are based on the stated loan amount.</div></aside></section><article class="content"><div class="copy"><h2 id="how">What Is a Business Loan Calculator?</h2><p>A business loan calculator estimates the periodic payment, total scheduled payments, interest cost, and the effect of upfront fees on the borrowing cost of a fixed-rate amortizing loan.</p><h2 id="formula">Business Loan Payment Formula</h2><p>For monthly amortization, payment is based on principal, monthly interest rate, and number of payments: <code>P × r ÷ [1 − (1+r)^−n]</code>. Total interest equals all scheduled payments minus original principal.</p><h3>Fee-adjusted APR estimate</h3><p>This page treats upfront fees as reducing net proceeds received by the borrower, then solves for the nominal annual percentage rate, based on the solved monthly rate, that equates those net proceeds with the scheduled payment stream. This helps illustrate why fees can make effective borrowing cost higher than the stated note rate.</p><h2 id="example">Example</h2><p>A $10,000 five-year loan at 10% has a fixed monthly payment based on 60 months. If $1,250 in upfront fees are deducted from proceeds, the borrower receives less cash while making the same scheduled payments, which raises the fee-adjusted annualized cost.</p><h2>What to Compare on Business Loans</h2><p>Compare more than the headline rate. Review payment frequency, term, fees, prepayment rules, collateral, guarantees, variable-rate provisions, late charges, and the amount of cash actually received.</p><h2 id="limits">Limitations</h2><p>This model assumes a fully amortizing fixed-rate monthly loan. It does not model daily or weekly repayment, interest-only periods, balloon payments, variable rates, SBA guarantee fees, prepayment penalties, compounding conventions, or lender-specific APR disclosure rules.</p><section class="faq" id="faq"><h2>Frequently Asked Questions</h2><details><summary>Why can APR be higher than the stated interest rate?</summary><p>Upfront finance charges reduce the amount of usable proceeds while the scheduled payments may stay the same. When those fees are included in the cost calculation, the annualized borrowing rate can be higher than the note rate.</p></details><details><summary>Does this calculator work for daily or weekly business loans?</summary><p>No. This version assumes monthly amortizing payments. Short-term products with daily or weekly debits can use different pricing methods, so their stated factor rate or fee should not be treated as directly equivalent to APR.</p></details><details><summary>Does a lower monthly payment mean a cheaper loan?</summary><p>Not always. Extending the term can lower each payment while increasing total interest. Compare total payments, fees, annualized cost, and loan structure—not only the monthly amount.</p></details></section><section class="sources" id="sources"><h2>Sources and Methodology</h2><p>The calculator logic is implemented locally in your browser. Formulas and terminology were cross-checked against the references below. Estimates can differ from lender, tax-authority, plan-administrator, or contract calculations because real-world rules may add timing, rounding, eligibility, fees, or jurisdiction-specific treatment.</p><ul><li><a href="https://www.calculator.net/business-loan-calculator.html" rel="noopener" target="_blank">Calculator.net — Business Loan Calculator</a></li><li><a href="https://www.sba.gov/funding-programs/loans" rel="noopener" target="_blank">U.S. Small Business Administration — Loans</a></li></ul></section></div></article>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <!-- Primary Meta Tags -->
+    <title>Business Loan Calculator – Payment, Interest &amp; Fees</title>
+    <meta name="title" content="Business Loan Calculator – Payment, Interest &amp; Fees">
+    <meta name="description"
+        content="Calculate estimated business loan payments, total interest, upfront fees, and loan cost using the amount, interest rate, term, and fee details.">
 
-<script class="cp-calculator-data" type="application/json">{"index":"82","Batch":"9","Calculator / Page":"Business Loan Calculator","Slug":"business-loan-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Estimate fixed monthly business loan payments, total interest, fees, amortization, and an illustrative fee-adjusted APR.","Formula / Algorithm Used in Tool":"Business Loan Payment Formula: For monthly amortization, payment is based on principal, monthly interest rate, and number of payments: P × r ÷ [1 − (1+r)^−n] . Total interest equals all scheduled payments minus original principal.","Required User Inputs":"Loan amount; Interest rate (APR %, before fees); Term (years); Extra months; Origination fee; Documentation fee; Other upfront fees","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Loan amount, Interest rate (APR %, before fees), Term (years), Extra months, Origination fee, Documentation fee, Other upfront fees. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"This model assumes a fully amortizing fixed-rate monthly loan. It does not model daily or weekly repayment, interest-only periods, balloon payments, variable rates, SBA guarantee fees, prepayment penalties, compounding conventions, or lender-specific APR disclosure rules. Frequently Asked Questions Why can APR be higher than the stated interest rate? Upfront finance charges reduce the amount of usable proceeds while the scheduled payments may stay the same. When those fees are included in the cost calculation, the annualized borrowing rate can be higher than the note rate. Does this calculator work for daily or weekly business loans? No. This version assumes monthly amortizing payments. Short-term products with daily or weekly debits can use different pricing methods, so their stated factor rate or fee should not be treated as directly equivalent to APR. Does a lower monthly payment mean a cheaper loan? Not always. Extending the term can lower each payment while increasing total interest. Compare total payments, fees, annualized cost, and loan structure—not only the monthly amount. Sources and Methodology The calculator logic is implemented locally in your browser. Formulas and terminology were cross-checked against the references below. Estimates can differ from lender, tax-auth","Current Source URLs in Page":"https://www.calculator.net/business-loan-calculator.html | https://www.sba.gov/funding-programs/loans","Implementation Path":"/business-loan-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Finance</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../personal-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Personal Loan Calculator</strong><small>Calculate personal loan monthly payment, total interest, origination fee, net proce…</small></span></a><a class="cp-related-link" href="../amortization-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Amortization Calculator</strong><small>Create an amortization schedule and see how extra monthly payments can change payof…</small></span></a><a class="cp-related-link" href="../loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Loan Calculator</strong><small>Calculate a fixed-rate amortized loan payment, total payments, total interest, and…</small></span></a><a class="cp-related-link" href="../repayment-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Repayment Calculator</strong><small>Calculate fixed-loan repayment time, monthly payment, total interest, and the impac…</small></span></a><a class="cp-related-link" href="../interest-rate-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Interest Rate Calculator</strong><small>Estimate the nominal annual interest rate implied by a loan amount, fixed monthly p…</small></span></a><a class="cp-related-link" href="../boat-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Boat Loan Calculator</strong><small>Estimate a boat loan payment, amount financed, tax, trade-in equity, total interest…</small></span></a><a class="cp-related-link" href="../credit-card-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Credit Card Calculator</strong><small>Estimate a single credit card payoff time, required monthly payment, total interest…</small></span></a><a class="cp-related-link" href="../refinance-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Refinance Calculator</strong><small>Compare an existing fixed-rate loan with a proposed refinance, including payment ch…</small></span></a></div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script>
-const $=s=>document.querySelector(s);const n=id=>Number(document.getElementById(id).value);const money=(v,c='$')=>c+Number(v).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});const pct=v=>Number(v).toFixed(2)+'%';
-function err(msg){const e=$('#error');e.textContent=msg;e.style.display='block'}function clearErr(){const e=$('#error');e.style.display='none';e.textContent=''}
+    <!-- Canonical -->
+    <link rel="canonical" href="https://monkeymart-onlinefree.github.io/business-loan-calculator/">
 
-function loanPmt(P,apr,m){const r=apr/100/12;return r===0?P/m:P*r/(1-Math.pow(1+r,-m))}function solveMonthlyIRR(net,pay,m){let lo=0,hi=1;function pv(r){let s=0;for(let k=1;k<=m;k++)s+=pay/Math.pow(1+r,k);return s}while(pv(hi)>net&&hi<100)hi*=2;for(let i=0;i<140;i++){let mid=(lo+hi)/2;if(pv(mid)>net)lo=mid;else hi=mid}return (lo+hi)/2}
-function calcBusinessLoan(){clearErr();const P=n('loanAmount'),apr=n('loanRate'),yrs=n('loanYears'),extra=n('loanMonths'),of=n('origFee'),df=n('docFee'),ot=n('otherFee');const m=Math.round(yrs*12+extra),fees=of+df+ot;if(P<=0||apr<0||m<=0||fees<0||fees>=P)return err('Enter a positive loan amount and term. Total upfront fees must be non-negative and below the loan amount.');const pay=loanPmt(P,apr,m),total=pay*m,int=total-P,net=P-fees,mr=solveMonthlyIRR(net,pay,m),realApr=mr*12*100;document.getElementById('bizPayment').textContent=money(pay);document.getElementById('bizTotal').textContent=money(total);document.getElementById('bizInterest').textContent=money(int);document.getElementById('bizCost').textContent=money(int+fees);document.getElementById('bizApr').textContent=pct(realApr);let bal=P,rows='';const r=apr/100/12;for(let k=1;k<=m;k++){let interest=bal*r,principal=pay-interest;if(k===m)principal=bal;let p2=k===m?bal+interest:pay;bal=Math.max(0,bal-principal);if(k<=12||k===m)rows+=`<tr><td>${k}</td><td>${money(p2)}</td><td>${money(principal)}</td><td>${money(interest)}</td><td>${money(bal)}</td></tr>`}if(m>13)rows=rows.replace('</tr>', '</tr>')+'';document.getElementById('bizRows').innerHTML=rows}
-function resetBusinessLoan(){const v={loanAmount:10000,loanRate:10,loanYears:5,loanMonths:0,origFee:1000,docFee:150,otherFee:100};Object.entries(v).forEach(([k,x])=>document.getElementById(k).value=x);calcBusinessLoan()}calcBusinessLoan();
-</script><script defer="" src="../assets/js/global.js"></script><script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+    <!-- Facebook / Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://monkeymart-onlinefree.github.io/business-loan-calculator/">
+    <meta property="og:title" content="Business Loan Calculator – Payment, Interest &amp; Fees">
+    <meta property="og:description"
+        content="Calculate estimated business loan payments, total interest, upfront fees, and loan cost using the amount, interest rate, term, and fee details.">
+    <meta property="og:site_name" content="Business Loan Calculator">
+
+    <!-- X / Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/business-loan-calculator/">
+    <meta name="twitter:title" content="Business Loan Calculator – Payment, Interest &amp; Fees">
+    <meta name="twitter:description"
+        content="Calculate estimated business loan payments, total interest, upfront fees, and loan cost using the amount, interest rate, term, and fee details.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .wrap {
+            width: min(1180px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .crumb {
+            font-size: .9rem;
+            color: var(--muted);
+            padding: 18px 0
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            border-radius: 34px;
+            background: var(--hero);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, .18);
+            padding: clamp(28px, 5vw, 64px);
+            min-height: 340px;
+            display: grid;
+            grid-template-columns: 1.fr;
+            gap: 34px;
+            align-items: center
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 4.6rem);
+            line-height: 1.02;
+            margin: .15em 0 .3em;
+            letter-spacing: -.04em
+        }
+
+        .hero p {
+            font-size: 1.08rem;
+            max-width: 720px;
+            color: var(--hero-muted)
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            padding: 7px 11px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .08);
+            font-size: .78rem;
+            letter-spacing: .08em;
+            text-transform: uppercase
+        }
+
+        .visual {
+            min-height: 240px;
+            position: relative;
+            display: grid;
+            place-items: center
+        }
+
+        .orb,
+        .tile,
+        .coin,
+        .ring,
+        .cube {
+            position: absolute;
+            filter: drop-shadow(0 18px 22px rgba(0, 0, 0, .24))
+        }
+
+        .orb {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 25%, #fff9 0 8%, transparent 9%), linear-gradient(145deg, var(--accent2), var(--accent));
+            box-shadow: inset -18px -24px 36px #0003
+        }
+
+        .ring {
+            width: 190px;
+            height: 190px;
+            border: 28px solid var(--accent);
+            border-radius: 50%;
+            transform: rotateX(62deg) rotateZ(-12deg);
+            opacity: .9
+        }
+
+        .tile {
+            width: 190px;
+            height: 118px;
+            border-radius: 24px;
+            background: linear-gradient(145deg, #ffffff22, #ffffff08);
+            border: 1px solid #ffffff35;
+            backdrop-filter: blur(12px);
+            transform: rotate(-8deg) skewY(4deg);
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            font-size: 2rem
+        }
+
+        .coin {
+            width: 78px;
+            height: 78px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #fff7aa, #e6a800);
+            border: 8px solid #ffd14b;
+            display: grid;
+            place-items: center;
+            color: #5d3c00;
+            font-weight: 900
+        }
+
+        .cube {
+            width: 94px;
+            height: 94px;
+            border-radius: 20px;
+            background: linear-gradient(145deg, var(--accent), var(--accent2));
+            transform: rotate(26deg);
+            box-shadow: inset -16px -16px 24px #0002
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.12fr) minmax(300px, .88fr);
+            gap: 28px;
+            margin: 34px auto
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--panel-line);
+            border-radius: 28px;
+            box-shadow: 0 20px 48px rgba(0, 0, 0, .1);
+            padding: clamp(20px, 3vw, 32px)
+        }
+
+        .panel h2 {
+            margin-top: 0
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px
+        }
+
+        .field.full {
+            grid-column: 1/-1
+        }
+
+        label {
+            font-weight: 700;
+            font-size: .92rem
+        }
+
+        .hint {
+            font-size: .78rem;
+            color: var(--muted)
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--input-line);
+            background: var(--input);
+            color: var(--text);
+            border-radius: 14px;
+            padding: 12px 13px;
+            font: inherit;
+            outline: none;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, .04)
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent)
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 18px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .btn.primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: var(--button-text);
+            box-shadow: 0 12px 25px color-mix(in srgb, var(--accent) 28%, transparent)
+        }
+
+        .btn.ghost {
+            background: var(--input);
+            color: var(--text);
+            border: 1px solid var(--input-line)
+        }
+
+        .error {
+            display: none;
+            margin-top: 12px;
+            padding: 11px 13px;
+            border-radius: 12px;
+            background: #ffefef;
+            color: #9c1c1c;
+            font-weight: 700
+        }
+
+        .results {
+            position: sticky;
+            top: 18px;
+            align-self: start
+        }
+
+        .result-hero {
+            border-radius: 24px;
+            padding: 22px;
+            background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 16%, var(--panel)), color-mix(in srgb, var(--accent2) 10%, var(--panel)));
+            border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--panel-line));
+            margin-bottom: 16px
+        }
+
+        .result-label {
+            font-size: .82rem;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: var(--muted);
+            font-weight: 800
+        }
+
+        .result-big {
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            font-weight: 900;
+            letter-spacing: -.04em;
+            margin-top: 4px
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px
+        }
+
+        .stat {
+            padding: 14px;
+            border-radius: 16px;
+            background: var(--soft);
+            border: 1px solid var(--panel-line)
+        }
+
+        .stat b {
+            display: block;
+            font-size: 1.05rem
+        }
+
+        .stat span {
+            font-size: .78rem;
+            color: var(--muted)
+        }
+
+        .bar {
+            height: 12px;
+            background: var(--soft);
+            border-radius: 999px;
+            overflow: hidden;
+            margin: 8px 0
+        }
+
+        .bar>i {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            border-radius: inherit
+        }
+
+        .table-wrap {
+            overflow: auto;
+            margin-top: 16px;
+            border-radius: 16px;
+            border: 1px solid var(--panel-line)
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 560px
+        }
+
+        th,
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--panel-line);
+            text-align: right;
+            font-size: .88rem
+        }
+
+        th:first-child,
+        td:first-child {
+            text-align: left
+        }
+
+        th {
+            background: var(--soft);
+            position: sticky;
+            top: 0
+        }
+
+        article.content {
+            margin: 40px auto 72px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 300px;
+            gap: 32px
+        }
+
+        .copy {
+            background: var(--panel);
+            border: 1px solid var(--panel-line);
+            border-radius: 30px;
+            padding: clamp(24px, 4vw, 46px);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, .07)
+        }
+
+        .copy h2 {
+            font-size: clamp(1.45rem, 3vw, 2.25rem);
+            margin-top: 1.7em;
+            letter-spacing: -.02em
+        }
+
+        .copy h2:first-child {
+            margin-top: 0
+        }
+
+        .copy h3 {
+            margin-top: 1.4em
+        }
+
+        .copy p,
+        .copy li {
+            color: var(--copy)
+        }
+
+        .copy code {
+            background: var(--soft);
+            padding: 2px 7px;
+            border-radius: 8px
+        }
+
+        .toc {
+            position: sticky;
+            top: 20px;
+            align-self: start;
+            background: var(--panel);
+            border: 1px solid var(--panel-line);
+            border-radius: 22px;
+            padding: 20px
+        }
+
+        .toc strong {
+            display: block;
+            margin-bottom: 8px
+        }
+
+        .toc a {
+            display: block;
+            padding: 5px 0;
+            color: var(--muted)
+        }
+
+        .callout {
+            padding: 16px 18px;
+            border-left: 4px solid var(--accent);
+            background: var(--soft);
+            border-radius: 12px;
+            margin: 18px 0
+        }
+
+        .faq details {
+            border-top: 1px solid var(--panel-line);
+            padding: 14px 0
+        }
+
+        .faq summary {
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .sources li {
+            margin: 8px 0
+        }
+
+        footer {
+            padding: 30px 0 50px;
+            color: var(--muted);
+            text-align: center
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 16px
+        }
+
+        .tab {
+            padding: 9px 12px;
+            border-radius: 12px;
+            border: 1px solid var(--input-line);
+            background: var(--input);
+            cursor: pointer;
+            font-weight: 800
+        }
+
+        .tab.active {
+            background: var(--accent);
+            color: var(--button-text);
+            border-color: transparent
+        }
+
+        .hidden {
+            display: none !important
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 9px;
+            border-radius: 999px;
+            background: var(--soft);
+            font-size: .76rem;
+            font-weight: 800;
+            color: var(--muted)
+        }
+
+        .switchline {
+            display: flex;
+            gap: 10px;
+            align-items: center
+        }
+
+        .switchline input {
+            width: auto
+        }
+
+        .three {
+            grid-template-columns: repeat(3, minmax(0, 1fr))
+        }
+
+        .mini-note {
+            font-size: .82rem;
+            color: var(--muted);
+            margin-top: 10px
+        }
+
+        @media(max-width:860px) {
+
+            .hero,
+            .main-grid,
+            article.content {
+                grid-template-columns: 1fr
+            }
+
+            .visual {
+                min-height: 180px
+            }
+
+            .results,
+            .toc {
+                position: static
+            }
+
+            .toc {
+                display: none
+            }
+        }
+
+        @media(max-width:560px) {
+            .wrap {
+                width: min(100% - 20px, 1180px)
+            }
+
+            .hero {
+                border-radius: 24px;
+                padding: 24px 20px
+            }
+
+            .panel {
+                border-radius: 22px;
+                padding: 18px
+            }
+
+            .form-grid,
+            .stats,
+            .three {
+                grid-template-columns: 1fr
+            }
+
+            .field.full {
+                grid-column: auto
+            }
+
+            .result-big {
+                font-size: 2.25rem
+            }
+        }
+
+        :root {
+            --bg: #eef4f7;
+            --text: #13242d;
+            --copy: #405761;
+            --muted: #6a7f88;
+            --panel: #f9fcfd;
+            --panel-line: #cfdee4;
+            --soft: #e9f1f4;
+            --input: #fff;
+            --input-line: #c6d7dd;
+            --accent: #126782;
+            --accent2: #37a66c;
+            --button-text: #fff;
+            --hero: linear-gradient(120deg, #082d3a, #0e5369 56%, #267d5a);
+            --hero-muted: #d4edf3;
+            --line: #ffffff27
+        }
+
+        .hero {
+            border-radius: 28px 28px 90px 28px
+        }
+
+        .visual .tile {
+            width: 220px;
+            height: 145px;
+            transform: rotate(7deg);
+            font-size: 1.1rem
+        }
+
+        .visual .coin:nth-child(2) {
+            right: 13%;
+            top: 9%;
+            transform: scale(.72)
+        }
+
+        .visual:after {
+            content: '▦';
+            position: absolute;
+            font-size: 7rem;
+            color: #ffffff55;
+            left: 5%;
+            bottom: -10%
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/business-loan-calculator/#webapplication",
+      "name": "Business Loan Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/business-loan-calculator/",
+      "description": "Calculate estimated business loan payments, total interest, upfront fees, and loan cost using the amount, interest rate, term, and fee details.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/business-loan-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Business Loan Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/business-loan-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/business-loan-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is a business loan monthly payment calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For the monthly fixed-rate loan modeled here, the payment is calculated using the standard amortization formula: Payment = P × r ÷ [1 − (1 + r)^−n]. The result depends mainly on the amount borrowed, monthly interest rate, and number of monthly payments."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a longer loan term lower the monthly payment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually, yes. Spreading the same principal across more monthly payments reduces the amount that must be repaid each month. However, keeping a balance outstanding for longer can increase total interest. Compare both the monthly payment and total borrowing cost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do loan fees increase the monthly payment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not necessarily. In this calculator, fees are entered separately from the principal-and-interest calculation. A lender could structure fees differently, including financing some charges into the loan balance. Always use the principal and fees shown in the actual loan documents."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between the interest rate and fee-adjusted APR?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The stated interest rate is used to calculate interest on the loan principal. A fee-adjusted APR is intended to give a broader annualized view of borrowing cost when certain upfront fees are considered. Because real lending disclosures can use specific regulatory and contractual methods, the calculator's APR should be treated as an illustrative estimate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use this calculator for an SBA loan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can use it to estimate a standard fixed-rate, fully amortizing monthly payment when you know the loan amount, rate, term, and relevant upfront fees. It does not automatically apply SBA eligibility requirements, guarantee fees, program maximums, or other SBA-specific rules. SBA loan terms and fees should be verified using current SBA information and the lender's offer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this calculator support daily or weekly business loans?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This version models monthly amortization. Business financing with daily or weekly withdrawals can use different repayment structures and pricing methods, so its quoted rate or factor rate should not be treated as equivalent to the monthly amortization model used here."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the calculator result the same as a lender quote?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not necessarily. The calculator provides an estimate based on the values entered and its fixed monthly amortization model. Lenders may use additional fees, exact payment dates, different compounding methods, rounding procedures, or other contractual rules."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="finance" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../finance/index.html">Finance</a></li>
+            <li><a aria-current="page" href="index.html">Business Loan Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main class="wrap" id="main">
+            <h1 class="page-title">Business Loan Calculator</h1>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="main-grid">
+                <section class="panel">
+                    <h2>Business Loan Payment</h2>
+                    <div class="form-grid">
+                        <div class="field"><label for="loanAmount">Loan amount</label><input id="loanAmount" min="0"
+                                type="number" value="10000" /></div>
+                        <div class="field"><label for="loanRate">Interest rate (APR %, before fees)</label><input
+                                id="loanRate" min="0" step="0.01" type="number" value="10" /></div>
+                        <div class="field"><label for="loanYears">Term (years)</label><input id="loanYears" min="0"
+                                step="1" type="number" value="5" /></div>
+                        <div class="field"><label for="loanMonths">Extra months</label><input id="loanMonths" max="11"
+                                min="0" type="number" value="0" /></div>
+                        <div class="field"><label for="origFee">Origination fee</label><input id="origFee" min="0"
+                                type="number" value="1000" /></div>
+                        <div class="field"><label for="docFee">Documentation fee</label><input id="docFee" min="0"
+                                type="number" value="150" /></div>
+                        <div class="field full"><label for="otherFee">Other upfront fees</label><input id="otherFee"
+                                min="0" type="number" value="100" /></div>
+                    </div>
+                    <div class="error" id="error"></div>
+                    <div class="actions"><button class="btn primary" onclick="calcBusinessLoan()">Calculate
+                            Loan</button><button class="btn ghost" onclick="resetBusinessLoan()">Reset</button></div>
+                </section>
+                <aside class="panel results">
+                    <div class="result-hero">
+                        <div class="result-label">Monthly payment</div>
+                        <div class="result-big" id="bizPayment">$0.00</div>
+                    </div>
+                    <div class="stats">
+                        <div class="stat"><span>Total payments</span><b id="bizTotal">$0.00</b></div>
+                        <div class="stat"><span>Total interest</span><b id="bizInterest">$0.00</b></div>
+                        <div class="stat"><span>Interest + fees</span><b id="bizCost">$0.00</b></div>
+                        <div class="stat"><span>Fee-adjusted APR*</span><b id="bizApr">—</b></div>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Month</th>
+                                    <th>Payment</th>
+                                    <th>Principal</th>
+                                    <th>Interest</th>
+                                    <th>Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bizRows"></tbody>
+                        </table>
+                    </div>
+                    <div class="mini-note">*Approximate APR assumes fees are deducted upfront from proceeds while
+                        scheduled payments are based on the stated loan amount.</div>
+                </aside>
+            </section>
+
+
+
+            <article class="article">
+                <p>Use the Business Loan Calculator to estimate the regular payment and total interest for a fixed-rate
+                    business loan. Enter the loan amount, annual interest rate, repayment term, and applicable upfront
+                    fees to understand the estimated cost of borrowing.</p>
+
+                <section id="what">
+                    <h2>What Is the Business Loan Calculator?</h2>
+
+                    <p class="direct">A Business Loan Calculator estimates the cost of repaying a business loan with a
+                        fixed interest rate and regular monthly payments.</p>
+
+                    <p>It can help business owners compare financing scenarios, estimate the payment required for a
+                        selected term, understand total interest costs, and see how upfront fees may affect the overall
+                        cost of a loan.</p>
+
+                    <p>The calculator is designed for planning and comparison. Actual lender calculations can differ
+                        because of payment timing, compounding methods, fees, loan structures, and lender-specific
+                        rules.</p>
+                </section>
+
+                <section id="how">
+                    <h2>How to Use the Business Loan Calculator</h2>
+
+                    <p>Enter the information from your loan offer or financing scenario.</p>
+
+                    <h3>Loan Amount</h3>
+                    <p>Enter the principal amount you plan to borrow. This is the starting balance used to calculate the
+                        scheduled loan payment.</p>
+
+                    <h3>Interest Rate</h3>
+                    <p>Enter the annual interest rate as a percentage. This is the stated rate before the calculator
+                        considers any separate upfront fees.</p>
+
+                    <p>For monthly amortization, the annual rate is converted to a monthly rate by dividing it by 12.
+                    </p>
+
+                    <h3>Term in Years</h3>
+                    <p>Enter the number of complete years over which the loan will be repaid.</p>
+
+                    <h3>Extra Months</h3>
+                    <p>Use this field when the repayment term includes additional months beyond the full years.</p>
+
+                    <p>For example, a term of 3 years and 6 months equals 42 monthly payments.</p>
+
+                    <h3>Origination Fee</h3>
+                    <p>Enter the applicable origination fee shown in your financing terms. Origination fees are charges
+                        that may be assessed for processing or arranging the loan.</p>
+
+                    <h3>Documentation Fee</h3>
+                    <p>Enter any upfront documentation or paperwork fee associated with the loan.</p>
+
+                    <h3>Other Upfront Fees</h3>
+                    <p>Enter other applicable upfront loan charges that you want included in the calculator's fee
+                        estimate.</p>
+
+                    <p>Fees can vary significantly by lender and loan product, so use the amounts stated in the actual
+                        offer you are evaluating.</p>
+                </section>
+
+                <section id="formula">
+                    <h2>Formula / Calculation Method</h2>
+
+                    <h3>Main Formula</h3>
+
+                    <p>For a fully amortizing loan with monthly payments, the calculator uses:</p>
+
+                    <div class="formula">Payment = P × r ÷ [1 − (1 + r)^−n]</div>
+
+                    <h3>Variables</h3>
+
+                    <ul>
+                        <li><strong>Payment</strong> = required monthly principal-and-interest payment</li>
+                        <li><strong>P</strong> = original loan principal</li>
+                        <li><strong>r</strong> = monthly interest rate as a decimal</li>
+                        <li><strong>n</strong> = total number of monthly payments</li>
+                    </ul>
+
+                    <p>The monthly interest rate is:</p>
+
+                    <div class="formula">r = Annual interest rate ÷ 12</div>
+
+                    <p>When the annual rate is entered as a percentage, it is first converted to decimal form.</p>
+
+                    <p>For example:</p>
+
+                    <div class="formula">8% = 0.08</div>
+
+                    <p>and:</p>
+
+                    <div class="formula">r = 0.08 ÷ 12</div>
+
+                    <p>The total number of payments is based on the entered years and additional months:</p>
+
+                    <div class="formula">n = (Years × 12) + Extra months</div>
+
+                    <h3>Calculation Sequence</h3>
+
+                    <ol>
+                        <li>Convert the annual percentage rate to decimal form.</li>
+                        <li>Divide the annual rate by 12 to determine the monthly interest rate.</li>
+                        <li>Convert the repayment term into the total number of months.</li>
+                        <li>Apply the fixed-payment amortization formula.</li>
+                        <li>Calculate total scheduled payments.</li>
+                        <li>Subtract the original principal from scheduled payments to determine total interest.</li>
+                        <li>Account for the entered upfront fees in the calculator's supporting cost estimates.</li>
+                    </ol>
+
+                    <h3>Total Scheduled Payments</h3>
+
+                    <p>For a monthly amortizing loan:</p>
+
+                    <div class="formula">Total Scheduled Payments = Monthly Payment × Number of Payments</div>
+
+                    <p>This represents the total of the scheduled principal-and-interest payments over the full loan
+                        term.</p>
+
+                    <h3>Total Interest</h3>
+
+                    <p>The calculator determines total interest as:</p>
+
+                    <div class="formula">Total Interest = Total Scheduled Payments − Original Principal</div>
+
+                    <p>This is the interest generated by the fixed-rate amortization schedule before separately entered
+                        upfront fees.</p>
+
+                    <h3>Upfront Fees</h3>
+
+                    <p>Origination, documentation, and other upfront fees can increase the total cost of obtaining
+                        financing even when they do not change the scheduled principal-and-interest payment.</p>
+
+                    <p>The calculator can use these entered charges when presenting supporting loan-cost information.
+                    </p>
+
+                    <h3>Fee-Adjusted APR</h3>
+
+                    <p>The calculator may also show an illustrative fee-adjusted APR to help compare the borrowing cost
+                        when upfront fees are considered.</p>
+
+                    <p>This figure should be treated as an estimate rather than a lender's official regulatory APR
+                        disclosure because exact APR calculations can depend on fee classification, payment dates,
+                        compounding conventions, and lender-specific methods.</p>
+                </section>
+
+                <section id="example">
+                    <h2>Worked Example</h2>
+
+                    <p>Suppose a business borrows <strong>$100,000</strong> at a fixed annual interest rate of
+                        <strong>8%</strong> for <strong>5 years</strong>.</p>
+
+                    <p>To demonstrate the core amortization calculation, assume no additional months or upfront fees.
+                    </p>
+
+                    <h3>Inputs</h3>
+
+                    <ul>
+                        <li>Loan amount: <strong>$100,000</strong></li>
+                        <li>Annual interest rate: <strong>8%</strong></li>
+                        <li>Term: <strong>5 years</strong></li>
+                        <li>Extra months: <strong>0</strong></li>
+                        <li>Origination fee: <strong>0</strong></li>
+                        <li>Documentation fee: <strong>$0</strong></li>
+                        <li>Other upfront fees: <strong>$0</strong></li>
+                    </ul>
+
+                    <h3>Step 1: Find the Monthly Rate</h3>
+
+                    <p>Convert 8% to decimal form:</p>
+
+                    <div class="formula">0.08</div>
+
+                    <p>Then divide by 12:</p>
+
+                    <div class="formula">r = 0.08 ÷ 12</div>
+
+                    <div class="formula">r = 0.0066666667</div>
+
+                    <h3>Step 2: Find the Number of Payments</h3>
+
+                    <div class="formula">n = 5 × 12</div>
+
+                    <div class="formula">n = 60 payments</div>
+
+                    <h3>Step 3: Calculate the Monthly Payment</h3>
+
+                    <p>Using:</p>
+
+                    <div class="formula">Payment = P × r ÷ [1 − (1 + r)^−n]</div>
+
+                    <p>Substitute the values:</p>
+
+                    <div class="formula">Payment = 100,000 × 0.0066666667 ÷ [1 − (1.0066666667)^−60]</div>
+
+                    <p>The estimated monthly payment is approximately:</p>
+
+                    <div class="formula">$2,027.64</div>
+
+                    <h3>Step 4: Calculate Total Payments</h3>
+
+                    <div class="formula">$2,027.6394 × 60 = $121,658.37</div>
+
+                    <p>Using the unrounded payment during the calculation avoids early-rounding differences.</p>
+
+                    <h3>Step 5: Calculate Total Interest</h3>
+
+                    <div class="formula">$121,658.37 − $100,000 = $21,658.37</div>
+
+                    <h3>Final Result</h3>
+
+                    <p>For this example:</p>
+
+                    <ul>
+                        <li>Estimated monthly payment: <strong>$2,027.64</strong></li>
+                        <li>Total scheduled payments: <strong>$121,658.37</strong></li>
+                        <li>Estimated total interest: <strong>$21,658.37</strong></li>
+                    </ul>
+
+                    <p>Because the example uses zero upfront fees, no additional fee cost is included.</p>
+                </section>
+
+                <section id="results">
+                    <h2>Understanding Your Results</h2>
+
+                    <h3>Monthly Payment</h3>
+
+                    <p>The monthly payment is the estimated principal-and-interest amount required each month to fully
+                        repay the entered loan over the selected term.</p>
+
+                    <p>A longer repayment term generally reduces the monthly payment but can increase total interest
+                        because the balance remains outstanding for longer.</p>
+
+                    <h3>Total Scheduled Payments</h3>
+
+                    <p>This is the combined amount of all scheduled principal-and-interest payments over the loan term.
+                    </p>
+
+                    <p>It does not automatically represent every dollar you may pay if the loan has charges that are not
+                        included in the calculator.</p>
+
+                    <h3>Total Interest</h3>
+
+                    <p>Total interest shows how much of the scheduled repayment exceeds the original principal.</p>
+
+                    <p>It can be useful when comparing loans with different rates or repayment periods.</p>
+
+                    <h3>Fees</h3>
+
+                    <p>Entered origination, documentation, and other upfront charges represent additional borrowing
+                        costs.</p>
+
+                    <p>Two loans with similar interest rates can have different overall costs when one has substantially
+                        higher upfront fees.</p>
+
+                    <h3>Fee-Adjusted APR</h3>
+
+                    <p>The fee-adjusted APR provides an additional comparison measure that considers entered upfront
+                        fees.</p>
+
+                    <p>Do not assume it will exactly match the APR, effective rate, or other cost measure shown in a
+                        lender's legal documents.</p>
+
+                    <h3>Amortization</h3>
+
+                    <p>A fully amortizing loan gradually reduces the outstanding principal with each scheduled payment.
+                    </p>
+
+                    <p>Early payments generally contain a larger interest component because the outstanding balance is
+                        higher. As the balance declines, more of each payment goes toward principal.</p>
+                </section>
+
+                <section id="limits">
+                    <h2>Assumptions and Limitations</h2>
+
+                    <p>This Business Loan Calculator assumes a <strong>fully amortizing, fixed-rate loan with regular
+                            monthly payments</strong>.</p>
+
+                    <p>It does not model:</p>
+
+                    <ul>
+                        <li>Daily or weekly repayment schedules</li>
+                        <li>Variable interest rates</li>
+                        <li>Interest-only periods</li>
+                        <li>Balloon payments</li>
+                        <li>Irregular or skipped payments</li>
+                        <li>Prepayment penalties</li>
+                        <li>SBA guarantee fees automatically</li>
+                        <li>Lender-specific compounding conventions</li>
+                        <li>Lender-specific APR disclosure rules</li>
+                        <li>Late-payment charges</li>
+                        <li>Taxes or legal costs not entered as fees</li>
+                    </ul>
+
+                    <p>The calculator also does not determine whether a business qualifies for financing or whether a
+                        particular loan is affordable.</p>
+
+                    <p>Actual payments and loan costs may differ because lenders can use specific payment dates,
+                        rounding procedures, fee classifications, and contractual calculation methods.</p>
+
+                    <p>For SBA-backed financing, program eligibility, maximum rates, maturities, and applicable fees
+                        depend on the specific SBA program and current rules. SBA states that participating lenders set
+                        or negotiate loan terms subject to program requirements.</p>
+                </section>
+
+                <section id="faq">
+                    <h2>Frequently Asked Questions</h2>
+
+                    <details class="faq">
+                        <summary>How is a business loan monthly payment calculated?</summary>
+                        <p>For the monthly fixed-rate loan modeled here, the payment is calculated using the standard
+                            amortization formula:</p>
+                        <div class="formula">Payment = P × r ÷ [1 − (1 + r)^−n]</div>
+                        <p>The result depends mainly on the amount borrowed, monthly interest rate, and number of
+                            monthly payments.</p>
+                    </details>
+
+                    <details class="faq">
+                        <summary>Does a longer loan term lower the monthly payment?</summary>
+                        <p>Usually, yes. Spreading the same principal across more monthly payments reduces the amount
+                            that must be repaid each month.</p>
+                        <p>However, keeping a balance outstanding for longer can increase total interest. Compare both
+                            the monthly payment and total borrowing cost.</p>
+                    </details>
+
+                    <details class="faq">
+                        <summary>Do loan fees increase the monthly payment?</summary>
+                        <p>Not necessarily. In this calculator, fees are entered separately from the
+                            principal-and-interest calculation.</p>
+                        <p>A lender could structure fees differently, including financing some charges into the loan
+                            balance. Always use the principal and fees shown in the actual loan documents.</p>
+                    </details>
+
+                    <details class="faq">
+                        <summary>What is the difference between the interest rate and fee-adjusted APR?</summary>
+                        <p>The stated interest rate is used to calculate interest on the loan principal.</p>
+                        <p>A fee-adjusted APR is intended to give a broader annualized view of borrowing cost when
+                            certain upfront fees are considered. Because real lending disclosures can use specific
+                            regulatory and contractual methods, the calculator's APR should be treated as an
+                            illustrative estimate.</p>
+                    </details>
+
+                    <details class="faq">
+                        <summary>Can I use this calculator for an SBA loan?</summary>
+                        <p>You can use it to estimate a standard fixed-rate, fully amortizing monthly payment when you
+                            know the loan amount, rate, term, and relevant upfront fees.</p>
+                        <p>It does not automatically apply SBA eligibility requirements, guarantee fees, program
+                            maximums, or other SBA-specific rules. SBA loan terms and fees should be verified using
+                            current SBA information and the lender's offer.</p>
+                    </details>
+
+                    <details class="faq">
+                        <summary>Does this calculator support daily or weekly business loans?</summary>
+                        <p>No. This version models monthly amortization.</p>
+                        <p>Business financing with daily or weekly withdrawals can use different repayment structures
+                            and pricing methods, so its quoted rate or factor rate should not be treated as equivalent
+                            to the monthly amortization model used here.</p>
+                    </details>
+
+                    <details class="faq">
+                        <summary>Is the calculator result the same as a lender quote?</summary>
+                        <p>Not necessarily.</p>
+                        <p>The calculator provides an estimate based on the values entered and its fixed monthly
+                            amortization model. Lenders may use additional fees, exact payment dates, different
+                            compounding methods, rounding procedures, or other contractual rules.</p>
+                    </details>
+                </section>
+
+                <section id="sources">
+                    <h2>Sources &amp; Methodology</h2>
+
+                    <h3>Formula / Methodology Sources</h3>
+
+                    <ul class="sources">
+                        <li>
+                            <a href="https://www.calculator.net/business-loan-calculator.html?utm_source=chatgpt.com"
+                                rel="noopener" target="_blank">Calculator.net — Business Loan Calculator</a>
+                            <p>Used to cross-check standard business-loan amortization terminology, payment-cost
+                                presentation, fees, and business-loan comparison concepts.</p>
+                        </li>
+
+                        <li>
+                            <a href="https://www.sba.gov/loans/?utm_source=chatgpt.com" rel="noopener"
+                                target="_blank">U.S. Small Business Administration — Business Loans</a>
+                            <p>Used to verify general information about SBA-backed financing, eligibility
+                                considerations, and lender-based loan terms.</p>
+                        </li>
+
+                        <li>
+                            <a href="https://www.sba.gov/sba-lenders/?utm_source=chatgpt.com" rel="noopener"
+                                target="_blank">U.S. Small Business Administration — SBA Lender Resources and Loan
+                                Programs</a>
+                            <p>Used to verify that SBA loan programs can have program-specific rate limits, maturities,
+                                guarantees, and fees that are not automatically modeled by this calculator.</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="related">
+                    <h2>Related Tools</h2>
+
+                    <ul>
+                        <li><a href="https://example.com/loan-calculator/">Loan Calculator</a></li>
+                        <li><a href="https://example.com/payment-calculator/">Payment Calculator</a></li>
+                        <li><a href="https://example.com/amortization-calculator/">Amortization Calculator</a></li>
+                        <li><a href="https://example.com/apr-calculator/">APR Calculator</a></li>
+                        <li><a href="https://example.com/personal-loan-calculator/">Personal Loan Calculator</a></li>
+                        <li><a href="https://example.com/interest-rate-calculator/">Interest Rate Calculator</a></li>
+                    </ul>
+                </section>
+
+            </article>
+
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"82","Batch":"9","Calculator / Page":"Business Loan Calculator","Slug":"business-loan-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Estimate fixed monthly business loan payments, total interest, fees, amortization, and an illustrative fee-adjusted APR.","Formula / Algorithm Used in Tool":"Business Loan Payment Formula: For monthly amortization, payment is based on principal, monthly interest rate, and number of payments: P × r ÷ [1 − (1+r)^−n] . Total interest equals all scheduled payments minus original principal.","Required User Inputs":"Loan amount; Interest rate (APR %, before fees); Term (years); Extra months; Origination fee; Documentation fee; Other upfront fees","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Loan amount, Interest rate (APR %, before fees), Term (years), Extra months, Origination fee, Documentation fee, Other upfront fees. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"This model assumes a fully amortizing fixed-rate monthly loan. It does not model daily or weekly repayment, interest-only periods, balloon payments, variable rates, SBA guarantee fees, prepayment penalties, compounding conventions, or lender-specific APR disclosure rules. Frequently Asked Questions Why can APR be higher than the stated interest rate? Upfront finance charges reduce the amount of usable proceeds while the scheduled payments may stay the same. When those fees are included in the cost calculation, the annualized borrowing rate can be higher than the note rate. Does this calculator work for daily or weekly business loans? No. This version assumes monthly amortizing payments. Short-term products with daily or weekly debits can use different pricing methods, so their stated factor rate or fee should not be treated as directly equivalent to APR. Does a lower monthly payment mean a cheaper loan? Not always. Extending the term can lower each payment while increasing total interest. Compare total payments, fees, annualized cost, and loan structure—not only the monthly amount. Sources and Methodology The calculator logic is implemented locally in your browser. Formulas and terminology were cross-checked against the references below. Estimates can differ from lender, tax-auth","Current Source URLs in Page":"https://www.calculator.net/business-loan-calculator.html | https://www.sba.gov/funding-programs/loans","Implementation Path":"/business-loan-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Finance</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../personal-loan-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Personal Loan Calculator</strong><small>Calculate
+                            personal loan monthly payment, total interest, origination fee, net
+                            proce…</small></span></a><a class="cp-related-link"
+                    href="../amortization-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Amortization Calculator</strong><small>Create an
+                            amortization schedule and see how extra monthly payments can change
+                            payof…</small></span></a><a class="cp-related-link"
+                    href="../loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Loan
+                            Calculator</strong><small>Calculate a fixed-rate amortized loan payment, total payments,
+                            total interest, and…</small></span></a><a class="cp-related-link"
+                    href="../repayment-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Repayment Calculator</strong><small>Calculate
+                            fixed-loan repayment time, monthly payment, total interest, and the
+                            impac…</small></span></a><a class="cp-related-link"
+                    href="../interest-rate-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Interest Rate Calculator</strong><small>Estimate
+                            the nominal annual interest rate implied by a loan amount, fixed monthly
+                            p…</small></span></a><a class="cp-related-link"
+                    href="../boat-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Boat
+                            Loan Calculator</strong><small>Estimate a boat loan payment, amount financed, tax, trade-in
+                            equity, total interest…</small></span></a><a class="cp-related-link"
+                    href="../credit-card-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Credit Card Calculator</strong><small>Estimate a
+                            single credit card payoff time, required monthly payment, total
+                            interest…</small></span></a><a class="cp-related-link"
+                    href="../refinance-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Refinance Calculator</strong><small>Compare an
+                            existing fixed-rate loan with a proposed refinance, including payment ch…</small></span></a>
+            </div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const $ = s => document.querySelector(s); const n = id => Number(document.getElementById(id).value); const money = (v, c = '$') => c + Number(v).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }); const pct = v => Number(v).toFixed(2) + '%';
+        function err(msg) { const e = $('#error'); e.textContent = msg; e.style.display = 'block' } function clearErr() { const e = $('#error'); e.style.display = 'none'; e.textContent = '' }
+
+        function loanPmt(P, apr, m) { const r = apr / 100 / 12; return r === 0 ? P / m : P * r / (1 - Math.pow(1 + r, -m)) } function solveMonthlyIRR(net, pay, m) { let lo = 0, hi = 1; function pv(r) { let s = 0; for (let k = 1; k <= m; k++)s += pay / Math.pow(1 + r, k); return s } while (pv(hi) > net && hi < 100) hi *= 2; for (let i = 0; i < 140; i++) { let mid = (lo + hi) / 2; if (pv(mid) > net) lo = mid; else hi = mid } return (lo + hi) / 2 }
+        function calcBusinessLoan() { clearErr(); const P = n('loanAmount'), apr = n('loanRate'), yrs = n('loanYears'), extra = n('loanMonths'), of = n('origFee'), df = n('docFee'), ot = n('otherFee'); const m = Math.round(yrs * 12 + extra), fees = of + df + ot; if (P <= 0 || apr < 0 || m <= 0 || fees < 0 || fees >= P) return err('Enter a positive loan amount and term. Total upfront fees must be non-negative and below the loan amount.'); const pay = loanPmt(P, apr, m), total = pay * m, int = total - P, net = P - fees, mr = solveMonthlyIRR(net, pay, m), realApr = mr * 12 * 100; document.getElementById('bizPayment').textContent = money(pay); document.getElementById('bizTotal').textContent = money(total); document.getElementById('bizInterest').textContent = money(int); document.getElementById('bizCost').textContent = money(int + fees); document.getElementById('bizApr').textContent = pct(realApr); let bal = P, rows = ''; const r = apr / 100 / 12; for (let k = 1; k <= m; k++) { let interest = bal * r, principal = pay - interest; if (k === m) principal = bal; let p2 = k === m ? bal + interest : pay; bal = Math.max(0, bal - principal); if (k <= 12 || k === m) rows += `<tr><td>${k}</td><td>${money(p2)}</td><td>${money(principal)}</td><td>${money(interest)}</td><td>${money(bal)}</td></tr>` } if (m > 13) rows = rows.replace('</tr>', '</tr>') + ''; document.getElementById('bizRows').innerHTML = rows }
+        function resetBusinessLoan() { const v = { loanAmount: 10000, loanRate: 10, loanYears: 5, loanMonths: 0, origFee: 1000, docFee: 150, otherFee: 100 }; Object.entries(v).forEach(([k, x]) => document.getElementById(k).value = x); calcBusinessLoan() } calcBusinessLoan();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

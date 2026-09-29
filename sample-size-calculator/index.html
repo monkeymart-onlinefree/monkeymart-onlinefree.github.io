@@ -1,49 +1,967 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<title>Sample Size Calculator | CalcPro</title>
-<meta content="Estimate sample size for a population proportion using confidence level, margin of error, expected proportion, and finite-population correction." name="description"/>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="index,follow" name="robots"/>
-<link href="../sample-size-calculator/" rel="canonical"/>
-<meta content="website" property="og:type"/>
-<meta content="Sample Size Calculator" property="og:title"/>
-<meta content="Estimate sample size for a population proportion using confidence level, margin of error, expected proportion, and finite-population correction." property="og:description"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}
-a{color:inherit}button,input,select{font:inherit}button{cursor:pointer}.wrap{width:min(1160px,92vw);margin:auto}.crumbs{font-size:.88rem;opacity:.78;margin-bottom:18px}h1,h2,h3{line-height:1.15;margin:0 0 14px}h1{font-size:clamp(2.3rem,5vw,4.9rem);letter-spacing:-.045em}h2{font-size:clamp(1.6rem,3vw,2.25rem);letter-spacing:-.025em}h3{font-size:1.1rem}p{margin:0 0 14px}.muted{opacity:.74}label{font-weight:750;font-size:.92rem;display:block;margin-bottom:7px}input,select{width:100%;padding:13px 14px;border-radius:14px;border:1px solid var(--line);background:var(--field);color:var(--ink);outline:none}input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.btn{border:0;border-radius:14px;padding:13px 18px;font-weight:800;box-shadow:var(--btnshadow)}.primary{background:var(--accent);color:var(--onaccent)}.secondary{background:var(--soft);color:var(--ink);border:1px solid var(--line)}.error{min-height:24px;color:var(--danger);font-weight:700;margin-top:10px}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--formula);border:1px solid var(--line);padding:14px 16px;border-radius:16px;overflow:auto}.result-main{font-size:clamp(1.9rem,4vw,3.2rem);font-weight:900;letter-spacing:-.04em;word-break:break-word}.result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.result-chip{padding:12px 13px;border-radius:14px;background:var(--soft);border:1px solid var(--line)}.result-chip b{display:block;font-size:.8rem;opacity:.65;margin-bottom:2px}.content{padding:72px 0 40px}.article-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}article section{margin-bottom:38px}aside{position:sticky;top:18px}.toc,.sourcebox{border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow);border-radius:24px;padding:20px}.toc a{display:block;text-decoration:none;padding:6px 0;opacity:.78}.toc a:hover{opacity:1}ul,ol{padding-left:22px}table{width:100%;border-collapse:collapse;border-radius:18px;overflow:hidden}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left}th{background:var(--soft)}footer{padding:36px 0 50px;opacity:.7;font-size:.9rem}.sr{position:absolute;left:-9999px}
-@media(max-width:860px){.article-grid{grid-template-columns:1fr}aside{position:static}.result-grid{grid-template-columns:1fr}}
-</style>
-<style>
-:root{--bg:#f4fbfb;--ink:#15343b;--panel:#fff;--field:#fff;--soft:#eaf6f4;--formula:#edf8f6;--line:#d6e8e5;--accent:#126d70;--onaccent:#fff;--focus:#126d701c;--danger:#b42318;--shadow:0 30px 80px #0c46501b;--btnshadow:0 12px 28px #126d7029;}
+   <meta charset="utf-8" />
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<meta http-equiv="content-language" content="en">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
 
-.ss-hero{padding:54px 0 125px;background:linear-gradient(130deg,#0e2733,#134658 52%,#1b6d72);color:#f5ffff;overflow:hidden}.ss-grid{display:grid;grid-template-columns:1.fr;align-items:center}.ss-tag{font-size:.76rem;font-weight:900;letter-spacing:.18em;color:#9af1dc}.people{height:270px;position:relative}.pyramid{width:270px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:absolute;right:40px;top:40px;transform:rotate(-5deg)}.pyramid i{height:55px;border-radius:50% 50% 42% 42%;background:linear-gradient(145deg,#f6fffd,#73cdb8);box-shadow:0 18px 30px #00151f55}.lens{position:absolute;right:0;bottom:0;width:130px;height:130px;border:12px solid #ffcf72;border-radius:50%;display:grid;place-items:center;font-size:3.5rem;font-weight:900;color:#ffcf72;background:#0e2733bb;box-shadow:0 28px 50px #00151f99}.lens:after{content:"";position:absolute;width:80px;height:18px;background:#ffcf72;border-radius:20px;right:-62px;bottom:-35px;transform:rotate(45deg)}.ss-zone{margin-top:-72px}.ss-layout{display:grid;grid-template-columns:1.fr;border-radius:34px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}.ss-form,.ss-result{padding:30px;background:var(--panel)}.ss-result{background:linear-gradient(155deg,#fff5d9,#fff)}.ss-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.ss-result>span{font-size:.75rem;font-weight:900;letter-spacing:.18em;color:#9a6a14}.sample-number{font-size:5rem;line-height:1;font-weight:950;letter-spacing:-.06em;color:#0f5961;margin:8px 0}@media(max-width:760px){.ss-grid,.ss-layout,.ss-fields{grid-template-columns:1fr}.people{height:220px}}
 
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/sample-size-calculator/#app", "name": "Sample Size Calculator", "url": "/sample-size-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Estimate sample size for a population proportion using confidence level, margin of error, expected proportion, and finite-population correction."}, {"@type": "BreadcrumbList", "@id": "/sample-size-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Math & Statistics", "item": "/math/"}, {"@type": "ListItem", "position": 3, "name": "Statistics & Probability", "item": "/math/statistics-probability/"}, {"@type": "ListItem", "position": 4, "name": "Sample Size Calculator", "item": "/sample-size-calculator/"}]}, {"@type": "FAQPage", "@id": "/sample-size-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "What sample-size formula does this calculator use?", "acceptedAnswer": {"@type": "Answer", "text": "It uses the normal-approximation formula for estimating a population proportion with a specified confidence level and margin of error, with an optional finite-population correction."}}, {"@type": "Question", "name": "Why is 50% often used for expected proportion?", "acceptedAnswer": {"@type": "Answer", "text": "When no prior proportion is known, p=0.5 maximizes p(1−p), producing the most conservative sample size for this formula."}}, {"@type": "Question", "name": "Is this a clinical-trial power calculator?", "acceptedAnswer": {"@type": "Answer", "text": "No. Power calculations for comparing groups require additional assumptions such as effect size, alpha, power, and allocation. This page estimates sample size for one population proportion."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body data-cp-category="math" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../math/index.html">Math &amp; Statistics</a></li><li><a aria-current="page" href="index.html">Sample Size Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a href="../calculators/index.html">All calculators</a></div><header><div class="ss-hero"><div class="wrap ss-grid"><div><nav class="crumbs">Home / Statistics / Sample Size Calculator</nav><span class="ss-tag">SURVEY PLANNING</span><h1>Sample Size Calculator</h1><p>Estimate the minimum simple-random sample needed for a population proportion using confidence level, margin of error, expected proportion, and optional population size.</p></div><div aria-hidden="true" class="people"><div class="pyramid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="lens">n</div></div></div></div></header>
-<div class="cp-page-layout"><main id="main"><h1 class="page-title">Sample Size Calculator</h1>
-<section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="ss-zone"><div class="wrap ss-layout"><div class="ss-form"><h2>Plan your sample</h2><div class="ss-fields"><div><label for="conf">Confidence level</label><select id="conf"><option value="1.645">90%</option><option selected="" value="1.96">95%</option><option value="2.576">99%</option></select></div><div><label for="moe">Margin of error (%)</label><input id="moe" max="99" min="0.01" step="any" type="number" value="5"/></div><div><label for="prop">Expected proportion (%)</label><input id="prop" max="99.99" min="0.01" step="any" type="number" value="50"/></div><div><label for="pop">Population size (optional)</label><input id="pop" min="1" placeholder="Leave blank for large/infinite" step="1" type="number"/></div></div><div class="actions"><button class="btn primary" onclick="calcSample()">Calculate Sample Size</button><button class="btn secondary" onclick="resetSample()">Reset</button></div><div class="error" id="ssErr"></div></div><div class="ss-result"><span>REQUIRED SAMPLE</span><div class="sample-number" id="ssMain">385</div><p id="ssNote">Large/infinite population estimate</p><div class="result-grid"><div class="result-chip"><b>Unrounded n</b><span id="ssRaw">384.1459</span></div><div class="result-chip"><b>Z value</b><span id="ssZ">1.96</span></div><div class="result-chip"><b>Margin</b><span id="ssM">5%</span></div><div class="result-chip"><b>Expected p</b><span id="ssP">50%</span></div></div></div></div></section>
-<div class="content"><div class="wrap article-grid">
-<article><section id="about"><h2>What Is a Sample Size Calculator?</h2><p>This sample size calculator estimates the number of independent observations needed to estimate one population proportion with a chosen confidence level and margin of error. An optional finite-population correction reduces the required sample when the target population is not very large.</p></section><section id="use"><h2>How to Use the Sample Size Calculator</h2><ol><li>Select a confidence level.</li><li>Enter the desired margin of error as a percentage.</li><li>Enter the expected proportion. Use 50% when there is no reliable prior estimate and a conservative sample is desired.</li><li>Optionally enter the total population size.</li></ol></section><section id="formula"><h2>Sample Size Formula</h2><div class="formula">n₀ = z² p(1−p) / e²<br/>Finite population: n = n₀ / [1 + (n₀−1)/N]</div><p>NIST gives the large-population proportion formula. The finite-population correction shown here is the standard simple-random-sampling adjustment. Here, z is the normal critical value, p is the expected proportion, e is the margin of error, and N is population size.</p></section><section id="example"><h2>Calculation Example</h2><p>At 95% confidence, 5% margin of error, and p = 50%, the large-population formula gives approximately 384.15. Rounding up gives a required sample of <strong>385</strong>.</p></section><section id="limits"><h2>Limitations</h2><p>This is a planning formula for a simple estimate of one proportion under normal-approximation assumptions. Complex survey designs, clustering, unequal weighting, nonresponse, rare outcomes, subgroup precision, and hypothesis-testing power can require larger or differently calculated samples. The result is not a substitute for a study-specific statistical design.</p></section><section id="faq"><h2>Frequently Asked Questions</h2><h3>Why does a smaller margin of error need a larger sample?</h3><p>The margin of error appears squared in the denominator. As the target margin becomes smaller, the required sample increases rapidly.</p><h3>Why round the sample size up?</h3><p>The formula gives a minimum requirement. Rounding down could leave the sample below that requirement, so the calculator uses the next whole number.</p></section><section id="sources"><h2>Sources and Methodology</h2><ul><li><a href="https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nbshandbook91.pdf" rel="noopener" target="_blank">NIST Handbook 91 — Sample Size for a Proportion</a></li><li><a href="https://www.se.rit.edu/~swen-640/docs/data-integrity-ii/" rel="noopener" target="_blank">Rochester Institute of Technology — Proportion Sample Size and Finite Population Correction</a></li></ul><p class="muted">Method: two-sided normal critical values 1.645, 1.96, and 2.576 for 90%, 95%, and 99% confidence, respectively.</p></section></article>
-<aside><div class="toc"><h3>On this page</h3>
-<a href="#about">What it calculates</a><a href="#use">How to use it</a><a href="#formula">Formula</a>
-<a href="#example">Example</a><a href="#limits">Limitations</a><a href="#faq">FAQs</a><a href="#sources">Sources</a>
-</div></aside>
-</div></div>
+<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+<!-- Primary Meta Tags -->
+<title>Sample Size Calculator – Confidence &amp; Margin of Error</title>
+<meta name="title" content="Sample Size Calculator – Confidence &amp; Margin of Error">
+<meta name="description" content="Calculate the sample size needed to estimate a population proportion using confidence level, margin of error, expected proportion, and population size.">
 
-<script class="cp-calculator-data" type="application/json">{"index":"138","Batch":"14","Calculator / Page":"Sample Size Calculator","Slug":"sample-size-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Estimate sample size for a population proportion using confidence level, margin of error, expected proportion, and finite-population correction.","Formula / Algorithm Used in Tool":"Sample Size Formula: n₀ = z² p(1−p) / e² Finite population: n = n₀ / [1 + (n₀−1)/N] NIST gives the large-population proportion formula. The finite-population correction shown here is the standard simple-random-sampling adjustment. Here, z is the normal critical value, p is the expected proportion, e is the margin of error, and N is population size.","Required User Inputs":"Confidence level; Margin of error (%); Expected proportion (%); Population size (optional)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Confidence level, Margin of error (%), Expected proportion (%), Population size (optional). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"This is a planning formula for a simple estimate of one proportion under normal-approximation assumptions. Complex survey designs, clustering, unequal weighting, nonresponse, rare outcomes, subgroup precision, and hypothesis-testing power can require larger or differently calculated samples. The result is not a substitute for a study-specific statistical design.","Current Source URLs in Page":"https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nbshandbook91.pdf | https://www.se.rit.edu/~swen-640/docs/data-integrity-ii/","Implementation Path":"/sample-size-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Math &amp; Statistics</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../standard-deviation-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Standard Deviation Calculator</strong><small>Calculate sample or population standard deviation, variance, mean, sum, count, stan…</small></span></a><a class="cp-related-link" href="../confidence-interval-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Confidence Interval Calculator</strong><small>Calculate a two-sided confidence interval for a mean using a t interval for sample…</small></span></a><a class="cp-related-link" href="../random-number-generator/index.html"><span class="cp-related-dot">›</span><span><strong>Random Number Generator</strong><small>Generate one or many random integers or decimals between custom limits, with option…</small></span></a><a class="cp-related-link" href="../number-sequence-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Number Sequence Calculator</strong><small>Calculate arithmetic, geometric, and Fibonacci sequence terms, previews, and finite…</small></span></a><a class="cp-related-link" href="../percent-error-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Percent Error Calculator</strong><small>Calculate percent error, absolute error, relative error, and signed error from obse…</small></span></a><a class="cp-related-link" href="../distance-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Distance Calculator</strong><small>Calculate distance between two points in 2D, 3D, or between latitude-longitude coor…</small></span></a><a class="cp-related-link" href="../ratio-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Ratio Calculator</strong><small>Solve a proportion A:B = C:D when one value is unknown, and simplify two-number rat…</small></span></a><a class="cp-related-link" href="../pythagorean-theorem-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Pythagorean Theorem Calculator</strong><small>Find a missing side of a right triangle using a² + b² = c². Free, fast and responsi…</small></span></a></div><a class="cp-side-category" href="../math/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-const sn=n=>parseFloat(n.toFixed(6)).toString();
-function calcSample(){const z=Number(conf.value),e=Number(moe.value)/100,p=Number(prop.value)/100,pt=pop.value.trim();ssErr.textContent='';if(!Number.isFinite(e)||e<=0||e>=1||!Number.isFinite(p)||p<=0||p>=1){ssErr.textContent='Margin of error and expected proportion must be percentages between 0 and 100.';return}const n0=z*z*p*(1-p)/(e*e);let n=n0,note='Large/infinite population estimate';if(pt!==''){const N=Number(pt);if(!Number.isFinite(N)||N<1||!Number.isInteger(N)){ssErr.textContent='Population size must be a positive whole number.';return}n=n0/(1+(n0-1)/N);n=Math.min(n,N);note='Finite-population correction applied (N = '+N+')'}ssMain.textContent=Math.ceil(n).toLocaleString();ssRaw.textContent=sn(n);ssZ.textContent=sn(z);ssM.textContent=sn(e*100)+'%';ssP.textContent=sn(p*100)+'%';ssNote.textContent=note}
-function resetSample(){conf.value='1.96';moe.value=5;prop.value=50;pop.value='';calcSample()}calcSample();
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/sample-size-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/sample-size-calculator/">
+<meta property="og:title" content="Sample Size Calculator – Confidence &amp; Margin of Error">
+<meta property="og:description" content="Calculate the sample size needed to estimate a population proportion using confidence level, margin of error, expected proportion, and population size.">
+<meta property="og:site_name" content="Sample Size Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/sample-size-calculator/">
+<meta name="twitter:title" content="Sample Size Calculator – Confidence &amp; Margin of Error">
+<meta name="twitter:description" content="Calculate the sample size needed to estimate a population proportion using confidence level, margin of error, expected proportion, and population size.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.65
+        }
+
+        a {
+            color: inherit
+        }
+
+        button,
+        input,
+        select {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        .wrap {
+            width: min(1160px, 92vw);
+            margin: auto
+        }
+
+        .crumbs {
+            font-size: .88rem;
+            opacity: .78;
+            margin-bottom: 18px
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.15;
+            margin: 0 0 14px
+        }
+
+        h1 {
+            font-size: clamp(2.3rem, 5vw, 4.9rem);
+            letter-spacing: -.045em
+        }
+
+        h2 {
+            font-size: clamp(1.6rem, 3vw, 2.25rem);
+            letter-spacing: -.025em
+        }
+
+        h3 {
+            font-size: 1.1rem
+        }
+
+        p {
+            margin: 0 0 14px
+        }
+
+        .muted {
+            opacity: .74
+        }
+
+        label {
+            font-weight: 750;
+            font-size: .92rem;
+            display: block;
+            margin-bottom: 7px
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 13px 14px;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            background: var(--field);
+            color: var(--ink);
+            outline: none
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--focus)
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 13px 18px;
+            font-weight: 800;
+            box-shadow: var(--btnshadow)
+        }
+
+        .primary {
+            background: var(--accent);
+            color: var(--onaccent)
+        }
+
+        .secondary {
+            background: var(--soft);
+            color: var(--ink);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            min-height: 24px;
+            color: var(--danger);
+            font-weight: 700;
+            margin-top: 10px
+        }
+
+        .formula {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: var(--formula);
+            border: 1px solid var(--line);
+            padding: 14px 16px;
+            border-radius: 16px;
+            overflow: auto
+        }
+
+        .result-main {
+            font-size: clamp(1.9rem, 4vw, 3.2rem);
+            font-weight: 900;
+            letter-spacing: -.04em;
+            word-break: break-word
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 14px
+        }
+
+        .result-chip {
+            padding: 12px 13px;
+            border-radius: 14px;
+            background: var(--soft);
+            border: 1px solid var(--line)
+        }
+
+        .result-chip b {
+            display: block;
+            font-size: .8rem;
+            opacity: .65;
+            margin-bottom: 2px
+        }
+
+        .content {
+            padding: 72px 0 40px
+        }
+
+        .article-grid {
+            display: grid;
+             gap: 28px;
+            align-items: start
+        }
+
+        article section {
+            margin-bottom: 38px
+        }
+
+        aside {
+            position: sticky;
+            top: 18px
+        }
+
+        .toc,
+        .sourcebox {
+            border: 1px solid var(--line);
+            background: var(--panel);
+            box-shadow: var(--shadow);
+            border-radius: 24px;
+            padding: 20px
+        }
+
+        .toc a {
+            display: block;
+            text-decoration: none;
+            padding: 6px 0;
+            opacity: .78
+        }
+
+        .toc a:hover {
+            opacity: 1
+        }
+
+        ul,
+        ol {
+            padding-left: 22px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 18px;
+            overflow: hidden
+        }
+
+        th,
+        td {
+            padding: 11px;
+            border-bottom: 1px solid var(--line);
+            text-align: left
+        }
+
+        th {
+            background: var(--soft)
+        }
+
+        footer {
+            padding: 36px 0 50px;
+            opacity: .7;
+            font-size: .9rem
+        }
+
+        .sr {
+            position: absolute;
+            left: -9999px
+        }
+
+        @media(max-width:860px) {
+            .article-grid {
+                grid-template-columns: 1fr
+            }
+
+            aside {
+                position: static
+            }
+
+            .result-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+    <style>
+        :root {
+            --bg: #f4fbfb;
+            --ink: #15343b;
+            --panel: #fff;
+            --field: #fff;
+            --soft: #eaf6f4;
+            --formula: #edf8f6;
+            --line: #d6e8e5;
+            --accent: #126d70;
+            --onaccent: #fff;
+            --focus: #126d701c;
+            --danger: #b42318;
+            --shadow: 0 30px 80px #0c46501b;
+            --btnshadow: 0 12px 28px #126d7029;
+        }
+
+        .ss-hero {
+            padding: 54px 0 125px;
+            background: linear-gradient(130deg, #0e2733, #134658 52%, #1b6d72);
+            color: #f5ffff;
+            overflow: hidden
+        }
+
+        .ss-grid {
+            display: grid;
+            grid-template-columns: 1.fr;
+            align-items: center
+        }
+
+        .ss-tag {
+            font-size: .76rem;
+            font-weight: 900;
+            letter-spacing: .18em;
+            color: #9af1dc
+        }
+
+        .people {
+            height: 270px;
+            position: relative
+        }
+
+        .pyramid {
+            width: 270px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            position: absolute;
+            right: 40px;
+            top: 40px;
+            transform: rotate(-5deg)
+        }
+
+        .pyramid i {
+            height: 55px;
+            border-radius: 50% 50% 42% 42%;
+            background: linear-gradient(145deg, #f6fffd, #73cdb8);
+            box-shadow: 0 18px 30px #00151f55
+        }
+
+        .lens {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 130px;
+            height: 130px;
+            border: 12px solid #ffcf72;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #ffcf72;
+            background: #0e2733bb;
+            box-shadow: 0 28px 50px #00151f99
+        }
+
+        .lens:after {
+            content: "";
+            position: absolute;
+            width: 80px;
+            height: 18px;
+            background: #ffcf72;
+            border-radius: 20px;
+            right: -62px;
+            bottom: -35px;
+            transform: rotate(45deg)
+        }
+
+        .ss-zone {
+            margin-top: -72px
+        }
+
+        .ss-layout {
+            display: grid;
+            grid-template-columns: 1.fr;
+            border-radius: 34px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--line)
+        }
+
+        .ss-form,
+        .ss-result {
+            padding: 30px;
+            background: var(--panel)
+        }
+
+        .ss-result {
+            background: linear-gradient(155deg, #fff5d9, #fff)
+        }
+
+        .ss-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px
+        }
+
+        .ss-result>span {
+            font-size: .75rem;
+            font-weight: 900;
+            letter-spacing: .18em;
+            color: #9a6a14
+        }
+
+        .sample-number {
+            font-size: 5rem;
+            line-height: 1;
+            font-weight: 950;
+            letter-spacing: -.06em;
+            color: #0f5961;
+            margin: 8px 0
+        }
+
+        @media(max-width:760px) {
+
+            .ss-grid,
+            .ss-layout,
+            .ss-fields {
+                grid-template-columns: 1fr
+            }
+
+            .people {
+                height: 220px
+            }
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/sample-size-calculator/#webapplication",
+      "name": "Sample Size Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/sample-size-calculator/",
+      "description": "Calculate the sample size needed to estimate a population proportion using confidence level, margin of error, expected proportion, and population size.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/sample-size-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Sample Size Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/sample-size-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/sample-size-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does a sample size calculator calculate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It estimates the number of observations needed to estimate a population proportion for a chosen confidence level, margin of error, expected proportion, and optional finite population size."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is 50% often used for the expected proportion?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For the proportion formula, p(1−p) is largest when p = 0.5. Using 50% therefore gives the largest, most conservative sample-size estimate when no better prior estimate is available."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a smaller margin of error require a larger sample?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Margin of error appears squared in the denominator of the formula, so reducing the desired margin of error can substantially increase the required sample."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does population size sometimes reduce the sample size?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When the population is finite, sampling a substantial portion of that population provides more information than the large-population formula assumes. The finite-population correction accounts for this relationship."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I always need to enter population size?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Population size is optional for this calculator. If it is not supplied, the initial large-population formula n₀ is used without the finite-population adjustment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should the calculated sample size be rounded up?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When the formula gives a fractional minimum requirement, statistical sample-size planning normally rounds upward so the collected sample is not smaller than the calculated requirement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this calculator the same as a statistical power calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This calculator estimates sample size for estimating one proportion with a specified confidence level and margin of error. Power calculations for hypothesis tests require additional assumptions about the effect being detected and the desired statistical power."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="math" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../math/index.html">Math &amp; Statistics</a></li>
+            <li><a aria-current="page" href="index.html">Sample Size Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Sample Size Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="ss-zone">
+                <div class="wrap ss-layout">
+                    <div class="ss-form">
+                        <h2>Plan your sample</h2>
+                        <div class="ss-fields">
+                            <div><label for="conf">Confidence level</label><select id="conf">
+                                    <option value="1.645">90%</option>
+                                    <option selected="" value="1.96">95%</option>
+                                    <option value="2.576">99%</option>
+                                </select></div>
+                            <div><label for="moe">Margin of error (%)</label><input id="moe" max="99" min="0.01"
+                                    step="any" type="number" value="5" /></div>
+                            <div><label for="prop">Expected proportion (%)</label><input id="prop" max="99.99"
+                                    min="0.01" step="any" type="number" value="50" /></div>
+                            <div><label for="pop">Population size (optional)</label><input id="pop" min="1"
+                                    placeholder="Leave blank for large/infinite" step="1" type="number" /></div>
+                        </div>
+                        <div class="actions"><button class="btn primary" onclick="calcSample()">Calculate Sample
+                                Size</button><button class="btn secondary" onclick="resetSample()">Reset</button></div>
+                        <div class="error" id="ssErr"></div>
+                    </div>
+                    <div class="ss-result"><span>REQUIRED SAMPLE</span>
+                        <div class="sample-number" id="ssMain">385</div>
+                        <p id="ssNote">Large/infinite population estimate</p>
+                        <div class="result-grid">
+                            <div class="result-chip"><b>Unrounded n</b><span id="ssRaw">384.1459</span></div>
+                            <div class="result-chip"><b>Z value</b><span id="ssZ">1.96</span></div>
+                            <div class="result-chip"><b>Margin</b><span id="ssM">5%</span></div>
+                            <div class="result-chip"><b>Expected p</b><span id="ssP">50%</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="content">
+                <div class="wrap article-grid">
+                    
+<article class="article">
+
+ 
+
+  <p>The Sample Size Calculator estimates how many observations are needed to estimate a population proportion. Enter a confidence level, margin of error, expected proportion, and optionally the total population size to calculate the required sample size.</p>
+
+  <section id="what">
+    <h2>What Is the Sample Size Calculator?</h2>
+
+    <p>A Sample Size Calculator helps plan a survey or study when the goal is to estimate a population proportion with a chosen level of confidence and precision.</p>
+
+    <p>It uses the expected proportion and margin of error to calculate an initial sample size. If a finite population size is entered, the calculator applies a finite-population correction that can reduce the required sample.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Sample Size Calculator</h2>
+
+    <p>Enter the following values in the calculator:</p>
+
+    <ol>
+      <li><strong>Confidence level:</strong> The desired confidence level for the estimate. It determines the standard normal critical value, zz, used in the formula.</li>
+      <li><strong>Margin of error (%):</strong> The maximum desired difference between the sample estimate and the population proportion. The percentage is converted to decimal form for the calculation.</li>
+      <li><strong>Expected proportion (%):</strong> The proportion you expect in the population. It is converted from a percentage to a decimal pp. If there is no reliable prior estimate, 50%50\% is commonly used because p(1−p)p(1-p) is largest at p=0.5p=0.5, producing the most conservative sample size.</li>
+      <li><strong>Population size (optional):</strong> The total number of individuals or units in the population. When provided, it is used for the finite-population correction.</li>
+    </ol>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+
+    <p>For a large or unspecified population, the calculator first calculates:</p>
+
+    <div class="formula">n0=z2p(1−p)e2n_0=\frac{z^2p(1-p)}{e^2}</div>
+
+    <p>This is the standard normal-approximation sample-size formula for estimating a population proportion.</p>
+
+    <p>When a finite population size is entered, the calculator applies:</p>
+
+    <div class="formula">n=n01+n0−1Nn=\frac{n_0}{1+\frac{n_0-1}{N}}</div>
+
+    <p>This adjustment reduces the required sample when the sample would represent a meaningful fraction of the total population. The equivalent finite-population formulation is also derived in Penn State's survey-sampling material.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th><strong>Symbol</strong></th>
+          <th><strong>Meaning</strong></th>
+          <th><strong>Unit</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>n0n_0</td>
+          <td>Initial sample size before finite-population correction</td>
+          <td>observations</td>
+        </tr>
+        <tr>
+          <td>nn</td>
+          <td>Sample size after finite-population correction</td>
+          <td>observations</td>
+        </tr>
+        <tr>
+          <td>zz</td>
+          <td>Standard normal critical value for the confidence level</td>
+          <td>unitless</td>
+        </tr>
+        <tr>
+          <td>pp</td>
+          <td>Expected population proportion</td>
+          <td>decimal from 0 to 1</td>
+        </tr>
+        <tr>
+          <td>1−p1-p</td>
+          <td>Complement of the expected proportion</td>
+          <td>decimal</td>
+        </tr>
+        <tr>
+          <td>ee</td>
+          <td>Desired margin of error</td>
+          <td>decimal</td>
+        </tr>
+        <tr>
+          <td>NN</td>
+          <td>Total population size</td>
+          <td>individuals or units</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Calculation Sequence</h3>
+
+    <ol>
+      <li>Convert the margin of error from a percentage to a decimal.</li>
+      <li>Convert the expected proportion from a percentage to a decimal.</li>
+      <li>Determine the normal critical value zz from the confidence level.</li>
+      <li>Calculate the initial sample size n0n_0.</li>
+      <li>If population size NN is supplied, apply the finite-population correction.</li>
+      <li>Interpret the result as the number of observations required for the stated assumptions.</li>
+    </ol>
+
+    <p>Because a study cannot collect a fraction of an observation, a fractional minimum sample requirement is normally rounded upward when planning the final sample. Penn State's examples likewise round required sample sizes upward.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose you want to estimate a population proportion using these values:</p>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li>Confidence level: <strong>95%</strong></li>
+      <li>Margin of error: <strong>5%</strong></li>
+      <li>Expected proportion: <strong>50%</strong></li>
+      <li>Population size: <strong>10,000</strong></li>
+    </ul>
+
+    <p>For a 95% confidence level, use z=1.96z=1.96.</p>
+
+    <p>Convert the percentages:</p>
+
+    <div class="formula">e=5%=0.05e=5\%=0.05 p=50%=0.50p=50\%=0.50</div>
+
+    <h3>Step 1: Calculate the Initial Sample Size</h3>
+
+    <div class="formula">n0=1.962×0.50(1−0.50)0.052n_0=\frac{1.96^2\times0.50(1-0.50)}{0.05^2} n0=3.8416×0.250.0025n_0=\frac{3.8416\times0.25}{0.0025} n0=384.16n_0=384.16</div>
+
+    <h3>Step 2: Apply the Finite-Population Correction</h3>
+
+    <div class="formula">n=384.161+384.16−110,000n=\frac{384.16}{1+\frac{384.16-1}{10,000}} n=384.161.038316n=\frac{384.16}{1.038316} n≈369.98n\approx369.98</div>
+
+    <h3>Final Result</h3>
+
+    <p>The calculated requirement is approximately <strong>369.98 observations</strong>, so a whole-number planning target is <strong>370 observations</strong>.</p>
+
+    <p>Without the finite-population adjustment, the initial calculation would be approximately 384.16 observations.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p>The main result is the estimated number of observations required to estimate one population proportion under the selected confidence level, margin of error, expected proportion, and population-size assumptions.</p>
+
+    <p>A <strong>smaller margin of error</strong> generally requires a larger sample because the estimate must be more precise.</p>
+
+    <p>A <strong>higher confidence level</strong> generally increases the required sample because a larger critical value is used.</p>
+
+    <p>The expected proportion also affects sample size. The quantity p(1−p)p(1-p) reaches its maximum at p=0.5p=0.5, which is why a 50% expected proportion produces the largest sample requirement when other inputs remain unchanged.</p>
+
+    <p>When population size is supplied, the finite-population correction may lower the sample requirement. Its effect becomes more important when the sample is not small relative to the entire population.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>This calculator is intended for planning the sample size needed to estimate a <strong>single population proportion</strong> using a normal-approximation method.</p>
+
+    <p>The calculation assumes a sampling situation compatible with simple random sampling. More complex designs may require a different method or a larger effective sample.</p>
+
+    <p>The basic calculation does not independently account for clustering, unequal sampling weights, stratification effects, anticipated nonresponse, repeated measurements, subgroup-specific precision, or design effects.</p>
+
+    <p>It is also different from a statistical-power calculation for hypothesis testing. Studies designed to detect a particular difference between groups normally require additional inputs such as effect size and statistical power.</p>
+
+    <p>For very rare or very common outcomes, small samples, or situations where the normal approximation is unsuitable, a study-specific statistical method may be more appropriate.</p>
+
+    <p>The calculated sample size describes the number of usable observations needed under the stated assumptions. If some invited participants are expected not to respond or provide usable data, the number of people contacted may need to be higher.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What does a sample size calculator calculate?</summary>
+
+      <p>It estimates the number of observations needed to estimate a population proportion for a chosen confidence level, margin of error, expected proportion, and optional finite population size.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why is 50% often used for the expected proportion?</summary>
+
+      <p>For the proportion formula, p(1−p)p(1-p) is largest when p=0.5p=0.5. Using 50% therefore gives the largest, most conservative sample-size estimate when no better prior estimate is available.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does a smaller margin of error require a larger sample?</summary>
+
+      <p>Yes. Margin of error appears squared in the denominator of the formula, so reducing the desired margin of error can substantially increase the required sample.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why does population size sometimes reduce the sample size?</summary>
+
+      <p>When the population is finite, sampling a substantial portion of that population provides more information than the large-population formula assumes. The finite-population correction accounts for this relationship.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Do I always need to enter population size?</summary>
+
+      <p>No. Population size is optional for this calculator. If it is not supplied, the initial large-population formula n0n_0 is used without the finite-population adjustment.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Should the calculated sample size be rounded up?</summary>
+
+      <p>When the formula gives a fractional minimum requirement, statistical sample-size planning normally rounds upward so the collected sample is not smaller than the calculated requirement.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is this calculator the same as a statistical power calculator?</summary>
+
+      <p>No. This calculator estimates sample size for estimating one proportion with a specified confidence level and margin of error. Power calculations for hypothesis tests require additional assumptions about the effect being detected and the desired statistical power.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <strong>Penn State STAT 506 — Confidence Intervals and Sample Size</strong><br>
+        <a href="https://online.stat.psu.edu/stat506/Lesson02?utm_source=chatgpt.com" rel="noopener" target="_blank">Penn State STAT 506 sample-size methodology</a><br>
+        Supports the sample-size formula for estimating a population proportion, finite-population adjustment, conservative p=0.5p=0.5 approach, and upward rounding of minimum samples.
+      </li>
+
+      <li>
+        <strong>Rochester Institute of Technology — Data Integrity II</strong><br>
+        <a href="https://www.se.rit.edu/~swen-640/docs/data-integrity-ii/?utm_source=chatgpt.com" rel="noopener" target="_blank">RIT proportion sample-size and finite-population formulas</a><br>
+        Provides the baseline proportion formula n0=z2p(1−p)/E2n_0=z^2p(1-p)/E^2 and the finite-population correction used by this calculator.
+      </li>
+
+      <li>
+        <strong>Penn State STAT 200 — Computing Necessary Sample Size</strong><br>
+        <a href="https://online.stat.psu.edu/stat200/Lesson08?utm_source=chatgpt.com" rel="noopener" target="_blank">Penn State STAT 200 population-proportion sample size</a><br>
+        Supports the normal-approximation sample-size formula and the use of p=0.50p=0.50 when a prior population-proportion estimate is unavailable.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/confidence-interval-calculator/">Confidence Interval Calculator</a></li>
+      <li><a href="https://example.com/statistics-calculator/">Statistics Calculator</a></li>
+      <li><a href="https://example.com/probability-calculator/">Probability Calculator</a></li>
+      <li><a href="https://example.com/z-score-calculator/">Z-Score Calculator</a></li>
+      <li><a href="https://example.com/standard-deviation-calculator/">Standard Deviation Calculator</a></li>
+      <li><a href="https://example.com/percent-error-calculator/">Percent Error Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+
+                </div>
+            </div>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"138","Batch":"14","Calculator / Page":"Sample Size Calculator","Slug":"sample-size-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Estimate sample size for a population proportion using confidence level, margin of error, expected proportion, and finite-population correction.","Formula / Algorithm Used in Tool":"Sample Size Formula: n₀ = z² p(1−p) / e² Finite population: n = n₀ / [1 + (n₀−1)/N] NIST gives the large-population proportion formula. The finite-population correction shown here is the standard simple-random-sampling adjustment. Here, z is the normal critical value, p is the expected proportion, e is the margin of error, and N is population size.","Required User Inputs":"Confidence level; Margin of error (%); Expected proportion (%); Population size (optional)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Confidence level, Margin of error (%), Expected proportion (%), Population size (optional). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"This is a planning formula for a simple estimate of one proportion under normal-approximation assumptions. Complex survey designs, clustering, unequal weighting, nonresponse, rare outcomes, subgroup precision, and hypothesis-testing power can require larger or differently calculated samples. The result is not a substitute for a study-specific statistical design.","Current Source URLs in Page":"https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nbshandbook91.pdf | https://www.se.rit.edu/~swen-640/docs/data-integrity-ii/","Implementation Path":"/sample-size-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Math &amp; Statistics</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link"
+                    href="../standard-deviation-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Standard Deviation
+                            Calculator</strong><small>Calculate sample or population standard deviation, variance, mean,
+                            sum, count, stan…</small></span></a><a class="cp-related-link"
+                    href="../confidence-interval-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Confidence Interval
+                            Calculator</strong><small>Calculate a two-sided confidence interval for a mean using a t
+                            interval for sample…</small></span></a><a class="cp-related-link"
+                    href="../random-number-generator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Random Number Generator</strong><small>Generate one
+                            or many random integers or decimals between custom limits, with option…</small></span></a><a
+                    class="cp-related-link" href="../number-sequence-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Number Sequence Calculator</strong><small>Calculate
+                            arithmetic, geometric, and Fibonacci sequence terms, previews, and
+                            finite…</small></span></a><a class="cp-related-link"
+                    href="../percent-error-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Percent Error Calculator</strong><small>Calculate
+                            percent error, absolute error, relative error, and signed error from
+                            obse…</small></span></a><a class="cp-related-link"
+                    href="../distance-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Distance
+                            Calculator</strong><small>Calculate distance between two points in 2D, 3D, or between
+                            latitude-longitude coor…</small></span></a><a class="cp-related-link"
+                    href="../ratio-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Ratio
+                            Calculator</strong><small>Solve a proportion A:B = C:D when one value is unknown, and
+                            simplify two-number rat…</small></span></a><a class="cp-related-link"
+                    href="../pythagorean-theorem-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Pythagorean Theorem Calculator</strong><small>Find
+                            a missing side of a right triangle using a² + b² = c². Free, fast and
+                            responsi…</small></span></a></div><a class="cp-side-category"
+                href="../math/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const sn = n => parseFloat(n.toFixed(6)).toString();
+        function calcSample() { const z = Number(conf.value), e = Number(moe.value) / 100, p = Number(prop.value) / 100, pt = pop.value.trim(); ssErr.textContent = ''; if (!Number.isFinite(e) || e <= 0 || e >= 1 || !Number.isFinite(p) || p <= 0 || p >= 1) { ssErr.textContent = 'Margin of error and expected proportion must be percentages between 0 and 100.'; return } const n0 = z * z * p * (1 - p) / (e * e); let n = n0, note = 'Large/infinite population estimate'; if (pt !== '') { const N = Number(pt); if (!Number.isFinite(N) || N < 1 || !Number.isInteger(N)) { ssErr.textContent = 'Population size must be a positive whole number.'; return } n = n0 / (1 + (n0 - 1) / N); n = Math.min(n, N); note = 'Finite-population correction applied (N = ' + N + ')' } ssMain.textContent = Math.ceil(n).toLocaleString(); ssRaw.textContent = sn(n); ssZ.textContent = sn(z); ssM.textContent = sn(e * 100) + '%'; ssP.textContent = sn(p * 100) + '%'; ssNote.textContent = note }
+        function resetSample() { conf.value = '1.96'; moe.value = 5; prop.value = 50; pop.value = ''; calcSample() } calcSample();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

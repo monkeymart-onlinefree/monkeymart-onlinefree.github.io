@@ -1,113 +1,1147 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>Period Calculator – Free Accurate Online Calculator</title>
-<meta content="Predict upcoming period dates and an approximate ovulation date from your usual cycle pattern." name="description"/>
-<meta content="index,follow" name="robots"/>
-<link href="../period-calculator/" rel="canonical"/>
-<meta content="Period Calculator" property="og:title"/>
-<meta content="Predict upcoming period dates and an approximate ovulation date from your usual cycle pattern." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="/period-calculator/" property="og:url"/>
-<meta content="#1477ff" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Period Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Predict upcoming period dates and an approximate ovulation date from your usual cycle pattern.", "url": "/period-calculator/", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Health & Fitness", "item": "/health/"}, {"@type": "ListItem", "position": 3, "name": "Pregnancy & Reproductive Health", "item": "/health/pregnancy-reproductive-health/"}, {"@type": "ListItem", "position": 4, "name": "Period Calculator", "item": "/period-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How are future period dates predicted?", "acceptedAnswer": {"@type": "Answer", "text": "Each next start date is calculated by adding your average cycle length to the previous predicted start date."}}, {"@type": "Question", "name": "What counts as cycle day 1?", "acceptedAnswer": {"@type": "Answer", "text": "Cycle day 1 is the first day of menstrual bleeding."}}, {"@type": "Question", "name": "How accurate is a period calculator?", "acceptedAnswer": {"@type": "Answer", "text": "It is most useful when cycles are regular. Illness, stress, hormonal changes, postpartum status, and other factors can shift the next period."}}, {"@type": "Question", "name": "When is a cycle considered outside the typical adult range?", "acceptedAnswer": {"@type": "Answer", "text": "ACOG commonly describes adult menstrual cycles as typically about 21–35 days, although individual patterns and life stage matter."}}]}]}</script>
-<style>
-    :root{--bg:#fff8f6;--panel:#ffffff;--ink:#3a2420;--muted:#80655e;--accent:#e15c4e;--accent2:#ffb09f;--soft:#fee9e4;--line:#efd3cc;--shadow:0 24px 70px rgba(121,61,48,.11);}
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.62}
-    a{color:var(--accent)} .wrap{width:min(1160px,calc(100% - 32px));margin:auto}
-    .topbar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;position:relative;z-index:5}
-    .brand{font-weight:900;letter-spacing:-.04em;font-size:1.2rem;color:var(--ink);text-decoration:none} .brand i{color:var(--accent);font-style:normal}
-    .crumb{font-size:.86rem;color:var(--muted)} .crumb a{color:inherit;text-decoration:none}
-    .hero{position:relative;isolation:isolate;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);margin-bottom:28px}
-    .hero:before,.hero:after{content:"";position:absolute;z-index:-1;filter:blur(2px);opacity:.7}
-    .hero-copy h1{font-size:clamp(2.35rem,5vw,5.2rem);line-height:.98;letter-spacing:-.065em;margin:.15em 0 .28em}
-    .kicker{display:inline-flex;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--panel) 80%, transparent);font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em}
-    .hero-copy p{max-width:680px;color:var(--muted);font-size:1.03rem}
-    .stage{position:relative;min-height:300px;display:grid;place-items:center;perspective:900px}
-    .orb{width:210px;height:210px;border-radius:38% 62% 61% 39%/45% 43% 57% 55%;background:linear-gradient(145deg,var(--accent),var(--accent2));box-shadow:inset -22px -24px 45px rgba(0,0,0,.16),inset 14px 14px 30px rgba(255,255,255,.32),0 35px 70px color-mix(in srgb,var(--accent) 32%, transparent);transform:rotate(-10deg) translateZ(30px)}
-    .float{position:absolute;border:1px solid color-mix(in srgb,var(--line) 75%, transparent);background:color-mix(in srgb,var(--panel) 85%, transparent);backdrop-filter:blur(12px);box-shadow:0 18px 45px rgba(0,0,0,.12);border-radius:18px;padding:12px 14px;font-weight:800}
-    .calc-shell{display:grid;gap:22px;margin:24px 0 46px;align-items:start}
-    .calc-card,.result-card,.content-card{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow)}
-    .calc-card{padding:clamp(20px,3vw,34px)} .calc-card h2,.result-card h2{margin-top:0;letter-spacing:-.03em}
-    .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
-    .field{display:grid;gap:7px} .field.full{grid-column:1/-1} label,.label{font-size:.88rem;font-weight:800}
-    input,select,button{font:inherit} input,select{width:100%;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 45%,var(--panel));color:var(--ink);padding:12px 13px;border-radius:13px;outline:none}
-    input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}
-    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px} button{border:0;border-radius:14px;padding:12px 18px;font-weight:900;cursor:pointer}
-    .primary{background:var(--accent);color:white;box-shadow:0 10px 24px color-mix(in srgb,var(--accent) 28%,transparent)} .secondary{background:var(--soft);color:var(--ink);border:1px solid var(--line)}
-    .error{min-height:1.5em;color:#b42318;font-weight:700;font-size:.9rem;margin-top:8px}
-    .result-card{padding:clamp(20px,3vw,34px);position:sticky;top:18px;overflow:hidden}
-    .metric{font-size:clamp(2rem,5vw,4.6rem);line-height:1;font-weight:950;letter-spacing:-.06em;color:var(--accent);margin:.15em 0}
-    .submetrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px} .mini{background:var(--soft);padding:14px;border-radius:16px;border:1px solid var(--line)} .mini b{display:block;font-size:1.1rem}
-    .note{padding:13px 15px;border-left:4px solid var(--accent);background:var(--soft);border-radius:10px;color:var(--muted);font-size:.92rem}
-    .content{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;margin-bottom:56px} .content-card{padding:clamp(22px,4vw,40px)} .content h2{font-size:clamp(1.45rem,2.4vw,2.05rem);letter-spacing:-.035em;margin-top:1.65em} .content h2:first-child{margin-top:0}
-    .content h3{margin-top:1.35em} table{width:100%;border-collapse:collapse;margin:18px 0} th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top} th{font-size:.84rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
-    code,.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--soft);padding:.15em .35em;border-radius:7px}
-    details{border-top:1px solid var(--line);padding:13px 0} summary{font-weight:850;cursor:pointer} details p{color:var(--muted)}
-    aside{display:grid;gap:16px;align-content:start} .sidebox{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);padding:18px} .sidebox h3{margin-top:0}
-    footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:.9rem}
-    .pillrow{display:flex;gap:8px;flex-wrap:wrap} .pill{padding:7px 10px;border-radius:999px;background:var(--soft);border:1px solid var(--line);font-size:.82rem;font-weight:800}
-    .unit-toggle{display:inline-flex;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px;margin-bottom:16px} .unit-toggle button{padding:7px 12px;border-radius:999px;background:transparent;color:var(--ink)} .unit-toggle button.active{background:var(--panel);box-shadow:0 4px 14px rgba(0,0,0,.1)}
-    ul.clean{padding-left:1.2rem} .source-list{padding-left:1.1rem;font-size:.9rem;color:var(--muted)} .source-list li{margin:.65em 0}
-    .hero{border-radius:22px;padding:28px 44px 44px;background:linear-gradient(180deg,var(--panel),var(--soft));text-align:center}.hero-copy{max-width:760px;margin:auto}.hero-copy p{margin-inline:auto}.stage{min-height:235px}.calc-shell{grid-template-columns:.85fr 1.15fr}.calc-card{border-radius:22px}.result-card{border-radius:22px 54px 22px 22px}.content-card,.sidebox{border-radius:22px}.hero:after{width:220px;height:220px;border:20px solid color-mix(in srgb,var(--accent) 20%,transparent);border-radius:50%;right:-80px;top:-80px}
-    @media(max-width:860px){.hero,.calc-shell,.content{grid-template-columns:1fr}.hero{padding:26px}.stage{min-height:230px}.result-card{position:static}.content{grid-template-columns:1fr}.stage{order:initial}}
-    @media(max-width:560px){.wrap{width:min(100% - 20px,1160px)}.form-grid,.submetrics{grid-template-columns:1fr}.hero-copy h1{font-size:2.45rem}.hero{border-radius:20px}.calc-card,.result-card,.content-card,.sidebox{border-radius:18px}}
-    @media(prefers-reduced-motion:no-preference){.float{animation:drift 5s ease-in-out infinite alternate}@keyframes drift{to{transform:translateY(-8px) rotate(1deg)}}}
-    </style>
-<link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body data-cp-category="health" data-cp-page-type="Calculator">
-<header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header><nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../health/index.html">Health &amp; Fitness</a></li><li><a aria-current="page" href="index.html">Period Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../health/index.html">Browse Health &amp; Fitness</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main class="wrap" id="main"><h1 class="page-title">Period Calculator</h1>
+   <!-- Primary Meta Tags -->
+<title>Period Calculator – Predict Next Period &amp; Ovulation</title>
+<meta name="title" content="Period Calculator – Predict Next Period &amp; Ovulation">
+<meta name="description" content="Predict upcoming period dates and estimate ovulation from your last period start date, typical bleeding duration, and average menstrual cycle length.">
 
-<section aria-label="Period Calculator tool" class="calc-shell">
-<article class="calc-card">
-<h2>Enter Your Details</h2>
-<div class="form-grid"><div class="field full"><label for="lmp">First day of last period</label><input data-default="2026-09-01" id="lmp" type="date" value="2026-09-01"/></div><div class="field"><label for="duration">Typical bleeding (days)</label><input data-default="5" id="duration" max="10" min="1" type="number" value="5"/></div><div class="field"><label for="cycle">Average cycle length (days)</label><input data-default="28" id="cycle" max="45" min="21" type="number" value="28"/></div></div>
-<div class="actions"><button class="primary" id="calcBtn" type="button">Calculate</button><button class="secondary" id="resetBtn" type="button">Reset</button></div>
-<div aria-live="polite" class="error" id="error" role="alert"></div>
-</article>
-<aside aria-live="polite" class="result-card">
-<h2>Your Result</h2>
-<div class="metric" id="mainResult">—</div><p>Next predicted period</p><div class="mini" style="margin-top:16px"><b>Next 6 starts</b><div id="list">—</div></div><div class="submetrics"><div class="mini">Estimated ovulation<b id="ovu">—</b></div><div class="mini">Bleeding duration<b id="dur">—</b></div></div>
-<p class="note">Predicted dates are estimates and become less reliable with irregular cycles.</p>
-</aside>
-</section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<section class="content">
-<article class="content-card">
-<h2>What Is a Period Calculator?</h2><p>A period calculator projects upcoming menstrual start and end dates using the first day of the last period, the usual cycle length, and the typical number of bleeding days.</p>
-<h2>How to Use the Period Calculator</h2><p>Enter the first day of your most recent period, how many days bleeding usually lasts, and your average cycle length. The calculator projects the next six periods and an approximate ovulation date for the next cycle.</p>
-<h2>Period Prediction Formula</h2><p><span class="formula">next period start = last period start + average cycle length</span>. Each later projection repeats the same interval. The estimated ovulation cycle day is approximately cycle length minus 14; because the LMP is cycle day 1, the calendar-date offset is one day less.</p>
-<h2>Understanding the Calendar</h2><p>The projected dates are planning estimates. Cycle length is counted from the first day of one period to the first day of the next, so bleeding duration is not added to the cycle length.</p>
-<h2>Limitations</h2><p>Irregular cycles make date prediction less reliable. Seek medical advice for new or concerning changes, unusually heavy bleeding, severe pain, or persistent cycle changes.</p>
-<h2 id="faq">Frequently Asked Questions</h2>
-<details><summary>How are future period dates predicted?</summary><p>Each next start date is calculated by adding your average cycle length to the previous predicted start date.</p></details><details><summary>What counts as cycle day 1?</summary><p>Cycle day 1 is the first day of menstrual bleeding.</p></details><details><summary>How accurate is a period calculator?</summary><p>It is most useful when cycles are regular. Illness, stress, hormonal changes, postpartum status, and other factors can shift the next period.</p></details><details><summary>When is a cycle considered outside the typical adult range?</summary><p>ACOG commonly describes adult menstrual cycles as typically about 21–35 days, although individual patterns and life stage matter.</p></details>
-<h2>Sources and Methodology</h2>
-<p>This page uses the formulas and assumptions described above. Health-related results are estimates and should be interpreted in context, not as a diagnosis or individualized medical advice.</p>
-<ul class="source-list"><li><a href="https://www.acog.org/womens-health/faqs/fertility-awareness-based-methods-of-family-planning" rel="noopener" target="_blank">ACOG – Fertility Awareness-Based Methods</a> — Cycle definition, fertile window, and ovulation timing.</li><li><a href="https://www.acog.org/womens-health/experts-and-stories/the-latest/trying-to-get-pregnant-heres-when-to-have-sex" rel="noopener" target="_blank">ACOG – Timing Sex Around Ovulation</a> — Ovulation is typically about 14 days before the next period; fertile window spans about six days.</li><li><a href="https://www.acog.org/womens-health/faqs/amenorrhea-absence-of-periods" rel="noopener" target="_blank">ACOG – Amenorrhea FAQ</a> — Typical adult cycle and period duration context.</li></ul>
-</article>
-<aside>
-<div class="sidebox"><h3>Method at a glance</h3><p>Predict upcoming period dates and an approximate ovulation date from your usual cycle pattern.</p></div>
-<div class="sidebox"><h3>Privacy</h3><p>Calculations run in your browser. This standalone page does not need to send form values to a server.</p></div>
-</aside>
-</section>
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/period-calculator/">
 
-<script class="cp-calculator-data" type="application/json">{"index":"128","Batch":"13","Calculator / Page":"Period Calculator","Slug":"period-calculator","Site Category (Current)":"Health & Fitness","Recommended Content Domain":"Pregnancy / Reproductive Health","Page Type":"Calculator","Search Intent / Purpose":"Predict upcoming period dates and an approximate ovulation date from your usual cycle pattern.","Formula / Algorithm Used in Tool":"Period Prediction Formula: next period start = last period start + average cycle length . Each later projection repeats the same interval. The estimated ovulation cycle day is approximately cycle length minus 14; because the LMP is cycle day 1, the calendar-date offset is one day less.","Required User Inputs":"First day of last period; Typical bleeding (days); Average cycle length (days)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: First day of last period, Typical bleeding (days), Average cycle length (days). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Authoritative obstetric/reproductive formula source, gestational assumptions, date conventions, population scope and clinical limitations.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When clinical guidance changes","Important Assumptions / Limitations":"Irregular cycles make date prediction less reliable. Seek medical advice for new or concerning changes, unusually heavy bleeding, severe pain, or persistent cycle changes.","Current Source URLs in Page":"https://www.acog.org/womens-health/faqs/fertility-awareness-based-methods-of-family-planning | https://www.acog.org/womens-health/experts-and-stories/the-latest/trying-to-get-pregnant-heres-when-to-have-sex | https://www.acog.org/womens-health/faqs/amenorrhea-absence-of-periods","Implementation Path":"/period-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Health &amp; Fitness</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../pregnancy-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Pregnancy Calculator</strong><small>Estimate pregnancy due date, current gestational age, trimester, and key dates from…</small></span></a><a class="cp-related-link" href="../pregnancy-conception-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Pregnancy Conception Calculator</strong><small>Estimate a likely conception date from an estimated due date or from the first day…</small></span></a><a class="cp-related-link" href="../ovulation-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Ovulation Calculator</strong><small>Estimate ovulation, fertile-window dates, and the next period from the last menstru…</small></span></a><a class="cp-related-link" href="../due-date-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Due Date Calculator</strong><small>Estimate pregnancy due date from the last menstrual period, conception date, or IVF…</small></span></a><a class="cp-related-link" href="../payback-period-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Payback Period Calculator</strong><small>Calculate simple and discounted payback periods from an initial investment, annual…</small></span></a><a class="cp-related-link" href="../conception-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Conception Calculator</strong><small>Estimate a fertile window and peak conception days from the last menstrual period a…</small></span></a><a class="cp-related-link" href="../pregnancy-weight-gain-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Pregnancy Weight Gain Calculator</strong><small>Calculate pre-pregnancy BMI and see CDC-referenced total pregnancy weight-gain rang…</small></span></a><a class="cp-related-link" href="../ideal-weight-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Ideal Weight Calculator</strong><small>Compare common ideal body weight formulas including Devine, Robinson, Miller, and H…</small></span></a></div><a class="cp-side-category" href="../health/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/period-calculator/">
+<meta property="og:title" content="Period Calculator – Predict Next Period &amp; Ovulation">
+<meta property="og:description" content="Predict upcoming period dates and estimate ovulation from your last period start date, typical bleeding duration, and average menstrual cycle length.">
+<meta property="og:site_name" content="Period Calculator">
 
-function add(v,n){let d=new Date(v+'T12:00:00');d.setDate(d.getDate()+n);return d} function fmt(d){return d.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'})}
-function calculate(){const e=document.getElementById('error');e.textContent='';let v=document.getElementById('lmp').value,c=+document.getElementById('cycle').value,dur=+document.getElementById('duration').value;if(!v||c<21||c>45||dur<1||dur>10){e.textContent='Enter a valid date, cycle length (21–45), and bleeding length (1–10).';return}
- let starts=[];for(let i=1;i<=6;i++)starts.push(add(v,c*i));let end=new Date(starts[0]);end.setDate(end.getDate()+dur-1);let ovu=add(v,c-15);
- document.getElementById('mainResult').textContent=`${fmt(starts[0])} – ${fmt(end)}`;document.getElementById('list').innerHTML=starts.map((x,i)=>`${i+1}. ${fmt(x)}`).join('<br>');document.getElementById('ovu').textContent=fmt(ovu);document.getElementById('dur').textContent=`${dur} days`;
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/period-calculator/">
+<meta name="twitter:title" content="Period Calculator – Predict Next Period &amp; Ovulation">
+<meta name="twitter:description" content="Predict upcoming period dates and estimate ovulation from your last period start date, typical bleeding duration, and average menstrual cycle length.">
+    <meta content="#1477ff" name="theme-color" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/period-calculator/#webapplication",
+      "name": "Period Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/period-calculator/",
+      "description": "Predict upcoming period dates and estimate ovulation from your last period start date, typical bleeding duration, and average menstrual cycle length.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/period-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Period Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/period-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/period-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does the Period Calculator predict my next period?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It adds your average menstrual cycle length to the first day of your last period. For example, a 28-day cycle beginning September 1 gives a predicted next start date of September 29."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is ovulation always exactly 14 days before a period?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The calculator uses approximately 14 days as its estimation method, but real ovulation timing varies. Health guidance describes a range rather than one exact day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why might my period arrive before or after the predicted date?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The calculation assumes that future cycles will be similar to your average cycle length. Natural variation, stress, illness, hormonal changes, medications, postpartum changes, and other factors can change the actual date."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I enter for average cycle length?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the typical number of days from the first day of one period to the first day of the next. If you track several cycles, use a value that represents your usual pattern rather than relying on one unusually short or long cycle."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does my bleeding duration change the next-period calculation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The core predicted start-date formula uses the first day of your last period and your average cycle length. Bleeding duration records how long your period typically lasts but does not change that start-date formula."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use this calculator to prevent pregnancy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Calendar predictions cannot confirm the exact day of ovulation and should not be treated as a guaranteed contraceptive method. Fertility and ovulation timing can vary from one cycle to another."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I talk to a health care professional about my period?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Consider medical advice if your previously regular periods become persistently irregular, bleeding becomes unusually heavy or prolonged, pain is severe or worsening, or you experience another significant change from your usual pattern."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart OnlineFree",
+      "inLanguage": "en-US"
+    }
+  ]
 }
-document.getElementById('calcBtn').addEventListener('click', calculate);
-document.getElementById('resetBtn').addEventListener('click', ()=>{document.querySelectorAll('input').forEach(i=>{if(i.dataset.default!==undefined)i.value=i.dataset.default;});document.querySelectorAll('select').forEach(s=>{if(s.dataset.default!==undefined)s.value=s.dataset.default;});document.getElementById('error').textContent='';calculate();});
-window.addEventListener('DOMContentLoaded', calculate);
 </script>
-<script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <style>
+        :root {
+            --bg: #fff8f6;
+            --panel: #ffffff;
+            --ink: #3a2420;
+            --muted: #80655e;
+            --accent: #e15c4e;
+            --accent2: #ffb09f;
+            --soft: #fee9e4;
+            --line: #efd3cc;
+            --shadow: 0 24px 70px rgba(121, 61, 48, .11);
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.62
+        }
+
+        a {
+            color: var(--accent)
+        }
+
+        .wrap {
+            width: min(1160px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            position: relative;
+            z-index: 5
+        }
+
+        .brand {
+            font-weight: 900;
+            letter-spacing: -.04em;
+            font-size: 1.2rem;
+            color: var(--ink);
+            text-decoration: none
+        }
+
+        .brand i {
+            color: var(--accent);
+            font-style: normal
+        }
+
+        .crumb {
+            font-size: .86rem;
+            color: var(--muted)
+        }
+
+        .crumb a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .hero {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            margin-bottom: 28px
+        }
+
+        .hero:before,
+        .hero:after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            filter: blur(2px);
+            opacity: .7
+        }
+
+        .hero-copy h1 {
+            font-size: clamp(2.35rem, 5vw, 5.2rem);
+            line-height: .98;
+            letter-spacing: -.065em;
+            margin: .15em 0 .28em
+        }
+
+        .kicker {
+            display: inline-flex;
+            padding: 7px 11px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: color-mix(in srgb, var(--panel) 80%, transparent);
+            font-size: .78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .09em
+        }
+
+        .hero-copy p {
+            max-width: 680px;
+            color: var(--muted);
+            font-size: 1.03rem
+        }
+
+        .stage {
+            position: relative;
+            min-height: 300px;
+            display: grid;
+            place-items: center;
+            perspective: 900px
+        }
+
+        .orb {
+            width: 210px;
+            height: 210px;
+            border-radius: 38% 62% 61% 39%/45% 43% 57% 55%;
+            background: linear-gradient(145deg, var(--accent), var(--accent2));
+            box-shadow: inset -22px -24px 45px rgba(0, 0, 0, .16), inset 14px 14px 30px rgba(255, 255, 255, .32), 0 35px 70px color-mix(in srgb, var(--accent) 32%, transparent);
+            transform: rotate(-10deg) translateZ(30px)
+        }
+
+        .float {
+            position: absolute;
+            border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
+            background: color-mix(in srgb, var(--panel) 85%, transparent);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, .12);
+            border-radius: 18px;
+            padding: 12px 14px;
+            font-weight: 800
+        }
+
+        .calc-shell {
+            display: grid;
+            gap: 22px;
+            margin: 24px 0 46px;
+            align-items: start
+        }
+
+        .calc-card,
+        .result-card,
+        .content-card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow)
+        }
+
+        .calc-card {
+            padding: clamp(20px, 3vw, 34px)
+        }
+
+        .calc-card h2,
+        .result-card h2 {
+            margin-top: 0;
+            letter-spacing: -.03em
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px
+        }
+
+        .field {
+            display: grid;
+            gap: 7px
+        }
+
+        .field.full {
+            grid-column: 1/-1
+        }
+
+        label,
+        .label {
+            font-size: .88rem;
+            font-weight: 800
+        }
+
+        input,
+        select,
+        button {
+            font: inherit
+        }
+
+        input,
+        select {
+            width: 100%;
+            border: 1px solid var(--line);
+            background: color-mix(in srgb, var(--bg) 45%, var(--panel));
+            color: var(--ink);
+            padding: 12px 13px;
+            border-radius: 13px;
+            outline: none
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent)
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 18px
+        }
+
+        button {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-weight: 900;
+            cursor: pointer
+        }
+
+        .primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 28%, transparent)
+        }
+
+        .secondary {
+            background: var(--soft);
+            color: var(--ink);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            min-height: 1.5em;
+            color: #b42318;
+            font-weight: 700;
+            font-size: .9rem;
+            margin-top: 8px
+        }
+
+        .result-card {
+            padding: clamp(20px, 3vw, 34px);
+            position: sticky;
+            top: 18px;
+            overflow: hidden
+        }
+
+        .metric {
+            font-size: clamp(2rem, 5vw, 4.6rem);
+            line-height: 1;
+            font-weight: 950;
+            letter-spacing: -.06em;
+            color: var(--accent);
+            margin: .15em 0
+        }
+
+        .submetrics {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .mini {
+            background: var(--soft);
+            padding: 14px;
+            border-radius: 16px;
+            border: 1px solid var(--line)
+        }
+
+        .mini b {
+            display: block;
+            font-size: 1.1rem
+        }
+
+        .note {
+            padding: 13px 15px;
+            border-left: 4px solid var(--accent);
+            background: var(--soft);
+            border-radius: 10px;
+            color: var(--muted);
+            font-size: .92rem
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 300px;
+            gap: 24px;
+            margin-bottom: 56px
+        }
+
+        .content-card {
+            padding: clamp(22px, 4vw, 40px)
+        }
+
+        .content h2 {
+            font-size: clamp(1.45rem, 2.4vw, 2.05rem);
+            letter-spacing: -.035em;
+            margin-top: 1.65em
+        }
+
+        .content h2:first-child {
+            margin-top: 0
+        }
+
+        .content h3 {
+            margin-top: 1.35em
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0
+        }
+
+        th,
+        td {
+            padding: 11px;
+            border-bottom: 1px solid var(--line);
+            text-align: left;
+            vertical-align: top
+        }
+
+        th {
+            font-size: .84rem;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            color: var(--muted)
+        }
+
+        code,
+        .formula {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: var(--soft);
+            padding: .15em .35em;
+            border-radius: 7px
+        }
+
+        details {
+            border-top: 1px solid var(--line);
+            padding: 13px 0
+        }
+
+        summary {
+            font-weight: 850;
+            cursor: pointer
+        }
+
+        details p {
+            color: var(--muted)
+        }
+
+        aside {
+            display: grid;
+            gap: 16px;
+            align-content: start
+        }
+
+        .sidebox {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            padding: 18px
+        }
+
+        .sidebox h3 {
+            margin-top: 0
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 30px 0;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .pillrow {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap
+        }
+
+        .pill {
+            padding: 7px 10px;
+            border-radius: 999px;
+            background: var(--soft);
+            border: 1px solid var(--line);
+            font-size: .82rem;
+            font-weight: 800
+        }
+
+        .unit-toggle {
+            display: inline-flex;
+            background: var(--soft);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: 4px;
+            margin-bottom: 16px
+        }
+
+        .unit-toggle button {
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: transparent;
+            color: var(--ink)
+        }
+
+        .unit-toggle button.active {
+            background: var(--panel);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, .1)
+        }
+
+        ul.clean {
+            padding-left: 1.2rem
+        }
+
+        .source-list {
+            padding-left: 1.1rem;
+            font-size: .9rem;
+            color: var(--muted)
+        }
+
+        .source-list li {
+            margin: .65em 0
+        }
+
+        .hero {
+            border-radius: 22px;
+            padding: 28px 44px 44px;
+            background: linear-gradient(180deg, var(--panel), var(--soft));
+            text-align: center
+        }
+
+        .hero-copy {
+            max-width: 760px;
+            margin: auto
+        }
+
+        .hero-copy p {
+            margin-inline: auto
+        }
+
+        .stage {
+            min-height: 235px
+        }
+
+        .calc-shell {
+            grid-template-columns: .85fr 1.15fr
+        }
+
+        .calc-card {
+            border-radius: 22px
+        }
+
+        .result-card {
+            border-radius: 22px 54px 22px 22px
+        }
+
+        .content-card,
+        .sidebox {
+            border-radius: 22px
+        }
+
+        .hero:after {
+            width: 220px;
+            height: 220px;
+            border: 20px solid color-mix(in srgb, var(--accent) 20%, transparent);
+            border-radius: 50%;
+            right: -80px;
+            top: -80px
+        }
+
+        @media(max-width:860px) {
+
+            .hero,
+            .calc-shell,
+            .content {
+                grid-template-columns: 1fr
+            }
+
+            .hero {
+                padding: 26px
+            }
+
+            .stage {
+                min-height: 230px
+            }
+
+            .result-card {
+                position: static
+            }
+
+            .content {
+                grid-template-columns: 1fr
+            }
+
+            .stage {
+                order: initial
+            }
+        }
+
+        @media(max-width:560px) {
+            .wrap {
+                width: min(100% - 20px, 1160px)
+            }
+
+            .form-grid,
+            .submetrics {
+                grid-template-columns: 1fr
+            }
+
+            .hero-copy h1 {
+                font-size: 2.45rem
+            }
+
+            .hero {
+                border-radius: 20px
+            }
+
+            .calc-card,
+            .result-card,
+            .content-card,
+            .sidebox {
+                border-radius: 18px
+            }
+        }
+
+        @media(prefers-reduced-motion:no-preference) {
+            .float {
+                animation: drift 5s ease-in-out infinite alternate
+            }
+
+            @keyframes drift {
+                to {
+                    transform: translateY(-8px) rotate(1deg)
+                }
+            }
+        }
+    </style>
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="health" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../health/index.html">Health &amp; Fitness</a></li>
+            <li><a aria-current="page" href="index.html">Period Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../health/index.html">Browse Health &amp; Fitness</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main class="wrap" id="main">
+            <h1 class="page-title">Period Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+
+            <section aria-label="Period Calculator tool" class="calc-shell">
+                <article class="calc-card">
+                    <h2>Enter Your Details</h2>
+                    <div class="form-grid">
+                        <div class="field full"><label for="lmp">First day of last period</label><input
+                                data-default="2026-09-01" id="lmp" type="date" value="2026-09-01" /></div>
+                        <div class="field"><label for="duration">Typical bleeding (days)</label><input data-default="5"
+                                id="duration" max="10" min="1" type="number" value="5" /></div>
+                        <div class="field"><label for="cycle">Average cycle length (days)</label><input
+                                data-default="28" id="cycle" max="45" min="21" type="number" value="28" /></div>
+                    </div>
+                    <div class="actions"><button class="primary" id="calcBtn" type="button">Calculate</button><button
+                            class="secondary" id="resetBtn" type="button">Reset</button></div>
+                    <div aria-live="polite" class="error" id="error" role="alert"></div>
+                </article>
+                <aside aria-live="polite" class="result-card">
+                    <h2>Your Result</h2>
+                    <div class="metric" id="mainResult">—</div>
+                    <p>Next predicted period</p>
+                    <div class="mini" style="margin-top:16px"><b>Next 6 starts</b>
+                        <div id="list">—</div>
+                    </div>
+                    <div class="submetrics">
+                        <div class="mini">Estimated ovulation<b id="ovu">—</b></div>
+                        <div class="mini">Bleeding duration<b id="dur">—</b></div>
+                    </div>
+                    <p class="note">Predicted dates are estimates and become less reliable with irregular cycles.</p>
+                </aside>
+            </section>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="content">
+            
+<article class="article">
+
+ 
+  <p>Use the Period Calculator to predict your upcoming period start dates and estimate an approximate ovulation date from your usual menstrual cycle pattern. Enter the first day of your last period, your typical bleeding duration, and your average cycle length to calculate the estimate.</p>
+
+  <section id="what">
+    <h2>What Is the Period Calculator?</h2>
+
+    <p>The Period Calculator is a cycle-planning tool that estimates when your next periods may start based on the first day of your last period and your average menstrual cycle length. It also provides an approximate ovulation date using the calculator's cycle-based ovulation method.</p>
+
+    <p>A menstrual cycle is counted from the first day of one period to the first day of the next period. Actual cycle length and ovulation timing can vary between people and from one cycle to another.</p>
+
+    <p>This calculator is useful for tracking expected period dates, planning around your cycle, or understanding your usual menstrual pattern. Its results are estimates rather than a medical diagnosis or a guarantee of when menstruation or ovulation will occur.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Period Calculator</h2>
+
+    <p>Enter the following information:</p>
+
+    <p><strong>First day of last period:</strong> Select the calendar date on which your most recent period started. This date is treated as cycle day 1.</p>
+
+    <p><strong>Typical bleeding (days):</strong> Enter the number of days your menstrual bleeding usually lasts. Use your usual duration rather than an unusually short or long period.</p>
+
+    <p><strong>Average cycle length (days):</strong> Enter the usual number of days from the first day of one period to the first day of the next period.</p>
+
+    <p>After entering these values, calculate the result to see your predicted upcoming period dates and approximate ovulation timing.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Next Period Formula</h3>
+
+    <p>The calculator predicts the next period start using:</p>
+
+    <div class="formula"><strong>Next period start = Last period start + Average cycle length</strong></div>
+
+    <p>Later projected periods repeat the same cycle interval:</p>
+
+    <div class="formula"><strong>Projected period n = Last period start + (n × Average cycle length)</strong></div>
+
+    <p>where <strong>n = 1</strong> is the next predicted period, <strong>n = 2</strong> is the following period, and so on.</p>
+
+    <h3>Estimated Ovulation Formula</h3>
+
+    <p>The calculator estimates the ovulation cycle day as:</p>
+
+    <div class="formula"><strong>Estimated ovulation cycle day = Average cycle length − 14</strong></div>
+
+    <p>Because the first day of the last period is <strong>cycle day 1</strong>, the calendar-date offset is one day less:</p>
+
+    <div class="formula"><strong>Estimated ovulation date = Last period start + (Average cycle length − 15) days</strong></div>
+
+    <p>For example, with a 28-day cycle:</p>
+
+    <div class="formula"><strong>28 − 14 = cycle day 14</strong></div>
+
+    <p>Cycle day 14 is 13 calendar days after cycle day 1.</p>
+
+    <p>The 14-day calculation is an approximation used by this calculator. Ovulation does not always happen exactly 14 days before the next period. Official health guidance notes that the interval between ovulation and the next period can vary.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th><strong>Variable</strong></th>
+          <th><strong>Meaning</strong></th>
+          <th><strong>Unit</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>L</strong></td>
+          <td>First day of the last period</td>
+          <td>Calendar date</td>
+        </tr>
+        <tr>
+          <td><strong>C</strong></td>
+          <td>Average menstrual cycle length</td>
+          <td>Days</td>
+        </tr>
+        <tr>
+          <td><strong>n</strong></td>
+          <td>Number of cycles being projected</td>
+          <td>Cycle number</td>
+        </tr>
+        <tr>
+          <td><strong>Pₙ</strong></td>
+          <td>Predicted start date of a future period</td>
+          <td>Calendar date</td>
+        </tr>
+        <tr>
+          <td><strong>O</strong></td>
+          <td>Approximate ovulation date</td>
+          <td>Calendar date</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The period-start equation can be written as:</p>
+
+    <div class="formula"><strong>Pₙ = L + nC</strong></div>
+
+    <p>The ovulation-date calculation is:</p>
+
+    <div class="formula"><strong>O = L + (C − 15 days)</strong></div>
+
+    <h3>Calculation Sequence</h3>
+
+    <ol>
+      <li>The first day of the last period is treated as cycle day 1.</li>
+      <li>The average cycle length is added to that date to predict the next period start.</li>
+      <li>The same cycle interval is repeated for later period projections.</li>
+      <li>The calculator subtracts 14 from the cycle length to estimate the ovulation cycle day.</li>
+      <li>One day is subtracted when converting that cycle-day number into a calendar-date offset because the starting date is already day 1.</li>
+    </ol>
+
+    <p>The core next-period start calculation depends on the last period start date and average cycle length. Typical bleeding duration describes the user's usual menstrual pattern but does not change the start-date formula shown above.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <h3>Inputs</h3>
+
+    <p>Suppose you enter:</p>
+
+    <ul>
+      <li>First day of last period: <strong>September 1, 2026</strong></li>
+      <li>Typical bleeding: <strong>5 days</strong></li>
+      <li>Average cycle length: <strong>28 days</strong></li>
+    </ul>
+
+    <h3>Step 1: Calculate the Next Period</h3>
+
+    <div class="formula"><strong>Next period = September 1, 2026 + 28 days</strong></div>
+
+    <div class="formula"><strong>Next period = September 29, 2026</strong></div>
+
+    <h3>Step 2: Calculate Later Period Projections</h3>
+
+    <p>The same 28-day interval is repeated:</p>
+
+    <div class="formula"><strong>Second projected period = September 29 + 28 days = October 27, 2026</strong></div>
+
+    <div class="formula"><strong>Third projected period = October 27 + 28 days = November 24, 2026</strong></div>
+
+    <h3>Step 3: Estimate Ovulation</h3>
+
+    <p>First calculate the estimated ovulation cycle day:</p>
+
+    <div class="formula"><strong>28 − 14 = cycle day 14</strong></div>
+
+    <p>Because September 1 is cycle day 1, cycle day 14 is 13 calendar days later:</p>
+
+    <div class="formula"><strong>September 1 + 13 days = September 14, 2026</strong></div>
+
+    <h3>Final Result</h3>
+
+    <p>For this example:</p>
+
+    <ul>
+      <li><strong>Next predicted period:</strong> September 29, 2026</li>
+      <li><strong>Later projected starts:</strong> October 27 and November 24, 2026</li>
+      <li><strong>Approximate ovulation date:</strong> September 14, 2026</li>
+    </ul>
+
+    <p>These dates are estimates based on a consistent 28-day cycle.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Predicted Period Date</h3>
+
+    <p>This is the estimated start date of your next menstrual period. Future dates are calculated by repeatedly adding your average cycle length.</p>
+
+    <p>A prediction may be close when your cycles are consistent, but normal month-to-month variation can cause your actual period to begin earlier or later.</p>
+
+    <h3>Future Period Projections</h3>
+
+    <p>Later dates show what your cycle calendar may look like if the same average cycle length continues. The farther into the future a prediction goes, the more opportunity there is for small cycle variations to affect the actual date.</p>
+
+    <h3>Estimated Ovulation Date</h3>
+
+    <p>The calculator estimates ovulation using a simplified assumption that ovulation occurs approximately 14 days before the following period.</p>
+
+    <p>This should be treated as an approximate planning date. NHS guidance notes that ovulation commonly occurs roughly 10 to 16 days before the next period, while the U.S. Office on Women's Health also notes that the interval can vary between people and cycles.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The calculator assumes that your average cycle length is a useful predictor of future cycles. If your cycle length changes frequently, the predicted dates may be less reliable.</p>
+
+    <p>The ovulation estimate is also simplified. Actual ovulation can occur earlier or later than the calculated date, so the result should not be treated as confirmation that ovulation occurred on that day.</p>
+
+    <p>Changes related to stress, illness, postpartum recovery, breastfeeding, perimenopause, medications, hormonal contraception, or other health factors can affect menstrual timing.</p>
+
+    <p>Do not use a predicted ovulation date as a reliable method of contraception. Government fertility tools similarly warn that calendar-based fertile-window estimates are not guarantees of pregnancy timing or birth control.</p>
+
+    <p>This calculator is intended for planning and educational purposes. It does not diagnose menstrual, hormonal, fertility, or pregnancy-related conditions.</p>
+
+    <p>Talk with a health care professional if you develop new or persistent cycle changes, unusually heavy bleeding, severe period pain, or other symptoms that concern you. ACOG identifies persistent irregularity, prolonged or heavy bleeding, and significant changes from a person's usual pattern as reasons for medical evaluation.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>How does the Period Calculator predict my next period?</summary>
+      <p>It adds your average menstrual cycle length to the first day of your last period. For example, a 28-day cycle beginning September 1 gives a predicted next start date of September 29.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is ovulation always exactly 14 days before a period?</summary>
+      <p>No. The calculator uses approximately 14 days as its estimation method, but real ovulation timing varies. Health guidance describes a range rather than one exact day.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why might my period arrive before or after the predicted date?</summary>
+      <p>The calculation assumes that future cycles will be similar to your average cycle length. Natural variation, stress, illness, hormonal changes, medications, postpartum changes, and other factors can change the actual date.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What should I enter for average cycle length?</summary>
+      <p>Use the typical number of days from the first day of one period to the first day of the next. If you track several cycles, use a value that represents your usual pattern rather than relying on one unusually short or long cycle.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does my bleeding duration change the next-period calculation?</summary>
+      <p>The core predicted start-date formula uses the first day of your last period and your average cycle length. Bleeding duration records how long your period typically lasts but does not change that start-date formula.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can I use this calculator to prevent pregnancy?</summary>
+      <p>No. Calendar predictions cannot confirm the exact day of ovulation and should not be treated as a guaranteed contraceptive method. Fertility and ovulation timing can vary from one cycle to another.</p>
+    </details>
+
+    <details class="faq">
+      <summary>When should I talk to a health care professional about my period?</summary>
+      <p>Consider medical advice if your previously regular periods become persistently irregular, bleeding becomes unusually heavy or prolonged, pain is severe or worsening, or you experience another significant change from your usual pattern.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://womenshealth.gov/menstrual-cycle/your-menstrual-cycle?utm_source=chatgpt.com" rel="noopener" target="_blank">U.S. Office on Women's Health — Your Menstrual Cycle</a>
+        <br>
+        Used to verify how menstrual cycles are counted, natural variation in cycle length, and variation between ovulation and the following period.
+      </li>
+
+      <li>
+        <a href="https://womenshealth.gov/pregnancy/you-get-pregnant/trying-conceive?utm_source=chatgpt.com" rel="noopener" target="_blank">U.S. Office on Women's Health — Trying to Conceive</a>
+        <br>
+        Used to verify the relationship between ovulation timing and the following menstrual period.
+      </li>
+
+      <li>
+        <a href="https://www.nhs.uk/conditions/periods/fertility-in-the-menstrual-cycle/?utm_source=chatgpt.com" rel="noopener" target="_blank">NHS — Periods and Fertility in the Menstrual Cycle</a>
+        <br>
+        Used to cross-check cycle-day conventions and the typical variation in ovulation timing.
+      </li>
+
+      <li>
+        <a href="https://www.acog.org/womens-health/faqs/abnormal-uterine-bleeding?utm_source=chatgpt.com" rel="noopener" target="_blank">ACOG — Abnormal Uterine Bleeding</a>
+        <br>
+        Used to verify important limitations and signs of abnormal or significantly changed menstrual bleeding.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/ovulation-calculator/?utm_source=chatgpt.com">Ovulation Calculator</a></li>
+      <li><a href="https://example.com/conception-calculator/?utm_source=chatgpt.com">Conception Calculator</a></li>
+      <li><a href="https://example.com/pregnancy-calculator/?utm_source=chatgpt.com">Pregnancy Calculator</a></li>
+      <li><a href="https://example.com/pregnancy-conception-calculator/?utm_source=chatgpt.com">Pregnancy Conception Calculator</a></li>
+      <li><a href="https://example.com/due-date-calculator/?utm_source=chatgpt.com">Due Date Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+
+            </section>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"128","Batch":"13","Calculator / Page":"Period Calculator","Slug":"period-calculator","Site Category (Current)":"Health & Fitness","Recommended Content Domain":"Pregnancy / Reproductive Health","Page Type":"Calculator","Search Intent / Purpose":"Predict upcoming period dates and an approximate ovulation date from your usual cycle pattern.","Formula / Algorithm Used in Tool":"Period Prediction Formula: next period start = last period start + average cycle length . Each later projection repeats the same interval. The estimated ovulation cycle day is approximately cycle length minus 14; because the LMP is cycle day 1, the calendar-date offset is one day less.","Required User Inputs":"First day of last period; Typical bleeding (days); Average cycle length (days)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: First day of last period, Typical bleeding (days), Average cycle length (days). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Authoritative obstetric/reproductive formula source, gestational assumptions, date conventions, population scope and clinical limitations.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When clinical guidance changes","Important Assumptions / Limitations":"Irregular cycles make date prediction less reliable. Seek medical advice for new or concerning changes, unusually heavy bleeding, severe pain, or persistent cycle changes.","Current Source URLs in Page":"https://www.acog.org/womens-health/faqs/fertility-awareness-based-methods-of-family-planning | https://www.acog.org/womens-health/experts-and-stories/the-latest/trying-to-get-pregnant-heres-when-to-have-sex | https://www.acog.org/womens-health/faqs/amenorrhea-absence-of-periods","Implementation Path":"/period-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Health &amp; Fitness</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../pregnancy-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Pregnancy Calculator</strong><small>Estimate
+                            pregnancy due date, current gestational age, trimester, and key dates
+                            from…</small></span></a><a class="cp-related-link"
+                    href="../pregnancy-conception-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Pregnancy Conception
+                            Calculator</strong><small>Estimate a likely conception date from an estimated due date or
+                            from the first day…</small></span></a><a class="cp-related-link"
+                    href="../ovulation-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Ovulation Calculator</strong><small>Estimate
+                            ovulation, fertile-window dates, and the next period from the last
+                            menstru…</small></span></a><a class="cp-related-link"
+                    href="../due-date-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Due Date
+                            Calculator</strong><small>Estimate pregnancy due date from the last menstrual period,
+                            conception date, or IVF…</small></span></a><a class="cp-related-link"
+                    href="../payback-period-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Payback Period Calculator</strong><small>Calculate
+                            simple and discounted payback periods from an initial investment,
+                            annual…</small></span></a><a class="cp-related-link"
+                    href="../conception-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Conception Calculator</strong><small>Estimate a
+                            fertile window and peak conception days from the last menstrual period
+                            a…</small></span></a><a class="cp-related-link"
+                    href="../pregnancy-weight-gain-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Pregnancy Weight Gain
+                            Calculator</strong><small>Calculate pre-pregnancy BMI and see CDC-referenced total pregnancy
+                            weight-gain rang…</small></span></a><a class="cp-related-link"
+                    href="../ideal-weight-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Ideal Weight Calculator</strong><small>Compare
+                            common ideal body weight formulas including Devine, Robinson, Miller, and
+                            H…</small></span></a></div><a class="cp-side-category"
+                href="../health/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+
+        function add(v, n) { let d = new Date(v + 'T12:00:00'); d.setDate(d.getDate() + n); return d } function fmt(d) { return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) }
+        function calculate() {
+            const e = document.getElementById('error'); e.textContent = ''; let v = document.getElementById('lmp').value, c = +document.getElementById('cycle').value, dur = +document.getElementById('duration').value; if (!v || c < 21 || c > 45 || dur < 1 || dur > 10) { e.textContent = 'Enter a valid date, cycle length (21–45), and bleeding length (1–10).'; return }
+            let starts = []; for (let i = 1; i <= 6; i++)starts.push(add(v, c * i)); let end = new Date(starts[0]); end.setDate(end.getDate() + dur - 1); let ovu = add(v, c - 15);
+            document.getElementById('mainResult').textContent = `${fmt(starts[0])} – ${fmt(end)}`; document.getElementById('list').innerHTML = starts.map((x, i) => `${i + 1}. ${fmt(x)}`).join('<br>'); document.getElementById('ovu').textContent = fmt(ovu); document.getElementById('dur').textContent = `${dur} days`;
+        }
+        document.getElementById('calcBtn').addEventListener('click', calculate);
+        document.getElementById('resetBtn').addEventListener('click', () => { document.querySelectorAll('input').forEach(i => { if (i.dataset.default !== undefined) i.value = i.dataset.default; }); document.querySelectorAll('select').forEach(s => { if (s.dataset.default !== undefined) s.value = s.dataset.default; }); document.getElementById('error').textContent = ''; calculate(); });
+        window.addEventListener('DOMContentLoaded', calculate);
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

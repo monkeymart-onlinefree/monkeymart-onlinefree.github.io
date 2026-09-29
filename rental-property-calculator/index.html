@@ -1,321 +1,2236 @@
 <!DOCTYPE html>
 
 <html lang="en-US">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+  <meta charset="utf-8" />
+  <meta content="width=device-width,initial-scale=1" name="viewport" />
+  <meta http-equiv="content-language" content="en">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+  <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>Rental Property ROI, Cap Rate &amp; IRR Calculator | CalcPro</title>
-<meta content="Analyze a rental property with mortgage financing, rent, vacancy, operating expenses, growth, appreciation, selling costs, cash flow, cap rate, cash-on-cash return, and IRR." name="description"/>
-<meta content="index,follow" name="robots"/>
-<link href="../rental-property-calculator/" rel="canonical"/>
-<meta content="Rental Property Calculator | CalcPro" property="og:title"/>
-<meta content="Analyze a rental property with mortgage financing, rent, vacancy, operating expenses, growth, appreciation, selling costs, cash flow, cap rate, cash-on-cash return, and IRR." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="https://yourdomain.com/rental-property-calculator/" property="og:url"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>
-:root{
-  --bg:#0f172a;--bg2:#111827;--panel:#ffffff;--ink:#0f172a;--muted:#64748b;
-  --a:#2563eb;--b:#14b8a6;--c:#f59e0b;--soft:#eef2ff;--line:#e2e8f0;
-  --shadow:0 25px 60px rgba(15,23,42,.18);--radius:28px;
+ <!-- Primary Meta Tags -->
+<title>Rental Property Calculator – Cash Flow, Cap Rate &amp; IRR</title>
+<meta name="title" content="Rental Property Calculator – Cash Flow, Cap Rate &amp; IRR">
+<meta name="description" content="Analyze a rental property using price, financing, rent, vacancy, expenses, growth, and sale assumptions to estimate NOI, cash flow, cap rate, and returns.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/rental-property-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/rental-property-calculator/">
+<meta property="og:title" content="Rental Property Calculator – Cash Flow, Cap Rate &amp; IRR">
+<meta property="og:description" content="Analyze a rental property using price, financing, rent, vacancy, expenses, growth, and sale assumptions to estimate NOI, cash flow, cap rate, and returns.">
+<meta property="og:site_name" content="Rental Property Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/rental-property-calculator/">
+<meta name="twitter:title" content="Rental Property Calculator – Cash Flow, Cap Rate &amp; IRR">
+<meta name="twitter:description" content="Analyze a rental property using price, financing, rent, vacancy, expenses, growth, and sale assumptions to estimate NOI, cash flow, cap rate, and returns.">
+  <meta content="#1477ff" name="theme-color" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg2: #111827;
+      --panel: #ffffff;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --a: #2563eb;
+      --b: #14b8a6;
+      --c: #f59e0b;
+      --soft: #eef2ff;
+      --line: #e2e8f0;
+      --shadow: 0 25px 60px rgba(15, 23, 42, .18);
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: #f8fafc;
+      line-height: 1.6
+    }
+
+    a {
+      color: inherit
+    }
+
+    button,
+    input,
+    select {
+      font: inherit
+    }
+
+    .sitebar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px max(20px, calc((100vw - 1180px)/2));
+      background: rgba(255, 255, 255, .82);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(148, 163, 184, .2)
+    }
+
+    .brand {
+      font-weight: 900;
+      letter-spacing: -.04em;
+      font-size: 1.18rem
+    }
+
+    .brand b {
+      color: var(--a)
+    }
+
+    .sitebar a {
+      text-decoration: none
+    }
+
+    .navpill {
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: var(--soft);
+      font-size: .9rem
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: auto
+    }
+
+    .breadcrumb {
+      font-size: .88rem;
+      opacity: .78;
+      margin-bottom: 18px
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 5.5rem);
+      line-height: .94;
+      letter-spacing: -.06em;
+      margin: 0 0 18px;
+      max-width: 850px
+    }
+
+    .hero p.lead {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      max-width: 760px;
+      margin: 0;
+      color: inherit;
+      opacity: .84
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      gap: 9px;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 18px
+    }
+
+    .visual {
+      position: relative;
+      min-height: 250px
+    }
+
+    .calc-section {
+      position: relative;
+      z-index: 4
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid rgba(148, 163, 184, .18);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius)
+    }
+
+    .form-panel {
+      padding: 26px
+    }
+
+    .result-panel {
+      padding: 26px
+    }
+
+    .section-title {
+      margin: 0 0 6px;
+      font-size: 1.55rem;
+      letter-spacing: -.03em
+    }
+
+    .section-kicker {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: .93rem
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px
+    }
+
+    .field.full {
+      grid-column: 1/-1
+    }
+
+    label {
+      font-weight: 750;
+      font-size: .9rem
+    }
+
+    .hint {
+      font-size: .78rem;
+      color: var(--muted)
+    }
+
+    input,
+    select {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 14px;
+      padding: 12px 13px;
+      outline: none;
+      transition: .2s
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--a);
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--a) 14%, transparent)
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 22px
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 14px;
+      padding: 12px 18px;
+      font-weight: 850;
+      cursor: pointer
+    }
+
+    .btn.primary {
+      background: var(--a);
+      color: #fff;
+      box-shadow: 0 10px 22px color-mix(in srgb, var(--a) 28%, transparent)
+    }
+
+    .btn.ghost {
+      background: var(--soft);
+      color: var(--ink)
+    }
+
+    .error {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: #fff1f2;
+      color: #be123c;
+      border: 1px solid #fecdd3;
+      font-weight: 700
+    }
+
+    .results {
+      display: grid;
+      gap: 12px
+    }
+
+    .metric {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: baseline;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .metric:last-child {
+      border-bottom: 0
+    }
+
+    .metric strong {
+      font-size: 1.14rem;
+      text-align: right
+    }
+
+    .hero-result {
+      font-size: clamp(2.2rem, 5vw, 4.1rem);
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -.06em;
+      margin: 10px 0 8px;
+      color: var(--a)
+    }
+
+    .small-note {
+      font-size: .82rem;
+      color: var(--muted)
+    }
+
+    .table-wrap {
+      overflow: auto;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      margin-top: 18px
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 620px
+    }
+
+    th,
+    td {
+      padding: 11px 12px;
+      text-align: right;
+      border-bottom: 1px solid var(--line);
+      font-size: .86rem
+    }
+
+    th:first-child,
+    td:first-child {
+      text-align: left
+    }
+
+    th {
+      background: #f8fafc
+    }
+
+    .content {
+      padding: 72px 0 44px
+    }
+
+    .prose {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 34px
+    }
+
+    .article {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: clamp(24px, 4vw, 46px);
+      box-shadow: 0 18px 50px rgba(15, 23, 42, .07)
+    }
+
+    .article h2 {
+      font-size: clamp(1.55rem, 3vw, 2.15rem);
+      letter-spacing: -.04em;
+      margin: 34px 0 12px
+    }
+
+    .article h2:first-child {
+      margin-top: 0
+    }
+
+    .article h3 {
+      margin-top: 24px
+    }
+
+    .article p,
+    .article li {
+      color: #334155
+    }
+
+    .article code,
+    .formula {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace
+    }
+
+    .formula {
+      padding: 16px;
+      border-radius: 16px;
+      background: var(--soft);
+      overflow: auto
+    }
+
+    .aside {
+      align-self: start;
+      position: sticky;
+      top: 88px;
+      background: linear-gradient(145deg, var(--soft), #fff);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 24px
+    }
+
+    .aside h3 {
+      margin-top: 0
+    }
+
+    .faq details {
+      border-top: 1px solid var(--line);
+      padding: 14px 0
+    }
+
+    .faq summary {
+      cursor: pointer;
+      font-weight: 800
+    }
+
+    .sources a {
+      word-break: break-word;
+      color: var(--a)
+    }
+
+    footer {
+      padding: 32px 0 46px;
+      color: #64748b;
+      text-align: center;
+      font-size: .85rem
+    }
+
+    @media(max-width:860px) {
+      .grid {
+        grid-template-columns: 1fr
+      }
+
+      .prose {
+        grid-template-columns: 1fr
+      }
+
+      .aside {
+        position: static
+      }
+
+      .hero h1 {
+        font-size: clamp(2.4rem, 12vw, 4.3rem)
+      }
+    }
+
+    @media(max-width:580px) {
+      .sitebar {
+        padding: 12px 16px
+      }
+
+      .navpill {
+        display: none
+      }
+
+      .wrap {
+        width: min(100% - 22px, 1180px)
+      }
+
+      .form-panel,
+      .result-panel {
+        padding: 20px
+      }
+
+      .panel {
+        border-radius: 22px
+      }
+    }
+
+
+    /* Ten layout systems are intentionally different: each topic gets a distinct composition. */
+    body.debt {
+      --bg: #18212f;
+      --bg2: #111827;
+      --a: #f97316;
+      --b: #38bdf8;
+      --c: #facc15;
+      --soft: #fff7ed
+    }
+
+    .debt .hero {
+      background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, .18), transparent 30%), linear-gradient(135deg, #101827, #263649);
+      color: #fff;
+      padding: 72px 0 110px
+    }
+
+    .debt .hero-inner {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      gap: 38px
+    }
+
+    .debt .hero-badge {
+      background: rgba(255, 255, 255, .1)
+    }
+
+    .debt .balance-ring {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      margin: auto;
+      background: conic-gradient(var(--a) 0 36%, #334155 36%);
+      box-shadow: inset 0 0 0 24px #1d2939, 0 28px 60px rgba(0, 0, 0, .3);
+      display: grid;
+      place-items: center;
+      transform: rotate(-8deg)
+    }
+
+    .debt .balance-ring:after {
+      content: "DTI";
+      font-weight: 950;
+      font-size: 3rem;
+      transform: rotate(8deg);
+      letter-spacing: -.08em
+    }
+
+    .debt .calc-section {
+      margin-top: -62px
+    }
+
+    .debt .calc-layout {
+      display: grid;
+      grid-template-columns: 1.fr;
+      gap: 22px
+    }
+
+    .debt .result-panel {
+      background: #18212f;
+      color: #fff;
+      border-color: #334155
+    }
+
+    .debt .result-panel .metric {
+      border-color: #334155
+    }
+
+    .debt .result-panel .small-note {
+      color: #cbd5e1
+    }
+
+    body.realestate {
+      --a: #0f766e;
+      --b: #d97706;
+      --c: #ef4444;
+      --soft: #ecfdf5
+    }
+
+    .realestate .hero {
+      background: linear-gradient(180deg, #f0fdfa, #fff7ed);
+      padding: 64px 0 84px;
+      border-bottom: 1px solid #d1fae5
+    }
+
+    .realestate .hero-inner {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 36px;
+      align-items: center
+    }
+
+    .realestate .house-scene {
+      height: 320px;
+      position: relative;
+      perspective: 800px
+    }
+
+    .realestate .house {
+      position: absolute;
+      left: 16%;
+      top: 70px;
+      width: 250px;
+      height: 160px;
+      background: #fff;
+      border: 1px solid #d1d5db;
+      box-shadow: 24px 28px 0 #a7f3d0, 40px 48px 60px rgba(15, 118, 110, .16);
+      transform: rotateY(-18deg) rotateX(6deg)
+    }
+
+    .realestate .house:before {
+      content: "";
+      position: absolute;
+      left: -25px;
+      top: -92px;
+      border-left: 150px solid transparent;
+      border-right: 150px solid transparent;
+      border-bottom: 100px solid #f59e0b;
+      filter: drop-shadow(0 15px 10px rgba(0, 0, 0, .12))
+    }
+
+    .realestate .house:after {
+      content: "";
+      position: absolute;
+      width: 58px;
+      height: 95px;
+      background: #0f766e;
+      bottom: 0;
+      left: 96px
+    }
+
+    .realestate .calc-section {
+      padding: 42px 0
+    }
+
+    .realestate .calc-layout {
+      display: grid;
+      grid-template-columns: .72fr 1.28fr;
+      gap: 24px;
+      align-items: start
+    }
+
+    .realestate .form-panel {
+      border-radius: 46px 18px 46px 18px
+    }
+
+    .realestate .result-panel {
+      border-radius: 18px 46px 18px 46px;
+      background: linear-gradient(145deg, #064e3b, #0f766e);
+      color: #fff
+    }
+
+    .realestate .result-panel .metric {
+      border-color: rgba(255, 255, 255, .15)
+    }
+
+    .realestate .result-panel .small-note {
+      color: #d1fae5
+    }
+
+    body.takehome {
+      --a: #7c3aed;
+      --b: #06b6d4;
+      --c: #ec4899;
+      --soft: #f5f3ff
+    }
+
+    .takehome .hero {
+      padding: 76px 0 54px;
+      background: linear-gradient(120deg, #faf5ff 0 55%, #ecfeff 55%)
+    }
+
+    .takehome .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 32px
+    }
+
+    .takehome .paycheck {
+      margin: auto;
+      width: min(440px, 90%);
+      height: 220px;
+      background: #fff;
+      border: 2px dashed #c4b5fd;
+      border-radius: 22px;
+      box-shadow: 20px 22px 0 #cffafe, 0 25px 55px rgba(124, 58, 237, .16);
+      transform: rotate(3deg);
+      padding: 30px
+    }
+
+    .takehome .paycheck .line {
+      height: 12px;
+      background: #ede9fe;
+      border-radius: 99px;
+      margin: 13px 0
+    }
+
+    .takehome .paycheck .line:nth-child(2) {
+      width: 65%
+    }
+
+    .takehome .paycheck .line:nth-child(3) {
+      width: 82%
+    }
+
+    .takehome .calc-section {
+      padding: 30px 0 52px
+    }
+
+    .takehome .calc-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px
+    }
+
+    .takehome .form-panel {
+      max-width: 930px;
+      margin: auto
+    }
+
+    .takehome .result-panel {
+      max-width: 930px;
+      margin: auto;
+      background: linear-gradient(135deg, #1e1b4b, #312e81);
+      color: #fff;
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 26px
+    }
+
+    .takehome .result-panel .metric {
+      border-color: #4338ca
+    }
+
+    .takehome .result-panel .small-note {
+      color: #c7d2fe
+    }
+
+    body.personalloan {
+      --a: #b7791f;
+      --b: #0f172a;
+      --c: #f59e0b;
+      --soft: #fffbeb
+    }
+
+    .personalloan .hero {
+      background: #0b1220;
+      color: #fff;
+      padding: 70px 0 90px
+    }
+
+    .personalloan .hero-inner {
+      display: grid;
+      grid-template-columns: 1.fr;
+      gap: 30px;
+      align-items: center
+    }
+
+    .personalloan .docstack {
+      height: 270px;
+      position: relative
+    }
+
+    .personalloan .sheet {
+      position: absolute;
+      width: 230px;
+      height: 165px;
+      border-radius: 18px;
+      background: #fff;
+      right: 18%;
+      top: 44px;
+      box-shadow: 0 28px 60px rgba(0, 0, 0, .35);
+      transform: rotate(-8deg)
+    }
+
+    .personalloan .sheet:before {
+      content: "$";
+      position: absolute;
+      font-size: 5rem;
+      color: #b7791f;
+      font-weight: 950;
+      left: 78px;
+      top: 24px
+    }
+
+    .personalloan .sheet:after {
+      content: "";
+      position: absolute;
+      width: 92px;
+      height: 18px;
+      border-radius: 99px;
+      background: #fde68a;
+      left: 69px;
+      bottom: 28px
+    }
+
+    .personalloan .calc-section {
+      margin-top: -42px
+    }
+
+    .personalloan .calc-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      box-shadow: var(--shadow);
+      border-radius: 32px;
+      overflow: hidden
+    }
+
+    .personalloan .form-panel,
+    .personalloan .result-panel {
+      border: 0;
+      border-radius: 0;
+      box-shadow: none
+    }
+
+    .personalloan .result-panel {
+      background: #fffbeb
+    }
+
+    body.boat {
+      --a: #0284c7;
+      --b: #0f766e;
+      --c: #f8fafc;
+      --soft: #e0f2fe
+    }
+
+    .boat .hero {
+      padding: 64px 0 120px;
+      background: linear-gradient(#e0f2fe, #bae6fd 72%, #38bdf8 72%, #0284c7);
+      overflow: hidden
+    }
+
+    .boat .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 28px
+    }
+
+    .boat .boat-art {
+      height: 280px;
+      position: relative
+    }
+
+    .boat .hull {
+      position: absolute;
+      width: 330px;
+      height: 90px;
+      right: 4%;
+      top: 130px;
+      background: #0f172a;
+      clip-path: polygon(0 0, 100% 0, 80% 100%, 16% 100%);
+      box-shadow: 0 35px 55px rgba(2, 132, 199, .3)
+    }
+
+    .boat .hull:before {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 82px;
+      background: #fff;
+      left: 130px;
+      top: -76px;
+      clip-path: polygon(10% 100%, 22% 0, 78% 0, 100% 100%)
+    }
+
+    .boat .hull:after {
+      content: "";
+      position: absolute;
+      width: 95px;
+      height: 8px;
+      background: #fbbf24;
+      left: 115px;
+      top: 28px;
+      border-radius: 99px
+    }
+
+    .boat .calc-section {
+      margin-top: -66px
+    }
+
+    .boat .calc-layout {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 22px
+    }
+
+    .boat .form-panel {
+      background: rgba(255, 255, 255, .95)
+    }
+
+    .boat .result-panel {
+      background: linear-gradient(180deg, #082f49, #0c4a6e);
+      color: #fff
+    }
+
+    .boat .result-panel .metric {
+      border-color: #155e75
+    }
+
+    .boat .result-panel .small-note {
+      color: #bae6fd
+    }
+
+    body.lease {
+      --a: #65a30d;
+      --b: #27272a;
+      --c: #84cc16;
+      --soft: #f7fee7
+    }
+
+    .lease .hero {
+      background: #18181b;
+      color: #fafafa;
+      padding: 72px 0 70px
+    }
+
+    .lease .hero-inner {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 38px;
+      align-items: center
+    }
+
+    .lease .contract {
+      height: 300px;
+      position: relative
+    }
+
+    .lease .contract-card {
+      width: 280px;
+      height: 220px;
+      background: #fafafa;
+      color: #18181b;
+      border-radius: 12px;
+      position: absolute;
+      left: 12%;
+      top: 25px;
+      padding: 28px;
+      box-shadow: 24px 28px 0 #65a30d, 0 28px 60px rgba(0, 0, 0, .38);
+      transform: rotate(5deg)
+    }
+
+    .lease .contract-card:before {
+      content: "LEASE";
+      font-size: 2.6rem;
+      font-weight: 950;
+      letter-spacing: -.08em
+    }
+
+    .lease .contract-card:after {
+      content: "✓";
+      position: absolute;
+      right: 28px;
+      bottom: 28px;
+      width: 54px;
+      height: 54px;
+      border: 4px solid #65a30d;
+      color: #65a30d;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      font-weight: 900
+    }
+
+    .lease .calc-section {
+      padding: 42px 0
+    }
+
+    .lease .calc-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 28px
+    }
+
+    .lease .modebar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 18px
+    }
+
+    .lease .modebar button {
+      flex: 1
+    }
+
+    .lease .result-panel {
+      border: 2px solid #bef264;
+      box-shadow: 12px 12px 0 #d9f99d
+    }
+
+    body.refinance {
+      --a: #4f46e5;
+      --b: #db2777;
+      --c: #22d3ee;
+      --soft: #eef2ff
+    }
+
+    .refinance .hero {
+      padding: 72px 0 88px;
+      background: radial-gradient(circle at 85% 20%, #fce7f3, transparent 25%), linear-gradient(120deg, #eef2ff, #fff)
+    }
+
+    .refinance .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: center
+    }
+
+    .refinance .swap {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      perspective: 900px
+    }
+
+    .refinance .loan-card {
+      width: 180px;
+      height: 220px;
+      border-radius: 22px;
+      background: #fff;
+      border: 1px solid #c7d2fe;
+      box-shadow: 0 25px 45px rgba(79, 70, 229, .16);
+      padding: 18px;
+      transform: rotateY(15deg)
+    }
+
+    .refinance .loan-card.new {
+      transform: rotateY(-15deg);
+      background: #312e81;
+      color: #fff
+    }
+
+    .refinance .arrow {
+      font-size: 2.5rem;
+      color: #db2777;
+      font-weight: 950
+    }
+
+    .refinance .calc-section {
+      padding: 0 0 50px
+    }
+
+    .refinance .calc-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px
+    }
+
+    .refinance .form-panel {
+      margin-top: -28px
+    }
+
+    .refinance .result-panel {
+      margin-top: 28px;
+      background: linear-gradient(145deg, #312e81, #4f46e5);
+      color: #fff
+    }
+
+    .refinance .result-panel .metric {
+      border-color: #6366f1
+    }
+
+    .refinance .result-panel .small-note {
+      color: #c7d2fe
+    }
+
+    body.budget {
+      --a: #ea580c;
+      --b: #16a34a;
+      --c: #eab308;
+      --soft: #fff7ed
+    }
+
+    .budget .hero {
+      background: #fffaf0;
+      padding: 58px 0 34px
+    }
+
+    .budget .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      gap: 28px
+    }
+
+    .budget .jars {
+      height: 270px;
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      gap: 18px
+    }
+
+    .budget .jar {
+      width: 105px;
+      border: 7px solid #fdba74;
+      border-top: 18px solid #fb923c;
+      border-radius: 12px 12px 28px 28px;
+      background: linear-gradient(to top, #fed7aa 0 55%, transparent 55%);
+      height: 190px;
+      box-shadow: 0 18px 30px rgba(234, 88, 12, .15)
+    }
+
+    .budget .jar:nth-child(2) {
+      height: 230px;
+      border-color: #86efac;
+      border-top-color: #22c55e;
+      background: linear-gradient(to top, #bbf7d0 0 72%, transparent 72%)
+    }
+
+    .budget .jar:nth-child(3) {
+      height: 160px;
+      border-color: #fde047;
+      border-top-color: #eab308;
+      background: linear-gradient(to top, #fef08a 0 40%, transparent 40%)
+    }
+
+    .budget .calc-section {
+      padding: 24px 0 54px
+    }
+
+    .budget .calc-layout {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 24px
+    }
+
+    .budget .form-panel {
+      box-shadow: none;
+      border: 2px solid #fed7aa
+    }
+
+    .budget .result-panel {
+      box-shadow: none;
+      border: 2px solid #bbf7d0;
+      background: #f0fdf4
+    }
+
+    .budget .donut {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: conic-gradient(#ea580c 0 50%, #16a34a 50% 75%, #eab308 75%);
+      margin: 18px auto;
+      position: relative
+    }
+
+    .budget .donut:after {
+      content: "";
+      position: absolute;
+      inset: 32px;
+      background: #f0fdf4;
+      border-radius: 50%
+    }
+
+    body.rental {
+      --a: #166534;
+      --b: #d97706;
+      --c: #22c55e;
+      --soft: #f0fdf4
+    }
+
+    .rental .hero {
+      background: linear-gradient(135deg, #052e16, #14532d);
+      color: #fff;
+      padding: 72px 0 98px
+    }
+
+    .rental .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: center
+    }
+
+    .rental .building {
+      width: 260px;
+      height: 270px;
+      background: #fef3c7;
+      margin: auto;
+      position: relative;
+      box-shadow: 28px 24px 0 #d97706, 0 35px 60px rgba(0, 0, 0, .28);
+      transform: skewY(-2deg)
+    }
+
+    .rental .building:before {
+      content: "";
+      position: absolute;
+      inset: 28px;
+      background: repeating-linear-gradient(90deg, #166534 0 32px, transparent 32px 54px), repeating-linear-gradient(0deg, transparent 0 38px, #fff 38px 48px)
+    }
+
+    .rental .building:after {
+      content: "$";
+      position: absolute;
+      right: -58px;
+      top: -34px;
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      background: #22c55e;
+      display: grid;
+      place-items: center;
+      font-size: 3rem;
+      font-weight: 950;
+      box-shadow: 0 18px 30px rgba(34, 197, 94, .26)
+    }
+
+    .rental .calc-section {
+      margin-top: -48px
+    }
+
+    .rental .calc-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 22px
+    }
+
+    .rental .form-panel {
+      max-height: 860px;
+      overflow: auto
+    }
+
+    .rental .result-panel {
+      background: #fffdf5;
+      border: 2px solid #fde68a
+    }
+
+    body.irr {
+      --a: #a3e635;
+      --b: #a855f7;
+      --c: #22d3ee;
+      --soft: #f7fee7;
+      --ink: #f8fafc;
+      --muted: #a1a1aa;
+      --line: #3f3f46;
+      --panel: #18181b
+    }
+
+    .irr {
+      background: #09090b;
+      color: #f8fafc
+    }
+
+    .irr .sitebar {
+      background: rgba(9, 9, 11, .82);
+      border-color: #27272a
+    }
+
+    .irr .brand,
+    .irr .sitebar a {
+      color: #fff
+    }
+
+    .irr .navpill {
+      background: #27272a
+    }
+
+    .irr .hero {
+      padding: 72px 0 70px;
+      background: radial-gradient(circle at 72% 22%, rgba(168, 85, 247, .22), transparent 28%), #09090b
+    }
+
+    .irr .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center
+    }
+
+    .irr .graph3d {
+      height: 300px;
+      position: relative;
+      perspective: 700px
+    }
+
+    .irr .gridplane {
+      position: absolute;
+      inset: 50px 10% 0;
+      background: repeating-linear-gradient(0deg, rgba(163, 230, 53, .18) 0 1px, transparent 1px 30px), repeating-linear-gradient(90deg, rgba(34, 211, 238, .18) 0 1px, transparent 1px 40px);
+      transform: rotateX(62deg) rotateZ(-8deg);
+      box-shadow: 0 0 50px rgba(163, 230, 53, .08)
+    }
+
+    .irr .curve {
+      position: absolute;
+      width: 250px;
+      height: 130px;
+      border-top: 8px solid #a3e635;
+      border-radius: 50%;
+      left: 25%;
+      top: 75px;
+      transform: rotate(-18deg);
+      filter: drop-shadow(0 0 12px rgba(163, 230, 53, .5))
+    }
+
+    .irr .calc-section {
+      padding: 24px 0 56px
+    }
+
+    .irr .calc-layout {
+      display: grid;
+      grid-template-columns: 1.fr;
+      gap: 24px
+    }
+
+    .irr .panel {
+      border-color: #3f3f46
+    }
+
+    .irr input,
+    .irr select {
+      background: #09090b;
+      color: #f8fafc;
+      border-color: #3f3f46
+    }
+
+    .irr .result-panel {
+      background: linear-gradient(145deg, #18181b, #27272a);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, .45)
+    }
+
+    .irr .hero-result {
+      color: #a3e635
+    }
+
+    .irr .content {
+      background: #111113
+    }
+
+    .irr .article {
+      background: #18181b;
+      border-color: #3f3f46
+    }
+
+    .irr .article p,
+    .irr .article li {
+      color: #d4d4d8
+    }
+
+    .irr .aside {
+      background: #18181b;
+      border-color: #3f3f46
+    }
+
+    .irr .formula {
+      background: #27272a
+    }
+
+    .irr th {
+      background: #27272a
+    }
+
+    .irr footer {
+      background: #09090b
+    }
+
+    @media(max-width:900px) {
+
+      .debt .hero-inner,
+      .realestate .hero-inner,
+      .takehome .hero-inner,
+      .personalloan .hero-inner,
+      .boat .hero-inner,
+      .lease .hero-inner,
+      .refinance .hero-inner,
+      .budget .hero-inner,
+      .rental .hero-inner,
+      .irr .hero-inner {
+        grid-template-columns: 1fr
+      }
+
+      .debt .calc-layout,
+      .realestate .calc-layout,
+      .personalloan .calc-layout,
+      .boat .calc-layout,
+      .lease .calc-layout,
+      .refinance .calc-layout,
+      .budget .calc-layout,
+      .rental .calc-layout,
+      .irr .calc-layout {
+        grid-template-columns: 1fr
+      }
+
+      .takehome .result-panel {
+        grid-template-columns: 1fr
+      }
+
+      .visual {
+        min-height: 200px
+      }
+    }
+  </style>
+ <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/rental-property-calculator/#webapplication",
+      "name": "Rental Property Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/rental-property-calculator/",
+      "description": "Analyze a rental property using price, financing, rent, vacancy, expenses, growth, and sale assumptions to estimate NOI, cash flow, cap rate, and returns.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/rental-property-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Rental Property Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/rental-property-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/rental-property-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is NOI in a rental property calculation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Net operating income is the property's collected income after vacancy, management fees, and operating expenses, but before mortgage principal and interest. It measures operating performance independently from the financing structure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does cap rate include the mortgage payment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This calculator calculates cap rate from first-year NOI divided by the purchase price. Mortgage debt service is excluded."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is cash-on-cash return different from cap rate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cap rate compares NOI with the property price and ignores financing. Cash-on-cash return compares cash flow after mortgage payments with the amount of cash invested upfront, so financing directly affects it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does vacancy affect the calculation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The vacancy rate reduces projected gross property income before the management fee and other operating expenses are calculated. A higher vacancy assumption therefore lowers NOI and cash flow."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is the future sale price estimated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The purchase price is compounded by the annual property appreciation rate for the selected holding period. Selling costs and the outstanding mortgage balance are then deducted when estimating net sale proceeds."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can the projected IRR change significantly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "IRR uses the complete cash-flow sequence. Changes in rent growth, vacancy, expenses, mortgage terms, appreciation, holding period, selling costs, or the remaining mortgage balance can therefore change the result substantially."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the calculator include depreciation or capital gains tax?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Income taxes, depreciation, capital gains tax, and depreciation recapture are outside this calculator's modeled inputs. They should be evaluated separately when relevant."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart OnlineFree",
+      "inLanguage": "en-US"
+    }
+  ]
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#f8fafc;line-height:1.6}
-a{color:inherit}
-button,input,select{font:inherit}
-.sitebar{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:16px max(20px,calc((100vw - 1180px)/2));background:rgba(255,255,255,.82);backdrop-filter:blur(16px);border-bottom:1px solid rgba(148,163,184,.2)}
-.brand{font-weight:900;letter-spacing:-.04em;font-size:1.18rem}.brand b{color:var(--a)}
-.sitebar a{text-decoration:none}
-.navpill{padding:9px 14px;border-radius:999px;background:var(--soft);font-size:.9rem}
-.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
-.breadcrumb{font-size:.88rem;opacity:.78;margin-bottom:18px}
-.hero{position:relative;overflow:hidden}
-.hero h1{font-size:clamp(2.4rem,6vw,5.5rem);line-height:.94;letter-spacing:-.06em;margin:0 0 18px;max-width:850px}
-.hero p.lead{font-size:clamp(1rem,2vw,1.2rem);max-width:760px;margin:0;color:inherit;opacity:.84}
-.hero-badge{display:inline-flex;gap:9px;align-items:center;padding:8px 12px;border-radius:999px;font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px}
-.visual{position:relative;min-height:250px}
-.calc-section{position:relative;z-index:4}
-.panel{background:var(--panel);border:1px solid rgba(148,163,184,.18);box-shadow:var(--shadow);border-radius:var(--radius)}
-.form-panel{padding:26px}
-.result-panel{padding:26px}
-.section-title{margin:0 0 6px;font-size:1.55rem;letter-spacing:-.03em}
-.section-kicker{margin:0 0 22px;color:var(--muted);font-size:.93rem}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.field{display:flex;flex-direction:column;gap:7px}
-.field.full{grid-column:1/-1}
-label{font-weight:750;font-size:.9rem}
-.hint{font-size:.78rem;color:var(--muted)}
-input,select{width:100%;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:14px;padding:12px 13px;outline:none;transition:.2s}
-input:focus,select:focus{border-color:var(--a);box-shadow:0 0 0 4px color-mix(in srgb,var(--a) 14%,transparent)}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
-.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:850;cursor:pointer}
-.btn.primary{background:var(--a);color:#fff;box-shadow:0 10px 22px color-mix(in srgb,var(--a) 28%,transparent)}
-.btn.ghost{background:var(--soft);color:var(--ink)}
-.error{margin-top:14px;padding:12px 14px;border-radius:12px;background:#fff1f2;color:#be123c;border:1px solid #fecdd3;font-weight:700}
-.results{display:grid;gap:12px}
-.metric{display:flex;justify-content:space-between;gap:20px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line)}
-.metric:last-child{border-bottom:0}.metric strong{font-size:1.14rem;text-align:right}
-.hero-result{font-size:clamp(2.2rem,5vw,4.1rem);line-height:1;font-weight:950;letter-spacing:-.06em;margin:10px 0 8px;color:var(--a)}
-.small-note{font-size:.82rem;color:var(--muted)}
-.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;margin-top:18px}
-table{border-collapse:collapse;width:100%;min-width:620px}
-th,td{padding:11px 12px;text-align:right;border-bottom:1px solid var(--line);font-size:.86rem}
-th:first-child,td:first-child{text-align:left}th{background:#f8fafc}
-.content{padding:72px 0 44px}
-.prose{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:34px}
-.article{background:#fff;border:1px solid var(--line);border-radius:30px;padding:clamp(24px,4vw,46px);box-shadow:0 18px 50px rgba(15,23,42,.07)}
-.article h2{font-size:clamp(1.55rem,3vw,2.15rem);letter-spacing:-.04em;margin:34px 0 12px}
-.article h2:first-child{margin-top:0}.article h3{margin-top:24px}
-.article p,.article li{color:#334155}
-.article code,.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
-.formula{padding:16px;border-radius:16px;background:var(--soft);overflow:auto}
-.aside{align-self:start;position:sticky;top:88px;background:linear-gradient(145deg,var(--soft),#fff);border:1px solid var(--line);border-radius:26px;padding:24px}
-.aside h3{margin-top:0}
-.faq details{border-top:1px solid var(--line);padding:14px 0}.faq summary{cursor:pointer;font-weight:800}
-.sources a{word-break:break-word;color:var(--a)}
-footer{padding:32px 0 46px;color:#64748b;text-align:center;font-size:.85rem}
-@media(max-width:860px){.grid{grid-template-columns:1fr}.prose{grid-template-columns:1fr}.aside{position:static}.hero h1{font-size:clamp(2.4rem,12vw,4.3rem)}}
-@media(max-width:580px){.sitebar{padding:12px 16px}.navpill{display:none}.wrap{width:min(100% - 22px,1180px)}.form-panel,.result-panel{padding:20px}.panel{border-radius:22px}}
-
-
-/* Ten layout systems are intentionally different: each topic gets a distinct composition. */
-body.debt{--bg:#18212f;--bg2:#111827;--a:#f97316;--b:#38bdf8;--c:#facc15;--soft:#fff7ed}
-.debt .hero{background:radial-gradient(circle at 80% 20%,rgba(56,189,248,.18),transparent 30%),linear-gradient(135deg,#101827,#263649);color:#fff;padding:72px 0 110px}
-.debt .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:38px}
-.debt .hero-badge{background:rgba(255,255,255,.1)}
-.debt .balance-ring{width:220px;height:220px;border-radius:50%;margin:auto;background:conic-gradient(var(--a) 0 36%,#334155 36%);box-shadow:inset 0 0 0 24px #1d2939,0 28px 60px rgba(0,0,0,.3);display:grid;place-items:center;transform:rotate(-8deg)}
-.debt .balance-ring:after{content:"DTI";font-weight:950;font-size:3rem;transform:rotate(8deg);letter-spacing:-.08em}
-.debt .calc-section{margin-top:-62px}.debt .calc-layout{display:grid;grid-template-columns:1.fr;gap:22px}
-.debt .result-panel{background:#18212f;color:#fff;border-color:#334155}.debt .result-panel .metric{border-color:#334155}.debt .result-panel .small-note{color:#cbd5e1}
-
-body.realestate{--a:#0f766e;--b:#d97706;--c:#ef4444;--soft:#ecfdf5}
-.realestate .hero{background:linear-gradient(180deg,#f0fdfa,#fff7ed);padding:64px 0 84px;border-bottom:1px solid #d1fae5}
-.realestate .hero-inner{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px;align-items:center}
-.realestate .house-scene{height:320px;position:relative;perspective:800px}
-.realestate .house{position:absolute;left:16%;top:70px;width:250px;height:160px;background:#fff;border:1px solid #d1d5db;box-shadow:24px 28px 0 #a7f3d0,40px 48px 60px rgba(15,118,110,.16);transform:rotateY(-18deg) rotateX(6deg)}
-.realestate .house:before{content:"";position:absolute;left:-25px;top:-92px;border-left:150px solid transparent;border-right:150px solid transparent;border-bottom:100px solid #f59e0b;filter:drop-shadow(0 15px 10px rgba(0,0,0,.12))}
-.realestate .house:after{content:"";position:absolute;width:58px;height:95px;background:#0f766e;bottom:0;left:96px}
-.realestate .calc-section{padding:42px 0}.realestate .calc-layout{display:grid;grid-template-columns:.72fr 1.28fr;gap:24px;align-items:start}
-.realestate .form-panel{border-radius:46px 18px 46px 18px}.realestate .result-panel{border-radius:18px 46px 18px 46px;background:linear-gradient(145deg,#064e3b,#0f766e);color:#fff}.realestate .result-panel .metric{border-color:rgba(255,255,255,.15)}.realestate .result-panel .small-note{color:#d1fae5}
-
-body.takehome{--a:#7c3aed;--b:#06b6d4;--c:#ec4899;--soft:#f5f3ff}
-.takehome .hero{padding:76px 0 54px;background:linear-gradient(120deg,#faf5ff 0 55%,#ecfeff 55%)}
-.takehome .hero-inner{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:32px}
-.takehome .paycheck{margin:auto;width:min(440px,90%);height:220px;background:#fff;border:2px dashed #c4b5fd;border-radius:22px;box-shadow:20px 22px 0 #cffafe,0 25px 55px rgba(124,58,237,.16);transform:rotate(3deg);padding:30px}
-.takehome .paycheck .line{height:12px;background:#ede9fe;border-radius:99px;margin:13px 0}.takehome .paycheck .line:nth-child(2){width:65%}.takehome .paycheck .line:nth-child(3){width:82%}
-.takehome .calc-section{padding:30px 0 52px}.takehome .calc-layout{display:grid;grid-template-columns:1fr;gap:20px}.takehome .form-panel{max-width:930px;margin:auto}.takehome .result-panel{max-width:930px;margin:auto;background:linear-gradient(135deg,#1e1b4b,#312e81);color:#fff;display:grid;grid-template-columns:.8fr 1.2fr;gap:26px}.takehome .result-panel .metric{border-color:#4338ca}.takehome .result-panel .small-note{color:#c7d2fe}
-
-body.personalloan{--a:#b7791f;--b:#0f172a;--c:#f59e0b;--soft:#fffbeb}
-.personalloan .hero{background:#0b1220;color:#fff;padding:70px 0 90px}
-.personalloan .hero-inner{display:grid;grid-template-columns:1.fr;gap:30px;align-items:center}
-.personalloan .docstack{height:270px;position:relative}.personalloan .sheet{position:absolute;width:230px;height:165px;border-radius:18px;background:#fff;right:18%;top:44px;box-shadow:0 28px 60px rgba(0,0,0,.35);transform:rotate(-8deg)}.personalloan .sheet:before{content:"$";position:absolute;font-size:5rem;color:#b7791f;font-weight:950;left:78px;top:24px}.personalloan .sheet:after{content:"";position:absolute;width:92px;height:18px;border-radius:99px;background:#fde68a;left:69px;bottom:28px}
-.personalloan .calc-section{margin-top:-42px}.personalloan .calc-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;box-shadow:var(--shadow);border-radius:32px;overflow:hidden}.personalloan .form-panel,.personalloan .result-panel{border:0;border-radius:0;box-shadow:none}.personalloan .result-panel{background:#fffbeb}
-
-body.boat{--a:#0284c7;--b:#0f766e;--c:#f8fafc;--soft:#e0f2fe}
-.boat .hero{padding:64px 0 120px;background:linear-gradient(#e0f2fe,#bae6fd 72%,#38bdf8 72%,#0284c7);overflow:hidden}
-.boat .hero-inner{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:28px}
-.boat .boat-art{height:280px;position:relative}.boat .hull{position:absolute;width:330px;height:90px;right:4%;top:130px;background:#0f172a;clip-path:polygon(0 0,100% 0,80% 100%,16% 100%);box-shadow:0 35px 55px rgba(2,132,199,.3)}.boat .hull:before{content:"";position:absolute;width:120px;height:82px;background:#fff;left:130px;top:-76px;clip-path:polygon(10% 100%,22% 0,78% 0,100% 100%)}.boat .hull:after{content:"";position:absolute;width:95px;height:8px;background:#fbbf24;left:115px;top:28px;border-radius:99px}
-.boat .calc-section{margin-top:-66px}.boat .calc-layout{display:grid;grid-template-columns:1.25fr .75fr;gap:22px}.boat .form-panel{background:rgba(255,255,255,.95)}.boat .result-panel{background:linear-gradient(180deg,#082f49,#0c4a6e);color:#fff}.boat .result-panel .metric{border-color:#155e75}.boat .result-panel .small-note{color:#bae6fd}
-
-body.lease{--a:#65a30d;--b:#27272a;--c:#84cc16;--soft:#f7fee7}
-.lease .hero{background:#18181b;color:#fafafa;padding:72px 0 70px}
-.lease .hero-inner{display:grid;grid-template-columns:.8fr 1.2fr;gap:38px;align-items:center}
-.lease .contract{height:300px;position:relative}.lease .contract-card{width:280px;height:220px;background:#fafafa;color:#18181b;border-radius:12px;position:absolute;left:12%;top:25px;padding:28px;box-shadow:24px 28px 0 #65a30d,0 28px 60px rgba(0,0,0,.38);transform:rotate(5deg)}.lease .contract-card:before{content:"LEASE";font-size:2.6rem;font-weight:950;letter-spacing:-.08em}.lease .contract-card:after{content:"✓";position:absolute;right:28px;bottom:28px;width:54px;height:54px;border:4px solid #65a30d;color:#65a30d;border-radius:50%;display:grid;place-items:center;font-size:2rem;font-weight:900}
-.lease .calc-section{padding:42px 0}.lease .calc-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px}.lease .modebar{display:flex;gap:8px;margin-bottom:18px}.lease .modebar button{flex:1}.lease .result-panel{border:2px solid #bef264;box-shadow:12px 12px 0 #d9f99d}
-
-body.refinance{--a:#4f46e5;--b:#db2777;--c:#22d3ee;--soft:#eef2ff}
-.refinance .hero{padding:72px 0 88px;background:radial-gradient(circle at 85% 20%,#fce7f3,transparent 25%),linear-gradient(120deg,#eef2ff,#fff)}
-.refinance .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
-.refinance .swap{display:flex;gap:12px;align-items:center;justify-content:center;perspective:900px}.refinance .loan-card{width:180px;height:220px;border-radius:22px;background:#fff;border:1px solid #c7d2fe;box-shadow:0 25px 45px rgba(79,70,229,.16);padding:18px;transform:rotateY(15deg)}.refinance .loan-card.new{transform:rotateY(-15deg);background:#312e81;color:#fff}.refinance .arrow{font-size:2.5rem;color:#db2777;font-weight:950}
-.refinance .calc-section{padding:0 0 50px}.refinance .calc-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px}.refinance .form-panel{margin-top:-28px}.refinance .result-panel{margin-top:28px;background:linear-gradient(145deg,#312e81,#4f46e5);color:#fff}.refinance .result-panel .metric{border-color:#6366f1}.refinance .result-panel .small-note{color:#c7d2fe}
-
-body.budget{--a:#ea580c;--b:#16a34a;--c:#eab308;--soft:#fff7ed}
-.budget .hero{background:#fffaf0;padding:58px 0 34px}
-.budget .hero-inner{display:grid;grid-template-columns:1fr;align-items:center;gap:28px}
-.budget .jars{height:270px;display:flex;align-items:end;justify-content:center;gap:18px}.budget .jar{width:105px;border:7px solid #fdba74;border-top:18px solid #fb923c;border-radius:12px 12px 28px 28px;background:linear-gradient(to top,#fed7aa 0 55%,transparent 55%);height:190px;box-shadow:0 18px 30px rgba(234,88,12,.15)}.budget .jar:nth-child(2){height:230px;border-color:#86efac;border-top-color:#22c55e;background:linear-gradient(to top,#bbf7d0 0 72%,transparent 72%)}.budget .jar:nth-child(3){height:160px;border-color:#fde047;border-top-color:#eab308;background:linear-gradient(to top,#fef08a 0 40%,transparent 40%)}
-.budget .calc-section{padding:24px 0 54px}.budget .calc-layout{display:grid;grid-template-columns:1.3fr .7fr;gap:24px}.budget .form-panel{box-shadow:none;border:2px solid #fed7aa}.budget .result-panel{box-shadow:none;border:2px solid #bbf7d0;background:#f0fdf4}.budget .donut{width:180px;height:180px;border-radius:50%;background:conic-gradient(#ea580c 0 50%,#16a34a 50% 75%,#eab308 75%);margin:18px auto;position:relative}.budget .donut:after{content:"";position:absolute;inset:32px;background:#f0fdf4;border-radius:50%}
-
-body.rental{--a:#166534;--b:#d97706;--c:#22c55e;--soft:#f0fdf4}
-.rental .hero{background:linear-gradient(135deg,#052e16,#14532d);color:#fff;padding:72px 0 98px}
-.rental .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
-.rental .building{width:260px;height:270px;background:#fef3c7;margin:auto;position:relative;box-shadow:28px 24px 0 #d97706,0 35px 60px rgba(0,0,0,.28);transform:skewY(-2deg)}.rental .building:before{content:"";position:absolute;inset:28px;background:repeating-linear-gradient(90deg,#166534 0 32px,transparent 32px 54px),repeating-linear-gradient(0deg,transparent 0 38px,#fff 38px 48px)}.rental .building:after{content:"$";position:absolute;right:-58px;top:-34px;width:92px;height:92px;border-radius:50%;background:#22c55e;display:grid;place-items:center;font-size:3rem;font-weight:950;box-shadow:0 18px 30px rgba(34,197,94,.26)}
-.rental .calc-section{margin-top:-48px}.rental .calc-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px}.rental .form-panel{max-height:860px;overflow:auto}.rental .result-panel{background:#fffdf5;border:2px solid #fde68a}
-
-body.irr{--a:#a3e635;--b:#a855f7;--c:#22d3ee;--soft:#f7fee7;--ink:#f8fafc;--muted:#a1a1aa;--line:#3f3f46;--panel:#18181b}
-.irr{background:#09090b;color:#f8fafc}.irr .sitebar{background:rgba(9,9,11,.82);border-color:#27272a}.irr .brand,.irr .sitebar a{color:#fff}.irr .navpill{background:#27272a}
-.irr .hero{padding:72px 0 70px;background:radial-gradient(circle at 72% 22%,rgba(168,85,247,.22),transparent 28%),#09090b}
-.irr .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
-.irr .graph3d{height:300px;position:relative;perspective:700px}.irr .gridplane{position:absolute;inset:50px 10% 0;background:repeating-linear-gradient(0deg,rgba(163,230,53,.18) 0 1px,transparent 1px 30px),repeating-linear-gradient(90deg,rgba(34,211,238,.18) 0 1px,transparent 1px 40px);transform:rotateX(62deg) rotateZ(-8deg);box-shadow:0 0 50px rgba(163,230,53,.08)}.irr .curve{position:absolute;width:250px;height:130px;border-top:8px solid #a3e635;border-radius:50%;left:25%;top:75px;transform:rotate(-18deg);filter:drop-shadow(0 0 12px rgba(163,230,53,.5))}
-.irr .calc-section{padding:24px 0 56px}.irr .calc-layout{display:grid;grid-template-columns:1.fr;gap:24px}.irr .panel{border-color:#3f3f46}.irr input,.irr select{background:#09090b;color:#f8fafc;border-color:#3f3f46}.irr .result-panel{background:linear-gradient(145deg,#18181b,#27272a);box-shadow:0 25px 60px rgba(0,0,0,.45)}.irr .hero-result{color:#a3e635}.irr .content{background:#111113}.irr .article{background:#18181b;border-color:#3f3f46}.irr .article p,.irr .article li{color:#d4d4d8}.irr .aside{background:#18181b;border-color:#3f3f46}.irr .formula{background:#27272a}.irr th{background:#27272a}.irr footer{background:#09090b}
-@media(max-width:900px){
-.debt .hero-inner,.realestate .hero-inner,.takehome .hero-inner,.personalloan .hero-inner,.boat .hero-inner,.lease .hero-inner,.refinance .hero-inner,.budget .hero-inner,.rental .hero-inner,.irr .hero-inner{grid-template-columns:1fr}
-.debt .calc-layout,.realestate .calc-layout,.personalloan .calc-layout,.boat .calc-layout,.lease .calc-layout,.refinance .calc-layout,.budget .calc-layout,.rental .calc-layout,.irr .calc-layout{grid-template-columns:1fr}
-.takehome .result-panel{grid-template-columns:1fr}
-.visual{min-height:200px}
-}
-
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://yourdomain.com/rental-property-calculator/#app", "name": "Rental Property Calculator", "url": "https://yourdomain.com/rental-property-calculator/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "description": "Analyze a rental property with mortgage financing, rent, vacancy, operating expenses, growth, appreciation, selling costs, cash flow, cap rate, cash-on-cash return, and IRR.", "browserRequirements": "Requires JavaScript for interactive calculations."}, {"@type": "BreadcrumbList", "@id": "https://yourdomain.com/rental-property-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Mortgages & Real Estate", "item": "/finance/mortgages-real-estate/"}, {"@type": "ListItem", "position": 4, "name": "Rental Property Calculator", "item": "/rental-property-calculator/"}]}, {"@type": "FAQPage", "@id": "https://yourdomain.com/rental-property-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "What is NOI in rental property analysis?", "acceptedAnswer": {"@type": "Answer", "text": "Net operating income is property income after vacancy and operating expenses, but before mortgage payments and income taxes. This calculator also subtracts the entered management fee from collected income."}}, {"@type": "Question", "name": "What is cap rate?", "acceptedAnswer": {"@type": "Answer", "text": "Cap rate is first-year net operating income divided by purchase price in this calculator. It is a property-level measure and does not include the effect of mortgage financing."}}, {"@type": "Question", "name": "Why can rental property IRR change a lot?", "acceptedAnswer": {"@type": "Answer", "text": "IRR depends on every projected cash flow, including rent growth, operating expenses, financing, holding period, appreciation, selling costs, and remaining loan balance. Small assumption changes can compound over many years."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body class="rental" data-cp-category="finance" data-cp-page-type="Calculator">
-<header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../finance/index.html">Finance</a></li><li><a aria-current="page" href="index.html">Rental Property Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main"><h1 class="page-title">Rental Property Calculator</h1>
-
-<section class="calc-section" id="calculator">
-<div class="wrap calc-layout">
-<section aria-labelledby="calc-title" class="panel form-panel">
-<h2 class="section-title" id="calc-title">Rental Investment Model</h2>
-<p class="section-kicker">Enter purchase, financing, operating, income growth, and exit assumptions. The model builds annual cash flows through the sale year.</p>
-<form id="form">
-<div class="grid">
-<div class="field"><label for="price">Purchase price</label><input id="price" min="0" step="1000" type="number" value="300000"/></div>
-<div class="field"><label for="down">Down payment (%)</label><input id="down" max="100" min="0" step="0.1" type="number" value="25"/></div>
-<div class="field"><label for="rate">Mortgage rate (%)</label><input id="rate" min="0" step="0.01" type="number" value="6.5"/></div>
-<div class="field"><label for="term">Loan term (years)</label><input id="term" max="40" min="1" step="1" type="number" value="30"/></div>
-<div class="field"><label for="closing">Closing + repair cash</label><input id="closing" min="0" step="100" type="number" value="12000"/></div>
-<div class="field"><label for="rent">Monthly rent</label><input id="rent" min="0" step="10" type="number" value="2600"/></div>
-<div class="field"><label for="otherIncome">Other monthly income</label><input id="otherIncome" min="0" step="10" type="number" value="0"/></div>
-<div class="field"><label for="vacancy">Vacancy rate (%)</label><input id="vacancy" max="100" min="0" step="0.1" type="number" value="5"/></div>
-<div class="field"><label for="management">Management fee (% of collected income)</label><input id="management" max="100" min="0" step="0.1" type="number" value="8"/></div>
-<div class="field"><label for="tax">Property tax / year</label><input id="tax" min="0" step="100" type="number" value="4200"/></div>
-<div class="field"><label for="insurance">Insurance / year</label><input id="insurance" min="0" step="100" type="number" value="1800"/></div>
-<div class="field"><label for="hoa">HOA / year</label><input id="hoa" min="0" step="100" type="number" value="0"/></div>
-<div class="field"><label for="maintenance">Maintenance / year</label><input id="maintenance" min="0" step="100" type="number" value="3000"/></div>
-<div class="field"><label for="otherExp">Other operating expenses / year</label><input id="otherExp" min="0" step="100" type="number" value="1200"/></div>
-<div class="field"><label for="rentGrowth">Rent growth (%/year)</label><input id="rentGrowth" max="30" min="-20" step="0.1" type="number" value="3"/></div>
-<div class="field"><label for="expGrowth">Expense growth (%/year)</label><input id="expGrowth" max="30" min="-20" step="0.1" type="number" value="3"/></div>
-<div class="field"><label for="appreciation">Property appreciation (%/year)</label><input id="appreciation" max="30" min="-20" step="0.1" type="number" value="3"/></div>
-<div class="field"><label for="hold">Holding period (years)</label><input id="hold" max="40" min="1" step="1" type="number" value="10"/></div>
-<div class="field full"><label for="sellCost">Selling cost (% of sale price)</label><input id="sellCost" max="30" min="0" step="0.1" type="number" value="7"/></div>
-</div>
-<div class="actions"><button class="btn primary" type="submit">Analyze Rental</button><button class="btn ghost" type="reset">Reset</button></div>
-</form>
-<div class="error" hidden="" id="error" role="alert"></div>
-</section>
-<aside aria-live="polite" class="panel result-panel">
-<div class="small-note">Estimated investment IRR</div><div class="hero-result" id="irrOut">—</div>
-<div class="results">
-<div class="metric"><span>First-year NOI</span><strong id="noi">—</strong></div>
-<div class="metric"><span>First-year cash flow</span><strong id="cashflow">—</strong></div>
-<div class="metric"><span>Cap rate</span><strong id="cap">—</strong></div>
-<div class="metric"><span>Cash-on-cash return</span><strong id="coc">—</strong></div>
-<div class="metric"><span>Initial cash invested</span><strong id="initial">—</strong></div>
-<div class="metric"><span>Projected sale price</span><strong id="sale">—</strong></div>
-</div>
-<div class="table-wrap"><table><thead><tr><th>Year</th><th>Collected income</th><th>NOI</th><th>Debt service</th><th>Cash flow</th><th>Loan balance</th></tr></thead><tbody id="schedule"></tbody></table></div>
-</aside>
-</div>
-</section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<section class="content">
-<div class="wrap prose">
-<article class="article">
-<h2>What Is a Rental Property Calculator?</h2>
-<p>A rental property calculator estimates operating income, mortgage cash flow, cap rate, cash-on-cash return, and an investment IRR from a buy-hold-sell scenario. It separates property operations from financing so you can see what the asset earns before and after debt service.</p>
-<h2>Net Operating Income and Cap Rate</h2>
-<div class="formula">NOI = Collected rental income − Management − Operating expenses</div>
-<div class="formula">Cap rate = First-year NOI ÷ Purchase price × 100</div>
-<p>Mortgage principal and interest are not included in NOI. They are deducted afterward to estimate cash flow to the investor.</p>
-<h2>Cash-on-Cash Return</h2>
-<div class="formula">Cash-on-cash return = First-year cash flow ÷ Initial cash invested × 100</div>
-<p>Initial cash invested is modeled as down payment plus entered closing and repair cash.</p>
-<h2>Rental Property IRR</h2>
-<p>The calculator creates one annual cash flow for each holding year. The final year adds estimated net sale proceeds after selling costs and remaining mortgage payoff. IRR is the discount rate that makes the net present value of those annual cash flows equal zero.</p>
-<h2>Limitations</h2>
-<p>Long-range real estate returns are highly sensitive to rent, vacancy, repairs, taxes, insurance, financing, appreciation, and sale assumptions. The model does not include income taxes, depreciation, capital gains tax, depreciation recapture, major capital expenditures, refinancing, or irregular cash-flow timing.</p>
-<section class="faq" id="faq"><h2>Frequently Asked Questions</h2><details><summary>What is NOI in rental property analysis?</summary><p>Net operating income is property income after vacancy and operating expenses, but before mortgage payments and income taxes. This calculator also subtracts the entered management fee from collected income.</p></details>
-<details><summary>What is cap rate?</summary><p>Cap rate is first-year net operating income divided by purchase price in this calculator. It is a property-level measure and does not include the effect of mortgage financing.</p></details>
-<details><summary>Why can rental property IRR change a lot?</summary><p>IRR depends on every projected cash flow, including rent growth, operating expenses, financing, holding period, appreciation, selling costs, and remaining loan balance. Small assumption changes can compound over many years.</p></details></section>
-<section class="sources"><h2>Sources and Methodology</h2><p>The calculator methodology was cross-checked against the following sources. Results are estimates based on the assumptions entered and do not replace lender, tax, legal, or investment advice.</p><ul><li><a href="https://www.calculator.net/rental-property-calculator.html" rel="noopener noreferrer">Calculator.net — Rental Property Calculator</a></li>
-<li><a href="https://support.microsoft.com/en-us/excel/functions/irr-function" rel="noopener noreferrer">Microsoft Support — IRR and NPV relationship</a></li>
-<li><a href="https://www.consumerfinance.gov/owning-a-home/loan-estimate/" rel="noopener noreferrer">Consumer Financial Protection Bureau — Mortgage payment and closing-cost components</a></li></ul></section>
-</article>
-<aside class="aside">
-<h3>CalcPro Method</h3>
-<p>Annual operating cash flows are projected from user-entered growth rates; the final cash flow includes net sale proceeds and mortgage payoff, then IRR is solved numerically.</p>
-<p class="small-note">Cap rate excludes debt service; cash-on-cash and IRR incorporate financing, so each metric answers a different question.</p>
-</aside>
-</div>
-</section>
-
-<script class="cp-calculator-data" type="application/json">{"index":"98","Batch":"10","Calculator / Page":"Rental Property Calculator","Slug":"rental-property-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Analyze a rental property with mortgage financing, rent, vacancy, operating expenses, growth, appreciation, selling costs, cash flow, cap rate, cash-on-cash return, and IRR.","Formula / Algorithm Used in Tool":"CalcPro Method: Annual operating cash flows are projected from user-entered growth rates; the final cash flow includes net sale proceeds and mortgage payoff, then IRR is solved numerically. Cap rate excludes debt service; cash-on-cash and IRR incorporate financing, so each metric answers a different question.","Required User Inputs":"Purchase price; Down payment (%); Mortgage rate (%); Loan term (years); Closing + repair cash; Monthly rent; Other monthly income; Vacancy rate (%); Management fee (% of collected income); Property tax / year; Insurance / year; HOA / year; Maintenance / year; Other operating expenses / year; Rent growth (%/year); Expense growth (%/year); Property appreciation (%/year); Holding period (years); Selling cost (% of sale price)","Primary Outputs":"First-year NOI; First-year cash flow; Cap rate; Cash-on-cash return; Initial cash invested; Projected sale price","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Purchase price, Down payment (%), Mortgage rate (%), Loan term (years), Closing + repair cash, Monthly rent, Other monthly income, Vacancy rate (%), Management fee (% of collected income), Property tax / year, Insurance / year, HOA / year. Explain outputs: First-year NOI, First-year cash flow, Cap rate, Cash-on-cash return, Initial cash invested, Projected sale price. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"Long-range real estate returns are highly sensitive to rent, vacancy, repairs, taxes, insurance, financing, appreciation, and sale assumptions. The model does not include income taxes, depreciation, capital gains tax, depreciation recapture, major capital expenditures, refinancing, or irregular cash-flow timing. Frequently Asked Questions What is NOI in rental property analysis? Net operating income is property income after vacancy and operating expenses, but before mortgage payments and income taxes. This calculator also subtracts the entered management fee from collected income. What is cap rate? Cap rate is first-year net operating income divided by purchase price in this calculator. It is a property-level measure and does not include the effect of mortgage financing. Why can rental property IRR change a lot? IRR depends on every projected cash flow, including rent growth, operating expenses, financing, holding period, appreciation, selling costs, and remaining loan balance. Small assumption changes can compound over many years. Sources and Methodology The calculator methodology was cross-checked against the following sources. Results are estimates based on the assumptions entered and do not replace lender, tax, legal, or investment advice. Calculator.net — Rental Property Cal","Current Source URLs in Page":"https://www.calculator.net/rental-property-calculator.html | https://support.microsoft.com/en-us/excel/functions/irr-function | https://www.consumerfinance.gov/owning-a-home/loan-estimate/","Implementation Path":"/rental-property-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Finance</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../rent-vs-buy-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Rent vs Buy Calculator</strong><small>Compare renting versus buying using mortgage amortization, home appreciation, rent…</small></span></a><a class="cp-related-link" href="../irr-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>IRR Calculator</strong><small>Calculate internal rate of return for periodic cash flows, view NPV at the solved r…</small></span></a><a class="cp-related-link" href="../real-estate-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Real Estate Calculator</strong><small>Estimate a property's mortgage payment, monthly ownership cost, cash to close, tota…</small></span></a><a class="cp-related-link" href="../refinance-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Refinance Calculator</strong><small>Compare an existing fixed-rate loan with a proposed refinance, including payment ch…</small></span></a><a class="cp-related-link" href="../apr-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>APR Calculator</strong><small>Estimate loan APR from the note rate, term, and upfront finance charges using a mon…</small></span></a><a class="cp-related-link" href="../401k-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>401(k) Calculator</strong><small>Project a 401(k) balance using salary, contribution percentage, employer match, sal…</small></span></a><a class="cp-related-link" href="../annuity-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Annuity Calculator</strong><small>Estimate the accumulation value of an annuity-style investment using starting princ…</small></span></a><a class="cp-related-link" href="../pension-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Pension Calculator</strong><small>Compare pension lump sums, monthly pension income, joint-survivor options, and dela…</small></span></a></div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-const $ = (id) => document.getElementById(id);
-const n = (id) => {
-  const el = $(id);
-  const v = el ? parseFloat(el.value) : NaN;
-  return Number.isFinite(v) ? v : 0;
-};
-const money = (v) => Number.isFinite(v) ? new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(v) : '—';
-const pct = (v,d=2) => Number.isFinite(v) ? v.toFixed(d)+'%' : '—';
-const pmt = (principal, annualRate, months) => {
-  if (principal < 0 || months <= 0) return NaN;
-  const r = annualRate/100/12;
-  if (Math.abs(r) < 1e-12) return principal/months;
-  return principal * r / (1 - Math.pow(1+r,-months));
-};
-const balanceAfter = (principal, annualRate, months, paidMonths) => {
-  if (paidMonths <= 0) return principal;
-  if (paidMonths >= months) return 0;
-  const r = annualRate/100/12;
-  const pay = pmt(principal,annualRate,months);
-  if (Math.abs(r) < 1e-12) return Math.max(0, principal-pay*paidMonths);
-  return Math.max(0, principal*Math.pow(1+r,paidMonths)-pay*((Math.pow(1+r,paidMonths)-1)/r));
-};
-const setText = (id, value) => { const el=$(id); if(el) el.textContent=value; };
-const setHTML = (id, value) => { const el=$(id); if(el) el.innerHTML=value; };
-const showError = (msg) => { const e=$('error'); if(e){e.textContent=msg;e.hidden=!msg;} };
-
-
-function irrSolve(cfs){
- const npv=(r)=>cfs.reduce((s,cf,i)=>s+cf/Math.pow(1+r,i),0);
- let prevR=-.999, prev=npv(prevR), roots=[];
- const maxR=10, steps=2500;
- for(let k=1;k<=steps;k++){
-   const r=-.999+(maxR+.999)*k/steps, v=npv(r);
-   if(Number.isFinite(v)&&Number.isFinite(prev)&&v*prev<0){
-     let lo=prevR,hi=r,flo=prev;
-     for(let j=0;j<100;j++){const mid=(lo+hi)/2,f=npv(mid);if(flo*f<=0){hi=mid}else{lo=mid;flo=f}}
-     roots.push((lo+hi)/2);
-   }
-   prevR=r;prev=v;
- }
- return roots.length?roots[0]:NaN;
-}
-function calculate(){
- showError('');
- const price=n('price'), down=n('down'), rate=n('rate'), term=n('term'), hold=Math.round(n('hold'));
- if(price<=0||down<0||down>=100||term<=0||hold<=0){showError('Enter a valid purchase price, down payment below 100%, loan term, and holding period.');return;}
- const downAmt=price*down/100, loan=price-downAmt, initial=downAmt+n('closing'), months=Math.round(term*12), pay=pmt(loan,rate,months), annualDebt=pay*12;
- const baseGross=(n('rent')+n('otherIncome'))*12, vacancy=n('vacancy')/100, mgmt=n('management')/100;
- const baseFixed=n('tax')+n('insurance')+n('hoa')+n('maintenance')+n('otherExp');
- let cfs=[-initial], rows='', firstNOI=0, firstCF=0;
- for(let y=1;y<=hold;y++){
-   const gross=baseGross*Math.pow(1+n('rentGrowth')/100,y-1);
-   const collected=gross*(1-vacancy), management=collected*mgmt, fixed=baseFixed*Math.pow(1+n('expGrowth')/100,y-1);
-   const noi=collected-management-fixed;
-   const debt=(y*12<=months)?annualDebt:Math.max(0, pmt(loan,rate,months)*(months-(y-1)*12));
-   let cf=noi-debt;
-   const bal=balanceAfter(loan,rate,months,Math.min(months,y*12));
-   if(y===1){firstNOI=noi;firstCF=cf;}
-   if(y===hold){
-     const sale=price*Math.pow(1+n('appreciation')/100,hold);
-     const netSale=sale*(1-n('sellCost')/100)-bal;
-     cf+=netSale;
-     setText('sale',money(sale));
-   }
-   cfs.push(cf);
-   rows+=`<tr><td>${y}</td><td>${money(collected)}</td><td>${money(noi)}</td><td>${money(debt)}</td><td>${money(cf)}</td><td>${money(bal)}</td></tr>`;
- }
- const irr=irrSolve(cfs), cap=firstNOI/price*100, coc=firstCF/initial*100;
- setText('irrOut',Number.isFinite(irr)?pct(irr*100,2):'N/A');setText('noi',money(firstNOI));setText('cashflow',money(firstCF));setText('cap',pct(cap,2));setText('coc',pct(coc,2));setText('initial',money(initial));setHTML('schedule',rows);
-}
-$('form').addEventListener('submit',e=>{e.preventDefault();calculate()});$('form').addEventListener('reset',()=>setTimeout(calculate,0));calculate();
 </script>
-<script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body>
+
+
+  <link href="../assets/css/global.css" rel="stylesheet" />
+  <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+  <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body class="rental" data-cp-category="finance" data-cp-page-type="Calculator">
+  <header class="cp-site-header" data-cp-header="">
+    <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+          class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+      <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+          href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+          href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+          href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+          href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+          href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+          data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+          class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+      <div class="cp-header-actions">
+        <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search">
+          <input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+            placeholder="Search calculators…" type="search" />
+          <div class="cp-search-results" hidden="" role="listbox"></div>
+        </form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a>
+      </div>
+    </div>
+  </header>
+  <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+    <ol>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../finance/index.html">Finance</a></li>
+      <li><a aria-current="page" href="index.html">Rental Property Calculator</a></li>
+    </ol>
+  </nav>
+  <div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a
+      href="../calculators/index.html">All calculators</a></div>
+  <div class="cp-page-layout">
+    <main id="main">
+      <h1 class="page-title">Rental Property Calculator</h1>
+<div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><br><br>
+      <section class="calc-section" id="calculator">
+        <div class="wrap calc-layout">
+          <section aria-labelledby="calc-title" class="panel form-panel">
+            <h2 class="section-title" id="calc-title">Rental Investment Model</h2>
+            <p class="section-kicker">Enter purchase, financing, operating, income growth, and exit assumptions. The
+              model builds annual cash flows through the sale year.</p>
+            <form id="form">
+              <div class="grid">
+                <div class="field"><label for="price">Purchase price</label><input id="price" min="0" step="1000"
+                    type="number" value="300000" /></div>
+                <div class="field"><label for="down">Down payment (%)</label><input id="down" max="100" min="0"
+                    step="0.1" type="number" value="25" /></div>
+                <div class="field"><label for="rate">Mortgage rate (%)</label><input id="rate" min="0" step="0.01"
+                    type="number" value="6.5" /></div>
+                <div class="field"><label for="term">Loan term (years)</label><input id="term" max="40" min="1" step="1"
+                    type="number" value="30" /></div>
+                <div class="field"><label for="closing">Closing + repair cash</label><input id="closing" min="0"
+                    step="100" type="number" value="12000" /></div>
+                <div class="field"><label for="rent">Monthly rent</label><input id="rent" min="0" step="10"
+                    type="number" value="2600" /></div>
+                <div class="field"><label for="otherIncome">Other monthly income</label><input id="otherIncome" min="0"
+                    step="10" type="number" value="0" /></div>
+                <div class="field"><label for="vacancy">Vacancy rate (%)</label><input id="vacancy" max="100" min="0"
+                    step="0.1" type="number" value="5" /></div>
+                <div class="field"><label for="management">Management fee (% of collected income)</label><input
+                    id="management" max="100" min="0" step="0.1" type="number" value="8" /></div>
+                <div class="field"><label for="tax">Property tax / year</label><input id="tax" min="0" step="100"
+                    type="number" value="4200" /></div>
+                <div class="field"><label for="insurance">Insurance / year</label><input id="insurance" min="0"
+                    step="100" type="number" value="1800" /></div>
+                <div class="field"><label for="hoa">HOA / year</label><input id="hoa" min="0" step="100" type="number"
+                    value="0" /></div>
+                <div class="field"><label for="maintenance">Maintenance / year</label><input id="maintenance" min="0"
+                    step="100" type="number" value="3000" /></div>
+                <div class="field"><label for="otherExp">Other operating expenses / year</label><input id="otherExp"
+                    min="0" step="100" type="number" value="1200" /></div>
+                <div class="field"><label for="rentGrowth">Rent growth (%/year)</label><input id="rentGrowth" max="30"
+                    min="-20" step="0.1" type="number" value="3" /></div>
+                <div class="field"><label for="expGrowth">Expense growth (%/year)</label><input id="expGrowth" max="30"
+                    min="-20" step="0.1" type="number" value="3" /></div>
+                <div class="field"><label for="appreciation">Property appreciation (%/year)</label><input
+                    id="appreciation" max="30" min="-20" step="0.1" type="number" value="3" /></div>
+                <div class="field"><label for="hold">Holding period (years)</label><input id="hold" max="40" min="1"
+                    step="1" type="number" value="10" /></div>
+                <div class="field full"><label for="sellCost">Selling cost (% of sale price)</label><input id="sellCost"
+                    max="30" min="0" step="0.1" type="number" value="7" /></div>
+              </div>
+              <div class="actions"><button class="btn primary" type="submit">Analyze Rental</button><button
+                  class="btn ghost" type="reset">Reset</button></div>
+            </form>
+            <div class="error" hidden="" id="error" role="alert"></div>
+          </section>
+          <aside aria-live="polite" class="panel result-panel">
+            <div class="small-note">Estimated investment IRR</div>
+            <div class="hero-result" id="irrOut">—</div>
+            <div class="results">
+              <div class="metric"><span>First-year NOI</span><strong id="noi">—</strong></div>
+              <div class="metric"><span>First-year cash flow</span><strong id="cashflow">—</strong></div>
+              <div class="metric"><span>Cap rate</span><strong id="cap">—</strong></div>
+              <div class="metric"><span>Cash-on-cash return</span><strong id="coc">—</strong></div>
+              <div class="metric"><span>Initial cash invested</span><strong id="initial">—</strong></div>
+              <div class="metric"><span>Projected sale price</span><strong id="sale">—</strong></div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Year</th>
+                    <th>Collected income</th>
+                    <th>NOI</th>
+                    <th>Debt service</th>
+                    <th>Cash flow</th>
+                    <th>Loan balance</th>
+                  </tr>
+                </thead>
+                <tbody id="schedule"></tbody>
+              </table>
+            </div>
+          </aside>
+        </div>
+      </section>
+      <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+        <div class="cp-visual-top">
+          <div><span class="cp-visual-kicker">Visual breakdown</span>
+            <h2 id="cp-visual-title">Calculation Graph</h2>
+            <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+          </div><span class="cp-chart-badge">Live view</span>
+        </div>
+        <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+        <div aria-label="Calculation method flow" class="cp-flow">
+          <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+            class="cp-flow-arrow">→</span>
+          <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+            class="cp-flow-arrow">→</span>
+          <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+        </div>
+      </section>
+      <div class="cp-ad-slot cp-ad-wide">
+        <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+      </div>
+      <section class="content">
+        <div class="wrap">
+          
+
+
+<article class="article">
+<p>Use the Rental Property Calculator to analyze a financed rental property using the purchase price, mortgage terms, rental income, vacancy, operating expenses, growth assumptions, and expected sale costs. It estimates first-year net operating income (NOI), cash flow, cap rate, cash-on-cash return, initial cash invested, projected sale price, and long-term investment performance.</p>
+
+  <section id="what">
+    <h2>What Is the Rental Property Calculator?</h2>
+
+    <p class="direct">The Rental Property Calculator estimates the financial performance of a rental property from purchase through a future sale. It combines property income and operating expenses with mortgage financing so you can compare property-level performance, such as NOI and cap rate, with financing-dependent measures such as cash flow and cash-on-cash return.</p>
+
+    <p>The calculator is useful for analyzing a potential rental purchase, testing different rent or expense assumptions, and seeing how financing, vacancy, appreciation, and selling costs may affect projected results.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Rental Property Calculator</h2>
+
+    <p>Enter the following values in the calculator:</p>
+
+    <ul>
+      <li><strong>Purchase Price:</strong> The price paid for the rental property.</li>
+      <li><strong>Down Payment (%):</strong> The percentage of the purchase price paid upfront rather than financed.</li>
+      <li><strong>Mortgage Rate (%):</strong> The annual interest rate on the mortgage.</li>
+      <li><strong>Loan Term (years):</strong> The number of years used to repay the mortgage.</li>
+      <li><strong>Closing + Repair Cash:</strong> Additional upfront cash for closing costs and repairs.</li>
+      <li><strong>Monthly Rent:</strong> Expected monthly rental income.</li>
+      <li><strong>Other Monthly Income:</strong> Additional recurring property income.</li>
+      <li><strong>Vacancy Rate (%):</strong> The percentage of potential rental income expected to be lost because of vacancy.</li>
+      <li><strong>Management Fee (%):</strong> The management percentage charged on collected income after vacancy.</li>
+      <li><strong>Property Tax / year:</strong> Estimated annual property tax.</li>
+      <li><strong>Insurance / year:</strong> Annual property insurance expense.</li>
+      <li><strong>HOA / year:</strong> Annual homeowners association fees.</li>
+      <li><strong>Maintenance / year:</strong> Expected annual maintenance expense.</li>
+      <li><strong>Other Operating Expenses / year:</strong> Other recurring operating expenses included in the analysis.</li>
+      <li><strong>Rent Growth (%/year):</strong> Expected annual growth in property income.</li>
+      <li><strong>Expense Growth (%/year):</strong> Expected annual growth in operating expenses.</li>
+      <li><strong>Property Appreciation (%/year):</strong> Expected annual change in property value.</li>
+      <li><strong>Holding Period (years):</strong> How long the property is expected to be held before sale.</li>
+      <li><strong>Selling Cost (%):</strong> Selling costs expressed as a percentage of the projected sale price.</li>
+    </ul>
+
+    <p>The calculator uses these inputs only; it does not automatically add tax, depreciation, refinancing, or other assumptions that are not entered.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <p>The calculator projects annual rental-property cash flows, calculates mortgage financing, estimates a future sale, and uses the resulting cash-flow series to evaluate the investment.</p>
+
+    <h3>Main Variables</h3>
+
+    <p>Let:</p>
+
+    <ul>
+      <li><strong>P</strong> = purchase price</li>
+      <li><strong>d</strong> = down payment percentage as a decimal</li>
+      <li><strong>L</strong> = mortgage loan amount</li>
+      <li><strong>r</strong> = annual mortgage interest rate</li>
+      <li><strong>i</strong> = monthly mortgage rate</li>
+      <li><strong>n</strong> = total number of monthly mortgage payments</li>
+      <li><strong>M</strong> = monthly principal-and-interest payment</li>
+      <li><strong>R</strong> = monthly rent</li>
+      <li><strong>O</strong> = other monthly income</li>
+      <li><strong>v</strong> = vacancy rate</li>
+      <li><strong>m</strong> = management fee rate</li>
+      <li><strong>E₁</strong> = first-year operating expenses</li>
+      <li><strong>gᵣ</strong> = annual income growth rate</li>
+      <li><strong>gₑ</strong> = annual expense growth rate</li>
+      <li><strong>a</strong> = annual property appreciation rate</li>
+      <li><strong>H</strong> = holding period in years</li>
+      <li><strong>s</strong> = selling cost rate</li>
+      <li><strong>C₀</strong> = initial cash invested</li>
+    </ul>
+
+    <p>Percentages are converted to decimal form before calculations are performed.</p>
+
+    <h3>1. Mortgage Amount</h3>
+
+    <p>The financed amount is:</p>
+
+    <div class="formula"><strong>L = P × (1 − d)</strong></div>
+
+    <p>The down payment amount is:</p>
+
+    <div class="formula"><strong>Down Payment = P × d</strong></div>
+
+    <h3>2. Monthly Mortgage Payment</h3>
+
+    <p>For a fixed-rate mortgage with a positive interest rate:</p>
+
+    <div class="formula"><strong>M = L × [i(1 + i)ⁿ] ÷ [(1 + i)ⁿ − 1]</strong></div>
+
+    <p>where:</p>
+
+    <div class="formula"><strong>i = r ÷ 12</strong></div>
+
+    <p>and:</p>
+
+    <div class="formula"><strong>n = Loan Term × 12</strong></div>
+
+    <p>If the entered mortgage rate is zero, the payment can be calculated as the loan amount divided by the number of monthly payments.</p>
+
+    <p>The Consumer Financial Protection Bureau explains that fixed-rate principal-and-interest payments depend on the loan amount, loan term, and interest rate.</p>
+
+    <h3>3. Initial Cash Invested</h3>
+
+    <p>Initial cash invested includes the down payment plus the entered closing and repair cash:</p>
+
+    <div class="formula"><strong>C₀ = Down Payment + Closing and Repair Cash</strong></div>
+
+    <p>This amount is separate from the financed mortgage balance.</p>
+
+    <h3>4. Annual Rental Income</h3>
+
+    <p>For year <strong>y</strong>, projected gross property income is based on monthly rent, other monthly income, and the entered annual income-growth assumption:</p>
+
+    <div class="formula"><strong>Gross Incomeᵧ = 12 × (R + O) × (1 + gᵣ)ʸ⁻¹</strong></div>
+
+    <h3>5. Vacancy Adjustment</h3>
+
+    <p>Income after vacancy is:</p>
+
+    <div class="formula"><strong>Collected Incomeᵧ = Gross Incomeᵧ × (1 − v)</strong></div>
+
+    <h3>6. Management Fee</h3>
+
+    <p>The calculator applies the management fee to collected income:</p>
+
+    <div class="formula"><strong>Management Feeᵧ = Collected Incomeᵧ × m</strong></div>
+
+    <p>This means the fee is calculated after the vacancy adjustment rather than on the full scheduled income.</p>
+
+    <h3>7. Operating Expenses</h3>
+
+    <p>First-year operating expenses are the sum of the entered annual expenses:</p>
+
+    <div class="formula"><strong>E₁ = Property Tax + Insurance + HOA + Maintenance + Other Operating Expenses</strong></div>
+
+    <p>Future operating expenses are projected using the entered annual expense growth rate:</p>
+
+    <div class="formula"><strong>Expensesᵧ = E₁ × (1 + gₑ)ʸ⁻¹</strong></div>
+
+    <h3>8. Net Operating Income</h3>
+
+    <p>Net operating income is property income after vacancy, management fees, and operating expenses, but before mortgage payments:</p>
+
+    <div class="formula"><strong>NOIᵧ = Collected Incomeᵧ − Management Feeᵧ − Expensesᵧ</strong></div>
+
+    <p>Mortgage principal and interest are not deducted when calculating NOI.</p>
+
+    <h3>9. First-Year Cash Flow</h3>
+
+    <p>Annual mortgage debt service is based on the monthly mortgage payment:</p>
+
+    <div class="formula"><strong>Annual Debt Service = M × 12</strong></div>
+
+    <p>First-year cash flow is:</p>
+
+    <div class="formula"><strong>Cash Flow₁ = NOI₁ − Annual Debt Service</strong></div>
+
+    <p>For later years, the same structure is used while income and operating expenses change according to the entered growth rates.</p>
+
+    <h3>10. Capitalization Rate</h3>
+
+    <p>The calculator uses first-year NOI and purchase price:</p>
+
+    <div class="formula"><strong>Cap Rate = NOI₁ ÷ Purchase Price × 100</strong></div>
+
+    <p>Cap rate is calculated before mortgage debt service, so it measures the property's operating performance rather than the effect of financing. This treatment is consistent with the standard NOI-to-value cap-rate structure used in rental-property analysis.</p>
+
+    <h3>11. Cash-on-Cash Return</h3>
+
+    <p>Cash-on-cash return compares first-year cash flow with the upfront cash invested:</p>
+
+    <div class="formula"><strong>Cash-on-Cash Return = Cash Flow₁ ÷ Initial Cash Invested × 100</strong></div>
+
+    <p>Because mortgage payments affect cash flow, this metric changes when the down payment, mortgage rate, or loan term changes.</p>
+
+    <h3>12. Projected Sale Price</h3>
+
+    <p>The estimated property value after the holding period is:</p>
+
+    <div class="formula"><strong>Projected Sale Price = P × (1 + a)ᴴ</strong></div>
+
+    <p>The result depends entirely on the appreciation rate entered by the user.</p>
+
+    <h3>13. Selling Costs</h3>
+
+    <p>Selling costs are calculated from the projected sale price:</p>
+
+    <div class="formula"><strong>Selling Costs = Projected Sale Price × s</strong></div>
+
+    <h3>14. Remaining Mortgage Balance</h3>
+
+    <p>When the property is sold before the loan is fully repaid, the outstanding mortgage balance must be deducted from sale proceeds.</p>
+
+    <p>For <strong>k</strong> monthly payments already made:</p>
+
+    <div class="formula"><strong>Balanceₖ = L(1 + i)ᵏ − M × [(1 + i)ᵏ − 1] ÷ i</strong></div>
+
+    <p>The remaining balance approaches zero as the loan reaches the end of its amortization term.</p>
+
+    <h3>15. Net Sale Proceeds</h3>
+
+    <p>Net proceeds from the property sale are:</p>
+
+    <div class="formula"><strong>Net Sale Proceeds = Projected Sale Price − Selling Costs − Remaining Mortgage Balance</strong></div>
+
+    <p>The net sale proceeds are added to the property's operating cash flow in the final year.</p>
+
+    <h3>16. Internal Rate of Return</h3>
+
+    <p>The investment projection begins with the negative initial cash investment, followed by annual operating cash flows. The final year's cash flow also includes net sale proceeds.</p>
+
+    <p>IRR is the rate <strong>q</strong> that makes the net present value of the cash-flow series equal to zero:</p>
+
+    <div class="formula"><strong>0 = −C₀ + CF₁/(1 + q)¹ + CF₂/(1 + q)² + ... + CFᴴ/(1 + q)ᴴ</strong></div>
+
+    <p>There is generally no simple direct algebraic solution for IRR, so it is solved numerically. Microsoft documents IRR as an iterative calculation using regularly spaced cash flows containing at least one negative and one positive value.</p>
+  </section>
+
+  <section id="calculation-sequence">
+    <h2>Calculation Sequence</h2>
+
+    <p>The calculator follows this general order:</p>
+
+    <ol>
+      <li>Convert percentage inputs to decimals.</li>
+      <li>Calculate the down payment and mortgage loan amount.</li>
+      <li>Calculate the fixed monthly mortgage payment.</li>
+      <li>Calculate initial cash invested.</li>
+      <li>Project annual rental and other property income.</li>
+      <li>Apply vacancy and management fees.</li>
+      <li>Project annual operating expenses.</li>
+      <li>Calculate NOI and property cash flow.</li>
+      <li>Calculate first-year cap rate and cash-on-cash return.</li>
+      <li>Project property value through the holding period.</li>
+      <li>Calculate selling costs and remaining mortgage balance.</li>
+      <li>Add net sale proceeds to the final year's cash flow.</li>
+      <li>Solve the projected cash-flow series for IRR.</li>
+    </ol>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Assume the following rental property:</p>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li>Purchase price: <strong>$300,000</strong></li>
+      <li>Down payment: <strong>25%</strong></li>
+      <li>Mortgage rate: <strong>6%</strong></li>
+      <li>Loan term: <strong>30 years</strong></li>
+      <li>Closing + repair cash: <strong>$15,000</strong></li>
+      <li>Monthly rent: <strong>$2,600</strong></li>
+      <li>Other monthly income: <strong>$100</strong></li>
+      <li>Vacancy rate: <strong>5%</strong></li>
+      <li>Management fee: <strong>8%</strong></li>
+      <li>Property tax: <strong>$3,600/year</strong></li>
+      <li>Insurance: <strong>$1,500/year</strong></li>
+      <li>HOA: <strong>$0/year</strong></li>
+      <li>Maintenance: <strong>$2,400/year</strong></li>
+      <li>Other operating expenses: <strong>$600/year</strong></li>
+      <li>Rent growth: <strong>3%/year</strong></li>
+      <li>Expense growth: <strong>3%/year</strong></li>
+      <li>Property appreciation: <strong>3%/year</strong></li>
+      <li>Holding period: <strong>5 years</strong></li>
+      <li>Selling cost: <strong>6%</strong></li>
+    </ul>
+
+    <h3>Step 1: Calculate Financing</h3>
+
+    <p>Down payment:</p>
+
+    <div class="formula"><strong>$300,000 × 25% = $75,000</strong></div>
+
+    <p>Mortgage amount:</p>
+
+    <div class="formula"><strong>$300,000 − $75,000 = $225,000</strong></div>
+
+    <p>At 6% interest over 30 years, the calculated monthly principal-and-interest payment is approximately:</p>
+
+    <div class="formula"><strong>$1,348.99</strong></div>
+
+    <p>Annual mortgage payments:</p>
+
+    <div class="formula"><strong>$1,348.99 × 12 = $16,187.86</strong></div>
+
+    <p>Initial cash invested:</p>
+
+    <div class="formula"><strong>$75,000 + $15,000 = $90,000</strong></div>
+
+    <h3>Step 2: Calculate First-Year NOI</h3>
+
+    <p>Gross annual income:</p>
+
+    <div class="formula"><strong>($2,600 + $100) × 12 = $32,400</strong></div>
+
+    <p>Income after 5% vacancy:</p>
+
+    <div class="formula"><strong>$32,400 × 95% = $30,780</strong></div>
+
+    <p>Management fee:</p>
+
+    <div class="formula"><strong>$30,780 × 8% = $2,462.40</strong></div>
+
+    <p>Annual operating expenses:</p>
+
+    <div class="formula"><strong>$3,600 + $1,500 + $0 + $2,400 + $600 = $8,100</strong></div>
+
+    <p>First-year NOI:</p>
+
+    <div class="formula"><strong>$30,780 − $2,462.40 − $8,100 = $20,217.60</strong></div>
+
+    <h3>Step 3: Calculate First-Year Returns</h3>
+
+    <p>First-year cash flow:</p>
+
+    <div class="formula"><strong>$20,217.60 − $16,187.86 = $4,029.74</strong></div>
+
+    <p>Cap rate:</p>
+
+    <div class="formula"><strong>$20,217.60 ÷ $300,000 × 100 ≈ 6.74%</strong></div>
+
+    <p>Cash-on-cash return:</p>
+
+    <div class="formula"><strong>$4,029.74 ÷ $90,000 × 100 ≈ 4.48%</strong></div>
+
+    <h3>Step 4: Project the Sale</h3>
+
+    <p>Projected value after five years:</p>
+
+    <div class="formula"><strong>$300,000 × 1.03⁵ = $347,782.22</strong></div>
+
+    <p>Selling costs:</p>
+
+    <div class="formula"><strong>$347,782.22 × 6% = $20,866.93</strong></div>
+
+    <p>After 60 mortgage payments, the remaining loan balance is approximately:</p>
+
+    <div class="formula"><strong>$209,372.30</strong></div>
+
+    <p>Estimated net sale proceeds:</p>
+
+    <div class="formula"><strong>$347,782.22 − $20,866.93 − $209,372.30 = $117,542.99</strong></div>
+
+    <p>With the example's 3% annual income and expense growth assumptions, the projected annual operating cash flows are approximately:</p>
+
+    <p>
+      <strong>Year 1:</strong> $4,029.74<br>
+      <strong>Year 2:</strong> $4,636.26<br>
+      <strong>Year 3:</strong> $5,260.99<br>
+      <strong>Year 4:</strong> $5,904.45<br>
+      <strong>Year 5:</strong> $6,567.22
+    </p>
+
+    <p>Adding the estimated net sale proceeds to year five gives a final-year total cash flow of approximately <strong>$124,110.21</strong>.</p>
+
+    <p>Using an initial cash outflow of <strong>$90,000</strong> and these projected annual cash flows produces an estimated IRR of approximately <strong>10.67%</strong>.</p>
+
+    <h3>Final Result</h3>
+
+    <p>For this example:</p>
+
+    <p>
+      <strong>First-Year NOI:</strong> $20,217.60<br>
+      <strong>First-Year Cash Flow:</strong> $4,029.74<br>
+      <strong>Cap Rate:</strong> 6.74%<br>
+      <strong>Cash-on-Cash Return:</strong> 4.48%<br>
+      <strong>Initial Cash Invested:</strong> $90,000<br>
+      <strong>Projected Sale Price:</strong> $347,782.22<br>
+      <strong>Projected 5-Year IRR:</strong> approximately 10.67%
+    </p>
+
+    <p>These are estimates based on the entered assumptions, not guaranteed investment results.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p><strong>First-Year NOI</strong> shows the property's income after vacancy, management fees, and operating expenses but before mortgage payments. It helps separate the property's operating performance from its financing structure.</p>
+
+    <p><strong>First-Year Cash Flow</strong> shows the money remaining after operating expenses and mortgage debt service. A negative result means the modeled property costs more to operate and finance than it generates during that period.</p>
+
+    <p><strong>Cap Rate</strong> compares first-year NOI with the purchase price. Because mortgage payments are excluded, two buyers using different financing assumptions can still calculate the same cap rate from the same property assumptions.</p>
+
+    <p><strong>Cash-on-Cash Return</strong> compares first-year cash flow with the amount of cash invested upfront. It is affected by financing because mortgage payments and the size of the down payment change the result.</p>
+
+    <p><strong>Initial Cash Invested</strong> represents the down payment plus the closing and repair cash entered in the calculator.</p>
+
+    <p><strong>Projected Sale Price</strong> is the estimated future property value based on the appreciation rate and holding period entered. It is not a market-value guarantee.</p>
+
+    <p><strong>IRR</strong> considers the timing of the initial investment, annual property cash flows, mortgage financing, and final sale proceeds. Because it includes several long-term assumptions, small changes can have a large effect on the result.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>Rental-property projections are highly sensitive to assumptions about rent, vacancy, repairs, insurance, taxes, financing costs, property appreciation, and selling costs.</p>
+
+    <p>The calculator does not include income taxes, depreciation deductions, capital gains tax, depreciation recapture, refinancing, major irregular capital expenditures, or other cash flows that are not represented by the available inputs.</p>
+
+    <p>It assumes annual growth rates continue according to the percentages entered. Actual rent, expenses, vacancy, property values, and selling costs may rise or fall differently.</p>
+
+    <p>Mortgage estimates may differ from a lender's actual figures because a real mortgage can include mortgage insurance, escrow requirements, lender fees, points, prepaid costs, or other charges. CFPB guidance notes that the total payment associated with a mortgage can include costs beyond principal and interest, including taxes and insurance.</p>
+
+    <p>The model treats its cash flows as estimates and should not be considered tax, legal, lending, or investment advice.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What is NOI in a rental property calculation?</summary>
+      <p>Net operating income is the property's collected income after vacancy, management fees, and operating expenses, but before mortgage principal and interest. It measures operating performance independently from the financing structure.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does cap rate include the mortgage payment?</summary>
+      <p>No. This calculator calculates cap rate from first-year NOI divided by the purchase price. Mortgage debt service is excluded.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How is cash-on-cash return different from cap rate?</summary>
+      <p>Cap rate compares NOI with the property price and ignores financing. Cash-on-cash return compares cash flow after mortgage payments with the amount of cash invested upfront, so financing directly affects it.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How does vacancy affect the calculation?</summary>
+      <p>The vacancy rate reduces projected gross property income before the management fee and other operating expenses are calculated. A higher vacancy assumption therefore lowers NOI and cash flow.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How is the future sale price estimated?</summary>
+      <p>The purchase price is compounded by the annual property appreciation rate for the selected holding period. Selling costs and the outstanding mortgage balance are then deducted when estimating net sale proceeds.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why can the projected IRR change significantly?</summary>
+      <p>IRR uses the complete cash-flow sequence. Changes in rent growth, vacancy, expenses, mortgage terms, appreciation, holding period, selling costs, or the remaining mortgage balance can therefore change the result substantially.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does the calculator include depreciation or capital gains tax?</summary>
+      <p>No. Income taxes, depreciation, capital gains tax, and depreciation recapture are outside this calculator's modeled inputs. They should be evaluated separately when relevant.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://www.calculator.net/rental-property-calculator.html?utm_source=chatgpt.com" rel="noopener" target="_blank">Calculator.net — Rental Property Calculator</a><br>
+        Used to cross-check rental-property terminology, NOI, capitalization-rate structure, financing-based cash flow, and IRR concepts.
+      </li>
+
+      <li>
+        <a href="https://support.microsoft.com/en-us/excel/functions/irr-function?utm_source=chatgpt.com" rel="noopener" target="_blank">Microsoft Support — IRR Function</a><br>
+        Supports the definition of IRR, regularly spaced cash-flow requirements, and iterative numerical calculation.
+      </li>
+
+      <li>
+        <a href="https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/?utm_source=chatgpt.com" rel="noopener" target="_blank">Consumer Financial Protection Bureau — How Mortgage Lenders Calculate Monthly Payments</a><br>
+        Supports the use of loan amount, interest rate, and loan term when estimating fixed-rate principal-and-interest payments.
+      </li>
+
+      <li>
+        <a href="https://www.consumerfinance.gov/owning-a-home/loan-estimate/?utm_source=chatgpt.com" rel="noopener" target="_blank">Consumer Financial Protection Bureau — Loan Estimate Explainer</a><br>
+        Used to verify the distinction between loan amount, down payment, principal and interest, taxes, insurance, and closing costs.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/mortgage-calculator/?utm_source=chatgpt.com">Mortgage Calculator</a></li>
+      <li><a href="https://example.com/irr-calculator/?utm_source=chatgpt.com">IRR Calculator</a></li>
+      <li><a href="https://example.com/roi-calculator/?utm_source=chatgpt.com">ROI Calculator</a></li>
+      <li><a href="https://example.com/real-estate-calculator/?utm_source=chatgpt.com">Real Estate Calculator</a></li>
+      <li><a href="https://example.com/down-payment-calculator/?utm_source=chatgpt.com">Down Payment Calculator</a></li>
+      <li><a href="https://example.com/rent-vs-buy-calculator/?utm_source=chatgpt.com">Rent vs Buy Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+
+        </div>
+      </section>
+
+      <script class="cp-calculator-data"
+        type="application/json">{"index":"98","Batch":"10","Calculator / Page":"Rental Property Calculator","Slug":"rental-property-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Analyze a rental property with mortgage financing, rent, vacancy, operating expenses, growth, appreciation, selling costs, cash flow, cap rate, cash-on-cash return, and IRR.","Formula / Algorithm Used in Tool":"CalcPro Method: Annual operating cash flows are projected from user-entered growth rates; the final cash flow includes net sale proceeds and mortgage payoff, then IRR is solved numerically. Cap rate excludes debt service; cash-on-cash and IRR incorporate financing, so each metric answers a different question.","Required User Inputs":"Purchase price; Down payment (%); Mortgage rate (%); Loan term (years); Closing + repair cash; Monthly rent; Other monthly income; Vacancy rate (%); Management fee (% of collected income); Property tax / year; Insurance / year; HOA / year; Maintenance / year; Other operating expenses / year; Rent growth (%/year); Expense growth (%/year); Property appreciation (%/year); Holding period (years); Selling cost (% of sale price)","Primary Outputs":"First-year NOI; First-year cash flow; Cap rate; Cash-on-cash return; Initial cash invested; Projected sale price","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Purchase price, Down payment (%), Mortgage rate (%), Loan term (years), Closing + repair cash, Monthly rent, Other monthly income, Vacancy rate (%), Management fee (% of collected income), Property tax / year, Insurance / year, HOA / year. Explain outputs: First-year NOI, First-year cash flow, Cap rate, Cash-on-cash return, Initial cash invested, Projected sale price. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"Long-range real estate returns are highly sensitive to rent, vacancy, repairs, taxes, insurance, financing, appreciation, and sale assumptions. The model does not include income taxes, depreciation, capital gains tax, depreciation recapture, major capital expenditures, refinancing, or irregular cash-flow timing. Frequently Asked Questions What is NOI in rental property analysis? Net operating income is property income after vacancy and operating expenses, but before mortgage payments and income taxes. This calculator also subtracts the entered management fee from collected income. What is cap rate? Cap rate is first-year net operating income divided by purchase price in this calculator. It is a property-level measure and does not include the effect of mortgage financing. Why can rental property IRR change a lot? IRR depends on every projected cash flow, including rent growth, operating expenses, financing, holding period, appreciation, selling costs, and remaining loan balance. Small assumption changes can compound over many years. Sources and Methodology The calculator methodology was cross-checked against the following sources. Results are estimates based on the assumptions entered and do not replace lender, tax, legal, or investment advice. Calculator.net — Rental Property Cal","Current Source URLs in Page":"https://www.calculator.net/rental-property-calculator.html | https://support.microsoft.com/en-us/excel/functions/irr-function | https://www.consumerfinance.gov/owning-a-home/loan-estimate/","Implementation Path":"/rental-property-calculator/index.html"}</script>
+      <div class="cp-ad-slot cp-ad-wide">
+        <div>Advertisement<small>Responsive lower-page placement</small></div>
+      </div>
+    </main>
+    <aside aria-label="Related calculators" class="cp-related-sidebar">
+      <div class="cp-ad-slot cp-ad-sidebar">
+        <div>Advertisement<small>300 × 250 / responsive</small></div>
+      </div><span class="cp-side-kicker">Related tools</span>
+      <h2>Finance</h2>
+      <p>More tools from the same Calculator Data category.</p>
+      <div class="cp-related-list"><a class="cp-related-link" href="../rent-vs-buy-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Rent vs Buy Calculator</strong><small>Compare renting versus
+              buying using mortgage amortization, home appreciation, rent…</small></span></a><a class="cp-related-link"
+          href="../irr-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>IRR
+              Calculator</strong><small>Calculate internal rate of return for periodic cash flows, view NPV at the
+              solved r…</small></span></a><a class="cp-related-link" href="../real-estate-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Real Estate Calculator</strong><small>Estimate a property's
+              mortgage payment, monthly ownership cost, cash to close, tota…</small></span></a><a
+          class="cp-related-link" href="../refinance-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Refinance Calculator</strong><small>Compare an existing
+              fixed-rate loan with a proposed refinance, including payment ch…</small></span></a><a
+          class="cp-related-link" href="../apr-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>APR Calculator</strong><small>Estimate loan APR from the note
+              rate, term, and upfront finance charges using a mon…</small></span></a><a class="cp-related-link"
+          href="../401k-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>401(k)
+              Calculator</strong><small>Project a 401(k) balance using salary, contribution percentage, employer match,
+              sal…</small></span></a><a class="cp-related-link" href="../annuity-calculator/index.html"><span
+            class="cp-related-dot">›</span><span><strong>Annuity Calculator</strong><small>Estimate the accumulation
+              value of an annuity-style investment using starting princ…</small></span></a><a class="cp-related-link"
+          href="../pension-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Pension
+              Calculator</strong><small>Compare pension lump sums, monthly pension income, joint-survivor options, and
+              dela…</small></span></a></div><a class="cp-side-category" href="../finance/index.html"><span>View
+          category</span><span>→</span></a>
+    </aside>
+  </div>
+  <footer>
+    <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+  </footer>
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const n = (id) => {
+      const el = $(id);
+      const v = el ? parseFloat(el.value) : NaN;
+      return Number.isFinite(v) ? v : 0;
+    };
+    const money = (v) => Number.isFinite(v) ? new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 }).format(v) : '—';
+    const pct = (v, d = 2) => Number.isFinite(v) ? v.toFixed(d) + '%' : '—';
+    const pmt = (principal, annualRate, months) => {
+      if (principal < 0 || months <= 0) return NaN;
+      const r = annualRate / 100 / 12;
+      if (Math.abs(r) < 1e-12) return principal / months;
+      return principal * r / (1 - Math.pow(1 + r, -months));
+    };
+    const balanceAfter = (principal, annualRate, months, paidMonths) => {
+      if (paidMonths <= 0) return principal;
+      if (paidMonths >= months) return 0;
+      const r = annualRate / 100 / 12;
+      const pay = pmt(principal, annualRate, months);
+      if (Math.abs(r) < 1e-12) return Math.max(0, principal - pay * paidMonths);
+      return Math.max(0, principal * Math.pow(1 + r, paidMonths) - pay * ((Math.pow(1 + r, paidMonths) - 1) / r));
+    };
+    const setText = (id, value) => { const el = $(id); if (el) el.textContent = value; };
+    const setHTML = (id, value) => { const el = $(id); if (el) el.innerHTML = value; };
+    const showError = (msg) => { const e = $('error'); if (e) { e.textContent = msg; e.hidden = !msg; } };
+
+
+    function irrSolve(cfs) {
+      const npv = (r) => cfs.reduce((s, cf, i) => s + cf / Math.pow(1 + r, i), 0);
+      let prevR = -.999, prev = npv(prevR), roots = [];
+      const maxR = 10, steps = 2500;
+      for (let k = 1; k <= steps; k++) {
+        const r = -.999 + (maxR + .999) * k / steps, v = npv(r);
+        if (Number.isFinite(v) && Number.isFinite(prev) && v * prev < 0) {
+          let lo = prevR, hi = r, flo = prev;
+          for (let j = 0; j < 100; j++) { const mid = (lo + hi) / 2, f = npv(mid); if (flo * f <= 0) { hi = mid } else { lo = mid; flo = f } }
+          roots.push((lo + hi) / 2);
+        }
+        prevR = r; prev = v;
+      }
+      return roots.length ? roots[0] : NaN;
+    }
+    function calculate() {
+      showError('');
+      const price = n('price'), down = n('down'), rate = n('rate'), term = n('term'), hold = Math.round(n('hold'));
+      if (price <= 0 || down < 0 || down >= 100 || term <= 0 || hold <= 0) { showError('Enter a valid purchase price, down payment below 100%, loan term, and holding period.'); return; }
+      const downAmt = price * down / 100, loan = price - downAmt, initial = downAmt + n('closing'), months = Math.round(term * 12), pay = pmt(loan, rate, months), annualDebt = pay * 12;
+      const baseGross = (n('rent') + n('otherIncome')) * 12, vacancy = n('vacancy') / 100, mgmt = n('management') / 100;
+      const baseFixed = n('tax') + n('insurance') + n('hoa') + n('maintenance') + n('otherExp');
+      let cfs = [-initial], rows = '', firstNOI = 0, firstCF = 0;
+      for (let y = 1; y <= hold; y++) {
+        const gross = baseGross * Math.pow(1 + n('rentGrowth') / 100, y - 1);
+        const collected = gross * (1 - vacancy), management = collected * mgmt, fixed = baseFixed * Math.pow(1 + n('expGrowth') / 100, y - 1);
+        const noi = collected - management - fixed;
+        const debt = (y * 12 <= months) ? annualDebt : Math.max(0, pmt(loan, rate, months) * (months - (y - 1) * 12));
+        let cf = noi - debt;
+        const bal = balanceAfter(loan, rate, months, Math.min(months, y * 12));
+        if (y === 1) { firstNOI = noi; firstCF = cf; }
+        if (y === hold) {
+          const sale = price * Math.pow(1 + n('appreciation') / 100, hold);
+          const netSale = sale * (1 - n('sellCost') / 100) - bal;
+          cf += netSale;
+          setText('sale', money(sale));
+        }
+        cfs.push(cf);
+        rows += `<tr><td>${y}</td><td>${money(collected)}</td><td>${money(noi)}</td><td>${money(debt)}</td><td>${money(cf)}</td><td>${money(bal)}</td></tr>`;
+      }
+      const irr = irrSolve(cfs), cap = firstNOI / price * 100, coc = firstCF / initial * 100;
+      setText('irrOut', Number.isFinite(irr) ? pct(irr * 100, 2) : 'N/A'); setText('noi', money(firstNOI)); setText('cashflow', money(firstCF)); setText('cap', pct(cap, 2)); setText('coc', pct(coc, 2)); setText('initial', money(initial)); setHTML('schedule', rows);
+    }
+    $('form').addEventListener('submit', e => { e.preventDefault(); calculate() }); $('form').addEventListener('reset', () => setTimeout(calculate, 0)); calculate();
+  </script>
+  <script defer="" src="../assets/js/global.js"></script>
+  <script defer="" src="../assets/js/taxonomy.js"></script>
+  <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
 </html>

@@ -1,142 +1,1204 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>Grade Calculator | CalcPro</title>
-<meta content="Calculate a weighted course grade, add assignment rows, and estimate the score needed on remaining coursework to reach a target grade." name="description"/>
-<meta content="index,follow" name="robots"/>
-<link href="../grade-calculator/" rel="canonical"/>
-<meta content="Grade Calculator | CalcPro" property="og:title"/>
-<meta content="Calculate a weighted course grade, add assignment rows, and estimate the score needed on remaining coursework to reach a target grade." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="/grade-calculator/" property="og:url"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-:root{--bg:#07111f;--panel:rgba(255,255,255,.09);--panel2:rgba(255,255,255,.06);--text:#f7fbff;--muted:#b8c6d8;--line:rgba(255,255,255,.14);--a:#67e8f9;--b:#34d399;--c:#fbbf24;--danger:#fb7185;--shadow:0 30px 80px rgba(0,0,0,.32)}
-body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
-a{color:var(--a)}button,input,select{font:inherit}
-.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
-.site-nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0;position:relative;z-index:10}
-.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.3px;color:var(--text);text-decoration:none}
-.brand-mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,var(--a),var(--b));display:grid;place-items:center;color:#04111f;box-shadow:inset 0 1px 0 #fff8,0 10px 25px #0004;transform:rotate(-7deg)}
-.nav-links{display:flex;gap:18px;align-items:center}.nav-links a{color:var(--muted);text-decoration:none;font-size:.92rem}.nav-links a:hover{color:var(--text)}
-.breadcrumb{font-size:.9rem;color:var(--muted);margin-bottom:18px}.breadcrumb a{color:inherit;text-decoration:none}
-.hero{position:relative;min-height:440px;padding:48px 0 72px;display:grid;grid-template-columns:1fr;gap:42px;align-items:center}
-.hero h1{font-size:clamp(2.5rem,6vw,5.8rem);line-height:.92;letter-spacing:-.055em;margin:0 0 22px;max-width:800px}
-.hero p{font-size:1.08rem;color:var(--muted);max-width:700px;margin:0}
-.kicker{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:7px 12px;margin-bottom:18px;color:var(--a);font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
-.scene{min-height:330px;position:relative;perspective:900px;filter:drop-shadow(0 30px 40px #0005)}
-.orb{position:absolute;border-radius:50%;filter:blur(1px);opacity:.9}
-.calc-shell{margin-top:-25px;position:relative;z-index:4}
-.calculator{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);gap:24px;align-items:stretch}
-.card{background:linear-gradient(180deg,var(--panel),rgba(255,255,255,.045));border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.1);backdrop-filter:blur(18px)}
-.form-card{padding:28px}.result-card{padding:28px;position:relative;overflow:hidden}
-.result-card:after{content:"";position:absolute;inset:auto -80px -100px auto;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,var(--a),transparent 70%);opacity:.12}
-.section-title{font-size:1.35rem;margin:0 0 7px}.subtle{color:var(--muted);font-size:.92rem;margin:0 0 20px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
-label{font-weight:750;font-size:.88rem;color:#e8f0f8}
-input,select{width:100%;border:1px solid var(--line);background:rgba(4,10,20,.48);color:var(--text);border-radius:14px;padding:12px 13px;outline:none;box-shadow:inset 0 1px 8px #0003}
-input:focus,select:focus{border-color:var(--a);box-shadow:0 0 0 3px color-mix(in srgb,var(--a) 22%,transparent)}
-option{color:#111}
-.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:900;cursor:pointer;transition:.2s;box-shadow:0 12px 24px #0003}
-.btn-primary{background:linear-gradient(135deg,var(--a),var(--b));color:#04111a}.btn-secondary{background:rgba(255,255,255,.08);color:var(--text);border:1px solid var(--line)}
-.btn:hover{transform:translateY(-2px)}
-.error{display:none;color:#fff;background:color-mix(in srgb,var(--danger) 26%,transparent);border:1px solid color-mix(in srgb,var(--danger) 52%,transparent);padding:11px 13px;border-radius:13px;margin-top:15px;font-size:.9rem}.error.show{display:block}
-.result-big{font-size:clamp(2.2rem,5vw,4.2rem);font-weight:950;line-height:1;letter-spacing:-.04em;margin:10px 0 12px;color:var(--a);word-break:break-word}
-.metric-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}.metric{padding:14px;border-radius:17px;background:rgba(255,255,255,.055);border:1px solid var(--line)}.metric b{display:block;font-size:1.08rem}.metric span{font-size:.78rem;color:var(--muted)}
-.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line);font-size:.78rem;color:var(--muted)}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tab{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);padding:8px 12px;border-radius:999px;cursor:pointer;font-weight:800}.tab.active{background:var(--a);color:#06111c;border-color:transparent}
-.tab-panel{display:none}.tab-panel.active{display:block}
-.table-wrap{overflow:auto;border-radius:16px;border:1px solid var(--line);margin-top:16px}table{border-collapse:collapse;width:100%;min-width:520px;background:rgba(2,8,16,.28)}th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;font-size:.88rem}th{color:var(--a);background:rgba(255,255,255,.045)}
-.content{padding:80px 0}.content-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:32px}.article{background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:30px;padding:34px}.article h2{font-size:1.8rem;line-height:1.2;margin:38px 0 12px}.article h2:first-child{margin-top:0}.article h3{margin-top:24px}.article p,.article li{color:#c8d3df}.article code{background:#0004;padding:3px 6px;border-radius:6px}
-.aside{position:sticky;top:20px;height:max-content;padding:22px}.aside h3{margin-top:0}.aside a{display:block;color:var(--muted);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--line)}.aside a:hover{color:var(--text)}
-.faq details{border-top:1px solid var(--line);padding:15px 0}.faq summary{font-weight:850;cursor:pointer}.faq p{margin-bottom:0}
-.source-list a{overflow-wrap:anywhere}
-footer{border-top:1px solid var(--line);padding:32px 0 50px;color:var(--muted);font-size:.9rem}
-.small{font-size:.82rem;color:var(--muted)}
-.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.pill{padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.055);border:1px solid var(--line);font-size:.78rem}
-.rangebar{height:11px;border-radius:999px;background:rgba(255,255,255,.09);overflow:hidden;margin-top:14px}.rangebar>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--b),var(--c));transition:.4s}
-@media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:28px}.scene{min-height:250px}.calculator,.content-grid{grid-template-columns:1fr}.aside{position:relative}.hero h1{font-size:clamp(2.7rem,12vw,5.2rem)}}
-@media(max-width:620px){.wrap{width:min(100% - 20px,1180px)}.nav-links{display:none}.grid,.grid3,.metric-row{grid-template-columns:1fr}.form-card,.result-card,.article{padding:20px}.hero{padding-bottom:46px}.content{padding:55px 0}}
+    <!-- Primary Meta Tags -->
+<title>Grade Calculator – Weighted Course &amp; Final Grade</title>
+<meta name="title" content="Grade Calculator – Weighted Course &amp; Final Grade">
+<meta name="description" content="Calculate a weighted course grade and estimate the score needed on remaining coursework to reach your target final grade using assignment weights.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/grade-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/grade-calculator/">
+<meta property="og:title" content="Grade Calculator – Weighted Course &amp; Final Grade">
+<meta property="og:description" content="Calculate a weighted course grade and estimate the score needed on remaining coursework to reach your target final grade using assignment weights.">
+<meta property="og:site_name" content="Grade Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/grade-calculator/">
+<meta name="twitter:title" content="Grade Calculator – Weighted Course &amp; Final Grade">
+<meta name="twitter:description" content="Calculate a weighted course grade and estimate the score needed on remaining coursework to reach your target final grade using assignment weights.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        :root {
+            --bg: #07111f;
+            --panel: rgba(255, 255, 255, .09);
+            --panel2: rgba(255, 255, 255, .06);
+            --text: #f7fbff;
+            --muted: #b8c6d8;
+            --line: rgba(255, 255, 255, .14);
+            --a: #67e8f9;
+            --b: #34d399;
+            --c: #fbbf24;
+            --danger: #fb7185;
+            --shadow: 0 30px 80px rgba(0, 0, 0, .32)
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+            overflow-x: hidden
+        }
+
+        a {
+            color: var(--a)
+        }
+
+        button,
+        input,
+        select {
+            font: inherit
+        }
+
+        .wrap {
+            width: min(1180px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .site-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 0;
+            position: relative;
+            z-index: 10
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 900;
+            letter-spacing: .3px;
+            color: var(--text);
+            text-decoration: none
+        }
+
+        .brand-mark {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: linear-gradient(145deg, var(--a), var(--b));
+            display: grid;
+            place-items: center;
+            color: #04111f;
+            box-shadow: inset 0 1px 0 #fff8, 0 10px 25px #0004;
+            transform: rotate(-7deg)
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            align-items: center
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: .92rem
+        }
+
+        .nav-links a:hover {
+            color: var(--text)
+        }
+
+        .breadcrumb {
+            font-size: .9rem;
+            color: var(--muted);
+            margin-bottom: 18px
+        }
+
+        .breadcrumb a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .hero {
+            position: relative;
+            min-height: 440px;
+            padding: 48px 0 72px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 42px;
+            align-items: center
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5.8rem);
+            line-height: .92;
+            letter-spacing: -.055em;
+            margin: 0 0 22px;
+            max-width: 800px
+        }
+
+        .hero p {
+            font-size: 1.08rem;
+            color: var(--muted);
+            max-width: 700px;
+            margin: 0
+        }
+
+        .kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--line);
+            background: var(--panel2);
+            border-radius: 999px;
+            padding: 7px 12px;
+            margin-bottom: 18px;
+            color: var(--a);
+            font-weight: 800;
+            font-size: .8rem;
+            letter-spacing: .08em;
+            text-transform: uppercase
+        }
+
+        .scene {
+            min-height: 330px;
+            position: relative;
+            perspective: 900px;
+            filter: drop-shadow(0 30px 40px #0005)
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(1px);
+            opacity: .9
+        }
+
+        .calc-shell {
+            margin-top: -25px;
+            position: relative;
+            z-index: 4
+        }
+
+        .calculator {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(300px, .9fr);
+            gap: 24px;
+            align-items: stretch
+        }
+
+        .card {
+            background: linear-gradient(180deg, var(--panel), rgba(255, 255, 255, .045));
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, .1);
+            backdrop-filter: blur(18px)
+        }
+
+        .form-card {
+            padding: 28px
+        }
+
+        .result-card {
+            padding: 28px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .result-card:after {
+            content: "";
+            position: absolute;
+            inset: auto -80px -100px auto;
+            width: 230px;
+            height: 230px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--a), transparent 70%);
+            opacity: .12
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            margin: 0 0 7px
+        }
+
+        .subtle {
+            color: var(--muted);
+            font-size: .92rem;
+            margin: 0 0 20px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px
+        }
+
+        .grid3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px
+        }
+
+        .field.full {
+            grid-column: 1/-1
+        }
+
+        label {
+            font-weight: 750;
+            font-size: .88rem;
+            color: #e8f0f8
+        }
+
+        input,
+        select {
+            width: 100%;
+            border: 1px solid var(--line);
+            background: rgba(4, 10, 20, .48);
+            color: var(--text);
+            border-radius: 14px;
+            padding: 12px 13px;
+            outline: none;
+            box-shadow: inset 0 1px 8px #0003
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--a);
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--a) 22%, transparent)
+        }
+
+        option {
+            color: #111
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: .2s;
+            box-shadow: 0 12px 24px #0003
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--a), var(--b));
+            color: #04111a
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, .08);
+            color: var(--text);
+            border: 1px solid var(--line)
+        }
+
+        .btn:hover {
+            transform: translateY(-2px)
+        }
+
+        .error {
+            display: none;
+            color: #fff;
+            background: color-mix(in srgb, var(--danger) 26%, transparent);
+            border: 1px solid color-mix(in srgb, var(--danger) 52%, transparent);
+            padding: 11px 13px;
+            border-radius: 13px;
+            margin-top: 15px;
+            font-size: .9rem
+        }
+
+        .error.show {
+            display: block
+        }
+
+        .result-big {
+            font-size: clamp(2.2rem, 5vw, 4.2rem);
+            font-weight: 950;
+            line-height: 1;
+            letter-spacing: -.04em;
+            margin: 10px 0 12px;
+            color: var(--a);
+            word-break: break-word
+        }
+
+        .metric-row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 18px
+        }
+
+        .metric {
+            padding: 14px;
+            border-radius: 17px;
+            background: rgba(255, 255, 255, .055);
+            border: 1px solid var(--line)
+        }
+
+        .metric b {
+            display: block;
+            font-size: 1.08rem
+        }
+
+        .metric span {
+            font-size: .78rem;
+            color: var(--muted)
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 9px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid var(--line);
+            font-size: .78rem;
+            color: var(--muted)
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 18px
+        }
+
+        .tab {
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .04);
+            color: var(--muted);
+            padding: 8px 12px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 800
+        }
+
+        .tab.active {
+            background: var(--a);
+            color: #06111c;
+            border-color: transparent
+        }
+
+        .tab-panel {
+            display: none
+        }
+
+        .tab-panel.active {
+            display: block
+        }
+
+        .table-wrap {
+            overflow: auto;
+            border-radius: 16px;
+            border: 1px solid var(--line);
+            margin-top: 16px
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 520px;
+            background: rgba(2, 8, 16, .28)
+        }
+
+        th,
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--line);
+            text-align: left;
+            font-size: .88rem
+        }
+
+        th {
+            color: var(--a);
+            background: rgba(255, 255, 255, .045)
+        }
+
+        .content {
+            padding: 80px 0
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 320px;
+            gap: 32px
+        }
+
+        .article {
+            background: rgba(255, 255, 255, .035);
+            border: 1px solid var(--line);
+            border-radius: 30px;
+            padding: 34px
+        }
+
+        .article h2 {
+            font-size: 1.8rem;
+            line-height: 1.2;
+            margin: 38px 0 12px
+        }
+
+        .article h2:first-child {
+            margin-top: 0
+        }
+
+        .article h3 {
+            margin-top: 24px
+        }
+
+        .article p,
+        .article li {
+            color: #c8d3df
+        }
+
+        .article code {
+            background: #0004;
+            padding: 3px 6px;
+            border-radius: 6px
+        }
+
+        .aside {
+            position: sticky;
+            top: 20px;
+            height: max-content;
+            padding: 22px
+        }
+
+        .aside h3 {
+            margin-top: 0
+        }
+
+        .aside a {
+            display: block;
+            color: var(--muted);
+            text-decoration: none;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .aside a:hover {
+            color: var(--text)
+        }
+
+        .faq details {
+            border-top: 1px solid var(--line);
+            padding: 15px 0
+        }
+
+        .faq summary {
+            font-weight: 850;
+            cursor: pointer
+        }
+
+        .faq p {
+            margin-bottom: 0
+        }
+
+        .source-list a {
+            overflow-wrap: anywhere
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 32px 0 50px;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .small {
+            font-size: .82rem;
+            color: var(--muted)
+        }
+
+        .pill-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 14px
+        }
+
+        .pill {
+            padding: 7px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .055);
+            border: 1px solid var(--line);
+            font-size: .78rem
+        }
+
+        .rangebar {
+            height: 11px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .09);
+            overflow: hidden;
+            margin-top: 14px
+        }
+
+        .rangebar>span {
+            display: block;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--a), var(--b), var(--c));
+            transition: .4s
+        }
+
+        @media(max-width:900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 28px
+            }
+
+            .scene {
+                min-height: 250px
+            }
+
+            .calculator,
+            .content-grid {
+                grid-template-columns: 1fr
+            }
+
+            .aside {
+                position: relative
+            }
+
+            .hero h1 {
+                font-size: clamp(2.7rem, 12vw, 5.2rem)
+            }
+        }
+
+        @media(max-width:620px) {
+            .wrap {
+                width: min(100% - 20px, 1180px)
+            }
+
+            .nav-links {
+                display: none
+            }
+
+            .grid,
+            .grid3,
+            .metric-row {
+                grid-template-columns: 1fr
+            }
+
+            .form-card,
+            .result-card,
+            .article {
+                padding: 20px
+            }
+
+            .hero {
+                padding-bottom: 46px
+            }
+
+            .content {
+                padding: 55px 0
+            }
+        }
 
 
-body{--bg:#17122a;--panel:rgba(48,36,81,.72);--panel2:rgba(92,63,127,.3);--a:#a6e3ff;--b:#ff9aa8;--c:#ffd76b;background:radial-gradient(circle at 14% 12%,#4da9ff26,transparent 28%),radial-gradient(circle at 82% 28%,#ff557b24,transparent 25%),#17122a}
-.grade-calculator .hero{grid-template-columns:.9fr 1.1fr}.notebook{position:absolute;right:9%;top:18px;width:315px;height:300px;background:#fff7dc;border-radius:18px;transform:rotate(5deg) rotateY(-8deg);box-shadow:25px 35px 60px #0007;color:#3f3353;padding:34px}.notebook:before{content:"";position:absolute;left:48px;top:0;bottom:0;width:2px;background:#ef929c}.notebook i{display:block;height:2px;background:#8db6d6;margin:26px 0}.gradebubble{position:absolute;left:1%;bottom:38px;width:110px;height:110px;border-radius:32px;background:linear-gradient(145deg,#ffcf70,#ff7a8e);display:grid;place-items:center;font-size:2.7rem;font-weight:950;color:#49223a;transform:rotate(-11deg);box-shadow:0 25px 45px #0006}
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/grade-calculator/#app", "name": "Grade Calculator", "url": "/grade-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate a weighted course grade, add assignment rows, and estimate the score needed on remaining coursework to reach a target grade."}, {"@type": "BreadcrumbList", "@id": "/grade-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Education", "item": "/education/"}, {"@type": "ListItem", "position": 3, "name": "Grades & GPA", "item": "/education/grades-gpa/"}, {"@type": "ListItem", "position": 4, "name": "Grade Calculator", "item": "/grade-calculator/"}]}, {"@type": "FAQPage", "@id": "/grade-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "How do weighted grades work?", "acceptedAnswer": {"@type": "Answer", "text": "Each score contributes in proportion to its weight. A 40%-weight exam affects the final grade more than a 10%-weight quiz."}}, {"@type": "Question", "name": "What if my weights do not add to 100%?", "acceptedAnswer": {"@type": "Answer", "text": "The current-grade result normalizes the weights you entered. Final-grade planning assumes the remaining course weight you specify completes the course structure."}}, {"@type": "Question", "name": "Are letter-grade cutoffs universal?", "acceptedAnswer": {"@type": "Answer", "text": "No. Schools and instructors may use different boundaries, so always check the official syllabus or grading policy."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/><link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body class="grade-calculator" data-cp-category="education" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../education/index.html">Education</a></li><li><a aria-current="page" href="index.html">Grade Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../education/index.html">Browse Education</a><a href="../calculators/index.html">All calculators</a></div><header>
-<div class="wrap">
+        body {
+            --bg: #17122a;
+            --panel: rgba(48, 36, 81, .72);
+            --panel2: rgba(92, 63, 127, .3);
+            --a: #a6e3ff;
+            --b: #ff9aa8;
+            --c: #ffd76b;
+            background: radial-gradient(circle at 14% 12%, #4da9ff26, transparent 28%), radial-gradient(circle at 82% 28%, #ff557b24, transparent 25%), #17122a
+        }
 
-</div>
-</header>
-<div class="cp-page-layout"><main id="main"><h1 class="page-title">Grade Calculator</h1>
-<section class="calc-shell" id="calculator">
-<div class="wrap calculator">
-<div class="card form-card">
-<h2 class="section-title">Weighted course grade</h2><p class="subtle">Enter scores as percentages and each item's course weight.</p>
-<div id="gradeRows"></div>
-<div class="actions"><button class="btn btn-secondary" id="addRow">+ Add row</button></div>
-<hr style="border:0;border-top:1px solid var(--line);margin:22px 0"/>
-<div class="grid">
-<div class="field"><label for="target">Target final grade (%)</label><input id="target" step="any" type="number" value="90"/></div>
-<div class="field"><label for="remainWeight">Remaining course weight (%)</label><input id="remainWeight" max="100" min="0" step="any" type="number" value="20"/></div>
-</div>
-<div class="actions"><button class="btn btn-primary" id="gGo">Calculate grade</button><button class="btn btn-secondary" id="gClear">Clear</button></div><div class="error" id="gErr"></div>
-</div>
-<aside aria-live="polite" class="card result-card">
-<span class="badge">Current weighted grade</span><div class="result-big" id="gBig">—</div><p class="subtle" id="gText">Add assignments and weights.</p>
-<div class="metric-row"><div class="metric"><span>Weight entered</span><b id="gWeight">—</b></div><div class="metric"><span>Needed on remaining work</span><b id="gNeed">—</b></div></div>
-<div class="table-wrap"><table><thead><tr><th>Letter</th><th>Typical %</th></tr></thead><tbody><tr><td>A</td><td>93–96</td></tr><tr><td>B</td><td>83–86</td></tr><tr><td>C</td><td>73–76</td></tr><tr><td>D</td><td>63–66</td></tr><tr><td>F</td><td>0–59</td></tr></tbody></table></div>
-</aside>
-</div>
-</section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<section class="content" id="guide">
-<div class="wrap content-grid">
-<article class="article">
-<h2>What Is a Grade Calculator?</h2>
-<p>A grade calculator combines assignment or exam scores according to their weights. It is useful when a course grade is based on categories or assessments that contribute different percentages to the final mark.</p>
-<h2>Weighted Grade Formula</h2>
-<p><code>Weighted grade = Σ(score × weight) ÷ Σ(weights)</code>. For final-grade planning, the calculator compares the grade points already earned with the course weight still remaining.</p>
-<h2>Letter Grades</h2>
-<p>Letter-grade cutoffs vary by school, instructor, and country. The reference table on this page shows one common U.S. mapping similar to the example used by Calculator.net, but your syllabus should take priority.</p>
-<h2>Limitations</h2>
-<p>Extra credit, dropped assignments, category caps, curved grading, pass/fail rules, and institution-specific GPA policies can change the final result.</p>
-<h2 id="faq">Frequently Asked Questions</h2>
-<div class="faq"><details><summary>How do weighted grades work?</summary><p>Each score contributes in proportion to its weight. A 40%-weight exam affects the final grade more than a 10%-weight quiz.</p></details><details><summary>What if my weights do not add to 100%?</summary><p>The current-grade result normalizes the weights you entered. Final-grade planning assumes the remaining course weight you specify completes the course structure.</p></details><details><summary>Are letter-grade cutoffs universal?</summary><p>No. Schools and instructors may use different boundaries, so always check the official syllabus or grading policy.</p></details></div>
-<h2>Sources and Methodology</h2>
-<p>The calculator logic and explanatory content were cross-checked against the following references. Estimates are separated from official data where applicable.</p>
-<ul class="source-list"><li><a href="https://www.calculator.net/grade-calculator.html" rel="noopener noreferrer">Calculator.net Grade Calculator</a></li></ul>
-</article>
-<aside class="card aside">
-<h3>On this page</h3>
-<a href="#calculator">Calculator</a>
-<a href="#guide">How it works</a>
-<a href="#faq">FAQs</a>
-<p class="small">Educational calculator. For regulated financial, tax, medical, engineering, or network changes, verify the result against the relevant professional or official source.</p>
-</aside>
-</div>
-</section>
+        .grade-calculator .hero {
+            grid-template-columns: .9fr 1.1fr
+        }
 
-<script class="cp-calculator-data" type="application/json">{"index":"44","Batch":"5","Calculator / Page":"Grade Calculator","Slug":"grade-calculator","Site Category (Current)":"Education","Recommended Content Domain":"Education","Page Type":"Calculator","Search Intent / Purpose":"Calculate a weighted course grade, add assignment rows, and estimate the score needed on remaining coursework to reach a target grade.","Formula / Algorithm Used in Tool":"Weighted Grade Formula: Weighted grade = Σ(score × weight) ÷ Σ(weights) . For final-grade planning, the calculator compares the grade points already earned with the course weight still remaining.","Required User Inputs":"Target final grade (%); Remaining course weight (%)","Primary Outputs":"Weight entered; Needed on remaining work","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Target final grade (%), Remaining course weight (%). Explain outputs: Weight entered, Needed on remaining work. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"Extra credit, dropped assignments, category caps, curved grading, pass/fail rules, and institution-specific GPA policies can change the final result.","Current Source URLs in Page":"https://www.calculator.net/grade-calculator.html","Implementation Path":"/grade-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Education</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../gpa-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>GPA Calculator</strong><small>Calculate a credit-weighted GPA on a standard 4.0 scale and optionally combine it w…</small></span></a><a class="cp-related-link" href="../college-cost-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>College Cost Calculator</strong><small>Project college cost across multiple years using annual cost, cost inflation, grant…</small></span></a><a class="cp-related-link" href="../student-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Student Loan Calculator</strong><small>Estimate student-loan monthly payment, in-school interest accrual, capitalization,…</small></span></a></div><a class="cp-side-category" href="../education/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-let rows=document.getElementById('gradeRows');
-function add(name="",score="",weight=""){let d=document.createElement('div');d.className="grid3";d.style.marginBottom="11px";d.innerHTML=`<div class="field"><label>Item</label><input class="gn" value="${name}" placeholder="Exam 1"></div><div class="field"><label>Score %</label><input class="gs" type="number" step="any" value="${score}"></div><div class="field"><label>Weight %</label><input class="gw" type="number" step="any" value="${weight}"></div>`;rows.appendChild(d)}
-[["Homework",92,20],["Midterm",84,30],["Project",95,30]].forEach(x=>add(...x));add("Final","",20);
-addRow.onclick=()=>add();
-function letter(x){if(x>=97)return"A+";if(x>=93)return"A";if(x>=90)return"A-";if(x>=87)return"B+";if(x>=83)return"B";if(x>=80)return"B-";if(x>=77)return"C+";if(x>=73)return"C";if(x>=70)return"C-";if(x>=67)return"D+";if(x>=63)return"D";if(x>=60)return"D-";return"F"}
-gGo.onclick=()=>{gErr.classList.remove('show');let ss=[...document.querySelectorAll('.gs')],ww=[...document.querySelectorAll('.gw')],sum=0,w=0;for(let i=0;i<ss.length;i++){let s=parseFloat(ss[i].value),x=parseFloat(ww[i].value);if(isFinite(s)&&isFinite(x)&&x>=0){sum+=s*x;w+=x}}if(w<=0){gErr.textContent="Enter at least one valid score and weight.";gErr.classList.add('show');return}let current=sum/w;gBig.textContent=current.toFixed(2)+"% · "+letter(current);gWeight.textContent=w.toFixed(2)+"%";let t=+target.value,r=+remainWeight.value;if(r>0){let completed=100-r, earned=current*completed/100, need=(t-earned)/(r/100);gNeed.textContent=need.toFixed(2)+"%";gText.textContent=need>100?"Your target is not reachable with the remaining weight alone.":need<0?"Your target is already secured under these assumptions.":"Required average on the remaining course weight."}else{gNeed.textContent="—";gText.textContent="No remaining weight entered."}};
-gClear.onclick=()=>{rows.innerHTML="";add();gBig.textContent="—";gWeight.textContent="—";gNeed.textContent="—";};
+        .notebook {
+            position: absolute;
+            right: 9%;
+            top: 18px;
+            width: 315px;
+            height: 300px;
+            background: #fff7dc;
+            border-radius: 18px;
+            transform: rotate(5deg) rotateY(-8deg);
+            box-shadow: 25px 35px 60px #0007;
+            color: #3f3353;
+            padding: 34px
+        }
+
+        .notebook:before {
+            content: "";
+            position: absolute;
+            left: 48px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #ef929c
+        }
+
+        .notebook i {
+            display: block;
+            height: 2px;
+            background: #8db6d6;
+            margin: 26px 0
+        }
+
+        .gradebubble {
+            position: absolute;
+            left: 1%;
+            bottom: 38px;
+            width: 110px;
+            height: 110px;
+            border-radius: 32px;
+            background: linear-gradient(145deg, #ffcf70, #ff7a8e);
+            display: grid;
+            place-items: center;
+            font-size: 2.7rem;
+            font-weight: 950;
+            color: #49223a;
+            transform: rotate(-11deg);
+            box-shadow: 0 25px 45px #0006
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/grade-calculator/#webapplication",
+      "name": "Grade Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/grade-calculator/",
+      "description": "Calculate a weighted course grade and estimate the score needed on remaining coursework to reach your target final grade using assignment weights.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/grade-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Grade Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/grade-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/grade-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is a weighted course grade calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Each score is multiplied by its weight. The weighted values are added together and divided by the total weight entered."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do my entered weights have to equal 100%?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not necessarily for calculating the weighted average of the coursework already entered. The formula divides by the total weight included. However, final-grade planning requires the remaining course weight to correctly represent the portion of the complete course that is still unfinished."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does Weight Entered mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is the combined weight of the coursework currently included in the calculation. Three items weighted 30%, 20%, and 20% represent 70% of the course."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the calculator determine what I need on my remaining work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It calculates how many weighted grade points are still required to reach your target and divides that amount by the remaining course weight."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if the required grade is higher than 100%?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Under the simple weighted model, a result above 100% means the selected target cannot be reached through normal full-credit scores on the remaining coursework alone. Extra credit or special course policies could change the actual outcome."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the calculator include dropped assignments or extra credit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The standard weighted calculation does not automatically account for special rules such as dropped scores, extra credit, grade curves, or category caps. Those rules can change the final course grade."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a weighted course grade the same as GPA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A weighted course grade calculates performance within a course based on assignment weights. GPA usually combines grade-point values across multiple courses, often using course credits as weights."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script><script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body class="grade-calculator" data-cp-category="education" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../education/index.html">Education</a></li>
+            <li><a aria-current="page" href="index.html">Grade Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../education/index.html">Browse Education</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <header>
+        <div class="wrap">
+
+        </div>
+    </header>
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Grade Calculator</h1>
+            <section class="calc-shell" id="calculator">
+                <div class="wrap calculator">
+                    <div class="card form-card">
+                        <h2 class="section-title">Weighted course grade</h2>
+                        <p class="subtle">Enter scores as percentages and each item's course weight.</p>
+                        <div id="gradeRows"></div>
+                        <div class="actions"><button class="btn btn-secondary" id="addRow">+ Add row</button></div>
+                        <hr style="border:0;border-top:1px solid var(--line);margin:22px 0" />
+                        <div class="grid">
+                            <div class="field"><label for="target">Target final grade (%)</label><input id="target"
+                                    step="any" type="number" value="90" /></div>
+                            <div class="field"><label for="remainWeight">Remaining course weight (%)</label><input
+                                    id="remainWeight" max="100" min="0" step="any" type="number" value="20" /></div>
+                        </div>
+                        <div class="actions"><button class="btn btn-primary" id="gGo">Calculate grade</button><button
+                                class="btn btn-secondary" id="gClear">Clear</button></div>
+                        <div class="error" id="gErr"></div>
+                    </div>
+                    <aside aria-live="polite" class="card result-card">
+                        <span class="badge">Current weighted grade</span>
+                        <div class="result-big" id="gBig">—</div>
+                        <p class="subtle" id="gText">Add assignments and weights.</p>
+                        <div class="metric-row">
+                            <div class="metric"><span>Weight entered</span><b id="gWeight">—</b></div>
+                            <div class="metric"><span>Needed on remaining work</span><b id="gNeed">—</b></div>
+                        </div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Letter</th>
+                                        <th>Typical %</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>A</td>
+                                        <td>93–96</td>
+                                    </tr>
+                                    <tr>
+                                        <td>B</td>
+                                        <td>83–86</td>
+                                    </tr>
+                                    <tr>
+                                        <td>C</td>
+                                        <td>73–76</td>
+                                    </tr>
+                                    <tr>
+                                        <td>D</td>
+                                        <td>63–66</td>
+                                    </tr>
+                                    <tr>
+                                        <td>F</td>
+                                        <td>0–59</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="content" id="guide">
+                <div class="wrap content-grid">
+                    
+
+                    
+                    <article class="article">
+    <p>Use this Grade Calculator to calculate a weighted course grade from scored coursework and estimate the score needed on the remaining course weight to reach a target final grade. It uses each score together with its assigned weight to calculate the result.</p>
+
+  <section id="what">
+    <h2>What Is the Grade Calculator?</h2>
+    <p>The Grade Calculator helps you understand your current weighted performance and plan for remaining coursework. It is useful when assignments, quizzes, projects, or exams contribute different percentages toward the final course grade.</p>
+    <p>You can also enter a target final grade and the percentage of the course still remaining to estimate the average score required on that remaining work.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Grade Calculator</h2>
+    <p>Add the coursework rows used in your calculation, including the score and weight for each graded item.</p>
+    <p>Then use these planning inputs:</p>
+    <ul>
+      <li><strong>Target final grade (%):</strong> Enter the overall course percentage you want to finish with.</li>
+      <li><strong>Remaining course weight (%):</strong> Enter the percentage of the final course grade that has not yet been completed.</li>
+    </ul>
+    <p>Make sure the weights match the grading structure in your course syllabus.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+    <p>The calculator uses the weighted-average formula:</p>
+
+    <div class="formula">G=∑(si×wi)∑wiG=\frac{\sum(s_i\times w_i)}{\sum w_i}</div>
+
+    <p>Where:</p>
+    <ul>
+      <li><strong>G</strong> = weighted grade</li>
+      <li><strong>sᵢ</strong> = score for an individual graded item, in percent</li>
+      <li><strong>wᵢ</strong> = weight assigned to that item</li>
+      <li><strong>Σ</strong> = sum of all included values</li>
+    </ul>
+
+    <p>A weighted grade gives higher-weight coursework a greater effect on the result than lower-weight coursework. University grading guidance uses the same general approach of multiplying grades by their respective weights and combining the weighted values.</p>
+
+    <h3>Calculation Sequence</h3>
+    <ol>
+      <li>Multiply each entered score by its corresponding weight.</li>
+      <li>Add all weighted score values.</li>
+      <li>Add all weights entered.</li>
+      <li>Divide the total weighted score by the total weight entered.</li>
+      <li>For final-grade planning, compare the grade points already earned with the remaining course weight.</li>
+      <li>Solve for the score required on the remaining work to reach the target final grade.</li>
+    </ol>
+
+    <h3>Weight Entered</h3>
+    <p>The total weight entered is:</p>
+
+    <div class="formula">W=∑wiW=\sum w_i</div>
+
+    <p>For example, if the entered coursework has weights of 30%, 20%, and 20%, the total weight entered is:</p>
+
+    <div class="formula">30+20+20=70%30+20+20=70\\%</div>
+
+    <h3>Needed Score on Remaining Work</h3>
+    <p>When course weights total 100%, the required score on the remaining coursework can be found by rearranging the weighted-grade relationship:</p>
+
+    <div class="formula">N=100T−ERN=\frac{100T-E}{R}</div>
+
+    <p>Where:</p>
+    <ul>
+      <li><strong>N</strong> = percentage needed on remaining work</li>
+      <li><strong>T</strong> = target final grade percentage</li>
+      <li><strong>E</strong> = sum of score × weight for completed coursework</li>
+      <li><strong>R</strong> = remaining course weight in percentage points</li>
+    </ul>
+
+    <p>This calculation assumes the remaining weight correctly represents the part of the course that has not yet been completed.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose a student has these completed grades:</p>
+    <ul>
+      <li>Exam: 90% with a 30% course weight</li>
+      <li>Project: 82% with a 20% course weight</li>
+      <li>Quizzes: 92% with a 20% course weight</li>
+      <li>Target final grade: 85%</li>
+      <li>Remaining course weight: 30%</li>
+    </ul>
+
+    <h3>Step 1: Calculate Weighted Grade Points</h3>
+
+    <div class="formula">90×30=270090\times30=2700 82×20=164082\times20=1640 92×20=184092\times20=1840</div>
+
+    <p>Total:</p>
+
+    <div class="formula">2700+1640+1840=61802700+1640+1840=6180</div>
+
+    <h3>Step 2: Calculate the Current Weighted Grade</h3>
+
+    <p>Total weight entered:</p>
+
+    <div class="formula">30+20+20=7030+20+20=70</div>
+
+    <p>Current weighted grade:</p>
+
+    <div class="formula">618070=88.2857%\frac{6180}{70}=88.2857\\%</div>
+
+    <p>So the weighted grade for the entered coursework is approximately <strong>88.29%</strong>.</p>
+
+    <h3>Step 3: Calculate the Score Needed on Remaining Work</h3>
+
+    <p>The student wants an 85% final grade with 30% of the course remaining:</p>
+
+    <div class="formula">N=(100×85)−618030N=\frac{(100\times85)-6180}{30} N=8500−618030N=\frac{8500-6180}{30} N=232030=77.3333%N=\frac{2320}{30}=77.3333\\%</div>
+
+    <h3>Final Result</h3>
+
+    <p>The student needs an average of approximately <strong>77.33% on the remaining 30% of the course</strong> to finish with an 85% overall grade.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Weighted Course Grade</h3>
+    <p>This percentage represents the weighted average of the coursework currently included in the calculator. Higher-weight items affect this result more strongly.</p>
+
+    <h3>Weight Entered</h3>
+    <p>Weight entered shows how much course weight is represented by the coursework included in the calculation. If it shows 70%, the entered coursework represents 70% of the course weighting.</p>
+
+    <h3>Needed on Remaining Work</h3>
+    <p>This result estimates the average percentage required across the remaining course weight to reach your selected target final grade.</p>
+
+    <p>A result above 100% means the target would require more than full marks on the remaining work under the basic weighted-grade model. A result below 0% means the entered grades already mathematically provide enough weighted points to reach the selected target even with no additional points from the remaining weight.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The calculation assumes that the scores and weights you enter match the grading structure used by your course.</p>
+
+    <p>Actual final grades may differ when an instructor or institution uses:</p>
+
+    <ul>
+      <li>Extra credit</li>
+      <li>Dropped assignments</li>
+      <li>Category caps</li>
+      <li>Curved grades</li>
+      <li>Special rounding rules</li>
+      <li>Pass/fail requirements</li>
+      <li>Different grading or GPA policies</li>
+    </ul>
+
+    <p>The weighted-grade calculation does not automatically determine institution-specific grading policies. Check your course syllabus or official gradebook when those rules apply.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>How is a weighted course grade calculated?</summary>
+      <p>Each score is multiplied by its weight. The weighted values are added together and divided by the total weight entered.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Do my entered weights have to equal 100%?</summary>
+      <p>Not necessarily for calculating the weighted average of the coursework already entered. The formula divides by the total weight included. However, final-grade planning requires the remaining course weight to correctly represent the portion of the complete course that is still unfinished.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What does Weight Entered mean?</summary>
+      <p>It is the combined weight of the coursework currently included in the calculation. Three items weighted 30%, 20%, and 20% represent 70% of the course.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How does the calculator determine what I need on my remaining work?</summary>
+      <p>It calculates how many weighted grade points are still required to reach your target and divides that amount by the remaining course weight.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What if the required grade is higher than 100%?</summary>
+      <p>Under the simple weighted model, a result above 100% means the selected target cannot be reached through normal full-credit scores on the remaining coursework alone. Extra credit or special course policies could change the actual outcome.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does the calculator include dropped assignments or extra credit?</summary>
+      <p>The standard weighted calculation does not automatically account for special rules such as dropped scores, extra credit, grade curves, or category caps. Those rules can change the final course grade.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is a weighted course grade the same as GPA?</summary>
+      <p>No. A weighted course grade calculates performance within a course based on assignment weights. GPA usually combines grade-point values across multiple courses, often using course credits as weights.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://wikis.mit.edu/confluence/display/LMODHelp/Grading%2Band%2BWeighting?utm_source=chatgpt.com" rel="noopener" target="_blank">MIT Learning Modules Help — Grading and Weighting</a>
+        <p>Explains weighted grade calculations using individual grades and assigned weights.</p>
+      </li>
+
+      <li>
+        <a href="https://www.colorado.edu/center/teaching-learning/teaching-resources/assessment/assessing-student-learning/introduction-alternative-grading?utm_source=chatgpt.com" rel="noopener" target="_blank">University of Colorado Boulder — Introduction to Alternative Grading</a>
+        <p>Provides an academic example of calculating a final percentage using weighted assignment groups.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/gpa-calculator/?utm_source=chatgpt.com">GPA Calculator</a></li>
+      <li><a href="https://example.com/percent-calculator/?utm_source=chatgpt.com">Percent Calculator</a></li>
+      <li><a href="https://example.com/average-calculator/?utm_source=chatgpt.com">Average Calculator</a></li>
+      <li><a href="https://example.com/college-cost-calculator/?utm_source=chatgpt.com">College Cost Calculator</a></li>
+      <li><a href="https://example.com/student-loan-calculator/?utm_source=chatgpt.com">Student Loan Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+                </div>
+            </section>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"44","Batch":"5","Calculator / Page":"Grade Calculator","Slug":"grade-calculator","Site Category (Current)":"Education","Recommended Content Domain":"Education","Page Type":"Calculator","Search Intent / Purpose":"Calculate a weighted course grade, add assignment rows, and estimate the score needed on remaining coursework to reach a target grade.","Formula / Algorithm Used in Tool":"Weighted Grade Formula: Weighted grade = Σ(score × weight) ÷ Σ(weights) . For final-grade planning, the calculator compares the grade points already earned with the course weight still remaining.","Required User Inputs":"Target final grade (%); Remaining course weight (%)","Primary Outputs":"Weight entered; Needed on remaining work","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Target final grade (%), Remaining course weight (%). Explain outputs: Weight entered, Needed on remaining work. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"Extra credit, dropped assignments, category caps, curved grading, pass/fail rules, and institution-specific GPA policies can change the final result.","Current Source URLs in Page":"https://www.calculator.net/grade-calculator.html","Implementation Path":"/grade-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Education</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../gpa-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>GPA Calculator</strong><small>Calculate a
+                            credit-weighted GPA on a standard 4.0 scale and optionally combine it
+                            w…</small></span></a><a class="cp-related-link"
+                    href="../college-cost-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>College Cost Calculator</strong><small>Project
+                            college cost across multiple years using annual cost, cost inflation,
+                            grant…</small></span></a><a class="cp-related-link"
+                    href="../student-loan-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Student Loan Calculator</strong><small>Estimate
+                            student-loan monthly payment, in-school interest accrual,
+                            capitalization,…</small></span></a></div><a class="cp-side-category"
+                href="../education/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        let rows = document.getElementById('gradeRows');
+        function add(name = "", score = "", weight = "") { let d = document.createElement('div'); d.className = "grid3"; d.style.marginBottom = "11px"; d.innerHTML = `<div class="field"><label>Item</label><input class="gn" value="${name}" placeholder="Exam 1"></div><div class="field"><label>Score %</label><input class="gs" type="number" step="any" value="${score}"></div><div class="field"><label>Weight %</label><input class="gw" type="number" step="any" value="${weight}"></div>`; rows.appendChild(d) }
+        [["Homework", 92, 20], ["Midterm", 84, 30], ["Project", 95, 30]].forEach(x => add(...x)); add("Final", "", 20);
+        addRow.onclick = () => add();
+        function letter(x) { if (x >= 97) return "A+"; if (x >= 93) return "A"; if (x >= 90) return "A-"; if (x >= 87) return "B+"; if (x >= 83) return "B"; if (x >= 80) return "B-"; if (x >= 77) return "C+"; if (x >= 73) return "C"; if (x >= 70) return "C-"; if (x >= 67) return "D+"; if (x >= 63) return "D"; if (x >= 60) return "D-"; return "F" }
+        gGo.onclick = () => { gErr.classList.remove('show'); let ss = [...document.querySelectorAll('.gs')], ww = [...document.querySelectorAll('.gw')], sum = 0, w = 0; for (let i = 0; i < ss.length; i++) { let s = parseFloat(ss[i].value), x = parseFloat(ww[i].value); if (isFinite(s) && isFinite(x) && x >= 0) { sum += s * x; w += x } } if (w <= 0) { gErr.textContent = "Enter at least one valid score and weight."; gErr.classList.add('show'); return } let current = sum / w; gBig.textContent = current.toFixed(2) + "% · " + letter(current); gWeight.textContent = w.toFixed(2) + "%"; let t = +target.value, r = +remainWeight.value; if (r > 0) { let completed = 100 - r, earned = current * completed / 100, need = (t - earned) / (r / 100); gNeed.textContent = need.toFixed(2) + "%"; gText.textContent = need > 100 ? "Your target is not reachable with the remaining weight alone." : need < 0 ? "Your target is already secured under these assumptions." : "Required average on the remaining course weight." } else { gNeed.textContent = "—"; gText.textContent = "No remaining weight entered." } };
+        gClear.onclick = () => { rows.innerHTML = ""; add(); gBig.textContent = "—"; gWeight.textContent = "—"; gNeed.textContent = "—"; };
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
 </html>

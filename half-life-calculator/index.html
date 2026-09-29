@@ -1,48 +1,1001 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<title>Half-Life Calculator | CalcPro</title>
-<meta content="Calculate exponential half-life decay, remaining amount, decayed amount, elapsed half-lives, and decay constant." name="description"/>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="index,follow" name="robots"/>
-<link href="../half-life-calculator/" rel="canonical"/>
-<meta content="website" property="og:type"/>
-<meta content="Half-Life Calculator" property="og:title"/>
-<meta content="Calculate exponential half-life decay, remaining amount, decayed amount, elapsed half-lives, and decay constant." property="og:description"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}
-a{color:inherit}button,input,select{font:inherit}button{cursor:pointer}.wrap{width:min(1160px,92vw);margin:auto}.crumbs{font-size:.88rem;opacity:.78;margin-bottom:18px}h1,h2,h3{line-height:1.15;margin:0 0 14px}h1{font-size:clamp(2.3rem,5vw,4.9rem);letter-spacing:-.045em}h2{font-size:clamp(1.6rem,3vw,2.25rem);letter-spacing:-.025em}h3{font-size:1.1rem}p{margin:0 0 14px}.muted{opacity:.74}label{font-weight:750;font-size:.92rem;display:block;margin-bottom:7px}input,select{width:100%;padding:13px 14px;border-radius:14px;border:1px solid var(--line);background:var(--field);color:var(--ink);outline:none}input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.btn{border:0;border-radius:14px;padding:13px 18px;font-weight:800;box-shadow:var(--btnshadow)}.primary{background:var(--accent);color:var(--onaccent)}.secondary{background:var(--soft);color:var(--ink);border:1px solid var(--line)}.error{min-height:24px;color:var(--danger);font-weight:700;margin-top:10px}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--formula);border:1px solid var(--line);padding:14px 16px;border-radius:16px;overflow:auto}.result-main{font-size:clamp(1.9rem,4vw,3.2rem);font-weight:900;letter-spacing:-.04em;word-break:break-word}.result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.result-chip{padding:12px 13px;border-radius:14px;background:var(--soft);border:1px solid var(--line)}.result-chip b{display:block;font-size:.8rem;opacity:.65;margin-bottom:2px}.content{padding:72px 0 40px}.article-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}article section{margin-bottom:38px}aside{position:sticky;top:18px}.toc,.sourcebox{border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow);border-radius:24px;padding:20px}.toc a{display:block;text-decoration:none;padding:6px 0;opacity:.78}.toc a:hover{opacity:1}ul,ol{padding-left:22px}table{width:100%;border-collapse:collapse;border-radius:18px;overflow:hidden}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left}th{background:var(--soft)}footer{padding:36px 0 50px;opacity:.7;font-size:.9rem}.sr{position:absolute;left:-9999px}
-@media(max-width:860px){.article-grid{grid-template-columns:1fr}aside{position:static}.result-grid{grid-template-columns:1fr}}
-</style>
-<style>
-:root{--bg:#f8f7ff;--ink:#211c3b;--panel:#fff;--field:#fff;--soft:#f1effa;--formula:#f1effc;--line:#dedaf0;--accent:#6552c9;--onaccent:#fff;--focus:#6552c91c;--danger:#b42318;--shadow:0 30px 80px #28205c1c;--btnshadow:0 12px 28px #6552c928;}
+<meta charset="utf-8" />
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<meta http-equiv="content-language" content="en">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
 
-.hl-hero{padding:54px 0 120px;color:#f9fbff;background:radial-gradient(circle at 70% 25%,#8e79ff55,transparent 22%),linear-gradient(150deg,#111126,#24204b 55%,#392f69);overflow:hidden}.hl-grid{display:grid;grid-template-columns:1.fr;align-items:center}.hl-tag{font-size:.75rem;font-weight:900;letter-spacing:.18em;color:#c7bfff}.decay-sphere{height:270px;position:relative;perspective:800px}.core{position:absolute;left:50%;top:50%;width:115px;height:115px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff,#8c7cff 30%,#403076 70%);box-shadow:0 0 55px #9c8cff88}.ring{position:absolute;left:50%;top:50%;border:2px solid #c7bfff88;border-radius:50%;transform:translate(-50%,-50%) rotateX(65deg)}.r1{width:240px;height:240px}.r2{width:200px;height:200px;transform:translate(-50%,-50%) rotateY(65deg)}.particle{position:absolute;width:17px;height:17px;background:#f4edff;border-radius:50%;box-shadow:0 0 18px #fff}.p1{left:18%;top:38%}.p2{right:15%;top:62%}.p3{left:53%;top:4%}.hl-zone{margin-top:-70px}.hl-card{display:grid;grid-template-columns:1fr;border-radius:34px;box-shadow:var(--shadow);overflow:hidden;border:1px solid var(--line)}.hl-form,.hl-result{padding:30px;background:var(--panel)}.hl-result{background:linear-gradient(160deg,#f3f0ff,#e9f5ff)}.hl-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.gauge{width:150px;height:150px;border-radius:50%;margin:0 auto 20px;position:relative;background:conic-gradient(var(--accent) 25%,#ddd9f2 0);display:grid;place-items:center}.gauge:after{content:"";position:absolute;inset:18px;border-radius:50%;background:#f7f5ff}.gauge span{position:relative;z-index:2;font-size:1.5rem;font-weight:900}@media(max-width:760px){.hl-grid,.hl-card,.hl-fields{grid-template-columns:1fr}}
 
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/half-life-calculator/#app", "name": "Half-Life Calculator", "url": "/half-life-calculator/", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate exponential half-life decay, remaining amount, decayed amount, elapsed half-lives, and decay constant."}, {"@type": "BreadcrumbList", "@id": "/half-life-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Engineering & Science", "item": "/engineering/"}, {"@type": "ListItem", "position": 3, "name": "Physics & Mechanics", "item": "/engineering/physics-mechanics/"}, {"@type": "ListItem", "position": 4, "name": "Half-Life Calculator", "item": "/half-life-calculator/"}]}, {"@type": "FAQPage", "@id": "/half-life-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "What is half-life?", "acceptedAnswer": {"@type": "Answer", "text": "Half-life is the time required for an exponentially decaying quantity to decrease to half its current amount under a constant decay rate."}}, {"@type": "Question", "name": "Does half-life change with the starting amount?", "acceptedAnswer": {"@type": "Answer", "text": "In a simple exponential decay model with a constant decay rate, the half-life does not depend on the starting quantity."}}, {"@type": "Question", "name": "What does the calculator assume?", "acceptedAnswer": {"@type": "Answer", "text": "It assumes ideal exponential decay with a constant half-life and no additional gains, losses, or changing rate."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body data-cp-category="math" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../math/index.html">Math &amp; Statistics</a></li><li><a aria-current="page" href="index.html">Half-Life Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a href="../calculators/index.html">All calculators</a></div><header><div class="hl-hero"><div class="wrap hl-grid"><div><nav class="crumbs">Home / Scientific Math / Half-Life Calculator</nav><span class="hl-tag">EXPONENTIAL DECAY</span><h1>Half-Life Calculator</h1><p>Model how a quantity falls over time when it follows a constant half-life.</p></div><div aria-hidden="true" class="decay-sphere"><div class="core"></div><span class="ring r1"></span><span class="ring r2"></span><span class="particle p1"></span><span class="particle p2"></span><span class="particle p3"></span></div></div></div></header>
-<div class="cp-page-layout"><main id="main"><h1 class="page-title">Half-Life Calculator</h1>
-<section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="hl-zone"><div class="wrap hl-card"><div class="hl-form"><h2>Decay inputs</h2><div class="hl-fields"><div><label for="initial">Initial amount</label><input id="initial" min="0" step="any" type="number" value="100"/></div><div><label for="half">Half-life</label><input id="half" min="0" step="any" type="number" value="10"/></div><div><label for="time">Elapsed time</label><input id="time" min="0" step="any" type="number" value="20"/></div><div><label for="unit">Time unit</label><select id="unit"><option>years</option><option>days</option><option>hours</option><option>minutes</option><option>seconds</option></select></div></div><div class="actions"><button class="btn primary" onclick="calcHalf()">Calculate Remaining</button><button class="btn secondary" onclick="resetHalf()">Reset</button></div><div class="error" id="hlErr"></div></div><div class="hl-result"><div class="gauge"><div id="gaugeFill"></div><span id="hlPct">25%</span></div><div><span class="muted">Remaining amount</span><div class="result-main" id="hlMain">25</div><div class="result-grid"><div class="result-chip"><b>Amount decayed</b><span id="hlLost">75</span></div><div class="result-chip"><b>Half-lives elapsed</b><span id="hlN">2</span></div><div class="result-chip"><b>Decay constant λ</b><span id="hlLambda">0.0693147 / years</span></div><div class="result-chip"><b>Remaining fraction</b><span id="hlFrac">0.25</span></div></div></div></div></div></section>
-<div class="content"><div class="wrap article-grid">
-<article><section id="about"><h2>What Is a Half-Life Calculator?</h2><p>A half-life calculator estimates the amount remaining after a specified time when a quantity follows exponential decay. It applies to mathematical models of radioactive decay and other processes that can reasonably be represented by a constant half-life.</p></section><section id="use"><h2>How to Use the Half-Life Calculator</h2><ol><li>Enter the initial amount.</li><li>Enter the half-life and elapsed time using the same unit.</li><li>Calculate to see the remaining amount, fraction, number of half-lives, and decay constant.</li></ol></section><section id="formula"><h2>Half-Life Formula</h2><div class="formula">N(t) = N₀ × (1/2)^(t / t½)    and    λ = ln(2) / t½</div><p>After each full half-life, the modeled quantity is multiplied by one-half. OpenStax gives the equivalent exponential-decay form and the relationship between the decay constant and half-life.</p></section><section id="example"><h2>Calculation Example</h2><p>Starting with 100 units and a half-life of 10 years, after 20 years exactly two half-lives have elapsed. The model gives 100 × (1/2)² = <strong>25 units</strong>.</p></section><section id="limits"><h2>Limitations</h2><p>This page is a mathematical model. Real systems may involve mixtures of isotopes, biological clearance, changing rates, measurement uncertainty, or other mechanisms not represented by a single constant half-life.</p></section><section id="faq"><h2>Frequently Asked Questions</h2><h3>How much remains after three half-lives?</h3><p>The remaining fraction is (1/2)³ = 1/8, or 12.5% of the initial amount.</p><h3>Can I use days instead of years?</h3><p>Yes. The half-life and elapsed time only need to use the same unit. The selected label is displayed with the decay constant.</p></section><section id="sources"><h2>Sources and Methodology</h2><ul><li><a href="https://openstax.org/books/algebra-and-trigonometry/pages/6-key-equations" rel="noopener" target="_blank">OpenStax Algebra and Trigonometry — Half-Life Formula</a></li></ul><p class="muted">Method: constant-rate exponential decay, using the normalized remaining fraction (1/2)^(t/t½).</p></section></article>
-<aside><div class="toc"><h3>On this page</h3>
-<a href="#about">What it calculates</a><a href="#use">How to use it</a><a href="#formula">Formula</a>
-<a href="#example">Example</a><a href="#limits">Limitations</a><a href="#faq">FAQs</a><a href="#sources">Sources</a>
-</div></aside>
-</div></div>
+<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+<title>Half-Life Calculator – Exponential Decay &amp; Remaining Amount</title>
+<meta name="title" content="Half-Life Calculator – Exponential Decay &amp; Remaining Amount">
+<meta name="description" content="Use the Half-Life Calculator to find remaining amount, decayed amount, elapsed half-lives, and decay constant from an initial amount, half-life, and time.">
 
-<script class="cp-calculator-data" type="application/json">{"index":"133","Batch":"14","Calculator / Page":"Half-Life Calculator","Slug":"half-life-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Calculate exponential half-life decay, remaining amount, decayed amount, elapsed half-lives, and decay constant.","Formula / Algorithm Used in Tool":"Half-Life Formula: N(t) = N₀ × (1/2)^(t / t½) and λ = ln(2) / t½ After each full half-life, the modeled quantity is multiplied by one-half. OpenStax gives the equivalent exponential-decay form and the relationship between the decay constant and half-life.","Required User Inputs":"Initial amount; Half-life; Elapsed time; Time unit","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Initial amount, Half-life, Elapsed time, Time unit. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"This page is a mathematical model. Real systems may involve mixtures of isotopes, biological clearance, changing rates, measurement uncertainty, or other mechanisms not represented by a single constant half-life.","Current Source URLs in Page":"https://openstax.org/books/algebra-and-trigonometry/pages/6-key-equations","Implementation Path":"/half-life-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Math &amp; Statistics</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../log-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Log Calculator</strong><small>Calculate logarithms in any valid real base and compare natural log, common log, an…</small></span></a><a class="cp-related-link" href="../percent-off-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Turn the discount tag into the price you actually pay.</strong><small>Calculate percent off, final sale price, amount saved, effective discount, and a se…</small></span></a><a class="cp-related-link" href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the simplified fraction, m…</small></span></a><a class="cp-related-link" href="../math-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Math Calculator</strong><small>Perform basic arithmetic with addition, subtraction, multiplication, division, pare…</small></span></a><a class="cp-related-link" href="../percent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Percent Calculator</strong><small>Calculate a percentage of a number, find what percent one value is of another, calc…</small></span></a><a class="cp-related-link" href="../scientific-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Scientific Calculator</strong><small>Calculate trigonometric functions, inverse trig, logarithms, roots, powers, factori…</small></span></a><a class="cp-related-link" href="../random-number-generator/index.html"><span class="cp-related-dot">›</span><span><strong>Random Number Generator</strong><small>Generate one or many random integers or decimals between custom limits, with option…</small></span></a><a class="cp-related-link" href="../standard-deviation-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Standard Deviation Calculator</strong><small>Calculate sample or population standard deviation, variance, mean, sum, count, stan…</small></span></a></div><a class="cp-side-category" href="../math/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-const ff=n=>Math.abs(n)>=1e9||(Math.abs(n)>0&&Math.abs(n)<1e-7)?n.toExponential(7):parseFloat(n.toFixed(9)).toString();
-function calcHalf(){const n0=Number(initial.value),h=Number(half.value),t=Number(time.value);hlErr.textContent='';if(!Number.isFinite(n0)||n0<0||!Number.isFinite(h)||h<=0||!Number.isFinite(t)||t<0){hlErr.textContent='Initial amount must be nonnegative; half-life must be positive; time must be nonnegative.';return}const n=t/h,frac=Math.pow(.5,n),rem=n0*frac,loss=n0-rem,lambda=Math.log(2)/h,pct=frac*100;hlMain.textContent=ff(rem);hlLost.textContent=ff(loss);hlN.textContent=ff(n);hlLambda.textContent=ff(lambda)+' / '+unit.value;hlFrac.textContent=ff(frac);hlPct.textContent=ff(pct)+'%';document.querySelector('.gauge').style.background=`conic-gradient(var(--accent) ${Math.min(100,pct)}%, #ddd9f2 0)`}function resetHalf(){initial.value=100;half.value=10;time.value=20;unit.value='years';calcHalf()}calcHalf();
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/half-life-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/half-life-calculator/">
+<meta property="og:title" content="Half-Life Calculator – Exponential Decay &amp; Remaining Amount">
+<meta property="og:description" content="Use the Half-Life Calculator to find remaining amount, decayed amount, elapsed half-lives, and decay constant from an initial amount, half-life, and time.">
+<meta property="og:site_name" content="Half-Life Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/half-life-calculator/">
+<meta name="twitter:title" content="Half-Life Calculator – Exponential Decay &amp; Remaining Amount">
+<meta name="twitter:description" content="Use the Half-Life Calculator to find remaining amount, decayed amount, elapsed half-lives, and decay constant from an initial amount, half-life, and time.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.65
+        }
+
+        a {
+            color: inherit
+        }
+
+        button,
+        input,
+        select {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        .wrap {
+            width: min(1160px, 92vw);
+            margin: auto
+        }
+
+        .crumbs {
+            font-size: .88rem;
+            opacity: .78;
+            margin-bottom: 18px
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.15;
+            margin: 0 0 14px
+        }
+
+        h1 {
+            font-size: clamp(2.3rem, 5vw, 4.9rem);
+            letter-spacing: -.045em
+        }
+
+        h2 {
+            font-size: clamp(1.6rem, 3vw, 2.25rem);
+            letter-spacing: -.025em
+        }
+
+        h3 {
+            font-size: 1.1rem
+        }
+
+        p {
+            margin: 0 0 14px
+        }
+
+        .muted {
+            opacity: .74
+        }
+
+        label {
+            font-weight: 750;
+            font-size: .92rem;
+            display: block;
+            margin-bottom: 7px
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 13px 14px;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            background: var(--field);
+            color: var(--ink);
+            outline: none
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--focus)
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 13px 18px;
+            font-weight: 800;
+            box-shadow: var(--btnshadow)
+        }
+
+        .primary {
+            background: var(--accent);
+            color: var(--onaccent)
+        }
+
+        .secondary {
+            background: var(--soft);
+            color: var(--ink);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            min-height: 24px;
+            color: var(--danger);
+            font-weight: 700;
+            margin-top: 10px
+        }
+
+        .formula {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: var(--formula);
+            border: 1px solid var(--line);
+            padding: 14px 16px;
+            border-radius: 16px;
+            overflow: auto
+        }
+
+        .result-main {
+            font-size: clamp(1.9rem, 4vw, 3.2rem);
+            font-weight: 900;
+            letter-spacing: -.04em;
+            word-break: break-word
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 14px
+        }
+
+        .result-chip {
+            padding: 12px 13px;
+            border-radius: 14px;
+            background: var(--soft);
+            border: 1px solid var(--line)
+        }
+
+        .result-chip b {
+            display: block;
+            font-size: .8rem;
+            opacity: .65;
+            margin-bottom: 2px
+        }
+
+        .content {
+            padding: 72px 0 40px
+        }
+
+        .article-grid {
+            display: grid;
+             gap: 28px;
+            align-items: start
+        }
+
+        article section {
+            margin-bottom: 38px
+        }
+
+        aside {
+            position: sticky;
+            top: 18px
+        }
+
+        .toc,
+        .sourcebox {
+            border: 1px solid var(--line);
+            background: var(--panel);
+            box-shadow: var(--shadow);
+            border-radius: 24px;
+            padding: 20px
+        }
+
+        .toc a {
+            display: block;
+            text-decoration: none;
+            padding: 6px 0;
+            opacity: .78
+        }
+
+        .toc a:hover {
+            opacity: 1
+        }
+
+        ul,
+        ol {
+            padding-left: 22px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 18px;
+            overflow: hidden
+        }
+
+        th,
+        td {
+            padding: 11px;
+            border-bottom: 1px solid var(--line);
+            text-align: left
+        }
+
+        th {
+            background: var(--soft)
+        }
+
+        footer {
+            padding: 36px 0 50px;
+            opacity: .7;
+            font-size: .9rem
+        }
+
+        .sr {
+            position: absolute;
+            left: -9999px
+        }
+
+        @media(max-width:860px) {
+            .article-grid {
+                grid-template-columns: 1fr
+            }
+
+            aside {
+                position: static
+            }
+
+            .result-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+    <style>
+        :root {
+            --bg: #f8f7ff;
+            --ink: #211c3b;
+            --panel: #fff;
+            --field: #fff;
+            --soft: #f1effa;
+            --formula: #f1effc;
+            --line: #dedaf0;
+            --accent: #6552c9;
+            --onaccent: #fff;
+            --focus: #6552c91c;
+            --danger: #b42318;
+            --shadow: 0 30px 80px #28205c1c;
+            --btnshadow: 0 12px 28px #6552c928;
+        }
+
+        .hl-hero {
+            padding: 54px 0 120px;
+            color: #f9fbff;
+            background: radial-gradient(circle at 70% 25%, #8e79ff55, transparent 22%), linear-gradient(150deg, #111126, #24204b 55%, #392f69);
+            overflow: hidden
+        }
+
+        .hl-grid {
+            display: grid;
+            grid-template-columns: 1.fr;
+            align-items: center
+        }
+
+        .hl-tag {
+            font-size: .75rem;
+            font-weight: 900;
+            letter-spacing: .18em;
+            color: #c7bfff
+        }
+
+        .decay-sphere {
+            height: 270px;
+            position: relative;
+            perspective: 800px
+        }
+
+        .core {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 115px;
+            height: 115px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 25%, #fff, #8c7cff 30%, #403076 70%);
+            box-shadow: 0 0 55px #9c8cff88
+        }
+
+        .ring {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            border: 2px solid #c7bfff88;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) rotateX(65deg)
+        }
+
+        .r1 {
+            width: 240px;
+            height: 240px
+        }
+
+        .r2 {
+            width: 200px;
+            height: 200px;
+            transform: translate(-50%, -50%) rotateY(65deg)
+        }
+
+        .particle {
+            position: absolute;
+            width: 17px;
+            height: 17px;
+            background: #f4edff;
+            border-radius: 50%;
+            box-shadow: 0 0 18px #fff
+        }
+
+        .p1 {
+            left: 18%;
+            top: 38%
+        }
+
+        .p2 {
+            right: 15%;
+            top: 62%
+        }
+
+        .p3 {
+            left: 53%;
+            top: 4%
+        }
+
+        .hl-zone {
+            margin-top: -70px
+        }
+
+        .hl-card {
+            display: grid;
+            grid-template-columns: 1fr;
+            border-radius: 34px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border: 1px solid var(--line)
+        }
+
+        .hl-form,
+        .hl-result {
+            padding: 30px;
+            background: var(--panel)
+        }
+
+        .hl-result {
+            background: linear-gradient(160deg, #f3f0ff, #e9f5ff)
+        }
+
+        .hl-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px
+        }
+
+        .gauge {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            position: relative;
+            background: conic-gradient(var(--accent) 25%, #ddd9f2 0);
+            display: grid;
+            place-items: center
+        }
+
+        .gauge:after {
+            content: "";
+            position: absolute;
+            inset: 18px;
+            border-radius: 50%;
+            background: #f7f5ff
+        }
+
+        .gauge span {
+            position: relative;
+            z-index: 2;
+            font-size: 1.5rem;
+            font-weight: 900
+        }
+
+        @media(max-width:760px) {
+
+            .hl-grid,
+            .hl-card,
+            .hl-fields {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/half-life-calculator/#webapplication",
+      "name": "Half-Life Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/half-life-calculator/",
+      "description": "Use the Half-Life Calculator to find remaining amount, decayed amount, elapsed half-lives, and decay constant from an initial amount, half-life, and time.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/half-life-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Half-Life Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/half-life-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/half-life-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does half-life mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Half-life is the amount of time required for an exponentially decaying quantity to decrease to half its current amount."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much remains after one half-life?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "After one complete half-life, 50% of the initial modeled quantity remains. After two half-lives, 25% remains, and after three, 12.5% remains."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the initial amount affect the half-life?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. In a constant exponential decay model, the half-life is determined by the decay rate rather than the starting quantity. Changing the initial amount changes the remaining amount but not the half-life."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can the elapsed time be less than one half-life?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The exponential formula supports fractional numbers of half-lives, so the elapsed time does not need to be an exact multiple of the half-life."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the relationship between half-life and decay constant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They are related by: λ = ln(2) / t₁/₂. A longer half-life produces a smaller decay constant, while a shorter half-life produces a larger one."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do the time units matter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The elapsed time and half-life must use consistent units. If half-life is expressed in hours, the elapsed time should also be represented in hours before applying the formula."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can this calculator model any type of decay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is appropriate when a process can reasonably be represented by a single constant exponential half-life. Processes with changing rates, multiple components, or more complex mechanisms may require a different model."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
 </script>
-<script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="math" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../math/index.html">Math &amp; Statistics</a></li>
+            <li><a aria-current="page" href="index.html">Half-Life Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a
+            href="../calculators/index.html">All calculators</a></div>
+     
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Half-Life Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="hl-zone">
+                <div class="wrap hl-card">
+                    <div class="hl-form">
+                        <h2>Decay inputs</h2>
+                        <div class="hl-fields">
+                            <div><label for="initial">Initial amount</label><input id="initial" min="0" step="any"
+                                    type="number" value="100" /></div>
+                            <div><label for="half">Half-life</label><input id="half" min="0" step="any" type="number"
+                                    value="10" /></div>
+                            <div><label for="time">Elapsed time</label><input id="time" min="0" step="any" type="number"
+                                    value="20" /></div>
+                            <div><label for="unit">Time unit</label><select id="unit">
+                                    <option>years</option>
+                                    <option>days</option>
+                                    <option>hours</option>
+                                    <option>minutes</option>
+                                    <option>seconds</option>
+                                </select></div>
+                        </div>
+                        <div class="actions"><button class="btn primary" onclick="calcHalf()">Calculate
+                                Remaining</button><button class="btn secondary" onclick="resetHalf()">Reset</button>
+                        </div>
+                        <div class="error" id="hlErr"></div>
+                    </div>
+                    <div class="hl-result">
+                        <div class="gauge">
+                            <div id="gaugeFill"></div><span id="hlPct">25%</span>
+                        </div>
+                        <div><span class="muted">Remaining amount</span>
+                            <div class="result-main" id="hlMain">25</div>
+                            <div class="result-grid">
+                                <div class="result-chip"><b>Amount decayed</b><span id="hlLost">75</span></div>
+                                <div class="result-chip"><b>Half-lives elapsed</b><span id="hlN">2</span></div>
+                                <div class="result-chip"><b>Decay constant λ</b><span id="hlLambda">0.0693147 /
+                                        years</span></div>
+                                <div class="result-chip"><b>Remaining fraction</b><span id="hlFrac">0.25</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="content">
+                <div class="wrap article-grid">
+                  
+
+<article class="article">
+
+ 
+
+  <p>The Half-Life Calculator estimates how much of an exponentially decaying quantity remains after a given time. Enter the initial amount, half-life, elapsed time, and time unit to calculate the remaining amount and supporting decay values.</p>
+
+  <section id="what">
+    <h2>What Is the Half-Life Calculator?</h2>
+
+    <p>The Half-Life Calculator models a quantity that decreases by half during each half-life.</p>
+
+    <p>It can be used for mathematical decay problems involving radioactive materials or other processes that follow a constant exponential half-life model. The calculation can show the remaining amount, amount that has decayed, number of elapsed half-lives, and decay constant.</p>
+
+    <p>In an exponential decay model, one half remains after one half-life, one quarter after two half-lives, one eighth after three half-lives, and so on.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Half-Life Calculator</h2>
+
+    <p>Enter the following values:</p>
+
+    <ol>
+      <li><strong>Initial Amount:</strong> Enter the quantity present at the beginning of the calculation. The result uses the same amount unit.</li>
+      <li><strong>Half-Life:</strong> Enter the time required for the modeled quantity to decrease to half its current amount.</li>
+      <li><strong>Elapsed Time:</strong> Enter how much time has passed since the initial amount was measured.</li>
+      <li><strong>Time Unit:</strong> Select the applicable time unit. The half-life and elapsed time must be expressed consistently for the calculation.</li>
+    </ol>
+
+    <p>The calculator then applies the exponential half-life formula to determine the remaining quantity and supporting values.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+
+    <p>The calculator uses:</p>
+
+    <div class="formula">N(t)=N0(12)t/t1/2N(t)=N_0\left(\frac{1}{2}\right)^{t/t\_{1/2}}</div>
+
+    <p>This models exponential decay directly in terms of half-life. OpenStax gives the equivalent exponential form as N=N0e−λtN=N_0e^{-\lambda t}.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th><strong>Symbol</strong></th>
+          <th><strong>Meaning</strong></th>
+          <th><strong>Unit</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>N(t)N(t)</td>
+          <td>Amount remaining after elapsed time</td>
+          <td>Same as initial amount</td>
+        </tr>
+        <tr>
+          <td>N0N_0</td>
+          <td>Initial amount</td>
+          <td>User's amount unit</td>
+        </tr>
+        <tr>
+          <td>tt</td>
+          <td>Elapsed time</td>
+          <td>Selected time unit</td>
+        </tr>
+        <tr>
+          <td>t1/2t\_{1/2}</td>
+          <td>Half-life</td>
+          <td>Same time unit as tt</td>
+        </tr>
+        <tr>
+          <td>λ\lambda</td>
+          <td>Decay constant</td>
+          <td>Reciprocal of the time unit</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Decay Constant</h3>
+
+    <p>The decay constant is related to half-life by:</p>
+
+    <div class="formula">λ=ln⁡(2)t1/2\lambda=\frac{\ln(2)}{t\_{1/2}}</div>
+
+    <p>where ln⁡(2)\ln(2) is approximately 0.693147. This relationship is standard for exponential decay.</p>
+
+    <h3>Elapsed Half-Lives</h3>
+
+    <p>The number of half-lives represented by the elapsed time is:</p>
+
+    <div class="formula">n=tt1/2n=\frac{t}{t\_{1/2}}</div>
+
+    <p>The main formula can therefore also be written as:</p>
+
+    <div class="formula">N(t)=N0(12)nN(t)=N_0\left(\frac12\right)^n</div>
+
+    <p>For a whole number of half-lives, this is equivalent to repeatedly dividing the starting amount by two.</p>
+
+    <h3>Decayed Amount</h3>
+
+    <p>After the remaining amount has been calculated, the amount no longer remaining in the model is:</p>
+
+    <div class="formula">Decayed Amount=N0−N(t)\text{Decayed Amount}=N_0-N(t)</div>
+
+    <h3>Calculation Sequence</h3>
+
+    <ol>
+      <li>Read the initial amount, half-life, elapsed time, and time unit.</li>
+      <li>Calculate elapsed half-lives using t/t1/2t/t\_{1/2}.</li>
+      <li>Raise 1/21/2 to the number of elapsed half-lives.</li>
+      <li>Multiply that value by the initial amount to find the remaining amount.</li>
+      <li>Compare the remaining amount with the initial amount to obtain the decayed amount.</li>
+      <li>Calculate the decay constant from ln⁡(2)/t1/2\ln(2)/t\_{1/2}.</li>
+    </ol>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose a modeled quantity has:</p>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li>Initial amount: <strong>80 units</strong></li>
+      <li>Half-life: <strong>6 hours</strong></li>
+      <li>Elapsed time: <strong>18 hours</strong></li>
+      <li>Time unit: <strong>hours</strong></li>
+    </ul>
+
+    <h3>Step 1: Calculate Elapsed Half-Lives</h3>
+
+    <div class="formula">n=186=3n=\frac{18}{6}=3</div>
+
+    <p>Three half-lives have elapsed.</p>
+
+    <h3>Step 2: Calculate the Remaining Amount</h3>
+
+    <div class="formula">N(t)=80(12)3N(t)=80\left(\frac12\right)^3 N(t)=80×0.125N(t)=80\times0.125 N(t)=10N(t)=10</div>
+
+    <p>The remaining amount is <strong>10 units</strong>.</p>
+
+    <h3>Step 3: Calculate the Decayed Amount</h3>
+
+    <div class="formula">80−10=7080-10=70</div>
+
+    <p>The decayed amount is <strong>70 units</strong>.</p>
+
+    <h3>Step 4: Calculate the Decay Constant</h3>
+
+    <div class="formula">λ=ln⁡(2)6\lambda=\frac{\ln(2)}{6} λ≈0.1155245 hour−1\lambda\approx0.1155245\text{ hour}^{-1}</div>
+
+    <h3>Final Result</h3>
+
+    <ul>
+      <li><strong>Remaining amount:</strong> 10 units</li>
+      <li><strong>Decayed amount:</strong> 70 units</li>
+      <li><strong>Elapsed half-lives:</strong> 3</li>
+      <li><strong>Decay constant:</strong> approximately 0.1155 per hour</li>
+    </ul>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p><strong>Remaining Amount</strong> shows the quantity predicted to remain after the entered elapsed time. It uses the same unit as the initial amount.</p>
+
+    <p><strong>Decayed Amount</strong> represents the difference between the original amount and the calculated remaining amount.</p>
+
+    <p><strong>Elapsed Half-Lives</strong> indicates how many half-life periods fit into the elapsed time. It does not need to be a whole number; the exponential formula also handles fractional half-lives.</p>
+
+    <p><strong>Decay Constant</strong> expresses the exponential decay rate in reciprocal time units. A shorter half-life corresponds to a larger decay constant, while a longer half-life corresponds to a smaller decay constant.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>This calculator uses a <strong>single constant half-life</strong> throughout the calculation. It assumes the quantity follows ideal exponential decay and that the half-life does not change with time.</p>
+
+    <p>The half-life must be greater than zero because it is used as a divisor in the formula. The elapsed time and half-life also need compatible time units.</p>
+
+    <p>The model does not account for measurement uncertainty, changing decay rates, mixtures of substances with different half-lives, or multiple simultaneous processes.</p>
+
+    <p>For real biological systems, a simple mathematical half-life may not fully represent absorption, distribution, metabolism, elimination, or other biological processes. Results from this calculator should therefore not be treated as individualized medical or clinical calculations.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What does half-life mean?</summary>
+
+      <p>Half-life is the amount of time required for an exponentially decaying quantity to decrease to half its current amount.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How much remains after one half-life?</summary>
+
+      <p>After one complete half-life, 50% of the initial modeled quantity remains. After two half-lives, 25% remains, and after three, 12.5% remains.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does the initial amount affect the half-life?</summary>
+
+      <p>No. In a constant exponential decay model, the half-life is determined by the decay rate rather than the starting quantity. Changing the initial amount changes the remaining amount but not the half-life.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can the elapsed time be less than one half-life?</summary>
+
+      <p>Yes. The exponential formula supports fractional numbers of half-lives, so the elapsed time does not need to be an exact multiple of the half-life.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What is the relationship between half-life and decay constant?</summary>
+
+      <p>They are related by:</p>
+
+      <div class="formula">λ=ln⁡(2)t1/2\lambda=\frac{\ln(2)}{t\_{1/2}}</div>
+
+      <p>A longer half-life produces a smaller decay constant, while a shorter half-life produces a larger one.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Do the time units matter?</summary>
+
+      <p>Yes. The elapsed time and half-life must use consistent units. If half-life is expressed in hours, the elapsed time should also be represented in hours before applying the formula.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can this calculator model any type of decay?</summary>
+
+      <p>It is appropriate when a process can reasonably be represented by a single constant exponential half-life. Processes with changing rates, multiple components, or more complex mechanisms may require a different model.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://openstax.org/books/physics/pages/22-3-half-life-and-radiometric-dating?utm_source=chatgpt.com" rel="noopener" target="_blank">OpenStax Physics — Half Life and Radiometric Dating</a>
+        <br>
+        Supports exponential decay, the definition of half-life, and the relationship between decay constant and half-life.
+      </li>
+
+      <li>
+        <a href="https://openstax.org/books/algebra-and-trigonometry-2e/pages/6-7-exponential-and-logarithmic-models?utm_source=chatgpt.com" rel="noopener" target="_blank">OpenStax Algebra and Trigonometry — Exponential and Logarithmic Models</a>
+        <br>
+        Supports the mathematical definition and derivation of half-life in exponential decay models.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/exponent-calculator/?utm_source=chatgpt.com">Exponent Calculator</a></li>
+      <li><a href="https://example.com/log-calculator/?utm_source=chatgpt.com">Log Calculator</a></li>
+      <li><a href="https://example.com/scientific-calculator/?utm_source=chatgpt.com">Scientific Calculator</a></li>
+      <li><a href="https://example.com/time-calculator/?utm_source=chatgpt.com">Time Calculator</a></li>
+      <li><a href="https://example.com/percent-calculator/?utm_source=chatgpt.com">Percent Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+
+                </div>
+            </div>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"133","Batch":"14","Calculator / Page":"Half-Life Calculator","Slug":"half-life-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Calculate exponential half-life decay, remaining amount, decayed amount, elapsed half-lives, and decay constant.","Formula / Algorithm Used in Tool":"Half-Life Formula: N(t) = N₀ × (1/2)^(t / t½) and λ = ln(2) / t½ After each full half-life, the modeled quantity is multiplied by one-half. OpenStax gives the equivalent exponential-decay form and the relationship between the decay constant and half-life.","Required User Inputs":"Initial amount; Half-life; Elapsed time; Time unit","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Initial amount, Half-life, Elapsed time, Time unit. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"This page is a mathematical model. Real systems may involve mixtures of isotopes, biological clearance, changing rates, measurement uncertainty, or other mechanisms not represented by a single constant half-life.","Current Source URLs in Page":"https://openstax.org/books/algebra-and-trigonometry/pages/6-key-equations","Implementation Path":"/half-life-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Math &amp; Statistics</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../log-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Log Calculator</strong><small>Calculate logarithms
+                            in any valid real base and compare natural log, common log, an…</small></span></a><a
+                    class="cp-related-link" href="../percent-off-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Turn the discount tag into the price you actually
+                            pay.</strong><small>Calculate percent off, final sale price, amount saved, effective
+                            discount, and a se…</small></span></a><a class="cp-related-link"
+                    href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction
+                            Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the
+                            simplified fraction, m…</small></span></a><a class="cp-related-link"
+                    href="../math-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Math
+                            Calculator</strong><small>Perform basic arithmetic with addition, subtraction,
+                            multiplication, division, pare…</small></span></a><a class="cp-related-link"
+                    href="../percent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Percent
+                            Calculator</strong><small>Calculate a percentage of a number, find what percent one value is
+                            of another, calc…</small></span></a><a class="cp-related-link"
+                    href="../scientific-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Scientific Calculator</strong><small>Calculate
+                            trigonometric functions, inverse trig, logarithms, roots, powers,
+                            factori…</small></span></a><a class="cp-related-link"
+                    href="../random-number-generator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Random Number Generator</strong><small>Generate one
+                            or many random integers or decimals between custom limits, with option…</small></span></a><a
+                    class="cp-related-link" href="../standard-deviation-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Standard Deviation
+                            Calculator</strong><small>Calculate sample or population standard deviation, variance, mean,
+                            sum, count, stan…</small></span></a></div><a class="cp-side-category"
+                href="../math/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const ff = n => Math.abs(n) >= 1e9 || (Math.abs(n) > 0 && Math.abs(n) < 1e-7) ? n.toExponential(7) : parseFloat(n.toFixed(9)).toString();
+        function calcHalf() { const n0 = Number(initial.value), h = Number(half.value), t = Number(time.value); hlErr.textContent = ''; if (!Number.isFinite(n0) || n0 < 0 || !Number.isFinite(h) || h <= 0 || !Number.isFinite(t) || t < 0) { hlErr.textContent = 'Initial amount must be nonnegative; half-life must be positive; time must be nonnegative.'; return } const n = t / h, frac = Math.pow(.5, n), rem = n0 * frac, loss = n0 - rem, lambda = Math.log(2) / h, pct = frac * 100; hlMain.textContent = ff(rem); hlLost.textContent = ff(loss); hlN.textContent = ff(n); hlLambda.textContent = ff(lambda) + ' / ' + unit.value; hlFrac.textContent = ff(frac); hlPct.textContent = ff(pct) + '%'; document.querySelector('.gauge').style.background = `conic-gradient(var(--accent) ${Math.min(100, pct)}%, #ddd9f2 0)` } function resetHalf() { initial.value = 100; half.value = 10; time.value = 20; unit.value = 'years'; calcHalf() } calcHalf();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

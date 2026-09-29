@@ -1,13 +1,922 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
-<title>APR Calculator | CalcPro</title><meta content="Estimate loan APR from the note rate, term, and upfront finance charges using a monthly cash-flow method." name="description"/><meta content="index,follow" name="robots"/><link href="../apr-calculator/" rel="canonical"/><meta content="APR Calculator | CalcPro" property="og:title"/><meta content="Estimate loan APR from the note rate, term, and upfront finance charges using a monthly cash-flow method." property="og:description"/><meta content="website" property="og:type"/><meta content="#1477ff" name="theme-color"/><style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}button,input,select{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}.wrap{width:min(1160px,92vw);margin:auto}.crumb{font-size:.86rem;opacity:.78}.eyebrow{font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:800}.btn.secondary{background:transparent;border:1px solid currentColor}.field{display:grid;gap:7px}.field label{font-size:.88rem;font-weight:750}.field input,.field select{width:100%;border-radius:14px;padding:12px 13px;border:1px solid rgba(127,127,127,.25);background:rgba(255,255,255,.76);color:#111;outline:none}.field input:focus,.field select:focus{box-shadow:0 0 0 4px rgba(99,102,241,.14)}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.actions{display:flex;gap:10px;flex-wrap:wrap}.error{display:none;padding:10px 12px;border-radius:12px;background:#fee2e2;color:#991b1b;font-weight:700;margin:10px 0}.error.show{display:block}.result-num{font-size:clamp(2rem,6vw,3.6rem);font-weight:900;letter-spacing:-.05em}.stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{padding:12px;border-radius:14px;background:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.7)}.stat b{display:block;font-size:1.08rem}.content{padding:56px 0}.article{max-width:860px;margin:auto}.article h2{font-size:clamp(1.5rem,3vw,2.05rem);margin:34px 0 10px;line-height:1.2}.article h3{margin:24px 0 8px}.article p,.article li{color:var(--muted,#4b5563)}.formula{padding:16px 18px;border-radius:16px;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.14);font-weight:800;overflow:auto}.source-list a{text-decoration:underline;text-underline-offset:3px}.faq details{border-top:1px solid rgba(127,127,127,.2);padding:14px 0}.faq summary{font-weight:800;cursor:pointer}footer{padding:34px 0;border-top:1px solid rgba(127,127,127,.18);font-size:.9rem;opacity:.75}@media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}.stat-grid{grid-template-columns:1fr}.wrap{width:min(94vw,1160px)}}
+<html lang="en">
 
-:root{--muted:#5e596b}body{background:#f7f1ff;color:#241735}.hero-apr{padding:28px 0 80px;background:linear-gradient(125deg,#2f164f,#6d28d9 65%,#a855f7);color:#fff;position:relative;overflow:hidden}.hero-apr .wrap{position:relative;z-index:2}.hero-apr h1{font-size:clamp(3rem,8vw,6.2rem);margin:65px 0 10px;line-height:.95;letter-spacing:-.07em}.receipt{position:absolute;right:7%;top:70px;width:280px;height:340px;background:#fff;color:#382155;border-radius:12px;transform:rotate(7deg);box-shadow:0 28px 65px #15052977;padding:25px}.receipt:after{content:"APR";display:grid;place-items:center;height:130px;font-size:58px;font-weight:950;color:#7c3aed;border:3px dashed #c4b5fd;margin-top:35px}.calc-apr{margin-top:-38px;position:relative;z-index:3}.apr-shell{background:#fff;border-radius:30px;box-shadow:0 30px 80px #4c1d9526;display:grid;grid-template-columns:1.2fr .8fr;overflow:hidden}.apr-inputs{padding:28px}.apr-output{padding:28px;background:linear-gradient(180deg,#26133c,#4c1d95);color:#fff}.btn{background:#6d28d9;color:white}.btn.secondary{color:#6d28d9}.content{background:#fff;color:#21172c}.apr-output .stat{background:#ffffff12;border-color:#ffffff22}@media(max-width:820px){.receipt{opacity:.18;right:-80px}.apr-shell{grid-template-columns:1fr}.hero-apr h1{margin-top:48px}}
-</style><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "APR Calculator", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "description": "Estimate loan APR from the note rate, term, and upfront finance charges using a monthly cash-flow method.", "url": "/calculators/apr-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Loans & Debt", "item": "/finance/loans-debt/"}, {"@type": "ListItem", "position": 4, "name": "APR Calculator", "item": "/apr-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is APR?", "acceptedAnswer": {"@type": "Answer", "text": "APR is a yearly measure of the cost of credit. For closed-end credit, U.S. Regulation Z relates the amount and timing of value received by the borrower to the amount and timing of payments made."}}, {"@type": "Question", "name": "Why can APR be higher than the note rate?", "acceptedAnswer": {"@type": "Answer", "text": "Upfront finance charges can reduce the net amount of credit you actually receive while scheduled payments are still based on the full loan, which raises the effective yearly borrowing cost."}}, {"@type": "Question", "name": "Is this the same as a lender’s disclosed APR?", "acceptedAnswer": {"@type": "Answer", "text": "No. This calculator is an estimate using regular monthly payments and user-entered upfront finance charges. Official disclosures can require detailed treatment of specific fees, dates, irregular periods, and regulatory rules."}}]}]}</script><link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head><body data-cp-category="finance" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header><nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../finance/index.html">Finance</a></li><li><a aria-current="page" href="index.html">APR Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main"><h1 class="page-title">APR Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="calc-apr"><div class="wrap apr-shell"><div class="apr-inputs"><h2>Loan and fee details</h2><div class="grid2"><div class="field"><label for="aprLoan">Loan amount</label><input id="aprLoan" min="1" type="number" value="250000"/></div><div class="field"><label for="aprRate">Note interest rate (%)</label><input id="aprRate" min="0" step="0.01" type="number" value="6.5"/></div><div class="field"><label for="aprYears">Loan term (years)</label><input id="aprYears" min="0.08" step="0.01" type="number" value="30"/></div><div class="field"><label for="aprFees">Upfront finance charges</label><input id="aprFees" min="0" type="number" value="5000"/></div></div><div class="error" id="aprErr"></div><div class="actions"><button class="btn" onclick="calcAPR()">Calculate APR</button><button class="btn secondary" onclick="resetAPR()">Reset</button></div></div><aside class="apr-output"><div class="eyebrow">Estimated APR</div><div class="result-num" id="aprOut">6.69%</div><div class="stat-grid"><div class="stat">Monthly payment<b id="aprPay">—</b></div><div class="stat">Net proceeds<b id="aprNet">—</b></div><div class="stat">Total scheduled interest<b id="aprInterest">—</b></div><div class="stat">Fees entered<b id="aprFeeOut">—</b></div></div></aside></div></section><section class="content"><article class="article wrap"><h2>What Is an APR Calculator?</h2><p>An APR calculator estimates the yearly cost of borrowing after considering the interest rate and eligible upfront finance charges. APR is designed as a comparison measure, so two loans with the same note rate can have different APRs when their fees differ.</p><h2>How This APR Estimate Works</h2><p>The calculator first computes the regular monthly payment from the loan amount, note rate, and term. It then treats the amount received as the loan amount minus the finance charges you enter and solves for the monthly discount rate that makes the present value of all scheduled payments equal to those net proceeds.</p><div class="formula">Net Amount Received = Present Value of Scheduled Payments at the APR periodic rate</div><p>The solved monthly rate is annualized as a nominal annual rate by multiplying it by 12. This mirrors the cash-flow logic behind actuarial APR, but it is not a substitute for an official Truth in Lending disclosure.</p><h2>Why APR Differs From Interest Rate</h2><p>The note interest rate mainly drives the interest charged on the outstanding principal. APR can incorporate certain finance charges in addition to that rate, so it can be higher than the note rate even when the monthly payment is calculated using the note rate.</p><h2>Limitations</h2><p>Regulation Z APR calculations can involve fee classification, exact payment dates, odd first periods, mortgage insurance treatment, and other details. Use this tool for estimates and comparisons, not compliance reporting.</p><h2>Frequently Asked Questions</h2><div class="faq"><details><summary>What is APR?</summary><p>APR is a yearly measure of the cost of credit. For closed-end credit, U.S. Regulation Z relates the amount and timing of value received by the borrower to the amount and timing of payments made.</p></details><details><summary>Why can APR be higher than the note rate?</summary><p>Upfront finance charges can reduce the net amount of credit you actually receive while scheduled payments are still based on the full loan, which raises the effective yearly borrowing cost.</p></details><details><summary>Is this the same as a lender’s disclosed APR?</summary><p>No. This calculator is an estimate using regular monthly payments and user-entered upfront finance charges. Official disclosures can require detailed treatment of specific fees, dates, irregular periods, and regulatory rules.</p></details></div><h2>Sources and Methodology</h2><ul class="source-list"><li><a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/22/">CFPB Regulation Z §1026.22 — Determination of APR</a></li><li><a href="https://www.consumerfinance.gov/ask-cfpb/what-is-an-annual-percentage-rate-apr-and-why-is-it-higher-than-the-interest-rate-for-my-payday-loan-en-1625/">CFPB — Understanding APR</a></li></ul></article></section>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+   <!-- Primary Meta Tags -->
+<title>APR Calculator – Estimate Loan APR With Fees</title>
+<meta name="title" content="APR Calculator – Estimate Loan APR With Fees">
+<meta name="description" content="Use the APR Calculator to estimate a loan’s annual percentage rate from the loan amount, note rate, term, and upfront finance charges.">
 
-<script class="cp-calculator-data" type="application/json">{"index":"100","Batch":"11","Calculator / Page":"APR Calculator","Slug":"apr-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Estimate loan APR from the note rate, term, and upfront finance charges using a monthly cash-flow method.","Formula / Algorithm Used in Tool":"Compute scheduled payment using the note rate. Net proceeds = loan amount − upfront finance charges. Numerically solve the monthly discount rate such that net proceeds = present value of scheduled payments; nominal APR ≈ solved monthly rate × 12.","Required User Inputs":"Loan amount; Note interest rate (%); Loan term (years); Upfront finance charges","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Loan amount, Note interest rate (%), Loan term (years), Upfront finance charges. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"Regulation Z APR calculations can involve fee classification, exact payment dates, odd first periods, mortgage insurance treatment, and other details. Use this tool for estimates and comparisons, not compliance reporting.","Current Source URLs in Page":"https://www.consumerfinance.gov/rules-policy/regulations/1026/22/ | https://www.consumerfinance.gov/ask-cfpb/what-is-an-annual-percentage-rate-apr-and-why-is-it-higher-than-the-interest-rate-for-my-payday-loan-en-1625/","Implementation Path":"/apr-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Finance</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../interest-rate-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Interest Rate Calculator</strong><small>Estimate the nominal annual interest rate implied by a loan amount, fixed monthly p…</small></span></a><a class="cp-related-link" href="../auto-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Auto Loan Calculator</strong><small>Estimate a car loan payment using vehicle price, down payment, trade-in, tax, fees,…</small></span></a><a class="cp-related-link" href="../pension-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Pension Calculator</strong><small>Compare pension lump sums, monthly pension income, joint-survivor options, and dela…</small></span></a><a class="cp-related-link" href="../debt-consolidation-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Debt Consolidation Calculator</strong><small>Compare multiple existing debts with a consolidation loan using balances, APRs, pay…</small></span></a><a class="cp-related-link" href="../payment-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Payment Calculator</strong><small>Calculate a monthly loan payment for a fixed term or estimate how long a loan takes…</small></span></a><a class="cp-related-link" href="../credit-card-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Credit Card Calculator</strong><small>Estimate a single credit card payoff time, required monthly payment, total interest…</small></span></a><a class="cp-related-link" href="../auto-lease-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Auto Lease Calculator</strong><small>Estimate a monthly car lease payment from capitalized cost, residual value, lease t…</small></span></a><a class="cp-related-link" href="../business-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Business Loan Calculator</strong><small>Estimate fixed monthly business loan payments, total interest, fees, amortization,…</small></span></a></div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script>const fm=v=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(v);function pmt(P,annual,n){if(annual===0)return P/n;const r=annual/1200;return P*r/(1-Math.pow(1+r,-n))}function calcAPR(){const P=+aprLoan.value,rate=+aprRate.value,yrs=+aprYears.value,fees=+aprFees.value,n=Math.round(yrs*12),er=aprErr;if(!(P>0)||rate<0||!(yrs>0)||fees<0||fees>=P||n<1){er.textContent='Enter valid values. Fees must be less than the loan amount.';er.classList.add('show');return}er.classList.remove('show');const pay=pmt(P,rate,n),net=P-fees;let lo=0,hi=1;for(let i=0;i<140;i++){let m=(lo+hi)/2;let pv=pay*(1-Math.pow(1+m,-n))/m;if(pv>net)lo=m;else hi=m}const mr=(lo+hi)/2,apr=mr*12*100;aprOut.textContent=apr.toFixed(3)+'%';aprPay.textContent=fm(pay);aprNet.textContent=fm(net);aprInterest.textContent=fm(pay*n-P);aprFeeOut.textContent=fm(fees)}function resetAPR(){aprLoan.value=250000;aprRate.value=6.5;aprYears.value=30;aprFees.value=5000;calcAPR()}calcAPR();</script><script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/apr-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/apr-calculator/">
+<meta property="og:title" content="APR Calculator – Estimate Loan APR With Fees">
+<meta property="og:description" content="Use the APR Calculator to estimate a loan’s annual percentage rate from the loan amount, note rate, term, and upfront finance charges.">
+<meta property="og:site_name" content="APR Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/apr-calculator/">
+<meta name="twitter:title" content="APR Calculator – Estimate Loan APR With Fees">
+<meta name="twitter:description" content="Use the APR Calculator to estimate a loan’s annual percentage rate from the loan amount, note rate, term, and upfront finance charges.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6
+        }
+
+        button,
+        input,
+        select {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        .wrap {
+            width: min(1160px, 92vw);
+            margin: auto
+        }
+
+        .crumb {
+            font-size: .86rem;
+            opacity: .78
+        }
+
+        .eyebrow {
+            font-size: .78rem;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-weight: 800
+        }
+
+        .btn.secondary {
+            background: transparent;
+            border: 1px solid currentColor
+        }
+
+        .field {
+            display: grid;
+            gap: 7px
+        }
+
+        .field label {
+            font-size: .88rem;
+            font-weight: 750
+        }
+
+        .field input,
+        .field select {
+            width: 100%;
+            border-radius: 14px;
+            padding: 12px 13px;
+            border: 1px solid rgba(127, 127, 127, .25);
+            background: rgba(255, 255, 255, .76);
+            color: #111;
+            outline: none
+        }
+
+        .field input:focus,
+        .field select:focus {
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, .14)
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .grid3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .error {
+            display: none;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: #fee2e2;
+            color: #991b1b;
+            font-weight: 700;
+            margin: 10px 0
+        }
+
+        .error.show {
+            display: block
+        }
+
+        .result-num {
+            font-size: clamp(2rem, 6vw, 3.6rem);
+            font-weight: 900;
+            letter-spacing: -.05em
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px
+        }
+
+        .stat {
+            padding: 12px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, .65);
+            border: 1px solid rgba(255, 255, 255, .7)
+        }
+
+        .stat b {
+            display: block;
+            font-size: 1.08rem
+        }
+
+        .content {
+            padding: 56px 0
+        }
+
+        .article {
+            max-width: 860px;
+            margin: auto
+        }
+
+        .article h2 {
+            font-size: clamp(1.5rem, 3vw, 2.05rem);
+            margin: 34px 0 10px;
+            line-height: 1.2
+        }
+
+        .article h3 {
+            margin: 24px 0 8px
+        }
+
+        .article p,
+        .article li {
+            color: var(--muted, #4b5563)
+        }
+
+        .formula {
+            padding: 16px 18px;
+            border-radius: 16px;
+            background: rgba(99, 102, 241, .08);
+            border: 1px solid rgba(99, 102, 241, .14);
+            font-weight: 800;
+            overflow: auto
+        }
+
+        .source-list a {
+            text-decoration: underline;
+            text-underline-offset: 3px
+        }
+
+        .faq details {
+            border-top: 1px solid rgba(127, 127, 127, .2);
+            padding: 14px 0
+        }
+
+        .faq summary {
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        footer {
+            padding: 34px 0;
+            border-top: 1px solid rgba(127, 127, 127, .18);
+            font-size: .9rem;
+            opacity: .75
+        }
+
+        @media(max-width:760px) {
+
+            .grid2,
+            .grid3 {
+                grid-template-columns: 1fr
+            }
+
+            .stat-grid {
+                grid-template-columns: 1fr
+            }
+
+            .wrap {
+                width: min(94vw, 1160px)
+            }
+        }
+
+        :root {
+            --muted: #5e596b
+        }
+
+        body {
+            background: #f7f1ff;
+            color: #241735
+        }
+
+        .hero-apr {
+            padding: 28px 0 80px;
+            background: linear-gradient(125deg, #2f164f, #6d28d9 65%, #a855f7);
+            color: #fff;
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero-apr .wrap {
+            position: relative;
+            z-index: 2
+        }
+
+        .hero-apr h1 {
+            font-size: clamp(3rem, 8vw, 6.2rem);
+            margin: 65px 0 10px;
+            line-height: .95;
+            letter-spacing: -.07em
+        }
+
+        .receipt {
+            position: absolute;
+            right: 7%;
+            top: 70px;
+            width: 280px;
+            height: 340px;
+            background: #fff;
+            color: #382155;
+            border-radius: 12px;
+            transform: rotate(7deg);
+            box-shadow: 0 28px 65px #15052977;
+            padding: 25px
+        }
+
+        .receipt:after {
+            content: "APR";
+            display: grid;
+            place-items: center;
+            height: 130px;
+            font-size: 58px;
+            font-weight: 950;
+            color: #7c3aed;
+            border: 3px dashed #c4b5fd;
+            margin-top: 35px
+        }
+
+        .calc-apr {
+            margin-top: -38px;
+            position: relative;
+            z-index: 3
+        }
+
+        .apr-shell {
+            background: #fff;
+            border-radius: 30px;
+            box-shadow: 0 30px 80px #4c1d9526;
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            overflow: hidden
+        }
+
+        .apr-inputs {
+            padding: 28px
+        }
+
+        .apr-output {
+            padding: 28px;
+            background: linear-gradient(180deg, #26133c, #4c1d95);
+            color: #fff
+        }
+
+        .btn {
+            background: #6d28d9;
+            color: white
+        }
+
+        .btn.secondary {
+            color: #6d28d9
+        }
+
+        .content {
+            background: #fff;
+            color: #21172c
+        }
+
+        .apr-output .stat {
+            background: #ffffff12;
+            border-color: #ffffff22
+        }
+
+        @media(max-width:820px) {
+            .receipt {
+                opacity: .18;
+                right: -80px
+            }
+
+            .apr-shell {
+                grid-template-columns: 1fr
+            }
+
+            .hero-apr h1 {
+                margin-top: 48px
+            }
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/apr-calculator/#webapplication",
+      "name": "APR Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/apr-calculator/",
+      "description": "Use the APR Calculator to estimate a loan’s annual percentage rate from the loan amount, note rate, term, and upfront finance charges.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/apr-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "APR Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/apr-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/apr-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between the interest rate and APR?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The interest rate is the rate used to calculate interest on the loan balance. APR is a broader measure of borrowing cost and may reflect applicable upfront charges in addition to interest."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can APR be higher than the note interest rate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Upfront finance charges can reduce the amount of money you effectively receive while your payments are still based on the original loan amount. The discount rate required to match the smaller net proceeds to those payments is therefore higher."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does this APR Calculator include upfront fees?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The calculator subtracts the entered upfront finance charges from the original loan amount: Net Proceeds = Loan Amount − Upfront Finance Charges. It then finds the monthly rate that makes the present value of the scheduled payments equal those net proceeds."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the calculator simply add fees to the interest rate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It uses a cash-flow calculation. The finance charges reduce net proceeds, and the calculator numerically solves for the rate that equates those proceeds with the scheduled future payments."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is APR the same as an effective annual interest rate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not necessarily. This calculator estimates nominal APR by multiplying the solved monthly rate by 12. It does not compound the monthly APR rate into an effective annual yield."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a loan with a 0% note rate have an APR above 0%?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. If there are upfront finance charges, the borrower may receive less than the amount that must be repaid. Those charges can produce a positive estimated APR even when the note interest rate is 0%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will this result always match a lender's disclosed APR?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A lender's legally disclosed APR can depend on regulatory fee classifications, exact dates, irregular payment periods, mortgage insurance, and other transaction details. Regulation Z provides more detailed rules for official APR calculations."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart OnlineFree",
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="finance" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../finance/index.html">Finance</a></li>
+            <li><a aria-current="page" href="index.html">APR Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">APR Calculator</h1>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="calc-apr">
+                <div class="wrap apr-shell">
+                    <div class="apr-inputs">
+                        <h2>Loan and fee details</h2>
+                        <div class="grid2">
+                            <div class="field"><label for="aprLoan">Loan amount</label><input id="aprLoan" min="1"
+                                    type="number" value="250000" /></div>
+                            <div class="field"><label for="aprRate">Note interest rate (%)</label><input id="aprRate"
+                                    min="0" step="0.01" type="number" value="6.5" /></div>
+                            <div class="field"><label for="aprYears">Loan term (years)</label><input id="aprYears"
+                                    min="0.08" step="0.01" type="number" value="30" /></div>
+                            <div class="field"><label for="aprFees">Upfront finance charges</label><input id="aprFees"
+                                    min="0" type="number" value="5000" /></div>
+                        </div>
+                        <div class="error" id="aprErr"></div>
+                        <div class="actions"><button class="btn" onclick="calcAPR()">Calculate APR</button><button
+                                class="btn secondary" onclick="resetAPR()">Reset</button></div>
+                    </div>
+                    <aside class="apr-output">
+                        <div class="eyebrow">Estimated APR</div>
+                        <div class="result-num" id="aprOut">6.69%</div>
+                        <div class="stat-grid">
+                            <div class="stat">Monthly payment<b id="aprPay">—</b></div>
+                            <div class="stat">Net proceeds<b id="aprNet">—</b></div>
+                            <div class="stat">Total scheduled interest<b id="aprInterest">—</b></div>
+                            <div class="stat">Fees entered<b id="aprFeeOut">—</b></div>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+            <section class="content">
+                
+
+
+<article class="article">
+<p>The APR Calculator estimates the annual percentage rate of a loan using the loan amount, note interest rate, loan term, and upfront finance charges. It first calculates the scheduled monthly payment, reduces the amount received by the upfront charges, and then solves for the monthly rate that matches those cash flows.</p>
+
+  <section id="what">
+    <h2>What Is the APR Calculator?</h2>
+
+    <p class="direct">The APR Calculator helps estimate the effective yearly cost of a fixed-payment loan when upfront finance charges reduce the amount of money you actually receive.</p>
+
+    <p>APR is broader than the stated interest rate because fees and other qualifying borrowing costs can affect the cost of credit. CFPB describes APR as a yearly measure of the cost of credit that relates the amount and timing of funds received to the amount and timing of payments.</p>
+
+    <p>This calculator is useful for comparing a loan’s note rate with an estimated APR when upfront finance charges are involved.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the APR Calculator</h2>
+
+    <p>Enter the following information:</p>
+
+    <ol>
+      <li><strong>Loan Amount</strong> — The original amount of the loan before upfront finance charges are deducted.</li>
+      <li><strong>Note Interest Rate (%)</strong> — The stated annual interest rate used to calculate the scheduled loan payment.</li>
+      <li><strong>Loan Term (Years)</strong> — The length of time over which the loan will be repaid.</li>
+      <li><strong>Upfront Finance Charges</strong> — Charges paid at the beginning of the loan that reduce the net amount received.</li>
+    </ol>
+
+    <p>The calculator uses these values to estimate the APR.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+
+    <p>The calculation has three main stages.</p>
+
+    <p>First, the scheduled monthly payment is calculated from the note interest rate:</p>
+
+    <div class="formula">C=P×r(1+r)n(1+r)n−1C=P\times\frac{r(1+r)^n}{(1+r)^n-1}</div>
+
+    <p>Equivalent form:</p>
+
+    <div class="formula">C=P×r1−(1+r)−nC=P\times\frac{r}{1-(1+r)^{-n}}</div>
+
+    <p>Next, upfront finance charges are deducted from the loan amount:</p>
+
+    <div class="formula">A=P−FA=P-F</div>
+
+    <p>The calculator then numerically solves for the monthly discount rate ii that satisfies:</p>
+
+    <div class="formula">A=∑k=1nC(1+i)kA=\sum\_{k=1}^{n}\frac{C}{(1+i)^k}</div>
+
+    <p>For equal monthly payments, this can also be written as:</p>
+
+    <div class="formula">A=C×1−(1+i)−niA=C\times\frac{1-(1+i)^{-n}}{i}</div>
+
+    <p>Finally, the estimated nominal annual percentage rate is:</p>
+
+    <div class="formula">APR≈i×12×100APR\approx i\times12\times100</div>
+
+    <h3>Variables</h3>
+
+    <ul>
+      <li><strong>P</strong> = original loan amount</li>
+      <li><strong>F</strong> = upfront finance charges</li>
+      <li><strong>A</strong> = net loan proceeds after upfront charges</li>
+      <li><strong>C</strong> = scheduled monthly payment</li>
+      <li><strong>r</strong> = monthly note interest rate</li>
+      <li><strong>i</strong> = solved monthly discount rate</li>
+      <li><strong>n</strong> = total number of monthly payments</li>
+      <li><strong>APR</strong> = estimated annual percentage rate</li>
+    </ul>
+
+    <p>The monthly note rate is:</p>
+
+    <div class="formula">r=Note Rate100×12r=\frac{\text{Note Rate}}{100\times12}</div>
+
+    <p>The number of payments is:</p>
+
+    <div class="formula">n=Loan Term in Years×12n=\text{Loan Term in Years}\times12</div>
+
+    <h3>Calculation Sequence</h3>
+
+    <ol>
+      <li>Convert the annual note interest rate to a monthly decimal rate.</li>
+      <li>Convert the loan term from years to monthly payment periods.</li>
+      <li>Calculate the scheduled monthly payment using the note rate.</li>
+      <li>Subtract upfront finance charges from the original loan amount.</li>
+      <li>Numerically solve for the monthly discount rate that makes the present value of all scheduled payments equal the net proceeds.</li>
+      <li>Multiply the solved monthly rate by 12 to estimate the nominal APR.</li>
+    </ol>
+
+    <h3>Zero-Interest Note Rate</h3>
+
+    <p>If the stated note rate is 0%, the standard amortization formula would otherwise divide by zero. The scheduled payment is instead:</p>
+
+    <div class="formula">C=PnC=\frac{P}{n}</div>
+
+    <p>Upfront finance charges can still cause the estimated APR to be greater than 0%.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose a loan has these terms.</p>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li>Loan amount: <strong>$10,000</strong></li>
+      <li>Note interest rate: <strong>8%</strong></li>
+      <li>Loan term: <strong>3 years</strong></li>
+      <li>Upfront finance charges: <strong>$300</strong></li>
+    </ul>
+
+    <h3>Step 1: Calculate the Monthly Note Rate</h3>
+
+    <div class="formula">r=0.0812=0.0066667r=\frac{0.08}{12}=0.0066667</div>
+
+    <p>The loan has:</p>
+
+    <div class="formula">n=3×12=36n=3\times12=36</div>
+
+    <p>monthly payments.</p>
+
+    <h3>Step 2: Calculate the Scheduled Payment</h3>
+
+    <div class="formula">C=10000×0.00666671−(1.0066667)−36C=10000\times\frac{0.0066667}{1-(1.0066667)^{-36}} C≈$313.36C\approx \\$313.36</div>
+
+    <h3>Step 3: Calculate Net Proceeds</h3>
+
+    <div class="formula">A=10000−300A=10000-300 A=$9,700A=\\$9,700</div>
+
+    <p>Although the borrower repays a $10,000 loan, the assumed upfront finance charges reduce the amount received to $9,700.</p>
+
+    <h3>Step 4: Solve the Monthly APR Rate</h3>
+
+    <p>The calculator finds ii so that:</p>
+
+    <div class="formula">9700=313.3637×1−(1+i)−36i9700=313.3637\times\frac{1-(1+i)^{-36}}{i}</div>
+
+    <p>The solved monthly rate is approximately:</p>
+
+    <div class="formula">i=0.00840137i=0.00840137</div>
+
+    <p>or about <strong>0.8401% per month</strong>.</p>
+
+    <h3>Final Result</h3>
+
+    <div class="formula">APR=0.00840137×12×100APR=0.00840137\times12\times100 APR≈10.08%APR\approx10.08\\%</div>
+
+    <p>For this example, the estimated APR is approximately <strong>10.08%</strong>, compared with a stated note rate of 8%.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p>The main result is the <strong>estimated APR</strong>, expressed as an annual percentage.</p>
+
+    <p>When upfront finance charges are greater than zero, the borrower receives less net value while making payments calculated from the original loan balance. This can make the APR higher than the stated interest rate.</p>
+
+    <p>CFPB similarly explains that APR can reflect the interest rate plus applicable points, fees, and other borrowing charges.</p>
+
+    <p>Use APR together with the loan amount, payment, term, fees, and other loan conditions when comparing financing offers.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>This calculator uses a simplified monthly cash-flow model with regular monthly payments.</p>
+
+    <p>It assumes that:</p>
+
+    <ul>
+      <li>the note rate remains constant;</li>
+      <li>payments occur at regular monthly intervals;</li>
+      <li>the loan uses a standard fixed-payment schedule;</li>
+      <li>entered upfront finance charges reduce the net loan proceeds;</li>
+      <li>the payment schedule does not contain irregular, skipped, graduated, or balloon payments unless those effects are already represented by the entered values;</li>
+      <li>the estimated annual rate is calculated as the solved monthly rate multiplied by 12.</li>
+    </ul>
+
+    <p>Official Regulation Z APR calculations can be more detailed. Fee classification, exact transaction dates, irregular first periods, irregular payments, mortgage-related charges, and other loan-specific details can affect the legally disclosed APR. CFPB's Regulation Z and Appendix J contain the formal rules and actuarial methodology for closed-end credit transactions.</p>
+
+    <p>For this reason, use the calculator for estimates and loan comparisons rather than regulatory or compliance reporting.</p>
+  </section>
+
+  <section id="current">
+    <h2>Current Rules / Data</h2>
+
+    <p>As of September 2026, CFPB's current Regulation Z states that APR is a measure of the cost of credit expressed as a yearly rate and provides rules for determining APR for consumer credit transactions. The CFPB Regulation Z page shows the regulation was most recently amended on April 8, 2026.</p>
+
+    <p>For closed-end credit, Appendix J provides actuarial equations and instructions that can be used to calculate APR, including transactions with payment-period irregularities.</p>
+
+    <p>The calculator does not require a current benchmark interest rate, tax rate, or government-set loan rate because the note interest rate and charges are entered by the user.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What is the difference between the interest rate and APR?</summary>
+
+      <p>The interest rate is the rate used to calculate interest on the loan balance. APR is a broader measure of borrowing cost and may reflect applicable upfront charges in addition to interest.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why can APR be higher than the note interest rate?</summary>
+
+      <p>Upfront finance charges can reduce the amount of money you effectively receive while your payments are still based on the original loan amount. The discount rate required to match the smaller net proceeds to those payments is therefore higher.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How does this APR Calculator include upfront fees?</summary>
+
+      <p>The calculator subtracts the entered upfront finance charges from the original loan amount:</p>
+
+      <div class="formula">Net Proceeds=Loan Amount−Upfront Finance ChargesNet\ Proceeds=Loan\ Amount-Upfront\ Finance\ Charges</div>
+
+      <p>It then finds the monthly rate that makes the present value of the scheduled payments equal those net proceeds.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does the calculator simply add fees to the interest rate?</summary>
+
+      <p>No. It uses a cash-flow calculation. The finance charges reduce net proceeds, and the calculator numerically solves for the rate that equates those proceeds with the scheduled future payments.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is APR the same as an effective annual interest rate?</summary>
+
+      <p>Not necessarily. This calculator estimates nominal APR by multiplying the solved monthly rate by 12. It does not compound the monthly APR rate into an effective annual yield.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can a loan with a 0% note rate have an APR above 0%?</summary>
+
+      <p>Yes. If there are upfront finance charges, the borrower may receive less than the amount that must be repaid. Those charges can produce a positive estimated APR even when the note interest rate is 0%.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Will this result always match a lender's disclosed APR?</summary>
+
+      <p>No. A lender's legally disclosed APR can depend on regulatory fee classifications, exact dates, irregular payment periods, mortgage insurance, and other transaction details. Regulation Z provides more detailed rules for official APR calculations.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <strong>Consumer Financial Protection Bureau — Regulation Z § 1026.22, Determination of Annual Percentage Rate</strong><br>
+        Supports the definition of APR and the regulatory framework for determining APR.
+        <a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/22/?utm_source=chatgpt.com" rel="noopener" target="_blank"> CFPB Regulation Z § 1026.22</a>
+      </li>
+
+      <li>
+        <strong>Consumer Financial Protection Bureau — Appendix J, Annual Percentage Rate Computations for Closed-End Credit Transactions</strong><br>
+        Provides the actuarial methodology and equations used for formal closed-end APR calculations.
+        <a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/j/?utm_source=chatgpt.com" rel="noopener" target="_blank"> CFPB Regulation Z Appendix J</a>
+      </li>
+
+      <li>
+        <strong>Consumer Financial Protection Bureau — Interest Rate vs. APR</strong><br>
+        Explains how APR differs from a stated interest rate and how fees and other charges may affect APR.
+        <a href="https://www.consumerfinance.gov/ask-cfpb/what-is-the-difference-between-a-mortgage-interest-rate-and-an-apr-en-135/?utm_source=chatgpt.com" rel="noopener" target="_blank"> CFPB Interest Rate vs. APR Guide</a>
+      </li>
+    </ul>
+
+    <h3>Current Data / Rule Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <strong>Consumer Financial Protection Bureau — Truth in Lending, Regulation Z</strong><br>
+        Current Regulation Z resource; the CFPB page states it was most recently amended April 8, 2026.
+        <a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/?utm_source=chatgpt.com" rel="noopener" target="_blank"> CFPB Regulation Z</a>
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/loan-calculator/">Loan Calculator</a></li>
+      <li><a href="https://example.com/interest-rate-calculator/">Interest Rate Calculator</a></li>
+      <li><a href="https://example.com/payment-calculator/">Payment Calculator</a></li>
+      <li><a href="https://example.com/amortization-calculator/">Amortization Calculator</a></li>
+      <li><a href="https://example.com/mortgage-calculator/">Mortgage Calculator</a></li>
+      <li><a href="https://example.com/auto-loan-calculator/">Auto Loan Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+            </section>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"100","Batch":"11","Calculator / Page":"APR Calculator","Slug":"apr-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Estimate loan APR from the note rate, term, and upfront finance charges using a monthly cash-flow method.","Formula / Algorithm Used in Tool":"Compute scheduled payment using the note rate. Net proceeds = loan amount − upfront finance charges. Numerically solve the monthly discount rate such that net proceeds = present value of scheduled payments; nominal APR ≈ solved monthly rate × 12.","Required User Inputs":"Loan amount; Note interest rate (%); Loan term (years); Upfront finance charges","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Loan amount, Note interest rate (%), Loan term (years), Upfront finance charges. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"Regulation Z APR calculations can involve fee classification, exact payment dates, odd first periods, mortgage insurance treatment, and other details. Use this tool for estimates and comparisons, not compliance reporting.","Current Source URLs in Page":"https://www.consumerfinance.gov/rules-policy/regulations/1026/22/ | https://www.consumerfinance.gov/ask-cfpb/what-is-an-annual-percentage-rate-apr-and-why-is-it-higher-than-the-interest-rate-for-my-payday-loan-en-1625/","Implementation Path":"/apr-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Finance</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../interest-rate-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Interest Rate Calculator</strong><small>Estimate
+                            the nominal annual interest rate implied by a loan amount, fixed monthly
+                            p…</small></span></a><a class="cp-related-link"
+                    href="../auto-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Auto
+                            Loan Calculator</strong><small>Estimate a car loan payment using vehicle price, down
+                            payment, trade-in, tax, fees,…</small></span></a><a class="cp-related-link"
+                    href="../pension-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Pension
+                            Calculator</strong><small>Compare pension lump sums, monthly pension income, joint-survivor
+                            options, and dela…</small></span></a><a class="cp-related-link"
+                    href="../debt-consolidation-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Debt Consolidation
+                            Calculator</strong><small>Compare multiple existing debts with a consolidation loan using
+                            balances, APRs, pay…</small></span></a><a class="cp-related-link"
+                    href="../payment-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Payment
+                            Calculator</strong><small>Calculate a monthly loan payment for a fixed term or estimate how
+                            long a loan takes…</small></span></a><a class="cp-related-link"
+                    href="../credit-card-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Credit Card Calculator</strong><small>Estimate a
+                            single credit card payoff time, required monthly payment, total
+                            interest…</small></span></a><a class="cp-related-link"
+                    href="../auto-lease-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Auto
+                            Lease Calculator</strong><small>Estimate a monthly car lease payment from capitalized cost,
+                            residual value, lease t…</small></span></a><a class="cp-related-link"
+                    href="../business-loan-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Business Loan Calculator</strong><small>Estimate
+                            fixed monthly business loan payments, total interest, fees,
+                            amortization,…</small></span></a></div><a class="cp-side-category"
+                href="../finance/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>const fm = v => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(v); function pmt(P, annual, n) { if (annual === 0) return P / n; const r = annual / 1200; return P * r / (1 - Math.pow(1 + r, -n)) } function calcAPR() { const P = +aprLoan.value, rate = +aprRate.value, yrs = +aprYears.value, fees = +aprFees.value, n = Math.round(yrs * 12), er = aprErr; if (!(P > 0) || rate < 0 || !(yrs > 0) || fees < 0 || fees >= P || n < 1) { er.textContent = 'Enter valid values. Fees must be less than the loan amount.'; er.classList.add('show'); return } er.classList.remove('show'); const pay = pmt(P, rate, n), net = P - fees; let lo = 0, hi = 1; for (let i = 0; i < 140; i++) { let m = (lo + hi) / 2; let pv = pay * (1 - Math.pow(1 + m, -n)) / m; if (pv > net) lo = m; else hi = m } const mr = (lo + hi) / 2, apr = mr * 12 * 100; aprOut.textContent = apr.toFixed(3) + '%'; aprPay.textContent = fm(pay); aprNet.textContent = fm(net); aprInterest.textContent = fm(pay * n - P); aprFeeOut.textContent = fm(fees) } function resetAPR() { aprLoan.value = 250000; aprRate.value = 6.5; aprYears.value = 30; aprFees.value = 5000; calcAPR() } calcAPR();</script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

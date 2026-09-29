@@ -1,21 +1,1206 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
-<title>RMD Calculator | CalcPro</title><meta content="Estimate a required minimum distribution using IRS life-expectancy factors and the prior year-end retirement account balance." name="description"/><meta content="index,follow" name="robots"/><link href="../rmd-calculator/" rel="canonical"/><meta content="RMD Calculator | CalcPro" property="og:title"/><meta content="Estimate a required minimum distribution using IRS life-expectancy factors and the prior year-end retirement account balance." property="og:description"/><meta content="website" property="og:type"/><meta content="/rmd-calculator/" property="og:url"/><meta content="#1477ff" name="theme-color"/><style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.6}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}.crumb{font-size:.9rem;color:var(--muted);padding:18px 0}.hero{position:relative;overflow:hidden;border-radius:34px;background:var(--hero);box-shadow:0 30px 80px rgba(0,0,0,.18);padding:clamp(28px,5vw,64px);min-height:340px;display:grid;grid-template-columns:1.fr;gap:34px;align-items:center}.hero h1{font-size:clamp(2.2rem,5vw,4.6rem);line-height:1.02;margin:.15em 0 .3em;letter-spacing:-.04em}.hero p{font-size:1.08rem;max-width:720px;color:var(--hero-muted)}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.08);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}.visual{min-height:240px;position:relative;display:grid;place-items:center}.orb,.tile,.coin,.ring,.cube{position:absolute;filter:drop-shadow(0 18px 22px rgba(0,0,0,.24))}.orb{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff9 0 8%,transparent 9%),linear-gradient(145deg,var(--accent2),var(--accent));box-shadow:inset -18px -24px 36px #0003}.ring{width:190px;height:190px;border:28px solid var(--accent);border-radius:50%;transform:rotateX(62deg) rotateZ(-12deg);opacity:.9}.tile{width:190px;height:118px;border-radius:24px;background:linear-gradient(145deg,#ffffff22,#ffffff08);border:1px solid #ffffff35;backdrop-filter:blur(12px);transform:rotate(-8deg) skewY(4deg);display:grid;place-items:center;font-weight:800;font-size:2rem}.coin{width:78px;height:78px;border-radius:50%;background:linear-gradient(145deg,#fff7aa,#e6a800);border:8px solid #ffd14b;display:grid;place-items:center;color:#5d3c00;font-weight:900}.cube{width:94px;height:94px;border-radius:20px;background:linear-gradient(145deg,var(--accent),var(--accent2));transform:rotate(26deg);box-shadow:inset -16px -16px 24px #0002}.main-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(300px,.88fr);gap:28px;margin:34px auto}.panel{background:var(--panel);border:1px solid var(--panel-line);border-radius:28px;box-shadow:0 20px 48px rgba(0,0,0,.1);padding:clamp(20px,3vw,32px)}.panel h2{margin-top:0}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}label{font-weight:700;font-size:.92rem}.hint{font-size:.78rem;color:var(--muted)}input,select,textarea{width:100%;border:1px solid var(--input-line);background:var(--input);color:var(--text);border-radius:14px;padding:12px 13px;font:inherit;outline:none;box-shadow:inset 0 2px 10px rgba(0,0,0,.04)}input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:800;cursor:pointer}.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--button-text);box-shadow:0 12px 25px color-mix(in srgb,var(--accent) 28%,transparent)}.btn.ghost{background:var(--input);color:var(--text);border:1px solid var(--input-line)}.error{display:none;margin-top:12px;padding:11px 13px;border-radius:12px;background:#ffefef;color:#9c1c1c;font-weight:700}.results{position:sticky;top:18px;align-self:start}.result-hero{border-radius:24px;padding:22px;background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 16%,var(--panel)),color-mix(in srgb,var(--accent2) 10%,var(--panel)));border:1px solid color-mix(in srgb,var(--accent) 24%,var(--panel-line));margin-bottom:16px}.result-label{font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800}.result-big{font-size:clamp(2rem,4vw,3.4rem);font-weight:900;letter-spacing:-.04em;margin-top:4px}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{padding:14px;border-radius:16px;background:var(--soft);border:1px solid var(--panel-line)}.stat b{display:block;font-size:1.05rem}.stat span{font-size:.78rem;color:var(--muted)}.bar{height:12px;background:var(--soft);border-radius:999px;overflow:hidden;margin:8px 0}.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:inherit}.table-wrap{overflow:auto;margin-top:16px;border-radius:16px;border:1px solid var(--panel-line)}table{width:100%;border-collapse:collapse;min-width:560px}th,td{padding:10px 12px;border-bottom:1px solid var(--panel-line);text-align:right;font-size:.88rem}th:first-child,td:first-child{text-align:left}th{background:var(--soft);position:sticky;top:0}article.content{margin:40px auto 72px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:32px}.copy{background:var(--panel);border:1px solid var(--panel-line);border-radius:30px;padding:clamp(24px,4vw,46px);box-shadow:0 18px 50px rgba(0,0,0,.07)}.copy h2{font-size:clamp(1.45rem,3vw,2.25rem);margin-top:1.7em;letter-spacing:-.02em}.copy h2:first-child{margin-top:0}.copy h3{margin-top:1.4em}.copy p,.copy li{color:var(--copy)}.copy code{background:var(--soft);padding:2px 7px;border-radius:8px}.toc{position:sticky;top:20px;align-self:start;background:var(--panel);border:1px solid var(--panel-line);border-radius:22px;padding:20px}.toc strong{display:block;margin-bottom:8px}.toc a{display:block;padding:5px 0;color:var(--muted)}.callout{padding:16px 18px;border-left:4px solid var(--accent);background:var(--soft);border-radius:12px;margin:18px 0}.faq details{border-top:1px solid var(--panel-line);padding:14px 0}.faq summary{font-weight:800;cursor:pointer}.sources li{margin:8px 0}footer{padding:30px 0 50px;color:var(--muted);text-align:center}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.tab{padding:9px 12px;border-radius:12px;border:1px solid var(--input-line);background:var(--input);cursor:pointer;font-weight:800}.tab.active{background:var(--accent);color:var(--button-text);border-color:transparent}.hidden{display:none!important}.badge{display:inline-block;padding:4px 9px;border-radius:999px;background:var(--soft);font-size:.76rem;font-weight:800;color:var(--muted)}.switchline{display:flex;gap:10px;align-items:center}.switchline input{width:auto}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.mini-note{font-size:.82rem;color:var(--muted);margin-top:10px}
-@media(max-width:860px){.hero,.main-grid,article.content{grid-template-columns:1fr}.visual{min-height:180px}.results,.toc{position:static}.toc{display:none}}@media(max-width:560px){.wrap{width:min(100% - 20px,1180px)}.hero{border-radius:24px;padding:24px 20px}.panel{border-radius:22px;padding:18px}.form-grid,.stats,.three{grid-template-columns:1fr}.field.full{grid-column:auto}.result-big{font-size:2.25rem}}
+<html lang="en">
 
-:root{--bg:#f3efe5;--text:#241f18;--copy:#4c4337;--muted:#756c60;--panel:#fffaf0;--panel-line:#dfd3bd;--soft:#f0e8d8;--input:#fffdf8;--input-line:#d8c8ad;--accent:#9c5c2a;--accent2:#2c6575;--button-text:#fff;--hero:linear-gradient(135deg,#2b2119,#49311f 52%,#25586a);--hero-muted:#eadfce;--line:#ffffff2d}.hero{border-radius:70px 26px 70px 26px}.visual .ring{border-color:#d1a15c}.visual .tile{transform:rotate(-10deg);font-size:1rem}.visual:after{content:'73+';font-size:4rem;font-weight:900;color:#fff;z-index:2;text-shadow:0 12px 25px #0008}
-</style><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "RMD Calculator", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "description": "Estimate a required minimum distribution using IRS life-expectancy factors and the prior year-end retirement account balance.", "url": "/rmd-calculator/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Retirement", "item": "/finance/retirement/"}, {"@type": "ListItem", "position": 4, "name": "RMD Calculator", "item": "/rmd-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What balance is used for an RMD?", "acceptedAnswer": {"@type": "Answer", "text": "For a standard annual RMD, the calculation generally starts with the account balance at the close of business on December 31 of the previous year, then divides it by the applicable IRS distribution period."}}, {"@type": "Question", "name": "Why is there a special rule for a much younger spouse?", "acceptedAnswer": {"@type": "Answer", "text": "If your spouse is your sole beneficiary and is more than 10 years younger, the IRS Joint and Last Survivor table can apply. That table typically uses a longer life-expectancy factor than the Uniform Lifetime table."}}, {"@type": "Question", "name": "Does a Roth IRA have lifetime RMDs for the original owner?", "acceptedAnswer": {"@type": "Answer", "text": "Generally, Roth IRAs do not require lifetime RMDs for the original owner. Inherited Roth accounts can have distribution rules, so beneficiary situations should be checked separately."}}]}]}</script><link href="../assets/css/global.css" rel="stylesheet"/><link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head><body data-cp-category="finance" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../finance/index.html">Finance</a></li><li><a aria-current="page" href="index.html">RMD Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a href="../calculators/index.html">All calculators</a></div>
-<div class="cp-page-layout"><main class="wrap" id="main"><h1 class="page-title">RMD Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="main-grid"><section class="panel"><h2>Required Minimum Distribution</h2><div class="form-grid"><div class="field"><label for="rmdAge">Age at year-end</label><input id="rmdAge" max="120" min="73" type="number" value="75"/></div><div class="field"><label for="rmdBal">Prior Dec. 31 account balance</label><input id="rmdBal" min="0" type="number" value="300000"/></div><div class="field"><label for="spouseYounger">Spouse more than 10 years younger and sole beneficiary?</label><select id="spouseYounger" onchange="toggleJoint()"><option value="no">No</option><option value="yes">Yes</option></select></div><div class="field hidden" id="jointBox"><label for="jointFactor">IRS Joint Life factor</label><input id="jointFactor" min="1" placeholder="Enter Table II factor" step="0.1" type="number"/><span class="hint">Use IRS Pub. 590-B Table II for the exact ages.</span></div><div class="field full"><label for="rmdReturn">Estimated annual return for 5-year projection (%)</label><input id="rmdReturn" step="0.1" type="number" value="5"/></div></div><div class="error" id="error"></div><div class="actions"><button class="btn primary" onclick="calcRMD()">Calculate RMD</button><button class="btn ghost" onclick="resetRMD()">Reset</button></div></section><aside class="panel results"><div class="result-hero"><div class="result-label">Estimated RMD</div><div class="result-big" id="rmdOut">$0.00</div><div class="mini-note">Account balance ÷ distribution period</div></div><div class="stats"><div class="stat"><span>Distribution period</span><b id="factorOut">—</b></div><div class="stat"><span>Withdrawal rate</span><b id="rmdPct">—</b></div></div><div class="table-wrap"><table><thead><tr><th>Age</th><th>Starting balance</th><th>RMD</th><th>Ending balance*</th></tr></thead><tbody id="rmdRows"></tbody></table></div><div class="mini-note">*Projection assumes growth first and RMD withdrawn at year-end. It is an illustration, not IRS timing advice.</div></aside></section><article class="content"><div class="copy"><h2 id="how">What Is an RMD Calculator?</h2><p>An RMD calculator estimates the minimum amount that generally must be withdrawn from certain tax-deferred retirement accounts for a year. The standard calculation divides the prior December 31 account balance by an IRS life-expectancy distribution period.</p><h2>How to Use It</h2><p>Enter your age at the end of the distribution year and the account balance from the previous December 31. For the special case where your spouse is your sole beneficiary and is more than 10 years younger, enter the exact Joint Life factor from IRS Publication 590-B Table II.</p><h2 id="formula">RMD Formula</h2><p><code>RMD = prior year-end account balance ÷ applicable distribution period</code>. Most owners use the Uniform Lifetime Table. A different table can apply to certain beneficiaries and spouses.</p><h2 id="example">Example</h2><p>At age 75, the Uniform Lifetime distribution period is 24.6. A $300,000 prior year-end balance produces an estimated RMD of about $12,195.12.</p><h2>When Do RMDs Begin?</h2><p>Under current federal law, the applicable beginning age is 73 for people who reach age 73 before 2033 under the SECURE 2.0 transition. The applicable age rises to 75 for later cohorts described in the statute. Account type and employment status can affect timing.</p><h2 id="limits">Limitations</h2><p>This page does not handle inherited-account schedules, every employer-plan exception, first-year deferral choices, aggregated-account rules, QCDs, Roth-account exceptions, or penalties. Always verify the required amount with the account custodian and current IRS guidance.</p><section class="faq" id="faq"><h2>Frequently Asked Questions</h2><details><summary>What balance is used for an RMD?</summary><p>For a standard annual RMD, the calculation generally starts with the account balance at the close of business on December 31 of the previous year, then divides it by the applicable IRS distribution period.</p></details><details><summary>Why is there a special rule for a much younger spouse?</summary><p>If your spouse is your sole beneficiary and is more than 10 years younger, the IRS Joint and Last Survivor table can apply. That table typically uses a longer life-expectancy factor than the Uniform Lifetime table.</p></details><details><summary>Does a Roth IRA have lifetime RMDs for the original owner?</summary><p>Generally, Roth IRAs do not require lifetime RMDs for the original owner. Inherited Roth accounts can have distribution rules, so beneficiary situations should be checked separately.</p></details></section><section class="sources" id="sources"><h2>Sources and Methodology</h2><p>The calculator logic is implemented locally in your browser. Formulas and terminology were cross-checked against the references below. Estimates can differ from lender, tax-authority, plan-administrator, or contract calculations because real-world rules may add timing, rounding, eligibility, fees, or jurisdiction-specific treatment.</p><ul><li><a href="https://www.irs.gov/publications/p590b" rel="noopener" target="_blank">IRS Publication 590-B</a></li><li><a href="https://www.irs.gov/irb/2026-06_IRB" rel="noopener" target="_blank">IRS 2026 guidance on applicable RMD ages</a></li><li><a href="https://rmdcalculator.nga.finra.org/" rel="noopener" target="_blank">FINRA RMD Calculator</a></li><li><a href="https://www.calculator.net/rmd-calculator.html" rel="noopener" target="_blank">Calculator.net — RMD Calculator</a></li></ul></section></div></article>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <!-- Primary Meta Tags -->
+    <title>RMD Calculator – Required Minimum Distribution 2026</title>
+    <meta name="title" content="RMD Calculator – Required Minimum Distribution 2026">
+    <meta name="description"
+        content="Calculate your 2026 required minimum distribution using your prior Dec. 31 balance and applicable IRS life-expectancy factor, with a 5-year estimate.">
 
-<script class="cp-calculator-data" type="application/json">{"index":"88","Batch":"9","Calculator / Page":"RMD Calculator","Slug":"rmd-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance","Page Type":"Calculator","Search Intent / Purpose":"Estimate a required minimum distribution using IRS life-expectancy factors and the prior year-end retirement account balance.","Formula / Algorithm Used in Tool":"RMD Formula: RMD = prior year-end account balance ÷ applicable distribution period . Most owners use the Uniform Lifetime Table. A different table can apply to certain beneficiaries and spouses.","Required User Inputs":"Age at year-end; Prior Dec. 31 account balance; Spouse more than 10 years younger and sole beneficiary?; IRS Joint Life factor; Estimated annual return for 5-year projection (%)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Age at year-end, Prior Dec. 31 account balance, Spouse more than 10 years younger and sole beneficiary?, IRS Joint Life factor, Estimated annual return for 5-year projection (%). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Current official thresholds, limits, eligibility rules, effective tax year/date and authoritative government source.","Fresh Data Required?":"Yes","Recommended Update Frequency":"At least annually / whenever rules change","Important Assumptions / Limitations":"This page does not handle inherited-account schedules, every employer-plan exception, first-year deferral choices, aggregated-account rules, QCDs, Roth-account exceptions, or penalties. Always verify the required amount with the account custodian and current IRS guidance. Frequently Asked Questions What balance is used for an RMD? For a standard annual RMD, the calculation generally starts with the account balance at the close of business on December 31 of the previous year, then divides it by the applicable IRS distribution period. Why is there a special rule for a much younger spouse? If your spouse is your sole beneficiary and is more than 10 years younger, the IRS Joint and Last Survivor table can apply. That table typically uses a longer life-expectancy factor than the Uniform Lifetime table. Does a Roth IRA have lifetime RMDs for the original owner? Generally, Roth IRAs do not require lifetime RMDs for the original owner. Inherited Roth accounts can have distribution rules, so beneficiary situations should be checked separately. Sources and Methodology The calculator logic is implemented locally in your browser. Formulas and terminology were cross-checked against the references below. Estimates can differ from lender, tax-authority, plan-administrator, or contract calculati","Current Source URLs in Page":"https://www.irs.gov/publications/p590b | https://www.irs.gov/irb/2026-06_IRB | https://rmdcalculator.nga.finra.org/ | https://www.calculator.net/rmd-calculator.html","Implementation Path":"/rmd-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Finance</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../take-home-pay-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Take Home Pay Calculator</strong><small>Estimate 2026 U.S. take-home pay using federal tax brackets, standard or custom ded…</small></span></a><a class="cp-related-link" href="../present-value-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Present Value Calculator</strong><small>Calculate the present value of a future lump sum using a discount rate, time horizo…</small></span></a><a class="cp-related-link" href="../financial-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Financial Calculator</strong><small>Use this financial calculator for time value of money calculations including future…</small></span></a><a class="cp-related-link" href="../house-affordability-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>House Affordability Calculator</strong><small>Estimate an affordable home price from income and debt-to-income limits or from a f…</small></span></a><a class="cp-related-link" href="../future-value-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Future Value Calculator</strong><small>Calculate the future value of a lump sum and periodic deposits with compound growth…</small></span></a><a class="cp-related-link" href="../social-security-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Social Security Calculator</strong><small>Estimate U.S. Social Security retirement benefits by claim age using SSA early-reti…</small></span></a><a class="cp-related-link" href="../401k-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>401(k) Calculator</strong><small>Project a 401(k) balance using salary, contribution percentage, employer match, sal…</small></span></a><a class="cp-related-link" href="../credit-card-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Credit Card Calculator</strong><small>Estimate a single credit card payoff time, required monthly payment, total interest…</small></span></a></div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script>
-const $=s=>document.querySelector(s);const n=id=>Number(document.getElementById(id).value);const money=(v,c='$')=>c+Number(v).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});const pct=v=>Number(v).toFixed(2)+'%';
-function err(msg){const e=$('#error');e.textContent=msg;e.style.display='block'}function clearErr(){const e=$('#error');e.style.display='none';e.textContent=''}
-const UF={"73": 26.5, "74": 25.5, "75": 24.6, "76": 23.7, "77": 22.9, "78": 22.0, "79": 21.1, "80": 20.2, "81": 19.4, "82": 18.5, "83": 17.7, "84": 16.8, "85": 16.0, "86": 15.2, "87": 14.4, "88": 13.7, "89": 12.9, "90": 12.2, "91": 11.5, "92": 10.8, "93": 10.1, "94": 9.5, "95": 8.9, "96": 8.4, "97": 7.8, "98": 7.3, "99": 6.8, "100": 6.4, "101": 6.0, "102": 5.6, "103": 5.2, "104": 4.9, "105": 4.6, "106": 4.3, "107": 4.1, "108": 3.9, "109": 3.7, "110": 3.5, "111": 3.4, "112": 3.3, "113": 3.1, "114": 3.0, "115": 2.9, "116": 2.8, "117": 2.7, "118": 2.5, "119": 2.3, "120": 2.0};
-function toggleJoint(){document.getElementById('jointBox').classList.toggle('hidden',document.getElementById('spouseYounger').value!=='yes')}
-function calcRMD(){clearErr();let age=n('rmdAge'),bal=n('rmdBal'),rr=n('rmdReturn')/100;if(!Number.isInteger(age)||age<73||age>120||bal<0||!Number.isFinite(rr)||rr<=-1)return err('Enter age 73–120, a non-negative balance, and a valid return assumption.');let factor;if(document.getElementById('spouseYounger').value==='yes'){factor=n('jointFactor');if(!factor||factor<=0)return err('For a sole-beneficiary spouse more than 10 years younger, enter the exact IRS Table II joint-life factor.')}else factor=UF[age];const rmd=bal/factor;document.getElementById('rmdOut').textContent=money(rmd);document.getElementById('factorOut').textContent=factor.toFixed(1);document.getElementById('rmdPct').textContent=pct(100/factor);let rows='',b=bal;for(let i=0;i<5;i++){let a=age+i;if(a>120)break;let f=(i===0?factor:UF[a]);if(!f)break;let w=b/f;let end=b*(1+rr)-w;rows+=`<tr><td>${a}</td><td>${money(b)}</td><td>${money(w)}</td><td>${money(Math.max(0,end))}</td></tr>`;b=Math.max(0,end)}document.getElementById('rmdRows').innerHTML=rows}
-function resetRMD(){document.getElementById('rmdAge').value=75;document.getElementById('rmdBal').value=300000;document.getElementById('spouseYounger').value='no';document.getElementById('jointFactor').value='';document.getElementById('rmdReturn').value=5;toggleJoint();calcRMD()}toggleJoint();calcRMD();
-</script><script defer="" src="../assets/js/global.js"></script><script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+    <!-- Canonical -->
+    <link rel="canonical" href="https://monkeymart-onlinefree.github.io/rmd-calculator/">
+
+    <!-- Facebook / Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://monkeymart-onlinefree.github.io/rmd-calculator/">
+    <meta property="og:title" content="RMD Calculator – Required Minimum Distribution 2026">
+    <meta property="og:description"
+        content="Calculate your 2026 required minimum distribution using your prior Dec. 31 balance and applicable IRS life-expectancy factor, with a 5-year estimate.">
+    <meta property="og:site_name" content="RMD Calculator">
+
+    <!-- X / Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/rmd-calculator/">
+    <meta name="twitter:title" content="RMD Calculator – Required Minimum Distribution 2026">
+    <meta name="twitter:description"
+        content="Calculate your 2026 required minimum distribution using your prior Dec. 31 balance and applicable IRS life-expectancy factor, with a 5-year estimate.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .wrap {
+            width: min(1180px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .crumb {
+            font-size: .9rem;
+            color: var(--muted);
+            padding: 18px 0
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            border-radius: 34px;
+            background: var(--hero);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, .18);
+            padding: clamp(28px, 5vw, 64px);
+            min-height: 340px;
+            display: grid;
+            grid-template-columns: 1.fr;
+            gap: 34px;
+            align-items: center
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 4.6rem);
+            line-height: 1.02;
+            margin: .15em 0 .3em;
+            letter-spacing: -.04em
+        }
+
+        .hero p {
+            font-size: 1.08rem;
+            max-width: 720px;
+            color: var(--hero-muted)
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            padding: 7px 11px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .08);
+            font-size: .78rem;
+            letter-spacing: .08em;
+            text-transform: uppercase
+        }
+
+        .visual {
+            min-height: 240px;
+            position: relative;
+            display: grid;
+            place-items: center
+        }
+
+        .orb,
+        .tile,
+        .coin,
+        .ring,
+        .cube {
+            position: absolute;
+            filter: drop-shadow(0 18px 22px rgba(0, 0, 0, .24))
+        }
+
+        .orb {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 25%, #fff9 0 8%, transparent 9%), linear-gradient(145deg, var(--accent2), var(--accent));
+            box-shadow: inset -18px -24px 36px #0003
+        }
+
+        .ring {
+            width: 190px;
+            height: 190px;
+            border: 28px solid var(--accent);
+            border-radius: 50%;
+            transform: rotateX(62deg) rotateZ(-12deg);
+            opacity: .9
+        }
+
+        .tile {
+            width: 190px;
+            height: 118px;
+            border-radius: 24px;
+            background: linear-gradient(145deg, #ffffff22, #ffffff08);
+            border: 1px solid #ffffff35;
+            backdrop-filter: blur(12px);
+            transform: rotate(-8deg) skewY(4deg);
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            font-size: 2rem
+        }
+
+        .coin {
+            width: 78px;
+            height: 78px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #fff7aa, #e6a800);
+            border: 8px solid #ffd14b;
+            display: grid;
+            place-items: center;
+            color: #5d3c00;
+            font-weight: 900
+        }
+
+        .cube {
+            width: 94px;
+            height: 94px;
+            border-radius: 20px;
+            background: linear-gradient(145deg, var(--accent), var(--accent2));
+            transform: rotate(26deg);
+            box-shadow: inset -16px -16px 24px #0002
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.12fr) minmax(300px, .88fr);
+            gap: 28px;
+            margin: 34px auto
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--panel-line);
+            border-radius: 28px;
+            box-shadow: 0 20px 48px rgba(0, 0, 0, .1);
+            padding: clamp(20px, 3vw, 32px)
+        }
+
+        .panel h2 {
+            margin-top: 0
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px
+        }
+
+        .field.full {
+            grid-column: 1/-1
+        }
+
+        label {
+            font-weight: 700;
+            font-size: .92rem
+        }
+
+        .hint {
+            font-size: .78rem;
+            color: var(--muted)
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--input-line);
+            background: var(--input);
+            color: var(--text);
+            border-radius: 14px;
+            padding: 12px 13px;
+            font: inherit;
+            outline: none;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, .04)
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent)
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 18px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .btn.primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: var(--button-text);
+            box-shadow: 0 12px 25px color-mix(in srgb, var(--accent) 28%, transparent)
+        }
+
+        .btn.ghost {
+            background: var(--input);
+            color: var(--text);
+            border: 1px solid var(--input-line)
+        }
+
+        .error {
+            display: none;
+            margin-top: 12px;
+            padding: 11px 13px;
+            border-radius: 12px;
+            background: #ffefef;
+            color: #9c1c1c;
+            font-weight: 700
+        }
+
+        .results {
+            position: sticky;
+            top: 18px;
+            align-self: start
+        }
+
+        .result-hero {
+            border-radius: 24px;
+            padding: 22px;
+            background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 16%, var(--panel)), color-mix(in srgb, var(--accent2) 10%, var(--panel)));
+            border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--panel-line));
+            margin-bottom: 16px
+        }
+
+        .result-label {
+            font-size: .82rem;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: var(--muted);
+            font-weight: 800
+        }
+
+        .result-big {
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            font-weight: 900;
+            letter-spacing: -.04em;
+            margin-top: 4px
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px
+        }
+
+        .stat {
+            padding: 14px;
+            border-radius: 16px;
+            background: var(--soft);
+            border: 1px solid var(--panel-line)
+        }
+
+        .stat b {
+            display: block;
+            font-size: 1.05rem
+        }
+
+        .stat span {
+            font-size: .78rem;
+            color: var(--muted)
+        }
+
+        .bar {
+            height: 12px;
+            background: var(--soft);
+            border-radius: 999px;
+            overflow: hidden;
+            margin: 8px 0
+        }
+
+        .bar>i {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            border-radius: inherit
+        }
+
+        .table-wrap {
+            overflow: auto;
+            margin-top: 16px;
+            border-radius: 16px;
+            border: 1px solid var(--panel-line)
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 560px
+        }
+
+        th,
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--panel-line);
+            text-align: right;
+            font-size: .88rem
+        }
+
+        th:first-child,
+        td:first-child {
+            text-align: left
+        }
+
+        th {
+            background: var(--soft);
+            position: sticky;
+            top: 0
+        }
+
+        article.content {
+            margin: 40px auto 72px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 300px;
+            gap: 32px
+        }
+
+        .copy {
+            background: var(--panel);
+            border: 1px solid var(--panel-line);
+            border-radius: 30px;
+            padding: clamp(24px, 4vw, 46px);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, .07)
+        }
+
+        .copy h2 {
+            font-size: clamp(1.45rem, 3vw, 2.25rem);
+            margin-top: 1.7em;
+            letter-spacing: -.02em
+        }
+
+        .copy h2:first-child {
+            margin-top: 0
+        }
+
+        .copy h3 {
+            margin-top: 1.4em
+        }
+
+        .copy p,
+        .copy li {
+            color: var(--copy)
+        }
+
+        .copy code {
+            background: var(--soft);
+            padding: 2px 7px;
+            border-radius: 8px
+        }
+
+        .toc {
+            position: sticky;
+            top: 20px;
+            align-self: start;
+            background: var(--panel);
+            border: 1px solid var(--panel-line);
+            border-radius: 22px;
+            padding: 20px
+        }
+
+        .toc strong {
+            display: block;
+            margin-bottom: 8px
+        }
+
+        .toc a {
+            display: block;
+            padding: 5px 0;
+            color: var(--muted)
+        }
+
+        .callout {
+            padding: 16px 18px;
+            border-left: 4px solid var(--accent);
+            background: var(--soft);
+            border-radius: 12px;
+            margin: 18px 0
+        }
+
+        .faq details {
+            border-top: 1px solid var(--panel-line);
+            padding: 14px 0
+        }
+
+        .faq summary {
+            font-weight: 800;
+            cursor: pointer
+        }
+
+        .sources li {
+            margin: 8px 0
+        }
+
+        footer {
+            padding: 30px 0 50px;
+            color: var(--muted);
+            text-align: center
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 16px
+        }
+
+        .tab {
+            padding: 9px 12px;
+            border-radius: 12px;
+            border: 1px solid var(--input-line);
+            background: var(--input);
+            cursor: pointer;
+            font-weight: 800
+        }
+
+        .tab.active {
+            background: var(--accent);
+            color: var(--button-text);
+            border-color: transparent
+        }
+
+        .hidden {
+            display: none !important
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 9px;
+            border-radius: 999px;
+            background: var(--soft);
+            font-size: .76rem;
+            font-weight: 800;
+            color: var(--muted)
+        }
+
+        .switchline {
+            display: flex;
+            gap: 10px;
+            align-items: center
+        }
+
+        .switchline input {
+            width: auto
+        }
+
+        .three {
+            grid-template-columns: repeat(3, minmax(0, 1fr))
+        }
+
+        .mini-note {
+            font-size: .82rem;
+            color: var(--muted);
+            margin-top: 10px
+        }
+
+        @media(max-width:860px) {
+
+            .hero,
+            .main-grid,
+            article.content {
+                grid-template-columns: 1fr
+            }
+
+            .visual {
+                min-height: 180px
+            }
+
+            .results,
+            .toc {
+                position: static
+            }
+
+            .toc {
+                display: none
+            }
+        }
+
+        @media(max-width:560px) {
+            .wrap {
+                width: min(100% - 20px, 1180px)
+            }
+
+            .hero {
+                border-radius: 24px;
+                padding: 24px 20px
+            }
+
+            .panel {
+                border-radius: 22px;
+                padding: 18px
+            }
+
+            .form-grid,
+            .stats,
+            .three {
+                grid-template-columns: 1fr
+            }
+
+            .field.full {
+                grid-column: auto
+            }
+
+            .result-big {
+                font-size: 2.25rem
+            }
+        }
+
+        :root {
+            --bg: #f3efe5;
+            --text: #241f18;
+            --copy: #4c4337;
+            --muted: #756c60;
+            --panel: #fffaf0;
+            --panel-line: #dfd3bd;
+            --soft: #f0e8d8;
+            --input: #fffdf8;
+            --input-line: #d8c8ad;
+            --accent: #9c5c2a;
+            --accent2: #2c6575;
+            --button-text: #fff;
+            --hero: linear-gradient(135deg, #2b2119, #49311f 52%, #25586a);
+            --hero-muted: #eadfce;
+            --line: #ffffff2d
+        }
+
+        .hero {
+            border-radius: 70px 26px 70px 26px
+        }
+
+        .visual .ring {
+            border-color: #d1a15c
+        }
+
+        .visual .tile {
+            transform: rotate(-10deg);
+            font-size: 1rem
+        }
+
+        .visual:after {
+            content: '73+';
+            font-size: 4rem;
+            font-weight: 900;
+            color: #fff;
+            z-index: 2;
+            text-shadow: 0 12px 25px #0008
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/rmd-calculator/#webapplication",
+      "name": "RMD Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/rmd-calculator/",
+      "description": "Calculate your 2026 required minimum distribution using your prior Dec. 31 balance and applicable IRS life-expectancy factor, with a 5-year estimate.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/rmd-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "RMD Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/rmd-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/rmd-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What account balance is used to calculate an RMD?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A standard annual RMD generally starts with the retirement account balance at the end of December 31 of the previous year. For a 2026 RMD, that generally means the December 31, 2025 balance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which IRS table does the calculator use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most account owners use the Uniform Lifetime Table. If your spouse is your sole beneficiary and is more than 10 years younger, the Joint and Last Survivor Life Expectancy Table may apply instead."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does a younger spouse affect the RMD?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The IRS provides a separate joint-life table for owners whose spouse is their sole beneficiary and is more than 10 years younger. That table uses both spouses' ages to determine the applicable distribution period."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the estimated annual return change my current RMD?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The current RMD calculation uses the prior year-end balance and applicable IRS distribution period. The annual return field is used for the calculator’s 5-year projection."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I withdraw more than the calculated RMD?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. An RMD is generally the minimum required amount. However, withdrawing more than the required amount in one year does not reduce a future year's RMD requirement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a Roth IRA have an RMD while the original owner is alive?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Generally, no. Roth IRA owners do not have lifetime RMD requirements. Beneficiaries can be subject to separate distribution rules."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I miss an RMD?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A federal excise tax may apply to the portion that was not distributed as required. Because correction rules and individual circumstances matter, check current IRS guidance if an RMD was missed."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="finance" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../finance/index.html">Finance</a></li>
+            <li><a aria-current="page" href="index.html">RMD Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main class="wrap" id="main">
+            <h1 class="page-title">RMD Calculator</h1>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="main-grid">
+                <section class="panel">
+                    <h2>Required Minimum Distribution</h2>
+                    <div class="form-grid">
+                        <div class="field"><label for="rmdAge">Age at year-end</label><input id="rmdAge" max="120"
+                                min="73" type="number" value="75" /></div>
+                        <div class="field"><label for="rmdBal">Prior Dec. 31 account balance</label><input id="rmdBal"
+                                min="0" type="number" value="300000" /></div>
+                        <div class="field"><label for="spouseYounger">Spouse more than 10 years younger and sole
+                                beneficiary?</label><select id="spouseYounger" onchange="toggleJoint()">
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select></div>
+                        <div class="field hidden" id="jointBox"><label for="jointFactor">IRS Joint Life
+                                factor</label><input id="jointFactor" min="1" placeholder="Enter Table II factor"
+                                step="0.1" type="number" /><span class="hint">Use IRS Pub. 590-B Table II for the exact
+                                ages.</span></div>
+                        <div class="field full"><label for="rmdReturn">Estimated annual return for 5-year projection
+                                (%)</label><input id="rmdReturn" step="0.1" type="number" value="5" /></div>
+                    </div>
+                    <div class="error" id="error"></div>
+                    <div class="actions"><button class="btn primary" onclick="calcRMD()">Calculate RMD</button><button
+                            class="btn ghost" onclick="resetRMD()">Reset</button></div>
+                </section>
+                <aside class="panel results">
+                    <div class="result-hero">
+                        <div class="result-label">Estimated RMD</div>
+                        <div class="result-big" id="rmdOut">$0.00</div>
+                        <div class="mini-note">Account balance ÷ distribution period</div>
+                    </div>
+                    <div class="stats">
+                        <div class="stat"><span>Distribution period</span><b id="factorOut">—</b></div>
+                        <div class="stat"><span>Withdrawal rate</span><b id="rmdPct">—</b></div>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Age</th>
+                                    <th>Starting balance</th>
+                                    <th>RMD</th>
+                                    <th>Ending balance*</th>
+                                </tr>
+                            </thead>
+                            <tbody id="rmdRows"></tbody>
+                        </table>
+                    </div>
+                    <div class="mini-note">*Projection assumes growth first and RMD withdrawn at year-end. It is an
+                        illustration, not IRS timing advice.</div>
+                </aside>
+            </section>
+             
+
+
+<article class="article">
+<p>The RMD Calculator estimates your required minimum distribution using your age at year-end, prior December 31 retirement-account balance, and the applicable IRS distribution period. It also accepts an estimated annual return for the calculator’s 5-year projection.</p>
+
+  <section id="what">
+    <h2>What Is the RMD Calculator?</h2>
+
+    <p class="direct">A required minimum distribution, or RMD, is the minimum amount that certain retirement-account owners must withdraw for a year.</p>
+
+    <p>This calculator estimates the current-year RMD by dividing the previous year-end account balance by the applicable IRS distribution period. Most account owners use the Uniform Lifetime Table, while a different factor can apply when a spouse is the sole beneficiary and is more than 10 years younger.</p>
+
+    <p>The calculator is useful for retirement withdrawal planning, estimating an upcoming distribution, and understanding how the applicable IRS factor affects the required amount.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the RMD Calculator</h2>
+
+    <p>Enter the following information in the calculator:</p>
+
+    <ol>
+      <li><strong>Age at year-end:</strong> Enter your age as of your birthday in the RMD year. The IRS distribution period is based on your age for that year.</li>
+      <li><strong>Prior Dec. 31 account balance:</strong> Enter the retirement account balance at the end of the previous calendar year. For a 2026 RMD, this is generally the account balance at the end of December 31, 2025.</li>
+      <li><strong>Spouse more than 10 years younger and sole beneficiary?:</strong> Select the applicable answer. This determines whether the standard Uniform Lifetime factor or a Joint Life factor may apply.</li>
+      <li><strong>IRS Joint Life factor:</strong> If your spouse is your sole beneficiary and is more than 10 years younger, enter the applicable factor from the IRS Joint and Last Survivor Life Expectancy Table.</li>
+      <li><strong>Estimated annual return for 5-year projection (%):</strong> Enter the annual investment-return assumption you want the calculator to use for its projection. This is an estimate and does not guarantee future investment performance.</li>
+    </ol>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+
+    <p>The calculator uses:</p>
+
+    <div class="formula"><strong>RMD = B ÷ D</strong></div>
+
+    <p>where:</p>
+
+    <ul>
+      <li><strong>RMD</strong> = estimated required minimum distribution in dollars</li>
+      <li><strong>B</strong> = prior December 31 account balance in dollars</li>
+      <li><strong>D</strong> = applicable IRS distribution-period factor</li>
+    </ul>
+
+    <p>The IRS uses the previous year-end account balance and the applicable distribution period to determine a standard annual RMD.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th><strong>Variable</strong></th>
+          <th><strong>Meaning</strong></th>
+          <th><strong>Unit</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>RMD</td>
+          <td>Required minimum distribution</td>
+          <td>Dollars</td>
+        </tr>
+        <tr>
+          <td>B</td>
+          <td>Prior year-end retirement account balance</td>
+          <td>Dollars</td>
+        </tr>
+        <tr>
+          <td>D</td>
+          <td>Applicable IRS distribution period</td>
+          <td>IRS life-expectancy factor / years</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Calculation Sequence</h3>
+
+    <ol>
+      <li>Determine your age at the end of the distribution year.</li>
+      <li>Identify which IRS life-expectancy table applies.</li>
+      <li>Use the Uniform Lifetime factor for the standard owner calculation.</li>
+      <li>If your spouse is your sole beneficiary and is more than 10 years younger, use the applicable Joint Life factor instead.</li>
+      <li>Divide the prior December 31 account balance by the applicable factor.</li>
+      <li>Display the estimated RMD.</li>
+    </ol>
+
+    <p>The estimated annual return does not change this current-year RMD formula. It is an assumption used for the calculator’s 5-year projection.</p>
+
+    <h3>Uniform Lifetime Method</h3>
+
+    <p>For most retirement-account owners calculating their own RMD:</p>
+
+    <div class="formula"><strong>RMD = Prior Dec. 31 balance ÷ Uniform Lifetime factor</strong></div>
+
+    <p>The Uniform Lifetime Table generally applies when you are unmarried, when your spouse is not more than 10 years younger, or when your spouse is not your sole beneficiary.</p>
+
+    <h3>Younger-Spouse Method</h3>
+
+    <p>If your spouse is your sole beneficiary and is more than 10 years younger, the applicable Joint and Last Survivor Life Expectancy factor may be used:</p>
+
+    <div class="formula"><strong>RMD = Prior Dec. 31 balance ÷ IRS Joint Life factor</strong></div>
+
+    <p>The calculator therefore asks you to enter the applicable Joint Life factor for this situation.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Assume the following information for a 2026 RMD.</p>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li>Age at year-end: <strong>75</strong></li>
+      <li>Prior Dec. 31, 2025 account balance: <strong>$100,000</strong></li>
+      <li>Spouse more than 10 years younger and sole beneficiary: <strong>No</strong></li>
+      <li>Joint Life factor: <strong>Not used</strong></li>
+      <li>Estimated annual return for projection: <strong>5%</strong></li>
+    </ul>
+
+    <p>For age 75, the IRS Uniform Lifetime Table lists an applicable denominator of <strong>24.6</strong>.</p>
+
+    <h3>Step 1</h3>
+
+    <p>Use the RMD formula:</p>
+
+    <div class="formula"><strong>RMD = $100,000 ÷ 24.6</strong></div>
+
+    <h3>Step 2</h3>
+
+    <p>Perform the division:</p>
+
+    <div class="formula"><strong>RMD = $4,065.040650...</strong></div>
+
+    <h3>Step 3</h3>
+
+    <p>Round the displayed dollar result as appropriate:</p>
+
+    <div class="formula"><strong>Estimated RMD ≈ $4,065.04</strong></div>
+
+    <h3>Final Result</h3>
+
+    <p>For this example, the estimated 2026 required minimum distribution is <strong>$4,065.04</strong>.</p>
+
+    <p>The 5% return assumption is used for the calculator’s projection and does not change the current-year RMD calculated from the 2025 year-end balance.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Estimated RMD</h3>
+
+    <p>This is the estimated minimum distribution produced by dividing the prior year-end balance by the applicable IRS distribution period.</p>
+
+    <p>The result is a withdrawal amount, not an estimate of the income tax you will owe. The tax treatment of a distribution can depend on the account, basis, and other tax circumstances.</p>
+
+    <h3>IRS Distribution Period</h3>
+
+    <p>A larger distribution-period factor produces a smaller RMD for the same account balance. As the applicable Uniform Lifetime denominator generally decreases with age, the required percentage of the account balance generally increases.</p>
+
+    <h3>5-Year Projection</h3>
+
+    <p>The projection uses the annual return assumption entered in the calculator to provide an estimate of future values. Actual investment returns can be higher, lower, or negative, so the projection should not be treated as a guaranteed future account balance or withdrawal amount.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>This calculator provides an estimate based on the information you enter and the applicable IRS distribution-period factor.</p>
+
+    <p>It does not fully model inherited retirement-account distribution schedules, every employer-plan exception, first-year RMD deferral choices, account aggregation rules, qualified charitable distributions, all Roth-account exceptions, or penalties for missed distributions.</p>
+
+    <p>The special younger-spouse calculation depends on entering the correct IRS Joint Life factor.</p>
+
+    <p>The 5-year projection depends on the annual return assumption you provide. Actual market returns are not guaranteed.</p>
+
+    <p>Employer retirement plans may also have plan-specific rules that affect when distributions begin. Verify the final required amount and deadline with your retirement-plan administrator, IRA custodian, tax professional, and current IRS guidance.</p>
+  </section>
+
+  <section id="current-rules">
+    <h2>Current Rules / Data</h2>
+
+    <h3>2026 RMD Calculation</h3>
+
+    <p>For a 2026 IRA RMD, IRS guidance generally uses the account balance at the end of <strong>December 31, 2025</strong>, divided by the applicable denominator for your age in <strong>2026</strong>.</p>
+
+    <h3>When RMDs Begin</h3>
+
+    <p>Under IRS guidance applicable in 2026, IRA owners subject to the current starting-age rule generally begin RMDs at age <strong>73</strong>. The first IRA RMD can generally be delayed until April 1 of the following year, while later annual RMDs are generally due by December 31. Employer-plan rules can allow a later starting date in certain situations.</p>
+
+    <p>SECURE 2.0 also provides for an applicable RMD age of <strong>75</strong> for later cohorts, so the correct starting age depends on the applicable law and the account owner's birth year.</p>
+
+    <h3>Roth Accounts</h3>
+
+    <p>Roth IRAs do not require lifetime RMDs for the original owner. Current IRS rules also exclude designated Roth accounts in retirement plans from lifetime RMD requirements while the employee is alive. Beneficiaries can still be subject to distribution requirements.</p>
+
+    <h3>Missed RMDs</h3>
+
+    <p>If a required amount is not distributed, an excise tax can apply to the shortfall. IRS guidance currently states a <strong>25%</strong> tax, potentially reduced to <strong>10%</strong> when the failure is corrected within the applicable correction period. This calculator does not calculate that tax.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What account balance is used to calculate an RMD?</summary>
+      <p>A standard annual RMD generally starts with the retirement account balance at the end of December 31 of the previous year. For a 2026 RMD, that generally means the December 31, 2025 balance.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Which IRS table does the calculator use?</summary>
+      <p>Most account owners use the Uniform Lifetime Table. If your spouse is your sole beneficiary and is more than 10 years younger, the Joint and Last Survivor Life Expectancy Table may apply instead.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why does a younger spouse affect the RMD?</summary>
+      <p>The IRS provides a separate joint-life table for owners whose spouse is their sole beneficiary and is more than 10 years younger. That table uses both spouses' ages to determine the applicable distribution period.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does the estimated annual return change my current RMD?</summary>
+      <p>No. The current RMD calculation uses the prior year-end balance and applicable IRS distribution period. The annual return field is used for the calculator’s 5-year projection.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can I withdraw more than the calculated RMD?</summary>
+      <p>Yes. An RMD is generally the minimum required amount. However, withdrawing more than the required amount in one year does not reduce a future year's RMD requirement.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does a Roth IRA have an RMD while the original owner is alive?</summary>
+      <p>Generally, no. Roth IRA owners do not have lifetime RMD requirements. Beneficiaries can be subject to separate distribution rules.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What happens if I miss an RMD?</summary>
+      <p>A federal excise tax may apply to the portion that was not distributed as required. Because correction rules and individual circumstances matter, check current IRS guidance if an RMD was missed.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <strong>IRS Publication 590-B — Distributions from Individual Retirement Arrangements (IRAs)</strong><br>
+        <a href="https://www.irs.gov/publications/p590b?utm_source=chatgpt.com" rel="noopener" target="_blank">IRS Publication 590-B</a><br>
+        Supports the prior-year balance method, life-expectancy tables, Uniform Lifetime factors, Joint Life rules, and RMD calculation procedure.
+      </li>
+
+      <li>
+        <strong>IRS — Required Minimum Distributions (RMDs)</strong><br>
+        <a href="https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-required-minimum-distributions-rmds?utm_source=chatgpt.com" rel="noopener" target="_blank">IRS Required Minimum Distribution Guidance</a><br>
+        Supports general RMD eligibility, deadlines, applicable tables, Roth treatment, and missed-RMD information.
+      </li>
+    </ul>
+
+    <h3>Current Data / Rule Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <strong>IRS Internal Revenue Bulletin 2026-06</strong><br>
+        <a href="https://www.irs.gov/irb/2026-06_IRB?utm_source=chatgpt.com" rel="noopener" target="_blank">IRS Internal Revenue Bulletin 2026-06</a><br>
+        Supports current SECURE 2.0 provisions concerning applicable RMD ages and designated Roth accounts.
+      </li>
+
+      <li>
+        <strong>IRS RMD Comparison Chart — IRAs vs. Defined Contribution Plans</strong><br>
+        <a href="https://www.irs.gov/retirement-plans/rmd-comparison-chart-iras-vs-defined-contribution-plans?utm_source=chatgpt.com" rel="noopener" target="_blank">IRS RMD Comparison Chart</a><br>
+        Supports differences between IRA and employer-plan starting dates and annual distribution deadlines.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><strong>IRA Calculator</strong> —<a href="https://example.com/ira-calculator/?utm_source=chatgpt.com"> IRA Calculator</a></li>
+      <li><strong>Roth IRA Calculator</strong> —<a href="https://example.com/roth-ira-calculator/?utm_source=chatgpt.com"> Roth IRA Calculator</a></li>
+      <li><strong>401(k) Calculator</strong> —<a href="https://example.com/401k-calculator/?utm_source=chatgpt.com"> 401(k) Calculator</a></li>
+      <li><strong>Retirement Calculator</strong> —<a href="https://example.com/retirement-calculator/?utm_source=chatgpt.com"> Retirement Calculator</a></li>
+      <li><strong>Investment Calculator</strong> —<a href="https://example.com/investment-calculator/?utm_source=chatgpt.com"> Investment Calculator</a></li>
+      <li><strong>Annuity Calculator</strong> —<a href="https://example.com/annuity-calculator/?utm_source=chatgpt.com"> Annuity Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"88","Batch":"9","Calculator / Page":"RMD Calculator","Slug":"rmd-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance","Page Type":"Calculator","Search Intent / Purpose":"Estimate a required minimum distribution using IRS life-expectancy factors and the prior year-end retirement account balance.","Formula / Algorithm Used in Tool":"RMD Formula: RMD = prior year-end account balance ÷ applicable distribution period . Most owners use the Uniform Lifetime Table. A different table can apply to certain beneficiaries and spouses.","Required User Inputs":"Age at year-end; Prior Dec. 31 account balance; Spouse more than 10 years younger and sole beneficiary?; IRS Joint Life factor; Estimated annual return for 5-year projection (%)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Age at year-end, Prior Dec. 31 account balance, Spouse more than 10 years younger and sole beneficiary?, IRS Joint Life factor, Estimated annual return for 5-year projection (%). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Current official thresholds, limits, eligibility rules, effective tax year/date and authoritative government source.","Fresh Data Required?":"Yes","Recommended Update Frequency":"At least annually / whenever rules change","Important Assumptions / Limitations":"This page does not handle inherited-account schedules, every employer-plan exception, first-year deferral choices, aggregated-account rules, QCDs, Roth-account exceptions, or penalties. Always verify the required amount with the account custodian and current IRS guidance. Frequently Asked Questions What balance is used for an RMD? For a standard annual RMD, the calculation generally starts with the account balance at the close of business on December 31 of the previous year, then divides it by the applicable IRS distribution period. Why is there a special rule for a much younger spouse? If your spouse is your sole beneficiary and is more than 10 years younger, the IRS Joint and Last Survivor table can apply. That table typically uses a longer life-expectancy factor than the Uniform Lifetime table. Does a Roth IRA have lifetime RMDs for the original owner? Generally, Roth IRAs do not require lifetime RMDs for the original owner. Inherited Roth accounts can have distribution rules, so beneficiary situations should be checked separately. Sources and Methodology The calculator logic is implemented locally in your browser. Formulas and terminology were cross-checked against the references below. Estimates can differ from lender, tax-authority, plan-administrator, or contract calculati","Current Source URLs in Page":"https://www.irs.gov/publications/p590b | https://www.irs.gov/irb/2026-06_IRB | https://rmdcalculator.nga.finra.org/ | https://www.calculator.net/rmd-calculator.html","Implementation Path":"/rmd-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Finance</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../take-home-pay-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Take Home Pay Calculator</strong><small>Estimate
+                            2026 U.S. take-home pay using federal tax brackets, standard or custom
+                            ded…</small></span></a><a class="cp-related-link"
+                    href="../present-value-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Present Value Calculator</strong><small>Calculate
+                            the present value of a future lump sum using a discount rate, time
+                            horizo…</small></span></a><a class="cp-related-link"
+                    href="../financial-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Financial Calculator</strong><small>Use this
+                            financial calculator for time value of money calculations including
+                            future…</small></span></a><a class="cp-related-link"
+                    href="../house-affordability-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>House Affordability
+                            Calculator</strong><small>Estimate an affordable home price from income and debt-to-income
+                            limits or from a f…</small></span></a><a class="cp-related-link"
+                    href="../future-value-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Future Value Calculator</strong><small>Calculate
+                            the future value of a lump sum and periodic deposits with compound
+                            growth…</small></span></a><a class="cp-related-link"
+                    href="../social-security-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Social Security Calculator</strong><small>Estimate
+                            U.S. Social Security retirement benefits by claim age using SSA
+                            early-reti…</small></span></a><a class="cp-related-link"
+                    href="../401k-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>401(k)
+                            Calculator</strong><small>Project a 401(k) balance using salary, contribution percentage,
+                            employer match, sal…</small></span></a><a class="cp-related-link"
+                    href="../credit-card-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Credit Card Calculator</strong><small>Estimate a
+                            single credit card payoff time, required monthly payment, total interest…</small></span></a>
+            </div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const $ = s => document.querySelector(s); const n = id => Number(document.getElementById(id).value); const money = (v, c = '$') => c + Number(v).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }); const pct = v => Number(v).toFixed(2) + '%';
+        function err(msg) { const e = $('#error'); e.textContent = msg; e.style.display = 'block' } function clearErr() { const e = $('#error'); e.style.display = 'none'; e.textContent = '' }
+        const UF = { "73": 26.5, "74": 25.5, "75": 24.6, "76": 23.7, "77": 22.9, "78": 22.0, "79": 21.1, "80": 20.2, "81": 19.4, "82": 18.5, "83": 17.7, "84": 16.8, "85": 16.0, "86": 15.2, "87": 14.4, "88": 13.7, "89": 12.9, "90": 12.2, "91": 11.5, "92": 10.8, "93": 10.1, "94": 9.5, "95": 8.9, "96": 8.4, "97": 7.8, "98": 7.3, "99": 6.8, "100": 6.4, "101": 6.0, "102": 5.6, "103": 5.2, "104": 4.9, "105": 4.6, "106": 4.3, "107": 4.1, "108": 3.9, "109": 3.7, "110": 3.5, "111": 3.4, "112": 3.3, "113": 3.1, "114": 3.0, "115": 2.9, "116": 2.8, "117": 2.7, "118": 2.5, "119": 2.3, "120": 2.0 };
+        function toggleJoint() { document.getElementById('jointBox').classList.toggle('hidden', document.getElementById('spouseYounger').value !== 'yes') }
+        function calcRMD() { clearErr(); let age = n('rmdAge'), bal = n('rmdBal'), rr = n('rmdReturn') / 100; if (!Number.isInteger(age) || age < 73 || age > 120 || bal < 0 || !Number.isFinite(rr) || rr <= -1) return err('Enter age 73–120, a non-negative balance, and a valid return assumption.'); let factor; if (document.getElementById('spouseYounger').value === 'yes') { factor = n('jointFactor'); if (!factor || factor <= 0) return err('For a sole-beneficiary spouse more than 10 years younger, enter the exact IRS Table II joint-life factor.') } else factor = UF[age]; const rmd = bal / factor; document.getElementById('rmdOut').textContent = money(rmd); document.getElementById('factorOut').textContent = factor.toFixed(1); document.getElementById('rmdPct').textContent = pct(100 / factor); let rows = '', b = bal; for (let i = 0; i < 5; i++) { let a = age + i; if (a > 120) break; let f = (i === 0 ? factor : UF[a]); if (!f) break; let w = b / f; let end = b * (1 + rr) - w; rows += `<tr><td>${a}</td><td>${money(b)}</td><td>${money(w)}</td><td>${money(Math.max(0, end))}</td></tr>`; b = Math.max(0, end) } document.getElementById('rmdRows').innerHTML = rows }
+        function resetRMD() { document.getElementById('rmdAge').value = 75; document.getElementById('rmdBal').value = 300000; document.getElementById('spouseYounger').value = 'no'; document.getElementById('jointFactor').value = ''; document.getElementById('rmdReturn').value = 5; toggleJoint(); calcRMD() } toggleJoint(); calcRMD();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

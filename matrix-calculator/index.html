@@ -1,9 +1,740 @@
 <!DOCTYPE html>
 
-<html lang="en-US"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
-<title>Matrix Calculator | CalcPro</title><meta content="Add, subtract and multiply matrices with a compact matrix workspace. Free, fast and responsive matrix calculator with formulas, examples and clear results." name="description"/><meta content="index,follow" name="robots"/><link href="../matrix-calculator/" rel="canonical"/><meta content="Matrix Calculator | CalcPro" property="og:title"/><meta content="Add, subtract and multiply matrices with a compact matrix workspace." property="og:description"/><meta content="#1477ff" name="theme-color"/><style>:root{--a:#7e22ce;--b:#d8b4fe;--ink:#172033;--muted:#657086}*{box-sizing:border-box}body{margin:0;font:16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:radial-gradient(circle at 10% 10%,var(--b),transparent 24%),#f7f8fc}header,main,footer{max-width:1120px;margin:auto;padding:20px}nav{font-size:14px;color:var(--muted)}.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;padding:54px 20px 30px}h1{font-size:clamp(38px,6vw,68px);line-height:1.02;margin:.2em 0}h2{margin-top:38px;line-height:1.2}.orb{height:250px;border-radius:34% 66% 60% 40%;background:linear-gradient(145deg,var(--b),var(--a));box-shadow:30px 35px 70px #0003,inset 12px 12px 25px #fff6;transform:rotate(-8deg);display:grid;place-items:center;color:white;font-size:72px;font-weight:800;text-shadow:0 8px 20px #0004}.calc{display:grid;grid-template-columns:1fr 1fr;gap:22px;background:#ffffffcc;backdrop-filter:blur(14px);padding:28px;border-radius:28px;box-shadow:0 25px 70px #24304a22;border:1px solid #fff}.fields{display:grid;gap:14px}label{font-weight:650}input,select,textarea{width:100%;margin-top:6px;padding:13px 14px;border:1px solid #d7dce7;border-radius:12px;background:#fff;font:inherit}textarea{min-height:70px}button{border:0;border-radius:12px;padding:13px 18px;font-weight:750;cursor:pointer}.primary{background:var(--a);color:#fff}.secondary{background:#edf0f6}.actions{display:flex;gap:10px}#result{min-height:210px;border-radius:22px;padding:28px;background:linear-gradient(145deg,var(--a),#111827);color:white;display:flex;flex-direction:column;justify-content:center;overflow-wrap:anywhere;box-shadow:inset 0 1px #fff4,0 18px 35px #0002}#result b{font-size:clamp(24px,4vw,42px);line-height:1.15}#result small{margin-top:12px;opacity:.85}.error{color:#ffe4e6;font-weight:700}.content{max-width:820px;margin:50px auto;background:#fff;padding:34px;border-radius:24px;box-shadow:0 20px 60px #24304a12}.formula{padding:18px;border-left:5px solid var(--a);background:#f6f7fb;border-radius:10px;font:700 20px ui-monospace,monospace}details{padding:12px 0;border-bottom:1px solid #e6e8ee}footer{color:var(--muted);text-align:center;padding-bottom:40px}@media(max-width:760px){.hero,.calc{grid-template-columns:1fr}.orb{height:180px}.hero{padding-top:28px}}</style><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Matrix Calculator", "applicationCategory": "EducationalApplication", "operatingSystem": "Any", "description": "Add, subtract and multiply matrices with a compact matrix workspace."}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Math & Statistics", "item": "/math/"}, {"@type": "ListItem", "position": 3, "name": "Algebra", "item": "/math/algebra/"}, {"@type": "ListItem", "position": 4, "name": "Matrix Calculator", "item": "/matrix-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can I use decimal values?", "acceptedAnswer": {"@type": "Answer", "text": "Yes where the mathematical operation supports them. Integer-only calculators validate inputs accordingly."}}, {"@type": "Question", "name": "Does the calculator work on mobile?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The interface is responsive and calculations run locally in your browser."}}]}]}</script><link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head><body data-cp-category="math" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header><nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../math/index.html">Math &amp; Statistics</a></li><li><a aria-current="page" href="index.html">Matrix Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main id="main"><h1 class="page-title">Matrix Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section aria-label="Matrix calculator" class="calc"><div class="fields"><label>Matrix A (rows with ;, values with commas)<textarea id="ma">1,2;3,4</textarea></label><label>Matrix B<textarea id="mb">5,6;7,8</textarea></label><label>Operation<select id="op"><option value="add">A + B</option><option value="sub">A − B</option><option value="mul">A × B</option></select></label><div class="actions"><button class="primary" onclick="calculate()">Calculate</button><button class="secondary" onclick="resetCalc()">Reset</button></div></div><div aria-live="polite" id="result"></div></section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="content"><h2>What Is the Matrix Calculator?</h2><p>This calculator provides a direct way to perform matrix calculations. It is designed for quick checking, learning, and everyday mathematical work while keeping the method visible.</p><h2>How to Use It</h2><p>Enter the requested values, choose an option when available, and select Calculate. The result panel updates without reloading the page. Invalid or incompatible inputs are flagged clearly.</p><h2>Matrix Formula and Method</h2><div class="formula">(AB)ᵢⱼ = Σ AᵢₖBₖⱼ</div><p>Matrix addition and subtraction require equal dimensions. Multiplication requires columns of A to equal rows of B.</p><h2>Calculation Example</h2><p>Use the prefilled values in the calculator to see a working example. Change any value and calculate again to compare the result.</p><h2>Understanding the Result</h2><p>The main result is shown prominently. Supporting values are included where they help interpret the calculation. Results depend on the numbers and operation you enter.</p><h2>Limitations</h2><p>This tool is intended for mathematical calculation, not symbolic proof. Floating-point operations can have tiny representation differences, while the Big Number calculator is restricted to integer arithmetic.</p><h2>Frequently Asked Questions</h2><details><summary>Can I use decimal values?</summary><p>Yes where the mathematical operation supports them. Integer-only calculators validate inputs accordingly.</p></details><details><summary>Does the calculator work on mobile?</summary><p>Yes. The interface is responsive and calculations run locally in your browser.</p></details><h2>Sources and Methodology</h2><p>Methods were cross-checked against standard mathematical definitions, including Wolfram MathWorld references for right triangles, the Pythagorean theorem, GCD, LCM and scientific notation. The implementation uses standard arithmetic identities and browser-native numeric operations.</p></section>
+<html lang="en-US">
 
-<script class="cp-calculator-data" type="application/json">{"index":"154","Batch":"16","Calculator / Page":"Matrix Calculator","Slug":"matrix-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Add, subtract and multiply matrices with a compact matrix workspace. Free, fast and responsive matrix calculator with formulas, examples and clear results.","Formula / Algorithm Used in Tool":"Matrix Formula and Method: (AB)ᵢⱼ = Σ AᵢₖBₖⱼ Matrix addition and subtraction require equal dimensions. Multiplication requires columns of A to equal rows of B.","Required User Inputs":"Matrix A (rows with ;, values with commas) 1,2;3,4; Matrix B 5,6;7,8; Operation A + B A − B A × B","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Matrix A (rows with ;, values with commas) 1,2;3,4, Matrix B 5,6;7,8, Operation A + B A − B A × B. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"This tool is intended for mathematical calculation, not symbolic proof. Floating-point operations can have tiny representation differences, while the Big Number calculator is restricted to integer arithmetic.","Current Source URLs in Page":"Source names may be present in page text; no external URL embedded.","Implementation Path":"/matrix-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Math &amp; Statistics</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../big-number-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Big Number Calculator</strong><small>Perform exact integer arithmetic with very large whole numbers. Free, fast and resp…</small></span></a><a class="cp-related-link" href="../factor-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Factor Calculator</strong><small>Find positive factors and prime factorization of an integer. Free, fast and respons…</small></span></a><a class="cp-related-link" href="../gcf-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>GCF Calculator</strong><small>Find the greatest common factor of two or more integers. Free, fast and responsive…</small></span></a><a class="cp-related-link" href="../lcm-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>LCM Calculator</strong><small>Find the least common multiple of two or more integers. Free, fast and responsive l…</small></span></a><a class="cp-related-link" href="../pythagorean-theorem-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Pythagorean Theorem Calculator</strong><small>Find a missing side of a right triangle using a² + b² = c². Free, fast and responsi…</small></span></a><a class="cp-related-link" href="../right-triangle-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Right Triangle Calculator</strong><small>Calculate sides, angles, area and perimeter of a right triangle. Free, fast and res…</small></span></a><a class="cp-related-link" href="../root-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Root Calculator</strong><small>Calculate square roots, cube roots and nth roots. Free, fast and responsive root ca…</small></span></a><a class="cp-related-link" href="../rounding-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Rounding Calculator</strong><small>Round a number to decimal places or common place values. Free, fast and responsive…</small></span></a></div><a class="cp-side-category" href="../math/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script>const $=id=>document.getElementById(id); const fmt=n=>Number.isFinite(n)?(+n.toFixed(12)).toString():'Invalid'; function err(m){$('result').innerHTML='<span class=error>'+m+'</span>';}function calculate(){const parse=s=>s.trim().split(';').map(r=>r.split(',').map(Number));let A=parse($('ma').value),B=parse($('mb').value);if(A.some(r=>r.some(Number.isNaN))||B.some(r=>r.some(Number.isNaN))||A.some(r=>r.length!==A[0].length)||B.some(r=>r.length!==B[0].length))return err('Use rectangular matrices like 1,2;3,4.');let op=$('op').value,R;if(op==='mul'){if(A[0].length!==B.length)return err('A columns must equal B rows.');R=A.map((r,i)=>B[0].map((_,j)=>r.reduce((s,x,k)=>s+x*B[k][j],0)))}else{if(A.length!==B.length||A[0].length!==B[0].length)return err('Matrices must have the same dimensions.');R=A.map((r,i)=>r.map((x,j)=>op==='add'?x+B[i][j]:x-B[i][j]))}$('result').innerHTML='<b>Result</b><div class=matrix>'+R.map(r=>'<div>'+r.join(' &nbsp; ')+'</div>').join('')+'</div>';} function resetCalc(){document.querySelectorAll('input,textarea').forEach(e=>e.value=e.defaultValue);document.querySelectorAll('select').forEach(e=>e.selectedIndex=0);calculate()} calculate();</script><script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+   <!-- Primary Meta Tags -->
+<title>Matrix Calculator – Add, Subtract &amp; Multiply Matrices</title>
+<meta name="title" content="Matrix Calculator – Add, Subtract &amp; Multiply Matrices">
+<meta name="description" content="Use the Matrix Calculator to add, subtract, or multiply matrices. Enter Matrix A and B, choose an operation, and get the resulting matrix instantly.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/matrix-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/matrix-calculator/">
+<meta property="og:title" content="Matrix Calculator – Add, Subtract &amp; Multiply Matrices">
+<meta property="og:description" content="Use the Matrix Calculator to add, subtract, or multiply matrices. Enter Matrix A and B, choose an operation, and get the resulting matrix instantly.">
+<meta property="og:site_name" content="Matrix Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/matrix-calculator/">
+<meta name="twitter:title" content="Matrix Calculator – Add, Subtract &amp; Multiply Matrices">
+<meta name="twitter:description" content="Use the Matrix Calculator to add, subtract, or multiply matrices. Enter Matrix A and B, choose an operation, and get the resulting matrix instantly.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        :root {
+            --a: #7e22ce;
+            --b: #d8b4fe;
+            --ink: #172033;
+            --muted: #657086
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font: 16px/1.65 system-ui, -apple-system, Segoe UI, sans-serif;
+            color: var(--ink);
+            background: radial-gradient(circle at 10% 10%, var(--b), transparent 24%), #f7f8fc
+        }
+
+        header,
+        main,
+        footer {
+            max-width: 1120px;
+            margin: auto;
+            padding: 20px
+        }
+
+        nav {
+            font-size: 14px;
+            color: var(--muted)
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 32px;
+            align-items: center;
+            padding: 54px 20px 30px
+        }
+
+        h1 {
+            font-size: clamp(38px, 6vw, 68px);
+            line-height: 1.02;
+            margin: .2em 0
+        }
+
+        h2 {
+            margin-top: 38px;
+            line-height: 1.2
+        }
+
+        .orb {
+            height: 250px;
+            border-radius: 34% 66% 60% 40%;
+            background: linear-gradient(145deg, var(--b), var(--a));
+            box-shadow: 30px 35px 70px #0003, inset 12px 12px 25px #fff6;
+            transform: rotate(-8deg);
+            display: grid;
+            place-items: center;
+            color: white;
+            font-size: 72px;
+            font-weight: 800;
+            text-shadow: 0 8px 20px #0004
+        }
+
+        .calc {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+            background: #ffffffcc;
+            backdrop-filter: blur(14px);
+            padding: 28px;
+            border-radius: 28px;
+            box-shadow: 0 25px 70px #24304a22;
+            border: 1px solid #fff
+        }
+
+        .fields {
+            display: grid;
+            gap: 14px
+        }
+
+        label {
+            font-weight: 650
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            margin-top: 6px;
+            padding: 13px 14px;
+            border: 1px solid #d7dce7;
+            border-radius: 12px;
+            background: #fff;
+            font: inherit
+        }
+
+        textarea {
+            min-height: 70px
+        }
+
+        button {
+            border: 0;
+            border-radius: 12px;
+            padding: 13px 18px;
+            font-weight: 750;
+            cursor: pointer
+        }
+
+        .primary {
+            background: var(--a);
+            color: #fff
+        }
+
+        .secondary {
+            background: #edf0f6
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px
+        }
+
+        #result {
+            min-height: 210px;
+            border-radius: 22px;
+            padding: 28px;
+            background: linear-gradient(145deg, var(--a), #111827);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow-wrap: anywhere;
+            box-shadow: inset 0 1px #fff4, 0 18px 35px #0002
+        }
+
+        #result b {
+            font-size: clamp(24px, 4vw, 42px);
+            line-height: 1.15
+        }
+
+        #result small {
+            margin-top: 12px;
+            opacity: .85
+        }
+
+        .error {
+            color: #ffe4e6;
+            font-weight: 700
+        }
+
+        .content {
+            max-width: 820px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 34px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px #24304a12
+        }
+
+        .formula {
+            padding: 18px;
+            border-left: 5px solid var(--a);
+            background: #f6f7fb;
+            border-radius: 10px;
+            font: 700 20px ui-monospace, monospace
+        }
+
+        details {
+            padding: 12px 0;
+            border-bottom: 1px solid #e6e8ee
+        }
+
+        footer {
+            color: var(--muted);
+            text-align: center;
+            padding-bottom: 40px
+        }
+
+        @media(max-width:760px) {
+
+            .hero,
+            .calc {
+                grid-template-columns: 1fr
+            }
+
+            .orb {
+                height: 180px
+            }
+
+            .hero {
+                padding-top: 28px
+            }
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/matrix-calculator/#webapplication",
+      "name": "Matrix Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/matrix-calculator/",
+      "description": "Use the Matrix Calculator to add, subtract, or multiply matrices. Enter Matrix A and B, choose an operation, and get the resulting matrix instantly.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/matrix-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Matrix Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/matrix-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/matrix-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can matrices of different sizes be added?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Matrix addition requires both matrices to have the same number of rows and the same number of columns because entries are added position by position."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can matrices of different sizes be multiplied?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, if their dimensions are compatible. The number of columns in Matrix A must equal the number of rows in Matrix B. For example, a 2×3 matrix can be multiplied by a 3×4 matrix, producing a 2×4 result."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is A × B the same as B × A?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not generally. Matrix multiplication is not commutative, so AB and BA can produce different results. In some cases, one multiplication may not even be defined."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How should I enter a matrix?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use commas to separate values within each row and semicolons to separate rows. For example: 1,2,3;4,5,6 represents a matrix with two rows and three columns."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does each value in a matrix product represent?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Each value in the product is calculated from one row of the first matrix and one column of the second matrix. Their corresponding entries are multiplied and the products are added together."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can't I multiply some matrices?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Matrix multiplication requires compatible inner dimensions. If Matrix A has m×n dimensions, Matrix B must have n rows for AB to be defined."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this calculator find determinants or matrix inverses?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This calculator is limited to the implemented operations A + B, A − B, and A × B."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "Monkey Mart Online Free",
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="math" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../math/index.html">Math &amp; Statistics</a></li>
+            <li><a aria-current="page" href="index.html">Matrix Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Matrix Calculator</h1>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section aria-label="Matrix calculator" class="calc">
+                <div class="fields"><label>Matrix A (rows with ;, values with commas)<textarea
+                            id="ma">1,2;3,4</textarea></label><label>Matrix B<textarea
+                            id="mb">5,6;7,8</textarea></label><label>Operation<select id="op">
+                            <option value="add">A + B</option>
+                            <option value="sub">A − B</option>
+                            <option value="mul">A × B</option>
+                        </select></label>
+                    <div class="actions"><button class="primary" onclick="calculate()">Calculate</button><button
+                            class="secondary" onclick="resetCalc()">Reset</button></div>
+                </div>
+                <div aria-live="polite" id="result"></div>
+            </section>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+           
+ 
+<article class="article">
+
+ 
+  <p>Use the Matrix Calculator to add, subtract, or multiply two matrices. Enter Matrix A and Matrix B using commas between values and semicolons between rows, then choose <strong>A + B</strong>, <strong>A − B</strong>, or <strong>A × B</strong> to calculate the resulting matrix.</p>
+
+  <section id="what">
+    <h2>What Is the Matrix Calculator?</h2>
+    <p>The Matrix Calculator is a mathematical tool for performing three common matrix operations: addition, subtraction, and multiplication.</p>
+    <p>It is useful for students, teachers, engineers, and anyone working with numerical matrices who wants to check matrix calculations quickly without working through every entry manually.</p>
+    <p>Matrix addition and subtraction require matrices with the same dimensions. Matrix multiplication is possible when the number of columns in Matrix A equals the number of rows in Matrix B.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Matrix Calculator</h2>
+
+    <h3>Matrix A</h3>
+    <p>Enter the first matrix. Separate values in the same row with commas and separate rows with semicolons.</p>
+
+    <p>Example:</p>
+    <pre><code>1,2;3,4</code></pre>
+
+    <p>This represents:</p>
+    <div class="formula">A=[1234]A= \begin{bmatrix} 1 &amp; 2\\\ 3 &amp; 4 \end{bmatrix}</div>
+
+    <h3>Matrix B</h3>
+    <p>Enter the second matrix using the same format.</p>
+
+    <p>Example:</p>
+    <pre><code>5,6;7,8</code></pre>
+
+    <p>This represents:</p>
+    <div class="formula">B=[5678]B= \begin{bmatrix} 5 &amp; 6\\\ 7 &amp; 8 \end{bmatrix}</div>
+
+    <h3>Operation</h3>
+    <p>Choose one of the available operations:</p>
+    <ul>
+      <li><strong>A + B</strong> — add the matrices</li>
+      <li><strong>A − B</strong> — subtract Matrix B from Matrix A</li>
+      <li><strong>A × B</strong> — multiply Matrix A by Matrix B</li>
+    </ul>
+
+    <p>The dimensions of the matrices must be compatible with the selected operation.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Matrix Addition</h3>
+    <p>Two matrices can be added only when they have the same number of rows and columns.</p>
+
+    <p>Each entry in the result is calculated by adding the corresponding entries:</p>
+
+    <div class="formula">(A+B)ij=aij+bij(A+B)\_{ij}=a\_{ij}+b\_{ij}</div>
+
+    <p>For example:</p>
+
+    <div class="formula">[1234]+[5678]=[681012]\begin{bmatrix} 1 &amp; 2\\\ 3 &amp; 4 \end{bmatrix} + \begin{bmatrix} 5 &amp; 6\\\ 7 &amp; 8 \end{bmatrix} = \begin{bmatrix} 6 &amp; 8\\\ 10 &amp; 12 \end{bmatrix}</div>
+
+    <p>Matrix addition by corresponding entries and the equal-dimension requirement are standard matrix-operation rules.</p>
+
+    <h3>Matrix Subtraction</h3>
+    <p>Matrix subtraction also requires Matrix A and Matrix B to have identical dimensions.</p>
+
+    <p>Each corresponding entry in Matrix B is subtracted from Matrix A:</p>
+
+    <div class="formula">(A−B)ij=aij−bij(A-B)\_{ij}=a\_{ij}-b\_{ij}</div>
+
+    <p>For the same matrices:</p>
+
+    <div class="formula">[1234]−[5678]=[−4−4−4−4]\begin{bmatrix} 1 &amp; 2\\\ 3 &amp; 4 \end{bmatrix} - \begin{bmatrix} 5 &amp; 6\\\ 7 &amp; 8 \end{bmatrix} = \begin{bmatrix} -4 &amp; -4\\\ -4 &amp; -4 \end{bmatrix}</div>
+
+    <h3>Matrix Multiplication</h3>
+    <p>If Matrix A has mm rows and nn columns, and Matrix B has nn rows and pp columns, the product ABAB has dimensions m×pm\times p.</p>
+
+    <p>The number of columns in A must therefore equal the number of rows in B.</p>
+
+    <p>The calculator uses:</p>
+
+    <div class="formula">(AB)ij=∑kaikbkj(AB)\_{ij}=\sum_k a\_{ik}b\_{kj}</div>
+
+    <p>Each result entry is found by multiplying the corresponding values from a row of A and a column of B, then adding those products.</p>
+
+    <h3>Variables</h3>
+    <ul>
+      <li>AA = first input matrix</li>
+      <li>BB = second input matrix</li>
+      <li>aika\_{ik} = entry in row ii, column kk of Matrix A</li>
+      <li>bkjb\_{kj} = entry in row kk, column jj of Matrix B</li>
+      <li>(AB)ij(AB)\_{ij} = entry in row ii, column jj of the product matrix</li>
+      <li>ii = row position in the result</li>
+      <li>jj = column position in the result</li>
+      <li>kk = position used to pair entries from the row of A with the column of B</li>
+    </ul>
+
+    <p>Matrix entries themselves do not require a physical unit. If your matrix values represent measurements such as distance, cost, or quantity, interpret the result according to the meaning of those original values.</p>
+
+    <h3>Calculation Sequence</h3>
+    <p>For <strong>A + B</strong>:</p>
+    <ol>
+      <li>Confirm that A and B have the same dimensions.</li>
+      <li>Match entries with the same row and column positions.</li>
+      <li>Add each pair of corresponding entries.</li>
+      <li>Place each calculated value in the same position in the result matrix.</li>
+    </ol>
+
+    <p>For <strong>A − B</strong>:</p>
+    <ol>
+      <li>Confirm that A and B have the same dimensions.</li>
+      <li>Match corresponding entries.</li>
+      <li>Subtract each entry of B from the matching entry of A.</li>
+      <li>Build the result matrix from those differences.</li>
+    </ol>
+
+    <p>For <strong>A × B</strong>:</p>
+    <ol>
+      <li>Check that the number of columns in A equals the number of rows in B.</li>
+      <li>Take one row from Matrix A.</li>
+      <li>Take one column from Matrix B.</li>
+      <li>Multiply the corresponding entries.</li>
+      <li>Add those products.</li>
+      <li>Store the sum in the corresponding position of the result matrix.</li>
+      <li>Repeat for every row-column combination.</li>
+    </ol>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+    <p>Suppose:</p>
+
+    <h3>Inputs</h3>
+    <p>Matrix A:</p>
+
+    <div class="formula">A=[1234]A= \begin{bmatrix} 1 &amp; 2\\\ 3 &amp; 4 \end{bmatrix}</div>
+
+    <p>Matrix B:</p>
+
+    <div class="formula">B=[5678]B= \begin{bmatrix} 5 &amp; 6\\\ 7 &amp; 8 \end{bmatrix}</div>
+
+    <p>Operation:</p>
+    <p><strong>A × B</strong></p>
+
+    <h3>Step 1: Calculate the First Row, First Column</h3>
+    <div class="formula">(1×5)+(2×7)(1\times5)+(2\times7) 5+14=195+14=19</div>
+
+    <h3>Step 2: Calculate the First Row, Second Column</h3>
+    <div class="formula">(1×6)+(2×8)(1\times6)+(2\times8) 6+16=226+16=22</div>
+
+    <h3>Step 3: Calculate the Second Row</h3>
+    <p>Second row, first column:</p>
+
+    <div class="formula">(3×5)+(4×7)=15+28=43(3\times5)+(4\times7)=15+28=43</div>
+
+    <p>Second row, second column:</p>
+
+    <div class="formula">(3×6)+(4×8)=18+32=50(3\times6)+(4\times8)=18+32=50</div>
+
+    <h3>Final Result</h3>
+    <div class="formula">AB=[19224350]AB= \begin{bmatrix} 19 &amp; 22\\\ 43 &amp; 50 \end{bmatrix}</div>
+
+    <p>So entering <code>1,2;3,4</code> for Matrix A and <code>5,6;7,8</code> for Matrix B and selecting <strong>A × B</strong> produces the matrix:</p>
+
+    <pre><code>19,22;43,50</code></pre>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p>The main result is a new matrix produced by the selected operation.</p>
+
+    <p>For addition and subtraction, the result has the same dimensions as the two input matrices.</p>
+
+    <p>For multiplication, if A is an m×nm\times n matrix and B is an n×pn\times p matrix, the result is an m×pm\times p matrix.</p>
+
+    <p>Each value in the output corresponds to a specific row and column position. For multiplication, an output entry represents the dot product of a row from A and a column from B.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>This calculator performs numerical matrix calculations. It is not designed for symbolic matrix proofs or symbolic algebra.</p>
+
+    <p>Addition and subtraction are defined only when Matrix A and Matrix B have equal dimensions.</p>
+
+    <p>Multiplication is defined only when the number of columns in Matrix A equals the number of rows in Matrix B.</p>
+
+    <p>Matrix multiplication is order-dependent. In general, ABAB and BABA are not the same, and one product may be defined even when the other is not.</p>
+
+    <p>Calculations involving decimal values can sometimes show tiny differences caused by computer floating-point representation. These small numerical effects are different from the mathematical matrix rules themselves.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>Can matrices of different sizes be added?</summary>
+      <p>No. Matrix addition requires both matrices to have the same number of rows and the same number of columns because entries are added position by position.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can matrices of different sizes be multiplied?</summary>
+      <p>Yes, if their dimensions are compatible. The number of columns in Matrix A must equal the number of rows in Matrix B.</p>
+      <p>For example, a 2×32\times3 matrix can be multiplied by a 3×43\times4 matrix, producing a 2×42\times4 result.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is A × B the same as B × A?</summary>
+      <p>Not generally. Matrix multiplication is not commutative, so ABAB and BABA can produce different results. In some cases, one multiplication may not even be defined.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How should I enter a matrix?</summary>
+      <p>Use commas to separate values within each row and semicolons to separate rows.</p>
+      <p>For example:</p>
+
+      <pre><code>1,2,3;4,5,6</code></pre>
+
+      <p>represents a matrix with two rows and three columns.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What does each value in a matrix product represent?</summary>
+      <p>Each value in the product is calculated from one row of the first matrix and one column of the second matrix. Their corresponding entries are multiplied and the products are added together.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why can't I multiply some matrices?</summary>
+      <p>Matrix multiplication requires compatible inner dimensions. If Matrix A has m×nm\times n dimensions, Matrix B must have nn rows for ABAB to be defined.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does this calculator find determinants or matrix inverses?</summary>
+      <p>No. This calculator is limited to the implemented operations <strong>A + B</strong>, <strong>A − B</strong>, and <strong>A × B</strong>.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+    <ul class="sources">
+      <li>
+        <strong>OpenStax — Matrices and Matrix Operations</strong><br>
+        Defines matrix dimensions, addition and subtraction by corresponding entries, and the dimension requirements for matrix multiplication.
+        <a href="https://openstax.org/books/algebra-and-trigonometry/pages/11-5-matrices-and-matrix-operations?utm_source=chatgpt.com" rel="noopener" target="_blank"> OpenStax — Matrices and Matrix Operations</a>
+      </li>
+      <li>
+        <strong>MIT OpenCourseWare — Matrices and Linear Algebra</strong><br>
+        Supports the matrix multiplication rule, including compatible dimensions and calculating each product entry from a row of A and a column of B.
+        <a href="https://ocw.mit.edu/courses/18-02-multivariable-calculus-spring-2006/563f7af2cb4c4d55f6be6a4978b9316a_matrices_algebra.pdf?utm_source=chatgpt.com" rel="noopener" target="_blank"> MIT OpenCourseWare — Matrices and Linear Algebra</a>
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="https://example.com/math-calculator/">Math Calculator</a></li>
+      <li><a href="https://example.com/scientific-calculator/">Scientific Calculator</a></li>
+      <li><a href="https://example.com/statistics-calculator/">Statistics Calculator</a></li>
+      <li><a href="https://example.com/big-number-calculator/">Big Number Calculator</a></li>
+      <li><a href="https://example.com/root-calculator/">Root Calculator</a></li>
+      <li><a href="https://example.com/rounding-calculator/">Rounding Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"154","Batch":"16","Calculator / Page":"Matrix Calculator","Slug":"matrix-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Add, subtract and multiply matrices with a compact matrix workspace. Free, fast and responsive matrix calculator with formulas, examples and clear results.","Formula / Algorithm Used in Tool":"Matrix Formula and Method: (AB)ᵢⱼ = Σ AᵢₖBₖⱼ Matrix addition and subtraction require equal dimensions. Multiplication requires columns of A to equal rows of B.","Required User Inputs":"Matrix A (rows with ;, values with commas) 1,2;3,4; Matrix B 5,6;7,8; Operation A + B A − B A × B","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Matrix A (rows with ;, values with commas) 1,2;3,4, Matrix B 5,6;7,8, Operation A + B A − B A × B. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"This tool is intended for mathematical calculation, not symbolic proof. Floating-point operations can have tiny representation differences, while the Big Number calculator is restricted to integer arithmetic.","Current Source URLs in Page":"Source names may be present in page text; no external URL embedded.","Implementation Path":"/matrix-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Math &amp; Statistics</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../big-number-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Big Number Calculator</strong><small>Perform exact
+                            integer arithmetic with very large whole numbers. Free, fast and resp…</small></span></a><a
+                    class="cp-related-link" href="../factor-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Factor Calculator</strong><small>Find positive
+                            factors and prime factorization of an integer. Free, fast and respons…</small></span></a><a
+                    class="cp-related-link" href="../gcf-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>GCF Calculator</strong><small>Find the greatest
+                            common factor of two or more integers. Free, fast and responsive…</small></span></a><a
+                    class="cp-related-link" href="../lcm-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>LCM Calculator</strong><small>Find the least common
+                            multiple of two or more integers. Free, fast and responsive l…</small></span></a><a
+                    class="cp-related-link" href="../pythagorean-theorem-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Pythagorean Theorem Calculator</strong><small>Find
+                            a missing side of a right triangle using a² + b² = c². Free, fast and
+                            responsi…</small></span></a><a class="cp-related-link"
+                    href="../right-triangle-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Right Triangle Calculator</strong><small>Calculate
+                            sides, angles, area and perimeter of a right triangle. Free, fast and
+                            res…</small></span></a><a class="cp-related-link" href="../root-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Root Calculator</strong><small>Calculate square
+                            roots, cube roots and nth roots. Free, fast and responsive root ca…</small></span></a><a
+                    class="cp-related-link" href="../rounding-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Rounding Calculator</strong><small>Round a number
+                            to decimal places or common place values. Free, fast and responsive…</small></span></a>
+            </div><a class="cp-side-category" href="../math/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>const $ = id => document.getElementById(id); const fmt = n => Number.isFinite(n) ? (+n.toFixed(12)).toString() : 'Invalid'; function err(m) { $('result').innerHTML = '<span class=error>' + m + '</span>'; } function calculate() { const parse = s => s.trim().split(';').map(r => r.split(',').map(Number)); let A = parse($('ma').value), B = parse($('mb').value); if (A.some(r => r.some(Number.isNaN)) || B.some(r => r.some(Number.isNaN)) || A.some(r => r.length !== A[0].length) || B.some(r => r.length !== B[0].length)) return err('Use rectangular matrices like 1,2;3,4.'); let op = $('op').value, R; if (op === 'mul') { if (A[0].length !== B.length) return err('A columns must equal B rows.'); R = A.map((r, i) => B[0].map((_, j) => r.reduce((s, x, k) => s + x * B[k][j], 0))) } else { if (A.length !== B.length || A[0].length !== B[0].length) return err('Matrices must have the same dimensions.'); R = A.map((r, i) => r.map((x, j) => op === 'add' ? x + B[i][j] : x - B[i][j])) } $('result').innerHTML = '<b>Result</b><div class=matrix>' + R.map(r => '<div>' + r.join(' &nbsp; ') + '</div>').join('') + '</div>'; } function resetCalc() { document.querySelectorAll('input,textarea').forEach(e => e.value = e.defaultValue); document.querySelectorAll('select').forEach(e => e.selectedIndex = 0); calculate() } calculate();</script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

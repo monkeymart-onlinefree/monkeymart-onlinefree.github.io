@@ -1,98 +1,1281 @@
 <!DOCTYPE html>
 
 <html lang="en-US">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<title>Statistics Calculator | CalcPro</title>
-<meta content="Calculate count, sum, mean, median, mode, range, quartiles, variance, standard deviation, IQR, and coefficient of variation from a data set." name="description"/>
-<meta content="index,follow" name="robots"/>
-<link href="../statistics-calculator/" rel="canonical"/>
-<meta content="Statistics Calculator | CalcPro" property="og:title"/>
-<meta content="Calculate count, sum, mean, median, mode, range, quartiles, variance, standard deviation, IQR, and coefficient of variation from a data set." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="/statistics-calculator/" property="og:url"/>
-<meta content="#1477ff" name="theme-color"/>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
-:root{--max:1180px}a{color:inherit}.wrap{width:min(var(--max),calc(100% - 32px));margin:auto}.sitebar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:18px}.brand{font-weight:900;letter-spacing:-.04em;font-size:1.25rem;text-decoration:none}.brand span{color:var(--accent)}.topnav{display:flex;gap:10px;flex-wrap:wrap}.topnav a{text-decoration:none;font-size:.9rem;padding:9px 12px;border-radius:999px;background:var(--glass);border:1px solid var(--line)}
-.breadcrumb{font-size:.85rem;opacity:.78;margin-bottom:14px}.breadcrumb a{text-decoration:none}.hero{position:relative;overflow:hidden}.hero h1{font-size:clamp(2.35rem,5vw,5rem);line-height:.98;letter-spacing:-.065em;margin:0 0 18px;max-width:860px}.hero p{font-size:clamp(1rem,1.8vw,1.18rem);max-width:720px;margin:0;color:var(--muted)}
-.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:var(--glass);border:1px solid var(--line);font-size:.82rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:18px}
-main{padding-bottom:60px}.calc-shell{position:relative;margin-top:-28px;z-index:4}.panel{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-.calc-card{border-radius:30px;padding:clamp(20px,4vw,38px)}.calc-title{font-size:1.45rem;font-weight:900;letter-spacing:-.03em;margin:0 0 6px}.calc-sub{margin:0 0 24px;color:var(--muted)}
-label{display:block;font-weight:800;font-size:.9rem;margin-bottom:7px}.field{margin-bottom:15px}.input,select,textarea{width:100%;border:1px solid var(--input-line);background:var(--input-bg);color:var(--text);border-radius:16px;padding:14px 15px;font:inherit;outline:none;transition:.2s}textarea{min-height:126px;resize:vertical}.input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--focus)}
-.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.btn{appearance:none;border:0;border-radius:16px;padding:13px 18px;font-weight:900;font:inherit;cursor:pointer;transition:.18s;box-shadow:0 8px 18px rgba(0,0,0,.12)}.btn:hover{transform:translateY(-2px)}.btn.primary{background:var(--accent);color:var(--accentText)}.btn.secondary{background:var(--button2);color:var(--text);border:1px solid var(--line)}
-.error{display:none;margin-top:14px;padding:11px 13px;border-radius:14px;background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.22);color:#b91c1c;font-weight:700}.error.show{display:block}
-.result-card{border-radius:26px;padding:24px;background:var(--result-bg);border:1px solid var(--line);position:relative;overflow:hidden}.result-kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;font-weight:900;color:var(--muted)}.result-big{font-size:clamp(2rem,5vw,4rem);font-weight:950;letter-spacing:-.06em;line-height:1.02;margin:8px 0 6px;word-break:break-word}.muted{color:var(--muted)}.metric-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.metric{padding:13px;border-radius:16px;background:var(--metric-bg);border:1px solid var(--line)}.metric b{display:block;font-size:.8rem;color:var(--muted);margin-bottom:2px}.metric span{font-size:1.08rem;font-weight:900;word-break:break-word}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.tab{border:1px solid var(--line);background:var(--button2);color:var(--text);border-radius:999px;padding:9px 13px;font-weight:850;cursor:pointer}.tab.active{background:var(--accent);color:var(--accentText);border-color:transparent}
-.content{padding-top:70px}.article-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:32px;align-items:start}.article{min-width:0}.article h2{font-size:clamp(1.55rem,2.7vw,2.25rem);letter-spacing:-.04em;margin:44px 0 12px}.article h3{font-size:1.18rem;margin:28px 0 8px}.article p,.article li{color:var(--bodyText)}.formula{padding:18px 20px;border-radius:18px;background:var(--formula-bg);border:1px solid var(--line);font-weight:850;overflow:auto}.aside{position:sticky;top:18px;border-radius:24px;padding:20px}.aside h3{margin:0 0 10px}.aside a{display:block;text-decoration:none;padding:8px 0;border-bottom:1px solid var(--line);font-size:.92rem}.faq details{border:1px solid var(--line);background:var(--panel);border-radius:18px;padding:14px 16px;margin:10px 0}.faq summary{font-weight:900;cursor:pointer}.sources a{word-break:break-word}
-footer{border-top:1px solid var(--line);padding:28px 0 38px;color:var(--muted);font-size:.9rem}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-@media(max-width:860px){.article-grid{grid-template-columns:1fr}.aside{position:relative}.row3{grid-template-columns:1fr}.calc-shell{margin-top:-10px}}@media(max-width:620px){.row,.metric-grid{grid-template-columns:1fr}.topnav{display:none}.sitebar{padding:14px 0}.calc-card{border-radius:24px}.wrap{width:min(var(--max),calc(100% - 22px))}}
+   <!-- Primary Meta Tags -->
+<title>Statistics Calculator – Mean, Median, Variance &amp; SD</title>
+<meta name="title" content="Statistics Calculator – Mean, Median, Variance &amp; SD">
+<meta name="description" content="Calculate count, sum, mean, median, mode, range, quartiles, variance, standard deviation, IQR, and coefficient of variation from your data set online.">
 
-:root{--bg:#f5f8ff;--text:#14213d;--muted:#63708d;--bodyText:#46516b;--panel:rgba(255,255,255,.88);--glass:#eef3ff;--line:#dbe4f5;--accent:#2563eb;--accentText:#fff;--input-bg:#fbfdff;--input-line:#cdd9ee;--focus:rgba(37,99,235,.13);--button2:#edf3ff;--result-bg:linear-gradient(135deg,#eef5ff,#fff);--metric-bg:#fff;--formula-bg:#eef4ff;--shadow:0 26px 70px rgba(36,74,132,.14)}
-.hero{padding:42px 0 130px;background:linear-gradient(180deg,#eaf1ff 0%,#f8fbff 100%)}.hero-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:center}.data-lab{height:330px;border-radius:34px;background:#fff;border:1px solid #dfe8f6;box-shadow:0 30px 65px rgba(40,82,150,.18);padding:28px;display:flex;align-items:flex-end;gap:14px;transform:rotate(1.5deg)}.bar{flex:1;border-radius:18px 18px 6px 6px;background:linear-gradient(#7dd3fc,#2563eb);box-shadow:inset 0 10px 16px rgba(255,255,255,.3),0 10px 18px rgba(37,99,235,.18)}.bar:nth-child(1){height:35%}.bar:nth-child(2){height:72%}.bar:nth-child(3){height:52%}.bar:nth-child(4){height:90%}.bar:nth-child(5){height:64%}.stats-layout{display:grid;grid-template-columns:.86fr 1.14fr;gap:20px}.stats-results .metric-grid{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:900px){.hero-layout,.stats-layout{grid-template-columns:1fr}.stats-results .metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:620px){.stats-results .metric-grid{grid-template-columns:1fr}}
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Statistics Calculator", "applicationCategory": "CalculatorApplication", "operatingSystem": "Any", "description": "Calculate count, sum, mean, median, mode, range, quartiles, variance, standard deviation, IQR, and coefficient of variation from a data set.", "url": "/statistics-calculator/", "browserRequirements": "Requires JavaScript"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Math & Statistics", "item": "/math/"}, {"@type": "ListItem", "position": 3, "name": "Statistics & Probability", "item": "/math/statistics-probability/"}, {"@type": "ListItem", "position": 4, "name": "Statistics Calculator", "item": "/statistics-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the difference between sample and population standard deviation?", "acceptedAnswer": {"@type": "Answer", "text": "Population standard deviation divides the squared deviations by N. Sample standard deviation divides by n − 1, which is commonly used when a sample is used to estimate variability in a larger population."}}, {"@type": "Question", "name": "Can a data set have more than one mode?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. If several values share the highest frequency, the data set is multimodal. If no value repeats more often than the others, this calculator reports no repeated mode."}}, {"@type": "Question", "name": "Why can quartiles differ between calculators?", "acceptedAnswer": {"@type": "Answer", "text": "Different statistical software and textbooks use different percentile and quartile conventions. This calculator lets you choose between linear interpolation and a median-of-halves method."}}, {"@type": "Question", "name": "What does IQR measure?", "acceptedAnswer": {"@type": "Answer", "text": "The interquartile range is Q3 − Q1. It describes the spread of the middle 50% of the ordered data and is less sensitive to extreme observations than the full range."}}]}]}</script>
-<link href="../assets/css/global.css" rel="stylesheet"/><link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body data-cp-category="math" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../math/index.html">Math &amp; Statistics</a></li><li><a aria-current="page" href="index.html">Statistics Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a href="../calculators/index.html">All calculators</a></div><header class="hero">
-<div class="wrap">
-<nav aria-label="Primary navigation" class="sitebar"><a class="brand" href="#">Calc<span>Pro</span></a><div class="topnav"><a href="#calculator">Calculator</a><a href="#guide">Guide</a><a href="#faq">FAQ</a></div></nav>
-<div class="hero-layout">
-<div><div class="breadcrumb"><a href="#">Home</a> / <a href="#">Math</a> / Statistics Calculator</div><div class="pill">CalcPro · Statistics + Geometry</div><h1>Statistics Calculator</h1><p>Turn a raw list of numbers into a compact descriptive-statistics dashboard with measures of center, spread, and position.</p></div>
-<div aria-hidden="true" class="data-lab"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
-</div>
-</div>
-</header>
-<div class="cp-page-layout"><main id="main"><h1 class="page-title">Statistics Calculator</h1>
-<div class="wrap calc-shell" id="calculator"><section class="panel calc-card"><h2 class="calc-title">Statistics Calculator</h2><p class="calc-sub">Calculate count, sum, mean, median, mode, range, quartiles, variance, standard deviation, IQR, and coefficient of variation from a data set.</p>
-<div class="stats-layout">
-<section>
-<div class="field"><label for="data">Data set</label><textarea id="data">10, 2, 38, 23, 38, 23, 21, 23</textarea><div class="muted">Separate values with commas, spaces, semicolons, or line breaks.</div></div>
-<div class="field"><label for="quartileMethod">Quartile method</label><select id="quartileMethod"><option value="linear">Linear percentile interpolation</option><option value="halves">Median of lower/upper halves</option></select></div>
-<div class="buttons"><button class="btn primary" id="calcBtn" type="button">Analyze data</button><button class="btn secondary" id="resetBtn" type="button">Reset</button></div><div class="error" id="error"></div>
-</section>
-<section aria-live="polite" class="result-card stats-results">
-<div class="result-kicker">Arithmetic mean</div><div class="result-big" id="mean">—</div><div class="muted" id="summary">Enter data to calculate.</div>
-<div class="metric-grid" id="metrics"></div>
-</section>
-</div>
-</section></div><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<div class="wrap content" id="guide">
-<div class="article-grid">
-<article class="article">
-<section id="s1"><h2>What Is a Statistics Calculator?</h2><p>A statistics calculator summarizes a numerical data set using descriptive measures such as mean, median, mode, range, variance, standard deviation, quartiles, and interquartile range. These values help describe the center and spread of the data without replacing a full statistical analysis.</p></section><section id="s2"><h2>How to Use the Statistics Calculator</h2><p>Paste or type numerical values separated by commas, spaces, semicolons, or line breaks. Choose a quartile method if needed, then select Analyze Data. The calculator sorts the data internally and reports both population and sample measures where the denominator differs.</p></section><section id="s3"><h2>Core Statistics Formulas</h2><div class="formula">The arithmetic mean is Σx/n. Population variance is Σ(x−μ)²/N, while sample variance is Σ(x−x̄)²/(n−1). Standard deviation is the square root of variance. The range is maximum minus minimum, and IQR is Q3 minus Q1.</div></section><section id="s4"><h2>Quartile Method</h2><p>Quartiles are not defined by one universal computational convention. This page offers linear percentile interpolation and a median-of-halves method. For reproducible work, report which method was used.</p></section><section id="s5"><h2>Calculation Example</h2><p>For 2, 4, 4, 4, 5, 5, 7, 9, the mean is 5. The population variance is 4 and the population standard deviation is 2. The sample variance is about 4.5714 and sample standard deviation is about 2.1381.</p></section><section id="s6"><h2>Understanding Sample vs. Population Results</h2><p>Use population variance or standard deviation when the values represent the entire population of interest. Use the sample versions when the values are a sample used to describe or estimate a larger population.</p></section><section id="s7"><h2>Limitations</h2><p>Descriptive statistics summarize the values entered but do not determine causation, statistical significance, or whether a sample is representative. Outliers can strongly affect the mean, variance, standard deviation, range, and coefficient of variation.</p></section>
-<section class="faq" id="faq"><h2>Frequently Asked Questions</h2><details><summary>What is the difference between sample and population standard deviation?</summary><p>Population standard deviation divides the squared deviations by N. Sample standard deviation divides by n − 1, which is commonly used when a sample is used to estimate variability in a larger population.</p></details><details><summary>Can a data set have more than one mode?</summary><p>Yes. If several values share the highest frequency, the data set is multimodal. If no value repeats more often than the others, this calculator reports no repeated mode.</p></details><details><summary>Why can quartiles differ between calculators?</summary><p>Different statistical software and textbooks use different percentile and quartile conventions. This calculator lets you choose between linear interpolation and a median-of-halves method.</p></details><details><summary>What does IQR measure?</summary><p>The interquartile range is Q3 − Q1. It describes the spread of the middle 50% of the ordered data and is less sensitive to extreme observations than the full range.</p></details></section>
-<section class="sources" id="sources"><h2>Sources and Methodology</h2><p>Formulas and calculator behavior were cross-checked against the sources below. Page copy and visual design are original. Results are computed locally in your browser.</p><ul><li><a href="https://www.calculator.net/statistics-calculator.html" rel="noopener" target="_blank">Calculator.net Statistics Calculator</a></li><li><a href="https://openstax.org/books/introductory-business-statistics-2e/pages/2-7-measures-of-the-spread-of-the-data" rel="noopener" target="_blank">OpenStax – Measures of the Spread of the Data</a></li><li><a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm" rel="noopener" target="_blank">NIST – Measures of Scale</a></li></ul></section>
-</article>
-<aside class="aside panel"><h3>On this page</h3><a href="#s1">What Is a Statistics Calculator?</a><a href="#s2">How to Use the Statistics Calculator</a><a href="#s3">Core Statistics Formulas</a><a href="#s4">Quartile Method</a><a href="#s5">Calculation Example</a><a href="#s6">Understanding Sample vs. Population Results</a><a href="#s7">Limitations</a><a href="#faq">Frequently Asked Questions</a><a href="#sources">Sources &amp; Methodology</a></aside>
-</div>
-</div>
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/statistics-calculator/">
 
-<script class="cp-calculator-data" type="application/json">{"index":"147","Batch":"15","Calculator / Page":"Statistics Calculator","Slug":"statistics-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Calculate count, sum, mean, median, mode, range, quartiles, variance, standard deviation, IQR, and coefficient of variation from a data set.","Formula / Algorithm Used in Tool":"Core Statistics Formulas: The arithmetic mean is Σx/n. Population variance is Σ(x−μ)²/N, while sample variance is Σ(x−x̄)²/(n−1). Standard deviation is the square root of variance. The range is maximum minus minimum, and IQR is Q3 minus Q1.","Required User Inputs":"Data set; Quartile method","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Data set, Quartile method. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"Descriptive statistics summarize the values entered but do not determine causation, statistical significance, or whether a sample is representative. Outliers can strongly affect the mean, variance, standard deviation, range, and coefficient of variation.","Current Source URLs in Page":"https://www.calculator.net/statistics-calculator.html | https://openstax.org/books/introductory-business-statistics-2e/pages/2-7-measures-of-the-spread-of-the-data | https://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm","Implementation Path":"/statistics-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Math &amp; Statistics</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../standard-deviation-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Standard Deviation Calculator</strong><small>Calculate sample or population standard deviation, variance, mean, sum, count, stan…</small></span></a><a class="cp-related-link" href="../mean-median-mode-range-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Mean Median Mode Range Calculator</strong><small>Calculate mean, median, mode, range, minimum, maximum, count, and sum for a list of…</small></span></a><a class="cp-related-link" href="../confidence-interval-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Confidence Interval Calculator</strong><small>Calculate a two-sided confidence interval for a mean using a t interval for sample…</small></span></a><a class="cp-related-link" href="../z-score-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Z-Score Calculator</strong><small>Calculate a z-score from a raw value, mean, and standard deviation, plus standard n…</small></span></a><a class="cp-related-link" href="../scientific-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Scientific Calculator</strong><small>Calculate trigonometric functions, inverse trig, logarithms, roots, powers, factori…</small></span></a><a class="cp-related-link" href="../exponent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Exponent Calculator</strong><small>Calculate a number raised to any valid real exponent and view the result in standar…</small></span></a><a class="cp-related-link" href="../p-value-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>P-Value Calculator</strong><small>Calculate left-tail, right-tail, center, between, or two-tail p-values from a z-sco…</small></span></a><a class="cp-related-link" href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the simplified fraction, m…</small></span></a></div><a class="cp-side-category" href="../math/index.html"><span>View category</span><span>→</span></a></aside></div>
-<footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-const $=id=>document.getElementById(id);const fmt=n=>Number.isFinite(n)?Number(n.toPrecision(12)).toString():'—';
-function values(){return $('data').value.trim().split(/[\s,;]+/).filter(Boolean).map(Number)}
-function med(a){const n=a.length,m=Math.floor(n/2);return n%2?a[m]:(a[m-1]+a[m])/2}
-function quantLinear(a,p){const pos=(a.length-1)*p,lo=Math.floor(pos),hi=Math.ceil(pos),f=pos-lo;return a[lo]*(1-f)+a[hi]*f}
-function quartHalves(a){const n=a.length,m=Math.floor(n/2);const low=a.slice(0,m),high=a.slice(n%2?m+1:m);return [med(low.length?low:a),med(high.length?high:a)]}
-function render(){
- const a=values();const e=$('error');e.classList.remove('show');
- if(!a.length||a.some(v=>!Number.isFinite(v))){e.textContent='Enter at least one valid number.';e.classList.add('show');return}
- a.sort((x,y)=>x-y);const n=a.length,sum=a.reduce((s,x)=>s+x,0),mean=sum/n,median=med(a);
- const freq=new Map();a.forEach(v=>freq.set(v,(freq.get(v)||0)+1));const mx=Math.max(...freq.values());const modes=mx>1?[...freq].filter(([,c])=>c===mx).map(([v])=>v):[];
- const min=a[0],max=a[n-1],range=max-min;const sq=a.reduce((s,x)=>s+(x-mean)**2,0);const pv=sq/n,ps=Math.sqrt(pv);const sv=n>1?sq/(n-1):NaN,ss=Math.sqrt(sv);
- let q1,q3;if($('quartileMethod').value==='halves'){[q1,q3]=quartHalves(a)}else{q1=quantLinear(a,.25);q3=quantLinear(a,.75)}
- const iqr=q3-q1,cv=mean!==0?ss/Math.abs(mean)*100:NaN;
- $('mean').textContent=fmt(mean);$('summary').textContent=`n = ${n} · sum = ${fmt(sum)} · sorted from ${fmt(min)} to ${fmt(max)}`;
- $('metrics').innerHTML=[
- ['Median',fmt(median)],['Mode',modes.length?modes.map(fmt).join(', '):'No repeated mode'],['Range',fmt(range)],['Population variance',fmt(pv)],['Population SD',fmt(ps)],['Sample variance',fmt(sv)],['Sample SD',fmt(ss)],['Q1',fmt(q1)],['Q3',fmt(q3)],['IQR',fmt(iqr)],['Minimum',fmt(min)],['Maximum',fmt(max)],['CV (sample)',Number.isFinite(cv)?fmt(cv)+'%':'—']
- ].map(([k,v])=>`<div class="metric"><b>${k}</b><span>${v}</span></div>`).join('');
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/statistics-calculator/">
+<meta property="og:title" content="Statistics Calculator – Mean, Median, Variance &amp; SD">
+<meta property="og:description" content="Calculate count, sum, mean, median, mode, range, quartiles, variance, standard deviation, IQR, and coefficient of variation from your data set online.">
+<meta property="og:site_name" content="Statistics Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/statistics-calculator/">
+<meta name="twitter:title" content="Statistics Calculator – Mean, Median, Variance &amp; SD">
+<meta name="twitter:description" content="Calculate count, sum, mean, median, mode, range, quartiles, variance, standard deviation, IQR, and coefficient of variation from your data set online.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65
+        }
+
+        :root {
+            --max: 1180px
+        }
+
+        a {
+            color: inherit
+        }
+
+        .wrap {
+            width: min(var(--max), calc(100% - 32px));
+            margin: auto
+        }
+
+        .sitebar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            gap: 18px
+        }
+
+        .brand {
+            font-weight: 900;
+            letter-spacing: -.04em;
+            font-size: 1.25rem;
+            text-decoration: none
+        }
+
+        .brand span {
+            color: var(--accent)
+        }
+
+        .topnav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .topnav a {
+            text-decoration: none;
+            font-size: .9rem;
+            padding: 9px 12px;
+            border-radius: 999px;
+            background: var(--glass);
+            border: 1px solid var(--line)
+        }
+
+        .breadcrumb {
+            font-size: .85rem;
+            opacity: .78;
+            margin-bottom: 14px
+        }
+
+        .breadcrumb a {
+            text-decoration: none
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero h1 {
+            font-size: clamp(2.35rem, 5vw, 5rem);
+            line-height: .98;
+            letter-spacing: -.065em;
+            margin: 0 0 18px;
+            max-width: 860px
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 1.8vw, 1.18rem);
+            max-width: 720px;
+            margin: 0;
+            color: var(--muted)
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: var(--glass);
+            border: 1px solid var(--line);
+            font-size: .82rem;
+            font-weight: 800;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            margin-bottom: 18px
+        }
+
+        main {
+            padding-bottom: 60px
+        }
+
+        .calc-shell {
+            position: relative;
+            z-index: 4
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px)
+        }
+
+        .calc-card {
+            border-radius: 30px;
+            padding: clamp(20px, 4vw, 38px)
+        }
+
+        .calc-title {
+            font-size: 1.45rem;
+            font-weight: 900;
+            letter-spacing: -.03em;
+            margin: 0 0 6px
+        }
+
+        .calc-sub {
+            margin: 0 0 24px;
+            color: var(--muted)
+        }
+
+        label {
+            display: block;
+            font-weight: 800;
+            font-size: .9rem;
+            margin-bottom: 7px
+        }
+
+        .field {
+            margin-bottom: 15px
+        }
+
+        .input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--input-line);
+            background: var(--input-bg);
+            color: var(--text);
+            border-radius: 16px;
+            padding: 14px 15px;
+            font: inherit;
+            outline: none;
+            transition: .2s
+        }
+
+        textarea {
+            min-height: 126px;
+            resize: vertical
+        }
+
+        .input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--focus)
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .row3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .btn {
+            appearance: none;
+            border: 0;
+            border-radius: 16px;
+            padding: 13px 18px;
+            font-weight: 900;
+            font: inherit;
+            cursor: pointer;
+            transition: .18s;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, .12)
+        }
+
+        .btn:hover {
+            transform: translateY(-2px)
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            color: var(--accentText)
+        }
+
+        .btn.secondary {
+            background: var(--button2);
+            color: var(--text);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            display: none;
+            margin-top: 14px;
+            padding: 11px 13px;
+            border-radius: 14px;
+            background: rgba(220, 38, 38, .1);
+            border: 1px solid rgba(220, 38, 38, .22);
+            color: #b91c1c;
+            font-weight: 700
+        }
+
+        .error.show {
+            display: block
+        }
+
+        .result-card {
+            border-radius: 26px;
+            padding: 24px;
+            background: var(--result-bg);
+            border: 1px solid var(--line);
+            position: relative;
+            overflow: hidden
+        }
+
+        .result-kicker {
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            font-weight: 900;
+            color: var(--muted)
+        }
+
+        .result-big {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 950;
+            letter-spacing: -.06em;
+            line-height: 1.02;
+            margin: 8px 0 6px;
+            word-break: break-word
+        }
+
+        .muted {
+            color: var(--muted)
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 14px
+        }
+
+        .metric {
+            padding: 13px;
+            border-radius: 16px;
+            background: var(--metric-bg);
+            border: 1px solid var(--line)
+        }
+
+        .metric b {
+            display: block;
+            font-size: .8rem;
+            color: var(--muted);
+            margin-bottom: 2px
+        }
+
+        .metric span {
+            font-size: 1.08rem;
+            font-weight: 900;
+            word-break: break-word
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 0 0 18px
+        }
+
+        .tab {
+            border: 1px solid var(--line);
+            background: var(--button2);
+            color: var(--text);
+            border-radius: 999px;
+            padding: 9px 13px;
+            font-weight: 850;
+            cursor: pointer
+        }
+
+        .tab.active {
+            background: var(--accent);
+            color: var(--accentText);
+            border-color: transparent
+        }
+
+        .content {
+            padding-top: 70px
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 300px;
+            gap: 32px;
+            align-items: start
+        }
+
+        .article {
+            min-width: 0
+        }
+
+        .article h2 {
+            font-size: clamp(1.55rem, 2.7vw, 2.25rem);
+            letter-spacing: -.04em;
+            margin: 44px 0 12px
+        }
+
+        .article h3 {
+            font-size: 1.18rem;
+            margin: 28px 0 8px
+        }
+
+        .article p,
+        .article li {
+            color: var(--bodyText)
+        }
+
+        .formula {
+            padding: 18px 20px;
+            border-radius: 18px;
+            background: var(--formula-bg);
+            border: 1px solid var(--line);
+            font-weight: 850;
+            overflow: auto
+        }
+
+        .aside {
+            position: sticky;
+            top: 18px;
+            border-radius: 24px;
+            padding: 20px
+        }
+
+        .aside h3 {
+            margin: 0 0 10px
+        }
+
+        .aside a {
+            display: block;
+            text-decoration: none;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--line);
+            font-size: .92rem
+        }
+
+        .faq details {
+            border: 1px solid var(--line);
+            background: var(--panel);
+            border-radius: 18px;
+            padding: 14px 16px;
+            margin: 10px 0
+        }
+
+        .faq summary {
+            font-weight: 900;
+            cursor: pointer
+        }
+
+        .sources a {
+            word-break: break-word
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 28px 0 38px;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0
+        }
+
+        @media(max-width:860px) {
+            .article-grid {
+                grid-template-columns: 1fr
+            }
+
+            .aside {
+                position: relative
+            }
+
+            .row3 {
+                grid-template-columns: 1fr
+            }
+
+        }
+
+        @media(max-width:620px) {
+
+            .row,
+            .metric-grid {
+                grid-template-columns: 1fr
+            }
+
+            .topnav {
+                display: none
+            }
+
+            .sitebar {
+                padding: 14px 0
+            }
+
+            .calc-card {
+                border-radius: 24px
+            }
+
+            .wrap {
+                width: min(var(--max), calc(100% - 22px))
+            }
+        }
+
+        :root {
+            --bg: #f5f8ff;
+            --text: #14213d;
+            --muted: #63708d;
+            --bodyText: #46516b;
+            --panel: rgba(255, 255, 255, .88);
+            --glass: #eef3ff;
+            --line: #dbe4f5;
+            --accent: #2563eb;
+            --accentText: #fff;
+            --input-bg: #fbfdff;
+            --input-line: #cdd9ee;
+            --focus: rgba(37, 99, 235, .13);
+            --button2: #edf3ff;
+            --result-bg: linear-gradient(135deg, #eef5ff, #fff);
+            --metric-bg: #fff;
+            --formula-bg: #eef4ff;
+            --shadow: 0 26px 70px rgba(36, 74, 132, .14)
+        }
+
+        .hero {
+            padding: 42px 0 130px;
+            background: linear-gradient(180deg, #eaf1ff 0%, #f8fbff 100%)
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: 44px;
+            align-items: center
+        }
+
+        .data-lab {
+            height: 330px;
+            border-radius: 34px;
+            background: #fff;
+            border: 1px solid #dfe8f6;
+            box-shadow: 0 30px 65px rgba(40, 82, 150, .18);
+            padding: 28px;
+            display: flex;
+            align-items: flex-end;
+            gap: 14px;
+            transform: rotate(1.5deg)
+        }
+
+        .bar {
+            flex: 1;
+            border-radius: 18px 18px 6px 6px;
+            background: linear-gradient(#7dd3fc, #2563eb);
+            box-shadow: inset 0 10px 16px rgba(255, 255, 255, .3), 0 10px 18px rgba(37, 99, 235, .18)
+        }
+
+        .bar:nth-child(1) {
+            height: 35%
+        }
+
+        .bar:nth-child(2) {
+            height: 72%
+        }
+
+        .bar:nth-child(3) {
+            height: 52%
+        }
+
+        .bar:nth-child(4) {
+            height: 90%
+        }
+
+        .bar:nth-child(5) {
+            height: 64%
+        }
+
+        .stats-layout {
+            display: grid;
+            grid-template-columns: .86fr 1.14fr;
+            gap: 20px
+        }
+
+        .stats-results .metric-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr))
+        }
+
+        @media(max-width:900px) {
+
+            .hero-layout,
+            .stats-layout {
+                grid-template-columns: 1fr
+            }
+
+            .stats-results .metric-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+        }
+
+        @media(max-width:620px) {
+            .stats-results .metric-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/statistics-calculator/#webapplication",
+      "name": "Statistics Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/statistics-calculator/",
+      "description": "Calculate count, sum, mean, median, mode, range, quartiles, variance, standard deviation, IQR, and coefficient of variation from your data set online.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/statistics-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Statistics Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/statistics-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/statistics-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does a Statistics Calculator calculate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It summarizes a numerical data set using statistics such as count, sum, mean, median, mode, range, quartiles, variance, standard deviation, IQR, and coefficient of variation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between sample and population variance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Population variance divides the sum of squared deviations by N, while sample variance divides by n − 1. The sample formula is used when the entered observations represent a sample rather than the entire population."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can quartiles differ between calculators?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "There is more than one accepted method for locating or interpolating quartiles. Different methods can therefore produce different Q1 and Q3 values from the same data, particularly when the data set is small."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is standard deviation the same as variance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Variance is based on squared deviations from the mean. Standard deviation is the square root of variance, which returns the measure of spread to the original unit of the data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if all numbers are the same?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The range, variance, and standard deviation are zero because there is no variation between observations. The mean and median are equal to that repeated value."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can coefficient of variation be calculated when the mean is zero?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The standard formula divides standard deviation by the mean, so a percentage coefficient of variation is undefined when the mean equals zero."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this calculator tell me whether my data are statistically significant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Descriptive measures summarize the entered observations. Statistical significance requires an appropriate inferential statistical method based on the research question and data."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart OnlineFree",
+      "inLanguage": "en-US"
+    }
+  ]
 }
-$('calcBtn').onclick=render;$('quartileMethod').onchange=render;$('resetBtn').onclick=()=>{$('data').value='10, 2, 38, 23, 38, 23, 21, 23';$('quartileMethod').value='linear';render()};render();
 </script>
-<script defer="" src="../assets/js/global.js"></script><script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="math" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../math/index.html">Math &amp; Statistics</a></li>
+            <li><a aria-current="page" href="index.html">Statistics Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Statistics Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
+            <div class="wrap calc-shell" id="calculator">
+                <section class="panel calc-card">
+                    <h2 class="calc-title">Statistics Calculator</h2>
+                    <p class="calc-sub">Calculate count, sum, mean, median, mode, range, quartiles, variance, standard
+                        deviation, IQR, and coefficient of variation from a data set.</p>
+                    <div class="stats-layout">
+                        <section>
+                            <div class="field"><label for="data">Data set</label><textarea
+                                    id="data">10, 2, 38, 23, 38, 23, 21, 23</textarea>
+                                <div class="muted">Separate values with commas, spaces, semicolons, or line breaks.
+                                </div>
+                            </div>
+                            <div class="field"><label for="quartileMethod">Quartile method</label><select
+                                    id="quartileMethod">
+                                    <option value="linear">Linear percentile interpolation</option>
+                                    <option value="halves">Median of lower/upper halves</option>
+                                </select></div>
+                            <div class="buttons"><button class="btn primary" id="calcBtn" type="button">Analyze
+                                    data</button><button class="btn secondary" id="resetBtn"
+                                    type="button">Reset</button></div>
+                            <div class="error" id="error"></div>
+                        </section>
+                        <section aria-live="polite" class="result-card stats-results">
+                            <div class="result-kicker">Arithmetic mean</div>
+                            <div class="result-big" id="mean">—</div>
+                            <div class="muted" id="summary">Enter data to calculate.</div>
+                            <div class="metric-grid" id="metrics"></div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <div class="wrap content" id="guide">
+                 
+
+<article class="article">
+
+ 
+
+  <p>The Statistics Calculator summarizes a numerical data set using count, sum, mean, median, mode, range, quartiles, variance, standard deviation, interquartile range (IQR), and coefficient of variation. Enter your data and choose the available quartile method to calculate descriptive statistics for the values provided.</p>
+
+  <section id="what">
+    <h2>What Is the Statistics Calculator?</h2>
+
+    <p>A Statistics Calculator turns a group of numerical observations into descriptive statistics that show the center and spread of the data.</p>
+
+    <p>It can be useful for students, researchers, analysts, and anyone who needs to summarize a set of numbers without calculating each statistic manually. The results describe the values entered; they do not establish causation, statistical significance, or whether a sample represents a larger population.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Statistics Calculator</h2>
+
+    <ol>
+      <li><strong>Enter the data set.</strong> Add the numerical values you want to analyze using the calculator's data-entry field.</li>
+      <li><strong>Choose the quartile method.</strong> Select the available quartile calculation method. Different quartile conventions can produce different Q1 and Q3 values, especially for small data sets.</li>
+      <li><strong>Calculate the results.</strong> Review the count, sum, measures of center, measures of spread, quartiles, variance, standard deviation, IQR, and coefficient of variation.</li>
+    </ol>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Count and Sum</h3>
+
+    <p>If the data values are:</p>
+
+    <div class="formula"><strong>x₁, x₂, x₃, …, xₙ</strong></div>
+
+    <p>the count is:</p>
+
+    <div class="formula"><strong>n = number of observations</strong></div>
+
+    <p>and the sum is:</p>
+
+    <div class="formula"><strong>Σx = x₁ + x₂ + … + xₙ</strong></div>
+
+    <h3>Arithmetic Mean</h3>
+
+    <p>The arithmetic mean is the sum of all observations divided by the number of observations:</p>
+
+    <div class="formula"><strong>x̄ = Σx / n</strong></div>
+
+    <p>For a complete population, the population mean is commonly written as:</p>
+
+    <div class="formula"><strong>μ = Σx / N</strong></div>
+
+    <p>OpenStax defines the mean as the total of the values divided by the number of observations.</p>
+
+    <h3>Median</h3>
+
+    <p>First arrange the observations from smallest to largest.</p>
+
+    <p>For an odd number of observations, the median is the middle value.</p>
+
+    <p>For an even number of observations:</p>
+
+    <div class="formula"><strong>Median = (two middle values) / 2</strong></div>
+
+    <p>The median divides the ordered data into two halves and is generally less affected by extreme values than the mean.</p>
+
+    <h3>Mode</h3>
+
+    <p>The mode is the value that occurs most frequently. A data set may have one mode, multiple values tied for the highest frequency, or no single unique mode.</p>
+
+    <h3>Range</h3>
+
+    <p>The range measures the distance between the largest and smallest observations:</p>
+
+    <div class="formula"><strong>Range = Maximum − Minimum</strong></div>
+
+    <h3>Quartiles</h3>
+
+    <p>Quartiles divide ordered data into sections. Q1 represents the first quartile, Q2 is the median, and Q3 is the third quartile.</p>
+
+    <p>The exact Q1 and Q3 values depend on the <strong>quartile method selected in the calculator</strong>. This matters because recognized quartile conventions can return different values for the same small data set.</p>
+
+    <h3>Interquartile Range</h3>
+
+    <p>The interquartile range measures the spread of the middle portion of the data:</p>
+
+    <div class="formula"><strong>IQR = Q3 − Q1</strong></div>
+
+    <p>OpenStax defines IQR as the difference between the third and first quartiles.</p>
+
+    <h3>Population Variance</h3>
+
+    <p>When the values represent the complete population:</p>
+
+    <div class="formula"><strong>σ² = Σ(xᵢ − μ)² / N</strong></div>
+
+    <h3>Sample Variance</h3>
+
+    <p>When the values are treated as a sample:</p>
+
+    <div class="formula"><strong>s² = Σ(xᵢ − x̄)² / (n − 1)</strong></div>
+
+    <p>Using <strong>n − 1</strong> distinguishes sample variance from population variance.</p>
+
+    <h3>Standard Deviation</h3>
+
+    <p>Standard deviation is the square root of variance.</p>
+
+    <p>Population standard deviation:</p>
+
+    <div class="formula"><strong>σ = √σ²</strong></div>
+
+    <p>Sample standard deviation:</p>
+
+    <div class="formula"><strong>s = √s²</strong></div>
+
+    <p>Standard deviation is expressed in the same units as the original data, while variance is expressed in squared units.</p>
+
+    <h3>Coefficient of Variation</h3>
+
+    <p>The coefficient of variation compares the standard deviation with the mean:</p>
+
+    <div class="formula"><strong>CV = (Standard Deviation / Mean) × 100%</strong></div>
+
+    <p>For sample statistics this is commonly written as:</p>
+
+    <div class="formula"><strong>CV = (s / x̄) × 100%</strong></div>
+
+    <p>The mean must be nonzero for the percentage calculation. The coefficient of variation is most meaningful for ratio-scale data with a meaningful zero.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>xᵢ</td>
+          <td>Individual data value</td>
+          <td>Same as input data</td>
+        </tr>
+        <tr>
+          <td>n</td>
+          <td>Number of sample observations</td>
+          <td>Count</td>
+        </tr>
+        <tr>
+          <td>N</td>
+          <td>Number of population observations</td>
+          <td>Count</td>
+        </tr>
+        <tr>
+          <td>x̄</td>
+          <td>Sample arithmetic mean</td>
+          <td>Same as input data</td>
+        </tr>
+        <tr>
+          <td>μ</td>
+          <td>Population mean</td>
+          <td>Same as input data</td>
+        </tr>
+        <tr>
+          <td>s²</td>
+          <td>Sample variance</td>
+          <td>Squared input units</td>
+        </tr>
+        <tr>
+          <td>σ²</td>
+          <td>Population variance</td>
+          <td>Squared input units</td>
+        </tr>
+        <tr>
+          <td>s</td>
+          <td>Sample standard deviation</td>
+          <td>Same as input data</td>
+        </tr>
+        <tr>
+          <td>σ</td>
+          <td>Population standard deviation</td>
+          <td>Same as input data</td>
+        </tr>
+        <tr>
+          <td>Q1</td>
+          <td>First quartile</td>
+          <td>Same as input data</td>
+        </tr>
+        <tr>
+          <td>Q3</td>
+          <td>Third quartile</td>
+          <td>Same as input data</td>
+        </tr>
+        <tr>
+          <td>IQR</td>
+          <td>Interquartile range</td>
+          <td>Same as input data</td>
+        </tr>
+        <tr>
+          <td>CV</td>
+          <td>Coefficient of variation</td>
+          <td>Percentage or ratio</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Calculation Sequence</h3>
+
+    <p>The calculator first reads the data set and determines basic values such as the count and sum. It orders the data for median, mode, range, and quartile calculations, then applies the selected quartile method to Q1 and Q3.</p>
+
+    <p>The mean is calculated from the sum and count. Deviations from the appropriate mean are then used to calculate population and sample variance. Standard deviation is obtained by taking the square root of the corresponding variance, while IQR is calculated from Q3 minus Q1.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Consider the data set:</p>
+
+    <div class="formula"><strong>2, 4, 4, 4, 5, 5, 7, 9</strong></div>
+
+    <h3>Inputs</h3>
+
+    <p>Data set: <strong>2, 4, 4, 4, 5, 5, 7, 9</strong></p>
+
+    <p>Quartile method: <strong>Use the method selected in the calculator</strong></p>
+
+    <h3>Step 1: Count, Sum, and Mean</h3>
+
+    <p>There are eight observations:</p>
+
+    <div class="formula"><strong>n = 8</strong></div>
+
+    <p>Their sum is:</p>
+
+    <div class="formula"><strong>Σx = 2 + 4 + 4 + 4 + 5 + 5 + 7 + 9 = 40</strong></div>
+
+    <p>Mean:</p>
+
+    <div class="formula"><strong>x̄ = 40 / 8 = 5</strong></div>
+
+    <h3>Step 2: Median, Mode, and Range</h3>
+
+    <p>The data are already ordered.</p>
+
+    <p>The two middle values are 4 and 5:</p>
+
+    <div class="formula"><strong>Median = (4 + 5) / 2 = 4.5</strong></div>
+
+    <p>The value 4 occurs most often:</p>
+
+    <div class="formula"><strong>Mode = 4</strong></div>
+
+    <p>Range:</p>
+
+    <div class="formula"><strong>Range = 9 − 2 = 7</strong></div>
+
+    <h3>Step 3: Variance</h3>
+
+    <p>Using a mean of 5, the sum of squared deviations is:</p>
+
+    <div class="formula"><strong>Σ(x − 5)² = 32</strong></div>
+
+    <p>Population variance:</p>
+
+    <div class="formula"><strong>σ² = 32 / 8 = 4</strong></div>
+
+    <p>Sample variance:</p>
+
+    <div class="formula"><strong>s² = 32 / 7 ≈ 4.571428571</strong></div>
+
+    <h3>Step 4: Standard Deviation</h3>
+
+    <p>Population standard deviation:</p>
+
+    <div class="formula"><strong>σ = √4 = 2</strong></div>
+
+    <p>Sample standard deviation:</p>
+
+    <div class="formula"><strong>s = √4.571428571 ≈ 2.138089935</strong></div>
+
+    <h3>Final Result</h3>
+
+    <p>For this data set, the method-independent results are <strong>count = 8, sum = 40, mean = 5, median = 4.5, mode = 4, range = 7, population variance = 4, population standard deviation = 2, sample variance ≈ 4.5714, and sample standard deviation ≈ 2.1381</strong>.</p>
+
+    <p>Q1, Q3, and IQR should be read using the quartile method selected in the calculator rather than assuming a different quartile convention.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p><strong>Count</strong> tells you how many observations are included, while <strong>sum</strong> gives their total.</p>
+
+    <p><strong>Mean</strong> describes the arithmetic average. Because every numerical value contributes directly to it, extreme values can move the mean noticeably.</p>
+
+    <p><strong>Median</strong> represents the middle of the ordered data and can be useful when extreme observations make the mean less representative of the center.</p>
+
+    <p><strong>Mode</strong> identifies the most frequently occurring observation.</p>
+
+    <p><strong>Range</strong> measures the full distance from the smallest to the largest value, so a single extreme observation can strongly affect it.</p>
+
+    <p><strong>Q1 and Q3</strong> describe locations within the ordered data. Their exact values depend on the quartile method selected.</p>
+
+    <p><strong>IQR</strong> measures the spread between Q1 and Q3 and therefore focuses on the central portion of the data.</p>
+
+    <p><strong>Variance</strong> measures squared deviations from the mean. Sample and population variance use different denominators.</p>
+
+    <p><strong>Standard deviation</strong> expresses spread in the original unit of measurement. A value of zero means all observations are equal; larger values indicate greater spread around the mean.</p>
+
+    <p><strong>Coefficient of variation</strong> expresses standard deviation relative to the mean. It can help compare relative variation between suitable data sets that use different scales or have substantially different means.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The calculator provides <strong>descriptive statistics</strong> for the values entered. These statistics summarize a data set but cannot by themselves establish causation, prove statistical significance, or show that a sample is representative of a larger population.</p>
+
+    <p>Outliers can strongly influence the mean, range, variance, standard deviation, and coefficient of variation. The median and IQR are generally less dependent on the numerical size of extreme observations.</p>
+
+    <p>Quartile results can differ between valid calculation conventions, which is why the selected quartile method matters. When comparing results with another calculator, spreadsheet, or statistical program, make sure both use the same quartile method.</p>
+
+    <p>Sample variance and sample standard deviation require enough observations to use the <strong>n − 1</strong> denominator. The standard percentage form of coefficient of variation is undefined when the mean is zero and its interpretation is most appropriate for data with a meaningful zero.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What does a Statistics Calculator calculate?</summary>
+      <p>It summarizes a numerical data set using statistics such as count, sum, mean, median, mode, range, quartiles, variance, standard deviation, IQR, and coefficient of variation.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What is the difference between sample and population variance?</summary>
+      <p>Population variance divides the sum of squared deviations by <strong>N</strong>, while sample variance divides by <strong>n − 1</strong>. The sample formula is used when the entered observations represent a sample rather than the entire population.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why can quartiles differ between calculators?</summary>
+      <p>There is more than one accepted method for locating or interpolating quartiles. Different methods can therefore produce different Q1 and Q3 values from the same data, particularly when the data set is small.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is standard deviation the same as variance?</summary>
+      <p>No. Variance is based on squared deviations from the mean. Standard deviation is the square root of variance, which returns the measure of spread to the original unit of the data.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What happens if all numbers are the same?</summary>
+      <p>The range, variance, and standard deviation are zero because there is no variation between observations. The mean and median are equal to that repeated value.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can coefficient of variation be calculated when the mean is zero?</summary>
+      <p>The standard formula divides standard deviation by the mean, so a percentage coefficient of variation is undefined when the mean equals zero.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does this calculator tell me whether my data are statistically significant?</summary>
+      <p>No. Descriptive measures summarize the entered observations. Statistical significance requires an appropriate inferential statistical method based on the research question and data.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://openstax.org/books/introductory-statistics-2e/pages/2-5-measures-of-the-center-of-the-data?utm_source=chatgpt.com" rel="noopener" target="_blank">OpenStax — Measures of the Center of the Data</a><br>
+        Used to verify arithmetic mean, median, and mode definitions.
+      </li>
+
+      <li>
+        <a href="https://openstax.org/books/introductory-statistics-2e/pages/2-3-measures-of-the-location-of-the-data?utm_source=chatgpt.com" rel="noopener" target="_blank">OpenStax — Measures of the Location of the Data</a><br>
+        Used to verify quartile and interquartile-range definitions.
+      </li>
+
+      <li>
+        <a href="https://openstax.org/books/introductory-statistics-2e/pages/2-7-measures-of-the-spread-of-the-data?utm_source=chatgpt.com" rel="noopener" target="_blank">OpenStax — Measures of the Spread of the Data</a><br>
+        Used to verify population and sample variance, standard deviation, and the distinction between N and n − 1.
+      </li>
+
+      <li>
+        <a href="https://www.itl.nist.gov/div898/software/dataplot/refman2/auxillar/coefvari.htm?utm_source=chatgpt.com" rel="noopener" target="_blank">NIST — Coefficient of Variation</a><br>
+        Used to verify the coefficient-of-variation definition and its interpretation for ratio-scale data.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <p>
+      <a href="https://example.com/mean-median-mode-range-calculator/?utm_source=chatgpt.com">Mean Median Mode Range Calculator</a> ·
+      <a href="https://example.com/z-score-calculator/?utm_source=chatgpt.com"> Z-Score Calculator</a> ·
+      <a href="https://example.com/confidence-interval-calculator/?utm_source=chatgpt.com"> Confidence Interval Calculator</a> ·
+      <a href="https://example.com/sample-size-calculator/?utm_source=chatgpt.com"> Sample Size Calculator</a> ·
+      <a href="https://example.com/probability-calculator/?utm_source=chatgpt.com"> Probability Calculator</a>
+    </p>
+  </section>
+
+</article>
+
+
+
+            </div>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"147","Batch":"15","Calculator / Page":"Statistics Calculator","Slug":"statistics-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Calculate count, sum, mean, median, mode, range, quartiles, variance, standard deviation, IQR, and coefficient of variation from a data set.","Formula / Algorithm Used in Tool":"Core Statistics Formulas: The arithmetic mean is Σx/n. Population variance is Σ(x−μ)²/N, while sample variance is Σ(x−x̄)²/(n−1). Standard deviation is the square root of variance. The range is maximum minus minimum, and IQR is Q3 minus Q1.","Required User Inputs":"Data set; Quartile method","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Data set, Quartile method. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"Descriptive statistics summarize the values entered but do not determine causation, statistical significance, or whether a sample is representative. Outliers can strongly affect the mean, variance, standard deviation, range, and coefficient of variation.","Current Source URLs in Page":"https://www.calculator.net/statistics-calculator.html | https://openstax.org/books/introductory-business-statistics-2e/pages/2-7-measures-of-the-spread-of-the-data | https://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm","Implementation Path":"/statistics-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Math &amp; Statistics</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link"
+                    href="../standard-deviation-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Standard Deviation
+                            Calculator</strong><small>Calculate sample or population standard deviation, variance, mean,
+                            sum, count, stan…</small></span></a><a class="cp-related-link"
+                    href="../mean-median-mode-range-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Mean Median Mode Range
+                            Calculator</strong><small>Calculate mean, median, mode, range, minimum, maximum, count, and
+                            sum for a list of…</small></span></a><a class="cp-related-link"
+                    href="../confidence-interval-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Confidence Interval
+                            Calculator</strong><small>Calculate a two-sided confidence interval for a mean using a t
+                            interval for sample…</small></span></a><a class="cp-related-link"
+                    href="../z-score-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Z-Score
+                            Calculator</strong><small>Calculate a z-score from a raw value, mean, and standard
+                            deviation, plus standard n…</small></span></a><a class="cp-related-link"
+                    href="../scientific-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Scientific Calculator</strong><small>Calculate
+                            trigonometric functions, inverse trig, logarithms, roots, powers,
+                            factori…</small></span></a><a class="cp-related-link"
+                    href="../exponent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Exponent
+                            Calculator</strong><small>Calculate a number raised to any valid real exponent and view the
+                            result in standar…</small></span></a><a class="cp-related-link"
+                    href="../p-value-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>P-Value
+                            Calculator</strong><small>Calculate left-tail, right-tail, center, between, or two-tail
+                            p-values from a z-sco…</small></span></a><a class="cp-related-link"
+                    href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction
+                            Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the
+                            simplified fraction, m…</small></span></a></div><a class="cp-side-category"
+                href="../math/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const $ = id => document.getElementById(id); const fmt = n => Number.isFinite(n) ? Number(n.toPrecision(12)).toString() : '—';
+        function values() { return $('data').value.trim().split(/[\s,;]+/).filter(Boolean).map(Number) }
+        function med(a) { const n = a.length, m = Math.floor(n / 2); return n % 2 ? a[m] : (a[m - 1] + a[m]) / 2 }
+        function quantLinear(a, p) { const pos = (a.length - 1) * p, lo = Math.floor(pos), hi = Math.ceil(pos), f = pos - lo; return a[lo] * (1 - f) + a[hi] * f }
+        function quartHalves(a) { const n = a.length, m = Math.floor(n / 2); const low = a.slice(0, m), high = a.slice(n % 2 ? m + 1 : m); return [med(low.length ? low : a), med(high.length ? high : a)] }
+        function render() {
+            const a = values(); const e = $('error'); e.classList.remove('show');
+            if (!a.length || a.some(v => !Number.isFinite(v))) { e.textContent = 'Enter at least one valid number.'; e.classList.add('show'); return }
+            a.sort((x, y) => x - y); const n = a.length, sum = a.reduce((s, x) => s + x, 0), mean = sum / n, median = med(a);
+            const freq = new Map(); a.forEach(v => freq.set(v, (freq.get(v) || 0) + 1)); const mx = Math.max(...freq.values()); const modes = mx > 1 ? [...freq].filter(([, c]) => c === mx).map(([v]) => v) : [];
+            const min = a[0], max = a[n - 1], range = max - min; const sq = a.reduce((s, x) => s + (x - mean) ** 2, 0); const pv = sq / n, ps = Math.sqrt(pv); const sv = n > 1 ? sq / (n - 1) : NaN, ss = Math.sqrt(sv);
+            let q1, q3; if ($('quartileMethod').value === 'halves') { [q1, q3] = quartHalves(a) } else { q1 = quantLinear(a, .25); q3 = quantLinear(a, .75) }
+            const iqr = q3 - q1, cv = mean !== 0 ? ss / Math.abs(mean) * 100 : NaN;
+            $('mean').textContent = fmt(mean); $('summary').textContent = `n = ${n} · sum = ${fmt(sum)} · sorted from ${fmt(min)} to ${fmt(max)}`;
+            $('metrics').innerHTML = [
+                ['Median', fmt(median)], ['Mode', modes.length ? modes.map(fmt).join(', ') : 'No repeated mode'], ['Range', fmt(range)], ['Population variance', fmt(pv)], ['Population SD', fmt(ps)], ['Sample variance', fmt(sv)], ['Sample SD', fmt(ss)], ['Q1', fmt(q1)], ['Q3', fmt(q3)], ['IQR', fmt(iqr)], ['Minimum', fmt(min)], ['Maximum', fmt(max)], ['CV (sample)', Number.isFinite(cv) ? fmt(cv) + '%' : '—']
+            ].map(([k, v]) => `<div class="metric"><b>${k}</b><span>${v}</span></div>`).join('');
+        }
+        $('calcBtn').onclick = render; $('quartileMethod').onchange = render; $('resetBtn').onclick = () => { $('data').value = '10, 2, 38, 23, 38, 23, 21, 23'; $('quartileMethod').value = 'linear'; render() }; render();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>
