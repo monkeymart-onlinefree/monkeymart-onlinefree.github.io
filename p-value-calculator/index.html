@@ -1,10 +1,972 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
-<title>P-Value Calculator from Z-Score – Normal Distribution | CalcPro</title><meta content="Calculate left-tail, right-tail, center, between, or two-tail p-values from a z-score, or convert a p-value back to a z-score for the standard normal distribution." name="description"/><meta content="index,follow" name="robots"/><link href="../p-value-calculator/" rel="canonical"/><meta content="P-Value Calculator" property="og:title"/><meta content="Convert between z-scores and standard-normal tail probabilities." property="og:description"/><meta content="website" property="og:type"/><meta content="#1477ff" name="theme-color"/>
-<style>:root{--bg:#111025;--panel:#1b1a3a;--violet:#7f6cff;--cyan:#35d6de;--pink:#e879f9;--text:#f7f6ff;--muted:#aaa7c8;--grid:#2a2853}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 72% 18%,#6d4cff24,transparent 25%),radial-gradient(circle at 18% 70%,#24d7d61a,transparent 28%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,sans-serif;line-height:1.6}.wrap{width:min(1120px,92vw);margin:auto}header{padding:22px 0}nav{display:flex;justify-content:space-between}.brand{font-weight:950}.brand span{color:var(--cyan)}.crumb{font-size:.86rem;color:var(--muted)}.hero{display:grid;grid-template-columns:.92fr 1.08fr;gap:40px;align-items:center;padding:46px 0 45px}h1{font-size:clamp(2.6rem,5.8vw,5rem);line-height:.94;letter-spacing:-.07em;margin:.35rem 0 1rem}.lead{color:#bbb9d4;font-size:1.08rem}.curve-card{height:320px;border:1px solid #ffffff14;background:linear-gradient(145deg,#1b1a39aa,#0e0e21bb);border-radius:30px;padding:20px;box-shadow:0 30px 70px #0007,inset 0 1px #ffffff12;transform:perspective(900px) rotateY(-5deg)}svg{width:100%;height:100%}.axis{stroke:#6d6a91;stroke-width:1}.curve{fill:none;stroke:url(#grad);stroke-width:5}.fill{fill:url(#shade)}.zline{stroke:#fff;stroke-width:2;stroke-dasharray:6 6}.lab{fill:#d7d5ef;font:700 14px ui-sans-serif,system-ui}.calc-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:25px;margin-bottom:55px}.controls,.results{border:1px solid #ffffff13;border-radius:26px;padding:27px;background:#171632d9;box-shadow:0 28px 65px #0006}label{display:block;font-weight:850;margin:13px 0 7px}select,input{width:100%;border:1px solid #413f6c;border-radius:13px;background:#0e0e21;color:white;padding:13px 14px;font:700 1rem ui-monospace,monospace;outline:none}select:focus,input:focus{border-color:var(--cyan);box-shadow:0 0 0 4px #35d6de18}.tabs{display:grid;grid-template-columns:1fr 1fr;background:#0e0e21;border-radius:14px;padding:4px;gap:4px}.tabs button{border:0;border-radius:11px;padding:11px;background:transparent;color:#aaa7c8;font-weight:850;cursor:pointer}.tabs .active{background:#2b2858;color:white}.actions{display:flex;gap:9px;margin-top:18px}button.primary,button.ghost{border:0;border-radius:13px;padding:12px 16px;font-weight:900;cursor:pointer}.primary{background:linear-gradient(135deg,var(--violet),#a566ef);color:white;box-shadow:0 10px 26px #7652ff44}.ghost{background:#2b2953;color:#dddaf7}.error{min-height:24px;color:#ff9c9c;font-weight:700;margin-top:10px}.results{background:linear-gradient(155deg,#24214f,#181635 70%,#132b38);position:relative;overflow:hidden}.results:after{content:'p';position:absolute;right:10px;top:-82px;font:900 16rem Georgia,serif;color:#ffffff08}.results small{text-transform:uppercase;letter-spacing:.18em;color:#a9a5d1;font-weight:900}.pbig{font-size:clamp(3rem,7vw,5.4rem);font-weight:950;letter-spacing:-.07em;line-height:1;margin:.35rem 0}.pbig span{color:var(--cyan)}.status{display:inline-block;padding:8px 11px;border-radius:999px;background:#ffffff0c;border:1px solid #ffffff15;font-weight:800}.result-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:20px}.result-list div{background:#ffffff08;border:1px solid #ffffff10;padding:13px;border-radius:14px}.result-list b{display:block;color:#fff;font-size:1.18rem}.caution{margin-top:16px;color:#bdbada;font-size:.9rem}article{background:#f7f6ff;color:#24213e;border-radius:30px;padding:clamp(24px,4vw,46px);margin-bottom:55px;box-shadow:0 34px 70px #0007}article h2{font-size:clamp(1.55rem,3vw,2.15rem);letter-spacing:-.035em;margin-top:2rem}.formula{background:#e9e5ff;border-left:5px solid #715eff;border-radius:8px 16px 16px 8px;padding:15px;font:700 1rem ui-monospace,monospace;overflow:auto}.callout{background:#e7f8f8;border:1px solid #c1eeee;border-radius:16px;padding:15px}details{border-top:1px solid #dedbee;padding:14px 0}summary{font-weight:900;cursor:pointer}.sources a{color:#5540bc;word-break:break-word}footer{padding-bottom:40px;color:#9b98bd;font-size:.88rem}@media(max-width:800px){.hero,.calc-grid{grid-template-columns:1fr}.curve-card{height:250px;transform:none}.result-list{grid-template-columns:1fr}}</style><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/p-value-calculator/#app", "name": "P-Value Calculator", "url": "/p-value-calculator/", "description": "Convert between z-scores and p-values for the standard normal distribution using several tail definitions.", "applicationCategory": "EducationalApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript"}, {"@type": "BreadcrumbList", "@id": "/p-value-calculator/#breadcrumbs", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Math & Statistics", "item": "/math/"}, {"@type": "ListItem", "position": 3, "name": "Statistics & Probability", "item": "/math/statistics-probability/"}, {"@type": "ListItem", "position": 4, "name": "P-Value Calculator", "item": "/p-value-calculator/"}]}, {"@type": "FAQPage", "@id": "/p-value-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "What does a p-value mean?", "acceptedAnswer": {"@type": "Answer", "text": "A p-value is the probability, assuming the null hypothesis and the test model are correct, of observing a test statistic at least as extreme as the one obtained according to the test's tail definition."}}, {"@type": "Question", "name": "Is p ≤ 0.05 always statistically significant?", "acceptedAnswer": {"@type": "Answer", "text": "A 0.05 cutoff is common, but the significance level should be chosen for the study before interpreting the data. A p-value does not measure effect size or practical importance."}}, {"@type": "Question", "name": "What distribution does this calculator use?", "acceptedAnswer": {"@type": "Answer", "text": "This calculator uses the standard normal distribution and converts between a z-score and tail probabilities. It is not a t-test, chi-square, or F-test calculator."}}, {"@type": "Question", "name": "What is a two-tailed p-value for a z-score?", "acceptedAnswer": {"@type": "Answer", "text": "For a symmetric standard normal distribution, the two-tailed p-value is 2 × [1 − Φ(|z|)], where Φ is the standard normal cumulative distribution function."}}]}]}</script><link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head><body data-cp-category="math" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header><nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../math/index.html">Math &amp; Statistics</a></li><li><a aria-current="page" href="index.html">P-Value Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main class="wrap" id="main"><h1 class="page-title">P-Value Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="calc-grid"><div class="controls"><div class="tabs" id="tabs"><button class="active" data-mode="ztop">Z → p</button><button data-mode="ptoz">p → Z</button></div><label for="tail">Probability region</label><select id="tail"><option value="left">Left tail: P(X &lt; z)</option><option value="right">Right tail: P(X &gt; z)</option><option value="center">From center: P(0 &lt; X &lt; |z|)</option><option value="between">Between: P(-|z| &lt; X &lt; |z|)</option><option selected="" value="two">Two tails: P(|X| &gt; |z|)</option></select><label for="value" id="valueLabel">Z-score</label><input id="value" step="any" type="number" value="1.96"/><div class="actions"><button class="primary" id="calculate">Calculate</button><button class="ghost" id="reset">Reset</button></div><div class="error" id="error" role="alert"></div></div><div aria-live="polite" class="results"><small id="primaryLabel">Two-tailed p-value</small><div class="pbig"><span id="primary">0.049996</span></div><div class="status" id="status">Compared with α = 0.05: below threshold</div><div class="result-list"><div>Z-score<b id="zout">1.96</b></div><div>Left-tail Φ(z)<b id="leftout">0.975002</b></div><div>Right-tail 1 − Φ(z)<b id="rightout">0.024998</b></div><div>Two-tail<b id="twoout">0.049996</b></div></div><p class="caution">A p-value is evidence under a statistical model, not the probability that the null hypothesis itself is true.</p></div></section><article><h2>What Is a P-Value?</h2><p>A p-value is a tail probability used in hypothesis testing. Under the null hypothesis and the assumptions of the statistical model, it quantifies how probable it would be to observe a test statistic at least as extreme as the one obtained, according to the test's defined direction or tails.</p><h2>How to Use the P-Value Calculator</h2><p>Choose <strong>Z → p</strong> to enter a z-score, or <strong>p → Z</strong> to reverse the calculation. Then select the probability region. This calculator uses the standard normal distribution only; the selected tail definition determines which area under the normal curve is reported.</p><h2>P-Value Formulas for a Standard Normal Z-Score</h2><div class="formula">Left: p = Φ(z)\nRight: p = 1 − Φ(z)\nCenter: p = |Φ(z) − 0.5|\nBetween: p = 2Φ(|z|) − 1\nTwo tails: p = 2[1 − Φ(|z|)]</div><p>Here, Φ(z) is the cumulative distribution function of a standard normal random variable.</p><h2>Calculation Example</h2><p>For <strong>z = 1.96</strong>, Φ(1.96) is about 0.975. The right-tail area is about 0.025, and the symmetric two-tailed p-value is about <strong>0.05</strong>.</p><h2>How Should a P-Value Be Interpreted?</h2><div class="callout"><strong>Important:</strong> A p-value does not show the probability that the null hypothesis is true, and a small p-value does not measure the size or practical importance of an effect.</div><p>A significance level such as α = 0.05 is often chosen before analysis. If the p-value is below that preselected threshold, the result falls in the test's rejection region. The threshold is a decision rule, not a universal measure of scientific importance.</p><h2>Limitations</h2><p>This page applies only to z statistics that are appropriately modeled by a standard normal distribution. It does not replace t, chi-square, F, permutation, exact, or other test-specific p-value calculations. The normal CDF and inverse are evaluated numerically, so extremely tiny tail probabilities are subject to floating-point limits.</p><h2>Frequently Asked Questions</h2><details><summary>What does a p-value mean?</summary><p>A p-value is the probability, assuming the null hypothesis and the test model are correct, of observing a test statistic at least as extreme as the one obtained according to the test's tail definition.</p></details><details><summary>Is p ≤ 0.05 always statistically significant?</summary><p>A 0.05 cutoff is common, but the significance level should be chosen for the study before interpreting the data. A p-value does not measure effect size or practical importance.</p></details><details><summary>What distribution does this calculator use?</summary><p>This calculator uses the standard normal distribution and converts between a z-score and tail probabilities. It is not a t-test, chi-square, or F-test calculator.</p></details><details><summary>What is a two-tailed p-value for a z-score?</summary><p>For a symmetric standard normal distribution, the two-tailed p-value is 2 × [1 − Φ(|z|)], where Φ is the standard normal cumulative distribution function.</p></details><h2>Sources and Methodology</h2><ul class="sources"><li><a href="https://www.calculator.net/p-value-calculator.html">Calculator.net — P-Value Calculator</a></li><li><a href="https://csrc.nist.gov/glossary/term/p_value">NIST — P-value definition</a></li><li><a href="https://itl.nist.gov/div898/handbook/prc/section1/prc131.htm">NIST/SEMATECH — Critical Values and p Values</a></li></ul></article>
+<html lang="en">
 
-<script class="cp-calculator-data" type="application/json">{"index":"215","Batch":"22","Calculator / Page":"P-Value Calculator","Slug":"p-value-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Calculate left-tail, right-tail, center, between, or two-tail p-values from a z-score, or convert a p-value back to a z-score for the standard normal distribution.","Formula / Algorithm Used in Tool":"P-Value Formulas for a Standard Normal Z-Score: Left: p = Φ(z)\\nRight: p = 1 − Φ(z)\\nCenter: p = |Φ(z) − 0.5|\\nBetween: p = 2Φ(|z|) − 1\\nTwo tails: p = 2[1 − Φ(|z|)] Here, Φ(z) is the cumulative distribution function of a standard normal random variable.","Required User Inputs":"Probability region; Z-score","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Probability region, Z-score. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"This page applies only to z statistics that are appropriately modeled by a standard normal distribution. It does not replace t, chi-square, F, permutation, exact, or other test-specific p-value calculations. The normal CDF and inverse are evaluated numerically, so extremely tiny tail probabilities are subject to floating-point limits.","Current Source URLs in Page":"https://www.calculator.net/p-value-calculator.html | https://csrc.nist.gov/glossary/term/p_value | https://itl.nist.gov/div898/handbook/prc/section1/prc131.htm","Implementation Path":"/p-value-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Math &amp; Statistics</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../z-score-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Z-Score Calculator</strong><small>Calculate a z-score from a raw value, mean, and standard deviation, plus standard n…</small></span></a><a class="cp-related-link" href="../confidence-interval-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Confidence Interval Calculator</strong><small>Calculate a two-sided confidence interval for a mean using a t interval for sample…</small></span></a><a class="cp-related-link" href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the simplified fraction, m…</small></span></a><a class="cp-related-link" href="../distance-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Distance Calculator</strong><small>Calculate distance between two points in 2D, 3D, or between latitude-longitude coor…</small></span></a><a class="cp-related-link" href="../percent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Percent Calculator</strong><small>Calculate a percentage of a number, find what percent one value is of another, calc…</small></span></a><a class="cp-related-link" href="../random-number-generator/index.html"><span class="cp-related-dot">›</span><span><strong>Random Number Generator</strong><small>Generate one or many random integers or decimals between custom limits, with option…</small></span></a><a class="cp-related-link" href="../standard-deviation-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Standard Deviation Calculator</strong><small>Calculate sample or population standard deviation, variance, mean, sum, count, stan…</small></span></a><a class="cp-related-link" href="../ratio-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Ratio Calculator</strong><small>Solve a proportion A:B = C:D when one value is unknown, and simplify two-number rat…</small></span></a></div><a class="cp-side-category" href="../math/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script>let mode='ztop';const value=document.getElementById('value'),tail=document.getElementById('tail'),err=document.getElementById('error');function erf(x){const s=x<0?-1:1,a=Math.abs(x),t=1/(1+0.3275911*a),y=1-(((((1.061405429*t-1.453152027)*t+1.421413741)*t-0.284496736)*t+0.254829592)*t)*Math.exp(-a*a);return s*y}function Phi(z){return .5*(1+erf(z/Math.SQRT2))}function invPhi(p){if(!(p>0&&p<1))return p===0?-Infinity:p===1?Infinity:NaN;const a=[-39.6968302866538,220.946098424521,-275.928510446969,138.357751867269,-30.6647980661472,2.50662827745924],b=[-54.4760987982241,161.585836858041,-155.698979859887,66.8013118877197,-13.2806815528857],c=[-0.00778489400243029,-0.322396458041136,-2.40075827716184,-2.54973253934373,4.37466414146497,2.93816398269878],d=[0.00778469570904146,0.32246712907004,2.445134137143,3.75440866190742],pl=.02425,ph=1-pl;let q,r;if(p<pl){q=Math.sqrt(-2*Math.log(p));return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1)}if(p>ph){q=Math.sqrt(-2*Math.log(1-p));return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1)}q=p-.5;r=q*q;return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1)}function probs(z){const left=Phi(z),right=1-left,az=Math.abs(z),center=Math.abs(Phi(z)-.5),between=2*Phi(az)-1,two=2*(1-Phi(az));return{left,right,center,between,two}}function fmt(x){if(x===0)return '0';if(Math.abs(x)<1e-6)return x.toExponential(6);return x.toFixed(6).replace(/0+$/,'').replace(/\.$/,'')}function solve(){err.textContent='';let x=Number(value.value),z,p;if(!Number.isFinite(x)){err.textContent='Enter a valid numeric value.';return}if(mode==='ztop'){z=x;p=probs(z)[tail.value]}else{p=x;if(!(p>0&&p<1)){err.textContent='For p → Z, enter a probability greater than 0 and less than 1.';return}if((tail.value==='center'&&p>=.5)){err.textContent='Center probability must be less than 0.5.';return}if(tail.value==='left')z=invPhi(p);else if(tail.value==='right')z=invPhi(1-p);else if(tail.value==='center')z=invPhi(.5+p);else if(tail.value==='between')z=invPhi((1+p)/2);else z=invPhi(1-p/2)}const P=probs(z);document.getElementById('primary').textContent=fmt(p);document.getElementById('primaryLabel').textContent=({left:'Left-tail probability',right:'Right-tail probability',center:'Center probability',between:'Between probability',two:'Two-tailed p-value'})[tail.value];document.getElementById('zout').textContent=fmt(z);document.getElementById('leftout').textContent=fmt(P.left);document.getElementById('rightout').textContent=fmt(P.right);document.getElementById('twoout').textContent=fmt(P.two);document.getElementById('status').textContent='Compared with α = 0.05: '+(p<.05?'below threshold':p===.05?'equal to threshold':'above threshold')}document.getElementById('tabs').onclick=e=>{const b=e.target.closest('button');if(!b)return;mode=b.dataset.mode;document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('active',x===b));document.getElementById('valueLabel').textContent=mode==='ztop'?'Z-score':'P-value';value.value=mode==='ztop'?'1.96':'0.05';solve()};document.getElementById('calculate').onclick=solve;document.getElementById('reset').onclick=()=>{mode='ztop';document.querySelectorAll('#tabs button').forEach((x,i)=>x.classList.toggle('active',i===0));tail.value='two';value.value='1.96';document.getElementById('valueLabel').textContent='Z-score';solve()};tail.onchange=solve;solve();</script><script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+   <!-- Primary Meta Tags -->
+<title>P-Value Calculator – Calculate P-Values from Z-Scores</title>
+<meta name="title" content="P-Value Calculator – Calculate P-Values from Z-Scores">
+<meta name="description" content="Calculate a p-value from a z-score for left-tail, right-tail, center, between, or two-tail regions of the standard normal distribution, with clear results.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/p-value-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/p-value-calculator/">
+<meta property="og:title" content="P-Value Calculator – Calculate P-Values from Z-Scores">
+<meta property="og:description" content="Calculate a p-value from a z-score for left-tail, right-tail, center, between, or two-tail regions of the standard normal distribution, with clear results.">
+<meta property="og:site_name" content="P-Value Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/p-value-calculator/">
+<meta name="twitter:title" content="P-Value Calculator – Calculate P-Values from Z-Scores">
+<meta name="twitter:description" content="Calculate a p-value from a z-score for left-tail, right-tail, center, between, or two-tail regions of the standard normal distribution, with clear results.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        :root {
+            --bg: #111025;
+            --panel: #1b1a3a;
+            --violet: #7f6cff;
+            --cyan: #35d6de;
+            --pink: #e879f9;
+            --text: #f7f6ff;
+            --muted: #aaa7c8;
+            --grid: #2a2853
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: radial-gradient(circle at 72% 18%, #6d4cff24, transparent 25%), radial-gradient(circle at 18% 70%, #24d7d61a, transparent 28%), var(--bg);
+            color: var(--text);
+            font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+            line-height: 1.6
+        }
+
+        .wrap {
+            width: min(1120px, 92vw);
+            margin: auto
+        }
+
+        header {
+            padding: 22px 0
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between
+        }
+
+        .brand {
+            font-weight: 950
+        }
+
+        .brand span {
+            color: var(--cyan)
+        }
+
+        .crumb {
+            font-size: .86rem;
+            color: var(--muted)
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: .92fr 1.08fr;
+            gap: 40px;
+            align-items: center;
+            padding: 46px 0 45px
+        }
+
+        h1 {
+            font-size: clamp(2.6rem, 5.8vw, 5rem);
+            line-height: .94;
+            letter-spacing: -.07em;
+            margin: .35rem 0 1rem
+        }
+
+        .lead {
+            color: #bbb9d4;
+            font-size: 1.08rem
+        }
+
+        .curve-card {
+            height: 320px;
+            border: 1px solid #ffffff14;
+            background: linear-gradient(145deg, #1b1a39aa, #0e0e21bb);
+            border-radius: 30px;
+            padding: 20px;
+            box-shadow: 0 30px 70px #0007, inset 0 1px #ffffff12;
+            transform: perspective(900px) rotateY(-5deg)
+        }
+
+        svg {
+            width: 100%;
+            height: 100%
+        }
+
+        .axis {
+            stroke: #6d6a91;
+            stroke-width: 1
+        }
+
+        .curve {
+            fill: none;
+            stroke: url(#grad);
+            stroke-width: 5
+        }
+
+        .fill {
+            fill: url(#shade)
+        }
+
+        .zline {
+            stroke: #fff;
+            stroke-width: 2;
+            stroke-dasharray: 6 6
+        }
+
+        .lab {
+            fill: #d7d5ef;
+            font: 700 14px ui-sans-serif, system-ui
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: .82fr 1.18fr;
+            gap: 25px;
+            margin-bottom: 55px
+        }
+
+        .controls,
+        .results {
+            border: 1px solid #ffffff13;
+            border-radius: 26px;
+            padding: 27px;
+            background: #171632d9;
+            box-shadow: 0 28px 65px #0006
+        }
+
+        label {
+            display: block;
+            font-weight: 850;
+            margin: 13px 0 7px
+        }
+
+        select,
+        input {
+            width: 100%;
+            border: 1px solid #413f6c;
+            border-radius: 13px;
+            background: #0e0e21;
+            color: white;
+            padding: 13px 14px;
+            font: 700 1rem ui-monospace, monospace;
+            outline: none
+        }
+
+        select:focus,
+        input:focus {
+            border-color: var(--cyan);
+            box-shadow: 0 0 0 4px #35d6de18
+        }
+
+        .tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: #0e0e21;
+            border-radius: 14px;
+            padding: 4px;
+            gap: 4px
+        }
+
+        .tabs button {
+            border: 0;
+            border-radius: 11px;
+            padding: 11px;
+            background: transparent;
+            color: #aaa7c8;
+            font-weight: 850;
+            cursor: pointer
+        }
+
+        .tabs .active {
+            background: #2b2858;
+            color: white
+        }
+
+        .actions {
+            display: flex;
+            gap: 9px;
+            margin-top: 18px
+        }
+
+        button.primary,
+        button.ghost {
+            border: 0;
+            border-radius: 13px;
+            padding: 12px 16px;
+            font-weight: 900;
+            cursor: pointer
+        }
+
+        .primary {
+            background: linear-gradient(135deg, var(--violet), #a566ef);
+            color: white;
+            box-shadow: 0 10px 26px #7652ff44
+        }
+
+        .ghost {
+            background: #2b2953;
+            color: #dddaf7
+        }
+
+        .error {
+            min-height: 24px;
+            color: #ff9c9c;
+            font-weight: 700;
+            margin-top: 10px
+        }
+
+        .results {
+            background: linear-gradient(155deg, #24214f, #181635 70%, #132b38);
+            position: relative;
+            overflow: hidden
+        }
+
+        .results:after {
+            content: 'p';
+            position: absolute;
+            right: 10px;
+            top: -82px;
+            font: 900 16rem Georgia, serif;
+            color: #ffffff08
+        }
+
+        .results small {
+            text-transform: uppercase;
+            letter-spacing: .18em;
+            color: #a9a5d1;
+            font-weight: 900
+        }
+
+        .pbig {
+            font-size: clamp(3rem, 7vw, 5.4rem);
+            font-weight: 950;
+            letter-spacing: -.07em;
+            line-height: 1;
+            margin: .35rem 0
+        }
+
+        .pbig span {
+            color: var(--cyan)
+        }
+
+        .status {
+            display: inline-block;
+            padding: 8px 11px;
+            border-radius: 999px;
+            background: #ffffff0c;
+            border: 1px solid #ffffff15;
+            font-weight: 800
+        }
+
+        .result-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 20px
+        }
+
+        .result-list div {
+            background: #ffffff08;
+            border: 1px solid #ffffff10;
+            padding: 13px;
+            border-radius: 14px
+        }
+
+        .result-list b {
+            display: block;
+            color: #fff;
+            font-size: 1.18rem
+        }
+
+        .caution {
+            margin-top: 16px;
+            color: #bdbada;
+            font-size: .9rem
+        }
+
+        article {
+            background: #f7f6ff;
+            color: #24213e;
+            border-radius: 30px;
+            padding: clamp(24px, 4vw, 46px);
+            margin-bottom: 55px;
+        }
+
+        article h2 {
+            font-size: clamp(1.55rem, 3vw, 2.15rem);
+            letter-spacing: -.035em;
+            margin-top: 2rem
+        }
+
+        .formula {
+            background: #e9e5ff;
+            border-left: 5px solid #715eff;
+            border-radius: 8px 16px 16px 8px;
+            padding: 15px;
+            font: 700 1rem ui-monospace, monospace;
+            overflow: auto
+        }
+
+        .callout {
+            background: #e7f8f8;
+            border: 1px solid #c1eeee;
+            border-radius: 16px;
+            padding: 15px
+        }
+
+        details {
+            border-top: 1px solid #dedbee;
+            padding: 14px 0
+        }
+
+        summary {
+            font-weight: 900;
+            cursor: pointer
+        }
+
+        .sources a {
+            color: #5540bc;
+            word-break: break-word
+        }
+
+        footer {
+            padding-bottom: 40px;
+            color: #9b98bd;
+            font-size: .88rem
+        }
+
+        @media(max-width:800px) {
+
+            .hero,
+            .calc-grid {
+                grid-template-columns: 1fr
+            }
+
+            .curve-card {
+                height: 250px;
+                transform: none
+            }
+
+            .result-list {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/p-value-calculator/#webapplication",
+      "name": "P-Value Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/p-value-calculator/",
+      "description": "Calculate a p-value from a z-score for left-tail, right-tail, center, between, or two-tail regions of the standard normal distribution, with clear results.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/p-value-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "P-Value Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/p-value-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/p-value-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a p-value?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A p-value measures how extreme an observed test statistic is under the assumption that the null hypothesis is true. Smaller p-values indicate that the observed result is less consistent with the null model."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between left-tail and right-tail p-values?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A left-tail calculation measures the probability below the entered z-score:\n\np = Φ(z)\n\nA right-tail calculation measures the probability above it:\n\np = 1 − Φ(z)\n\nThe correct option depends on the direction of the statistical test."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is a two-tailed p-value calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For a standard normal z-score, this calculator uses:\n\np = 2[1 − Φ(|z|)]\n\nUsing the absolute value makes the calculation symmetric for positive and negative z-scores."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the Center option calculate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Center calculates the area between the standard normal mean at z = 0 and the entered z-score:\n\np = |Φ(z) − 0.5|\n\nFor example, z = 1.96 produces a center area of approximately 0.475."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the Between option calculate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Between calculates the probability inside the symmetric interval from −|z| to +|z|:\n\np = 2Φ(|z|) − 1\n\nFor z = 1.96, this central probability is approximately 0.9500."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is p < 0.05 always statistically significant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not automatically. Statistical significance depends on the significance level, α, chosen for the analysis. A value of 0.05 is commonly used, but the appropriate threshold depends on the study design and should normally be selected before evaluating the result."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why might another statistical calculator give a different p-value?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Another calculator may use a different probability distribution, test statistic, tail definition, or test method. For example, a t-test requires a t distribution and degrees of freedom rather than this calculator's standard normal z-score method."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "Monkeymart Onlinefree",
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="math" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../math/index.html">Math &amp; Statistics</a></li>
+            <li><a aria-current="page" href="index.html">P-Value Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main class="wrap" id="main">
+            <h1 class="page-title">P-Value Calculator</h1>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="calc-grid">
+                <div class="controls">
+                    <div class="tabs" id="tabs"><button class="active" data-mode="ztop">Z → p</button><button
+                            data-mode="ptoz">p → Z</button></div><label for="tail">Probability region</label><select
+                        id="tail">
+                        <option value="left">Left tail: P(X &lt; z)</option>
+                        <option value="right">Right tail: P(X &gt; z)</option>
+                        <option value="center">From center: P(0 &lt; X &lt; |z|)</option>
+                        <option value="between">Between: P(-|z| &lt; X &lt; |z|)</option>
+                        <option selected="" value="two">Two tails: P(|X| &gt; |z|)</option>
+                    </select><label for="value" id="valueLabel">Z-score</label><input id="value" step="any"
+                        type="number" value="1.96" />
+                    <div class="actions"><button class="primary" id="calculate">Calculate</button><button class="ghost"
+                            id="reset">Reset</button></div>
+                    <div class="error" id="error" role="alert"></div>
+                </div>
+                <div aria-live="polite" class="results"><small id="primaryLabel">Two-tailed p-value</small>
+                    <div class="pbig"><span id="primary">0.049996</span></div>
+                    <div class="status" id="status">Compared with α = 0.05: below threshold</div>
+                    <div class="result-list">
+                        <div>Z-score<b id="zout">1.96</b></div>
+                        <div>Left-tail Φ(z)<b id="leftout">0.975002</b></div>
+                        <div>Right-tail 1 − Φ(z)<b id="rightout">0.024998</b></div>
+                        <div>Two-tail<b id="twoout">0.049996</b></div>
+                    </div>
+                    <p class="caution">A p-value is evidence under a statistical model, not the probability that the
+                        null hypothesis itself is true.</p>
+                </div>
+            </section>
+          
+<article class="article">
+
+ 
+
+  <p>The P-Value Calculator finds probabilities from a <strong>standard normal z-score</strong>. Enter a z-score and choose the probability region—left tail, right tail, center, between, or two tails—to calculate the corresponding standard normal probability.</p>
+
+  <section id="what">
+    <h2>What Is the P-Value Calculator?</h2>
+
+    <p>A P-Value Calculator converts a z-score into an area or probability under the standard normal distribution.</p>
+
+    <p>In hypothesis testing, a p-value represents the probability of obtaining a test statistic at least as extreme as the observed value when the null hypothesis is true.</p>
+
+    <p>This calculator is useful when your test statistic follows, or is appropriately approximated by, the <strong>standard normal distribution</strong> and you need a specific tail or central probability.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the P-Value Calculator</h2>
+
+    <h3>1. Select the Probability Region</h3>
+
+    <p>Choose the region that matches the probability you want:</p>
+
+    <ul>
+      <li><strong>Left:</strong> probability to the left of the entered z-score.</li>
+      <li><strong>Right:</strong> probability to the right of the entered z-score.</li>
+      <li><strong>Center:</strong> probability between the mean, z = 0, and the entered z-score.</li>
+      <li><strong>Between:</strong> probability between −|z| and +|z|.</li>
+      <li><strong>Two tails:</strong> combined probability below −|z| and above +|z|.</li>
+    </ul>
+
+    <h3>2. Enter the Z-Score</h3>
+
+    <p>Enter the standard normal <strong>z-score</strong>. A z-score is unitless and represents a position relative to the center of the standard normal distribution.</p>
+
+    <p>The calculator evaluates the standard normal cumulative distribution and applies the formula for your selected probability region.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <p>Let:</p>
+
+    <div class="formula"><strong>Φ(z) = P(Z ≤ z)</strong></div>
+
+    <p>where <strong>Z</strong> follows a standard normal distribution with mean 0 and standard deviation 1.</p>
+
+    <p>NIST defines the standard normal distribution as the normal distribution with μ = 0 and σ = 1, and its cumulative distribution function gives the probability at or below a selected value.</p>
+
+    <h3>Main Formulas</h3>
+
+    <h4>Left-Tail Probability</h4>
+
+    <div class="formula"><strong>p = Φ(z)</strong></div>
+
+    <p>This calculates the entire probability to the left of the entered z-score.</p>
+
+    <h4>Right-Tail Probability</h4>
+
+    <div class="formula"><strong>p = 1 − Φ(z)</strong></div>
+
+    <p>This calculates the probability to the right of the entered z-score.</p>
+
+    <h4>Center Probability</h4>
+
+    <div class="formula"><strong>p = |Φ(z) − 0.5|</strong></div>
+
+    <p>This calculates the area between z = 0 and the entered z-score.</p>
+
+    <h4>Between Probability</h4>
+
+    <div class="formula"><strong>p = 2Φ(|z|) − 1</strong></div>
+
+    <p>This calculates the central area between <strong>−|z| and +|z|</strong>.</p>
+
+    <h4>Two-Tail Probability</h4>
+
+    <div class="formula"><strong>p = 2[1 − Φ(|z|)]</strong></div>
+
+    <p>This calculates the combined probability in both tails outside <strong>−|z| and +|z|</strong>.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>p</strong></td>
+          <td>Calculated probability for the selected region</td>
+          <td>Probability from 0 to 1</td>
+        </tr>
+        <tr>
+          <td><strong>z</strong></td>
+          <td>Standard normal z-score</td>
+          <td>Unitless</td>
+        </tr>
+        <tr>
+          <td><strong>Φ(z)</strong></td>
+          <td>Standard normal cumulative probability at z</td>
+          <td>Probability</td>
+        </tr>
+        <tr>
+          <td><strong>|z|</strong></td>
+          <td>Absolute value of the z-score</td>
+          <td>Unitless</td>
+        </tr>
+        <tr>
+          <td><strong>Z</strong></td>
+          <td>Standard normal random variable</td>
+          <td>Unitless</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Calculation Sequence</h3>
+
+    <ol>
+      <li>Read the selected probability region.</li>
+      <li>Read the entered z-score.</li>
+      <li>Evaluate <strong>Φ(z)</strong> or <strong>Φ(|z|)</strong> as required.</li>
+      <li>Apply the formula for the selected region.</li>
+      <li>Return the calculated probability.</li>
+    </ol>
+
+    <p>The standard normal CDF does not have a simple elementary closed-form expression and is normally evaluated numerically.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose you want the <strong>two-tail probability</strong> for:</p>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li>Probability region: Two tails</li>
+      <li>Z-score: 1.96</li>
+    </ul>
+
+    <h3>Step 1: Find the Cumulative Probability</h3>
+
+    <p>For:</p>
+
+    <div class="formula"><strong>z = 1.96</strong></div>
+
+    <p>the standard normal cumulative probability is approximately:</p>
+
+    <div class="formula"><strong>Φ(1.96) = 0.9750021</strong></div>
+
+    <p>NIST's standard normal table also gives approximately 0.975 for z = 1.96.</p>
+
+    <h3>Step 2: Calculate One Tail</h3>
+
+    <div class="formula">
+      <strong>1 − Φ(1.96)</strong><br>
+      = 1 − 0.9750021<br>
+      = <strong>0.0249979</strong>
+    </div>
+
+    <h3>Step 3: Calculate Both Tails</h3>
+
+    <div class="formula">
+      <strong>p = 2 × 0.0249979</strong><br>
+      = <strong>0.0499958</strong>
+    </div>
+
+    <h3>Final Result</h3>
+
+    <div class="formula"><strong>p ≈ 0.0500</strong></div>
+
+    <p>The combined area beyond ±1.96 is therefore approximately <strong>5%</strong>.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p>The main result is a probability between <strong>0 and 1</strong>.</p>
+
+    <p>For example:</p>
+
+    <ul>
+      <li><strong>0.05</strong> represents a probability of 5%.</li>
+      <li><strong>0.01</strong> represents a probability of 1%.</li>
+      <li>A value closer to <strong>0</strong> represents a smaller selected-region probability.</li>
+      <li>A value closer to <strong>1</strong> represents a larger selected-region probability.</li>
+    </ul>
+
+    <p>For hypothesis testing, the calculated probability acts as a p-value only when the chosen probability region correctly represents the relevant hypothesis test.</p>
+
+    <p>A small p-value indicates that the observed test statistic would be relatively unusual under the null hypothesis. NIST notes that the significance level should normally be selected before evaluating the test result.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>This calculator uses the <strong>standard normal distribution</strong>. Its results are appropriate only when the statistic being evaluated can validly be modeled as a standard normal z statistic.</p>
+
+    <p>It does not replace calculations based on other statistical distributions or test methods, including:</p>
+
+    <ul>
+      <li>Student's t distribution</li>
+      <li>Chi-square distribution</li>
+      <li>F distribution</li>
+      <li>Exact tests</li>
+      <li>Permutation tests</li>
+      <li>Other test-specific probability models</li>
+    </ul>
+
+    <p>Selecting the correct probability region is important. A left-tailed test, right-tailed test, and two-tailed test can produce very different probabilities from the same z-score.</p>
+
+    <p>The <strong>Center</strong> and <strong>Between</strong> options calculate areas of the standard normal curve. These region probabilities are not automatically conventional hypothesis-test p-values in every statistical situation.</p>
+
+    <p>The standard normal CDF is evaluated numerically. Very large positive or negative z-scores can therefore produce extremely small tail probabilities where floating-point precision becomes relevant.</p>
+
+    <p>Mathematically, a z-score can be positive, negative, or zero. At <strong>z = 0</strong>, the left and right probabilities are each 0.5, while the center and between probabilities are 0.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What is a p-value?</summary>
+      <p>A p-value measures how extreme an observed test statistic is under the assumption that the null hypothesis is true. Smaller p-values indicate that the observed result is less consistent with the null model.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What is the difference between left-tail and right-tail p-values?</summary>
+
+      <p>A left-tail calculation measures the probability <strong>below</strong> the entered z-score:</p>
+
+      <div class="formula"><strong>p = Φ(z)</strong></div>
+
+      <p>A right-tail calculation measures the probability <strong>above</strong> it:</p>
+
+      <div class="formula"><strong>p = 1 − Φ(z)</strong></div>
+
+      <p>The correct option depends on the direction of the statistical test.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How is a two-tailed p-value calculated?</summary>
+
+      <p>For a standard normal z-score, this calculator uses:</p>
+
+      <div class="formula"><strong>p = 2[1 − Φ(|z|)]</strong></div>
+
+      <p>Using the absolute value makes the calculation symmetric for positive and negative z-scores.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What does the Center option calculate?</summary>
+
+      <p>Center calculates the area between the standard normal mean at <strong>z = 0</strong> and the entered z-score:</p>
+
+      <div class="formula"><strong>p = |Φ(z) − 0.5|</strong></div>
+
+      <p>For example, z = 1.96 produces a center area of approximately 0.475.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What does the Between option calculate?</summary>
+
+      <p>Between calculates the probability inside the symmetric interval from <strong>−|z| to +|z|</strong>:</p>
+
+      <div class="formula"><strong>p = 2Φ(|z|) − 1</strong></div>
+
+      <p>For z = 1.96, this central probability is approximately <strong>0.9500</strong>.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is p &lt; 0.05 always statistically significant?</summary>
+
+      <p>Not automatically. Statistical significance depends on the significance level, <strong>α</strong>, chosen for the analysis. A value of 0.05 is commonly used, but the appropriate threshold depends on the study design and should normally be selected before evaluating the result.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why might another statistical calculator give a different p-value?</summary>
+
+      <p>Another calculator may use a different probability distribution, test statistic, tail definition, or test method. For example, a t-test requires a t distribution and degrees of freedom rather than this calculator's standard normal z-score method.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <strong>NIST CSRC — P-value Glossary</strong>
+        <p>Used to verify the statistical definition and interpretation of a p-value.</p>
+        <a href="https://csrc.nist.gov/glossary/term/p_value?utm_source=chatgpt.com" rel="noopener" target="_blank">NIST P-value Glossary</a>
+      </li>
+
+      <li>
+        <strong>NIST/SEMATECH e-Handbook — Normal Distribution</strong>
+        <p>Used to verify the standard normal distribution and numerical cumulative distribution function.</p>
+        <a href="https://itl.nist.gov/div898/handbook/eda/section3/eda3661.htm?utm_source=chatgpt.com" rel="noopener" target="_blank">NIST Normal Distribution</a>
+      </li>
+
+      <li>
+        <strong>NIST/SEMATECH e-Handbook — Standard Normal CDF</strong>
+        <p>Used to verify standard normal cumulative probabilities and z-score relationships.</p>
+        <a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda3671.htm?utm_source=chatgpt.com" rel="noopener" target="_blank">NIST Standard Normal CDF</a>
+      </li>
+
+      <li>
+        <strong>NIST/SEMATECH e-Handbook — Critical Values and P-Values</strong>
+        <p>Used to verify p-value interpretation and its relationship with hypothesis testing and significance levels.</p>
+        <a href="https://itl.nist.gov/div898/handbook/prc/section1/prc131.htm?utm_source=chatgpt.com" rel="noopener" target="_blank">NIST Critical Values and P-Values</a>
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/z-score-calculator/">Z-Score Calculator</a></li>
+      <li><a href="https://example.com/probability-calculator/">Probability Calculator</a></li>
+      <li><a href="https://example.com/statistics-calculator/">Statistics Calculator</a></li>
+      <li><a href="https://example.com/standard-deviation-calculator/">Standard Deviation Calculator</a></li>
+      <li><a href="https://example.com/confidence-interval-calculator/">Confidence Interval Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"215","Batch":"22","Calculator / Page":"P-Value Calculator","Slug":"p-value-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Calculate left-tail, right-tail, center, between, or two-tail p-values from a z-score, or convert a p-value back to a z-score for the standard normal distribution.","Formula / Algorithm Used in Tool":"P-Value Formulas for a Standard Normal Z-Score: Left: p = Φ(z)\\nRight: p = 1 − Φ(z)\\nCenter: p = |Φ(z) − 0.5|\\nBetween: p = 2Φ(|z|) − 1\\nTwo tails: p = 2[1 − Φ(|z|)] Here, Φ(z) is the cumulative distribution function of a standard normal random variable.","Required User Inputs":"Probability region; Z-score","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Probability region, Z-score. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"This page applies only to z statistics that are appropriately modeled by a standard normal distribution. It does not replace t, chi-square, F, permutation, exact, or other test-specific p-value calculations. The normal CDF and inverse are evaluated numerically, so extremely tiny tail probabilities are subject to floating-point limits.","Current Source URLs in Page":"https://www.calculator.net/p-value-calculator.html | https://csrc.nist.gov/glossary/term/p_value | https://itl.nist.gov/div898/handbook/prc/section1/prc131.htm","Implementation Path":"/p-value-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Math &amp; Statistics</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../z-score-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Z-Score Calculator</strong><small>Calculate a
+                            z-score from a raw value, mean, and standard deviation, plus standard
+                            n…</small></span></a><a class="cp-related-link"
+                    href="../confidence-interval-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Confidence Interval
+                            Calculator</strong><small>Calculate a two-sided confidence interval for a mean using a t
+                            interval for sample…</small></span></a><a class="cp-related-link"
+                    href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction
+                            Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the
+                            simplified fraction, m…</small></span></a><a class="cp-related-link"
+                    href="../distance-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Distance
+                            Calculator</strong><small>Calculate distance between two points in 2D, 3D, or between
+                            latitude-longitude coor…</small></span></a><a class="cp-related-link"
+                    href="../percent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Percent
+                            Calculator</strong><small>Calculate a percentage of a number, find what percent one value is
+                            of another, calc…</small></span></a><a class="cp-related-link"
+                    href="../random-number-generator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Random Number Generator</strong><small>Generate one
+                            or many random integers or decimals between custom limits, with option…</small></span></a><a
+                    class="cp-related-link" href="../standard-deviation-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Standard Deviation
+                            Calculator</strong><small>Calculate sample or population standard deviation, variance, mean,
+                            sum, count, stan…</small></span></a><a class="cp-related-link"
+                    href="../ratio-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Ratio
+                            Calculator</strong><small>Solve a proportion A:B = C:D when one value is unknown, and
+                            simplify two-number rat…</small></span></a></div><a class="cp-side-category"
+                href="../math/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>let mode = 'ztop'; const value = document.getElementById('value'), tail = document.getElementById('tail'), err = document.getElementById('error'); function erf(x) { const s = x < 0 ? -1 : 1, a = Math.abs(x), t = 1 / (1 + 0.3275911 * a), y = 1 - (((((1.061405429 * t - 1.453152027) * t + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t) * Math.exp(-a * a); return s * y } function Phi(z) { return .5 * (1 + erf(z / Math.SQRT2)) } function invPhi(p) { if (!(p > 0 && p < 1)) return p === 0 ? -Infinity : p === 1 ? Infinity : NaN; const a = [-39.6968302866538, 220.946098424521, -275.928510446969, 138.357751867269, -30.6647980661472, 2.50662827745924], b = [-54.4760987982241, 161.585836858041, -155.698979859887, 66.8013118877197, -13.2806815528857], c = [-0.00778489400243029, -0.322396458041136, -2.40075827716184, -2.54973253934373, 4.37466414146497, 2.93816398269878], d = [0.00778469570904146, 0.32246712907004, 2.445134137143, 3.75440866190742], pl = .02425, ph = 1 - pl; let q, r; if (p < pl) { q = Math.sqrt(-2 * Math.log(p)); return (((((c[0] * q + c[1]) * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) / ((((d[0] * q + d[1]) * q + d[2]) * q + d[3]) * q + 1) } if (p > ph) { q = Math.sqrt(-2 * Math.log(1 - p)); return -(((((c[0] * q + c[1]) * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) / ((((d[0] * q + d[1]) * q + d[2]) * q + d[3]) * q + 1) } q = p - .5; r = q * q; return (((((a[0] * r + a[1]) * r + a[2]) * r + a[3]) * r + a[4]) * r + a[5]) * q / (((((b[0] * r + b[1]) * r + b[2]) * r + b[3]) * r + b[4]) * r + 1) } function probs(z) { const left = Phi(z), right = 1 - left, az = Math.abs(z), center = Math.abs(Phi(z) - .5), between = 2 * Phi(az) - 1, two = 2 * (1 - Phi(az)); return { left, right, center, between, two } } function fmt(x) { if (x === 0) return '0'; if (Math.abs(x) < 1e-6) return x.toExponential(6); return x.toFixed(6).replace(/0+$/, '').replace(/\.$/, '') } function solve() { err.textContent = ''; let x = Number(value.value), z, p; if (!Number.isFinite(x)) { err.textContent = 'Enter a valid numeric value.'; return } if (mode === 'ztop') { z = x; p = probs(z)[tail.value] } else { p = x; if (!(p > 0 && p < 1)) { err.textContent = 'For p → Z, enter a probability greater than 0 and less than 1.'; return } if ((tail.value === 'center' && p >= .5)) { err.textContent = 'Center probability must be less than 0.5.'; return } if (tail.value === 'left') z = invPhi(p); else if (tail.value === 'right') z = invPhi(1 - p); else if (tail.value === 'center') z = invPhi(.5 + p); else if (tail.value === 'between') z = invPhi((1 + p) / 2); else z = invPhi(1 - p / 2) } const P = probs(z); document.getElementById('primary').textContent = fmt(p); document.getElementById('primaryLabel').textContent = ({ left: 'Left-tail probability', right: 'Right-tail probability', center: 'Center probability', between: 'Between probability', two: 'Two-tailed p-value' })[tail.value]; document.getElementById('zout').textContent = fmt(z); document.getElementById('leftout').textContent = fmt(P.left); document.getElementById('rightout').textContent = fmt(P.right); document.getElementById('twoout').textContent = fmt(P.two); document.getElementById('status').textContent = 'Compared with α = 0.05: ' + (p < .05 ? 'below threshold' : p === .05 ? 'equal to threshold' : 'above threshold') } document.getElementById('tabs').onclick = e => { const b = e.target.closest('button'); if (!b) return; mode = b.dataset.mode; document.querySelectorAll('#tabs button').forEach(x => x.classList.toggle('active', x === b)); document.getElementById('valueLabel').textContent = mode === 'ztop' ? 'Z-score' : 'P-value'; value.value = mode === 'ztop' ? '1.96' : '0.05'; solve() }; document.getElementById('calculate').onclick = solve; document.getElementById('reset').onclick = () => { mode = 'ztop'; document.querySelectorAll('#tabs button').forEach((x, i) => x.classList.toggle('active', i === 0)); tail.value = 'two'; value.value = '1.96'; document.getElementById('valueLabel').textContent = 'Z-score'; solve() }; tail.onchange = solve; solve();</script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

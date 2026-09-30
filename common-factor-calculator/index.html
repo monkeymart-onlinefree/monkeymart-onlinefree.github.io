@@ -1,37 +1,902 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+<html lang="en">
 
-<title>Common Factor Calculator – Find All Shared Factors | CalcPro</title>
-<meta content="Find all common factors and the greatest common factor of two or more positive integers. Includes factor lists, examples, formulas, and clear explanations." name="description"/>
-<meta content="index,follow" name="robots"/><link href="../common-factor-calculator/" rel="canonical"/>
-<meta content="Common Factor Calculator" property="og:title"/><meta content="Find shared factors and the GCF of multiple positive integers instantly." property="og:description"/><meta content="website" property="og:type"/><meta content="#1477ff" name="theme-color"/>
-<style>
-:root{--ink:#21153c;--muted:#6e6683;--paper:#fffdf8;--violet:#6d46d9;--orange:#ff8a3d;--gold:#ffc857;--line:#e9e1f4}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 12% 8%,#f2eaff 0 18%,transparent 19%),linear-gradient(135deg,#fbf8ff,#fff9ef 60%,#f7f2ff);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.62}
-a{color:#5c35c7}.wrap{width:min(1120px,92vw);margin:auto}header{padding:22px 0}nav{display:flex;justify-content:space-between;align-items:center}.brand{font-weight:900;letter-spacing:-.04em;font-size:1.25rem}.brand i{font-style:normal;color:var(--orange)}.crumb{font-size:.88rem;color:var(--muted)}
-.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center;padding:42px 0 55px}h1{font-size:clamp(2.55rem,5vw,4.8rem);line-height:.95;margin:.35rem 0 1rem;letter-spacing:-.065em}.lead{font-size:1.1rem;color:var(--muted);max-width:650px}.forge{height:360px;position:relative;perspective:900px}.tile{position:absolute;width:118px;height:102px;display:grid;place-items:center;background:linear-gradient(145deg,#fff,#efe8ff);clip-path:polygon(25% 6%,75% 6%,100% 50%,75% 94%,25% 94%,0 50%);font-size:1.6rem;font-weight:900;filter:drop-shadow(0 20px 18px #492a8433);transform:rotateX(11deg) rotateY(-16deg)}.t1{left:12%;top:12%;color:#5f34ce}.t2{left:41%;top:4%;background:linear-gradient(145deg,#fff7df,#ffd277);color:#7d4900}.t3{left:64%;top:30%;background:linear-gradient(145deg,#ffece0,#ff9b57);color:#7b2f00}.t4{left:32%;top:45%;width:145px;height:126px;background:linear-gradient(145deg,#eee7ff,#8158e8);color:white}.t5{left:3%;top:56%;font-size:1.05rem}
-.calc-zone{display:grid;grid-template-columns:.82fr 1.18fr;gap:26px;align-items:stretch;margin-bottom:54px}.panel{background:#fffdfbcc;border:1px solid #ffffff;border-radius:30px;padding:28px;box-shadow:0 26px 80px #3d24601f,inset 0 1px #fff;backdrop-filter:blur(12px)}label{font-weight:800;display:block;margin-bottom:8px}textarea{width:100%;min-height:118px;resize:vertical;border:1px solid var(--line);border-radius:18px;padding:16px;font:inherit;font-size:1.08rem;background:#fff;outline:none;box-shadow:inset 0 3px 10px #311a5d0c}textarea:focus{border-color:#9d82e6;box-shadow:0 0 0 4px #6d46d915}.hint{font-size:.86rem;color:var(--muted);margin:8px 0 18px}.actions{display:flex;gap:10px;flex-wrap:wrap}button{border:0;border-radius:14px;padding:13px 18px;font-weight:850;cursor:pointer;font:inherit}.primary{background:linear-gradient(135deg,var(--violet),#8c5be8);color:white;box-shadow:0 12px 24px #6541c744}.ghost{background:#f3eefb;color:var(--ink)}.error{min-height:24px;color:#b42318;font-weight:700;margin-top:12px}.result{background:linear-gradient(150deg,#26164d,#402377 72%,#5f32a2);color:white;overflow:hidden;position:relative}.result:after{content:'×';position:absolute;right:-16px;top:-70px;font-size:16rem;color:#ffffff08;font-weight:900}.eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;opacity:.72;font-weight:850}.big{font-size:clamp(2.2rem,5vw,4rem);font-weight:950;letter-spacing:-.05em;margin:.2rem 0 1rem}.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{padding:8px 11px;border-radius:999px;background:#ffffff12;border:1px solid #ffffff1f;font-weight:750}.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}.stat{background:#ffffff0d;border:1px solid #ffffff18;padding:14px;border-radius:16px}.stat b{display:block;font-size:1.35rem}.factor-lines{margin-top:18px;font-size:.92rem;color:#ddd2f6}main article{background:#fffefa;border:1px solid #f2ebf7;border-radius:30px;padding:clamp(24px,4vw,44px);box-shadow:0 20px 70px #39215c12;margin:0 0 55px}h2{font-size:clamp(1.55rem,3vw,2.15rem);letter-spacing:-.035em;margin:2rem 0 .6rem}h3{margin:1.5rem 0 .4rem}.formula{font:700 1.05rem ui-monospace,SFMono-Regular,Menlo,monospace;background:#f6f0ff;border-left:5px solid var(--violet);padding:15px 18px;border-radius:8px 16px 16px 8px}.example{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.example div{padding:16px;background:#fff5e8;border-radius:17px}.faq details{border-top:1px solid var(--line);padding:14px 0}.faq summary{cursor:pointer;font-weight:850}.sources a{word-break:break-all}footer{padding:25px 0 40px;color:var(--muted);font-size:.88rem}@media(max-width:780px){.hero,.calc-zone{grid-template-columns:1fr}.forge{height:285px}.example{grid-template-columns:1fr}.tile{transform:none}}
-</style><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/common-factor-calculator/#app", "name": "Common Factor Calculator", "url": "/common-factor-calculator/", "description": "Find all common factors and the greatest common factor of two or more positive integers.", "applicationCategory": "EducationalApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript"}, {"@type": "BreadcrumbList", "@id": "/common-factor-calculator/#breadcrumbs", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Math & Statistics", "item": "/math/"}, {"@type": "ListItem", "position": 3, "name": "Number Theory & Number Systems", "item": "/math/number-theory-number-systems/"}, {"@type": "ListItem", "position": 4, "name": "Common Factor Calculator", "item": "/common-factor-calculator/"}]}, {"@type": "FAQPage", "@id": "/common-factor-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "What is a common factor?", "acceptedAnswer": {"@type": "Answer", "text": "A common factor is a positive integer that divides every number in a group with no remainder. For example, 1, 2, and 4 are common factors of 12 and 16."}}, {"@type": "Question", "name": "Is the greatest common factor included?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The greatest common factor, or GCF, is the largest value in the common-factor list."}}, {"@type": "Question", "name": "Can I enter more than two numbers?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Enter two or more positive integers separated by commas. A factor is returned only when it divides every entered integer."}}, {"@type": "Question", "name": "Why is 1 always a common factor?", "acceptedAnswer": {"@type": "Answer", "text": "For positive integers, 1 divides every number exactly, so any group of positive integers has at least the common factor 1."}}]}]}</script><link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head>
-<body data-cp-category="math" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header><nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../math/index.html">Math &amp; Statistics</a></li><li><a aria-current="page" href="index.html">Common Factor Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main class="wrap" id="main"><h1 class="page-title">Common Factor Calculator</h1>
-<section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<section aria-label="Common factor calculator" class="calc-zone"><div class="panel"><label for="nums">Positive integers</label><textarea aria-describedby="hint" id="nums" inputmode="numeric">12, 18, 30</textarea><div class="hint" id="hint">Separate values with commas. Use integers from 1 to 1,000,000,000.</div><div class="actions"><button class="primary" id="calculate">Find common factors</button><button class="ghost" id="reset">Reset</button></div><div class="error" id="error" role="alert"></div></div>
-<div aria-live="polite" class="panel result"><div class="eyebrow">Shared divisors</div><div class="big" id="gcf">GCF = 6</div><div class="chips" id="factors"><span class="chip">1</span><span class="chip">2</span><span class="chip">3</span><span class="chip">6</span></div><div class="stats"><div class="stat"><span>Common factors</span><b id="count">4</b></div><div class="stat"><span>Numbers checked</span><b id="checked">3</b></div></div><div class="factor-lines" id="individual">12 → 1, 2, 3, 4, 6, 12<br/>18 → 1, 2, 3, 6, 9, 18<br/>30 → 1, 2, 3, 5, 6, 10, 15, 30</div></div></section>
-<article><h2>What Is a Common Factor Calculator?</h2><p>A common factor calculator finds positive integers that divide every number in a set with no remainder. A factor is also called a divisor. When several numbers share a divisor, that divisor is a common factor. The largest shared value is the greatest common factor (GCF), also called the greatest common divisor.</p>
-<h2>How to Use the Common Factor Calculator</h2><p>Enter at least two positive integers separated by commas, then select <strong>Find common factors</strong>. The calculator first finds the GCF with the Euclidean algorithm, then lists the positive divisors of that GCF. Those divisors are exactly the positive factors shared by all entered numbers.</p>
-<h2>Common Factor Method</h2><div class="formula">Common factors of a₁, a₂, …, aₙ = positive divisors of GCD(a₁, a₂, …, aₙ)</div><p>If a number <em>d</em> divides each input exactly, then it is a common factor. Finding the GCD first is efficient because every common factor must divide the GCD.</p>
-<h2>Calculation Example</h2><div class="example"><div><strong>12 factors</strong><br/>1, 2, 3, 4, 6, 12</div><div><strong>18 factors</strong><br/>1, 2, 3, 6, 9, 18</div><div><strong>Shared</strong><br/>1, 2, 3, 6<br/><strong>GCF = 6</strong></div></div>
-<h2>Understanding Your Results</h2><p>The factor chips show every positive divisor shared by all inputs. “GCF” is the largest common factor. The per-number lines are a useful check: each shared factor appears in every individual factor list.</p>
-<h2>Limitations</h2><p>This tool is intended for positive whole numbers, not decimals, fractions, algebraic expressions, or zero. Inputs are limited to one billion so the browser can enumerate factor lists quickly without freezing.</p>
-<h2>Frequently Asked Questions</h2><div class="faq"><details><summary>What is a common factor?</summary><p>A common factor is a positive integer that divides every number in a group with no remainder. For example, 1, 2, and 4 are common factors of 12 and 16.</p></details><details><summary>Is the greatest common factor included?</summary><p>Yes. The greatest common factor, or GCF, is the largest value in the common-factor list.</p></details><details><summary>Can I enter more than two numbers?</summary><p>Yes. Enter two or more positive integers separated by commas. A factor is returned only when it divides every entered integer.</p></details><details><summary>Why is 1 always a common factor?</summary><p>For positive integers, 1 divides every number exactly, so any group of positive integers has at least the common factor 1.</p></details></div>
-<h2>Sources and Methodology</h2><p>The implementation was cross-checked against standard divisor and GCD definitions and against the reference calculator behavior.</p><ul class="sources"><li><a href="https://www.calculator.net/common-factor-calculator.html">Calculator.net — Common Factor Calculator</a></li><li><a href="https://mathworld.wolfram.com/Divisor.html">Wolfram MathWorld — Divisor</a></li><li><a href="https://mathworld.wolfram.com/GreatestCommonDivisor.html">Wolfram MathWorld — Greatest Common Divisor</a></li></ul></article>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
 
-<script class="cp-calculator-data" type="application/json">{"index":"213","Batch":"22","Calculator / Page":"Common Factor Calculator","Slug":"common-factor-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Find all common factors and the greatest common factor of two or more positive integers. Includes factor lists, examples, formulas, and clear explanations.","Formula / Algorithm Used in Tool":"Common Factor Method: Common factors of a₁, a₂, …, aₙ = positive divisors of GCD(a₁, a₂, …, aₙ) If a number d divides each input exactly, then it is a common factor. Finding the GCD first is efficient because every common factor must divide the GCD.","Required User Inputs":"Positive integers","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Positive integers. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"This tool is intended for positive whole numbers, not decimals, fractions, algebraic expressions, or zero. Inputs are limited to one billion so the browser can enumerate factor lists quickly without freezing.","Current Source URLs in Page":"https://www.calculator.net/common-factor-calculator.html | https://mathworld.wolfram.com/Divisor.html | https://mathworld.wolfram.com/GreatestCommonDivisor.html","Implementation Path":"/common-factor-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Math &amp; Statistics</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../gcf-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>GCF Calculator</strong><small>Find the greatest common factor of two or more integers. Free, fast and responsive…</small></span></a><a class="cp-related-link" href="../lcm-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>LCM Calculator</strong><small>Find the least common multiple of two or more integers. Free, fast and responsive l…</small></span></a><a class="cp-related-link" href="../factor-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Factor Calculator</strong><small>Find positive factors and prime factorization of an integer. Free, fast and respons…</small></span></a><a class="cp-related-link" href="../rounding-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Rounding Calculator</strong><small>Round a number to decimal places or common place values. Free, fast and responsive…</small></span></a><a class="cp-related-link" href="../pythagorean-theorem-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Pythagorean Theorem Calculator</strong><small>Find a missing side of a right triangle using a² + b² = c². Free, fast and responsi…</small></span></a><a class="cp-related-link" href="../prime-factorization-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Split a whole number until only primes remain.</strong><small>Find prime factors, exponent form, factor pairs, number of divisors, and a visual f…</small></span></a><a class="cp-related-link" href="../big-number-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Big Number Calculator</strong><small>Perform exact integer arithmetic with very large whole numbers. Free, fast and resp…</small></span></a><a class="cp-related-link" href="../matrix-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Matrix Calculator</strong><small>Add, subtract and multiply matrices with a compact matrix workspace. Free, fast and…</small></span></a></div><a class="cp-side-category" href="../math/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer>
-<script>
-const $=s=>document.querySelector(s);const factorsOf=n=>{const lo=[],hi=[];for(let i=1;i*i<=n;i++)if(n%i===0){lo.push(i);if(i*i!==n)hi.push(n/i)}return lo.concat(hi.reverse())};const gcd=(a,b)=>{while(b){[a,b]=[b,a%b]}return a};
-function run(){const raw=$('#nums').value.trim();const vals=raw.split(',').map(x=>x.trim()).filter(Boolean).map(Number);$('#error').textContent='';if(vals.length<2||vals.some(v=>!Number.isSafeInteger(v)||v<1||v>1e9)){$('#error').textContent='Enter at least two positive integers from 1 to 1,000,000,000, separated by commas.';return}let g=vals.reduce(gcd);const common=factorsOf(g);$('#gcf').textContent='GCF = '+g;$('#count').textContent=common.length;$('#checked').textContent=vals.length;$('#factors').innerHTML=common.map(x=>`<span class="chip">${x.toLocaleString()}</span>`).join('');$('#individual').innerHTML=vals.map(v=>`${v.toLocaleString()} → ${factorsOf(v).map(x=>x.toLocaleString()).join(', ')}`).join('<br>')}
-$('#calculate').addEventListener('click',run);$('#reset').addEventListener('click',()=>{$('#nums').value='12, 18, 30';run()});run();
-</script><script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+    <!-- Primary Meta Tags -->
+<title>Common Factor Calculator – Find Common Factors &amp; GCF</title>
+<meta name="title" content="Common Factor Calculator – Find Common Factors &amp; GCF">
+<meta name="description" content="Find all common factors and the greatest common factor (GCF) of two or more positive integers. See factor lists and understand how the result is found.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/common-factor-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/common-factor-calculator/">
+<meta property="og:title" content="Common Factor Calculator – Find Common Factors &amp; GCF">
+<meta property="og:description" content="Find all common factors and the greatest common factor (GCF) of two or more positive integers. See factor lists and understand how the result is found.">
+<meta property="og:site_name" content="Common Factor Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/common-factor-calculator/">
+<meta name="twitter:title" content="Common Factor Calculator – Find Common Factors &amp; GCF">
+<meta name="twitter:description" content="Find all common factors and the greatest common factor (GCF) of two or more positive integers. See factor lists and understand how the result is found.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        :root {
+            --ink: #21153c;
+            --muted: #6e6683;
+            --paper: #fffdf8;
+            --violet: #6d46d9;
+            --orange: #ff8a3d;
+            --gold: #ffc857;
+            --line: #e9e1f4
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: radial-gradient(circle at 12% 8%, #f2eaff 0 18%, transparent 19%), linear-gradient(135deg, #fbf8ff, #fff9ef 60%, #f7f2ff);
+            color: var(--ink);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+            line-height: 1.62
+        }
+
+        a {
+            color: #5c35c7
+        }
+
+        .wrap {
+            width: min(1120px, 92vw);
+            margin: auto
+        }
+
+        header {
+            padding: 22px 0
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .brand {
+            font-weight: 900;
+            letter-spacing: -.04em;
+            font-size: 1.25rem
+        }
+
+        .brand i {
+            font-style: normal;
+            color: var(--orange)
+        }
+
+        .crumb {
+            font-size: .88rem;
+            color: var(--muted)
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 46px;
+            align-items: center;
+            padding: 42px 0 55px
+        }
+
+        h1 {
+            font-size: clamp(2.55rem, 5vw, 4.8rem);
+            line-height: .95;
+            margin: .35rem 0 1rem;
+            letter-spacing: -.065em
+        }
+
+        .lead {
+            font-size: 1.1rem;
+            color: var(--muted);
+            max-width: 650px
+        }
+
+        .forge {
+            height: 360px;
+            position: relative;
+            perspective: 900px
+        }
+
+        .tile {
+            position: absolute;
+            width: 118px;
+            height: 102px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(145deg, #fff, #efe8ff);
+            clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0 50%);
+            font-size: 1.6rem;
+            font-weight: 900;
+            filter: drop-shadow(0 20px 18px #492a8433);
+            transform: rotateX(11deg) rotateY(-16deg)
+        }
+
+        .t1 {
+            left: 12%;
+            top: 12%;
+            color: #5f34ce
+        }
+
+        .t2 {
+            left: 41%;
+            top: 4%;
+            background: linear-gradient(145deg, #fff7df, #ffd277);
+            color: #7d4900
+        }
+
+        .t3 {
+            left: 64%;
+            top: 30%;
+            background: linear-gradient(145deg, #ffece0, #ff9b57);
+            color: #7b2f00
+        }
+
+        .t4 {
+            left: 32%;
+            top: 45%;
+            width: 145px;
+            height: 126px;
+            background: linear-gradient(145deg, #eee7ff, #8158e8);
+            color: white
+        }
+
+        .t5 {
+            left: 3%;
+            top: 56%;
+            font-size: 1.05rem
+        }
+
+        .calc-zone {
+            display: grid;
+            grid-template-columns: .82fr 1.18fr;
+            gap: 26px;
+            align-items: stretch;
+            margin-bottom: 54px
+        }
+
+        .panel {
+            background: #fffdfbcc;
+            border: 1px solid #ffffff;
+            border-radius: 30px;
+            padding: 28px;
+            box-shadow: 0 26px 80px #3d24601f, inset 0 1px #fff;
+            backdrop-filter: blur(12px)
+        }
+
+        label {
+            font-weight: 800;
+            display: block;
+            margin-bottom: 8px
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 118px;
+            resize: vertical;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 16px;
+            font: inherit;
+            font-size: 1.08rem;
+            background: #fff;
+            outline: none;
+            box-shadow: inset 0 3px 10px #311a5d0c
+        }
+
+        textarea:focus {
+            border-color: #9d82e6;
+            box-shadow: 0 0 0 4px #6d46d915
+        }
+
+        .hint {
+            font-size: .86rem;
+            color: var(--muted);
+            margin: 8px 0 18px
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        button {
+            border: 0;
+            border-radius: 14px;
+            padding: 13px 18px;
+            font-weight: 850;
+            cursor: pointer;
+            font: inherit
+        }
+
+        .primary {
+            background: linear-gradient(135deg, var(--violet), #8c5be8);
+            color: white;
+            box-shadow: 0 12px 24px #6541c744
+        }
+
+        .ghost {
+            background: #f3eefb;
+            color: var(--ink)
+        }
+
+        .error {
+            min-height: 24px;
+            color: #b42318;
+            font-weight: 700;
+            margin-top: 12px
+        }
+
+        .result {
+            background: linear-gradient(150deg, #26164d, #402377 72%, #5f32a2);
+            color: white;
+            overflow: hidden;
+            position: relative
+        }
+
+        .result:after {
+            content: '×';
+            position: absolute;
+            right: -16px;
+            top: -70px;
+            font-size: 16rem;
+            color: #ffffff08;
+            font-weight: 900
+        }
+
+        .eyebrow {
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: .16em;
+            opacity: .72;
+            font-weight: 850
+        }
+
+        .big {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 950;
+            letter-spacing: -.05em;
+            margin: .2rem 0 1rem
+        }
+
+        .chips {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap
+        }
+
+        .chip {
+            padding: 8px 11px;
+            border-radius: 999px;
+            background: #ffffff12;
+            border: 1px solid #ffffff1f;
+            font-weight: 750
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 22px
+        }
+
+        .stat {
+            background: #ffffff0d;
+            border: 1px solid #ffffff18;
+            padding: 14px;
+            border-radius: 16px
+        }
+
+        .stat b {
+            display: block;
+            font-size: 1.35rem
+        }
+
+        .factor-lines {
+            margin-top: 18px;
+            font-size: .92rem;
+            color: #ddd2f6
+        }
+
+        main article {
+            background: #fffefa;
+            border: 1px solid #f2ebf7;
+            border-radius: 30px;
+            padding: clamp(24px, 4vw, 44px);
+            box-shadow: 0 20px 70px #39215c12;
+            margin: 0 0 55px
+        }
+
+        h2 {
+            font-size: clamp(1.55rem, 3vw, 2.15rem);
+            letter-spacing: -.035em;
+            margin: 2rem 0 .6rem
+        }
+
+        h3 {
+            margin: 1.5rem 0 .4rem
+        }
+
+        .formula {
+            font: 700 1.05rem ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: #f6f0ff;
+            border-left: 5px solid var(--violet);
+            padding: 15px 18px;
+            border-radius: 8px 16px 16px 8px
+        }
+
+        .example {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px
+        }
+
+        .example div {
+            padding: 16px;
+            background: #fff5e8;
+            border-radius: 17px
+        }
+
+        .faq details {
+            border-top: 1px solid var(--line);
+            padding: 14px 0
+        }
+
+        .faq summary {
+            cursor: pointer;
+            font-weight: 850
+        }
+
+        .sources a {
+            word-break: break-all
+        }
+
+        footer {
+            padding: 25px 0 40px;
+            color: var(--muted);
+            font-size: .88rem
+        }
+
+        @media(max-width:780px) {
+
+            .hero,
+            .calc-zone {
+                grid-template-columns: 1fr
+            }
+
+            .forge {
+                height: 285px
+            }
+
+            .example {
+                grid-template-columns: 1fr
+            }
+
+            .tile {
+                transform: none
+            }
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/common-factor-calculator/#webapplication",
+      "name": "Common Factor Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/common-factor-calculator/",
+      "description": "Find all common factors and the greatest common factor (GCF) of two or more positive integers. See factor lists and understand how the result is found.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/common-factor-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Common Factor Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/common-factor-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/common-factor-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a common factor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A common factor is a positive integer that divides every number in a group without leaving a remainder. For example, 2 and 4 are common factors of 8 and 12."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between a common factor and the GCF?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Common factors include all positive factors shared by the numbers. The GCF is only the largest of those common factors.\n\nFor 12 and 18, the common factors are 1, 2, 3, and 6, while the GCF is 6."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do two positive integers always have a common factor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Every positive integer is divisible by 1, so two or more positive integers always share at least the common factor 1."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a GCF of 1 mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A GCF of 1 means the numbers do not share any positive factor greater than 1. Such numbers are described as relatively prime or coprime."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I enter decimals or fractions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This calculator is designed for positive whole numbers. Decimals and fractions are outside its supported input domain."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use zero?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The CalcPro Common Factor Calculator is designed specifically for positive integers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why find the GCD before listing common factors?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every factor shared by all the input numbers must divide their GCD. Once the GCD is known, finding its positive divisors gives the complete common-factor list."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "Monkeymart Onlinefree",
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="math" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../math/index.html">Math &amp; Statistics</a></li>
+            <li><a aria-current="page" href="index.html">Common Factor Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main class="wrap" id="main">
+            <h1 class="page-title">Common Factor Calculator</h1>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section aria-label="Common factor calculator" class="calc-zone">
+                <div class="panel"><label for="nums">Positive integers</label><textarea aria-describedby="hint"
+                        id="nums" inputmode="numeric">12, 18, 30</textarea>
+                    <div class="hint" id="hint">Separate values with commas. Use integers from 1 to 1,000,000,000.</div>
+                    <div class="actions"><button class="primary" id="calculate">Find common factors</button><button
+                            class="ghost" id="reset">Reset</button></div>
+                    <div class="error" id="error" role="alert"></div>
+                </div>
+                <div aria-live="polite" class="panel result">
+                    <div class="eyebrow">Shared divisors</div>
+                    <div class="big" id="gcf">GCF = 6</div>
+                    <div class="chips" id="factors"><span class="chip">1</span><span class="chip">2</span><span
+                            class="chip">3</span><span class="chip">6</span></div>
+                    <div class="stats">
+                        <div class="stat"><span>Common factors</span><b id="count">4</b></div>
+                        <div class="stat"><span>Numbers checked</span><b id="checked">3</b></div>
+                    </div>
+                    <div class="factor-lines" id="individual">12 → 1, 2, 3, 4, 6, 12<br />18 → 1, 2, 3, 6, 9, 18<br />30
+                        → 1, 2, 3, 5, 6, 10, 15, 30</div>
+                </div>
+            </section>
+             
+
+<article class="article">
+
+ 
+  <p>The Common Factor Calculator finds the positive factors shared by two or more positive integers. Enter your numbers to see their common factors, supporting factor lists, and greatest common factor (GCF).</p>
+
+  <section id="what">
+    <h2>What Is the Common Factor Calculator?</h2>
+    <p>A common factor is a positive integer that divides each given number exactly, with no remainder. This calculator finds every common factor shared by the numbers and identifies the greatest common factor, which is the largest shared factor.</p>
+    <p>It is useful for checking divisibility, simplifying fractions, studying factors, and solving basic number-theory problems.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Common Factor Calculator</h2>
+    <p>Enter two or more positive integers.</p>
+    <p>Each input must be a positive whole number. The calculator does not support zero, decimals, fractions, negative values, or algebraic expressions. Input values are limited to 1,000,000,000.</p>
+    <p>After entering valid numbers, review the factor lists, common factors, and greatest common factor.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+    <p>For positive integers:</p>
+    <div class="formula">a₁, a₂, …, aₙ</div>
+
+    <p>first define:</p>
+    <div class="formula">g = GCD(a₁, a₂, …, aₙ)</div>
+
+    <p>The common factors are then:</p>
+    <div class="formula">Common Factors = {d ∈ ℤ⁺ : d divides g}</div>
+
+    <p>In other words, every positive divisor of the GCD is a common factor of all the input numbers.</p>
+
+    <p>The greatest common factor is:</p>
+    <div class="formula">GCF = g</div>
+
+    <p>The GCD of two or more positive integers is the largest positive integer that divides every input exactly.</p>
+
+    <h3>Variables</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>a₁, a₂, …, aₙ</strong></td>
+          <td>Positive integers entered into the calculator</td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td><strong>n</strong></td>
+          <td>Number of input integers</td>
+          <td>Count</td>
+        </tr>
+        <tr>
+          <td><strong>g</strong></td>
+          <td>Greatest common divisor/factor of all inputs</td>
+          <td>Integer</td>
+        </tr>
+        <tr>
+          <td><strong>d</strong></td>
+          <td>A positive divisor of the GCD</td>
+          <td>Integer</td>
+        </tr>
+        <tr>
+          <td><strong>d | g</strong></td>
+          <td>d divides g exactly with no remainder</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Calculation Sequence</h3>
+    <ol>
+      <li>The calculator checks the entered values as positive whole numbers.</li>
+      <li>It determines the greatest common divisor of all input numbers.</li>
+      <li>It finds the positive divisors of that GCD.</li>
+      <li>Those divisors form the complete list of common factors.</li>
+      <li>The largest common factor is the GCF.</li>
+    </ol>
+
+    <p>This works because any number that divides every input must also divide their greatest common divisor.</p>
+
+    <h3>Common Factors</h3>
+    <p>A number <strong>d</strong> is a common factor when it divides every input without a remainder:</p>
+
+    <div class="formula">
+      a₁ mod d = 0<br>
+      a₂ mod d = 0<br>
+      …<br>
+      aₙ mod d = 0
+    </div>
+
+    <p>Rather than checking every possible value against every input, the calculator uses the fact that all common factors are positive divisors of the GCD.</p>
+
+    <h3>Greatest Common Factor</h3>
+    <p>The GCF is the largest number in the common-factor set:</p>
+
+    <div class="formula">GCF(a₁, a₂, …, aₙ) = largest common factor</div>
+
+    <p>If the GCF is 1, the inputs have no common positive factor greater than 1 and are relatively prime as a group.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+    <p>Find the common factors of:</p>
+
+    <div class="formula">24, 36, and 60</div>
+
+    <h3>Inputs</h3>
+    <ul>
+      <li>First number: <strong>24</strong></li>
+      <li>Second number: <strong>36</strong></li>
+      <li>Third number: <strong>60</strong></li>
+    </ul>
+
+    <h3>Step 1: Find the GCD</h3>
+    <p>The greatest positive integer that divides 24, 36, and 60 exactly is:</p>
+
+    <div class="formula">GCD(24, 36, 60) = 12</div>
+
+    <h3>Step 2: Find the Positive Divisors of the GCD</h3>
+    <p>The positive factors of 12 are:</p>
+
+    <div class="formula">1, 2, 3, 4, 6, 12</div>
+
+    <h3>Step 3: Verify the Common Factors</h3>
+    <p>Factors of 24:</p>
+
+    <div class="formula">1, 2, 3, 4, 6, 8, 12, 24</div>
+
+    <p>Factors of 36:</p>
+
+    <div class="formula">1, 2, 3, 4, 6, 9, 12, 18, 36</div>
+
+    <p>Factors of 60:</p>
+
+    <div class="formula">1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60</div>
+
+    <p>The factors present in all three lists are:</p>
+
+    <div class="formula">1, 2, 3, 4, 6, 12</div>
+
+    <h3>Final Result</h3>
+    <p><strong>Common Factors: 1, 2, 3, 4, 6, 12</strong></p>
+    <p><strong>Greatest Common Factor: 12</strong></p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Common Factors</h3>
+    <p>The common-factor list contains every positive integer that divides all the entered numbers exactly.</p>
+    <p>For example, if <strong>2</strong> appears in the common-factor list, every input is divisible by 2 without a remainder.</p>
+
+    <h3>Greatest Common Factor</h3>
+    <p>The GCF is the largest value in the common-factor list. It represents the largest positive integer by which all the inputs can be divided exactly.</p>
+
+    <h3>Factor Lists</h3>
+    <p>Supporting factor lists show the positive divisors of the relevant numbers. Comparing these lists can help you see why particular values are common factors.</p>
+    <p>A positive divisor or factor is an integer that divides another integer exactly.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+    <p>This calculator works with <strong>positive whole numbers only</strong>. It does not accept zero, negative numbers, decimals, fractions, or algebraic expressions.</p>
+
+    <p>Inputs are limited to <strong>1,000,000,000</strong> so factor lists can be generated efficiently in the browser.</p>
+
+    <p>The results are integer-based, so no decimal rounding is required. Every listed factor divides the applicable number exactly.</p>
+
+    <p>If one of the entered numbers is <strong>1</strong>, the only possible common factor is 1.</p>
+
+    <p>If the numbers have no shared factor greater than 1, the result is a GCF of <strong>1</strong>.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <p>does not accept zero.</p>
+
+    <details class="faq">
+      <summary>Why find the GCD before listing common factors?</summary>
+      <p>Every factor shared by all the in<strong>What is a common factor?</strong></p>
+      <p>A common factor is a positive integer that divides every number in a group without leaving a remainder. For example, 2 and 4 are common factors of 8 and 12.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What is the difference between a common factor and the GCF?</summary>
+      <p>Common factors include <strong>all</strong> positive factors shared by the numbers. The GCF is only the <strong>largest</strong> of those common factors.</p>
+      <p>For 12 and 18, the common factors are <strong>1, 2, 3, and 6</strong>, while the GCF is <strong>6</strong>.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Do two positive integers always have a common factor?</summary>
+      <p>Yes. Every positive integer is divisible by 1, so two or more positive integers always share at least the common factor <strong>1</strong>.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What does a GCF of 1 mean?</summary>
+      <p>A GCF of 1 means the numbers do not share any positive factor greater than 1. Such numbers are described as relatively prime or coprime.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can I enter decimals or fractions?</summary>
+      <p>No. This calculator is designed for positive whole numbers. Decimals and fractions are outside its supported input domain.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can I use zero?</summary>
+      <p>No. The CalcPro Common Factor Calculator is designed specifically for positive integers and put numbers must divide their GCD. Once the GCD is known, finding its positive divisors gives the complete common-factor list.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+    <ul class="sources">
+      <li>
+        <strong>Wolfram MathWorld — Divisor</strong><br>
+        <a href="https://mathworld.wolfram.com/Divisor.html?utm_source=chatgpt.com" rel="noopener" target="_blank">Divisor definition and positive integer divisors</a><br>
+        Used to verify the mathematical definition of a divisor or factor.
+      </li>
+      <li>
+        <strong>Wolfram MathWorld — Greatest Common Divisor</strong><br>
+        <a href="https://mathworld.wolfram.com/GreatestCommonDivisor.html?utm_source=chatgpt.com" rel="noopener" target="_blank">Greatest Common Divisor definition</a><br>
+        Used to verify the definition of the GCD for two or more positive integers and the concept of relatively prime numbers.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="https://example.com/factor-calculator/">Factor Calculator</a></li>
+      <li><a href="https://example.com/gcf-calculator/">GCF Calculator</a></li>
+      <li><a href="https://example.com/lcm-calculator/">LCM Calculator</a></li>
+      <li><a href="https://example.com/prime-factorization-calculator/">Prime Factorization Calculator</a></li>
+      <li><a href="https://example.com/fraction-calculator/">Fraction Calculator</a></li>
+      <li><a href="https://example.com/long-division-calculator/">Long Division Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"213","Batch":"22","Calculator / Page":"Common Factor Calculator","Slug":"common-factor-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Find all common factors and the greatest common factor of two or more positive integers. Includes factor lists, examples, formulas, and clear explanations.","Formula / Algorithm Used in Tool":"Common Factor Method: Common factors of a₁, a₂, …, aₙ = positive divisors of GCD(a₁, a₂, …, aₙ) If a number d divides each input exactly, then it is a common factor. Finding the GCD first is efficient because every common factor must divide the GCD.","Required User Inputs":"Positive integers","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Positive integers. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"This tool is intended for positive whole numbers, not decimals, fractions, algebraic expressions, or zero. Inputs are limited to one billion so the browser can enumerate factor lists quickly without freezing.","Current Source URLs in Page":"https://www.calculator.net/common-factor-calculator.html | https://mathworld.wolfram.com/Divisor.html | https://mathworld.wolfram.com/GreatestCommonDivisor.html","Implementation Path":"/common-factor-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Math &amp; Statistics</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../gcf-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>GCF Calculator</strong><small>Find the greatest
+                            common factor of two or more integers. Free, fast and responsive…</small></span></a><a
+                    class="cp-related-link" href="../lcm-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>LCM Calculator</strong><small>Find the least common
+                            multiple of two or more integers. Free, fast and responsive l…</small></span></a><a
+                    class="cp-related-link" href="../factor-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Factor Calculator</strong><small>Find positive
+                            factors and prime factorization of an integer. Free, fast and respons…</small></span></a><a
+                    class="cp-related-link" href="../rounding-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Rounding Calculator</strong><small>Round a number
+                            to decimal places or common place values. Free, fast and responsive…</small></span></a><a
+                    class="cp-related-link" href="../pythagorean-theorem-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Pythagorean Theorem Calculator</strong><small>Find
+                            a missing side of a right triangle using a² + b² = c². Free, fast and
+                            responsi…</small></span></a><a class="cp-related-link"
+                    href="../prime-factorization-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Split a whole number until only primes
+                            remain.</strong><small>Find prime factors, exponent form, factor pairs, number of divisors,
+                            and a visual f…</small></span></a><a class="cp-related-link"
+                    href="../big-number-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Big
+                            Number Calculator</strong><small>Perform exact integer arithmetic with very large whole
+                            numbers. Free, fast and resp…</small></span></a><a class="cp-related-link"
+                    href="../matrix-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Matrix
+                            Calculator</strong><small>Add, subtract and multiply matrices with a compact matrix
+                            workspace. Free, fast and…</small></span></a></div><a class="cp-side-category"
+                href="../math/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const $ = s => document.querySelector(s); const factorsOf = n => { const lo = [], hi = []; for (let i = 1; i * i <= n; i++)if (n % i === 0) { lo.push(i); if (i * i !== n) hi.push(n / i) } return lo.concat(hi.reverse()) }; const gcd = (a, b) => { while (b) { [a, b] = [b, a % b] } return a };
+        function run() { const raw = $('#nums').value.trim(); const vals = raw.split(',').map(x => x.trim()).filter(Boolean).map(Number); $('#error').textContent = ''; if (vals.length < 2 || vals.some(v => !Number.isSafeInteger(v) || v < 1 || v > 1e9)) { $('#error').textContent = 'Enter at least two positive integers from 1 to 1,000,000,000, separated by commas.'; return } let g = vals.reduce(gcd); const common = factorsOf(g); $('#gcf').textContent = 'GCF = ' + g; $('#count').textContent = common.length; $('#checked').textContent = vals.length; $('#factors').innerHTML = common.map(x => `<span class="chip">${x.toLocaleString()}</span>`).join(''); $('#individual').innerHTML = vals.map(v => `${v.toLocaleString()} → ${factorsOf(v).map(x => x.toLocaleString()).join(', ')}`).join('<br>') }
+        $('#calculate').addEventListener('click', run); $('#reset').addEventListener('click', () => { $('#nums').value = '12, 18, 30'; run() }); run();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

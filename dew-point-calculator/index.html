@@ -1,24 +1,1056 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
-<title>Dew Point Calculator | CalcPro</title><meta content="Calculate dew point from air temperature and relative humidity using a NOAA/NCEP saturation-vapor-pressure relationship." name="description"/><meta content="index,follow" name="robots"/><link href="../dew-point-calculator/" rel="canonical"/><meta content="Dew Point Calculator" property="og:title"/><meta content="Calculate dew point from air temperature and relative humidity using a NOAA/NCEP saturation-vapor-pressure relationship." property="og:description"/><meta content="website" property="og:type"/><meta content="/dew-point-calculator/" property="og:url"/><meta content="#1477ff" name="theme-color"/><style>:root{--bg:#eef9f8;--card:#fbffff;--input:#f4fffe;--ink:#16353a;--text:#31555a;--muted:#6a8a8c;--line:#c9e3df;--accent:#0d9f98;--accentText:#fff;--soft:#dcf2ef;--shadow:0 26px 70px rgba(27,97,94,.15);--result1:#1f4464;--result2:#27a6a1;--resultInk:#f3ffff;}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}button,input,select,textarea{font:inherit}button{cursor:pointer}.wrap{width:min(1160px,calc(100% - 32px));margin:auto}.crumb{font-size:.9rem;color:var(--muted);padding:20px 0}.crumb a{color:inherit}.hero{position:relative;overflow:hidden}.hero h1{font-size:clamp(2.3rem,6vw,5.5rem);line-height:.95;letter-spacing:-.055em;margin:0 0 18px}.hero p{font-size:1.08rem;color:var(--muted);max-width:700px;margin:0}.eyebrow{font-weight:800;text-transform:uppercase;letter-spacing:.14em;font-size:.76rem;color:var(--accent)}.calc-shell{position:relative;z-index:3}.card{background:var(--card);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow)}.field{display:grid;gap:7px}.field label{font-weight:750;font-size:.9rem}.field small{color:var(--muted)}input,select,textarea{width:100%;border:1px solid var(--line);background:var(--input);color:var(--ink);border-radius:14px;padding:13px 14px;outline:none;transition:.2s}input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 16%,transparent)}textarea{min-height:160px;resize:vertical}.actions{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:800}.btn.primary{background:var(--accent);color:var(--accentText,#fff);box-shadow:0 10px 24px color-mix(in srgb,var(--accent) 26%,transparent)}.btn.ghost{background:var(--soft);color:var(--ink);border:1px solid var(--line)}.error{display:none;padding:11px 13px;border-radius:12px;background:#fee2e2;color:#991b1b;font-weight:700;font-size:.9rem}.error.show{display:block}.result{background:linear-gradient(145deg,var(--result1),var(--result2));color:var(--resultInk);border-radius:24px;padding:22px;min-height:170px;position:relative;overflow:hidden}.result .big{font-size:clamp(2rem,5vw,4rem);line-height:1;font-weight:900;letter-spacing:-.04em;margin:8px 0}.result .label{opacity:.78;font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em}.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}.metric{background:color-mix(in srgb,var(--resultInk) 8%,transparent);border:1px solid color-mix(in srgb,var(--resultInk) 15%,transparent);border-radius:16px;padding:12px}.metric b{display:block;font-size:1.1rem}.metric span{font-size:.8rem;opacity:.75}.content{padding:76px 0 90px}.article-grid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:34px;align-items:start}.article{min-width:0}.article section{padding:28px 0;border-bottom:1px solid var(--line)}.article h2{font-size:clamp(1.55rem,3vw,2.35rem);line-height:1.15;letter-spacing:-.03em;margin:0 0 12px}.article h3{font-size:1.12rem;margin:22px 0 8px}.article p,.article li{color:var(--text)}.formula{padding:18px 20px;border-radius:18px;background:var(--soft);border:1px solid var(--line);font-family:ui-monospace,SFMono-Regular,Consolas,monospace;overflow:auto}.note{border-left:4px solid var(--accent);padding:12px 16px;background:var(--soft);border-radius:0 14px 14px 0}.toc{position:sticky;top:18px;padding:22px}.toc strong{display:block;margin-bottom:10px}.toc a{display:block;padding:7px 0;color:var(--muted);font-size:.9rem}.source-list{padding-left:20px}.source-list li{margin:8px 0}footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.88rem}.pill{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;background:var(--soft);border:1px solid var(--line);font-size:.78rem;font-weight:750}.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.switchline{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.switchline button{border:1px solid var(--line);background:var(--soft);color:var(--ink);padding:8px 12px;border-radius:999px;font-weight:800}.switchline button.active{background:var(--accent);color:var(--accentText,#fff);border-color:transparent}.copybtn{position:absolute;top:14px;right:14px;border:1px solid color-mix(in srgb,var(--resultInk) 24%,transparent);background:color-mix(in srgb,var(--resultInk) 12%,transparent);color:var(--resultInk);border-radius:10px;padding:7px 10px;font-weight:800;font-size:.8rem}@media(max-width:850px){.article-grid{grid-template-columns:1fr}.toc{position:static}.row{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}}@media(max-width:520px){.wrap{width:min(100% - 20px,1160px)}.metrics{grid-template-columns:1fr}.hero h1{font-size:2.65rem}.card{border-radius:22px}}
-.hero{min-height:560px;background:linear-gradient(180deg,#effafa,#dceef3)}.dew-hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:56px 0 125px}.drop{width:260px;height:320px;margin:auto;background:linear-gradient(145deg,#ffffffcc,#43c2bd88);border-radius:55% 45% 62% 38%/66% 47% 53% 34%;transform:rotate(45deg);box-shadow:inset 24px 20px 40px #fff9,inset -28px -30px 45px #126a8b55,30px 34px 60px #287c8b33;position:relative}.drop:before{content:"";position:absolute;width:70px;height:95px;background:#fff8;border-radius:50%;left:40px;top:45px;filter:blur(3px)}.condense{position:absolute;inset:auto 5% 30px 5%;height:65px;background:radial-gradient(circle,#fff 0 3px,transparent 4px) 0 0/42px 42px;opacity:.8}.calc-shell{margin-top:-64px}.dew-card{padding:18px;display:grid;grid-template-columns:1fr .95fr;gap:18px}.dew-form{padding:26px}.dew-result:before{content:"";position:absolute;right:-35px;top:-35px;width:150px;height:150px;border-radius:50%;border:24px solid #ffffff17}@media(max-width:800px){.dew-hero,.dew-card{grid-template-columns:1fr}.drop{width:180px;height:220px}.hero{min-height:730px}}</style><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Dew Point Calculator", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "description": "Calculate dew point from air temperature and relative humidity using a NOAA/NCEP saturation-vapor-pressure relationship.", "url": "/dew-point-calculator/", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Lifestyle & Other", "item": "/other/"}, {"@type": "ListItem", "position": 3, "name": "Weather", "item": "/other/weather/"}, {"@type": "ListItem", "position": 4, "name": "Dew PointCalculator", "item": "/dew-point-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is dew point?", "acceptedAnswer": {"@type": "Answer", "text": "Dew point is the temperature to which air would need to cool, at constant pressure and water-vapor content, for saturation to occur."}}, {"@type": "Question", "name": "Can dew point be higher than air temperature?", "acceptedAnswer": {"@type": "Answer", "text": "For ordinary unsaturated conditions, dew point is at or below the air temperature. A relative humidity of 100% makes the dew point approximately equal to air temperature."}}, {"@type": "Question", "name": "Why use dew point instead of relative humidity?", "acceptedAnswer": {"@type": "Answer", "text": "Relative humidity changes with temperature. Dew point more directly reflects the amount of water vapor in the air, though comfort interpretation is still context dependent."}}]}]}</script><link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head><body data-cp-category="other" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../other/index.html">Other Tools</a></li><li><a aria-current="page" href="index.html">Dew Point Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../other/index.html">Browse Other Tools</a><a href="../calculators/index.html">All calculators</a></div><header class="hero"><div class="wrap"><nav aria-label="Breadcrumb" class="crumb"><a href="../index.html">Home</a> / Dew Point Calculator</nav><div class="dew-hero"><div><span class="eyebrow">Moisture &amp; saturation</span><h1>Dew Point<br/>Calculator</h1><p>Turn temperature and relative humidity into a saturation-point estimate using NOAA/NCEP methodology.</p></div><div aria-hidden="true" class="drop"></div><div aria-hidden="true" class="condense"></div></div></div></header>
-<div class="cp-page-layout"><main id="main"><h1 class="page-title">Dew Point Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="calc-shell"><div class="wrap"><div class="card dew-card"><form class="dew-form" id="form"><div class="field"><label>Air temperature</label><div class="row"><input id="temp" step="any" type="number" value="25"/><select id="unit"><option value="C">°C</option><option value="F">°F</option></select></div></div><div class="field"><label>Relative humidity (%)</label><input id="rh" max="100" min="0.1" step="any" type="number" value="60"/></div><div class="error" id="error"></div><div class="actions"><button class="btn primary">Calculate dew point</button><button class="btn ghost" id="reset" type="button">Reset</button></div></form><div class="result dew-result"><span class="label">Dew point</span><div class="big" id="primary">16.7°C</div><div id="summary">Temperature–dew point spread: 8.3°C.</div><div class="metrics"><div class="metric"><b id="fval">62.1°F</b><span>Fahrenheit</span></div><div class="metric"><b id="spread">8.3°C</b><span>Spread</span></div><div class="metric"><b id="rhov">60%</b><span>Relative humidity</span></div><div class="metric"><b id="air">25°C</b><span>Air temperature</span></div></div></div></div></div></section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<div class="content"><div class="wrap article-grid"><article class="article">
-<section id="what"><h2>What Is the Dew Point Calculator?</h2><p>A dew point calculator converts air temperature and relative humidity into the temperature at which the air would become saturated if cooled without changing its moisture content. It is widely used in weather analysis and humidity interpretation.</p></section>
-<section id="use"><h2>How to Use the Dew Point Calculator</h2><p>Enter the air temperature and relative humidity. The calculator converts temperature to Celsius when necessary, applies the NOAA/NCEP saturation-vapor-pressure relationship, then converts the dew point back to your preferred unit.</p></section>
-<section id="formula"><h2>Dew Point Calculator Formula</h2><div class="formula">eₛ = (RH/100) × 6.1365 × exp(17.502T / (240.97 + T)); Td = 240.97 × ln(eₛ/6.1365) / [17.502 − ln(eₛ/6.1365)]</div><h3>Formula Variables</h3><p>T is air temperature in °C, RH is relative humidity in percent, eₛ is the actual vapor-pressure term in the cited NCEP implementation, and Td is dew point in °C.</p></section>
-<section id="example"><h2>Calculation Example</h2><p>At 25°C and 60% relative humidity, the calculation gives a dew point of about 16.7°C.</p></section>
-<section id="results"><h2>Understanding Your Results</h2><p>A dew point close to air temperature indicates air near saturation. The result panel shows dew point, the temperature–dew-point spread, and both Celsius and Fahrenheit.</p></section>
-<section id="factors"><h2>Important Factors</h2><p>Sensor accuracy matters. A small relative-humidity error can move the calculated dew point, especially under very dry or very humid conditions.</p></section>
-<section id="limits"><h2>Limitations</h2><p>This is a meteorological estimate based on measured temperature and relative humidity. It does not model local surfaces, radiative cooling, pressure changes, fog formation, or indoor condensation on a specific material.</p></section>
-<section id="faq"><h2>Frequently Asked Questions</h2><h3>What is dew point?</h3><p>Dew point is the temperature to which air would need to cool, at constant pressure and water-vapor content, for saturation to occur.</p><h3>Can dew point be higher than air temperature?</h3><p>For ordinary unsaturated conditions, dew point is at or below the air temperature. A relative humidity of 100% makes the dew point approximately equal to air temperature.</p><h3>Why use dew point instead of relative humidity?</h3><p>Relative humidity changes with temperature. Dew point more directly reflects the amount of water vapor in the air, though comfort interpretation is still context dependent.</p></section>
-<section id="sources"><h2>Sources and Methodology</h2><p>The calculator logic was implemented from the standards and references below. The page uses client-side JavaScript and does not send entered values to a server.</p><ul class="source-list"><li><a href="https://madis.ncep.noaa.gov/madis_rwis_qc_notes.shtml" rel="noopener noreferrer">NOAA/NCEP MADIS Quality Control Notes</a> — Provides a dew-point calculation from temperature and relative humidity using saturation vapor pressure.</li><li><a href="https://www.weather.gov/epz/wxcalc_rh" rel="noopener noreferrer">National Weather Service — Dewpoint / RH Calculator</a> — Operational meteorological calculator reference for temperature, humidity, and dew point.</li></ul></section>
-</article></div></div>
+<html lang="en">
 
-<script class="cp-calculator-data" type="application/json">{"index":"193","Batch":"20","Calculator / Page":"Dew Point Calculator","Slug":"dew-point-calculator","Site Category (Current)":"Other Tools","Recommended Content Domain":"Other Tools","Page Type":"Calculator","Search Intent / Purpose":"Calculate dew point from air temperature and relative humidity using a NOAA/NCEP saturation-vapor-pressure relationship.","Formula / Algorithm Used in Tool":"Dew Point Calculator Formula: eₛ = (RH/100) × 6.1365 × exp(17.502T / (240.97 + T)); Td = 240.97 × ln(eₛ/6.1365) / [17.502 − ln(eₛ/6.1365)]","Required User Inputs":"Air temperature; Relative humidity (%)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Air temperature, Relative humidity (%). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Official meteorological formula, valid input range, units and warnings.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When formula validity ranges or official guidance change","Important Assumptions / Limitations":"This is a meteorological estimate based on measured temperature and relative humidity. It does not model local surfaces, radiative cooling, pressure changes, fog formation, or indoor condensation on a specific material.","Current Source URLs in Page":"https://madis.ncep.noaa.gov/madis_rwis_qc_notes.shtml | https://www.weather.gov/epz/wxcalc_rh","Implementation Path":"/dew-point-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Other Tools</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../heat-index-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Heat Index Calculator</strong><small>Calculate heat index from air temperature and relative humidity using the National…</small></span></a><a class="cp-related-link" href="../wind-chill-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Wind Chill Calculator</strong><small>Calculate National Weather Service wind chill from air temperature and wind speed w…</small></span></a><a class="cp-related-link" href="../height-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Height Calculator</strong><small>Estimate a child's adult height from parental height using the mid-parental method…</small></span></a><a class="cp-related-link" href="../golf-handicap-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Golf Handicap Calculator</strong><small>Calculate Course Handicap and estimate a base Handicap Index using current World Ha…</small></span></a><a class="cp-related-link" href="../love-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Love Calculator</strong><small>Generate a repeatable, just-for-fun name match percentage with a transparent entert…</small></span></a><a class="cp-related-link" href="../tip-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Tip Calculator</strong><small>Calculate tip amount, total bill, and per-person split with custom or quick-select…</small></span></a><a class="cp-related-link" href="../other-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Other Calculators</strong><small>Browse and filter CalcPro utility calculators for date and time, construction, meas…</small></span></a><a class="cp-related-link" href="../calculators-for-your-site/index.html"><span class="cp-related-dot">›</span><span><strong>Calculators for Your Site</strong><small>Browse CalcPro embeddable calculator pages and generate responsive iframe code for…</small></span></a></div><a class="cp-side-category" href="../other/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script>function fmt(n,d=2){if(!Number.isFinite(n))return '—';return new Intl.NumberFormat(undefined,{maximumFractionDigits:d}).format(n)}function showError(msg){const e=document.getElementById('error');e.textContent=msg;e.classList.add('show')}function clearError(){const e=document.getElementById('error');e.textContent='';e.classList.remove('show')}function copyText(id){const el=document.getElementById(id);const text=el.value||el.textContent;navigator.clipboard?.writeText(text)}const form=document.getElementById('form'),temp=document.getElementById('temp'),unit=document.getElementById('unit'),rh=document.getElementById('rh'),error=document.getElementById('error'),reset=document.getElementById('reset'),primary=document.getElementById('primary'),summary=document.getElementById('summary'),fval=document.getElementById('fval'),spread=document.getElementById('spread'),rhov=document.getElementById('rhov'),air=document.getElementById('air');function calc(){clearError();let T=+temp.value,R=+rh.value;if(!Number.isFinite(T)||!(R>0&&R<=100)){showError('Enter a valid temperature and relative humidity greater than 0% and at most 100%.');return}let C=unit.value==='F'?(T-32)*5/9:T;let es=(R/100)*6.1365*Math.exp((17.502*C)/(240.97+C));let x=Math.log(es/6.1365);let dp=240.97*x/(17.502-x);let F=dp*9/5+32,sp=C-dp;primary.textContent=fmt(dp,1)+'°C';fval.textContent=fmt(F,1)+'°F';spread.textContent=fmt(sp,1)+'°C';rhov.textContent=fmt(R,1)+'%';air.textContent=fmt(C,1)+'°C';summary.textContent=`Temperature–dew point spread: ${fmt(sp,1)}°C.`}form.onsubmit=e=>{e.preventDefault();calc()};reset.onclick=()=>{temp.value=25;rh.value=60;unit.value='C';calc()};calc();</script><script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+   <!-- Primary Meta Tags -->
+<title>Dew Point Calculator – Calculate Dew Point from RH</title>
+<meta name="title" content="Dew Point Calculator – Calculate Dew Point from RH">
+<meta name="description" content="Use this dew point calculator to estimate dew point from air temperature and relative humidity with the NOAA/NCEP formula and a clear worked example.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/dew-point-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/dew-point-calculator/">
+<meta property="og:title" content="Dew Point Calculator – Calculate Dew Point from RH">
+<meta property="og:description" content="Use this dew point calculator to estimate dew point from air temperature and relative humidity with the NOAA/NCEP formula and a clear worked example.">
+<meta property="og:site_name" content="Dew Point Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/dew-point-calculator/">
+<meta name="twitter:title" content="Dew Point Calculator – Calculate Dew Point from RH">
+<meta name="twitter:description" content="Use this dew point calculator to estimate dew point from air temperature and relative humidity with the NOAA/NCEP formula and a clear worked example.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        :root {
+            --bg: #eef9f8;
+            --card: #fbffff;
+            --input: #f4fffe;
+            --ink: #16353a;
+            --text: #31555a;
+            --muted: #6a8a8c;
+            --line: #c9e3df;
+            --accent: #0d9f98;
+            --accentText: #fff;
+            --soft: #dcf2ef;
+            --shadow: 0 26px 70px rgba(27, 97, 94, .15);
+            --result1: #1f4464;
+            --result2: #27a6a1;
+            --resultInk: #f3ffff;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.65
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        .wrap {
+            width: min(1160px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .crumb {
+            font-size: .9rem;
+            color: var(--muted);
+            padding: 20px 0
+        }
+
+        .crumb a {
+            color: inherit
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero h1 {
+            font-size: clamp(2.3rem, 6vw, 5.5rem);
+            line-height: .95;
+            letter-spacing: -.055em;
+            margin: 0 0 18px
+        }
+
+        .hero p {
+            font-size: 1.08rem;
+            color: var(--muted);
+            max-width: 700px;
+            margin: 0
+        }
+
+        .eyebrow {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .14em;
+            font-size: .76rem;
+            color: var(--accent)
+        }
+
+        .calc-shell {
+            position: relative;
+            z-index: 3
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            box-shadow: var(--shadow)
+        }
+
+        .field {
+            display: grid;
+            gap: 7px
+        }
+
+        .field label {
+            font-weight: 750;
+            font-size: .9rem
+        }
+
+        .field small {
+            color: var(--muted)
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--line);
+            background: var(--input);
+            color: var(--ink);
+            border-radius: 14px;
+            padding: 13px 14px;
+            outline: none;
+            transition: .2s
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent)
+        }
+
+        textarea {
+            min-height: 160px;
+            resize: vertical
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-weight: 800
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            color: var(--accentText, #fff);
+            box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 26%, transparent)
+        }
+
+        .btn.ghost {
+            background: var(--soft);
+            color: var(--ink);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            display: none;
+            padding: 11px 13px;
+            border-radius: 12px;
+            background: #fee2e2;
+            color: #991b1b;
+            font-weight: 700;
+            font-size: .9rem
+        }
+
+        .error.show {
+            display: block
+        }
+
+        .result {
+            background: linear-gradient(145deg, var(--result1), var(--result2));
+            color: var(--resultInk);
+            border-radius: 24px;
+            padding: 22px;
+            min-height: 170px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .result .big {
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: -.04em;
+            margin: 8px 0
+        }
+
+        .result .label {
+            opacity: .78;
+            font-weight: 700;
+            font-size: .85rem;
+            text-transform: uppercase;
+            letter-spacing: .08em
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 16px
+        }
+
+        .metric {
+            background: color-mix(in srgb, var(--resultInk) 8%, transparent);
+            border: 1px solid color-mix(in srgb, var(--resultInk) 15%, transparent);
+            border-radius: 16px;
+            padding: 12px
+        }
+
+        .metric b {
+            display: block;
+            font-size: 1.1rem
+        }
+
+        .metric span {
+            font-size: .8rem;
+            opacity: .75
+        }
+
+        .content {
+            padding: 76px 0 90px
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 310px;
+            gap: 34px;
+            align-items: start
+        }
+
+        .article {
+            min-width: 0
+        }
+
+        .article section {
+            padding: 28px 0;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .article h2 {
+            font-size: clamp(1.55rem, 3vw, 2.35rem);
+            line-height: 1.15;
+            letter-spacing: -.03em;
+            margin: 0 0 12px
+        }
+
+        .article h3 {
+            font-size: 1.12rem;
+            margin: 22px 0 8px
+        }
+
+        .article p,
+        .article li {
+            color: var(--text)
+        }
+
+        .formula {
+            padding: 18px 20px;
+            border-radius: 18px;
+            background: var(--soft);
+            border: 1px solid var(--line);
+            font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+            overflow: auto
+        }
+
+        .note {
+            border-left: 4px solid var(--accent);
+            padding: 12px 16px;
+            background: var(--soft);
+            border-radius: 0 14px 14px 0
+        }
+
+        .toc {
+            position: sticky;
+            top: 18px;
+            padding: 22px
+        }
+
+        .toc strong {
+            display: block;
+            margin-bottom: 10px
+        }
+
+        .toc a {
+            display: block;
+            padding: 7px 0;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .source-list {
+            padding-left: 20px
+        }
+
+        .source-list li {
+            margin: 8px 0
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 28px 0;
+            color: var(--muted);
+            font-size: .88rem
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 11px;
+            border-radius: 999px;
+            background: var(--soft);
+            border: 1px solid var(--line);
+            font-size: .78rem;
+            font-weight: 750
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px
+        }
+
+        .switchline {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap
+        }
+
+        .switchline button {
+            border: 1px solid var(--line);
+            background: var(--soft);
+            color: var(--ink);
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-weight: 800
+        }
+
+        .switchline button.active {
+            background: var(--accent);
+            color: var(--accentText, #fff);
+            border-color: transparent
+        }
+
+        .copybtn {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            border: 1px solid color-mix(in srgb, var(--resultInk) 24%, transparent);
+            background: color-mix(in srgb, var(--resultInk) 12%, transparent);
+            color: var(--resultInk);
+            border-radius: 10px;
+            padding: 7px 10px;
+            font-weight: 800;
+            font-size: .8rem
+        }
+
+        @media(max-width:850px) {
+            .article-grid {
+                grid-template-columns: 1fr
+            }
+
+            .toc {
+                position: static
+            }
+
+            .row {
+                grid-template-columns: 1fr
+            }
+
+            .metrics {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        @media(max-width:520px) {
+            .wrap {
+                width: min(100% - 20px, 1160px)
+            }
+
+            .metrics {
+                grid-template-columns: 1fr
+            }
+
+            .hero h1 {
+                font-size: 2.65rem
+            }
+
+            .card {
+                border-radius: 22px
+            }
+        }
+
+        .hero {
+            min-height: 560px;
+            background: linear-gradient(180deg, #effafa, #dceef3)
+        }
+
+        .dew-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 56px 0 125px
+        }
+
+        .drop {
+            width: 260px;
+            height: 320px;
+            margin: auto;
+            background: linear-gradient(145deg, #ffffffcc, #43c2bd88);
+            border-radius: 55% 45% 62% 38%/66% 47% 53% 34%;
+            transform: rotate(45deg);
+            box-shadow: inset 24px 20px 40px #fff9, inset -28px -30px 45px #126a8b55, 30px 34px 60px #287c8b33;
+            position: relative
+        }
+
+        .drop:before {
+            content: "";
+            position: absolute;
+            width: 70px;
+            height: 95px;
+            background: #fff8;
+            border-radius: 50%;
+            left: 40px;
+            top: 45px;
+            filter: blur(3px)
+        }
+
+        .condense {
+            position: absolute;
+            inset: auto 5% 30px 5%;
+            height: 65px;
+            background: radial-gradient(circle, #fff 0 3px, transparent 4px) 0 0/42px 42px;
+            opacity: .8
+        }
+ 
+
+        .dew-card {
+            padding: 18px;
+            display: grid;
+            grid-template-columns: 1fr .95fr;
+            gap: 18px
+        }
+
+        .dew-form {
+            padding: 26px
+        }
+
+        .dew-result:before {
+            content: "";
+            position: absolute;
+            right: -35px;
+            top: -35px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 24px solid #ffffff17
+        }
+
+        @media(max-width:800px) {
+
+            .dew-hero,
+            .dew-card {
+                grid-template-columns: 1fr
+            }
+
+            .drop {
+                width: 180px;
+                height: 220px
+            }
+
+            .hero {
+                min-height: 730px
+            }
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/dew-point-calculator/#webapplication",
+      "name": "Dew Point Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/dew-point-calculator/",
+      "description": "Use this dew point calculator to estimate dew point from air temperature and relative humidity with the NOAA/NCEP formula and a clear worked example.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/dew-point-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Dew Point Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/dew-point-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/dew-point-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is dew point?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dew point is the temperature at which air with its current moisture content becomes saturated. Cooling the air to this temperature can allow water vapor to begin condensing into liquid water."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What information do I need to calculate dew point?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This calculator requires only air temperature and relative humidity. It does not require atmospheric pressure, elevation, wind speed, or wet-bulb temperature."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens when relative humidity is 100%?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At 100% relative humidity, the air is saturated. Under these conditions, the dew point is equal to the air temperature."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can dew point be higher than the air temperature?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Under normal atmospheric conditions, dew point should not exceed the current air temperature. NOAA describes dew point as being equal to or lower than ambient temperature."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can't relative humidity be zero in this formula?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The dew point equation uses the natural logarithm of a value derived from relative humidity. At exactly 0% RH, that term reaches zero, and ln(0) is mathematically undefined."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a dew point result mean condensation will definitely occur?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The result describes the atmospheric dew point. Condensation on an actual surface also depends on the surface temperature and local conditions. The calculator does not model individual materials or surfaces."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is dew point the same as relative humidity?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Relative humidity is a percentage showing how close the air is to saturation at its current temperature. Dew point is a temperature representing the moisture level of the air. Because relative humidity changes with temperature, two locations with the same relative humidity can have different dew points."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart OnlineFree",
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="other" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../other/index.html">Other Tools</a></li>
+            <li><a aria-current="page" href="index.html">Dew Point Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../other/index.html">Browse Other Tools</a><a
+            href="../calculators/index.html">All calculators</a></div>
+     
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Dew Point Calculator</h1>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="calc-shell">
+                <div class="wrap">
+                    <div class="card dew-card">
+                        <form class="dew-form" id="form">
+                            <div class="field"><label>Air temperature</label>
+                                <div class="row"><input id="temp" step="any" type="number" value="25" /><select
+                                        id="unit">
+                                        <option value="C">°C</option>
+                                        <option value="F">°F</option>
+                                    </select></div>
+                            </div>
+                            <div class="field"><label>Relative humidity (%)</label><input id="rh" max="100" min="0.1"
+                                    step="any" type="number" value="60" /></div>
+                            <div class="error" id="error"></div>
+                            <div class="actions"><button class="btn primary">Calculate dew point</button><button
+                                    class="btn ghost" id="reset" type="button">Reset</button></div>
+                        </form>
+                        <div class="result dew-result"><span class="label">Dew point</span>
+                            <div class="big" id="primary">16.7°C</div>
+                            <div id="summary">Temperature–dew point spread: 8.3°C.</div>
+                            <div class="metrics">
+                                <div class="metric"><b id="fval">62.1°F</b><span>Fahrenheit</span></div>
+                                <div class="metric"><b id="spread">8.3°C</b><span>Spread</span></div>
+                                <div class="metric"><b id="rhov">60%</b><span>Relative humidity</span></div>
+                                <div class="metric"><b id="air">25°C</b><span>Air temperature</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <div class="content">
+                
+
+<article class="article">
+ 
+
+  <p>The Dew Point Calculator estimates dew point from <strong>air temperature</strong> and <strong>relative humidity</strong>. It uses the NOAA/NCEP vapor-pressure relationship to determine the temperature at which the air reaches saturation and condensation can begin.</p>
+
+  <section id="what">
+    <h2>What Is the Dew Point Calculator?</h2>
+
+    <p>The Dew Point Calculator converts a measured air temperature and relative humidity into an estimated dew point temperature.</p>
+
+    <p>Dew point is the temperature to which air must cool for it to become saturated with water vapor. At 100% relative humidity, dew point and air temperature are equal. Under normal atmospheric conditions, dew point is equal to or below the air temperature.</p>
+
+    <p>This calculation can be useful for weather observation, environmental monitoring, outdoor planning, and understanding how much moisture is present in the air.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Dew Point Calculator</h2>
+
+    <p>Enter the two values used by the calculation:</p>
+
+    <ol>
+      <li><strong>Air Temperature</strong> — Enter the current ambient air temperature. The implemented dew point formula uses temperature in degrees Celsius (°C).</li>
+      <li><strong>Relative Humidity (%)</strong> — Enter the relative humidity as a percentage. Relative humidity compares the amount of moisture in the air with the amount needed for saturation at the same temperature.</li>
+    </ol>
+
+    <p>The calculator then estimates the corresponding dew point temperature.</p>
+
+    <p>For the mathematical formula, relative humidity must be greater than zero because the calculation contains a natural logarithm. A relative humidity of 100% represents saturated air.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <p>The calculator uses the NOAA/NCEP relationship for deriving dew point from air temperature and relative humidity. NOAA's MADIS documentation describes the same constants and temperature/RH-based calculation.</p>
+
+    <h3>Main Formula</h3>
+
+    <p>First, calculate the humidity-adjusted vapor-pressure term:</p>
+
+    <div class="formula">es=(RH100)×6.1365×exp⁡(17.502T240.97+T)e_s = \left(\frac{RH}{100}\right) \times 6.1365 \times \exp\left(\frac{17.502T}{240.97+T}\right)</div>
+
+    <p>Then calculate dew point:</p>
+
+    <div class="formula">Td=240.97×ln⁡(es/6.1365)17.502−ln⁡(es/6.1365)T_d = \frac{240.97 \times \ln(e_s/6.1365)} {17.502-\ln(e_s/6.1365)}</div>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>TT</td>
+          <td>Air temperature</td>
+          <td>°C</td>
+        </tr>
+        <tr>
+          <td>RHRH</td>
+          <td>Relative humidity</td>
+          <td>%</td>
+        </tr>
+        <tr>
+          <td>ese_s</td>
+          <td>Intermediate vapor-pressure term used by the calculation</td>
+          <td>hPa</td>
+        </tr>
+        <tr>
+          <td>TdT_d</td>
+          <td>Dew point temperature</td>
+          <td>°C</td>
+        </tr>
+        <tr>
+          <td>exp⁡\exp</td>
+          <td>Exponential function</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>ln⁡\ln</td>
+          <td>Natural logarithm</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The constants <strong>17.502</strong> and <strong>240.97</strong> are also used in the Buck saturation-vapor-pressure relationship for temperature in Celsius. UCAR documents this form with vapor pressure expressed in hPa.</p>
+
+    <h3>Calculation Sequence</h3>
+
+    <ol>
+      <li>Divide relative humidity by 100 to convert the percentage to a decimal.</li>
+      <li>Calculate the exponential temperature term.</li>
+      <li>Use temperature and humidity to calculate ese_s.</li>
+      <li>Calculate ln⁡(es/6.1365)\ln(e_s/6.1365).</li>
+      <li>Substitute that value into the dew point equation.</li>
+      <li>Return the calculated dew point temperature.</li>
+    </ol>
+
+    <p>No pressure, wind speed, elevation, or wet-bulb temperature is used by this calculator.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose:</p>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li>Air temperature: <strong>30°C</strong></li>
+      <li>Relative humidity: <strong>60%</strong></li>
+    </ul>
+
+    <h3>Step 1: Calculate the Vapor-Pressure Term</h3>
+
+    <div class="formula">es=(60/100)×6.1365×exp⁡(17.502×30240.97+30)e_s = (60/100)\times6.1365\times \exp\left(\frac{17.502\times30}{240.97+30}\right)</div>
+
+    <p>Calculate the exponent:</p>
+
+    <div class="formula">17.502×30270.97≈1.937705\frac{17.502\times30}{270.97} \approx1.937705</div>
+
+    <p>Therefore:</p>
+
+    <div class="formula">es≈0.60×6.1365×e1.937705e_s \approx0.60\times6.1365\times e^{1.937705} es≈25.5627 hPae_s\approx25.5627\text{ hPa}</div>
+
+    <h3>Step 2: Calculate the Logarithmic Term</h3>
+
+    <div class="formula">ln⁡(25.5627/6.1365)≈1.426880\ln(25.5627/6.1365) \approx1.426880</div>
+
+    <h3>Step 3: Calculate Dew Point</h3>
+
+    <div class="formula">Td=240.97×1.42688017.502−1.426880T_d= \frac{240.97\times1.426880} {17.502-1.426880} Td≈21.3893∘CT_d\approx21.3893^\circ C</div>
+
+    <h3>Final Result</h3>
+
+    <div class="formula"><strong>Dew point ≈ 21.39°C</strong></div>
+
+    <p>So, when the air temperature is <strong>30°C</strong> and relative humidity is <strong>60%</strong>, the calculated dew point is approximately <strong>21.4°C</strong>.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Dew Point Temperature</h3>
+
+    <p>The main result tells you the temperature at which the current amount of water vapor would bring the air to saturation.</p>
+
+    <p>A dew point closer to the current air temperature indicates higher relative humidity. A larger difference between air temperature and dew point indicates drier air.</p>
+
+    <p>If the dew point equals the air temperature, relative humidity is approximately 100%.</p>
+
+    <h3>Why Dew Point Can Be More Useful Than Relative Humidity</h3>
+
+    <p>Relative humidity changes when air temperature changes, even if the actual moisture content remains similar. Dew point is commonly used to describe atmospheric moisture more directly. NOAA notes that higher dew points indicate more moisture in the air.</p>
+
+    <p>The calculator should therefore be interpreted as a <strong>meteorological moisture estimate</strong>, not as a prediction that dew, fog, or condensation will definitely form at a particular location.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>This calculator estimates dew point from measured air temperature and relative humidity using the specified NOAA/NCEP relationship.</p>
+
+    <p>Important limitations include:</p>
+
+    <ul>
+      <li>The calculation depends on the accuracy of the temperature and humidity measurements entered.</li>
+      <li>The implemented equation uses air temperature in Celsius.</li>
+      <li>Relative humidity must be positive for the logarithmic calculation to produce a valid result.</li>
+      <li>The calculator estimates atmospheric dew point; it does not directly measure dew point with a sensor.</li>
+      <li>It does not model local surface temperatures.</li>
+      <li>It does not account for radiative surface cooling.</li>
+      <li>It does not model changing atmospheric pressure.</li>
+      <li>It does not predict whether fog will form.</li>
+      <li>It does not determine whether condensation will occur on a particular wall, window, pipe, or other material.</li>
+      <li>Local conditions can differ from the air measurements used as inputs.</li>
+    </ul>
+
+    <p>NOAA's MADIS documentation also describes dew point as a derived value that can be calculated from measured air temperature and relative humidity.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What is dew point?</summary>
+      <p>Dew point is the temperature at which air with its current moisture content becomes saturated. Cooling the air to this temperature can allow water vapor to begin condensing into liquid water.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What information do I need to calculate dew point?</summary>
+      <p>This calculator requires only <strong>air temperature</strong> and <strong>relative humidity</strong>. It does not require atmospheric pressure, elevation, wind speed, or wet-bulb temperature.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What happens when relative humidity is 100%?</summary>
+      <p>At 100% relative humidity, the air is saturated. Under these conditions, the dew point is equal to the air temperature.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can dew point be higher than the air temperature?</summary>
+      <p>Under normal atmospheric conditions, dew point should not exceed the current air temperature. NOAA describes dew point as being equal to or lower than ambient temperature.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why can't relative humidity be zero in this formula?</summary>
+      <p>The dew point equation uses the natural logarithm of a value derived from relative humidity. At exactly 0% RH, that term reaches zero, and ln⁡(0)\ln(0) is mathematically undefined.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does a dew point result mean condensation will definitely occur?</summary>
+      <p>No. The result describes the atmospheric dew point. Condensation on an actual surface also depends on the surface temperature and local conditions. The calculator does not model individual materials or surfaces.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is dew point the same as relative humidity?</summary>
+      <p>No. Relative humidity is a percentage showing how close the air is to saturation at its current temperature. Dew point is a temperature representing the moisture level of the air. Because relative humidity changes with temperature, two locations with the same relative humidity can have different dew points.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://madis.ncep.noaa.gov/madis_rwis_qc_notes.shtml?utm_source=chatgpt.com" rel="noopener" target="_blank">NOAA/NCEP MADIS — RWIS Quality Control Notes</a>
+        <p>Documents calculation of dew point from air temperature and relative humidity using the NOAA/NCEP vapor-pressure relationship and identifies temperature in Celsius.</p>
+      </li>
+
+      <li>
+        <a href="https://www.eol.ucar.edu/data-software/conventions-and-standards/water-vapor-pressure-formulations?utm_source=chatgpt.com" rel="noopener" target="_blank">UCAR Earth Observing Laboratory — Water Vapor Pressure Formulations</a>
+        <p>Documents the Buck vapor-pressure relationship using the 17.502 and 240.97 constants, with temperature in °C and vapor pressure in hPa.</p>
+      </li>
+
+      <li>
+        <a href="https://www.nesdis.noaa.gov/about/k-12-education/atmosphere/what-humidity?utm_source=chatgpt.com" rel="noopener" target="_blank">NOAA NESDIS — What Is Humidity?</a>
+        <p>Supports the definitions of relative humidity, saturation, and dew point.</p>
+      </li>
+
+      <li>
+        <a href="https://www.weather.gov/arx/why_dewpoint_vs_humidity?utm_source=chatgpt.com" rel="noopener" target="_blank">National Weather Service — Dew Point vs. Humidity</a>
+        <p>Explains the relationship between air temperature, relative humidity, saturation, and dew point.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/heat-index-calculator/">Heat Index Calculator</a> — Calculate heat index from air temperature and relative humidity.</li>
+      <li><a href="https://example.com/wind-chill-calculator/">Wind Chill Calculator</a> — Estimate wind chill from temperature and wind speed.</li>
+      <li><a href="https://example.com/conversion-calculator/">Conversion Calculator</a> — Convert temperature and other common measurement units.</li>
+      <li><a href="https://example.com/scientific-calculator/">Scientific Calculator</a> — Perform logarithms, exponentials, powers, and other scientific calculations.</li>
+    </ul>
+  </section>
+</article>
+
+
+
+            </div>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"193","Batch":"20","Calculator / Page":"Dew Point Calculator","Slug":"dew-point-calculator","Site Category (Current)":"Other Tools","Recommended Content Domain":"Other Tools","Page Type":"Calculator","Search Intent / Purpose":"Calculate dew point from air temperature and relative humidity using a NOAA/NCEP saturation-vapor-pressure relationship.","Formula / Algorithm Used in Tool":"Dew Point Calculator Formula: eₛ = (RH/100) × 6.1365 × exp(17.502T / (240.97 + T)); Td = 240.97 × ln(eₛ/6.1365) / [17.502 − ln(eₛ/6.1365)]","Required User Inputs":"Air temperature; Relative humidity (%)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Air temperature, Relative humidity (%). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Official meteorological formula, valid input range, units and warnings.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When formula validity ranges or official guidance change","Important Assumptions / Limitations":"This is a meteorological estimate based on measured temperature and relative humidity. It does not model local surfaces, radiative cooling, pressure changes, fog formation, or indoor condensation on a specific material.","Current Source URLs in Page":"https://madis.ncep.noaa.gov/madis_rwis_qc_notes.shtml | https://www.weather.gov/epz/wxcalc_rh","Implementation Path":"/dew-point-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Other Tools</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../heat-index-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Heat Index Calculator</strong><small>Calculate heat
+                            index from air temperature and relative humidity using the National…</small></span></a><a
+                    class="cp-related-link" href="../wind-chill-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Wind Chill Calculator</strong><small>Calculate
+                            National Weather Service wind chill from air temperature and wind speed
+                            w…</small></span></a><a class="cp-related-link" href="../height-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Height Calculator</strong><small>Estimate a child's
+                            adult height from parental height using the mid-parental method…</small></span></a><a
+                    class="cp-related-link" href="../golf-handicap-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Golf Handicap Calculator</strong><small>Calculate
+                            Course Handicap and estimate a base Handicap Index using current World
+                            Ha…</small></span></a><a class="cp-related-link" href="../love-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Love Calculator</strong><small>Generate a
+                            repeatable, just-for-fun name match percentage with a transparent
+                            entert…</small></span></a><a class="cp-related-link"
+                    href="../tip-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Tip
+                            Calculator</strong><small>Calculate tip amount, total bill, and per-person split with custom
+                            or quick-select…</small></span></a><a class="cp-related-link"
+                    href="../other-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Other
+                            Calculators</strong><small>Browse and filter CalcPro utility calculators for date and time,
+                            construction, meas…</small></span></a><a class="cp-related-link"
+                    href="../calculators-for-your-site/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Calculators for Your Site</strong><small>Browse
+                            CalcPro embeddable calculator pages and generate responsive iframe code
+                            for…</small></span></a></div><a class="cp-side-category"
+                href="../other/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>function fmt(n, d = 2) { if (!Number.isFinite(n)) return '—'; return new Intl.NumberFormat(undefined, { maximumFractionDigits: d }).format(n) } function showError(msg) { const e = document.getElementById('error'); e.textContent = msg; e.classList.add('show') } function clearError() { const e = document.getElementById('error'); e.textContent = ''; e.classList.remove('show') } function copyText(id) { const el = document.getElementById(id); const text = el.value || el.textContent; navigator.clipboard?.writeText(text) } const form = document.getElementById('form'), temp = document.getElementById('temp'), unit = document.getElementById('unit'), rh = document.getElementById('rh'), error = document.getElementById('error'), reset = document.getElementById('reset'), primary = document.getElementById('primary'), summary = document.getElementById('summary'), fval = document.getElementById('fval'), spread = document.getElementById('spread'), rhov = document.getElementById('rhov'), air = document.getElementById('air'); function calc() { clearError(); let T = +temp.value, R = +rh.value; if (!Number.isFinite(T) || !(R > 0 && R <= 100)) { showError('Enter a valid temperature and relative humidity greater than 0% and at most 100%.'); return } let C = unit.value === 'F' ? (T - 32) * 5 / 9 : T; let es = (R / 100) * 6.1365 * Math.exp((17.502 * C) / (240.97 + C)); let x = Math.log(es / 6.1365); let dp = 240.97 * x / (17.502 - x); let F = dp * 9 / 5 + 32, sp = C - dp; primary.textContent = fmt(dp, 1) + '°C'; fval.textContent = fmt(F, 1) + '°F'; spread.textContent = fmt(sp, 1) + '°C'; rhov.textContent = fmt(R, 1) + '%'; air.textContent = fmt(C, 1) + '°C'; summary.textContent = `Temperature–dew point spread: ${fmt(sp, 1)}°C.` } form.onsubmit = e => { e.preventDefault(); calc() }; reset.onclick = () => { temp.value = 25; rh.value = 60; unit.value = 'C'; calc() }; calc();</script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

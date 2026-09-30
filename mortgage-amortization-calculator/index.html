@@ -1,15 +1,972 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
-<title>Mortgage Amortization Calculator – Schedule Principal &amp; Interest | CalcPro</title><meta content="Calculate mortgage payment, total interest, and a clear amortization schedule showing how principal and interest change over time." name="description"/><meta content="index,follow" name="robots"/><link href="../mortgage-amortization-calculator/" rel="canonical"/><meta content="Mortgage Amortization Calculator | CalcPro" property="og:title"/><meta content="See how every mortgage payment reduces balance over time." property="og:description"/><meta content="#1477ff" name="theme-color"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Mortgage Amortization Calculator", "description": "Calculate a fixed-rate mortgage payment and see annual plus first-year amortization showing principal, interest, and remaining balance.", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "isAccessibleForFree": true, "url": "/mortgage-amortization-calculator/"}, {"@type": "BreadcrumbList", "@id": "/mortgage-amortization-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Finance", "item": "/finance/"}, {"@type": "ListItem", "position": 3, "name": "Mortgages & Real Estate", "item": "/finance/mortgages-real-estate/"}, {"@type": "ListItem", "position": 4, "name": "Watch a mortgage balance step down payment by payment.", "item": "/mortgage-amortization-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does a mortgage amortization schedule show?", "acceptedAnswer": {"@type": "Answer", "text": "It shows how each payment is split between interest and principal and how the remaining mortgage balance changes over time."}}, {"@type": "Question", "name": "Why is more interest paid early in the loan?", "acceptedAnswer": {"@type": "Answer", "text": "Interest is calculated from the outstanding balance. The balance is highest near the beginning, so the interest portion starts larger and generally falls as principal is repaid."}}, {"@type": "Question", "name": "Can extra payments change amortization?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Extra principal payments can reduce the balance faster and lower future interest, but this calculator models the scheduled payment only and does not include prepayment penalties or lender rules."}}]}]}</script><style>
-*{box-sizing:border-box}:root{--ink:#143044;--blue:#1f6987;--orange:#f28a45;--sand:#f5efe6;--muted:#687984;--line:#dce5e8}body{margin:0;font-family:Inter,system-ui,sans-serif;background:#eef5f6;color:var(--ink);line-height:1.6}a{color:#17637f}.wrap{width:min(1180px,92%);margin:auto}header{padding:20px 0}nav{display:flex;justify-content:space-between}.brand{font-weight:950}.crumb{font-size:.9rem;color:var(--muted)}.hero{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:40px 0 55px}h1{font-size:clamp(3rem,6vw,5.8rem);line-height:.92;letter-spacing:-.06em;margin:.18em 0}.lead{font-size:1.1rem;color:var(--muted)}.stairs{height:340px;position:relative;perspective:900px}.step3d{position:absolute;right:0;width:84%;height:58px;background:linear-gradient(145deg,#2d83a3,#1d5e79);border-radius:12px;box-shadow:0 18px 25px #0d3a4f24;transform:skewY(-4deg)}.s1{bottom:35px}.s2{bottom:105px;width:68%}.s3{bottom:175px;width:52%}.s4{bottom:245px;width:36%}.cap{position:absolute;left:20px;top:35px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffd7ba,#f18b47 55%,#c85e24);box-shadow:0 30px 50px #e2753538}.tool{display:grid;grid-template-columns:.85fr 1.15fr;gap:24px;padding-bottom:50px}.form,.result{background:#fff;border-radius:30px;padding:28px;box-shadow:0 25px 60px #15384b12;border:1px solid white}.field{display:grid;gap:7px;margin-bottom:12px}label{font-weight:850;font-size:.9rem}input{padding:13px 14px;border:1px solid var(--line);border-radius:12px;font:inherit}.buttons{display:flex;gap:10px}button{border:0;border-radius:12px;padding:13px 17px;font:inherit;font-weight:900;cursor:pointer}.primary{background:var(--blue);color:#fff}.ghost{background:#e7eef0}.error{min-height:24px;color:#a83232;font-weight:750}.topline{display:flex;justify-content:space-between;gap:20px;align-items:end;flex-wrap:wrap}.big{font-size:3.2rem;font-weight:950;letter-spacing:-.05em;line-height:1}.donut{width:110px;height:110px;border-radius:50%;background:conic-gradient(var(--orange) var(--interestAngle,50%),#2a7796 0);position:relative}.donut:after{content:'';position:absolute;inset:18px;background:white;border-radius:50%}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:18px 0}.metric{background:#edf5f6;padding:13px;border-radius:15px}.metric b{display:block}.tabs{display:flex;gap:8px;margin-top:15px}.tabs button.active{background:#183a4f;color:white}.tableWrap{overflow:auto;max-height:390px}table{width:100%;border-collapse:collapse;font-size:.86rem}th,td{padding:9px 7px;border-bottom:1px solid #e4ecee;text-align:right}th:first-child,td:first-child{text-align:left}article{background:#fff;border-radius:35px;padding:clamp(28px,5vw,58px);margin-bottom:50px}article h2{font-size:1.9rem}.formula{background:#173b50;color:white;padding:18px;border-radius:16px;overflow:auto}.faq{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.faq div{background:#eff5f3;padding:17px;border-radius:16px}footer{padding:25px 0;color:#657983}@media(max-width:850px){.hero,.tool{grid-template-columns:1fr}.metrics,.faq{grid-template-columns:1fr}.stairs{height:280px}}
-</style><link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head><body data-cp-category="finance" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header><nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../finance/index.html">Finance</a></li><li><a aria-current="page" href="index.html">Watch a mortgage balance step down payment by payment.</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main class="wrap" id="main"><h1 class="page-title">Mortgage Amortization Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="tool"><form class="form" id="amForm"><h2 style="margin-top:0">Loan setup</h2><div class="field"><label for="aprice">Home price ($)</label><input id="aprice" min="1" step="1000" type="number" value="500000"/></div><div class="field"><label for="adown">Down payment ($)</label><input id="adown" min="0" step="1000" type="number" value="100000"/></div><div class="field"><label for="ayears">Loan term (years)</label><input id="ayears" max="50" min="1" type="number" value="30"/></div><div class="field"><label for="arate">Annual interest rate (%)</label><input id="arate" max="30" min="0" step="0.01" type="number" value="6.5"/></div><div class="buttons"><button class="primary" type="submit">Build schedule</button><button class="ghost" type="reset">Reset</button></div><div class="error" id="aerr" role="alert"></div></form><div aria-live="polite" class="result"><div class="topline"><div><span style="color:var(--muted)">Monthly principal &amp; interest</span><div class="big" id="amonthly">$—</div></div><div class="donut" id="donut" title="Total interest vs principal"></div></div><div class="metrics"><div class="metric">Loan amount<b id="aloan">—</b></div><div class="metric">Total interest<b id="ainterest">—</b></div><div class="metric">Total payments<b id="atotal">—</b></div></div><div class="tabs"><button class="active" data-mode="year" type="button">Annual view</button><button data-mode="month" type="button">First 12 months</button></div><div class="tableWrap"><table><thead id="ahead"></thead><tbody id="abody"></tbody></table></div></div></section><article><h2>What is mortgage amortization?</h2><p>Mortgage amortization is the process of paying a loan down over time through scheduled payments. In a typical fixed-rate mortgage, the combined principal-and-interest payment stays the same, but the interest portion generally starts higher and the principal portion increases as the balance declines.</p><h2>Mortgage payment formula</h2><div class="formula">M = P × r(1+r)<sup>n</sup> ÷ ((1+r)<sup>n</sup> − 1)</div><p><strong>P</strong> is principal, <strong>r</strong> is the monthly rate, and <strong>n</strong> is the number of monthly payments. Each month’s interest is the starting balance multiplied by the monthly rate; the rest of the scheduled payment reduces principal.</p><h2>How to read an amortization schedule</h2><p>The schedule separates each payment into interest and principal. Early in the loan, the balance is large, so more interest accrues. As principal is paid down, the interest charge falls and more of the same scheduled payment goes toward principal.</p><h2>Calculation example</h2><p>A $500,000 home with a $100,000 down payment creates a $400,000 loan. At a 6.5% annual rate over 30 years, the calculator uses 360 monthly periods to determine the scheduled payment and then iterates the balance month by month.</p><h2>Limitations</h2><p>This page models a fixed rate with scheduled monthly payments. It excludes taxes, insurance, PMI, HOA dues, rate changes, late charges, escrow adjustments, prepayment penalties, and lender-specific rounding. Extra payments are not included in this version.</p><h2>Frequently Asked Questions</h2><div class="faq"><div><h3>Why does interest fall over time?</h3><p>Interest is calculated on the remaining balance, so less interest is due as the balance decreases.</p></div><div><h3>Does the monthly payment always stay fixed?</h3><p>The principal-and-interest payment does for the constant-rate model, but total housing payments can change when taxes, insurance, or adjustable rates change.</p></div><div><h3>What does “principal paid” mean?</h3><p>It is the part of payments that reduces the amount borrowed. Principal repayment builds equity, while interest is the cost of borrowing.</p></div><div><h3>Can I compare annual and monthly views?</h3><p>Yes. Use the buttons above the schedule to switch between annual totals and the first 12 individual payments.</p></div></div><h2>Sources and Methodology</h2><p>Inputs and schedule behavior were cross-checked against <a href="https://www.calculator.net/mortgage-amortization-calculator.html">Calculator.net’s Mortgage Amortization Calculator</a>. The explanation of how principal and interest shift over time follows the <a href="https://www.consumerfinance.gov/ask-cfpb/how-does-paying-down-a-mortgage-work-en-1943/">Consumer Financial Protection Bureau’s mortgage amortization guidance</a>, and the fixed payment structure aligns with CFPB’s explanation of monthly mortgage payments.</p></article>
+<html lang="en">
 
-<script class="cp-calculator-data" type="application/json">{"index":"204","Batch":"21","Calculator / Page":"Watch a mortgage balance step down payment by payment.","Slug":"mortgage-amortization-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Calculate mortgage payment, total interest, and a clear amortization schedule showing how principal and interest change over time.","Formula / Algorithm Used in Tool":"Mortgage payment formula: M = P × r(1+r) n ÷ ((1+r) n − 1) P is principal, r is the monthly rate, and n is the number of monthly payments. Each month’s interest is the starting balance multiplied by the monthly rate; the rest of the scheduled payment reduces principal.","Required User Inputs":"Home price ($); Down payment ($); Loan term (years); Annual interest rate (%)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Home price ($), Down payment ($), Loan term (years), Annual interest rate (%). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"This page models a fixed rate with scheduled monthly payments. It excludes taxes, insurance, PMI, HOA dues, rate changes, late charges, escrow adjustments, prepayment penalties, and lender-specific rounding. Extra payments are not included in this version.","Current Source URLs in Page":"https://www.calculator.net/mortgage-amortization-calculator.html | https://www.consumerfinance.gov/ask-cfpb/how-does-paying-down-a-mortgage-work-en-1943/","Implementation Path":"/mortgage-amortization-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Finance</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../amortization-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Amortization Calculator</strong><small>Create an amortization schedule and see how extra monthly payments can change payof…</small></span></a><a class="cp-related-link" href="../loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Loan Calculator</strong><small>Calculate a fixed-rate amortized loan payment, total payments, total interest, and…</small></span></a><a class="cp-related-link" href="../credit-card-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Credit Card Calculator</strong><small>Estimate a single credit card payoff time, required monthly payment, total interest…</small></span></a><a class="cp-related-link" href="../boat-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Boat Loan Calculator</strong><small>Estimate a boat loan payment, amount financed, tax, trade-in equity, total interest…</small></span></a><a class="cp-related-link" href="../interest-rate-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Interest Rate Calculator</strong><small>Estimate the nominal annual interest rate implied by a loan amount, fixed monthly p…</small></span></a><a class="cp-related-link" href="../mortgage-payoff-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Mortgage Payoff Calculator</strong><small>Estimate how extra monthly, annual, or one-time mortgage payments can shorten payof…</small></span></a><a class="cp-related-link" href="../repayment-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Repayment Calculator</strong><small>Calculate fixed-loan repayment time, monthly payment, total interest, and the impac…</small></span></a><a class="cp-related-link" href="../real-estate-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Real Estate Calculator</strong><small>Estimate a property's mortgage payment, monthly ownership cost, cash to close, tota…</small></span></a></div><a class="cp-side-category" href="../finance/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script>
-const USD=new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:2}),ag=id=>document.getElementById(id),an=id=>Number(ag(id).value);let monthlyRows=[],annualRows=[];function acalc(){const price=an('aprice'),down=an('adown'),yrs=an('ayears'),annual=an('arate');ag('aerr').textContent='';if(![price,down,yrs,annual].every(Number.isFinite)||price<=0||down<0||down>=price||yrs<=0||annual<0){ag('aerr').textContent='Enter valid values; down payment must be lower than the home price.';return}const P=price-down,n=Math.round(yrs*12),r=annual/100/12,M=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);let bal=P,totalI=0,yp=0,yi=0;monthlyRows=[];annualRows=[];for(let m=1;m<=n;m++){const int=bal*r;let prin=M-int;if(m===n)prin=bal;bal=Math.max(0,bal-prin);totalI+=int;yp+=prin;yi+=int;if(m<=12)monthlyRows.push([m,prin,int,bal]);if(m%12===0||m===n){annualRows.push([Math.ceil(m/12),yp,yi,bal]);yp=0;yi=0}}ag('amonthly').textContent=USD.format(M);ag('aloan').textContent=USD.format(P);ag('ainterest').textContent=USD.format(totalI);ag('atotal').textContent=USD.format(P+totalI);const angle=totalI/(P+totalI)*100;ag('donut').style.setProperty('--interestAngle',angle+'%');render('year')}
-function render(mode){document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));if(mode==='year'){ag('ahead').innerHTML='<tr><th>Year</th><th>Principal</th><th>Interest</th><th>Ending balance</th></tr>';ag('abody').innerHTML=annualRows.map(r=>`<tr><td>${r[0]}</td><td>${USD.format(r[1])}</td><td>${USD.format(r[2])}</td><td>${USD.format(r[3])}</td></tr>`).join('')}else{ag('ahead').innerHTML='<tr><th>Payment</th><th>Principal</th><th>Interest</th><th>Ending balance</th></tr>';ag('abody').innerHTML=monthlyRows.map(r=>`<tr><td>${r[0]}</td><td>${USD.format(r[1])}</td><td>${USD.format(r[2])}</td><td>${USD.format(r[3])}</td></tr>`).join('')}}
-ag('amForm').addEventListener('submit',e=>{e.preventDefault();acalc()});ag('amForm').addEventListener('reset',()=>setTimeout(acalc));document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>render(b.dataset.mode));acalc();
-</script><script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <!-- Primary Meta Tags -->
+<title>Mortgage Amortization Calculator | Payment &amp; Schedule</title>
+<meta name="title" content="Mortgage Amortization Calculator | Payment &amp; Schedule">
+<meta name="description" content="Calculate monthly mortgage principal and interest, total interest, and a payment-by-payment amortization schedule from price, down payment, rate, and term.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/mortgage-amortization-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/mortgage-amortization-calculator/">
+<meta property="og:title" content="Mortgage Amortization Calculator | Payment &amp; Schedule">
+<meta property="og:description" content="Calculate monthly mortgage principal and interest, total interest, and a payment-by-payment amortization schedule from price, down payment, rate, and term.">
+<meta property="og:site_name" content="Mortgage Amortization Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/mortgage-amortization-calculator/">
+<meta name="twitter:title" content="Mortgage Amortization Calculator | Payment &amp; Schedule">
+<meta name="twitter:description" content="Calculate monthly mortgage principal and interest, total interest, and a payment-by-payment amortization schedule from price, down payment, rate, and term.">
+    <meta content="#1477ff" name="theme-color" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/mortgage-amortization-calculator/#webapplication",
+      "name": "Mortgage Amortization Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/mortgage-amortization-calculator/",
+      "description": "Calculate monthly mortgage principal and interest, total interest, and a payment-by-payment amortization schedule from price, down payment, rate, and term.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/mortgage-amortization-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Mortgage Amortization Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/mortgage-amortization-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/mortgage-amortization-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does a mortgage amortization calculator show?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It estimates the fixed monthly principal-and-interest payment and shows how each payment is divided between interest and principal as the mortgage balance declines."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is the mortgage loan amount calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The financed principal is calculated by subtracting the down payment from the home price: Mortgage Principal = Home Price − Down Payment"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does more of my payment go toward interest at the beginning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Interest is calculated from the remaining mortgage balance. Because that balance is largest near the beginning of the loan, the interest charge is also higher. As principal is repaid, the balance and monthly interest charge decrease."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the calculator include property taxes and insurance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This CalcPro version calculates the mortgage using home price, down payment, term, and interest rate. Property taxes, homeowners insurance, PMI, HOA costs, and similar expenses are excluded."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I calculate extra mortgage payments with this calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Extra payments are not included in this version. Use a mortgage payoff or amortization calculator designed for additional principal payments if you want to compare accelerated repayment scenarios."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why might my lender's monthly amount be different?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A lender's figures may include taxes, insurance, mortgage insurance, fees, escrow adjustments, or lender-specific rounding and servicing methods. The calculator's monthly result represents the modeled principal-and-interest payment only."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a larger down payment reduce mortgage interest?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A larger down payment reduces the mortgage principal when the home price, interest rate, and loan term remain unchanged. Because interest is then calculated on a smaller financed balance, the modeled monthly payment and total interest will also be lower."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "Monkeymart Onlinefree",
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+
+
+
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        :root {
+            --ink: #143044;
+            --blue: #1f6987;
+            --orange: #f28a45;
+            --sand: #f5efe6;
+            --muted: #687984;
+            --line: #dce5e8
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, sans-serif;
+            background: #eef5f6;
+            color: var(--ink);
+            line-height: 1.6
+        }
+
+        a {
+            color: #17637f
+        }
+
+        .wrap {
+            width: min(1180px, 92%);
+            margin: auto
+        }
+
+        header {
+            padding: 20px 0
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between
+        }
+
+        .brand {
+            font-weight: 950
+        }
+
+        .crumb {
+            font-size: .9rem;
+            color: var(--muted)
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            padding: 40px 0 55px
+        }
+
+        h1 {
+            font-size: clamp(3rem, 6vw, 5.8rem);
+            line-height: .92;
+            letter-spacing: -.06em;
+            margin: .18em 0
+        }
+
+        .lead {
+            font-size: 1.1rem;
+            color: var(--muted)
+        }
+
+        .stairs {
+            height: 340px;
+            position: relative;
+            perspective: 900px
+        }
+
+        .step3d {
+            position: absolute;
+            right: 0;
+            width: 84%;
+            height: 58px;
+            background: linear-gradient(145deg, #2d83a3, #1d5e79);
+            border-radius: 12px;
+            box-shadow: 0 18px 25px #0d3a4f24;
+            transform: skewY(-4deg)
+        }
+
+        .s1 {
+            bottom: 35px
+        }
+
+        .s2 {
+            bottom: 105px;
+            width: 68%
+        }
+
+        .s3 {
+            bottom: 175px;
+            width: 52%
+        }
+
+        .s4 {
+            bottom: 245px;
+            width: 36%
+        }
+
+        .cap {
+            position: absolute;
+            left: 20px;
+            top: 35px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 30%, #ffd7ba, #f18b47 55%, #c85e24);
+            box-shadow: 0 30px 50px #e2753538
+        }
+
+        .tool {
+            display: grid;
+            grid-template-columns: .85fr 1.15fr;
+            gap: 24px;
+            padding-bottom: 50px
+        }
+
+        .form,
+        .result {
+            background: #fff;
+            border-radius: 30px;
+            padding: 28px;
+            box-shadow: 0 25px 60px #15384b12;
+            border: 1px solid white
+        }
+
+        .field {
+            display: grid;
+            gap: 7px;
+            margin-bottom: 12px
+        }
+
+        label {
+            font-weight: 850;
+            font-size: .9rem
+        }
+
+        input {
+            padding: 13px 14px;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            font: inherit
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px
+        }
+
+        button {
+            border: 0;
+            border-radius: 12px;
+            padding: 13px 17px;
+            font: inherit;
+            font-weight: 900;
+            cursor: pointer
+        }
+
+        .primary {
+            background: var(--blue);
+            color: #fff
+        }
+
+        .ghost {
+            background: #e7eef0
+        }
+
+        .error {
+            min-height: 24px;
+            color: #a83232;
+            font-weight: 750
+        }
+
+        .topline {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            align-items: end;
+            flex-wrap: wrap
+        }
+
+        .big {
+            font-size: 3.2rem;
+            font-weight: 950;
+            letter-spacing: -.05em;
+            line-height: 1
+        }
+
+        .donut {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: conic-gradient(var(--orange) var(--interestAngle, 50%), #2a7796 0);
+            position: relative
+        }
+
+        .donut:after {
+            content: '';
+            position: absolute;
+            inset: 18px;
+            background: white;
+            border-radius: 50%
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 9px;
+            margin: 18px 0
+        }
+
+        .metric {
+            background: #edf5f6;
+            padding: 13px;
+            border-radius: 15px
+        }
+
+        .metric b {
+            display: block
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px
+        }
+
+        .tabs button.active {
+            background: #183a4f;
+            color: white
+        }
+
+        .tableWrap {
+            overflow: auto;
+            max-height: 390px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .86rem
+        }
+
+        th,
+        td {
+            padding: 9px 7px;
+            border-bottom: 1px solid #e4ecee;
+            text-align: right
+        }
+
+        th:first-child,
+        td:first-child {
+            text-align: left
+        }
+
+        article {
+            background: #fff;
+            border-radius: 35px;
+            padding: clamp(28px, 5vw, 58px);
+            margin-bottom: 50px
+        }
+
+        article h2 {
+            font-size: 1.9rem
+        }
+
+        .formula {
+            background: #173b50;
+            color: white;
+            padding: 18px;
+            border-radius: 16px;
+            overflow: auto
+        }
+
+        .faq {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px
+        }
+
+        .faq div {
+            background: #eff5f3;
+            padding: 17px;
+            border-radius: 16px
+        }
+
+        footer {
+            padding: 25px 0;
+            color: #657983
+        }
+
+        @media(max-width:850px) {
+
+            .hero,
+            .tool {
+                grid-template-columns: 1fr
+            }
+
+            .metrics,
+            .faq {
+                grid-template-columns: 1fr
+            }
+
+            .stairs {
+                height: 280px
+            }
+        }
+    </style>
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="finance" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../finance/index.html">Finance</a></li>
+            <li><a aria-current="page" href="index.html">Watch a mortgage balance step down payment by payment.</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../finance/index.html">Browse Finance</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main class="wrap" id="main">
+            <h1 class="page-title">Mortgage Amortization Calculator</h1>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="tool">
+                <form class="form" id="amForm">
+                    <h2 style="margin-top:0">Loan setup</h2>
+                    <div class="field"><label for="aprice">Home price ($)</label><input id="aprice" min="1" step="1000"
+                            type="number" value="500000" /></div>
+                    <div class="field"><label for="adown">Down payment ($)</label><input id="adown" min="0" step="1000"
+                            type="number" value="100000" /></div>
+                    <div class="field"><label for="ayears">Loan term (years)</label><input id="ayears" max="50" min="1"
+                            type="number" value="30" /></div>
+                    <div class="field"><label for="arate">Annual interest rate (%)</label><input id="arate" max="30"
+                            min="0" step="0.01" type="number" value="6.5" /></div>
+                    <div class="buttons"><button class="primary" type="submit">Build schedule</button><button
+                            class="ghost" type="reset">Reset</button></div>
+                    <div class="error" id="aerr" role="alert"></div>
+                </form>
+                <div aria-live="polite" class="result">
+                    <div class="topline">
+                        <div><span style="color:var(--muted)">Monthly principal &amp; interest</span>
+                            <div class="big" id="amonthly">$—</div>
+                        </div>
+                        <div class="donut" id="donut" title="Total interest vs principal"></div>
+                    </div>
+                    <div class="metrics">
+                        <div class="metric">Loan amount<b id="aloan">—</b></div>
+                        <div class="metric">Total interest<b id="ainterest">—</b></div>
+                        <div class="metric">Total payments<b id="atotal">—</b></div>
+                    </div>
+                    <div class="tabs"><button class="active" data-mode="year" type="button">Annual view</button><button
+                            data-mode="month" type="button">First 12 months</button></div>
+                    <div class="tableWrap">
+                        <table>
+                            <thead id="ahead"></thead>
+                            <tbody id="abody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            
+<article class="article">
+ 
+
+  <p>Use the Mortgage Amortization Calculator to estimate your fixed monthly principal-and-interest payment and see how the mortgage balance changes over time. Enter the home price, down payment, loan term, and annual interest rate to calculate the financed principal and build an amortization schedule.</p>
+
+  <section id="what">
+    <h2>What Is the Mortgage Amortization Calculator?</h2>
+
+    <p>A mortgage amortization calculator shows how a fixed-rate mortgage is gradually paid down through scheduled monthly payments. Each payment contains two parts: interest charged on the remaining balance and principal that reduces the amount owed.</p>
+
+    <p>With a typical fixed-rate mortgage, the principal-and-interest payment stays constant while the split changes over time. Early payments generally contain more interest because the outstanding balance is higher. As the balance declines, less interest is charged and more of the payment goes toward principal.</p>
+
+    <p>This calculator is useful for comparing different home prices, down payments, loan terms, and interest rates before reviewing an actual lender quote.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Mortgage Amortization Calculator</h2>
+
+    <p>Enter the following four values:</p>
+
+    <ol>
+      <li><strong>Home Price ($):</strong> Enter the purchase price of the home.</li>
+      <li><strong>Down Payment ($):</strong> Enter the amount you plan to pay upfront. The calculator subtracts this amount from the home price to determine the mortgage principal.</li>
+      <li><strong>Loan Term (years):</strong> Enter the number of years over which the mortgage will be repaid.</li>
+      <li><strong>Annual Interest Rate (%):</strong> Enter the annual mortgage interest rate as a percentage.</li>
+    </ol>
+
+    <p>The calculator then estimates the fixed monthly principal-and-interest payment and generates the supporting amortization values.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Loan Principal</h3>
+
+    <p>The amount financed is calculated first:</p>
+
+    <div class="formula"><strong>P = H − D</strong></div>
+
+    <p>Where:</p>
+
+    <ul>
+      <li><strong>P</strong> = mortgage principal, in dollars</li>
+      <li><strong>H</strong> = home price, in dollars</li>
+      <li><strong>D</strong> = down payment, in dollars</li>
+    </ul>
+
+    <h3>Monthly Interest Rate</h3>
+
+    <p>The annual percentage rate entered by the user is converted to a decimal and then divided by 12:</p>
+
+    <div class="formula"><strong>r = (Annual Interest Rate ÷ 100) ÷ 12</strong></div>
+
+    <p>Where:</p>
+
+    <ul>
+      <li><strong>r</strong> = monthly interest rate as a decimal</li>
+    </ul>
+
+    <h3>Number of Payments</h3>
+
+    <p>The loan term is converted from years to monthly payment periods:</p>
+
+    <div class="formula"><strong>n = Loan Term × 12</strong></div>
+
+    <p>Where:</p>
+
+    <ul>
+      <li><strong>n</strong> = total number of monthly payments</li>
+    </ul>
+
+    <h3>Main Mortgage Payment Formula</h3>
+
+    <p>The fixed monthly principal-and-interest payment is:</p>
+
+    <div class="formula"><strong>M = P × [r(1 + r)ⁿ] ÷ [(1 + r)ⁿ − 1]</strong></div>
+
+    <p>Where:</p>
+
+    <ul>
+      <li><strong>M</strong> = monthly principal-and-interest payment</li>
+      <li><strong>P</strong> = mortgage principal</li>
+      <li><strong>r</strong> = monthly interest rate</li>
+      <li><strong>n</strong> = total number of monthly payments</li>
+    </ul>
+
+    <p>This is the standard fully amortizing fixed-payment approach. The payment is determined from the loan amount, interest rate, and loan term so that scheduled payments reduce the balance over the full term.</p>
+
+    <h3>Calculation Sequence</h3>
+
+    <p>The calculator follows this sequence:</p>
+
+    <ol>
+      <li>Subtract the down payment from the home price to find the mortgage principal.</li>
+      <li>Convert the annual interest rate to a monthly decimal rate.</li>
+      <li>Convert the loan term from years to months.</li>
+      <li>Apply the fixed-rate mortgage payment formula.</li>
+      <li>Calculate each month's interest from the starting balance.</li>
+      <li>Subtract that interest from the scheduled payment to determine the principal paid.</li>
+      <li>Subtract the principal paid from the balance.</li>
+      <li>Repeat the process for each scheduled monthly payment.</li>
+    </ol>
+
+    <h3>Monthly Interest</h3>
+
+    <p>For each payment period:</p>
+
+    <div class="formula"><strong>Interestₜ = Starting Balanceₜ × r</strong></div>
+
+    <h3>Monthly Principal</h3>
+
+    <p>The principal portion of the payment is:</p>
+
+    <div class="formula"><strong>Principalₜ = M − Interestₜ</strong></div>
+
+    <h3>Ending Mortgage Balance</h3>
+
+    <p>The remaining balance after each payment is:</p>
+
+    <div class="formula"><strong>Ending Balanceₜ = Starting Balanceₜ − Principalₜ</strong></div>
+
+    <p>The ending balance becomes the next month's starting balance.</p>
+
+    <h3>Total Interest</h3>
+
+    <p>Total mortgage interest can be obtained by adding the interest charged across all scheduled payment periods:</p>
+
+    <div class="formula"><strong>Total Interest = Interest₁ + Interest₂ + ... + Interestₙ</strong></div>
+
+    <p>For a fully amortizing fixed-rate calculation without additional costs, this is also equivalent to the total scheduled principal-and-interest payments minus the original mortgage principal, subject to any rounding applied during calculation.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose a home has the following financing details.</p>
+
+    <h3>Inputs</h3>
+
+    <ul>
+      <li>Home price: <strong>$300,000</strong></li>
+      <li>Down payment: <strong>$60,000</strong></li>
+      <li>Loan term: <strong>30 years</strong></li>
+      <li>Annual interest rate: <strong>6%</strong></li>
+    </ul>
+
+    <h3>Step 1: Calculate the Mortgage Principal</h3>
+
+    <div class="formula"><strong>P = $300,000 − $60,000</strong></div>
+
+    <div class="formula"><strong>P = $240,000</strong></div>
+
+    <h3>Step 2: Calculate the Monthly Rate</h3>
+
+    <div class="formula"><strong>r = (6 ÷ 100) ÷ 12</strong></div>
+
+    <div class="formula"><strong>r = 0.005</strong></div>
+
+    <p>The monthly rate is <strong>0.5%</strong>, or <strong>0.005</strong> as a decimal.</p>
+
+    <h3>Step 3: Calculate the Number of Payments</h3>
+
+    <div class="formula"><strong>n = 30 × 12</strong></div>
+
+    <div class="formula"><strong>n = 360 payments</strong></div>
+
+    <h3>Step 4: Calculate the Monthly Payment</h3>
+
+    <div class="formula"><strong>M = 240,000 × [0.005(1.005)³⁶⁰] ÷ [(1.005)³⁶⁰ − 1]</strong></div>
+
+    <p>This gives a monthly principal-and-interest payment of approximately:</p>
+
+    <div class="formula"><strong>$1,438.92 per month</strong></div>
+
+    <h3>Step 5: Calculate the First Month's Interest</h3>
+
+    <div class="formula"><strong>Interest = $240,000 × 0.005</strong></div>
+
+    <div class="formula"><strong>Interest = $1,200.00</strong></div>
+
+    <h3>Step 6: Calculate the First Month's Principal</h3>
+
+    <div class="formula"><strong>Principal = $1,438.92 − $1,200.00</strong></div>
+
+    <div class="formula"><strong>Principal ≈ $238.92</strong></div>
+
+    <h3>Step 7: Calculate the New Balance</h3>
+
+    <div class="formula"><strong>New Balance = $240,000 − $238.92</strong></div>
+
+    <div class="formula"><strong>New Balance ≈ $239,761.08</strong></div>
+
+    <p>The same process continues each month. As the remaining balance declines, the interest portion decreases and more of the fixed payment is applied to principal.</p>
+
+    <p>Using full calculation precision, the estimated total interest over 360 scheduled payments is approximately <strong>$278,011.65</strong>.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Mortgage Principal</h3>
+
+    <p>This is the amount being financed after subtracting the down payment from the home price.</p>
+
+    <p>For example, a $300,000 home with a $60,000 down payment produces a $240,000 mortgage principal.</p>
+
+    <h3>Monthly Principal-and-Interest Payment</h3>
+
+    <p>This is the scheduled fixed payment calculated from the mortgage principal, annual interest rate, and loan term.</p>
+
+    <p>It covers only principal and interest in this calculator. A borrower's actual total monthly mortgage payment may also include property taxes, homeowners insurance, mortgage insurance, or other charges.</p>
+
+    <h3>Interest Portion</h3>
+
+    <p>The interest amount is calculated from the balance outstanding at the beginning of each monthly period.</p>
+
+    <p>Because the balance is usually largest near the start of the mortgage, the interest portion is generally larger during the early part of the amortization schedule.</p>
+
+    <h3>Principal Portion</h3>
+
+    <p>Principal is the part of the payment that directly reduces the mortgage balance.</p>
+
+    <p>As monthly interest falls over time, a larger share of the fixed payment is normally applied to principal.</p>
+
+    <h3>Remaining Balance</h3>
+
+    <p>The remaining balance shows how much mortgage principal is still unpaid after each scheduled payment.</p>
+
+    <h3>Total Interest</h3>
+
+    <p>Total interest represents the cumulative interest paid across the modeled mortgage term. It does not include taxes, insurance, PMI, HOA charges, lender fees, penalties, or other housing expenses.</p>
+
+    <h3>Amortization Schedule</h3>
+
+    <p>The amortization schedule shows how the loan changes payment by payment, including the amount assigned to interest, the amount assigned to principal, and the remaining balance.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>This calculator is designed as a fixed-rate mortgage planning tool. Its results are estimates based on the values entered.</p>
+
+    <p>It assumes a fixed annual interest rate and scheduled monthly payments throughout the full loan term.</p>
+
+    <p>The calculation does <strong>not</strong> include:</p>
+
+    <ul>
+      <li>Property taxes</li>
+      <li>Homeowners insurance</li>
+      <li>Private mortgage insurance (PMI)</li>
+      <li>HOA dues</li>
+      <li>Adjustable or changing interest rates</li>
+      <li>Late charges</li>
+      <li>Escrow adjustments</li>
+      <li>Prepayment penalties</li>
+      <li>Extra principal payments</li>
+      <li>Lender-specific fees</li>
+      <li>Lender-specific rounding methods</li>
+    </ul>
+
+    <p>The calculator also does not model extra payments in its current version.</p>
+
+    <p>Actual lender figures can differ because lenders may apply specific payment dates, rounding procedures, servicing rules, escrow calculations, fees, or other contractual terms. CFPB also notes that a borrower's total mortgage payment can be higher than the principal-and-interest amount because taxes, insurance, and mortgage insurance may be included.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What does a mortgage amortization calculator show?</summary>
+      <p>It estimates the fixed monthly principal-and-interest payment and shows how each payment is divided between interest and principal as the mortgage balance declines.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How is the mortgage loan amount calculated?</summary>
+      <p>The financed principal is calculated by subtracting the down payment from the home price:</p>
+      <div class="formula"><strong>Mortgage Principal = Home Price − Down Payment</strong></div>
+    </details>
+
+    <details class="faq">
+      <summary>Why does more of my payment go toward interest at the beginning?</summary>
+      <p>Interest is calculated from the remaining mortgage balance. Because that balance is largest near the beginning of the loan, the interest charge is also higher. As principal is repaid, the balance and monthly interest charge decrease.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does the calculator include property taxes and insurance?</summary>
+      <p>No. This CalcPro version calculates the mortgage using home price, down payment, term, and interest rate. Property taxes, homeowners insurance, PMI, HOA costs, and similar expenses are excluded.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can I calculate extra mortgage payments with this calculator?</summary>
+      <p>No. Extra payments are not included in this version. Use a mortgage payoff or amortization calculator designed for additional principal payments if you want to compare accelerated repayment scenarios.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why might my lender's monthly amount be different?</summary>
+      <p>A lender's figures may include taxes, insurance, mortgage insurance, fees, escrow adjustments, or lender-specific rounding and servicing methods. The calculator's monthly result represents the modeled principal-and-interest payment only.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does a larger down payment reduce mortgage interest?</summary>
+      <p>A larger down payment reduces the mortgage principal when the home price, interest rate, and loan term remain unchanged. Because interest is then calculated on a smaller financed balance, the modeled monthly payment and total interest will also be lower.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/?utm_source=chatgpt.com" rel="noopener" target="_blank">Consumer Financial Protection Bureau — How Mortgage Lenders Calculate Monthly Payments</a>
+        <p>Supports the fixed-rate mortgage payment framework and explains that principal-and-interest payments depend on the loan amount, rate, and loan term.</p>
+      </li>
+
+      <li>
+        <a href="https://www.consumerfinance.gov/ask-cfpb/how-does-paying-down-a-mortgage-work-en-1943/?utm_source=chatgpt.com" rel="noopener" target="_blank">Consumer Financial Protection Bureau — How Paying Down a Mortgage Works</a>
+        <p>Supports the amortization methodology, including how the interest and principal portions of a fixed payment change as the outstanding balance decreases.</p>
+      </li>
+
+      <li>
+        <a href="https://boe.ca.gov/info/tvm/lesson7.html?utm_source=chatgpt.com" rel="noopener" target="_blank">California State Board of Equalization — Periodic Repayment</a>
+        <p>Provides an official time-value-of-money example for calculating periodic principal-and-interest payments on a fully amortizing mortgage.</p>
+      </li>
+
+      <li>
+        <a href="https://www.calculator.net/mortgage-amortization-calculator.html?utm_source=chatgpt.com" rel="noopener" target="_blank">Calculator.net — Mortgage Amortization Calculator</a>
+        <p>Used as a secondary cross-check for mortgage amortization terminology and payment-by-payment schedule structure.</p>
+      </li>
+    </ul>
+
+    <p>No current statutory rate or mandatory market rate is built into this calculation. The mortgage interest rate is supplied by the user.</p>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/mortgage-calculator/?utm_source=chatgpt.com">Mortgage Calculator</a></li>
+      <li><a href="https://example.com/amortization-calculator/?utm_source=chatgpt.com">Amortization Calculator</a></li>
+      <li><a href="https://example.com/mortgage-payoff-calculator/?utm_source=chatgpt.com">Mortgage Payoff Calculator</a></li>
+      <li><a href="https://example.com/down-payment-calculator/?utm_source=chatgpt.com">Down Payment Calculator</a></li>
+      <li><a href="https://example.com/refinance-calculator/?utm_source=chatgpt.com">Refinance Calculator</a></li>
+      <li><a href="https://example.com/loan-calculator/?utm_source=chatgpt.com">Loan Calculator</a></li>
+    </ul>
+  </section>
+</article>
+
+
+
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"204","Batch":"21","Calculator / Page":"Watch a mortgage balance step down payment by payment.","Slug":"mortgage-amortization-calculator","Site Category (Current)":"Finance","Recommended Content Domain":"Finance / Tax / Investment","Page Type":"Calculator","Search Intent / Purpose":"Calculate mortgage payment, total interest, and a clear amortization schedule showing how principal and interest change over time.","Formula / Algorithm Used in Tool":"Mortgage payment formula: M = P × r(1+r) n ÷ ((1+r) n − 1) P is principal, r is the monthly rate, and n is the number of monthly payments. Each month’s interest is the starting balance multiplied by the monthly rate; the rest of the scheduled payment reduces principal.","Required User Inputs":"Home price ($); Down payment ($); Loan term (years); Annual interest rate (%)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Home price ($), Down payment ($), Loan term (years), Annual interest rate (%). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Stable formula plus current official data for any quoted legal/tax/plan thresholds, eligibility rules, benchmark assumptions or fees.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When product/rule assumptions change","Important Assumptions / Limitations":"This page models a fixed rate with scheduled monthly payments. It excludes taxes, insurance, PMI, HOA dues, rate changes, late charges, escrow adjustments, prepayment penalties, and lender-specific rounding. Extra payments are not included in this version.","Current Source URLs in Page":"https://www.calculator.net/mortgage-amortization-calculator.html | https://www.consumerfinance.gov/ask-cfpb/how-does-paying-down-a-mortgage-work-en-1943/","Implementation Path":"/mortgage-amortization-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Finance</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../amortization-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Amortization Calculator</strong><small>Create an
+                            amortization schedule and see how extra monthly payments can change
+                            payof…</small></span></a><a class="cp-related-link"
+                    href="../loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Loan
+                            Calculator</strong><small>Calculate a fixed-rate amortized loan payment, total payments,
+                            total interest, and…</small></span></a><a class="cp-related-link"
+                    href="../credit-card-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Credit Card Calculator</strong><small>Estimate a
+                            single credit card payoff time, required monthly payment, total
+                            interest…</small></span></a><a class="cp-related-link"
+                    href="../boat-loan-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Boat
+                            Loan Calculator</strong><small>Estimate a boat loan payment, amount financed, tax, trade-in
+                            equity, total interest…</small></span></a><a class="cp-related-link"
+                    href="../interest-rate-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Interest Rate Calculator</strong><small>Estimate
+                            the nominal annual interest rate implied by a loan amount, fixed monthly
+                            p…</small></span></a><a class="cp-related-link"
+                    href="../mortgage-payoff-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Mortgage Payoff Calculator</strong><small>Estimate
+                            how extra monthly, annual, or one-time mortgage payments can shorten
+                            payof…</small></span></a><a class="cp-related-link"
+                    href="../repayment-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Repayment Calculator</strong><small>Calculate
+                            fixed-loan repayment time, monthly payment, total interest, and the
+                            impac…</small></span></a><a class="cp-related-link"
+                    href="../real-estate-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Real
+                            Estate Calculator</strong><small>Estimate a property's mortgage payment, monthly ownership
+                            cost, cash to close, tota…</small></span></a></div><a class="cp-side-category"
+                href="../finance/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const USD = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 }), ag = id => document.getElementById(id), an = id => Number(ag(id).value); let monthlyRows = [], annualRows = []; function acalc() { const price = an('aprice'), down = an('adown'), yrs = an('ayears'), annual = an('arate'); ag('aerr').textContent = ''; if (![price, down, yrs, annual].every(Number.isFinite) || price <= 0 || down < 0 || down >= price || yrs <= 0 || annual < 0) { ag('aerr').textContent = 'Enter valid values; down payment must be lower than the home price.'; return } const P = price - down, n = Math.round(yrs * 12), r = annual / 100 / 12, M = r === 0 ? P / n : P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1); let bal = P, totalI = 0, yp = 0, yi = 0; monthlyRows = []; annualRows = []; for (let m = 1; m <= n; m++) { const int = bal * r; let prin = M - int; if (m === n) prin = bal; bal = Math.max(0, bal - prin); totalI += int; yp += prin; yi += int; if (m <= 12) monthlyRows.push([m, prin, int, bal]); if (m % 12 === 0 || m === n) { annualRows.push([Math.ceil(m / 12), yp, yi, bal]); yp = 0; yi = 0 } } ag('amonthly').textContent = USD.format(M); ag('aloan').textContent = USD.format(P); ag('ainterest').textContent = USD.format(totalI); ag('atotal').textContent = USD.format(P + totalI); const angle = totalI / (P + totalI) * 100; ag('donut').style.setProperty('--interestAngle', angle + '%'); render('year') }
+        function render(mode) { document.querySelectorAll('.tabs button').forEach(b => b.classList.toggle('active', b.dataset.mode === mode)); if (mode === 'year') { ag('ahead').innerHTML = '<tr><th>Year</th><th>Principal</th><th>Interest</th><th>Ending balance</th></tr>'; ag('abody').innerHTML = annualRows.map(r => `<tr><td>${r[0]}</td><td>${USD.format(r[1])}</td><td>${USD.format(r[2])}</td><td>${USD.format(r[3])}</td></tr>`).join('') } else { ag('ahead').innerHTML = '<tr><th>Payment</th><th>Principal</th><th>Interest</th><th>Ending balance</th></tr>'; ag('abody').innerHTML = monthlyRows.map(r => `<tr><td>${r[0]}</td><td>${USD.format(r[1])}</td><td>${USD.format(r[2])}</td><td>${USD.format(r[3])}</td></tr>`).join('') } }
+        ag('amForm').addEventListener('submit', e => { e.preventDefault(); acalc() }); ag('amForm').addEventListener('reset', () => setTimeout(acalc)); document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => render(b.dataset.mode)); acalc();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

@@ -1,24 +1,1026 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
-<title>Gravel Calculator | CalcPro</title><meta content="Calculate gravel volume from length, width, and depth, with optional supplier density for weight estimates." name="description"/><meta content="index,follow" name="robots"/><link href="../gravel-calculator/" rel="canonical"/><meta content="Gravel Calculator" property="og:title"/><meta content="Calculate gravel volume from length, width, and depth, with optional supplier density for weight estimates." property="og:description"/><meta content="website" property="og:type"/><meta content="/gravel-calculator/" property="og:url"/><meta content="#1477ff" name="theme-color"/><style>:root{--bg:#1f2327;--card:#2a2e32;--input:#202428;--ink:#f7f5ef;--text:#d6d1c7;--muted:#aaa69c;--line:#454a4f;--accent:#ffb02e;--accentText:#1c2024;--soft:#34383d;--shadow:0 28px 70px rgba(0,0,0,.35);--result1:#ffb02e;--result2:#d6751d;--resultInk:#211b14;}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}button,input,select,textarea{font:inherit}button{cursor:pointer}.wrap{width:min(1160px,calc(100% - 32px));margin:auto}.crumb{font-size:.9rem;color:var(--muted);padding:20px 0}.crumb a{color:inherit}.hero{position:relative;overflow:hidden}.hero h1{font-size:clamp(2.3rem,6vw,5.5rem);line-height:.95;letter-spacing:-.055em;margin:0 0 18px}.hero p{font-size:1.08rem;color:var(--muted);max-width:700px;margin:0}.eyebrow{font-weight:800;text-transform:uppercase;letter-spacing:.14em;font-size:.76rem;color:var(--accent)}.calc-shell{position:relative;z-index:3}.card{background:var(--card);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow)}.field{display:grid;gap:7px}.field label{font-weight:750;font-size:.9rem}.field small{color:var(--muted)}input,select,textarea{width:100%;border:1px solid var(--line);background:var(--input);color:var(--ink);border-radius:14px;padding:13px 14px;outline:none;transition:.2s}input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 16%,transparent)}textarea{min-height:160px;resize:vertical}.actions{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:800}.btn.primary{background:var(--accent);color:var(--accentText,#fff);box-shadow:0 10px 24px color-mix(in srgb,var(--accent) 26%,transparent)}.btn.ghost{background:var(--soft);color:var(--ink);border:1px solid var(--line)}.error{display:none;padding:11px 13px;border-radius:12px;background:#fee2e2;color:#991b1b;font-weight:700;font-size:.9rem}.error.show{display:block}.result{background:linear-gradient(145deg,var(--result1),var(--result2));color:var(--resultInk);border-radius:24px;padding:22px;min-height:170px;position:relative;overflow:hidden}.result .big{font-size:clamp(2rem,5vw,4rem);line-height:1;font-weight:900;letter-spacing:-.04em;margin:8px 0}.result .label{opacity:.78;font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em}.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}.metric{background:color-mix(in srgb,var(--resultInk) 8%,transparent);border:1px solid color-mix(in srgb,var(--resultInk) 15%,transparent);border-radius:16px;padding:12px}.metric b{display:block;font-size:1.1rem}.metric span{font-size:.8rem;opacity:.75}.content{padding:76px 0 90px}.article-grid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:34px;align-items:start}.article{min-width:0}.article section{padding:28px 0;border-bottom:1px solid var(--line)}.article h2{font-size:clamp(1.55rem,3vw,2.35rem);line-height:1.15;letter-spacing:-.03em;margin:0 0 12px}.article h3{font-size:1.12rem;margin:22px 0 8px}.article p,.article li{color:var(--text)}.formula{padding:18px 20px;border-radius:18px;background:var(--soft);border:1px solid var(--line);font-family:ui-monospace,SFMono-Regular,Consolas,monospace;overflow:auto}.note{border-left:4px solid var(--accent);padding:12px 16px;background:var(--soft);border-radius:0 14px 14px 0}.toc{position:sticky;top:18px;padding:22px}.toc strong{display:block;margin-bottom:10px}.toc a{display:block;padding:7px 0;color:var(--muted);font-size:.9rem}.source-list{padding-left:20px}.source-list li{margin:8px 0}footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.88rem}.pill{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;background:var(--soft);border:1px solid var(--line);font-size:.78rem;font-weight:750}.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.switchline{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.switchline button{border:1px solid var(--line);background:var(--soft);color:var(--ink);padding:8px 12px;border-radius:999px;font-weight:800}.switchline button.active{background:var(--accent);color:var(--accentText,#fff);border-color:transparent}.copybtn{position:absolute;top:14px;right:14px;border:1px solid color-mix(in srgb,var(--resultInk) 24%,transparent);background:color-mix(in srgb,var(--resultInk) 12%,transparent);color:var(--resultInk);border-radius:10px;padding:7px 10px;font-weight:800;font-size:.8rem}@media(max-width:850px){.article-grid{grid-template-columns:1fr}.toc{position:static}.row{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}}@media(max-width:520px){.wrap{width:min(100% - 20px,1160px)}.metrics{grid-template-columns:1fr}.hero h1{font-size:2.65rem}.card{border-radius:22px}}
-.hero{background:linear-gradient(115deg,#171a1d 0 62%,#2d3339 62%);min-height:500px}.hero-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:34px;align-items:center;padding:45px 0 110px}.blueprint{height:310px;border:1px solid #64707a;background:linear-gradient(#2b3946aa 1px,transparent 1px),linear-gradient(90deg,#2b3946aa 1px,transparent 1px),#18232d;background-size:24px 24px;border-radius:18px;transform:rotateY(-8deg) rotateX(5deg);box-shadow:24px 30px 0 #0f1215,0 30px 60px #0008;position:relative}.blueprint:before{content:"LENGTH × WIDTH";position:absolute;left:38px;top:48px;border:2px dashed #ffb02e;color:#ffb02e;padding:35px 48px;letter-spacing:.14em;font-weight:900}.blueprint:after{content:"DEPTH";position:absolute;right:30px;bottom:38px;color:#d4e6f7;border-left:4px solid #d4e6f7;padding:12px}.calc-shell{margin-top:-58px}.gravel-card{display:grid;grid-template-columns:.95fr 1.05fr;gap:0;overflow:hidden}.gravel-form{padding:28px}.rock-result{border-radius:0;min-height:100%;display:flex;flex-direction:column;justify-content:center}.rock-result:after{content:"";position:absolute;width:240px;height:130px;right:-40px;bottom:-50px;background:radial-gradient(circle at 20% 20%,#5f5040 0 12%,transparent 13%),radial-gradient(circle at 55% 45%,#705b45 0 14%,transparent 15%),radial-gradient(circle at 80% 18%,#4f453a 0 11%,transparent 12%);opacity:.28}@media(max-width:800px){.hero-grid,.gravel-card{grid-template-columns:1fr}.blueprint{height:230px}.rock-result{border-radius:0}}</style><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Gravel Calculator", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "description": "Calculate gravel volume from length, width, and depth, with optional supplier density for weight estimates.", "url": "/gravel-calculator/", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Construction & Home", "item": "/construction/"}, {"@type": "ListItem", "position": 3, "name": "Concrete & Materials", "item": "/construction/concrete-materials/"}, {"@type": "ListItem", "position": 4, "name": "GravelCalculator", "item": "/gravel-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I calculate gravel volume?", "acceptedAnswer": {"@type": "Answer", "text": "Multiply length by width by depth after converting all dimensions to compatible units. In imperial measurements, divide cubic feet by 27 to get cubic yards."}}, {"@type": "Question", "name": "Why is gravel weight optional?", "acceptedAnswer": {"@type": "Answer", "text": "Weight depends on the bulk density of the specific aggregate, grading, moisture, and compaction. Enter a density from your supplier for a better mass estimate."}}, {"@type": "Question", "name": "Does the calculator include compaction?", "acceptedAnswer": {"@type": "Answer", "text": "Not automatically. Use the optional overage field only if you intentionally want a planning allowance; supplier recommendations should take priority."}}]}]}</script><link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head><body data-cp-category="engineering" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../engineering/index.html">Engineering &amp; Construction</a></li><li><a aria-current="page" href="index.html">Gravel Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../engineering/index.html">Browse Engineering &amp; Construction</a><a href="../calculators/index.html">All calculators</a></div><header class="hero"><div class="wrap"><nav aria-label="Breadcrumb" class="crumb"><a href="../index.html">Home</a> / Gravel Calculator</nav><div class="hero-grid"><div><span class="eyebrow">Aggregate volume planner</span><h1>Gravel<br/>Calculator</h1><p>A blueprint-style estimator for cubic yards, cubic meters, and optional supplier-density weight.</p></div><div aria-hidden="true" class="blueprint"></div></div></div></header>
-<div class="cp-page-layout"><main id="main"><h1 class="page-title">Gravel Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="calc-shell"><div class="wrap"><div class="card gravel-card"><form class="gravel-form" id="form"><div class="switchline"><button class="active" id="uImp" type="button">Imperial</button><button id="uMet" type="button">Metric</button></div><div class="row"><div class="field"><label>Length <span id="lu">(ft)</span></label><input id="length" min="0" step="any" type="number" value="30"/></div><div class="field"><label>Width <span id="wu">(ft)</span></label><input id="width" min="0" step="any" type="number" value="12"/></div></div><div class="row"><div class="field"><label>Depth <span id="du">(in)</span></label><input id="depth" min="0" step="any" type="number" value="4"/></div><div class="field"><label>Overage (%)</label><input id="over" max="100" min="0" step="any" type="number" value="10"/></div></div><div class="field"><label>Supplier bulk density <span id="denu">(lb/ft³, optional)</span></label><input id="density" min="0" placeholder="Enter supplier value" step="any" type="number"/></div><div class="error" id="error"></div><div class="actions"><button class="btn primary">Calculate gravel</button><button class="btn ghost" id="reset" type="button">Reset</button></div></form><div class="result rock-result"><span class="label">Order volume</span><div class="big" id="primary">4.89 yd³</div><div id="summary">Includes 10% overage.</div><div class="metrics"><div class="metric"><b id="base">4.44 yd³</b><span>Measured volume</span></div><div class="metric"><b id="weight">Add density</b><span>Estimated weight</span></div><div class="metric"><b id="alt">132 ft³</b><span>Volume with overage</span></div><div class="metric"><b id="area">360 ft²</b><span>Surface area</span></div></div></div></div></div></section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<div class="content"><div class="wrap article-grid"><article class="article">
-<section id="what"><h2>What Is the Gravel Calculator?</h2><p>A gravel calculator converts a project footprint and layer depth into the bulk volume of aggregate needed. This version also supports an optional supplier-provided bulk density so you can estimate weight without assuming every gravel product weighs the same.</p></section>
-<section id="use"><h2>How to Use the Gravel Calculator</h2><p>Select imperial or metric units, enter the project length, width, and compacted or target depth, then add an optional overage. If your quarry or supplier gives a bulk density, enter it to estimate mass.</p></section>
-<section id="formula"><h2>Gravel Calculator Formula</h2><div class="formula">Volume = length × width × depth. Imperial cubic yards = [L(ft) × W(ft) × D(in ÷ 12)] ÷ 27. Mass = volume × bulk density.</div><h3>Formula Variables</h3><p>Dimensions must use compatible units. Density is intentionally user-entered because aggregate weight varies with material and moisture. Overage increases the calculated volume after geometry is complete.</p></section>
-<section id="example"><h2>Calculation Example</h2><p>A 30 ft × 12 ft area at 4 in deep equals 120 ft³, or about 4.44 yd³ before overage.</p></section>
-<section id="results"><h2>Understanding Your Results</h2><p>Volume is the most reliable geometric result. Weight appears only when a density is supplied. Whole truckloads, bags, or tons should be matched to the supplier’s stated product data.</p></section>
-<section id="factors"><h2>Important Factors</h2><p>Irregular boundaries, excavation tolerances, slope, base preparation, compaction targets, and aggregate grading can change the amount delivered versus the simple geometric estimate.</p></section>
-<section id="limits"><h2>Limitations</h2><p>This calculator is not a geotechnical design tool and does not determine structural base thickness. Use engineering specifications for driveways, roads, foundations, drainage, or load-bearing work.</p></section>
-<section id="faq"><h2>Frequently Asked Questions</h2><h3>How do I calculate gravel volume?</h3><p>Multiply length by width by depth after converting all dimensions to compatible units. In imperial measurements, divide cubic feet by 27 to get cubic yards.</p><h3>Why is gravel weight optional?</h3><p>Weight depends on the bulk density of the specific aggregate, grading, moisture, and compaction. Enter a density from your supplier for a better mass estimate.</p><h3>Does the calculator include compaction?</h3><p>Not automatically. Use the optional overage field only if you intentionally want a planning allowance; supplier recommendations should take priority.</p></section>
-<section id="sources"><h2>Sources and Methodology</h2><p>The calculator logic was implemented from the standards and references below. The page uses client-side JavaScript and does not send entered values to a server.</p><ul class="source-list"><li><a href="https://extension.k-state.edu/program-areas/supporting-communities/public-trails/trail-talk-files/2023-trail%20talk%20tuesday%20December.pdf" rel="noopener noreferrer">Kansas State University Extension</a> — Shows the trail-material volume formula: length × width × (depth/12) ÷ 27 for cubic yards.</li><li><a href="https://www.nist.gov/pml/owm/si-units-volume" rel="noopener noreferrer">NIST SI Units</a> — Reference for unit conversions used in metric results.</li></ul></section>
-</article></div></div>
+<html lang="en">
 
-<script class="cp-calculator-data" type="application/json">{"index":"194","Batch":"20","Calculator / Page":"Gravel Calculator","Slug":"gravel-calculator","Site Category (Current)":"Engineering & Construction","Recommended Content Domain":"Engineering / Construction","Page Type":"Calculator","Search Intent / Purpose":"Calculate gravel volume from length, width, and depth, with optional supplier density for weight estimates.","Formula / Algorithm Used in Tool":"Gravel Calculator Formula: Volume = length × width × depth. Imperial cubic yards = [L(ft) × W(ft) × D(in ÷ 12)] ÷ 27. Mass = volume × bulk density.","Required User Inputs":"Length (ft); Width (ft); Depth (in); Overage (%); Supplier bulk density (lb/ft³, optional)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Length (ft), Width (ft), Depth (in), Overage (%), Supplier bulk density (lb/ft³, optional). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Exact engineering/geometry formula, units, standards; document any default density, waste factor, safety factor or material assumption.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When standards/default factors change","Important Assumptions / Limitations":"This calculator is not a geotechnical design tool and does not determine structural base thickness. Use engineering specifications for driveways, roads, foundations, drainage, or load-bearing work.","Current Source URLs in Page":"https://extension.k-state.edu/program-areas/supporting-communities/public-trails/trail-talk-files/2023-trail%20talk%20tuesday%20December.pdf | https://www.nist.gov/pml/owm/si-units-volume","Implementation Path":"/gravel-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Engineering &amp; Construction</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../mulch-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Mulch Calculator</strong><small>Estimate mulch volume in cubic yards or cubic meters, plus bag counts, from area an…</small></span></a><a class="cp-related-link" href="../concrete-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Concrete Calculator</strong><small>Calculate concrete volume for slabs, round columns, or tubes, convert to cubic yard…</small></span></a><a class="cp-related-link" href="../engine-horsepower-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Engine Horsepower Calculator</strong><small>Estimate engine horsepower from quarter-mile elapsed time or trap speed with weight…</small></span></a><a class="cp-related-link" href="../stair-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Stair Calculator</strong><small>Calculate straight-stair risers, treads, total run, pitch angle, and stringer lengt…</small></span></a><a class="cp-related-link" href="../roofing-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Roofing Calculator</strong><small>Estimate pitched roof area, roofing squares, bundle quantity, waste, and optional m…</small></span></a><a class="cp-related-link" href="../tile-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Tile Calculator</strong><small>Estimate tile quantity, rows, columns, waste, boxes, and optional cost for a rectan…</small></span></a><a class="cp-related-link" href="../concrete-calculator-for-your-site/index.html"><span class="cp-related-dot">›</span><span><strong>Concrete Calculator for Your Site</strong><small>Calculate concrete volume for rectangular slabs, round columns, and circular tubes…</small></span></a><a class="cp-related-link" href="../btu-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>BTU Calculator</strong><small>Estimate room air-conditioner cooling capacity in BTU per hour using ENERGY STAR ro…</small></span></a></div><a class="cp-side-category" href="../engineering/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script>function fmt(n,d=2){if(!Number.isFinite(n))return '—';return new Intl.NumberFormat(undefined,{maximumFractionDigits:d}).format(n)}function showError(msg){const e=document.getElementById('error');e.textContent=msg;e.classList.add('show')}function clearError(){const e=document.getElementById('error');e.textContent='';e.classList.remove('show')}function copyText(id){const el=document.getElementById(id);const text=el.value||el.textContent;navigator.clipboard?.writeText(text)}const form=document.getElementById('form'),uImp=document.getElementById('uImp'),uMet=document.getElementById('uMet'),lu=document.getElementById('lu'),length=document.getElementById('length'),wu=document.getElementById('wu'),width=document.getElementById('width'),du=document.getElementById('du'),depth=document.getElementById('depth'),over=document.getElementById('over'),denu=document.getElementById('denu'),density=document.getElementById('density'),error=document.getElementById('error'),reset=document.getElementById('reset'),primary=document.getElementById('primary'),summary=document.getElementById('summary'),base=document.getElementById('base'),weight=document.getElementById('weight'),alt=document.getElementById('alt'),area=document.getElementById('area');let metric=false;function labels(){lu.textContent=wu.textContent=metric?'(m)':'(ft)';du.textContent=metric?'(cm)':'(in)';denu.textContent=metric?'(kg/m³, optional)':'(lb/ft³, optional)';uImp.classList.toggle('active',!metric);uMet.classList.toggle('active',metric)}function calc(){clearError();const L=+length.value,W=+width.value,D=+depth.value,O=+over.value||0,Den=+density.value||0;if(!(L>0&&W>0&&D>0)||O<0||Den<0){showError('Enter positive dimensions and non-negative optional values.');return}if(metric){const a=L*W,b=a*D/100,f=b*(1+O/100);primary.textContent=fmt(f,3)+' m³';base.textContent=fmt(b,3)+' m³';alt.textContent=fmt(f*1000,0)+' L';area.textContent=fmt(a,2)+' m²';weight.textContent=Den>0?fmt(f*Den,0)+' kg':'Add density'}else{const a=L*W,bft=a*D/12,by=bft/27,fft=bft*(1+O/100),fy=fft/27;primary.textContent=fmt(fy,2)+' yd³';base.textContent=fmt(by,2)+' yd³';alt.textContent=fmt(fft,1)+' ft³';area.textContent=fmt(a,1)+' ft²';weight.textContent=Den>0?fmt((fft*Den)/2000,2)+' short tons':'Add density'}summary.textContent=O?`Includes ${fmt(O,1)}% overage.`:'No overage added.'}form.onsubmit=e=>{e.preventDefault();calc()};uImp.onclick=()=>{metric=false;labels();calc()};uMet.onclick=()=>{metric=true;length.value=9;width.value=3.6;depth.value=10;density.value='';labels();calc()};reset.onclick=()=>{metric=false;length.value=30;width.value=12;depth.value=4;over.value=10;density.value='';labels();calc()};labels();calc();</script><script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <!-- Primary Meta Tags -->
+<title>Gravel Calculator – Calculate Volume &amp; Gravel Weight</title>
+<meta name="title" content="Gravel Calculator – Calculate Volume &amp; Gravel Weight">
+<meta name="description" content="Estimate gravel volume in cubic feet and cubic yards using length, width, and depth. Include overage and optional supplier density for weight estimates.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/gravel-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/gravel-calculator/">
+<meta property="og:title" content="Gravel Calculator – Calculate Volume &amp; Gravel Weight">
+<meta property="og:description" content="Estimate gravel volume in cubic feet and cubic yards using length, width, and depth. Include overage and optional supplier density for weight estimates.">
+<meta property="og:site_name" content="Gravel Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/gravel-calculator/">
+<meta name="twitter:title" content="Gravel Calculator – Calculate Volume &amp; Gravel Weight">
+<meta name="twitter:description" content="Estimate gravel volume in cubic feet and cubic yards using length, width, and depth. Include overage and optional supplier density for weight estimates.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        :root {
+            --bg: #1f2327;
+            --card: #2a2e32;
+            --input: #202428;
+            --ink: #f7f5ef;
+            --text: #d6d1c7;
+            --muted: #aaa69c;
+            --line: #454a4f;
+            --accent: #ffb02e;
+            --accentText: #1c2024;
+            --soft: #34383d;
+            --shadow: 0 28px 70px rgba(0, 0, 0, .35);
+            --result1: #ffb02e;
+            --result2: #d6751d;
+            --resultInk: #211b14;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.65
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        .wrap {
+            width: min(1160px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .crumb {
+            font-size: .9rem;
+            color: var(--muted);
+            padding: 20px 0
+        }
+
+        .crumb a {
+            color: inherit
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero h1 {
+            font-size: clamp(2.3rem, 6vw, 5.5rem);
+            line-height: .95;
+            letter-spacing: -.055em;
+            margin: 0 0 18px
+        }
+
+        .hero p {
+            font-size: 1.08rem;
+            color: var(--muted);
+            max-width: 700px;
+            margin: 0
+        }
+
+        .eyebrow {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .14em;
+            font-size: .76rem;
+            color: var(--accent)
+        }
+
+        .calc-shell {
+            position: relative;
+            z-index: 3
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            box-shadow: var(--shadow)
+        }
+
+        .field {
+            display: grid;
+            gap: 7px
+        }
+
+        .field label {
+            font-weight: 750;
+            font-size: .9rem
+        }
+
+        .field small {
+            color: var(--muted)
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--line);
+            background: var(--input);
+            color: var(--ink);
+            border-radius: 14px;
+            padding: 13px 14px;
+            outline: none;
+            transition: .2s
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent)
+        }
+
+        textarea {
+            min-height: 160px;
+            resize: vertical
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-weight: 800
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            color: var(--accentText, #fff);
+            box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 26%, transparent)
+        }
+
+        .btn.ghost {
+            background: var(--soft);
+            color: var(--ink);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            display: none;
+            padding: 11px 13px;
+            border-radius: 12px;
+            background: #fee2e2;
+            color: #991b1b;
+            font-weight: 700;
+            font-size: .9rem
+        }
+
+        .error.show {
+            display: block
+        }
+
+        .result {
+            background: linear-gradient(145deg, var(--result1), var(--result2));
+            color: var(--resultInk);
+            border-radius: 24px;
+            padding: 22px;
+            min-height: 170px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .result .big {
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: -.04em;
+            margin: 8px 0
+        }
+
+        .result .label {
+            opacity: .78;
+            font-weight: 700;
+            font-size: .85rem;
+            text-transform: uppercase;
+            letter-spacing: .08em
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 16px
+        }
+
+        .metric {
+            background: color-mix(in srgb, var(--resultInk) 8%, transparent);
+            border: 1px solid color-mix(in srgb, var(--resultInk) 15%, transparent);
+            border-radius: 16px;
+            padding: 12px
+        }
+
+        .metric b {
+            display: block;
+            font-size: 1.1rem
+        }
+
+        .metric span {
+            font-size: .8rem;
+            opacity: .75
+        }
+
+        .content {
+            padding: 76px 0 90px
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 310px;
+            gap: 34px;
+            align-items: start
+        }
+
+        .article {
+            min-width: 0
+        }
+
+        .article section {
+            padding: 28px 0;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .article h2 {
+            font-size: clamp(1.55rem, 3vw, 2.35rem);
+            line-height: 1.15;
+            letter-spacing: -.03em;
+            margin: 0 0 12px
+        }
+
+        .article h3 {
+            font-size: 1.12rem;
+            margin: 22px 0 8px
+        }
+
+        .article p,
+        .article li {
+            color: var(--text)
+        }
+
+        .formula {
+            padding: 18px 20px;
+            border-radius: 18px;
+            background: var(--soft);
+            border: 1px solid var(--line);
+            font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+            overflow: auto
+        }
+
+        .note {
+            border-left: 4px solid var(--accent);
+            padding: 12px 16px;
+            background: var(--soft);
+            border-radius: 0 14px 14px 0
+        }
+
+        .toc {
+            position: sticky;
+            top: 18px;
+            padding: 22px
+        }
+
+        .toc strong {
+            display: block;
+            margin-bottom: 10px
+        }
+
+        .toc a {
+            display: block;
+            padding: 7px 0;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .source-list {
+            padding-left: 20px
+        }
+
+        .source-list li {
+            margin: 8px 0
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 28px 0;
+            color: var(--muted);
+            font-size: .88rem
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 11px;
+            border-radius: 999px;
+            background: var(--soft);
+            border: 1px solid var(--line);
+            font-size: .78rem;
+            font-weight: 750
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px
+        }
+
+        .switchline {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap
+        }
+
+        .switchline button {
+            border: 1px solid var(--line);
+            background: var(--soft);
+            color: var(--ink);
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-weight: 800
+        }
+
+        .switchline button.active {
+            background: var(--accent);
+            color: var(--accentText, #fff);
+            border-color: transparent
+        }
+
+        .copybtn {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            border: 1px solid color-mix(in srgb, var(--resultInk) 24%, transparent);
+            background: color-mix(in srgb, var(--resultInk) 12%, transparent);
+            color: var(--resultInk);
+            border-radius: 10px;
+            padding: 7px 10px;
+            font-weight: 800;
+            font-size: .8rem
+        }
+
+        @media(max-width:850px) {
+            .article-grid {
+                grid-template-columns: 1fr
+            }
+
+            .toc {
+                position: static
+            }
+
+            .row {
+                grid-template-columns: 1fr
+            }
+
+            .metrics {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        @media(max-width:520px) {
+            .wrap {
+                width: min(100% - 20px, 1160px)
+            }
+
+            .metrics {
+                grid-template-columns: 1fr
+            }
+
+            .hero h1 {
+                font-size: 2.65rem
+            }
+
+            .card {
+                border-radius: 22px
+            }
+        }
+
+        .hero {
+            background: linear-gradient(115deg, #171a1d 0 62%, #2d3339 62%);
+            min-height: 500px
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: 34px;
+            align-items: center;
+            padding: 45px 0 110px
+        }
+
+        .blueprint {
+            height: 310px;
+            border: 1px solid #64707a;
+            background: linear-gradient(#2b3946aa 1px, transparent 1px), linear-gradient(90deg, #2b3946aa 1px, transparent 1px), #18232d;
+            background-size: 24px 24px;
+            border-radius: 18px;
+            transform: rotateY(-8deg) rotateX(5deg);
+            box-shadow: 24px 30px 0 #0f1215, 0 30px 60px #0008;
+            position: relative
+        }
+
+        .blueprint:before {
+            content: "LENGTH × WIDTH";
+            position: absolute;
+            left: 38px;
+            top: 48px;
+            border: 2px dashed #ffb02e;
+            color: #ffb02e;
+            padding: 35px 48px;
+            letter-spacing: .14em;
+            font-weight: 900
+        }
+
+        .blueprint:after {
+            content: "DEPTH";
+            position: absolute;
+            right: 30px;
+            bottom: 38px;
+            color: #d4e6f7;
+            border-left: 4px solid #d4e6f7;
+            padding: 12px
+        }
+ 
+
+        .gravel-card {
+            display: grid;
+            grid-template-columns: .95fr 1.05fr;
+            gap: 0;
+            overflow: hidden
+        }
+
+        .gravel-form {
+            padding: 28px
+        }
+
+        .rock-result {
+            border-radius: 0;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center
+        }
+
+        .rock-result:after {
+            content: "";
+            position: absolute;
+            width: 240px;
+            height: 130px;
+            right: -40px;
+            bottom: -50px;
+            background: radial-gradient(circle at 20% 20%, #5f5040 0 12%, transparent 13%), radial-gradient(circle at 55% 45%, #705b45 0 14%, transparent 15%), radial-gradient(circle at 80% 18%, #4f453a 0 11%, transparent 12%);
+            opacity: .28
+        }
+
+        @media(max-width:800px) {
+
+            .hero-grid,
+            .gravel-card {
+                grid-template-columns: 1fr
+            }
+
+            .blueprint {
+                height: 230px
+            }
+
+            .rock-result {
+                border-radius: 0
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/gravel-calculator/#webapplication",
+      "name": "Heat Index Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/gravel-calculator/",
+      "description": "Use the Heat Index Calculator to estimate apparent temperature from air temperature and relative humidity with the NWS Rothfusz regression formula.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/gravel-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Heat Index Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/gravel-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/gravel-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does heat index mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Heat index is an apparent temperature that combines air temperature and relative humidity to describe how hot conditions feel to the human body."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What temperature unit does the Rothfusz formula use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Rothfusz regression shown on this page uses air temperature in degrees Fahrenheit and relative humidity as a percentage. Its output is heat index in degrees Fahrenheit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can the heat index be higher than the air temperature?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "High humidity can reduce evaporation of sweat, making hot conditions feel warmer. Because the formula combines temperature with relative humidity, the apparent temperature can be higher than the measured air temperature."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why might my result differ from an official NWS heat index?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The NWS calculation procedure can use a preliminary equation and humidity adjustments in certain conditions. Input precision, rounding, and whether those additional steps are applied can therefore produce differences near the limits of the Rothfusz regression."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does heat index include direct sunlight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Standard NWS heat-index values are intended for shady, light-wind conditions. Direct sunshine can increase the effective heat burden beyond the standard heat-index value."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the heat index a measure of body temperature?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Heat index is an environmental apparent-temperature estimate. It does not predict a person's body temperature and should not be treated as individualized medical advice."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart OnlineFree",
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="engineering" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../engineering/index.html">Engineering &amp; Construction</a></li>
+            <li><a aria-current="page" href="index.html">Gravel Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../engineering/index.html">Browse Engineering &amp; Construction</a><a
+            href="../calculators/index.html">All calculators</a></div>
+     
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Gravel Calculator</h1>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="calc-shell">
+                <div class="wrap">
+                    <div class="card gravel-card">
+                        <form class="gravel-form" id="form">
+                            <div class="switchline"><button class="active" id="uImp"
+                                    type="button">Imperial</button><button id="uMet" type="button">Metric</button></div>
+                            <div class="row">
+                                <div class="field"><label>Length <span id="lu">(ft)</span></label><input id="length"
+                                        min="0" step="any" type="number" value="30" /></div>
+                                <div class="field"><label>Width <span id="wu">(ft)</span></label><input id="width"
+                                        min="0" step="any" type="number" value="12" /></div>
+                            </div>
+                            <div class="row">
+                                <div class="field"><label>Depth <span id="du">(in)</span></label><input id="depth"
+                                        min="0" step="any" type="number" value="4" /></div>
+                                <div class="field"><label>Overage (%)</label><input id="over" max="100" min="0"
+                                        step="any" type="number" value="10" /></div>
+                            </div>
+                            <div class="field"><label>Supplier bulk density <span id="denu">(lb/ft³,
+                                        optional)</span></label><input id="density" min="0"
+                                    placeholder="Enter supplier value" step="any" type="number" /></div>
+                            <div class="error" id="error"></div>
+                            <div class="actions"><button class="btn primary">Calculate gravel</button><button
+                                    class="btn ghost" id="reset" type="button">Reset</button></div>
+                        </form>
+                        <div class="result rock-result"><span class="label">Order volume</span>
+                            <div class="big" id="primary">4.89 yd³</div>
+                            <div id="summary">Includes 10% overage.</div>
+                            <div class="metrics">
+                                <div class="metric"><b id="base">4.44 yd³</b><span>Measured volume</span></div>
+                                <div class="metric"><b id="weight">Add density</b><span>Estimated weight</span></div>
+                                <div class="metric"><b id="alt">132 ft³</b><span>Volume with overage</span></div>
+                                <div class="metric"><b id="area">360 ft²</b><span>Surface area</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <div class="content">
+               
+ 
+
+<article class="article">
+
+ 
+
+  <p>The Heat Index Calculator estimates how hot the air feels when air temperature and relative humidity are combined. Enter the air temperature and relative humidity to calculate the apparent temperature using the Rothfusz regression equation used by the National Weather Service.</p>
+
+  <section id="what">
+    <h2>What Is the Heat Index Calculator?</h2>
+
+    <p class="direct">A heat index calculator estimates apparent, or “feels-like,” temperature from air temperature and relative humidity. Higher humidity can make hot conditions feel warmer because moisture in the air can reduce the effectiveness of evaporative cooling from sweat.</p>
+
+    <p>This calculator is useful for comparing hot and humid conditions, but the result is an environmental estimate rather than a measurement of body temperature or an individualized medical limit.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Heat Index Calculator</h2>
+
+    <p>Enter these two values:</p>
+
+    <ol>
+      <li><strong>Air temperature:</strong> Enter the measured air temperature. In the Rothfusz equation, temperature is evaluated in degrees Fahrenheit (°F).</li>
+      <li><strong>Relative humidity (%):</strong> Enter the relative humidity as a percentage.</li>
+    </ol>
+
+    <p>The calculator applies the Rothfusz regression formula and returns the calculated heat index, representing apparent temperature in degrees Fahrenheit.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+
+    <p>The calculator uses the Rothfusz regression equation:</p>
+
+    <div class="formula">HI = −42.379 + 2.04901523T + 10.14333127RH − 0.22475541TRH − 0.00683783T² − 0.05481717RH² + 0.00122874T²RH + 0.00085282TRH² − 0.00000199T²RH²</div>
+
+    <p>The National Weather Service documents this regression as an approximation of heat-index values based on the work of Robert Steadman.</p>
+
+    <h3>Variables</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Variable</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>HI</strong></td>
+          <td>Calculated heat index or apparent temperature</td>
+          <td>°F</td>
+        </tr>
+        <tr>
+          <td><strong>T</strong></td>
+          <td>Air temperature</td>
+          <td>°F</td>
+        </tr>
+        <tr>
+          <td><strong>RH</strong></td>
+          <td>Relative humidity</td>
+          <td>%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Calculation Sequence</h3>
+
+    <p>The calculator:</p>
+
+    <ol>
+      <li>Reads the entered air temperature and relative humidity.</li>
+      <li>Calculates the squared temperature and humidity terms required by the regression.</li>
+      <li>Calculates the interaction terms between temperature and relative humidity.</li>
+      <li>Substitutes those values into the Rothfusz regression equation.</li>
+      <li>Returns the resulting heat index.</li>
+    </ol>
+
+    <p>No additional output formula should be inferred beyond the calculations supported by this method.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Suppose the air temperature is <strong>90°F</strong> and relative humidity is <strong>60%</strong>.</p>
+
+    <h3>Inputs</h3>
+
+    <div class="formula">T = 90°F</div>
+
+    <div class="formula">RH = 60%</div>
+
+    <h3>Step 1</h3>
+
+    <p>Calculate the squared terms:</p>
+
+    <div class="formula">T² = 90² = 8,100</div>
+
+    <div class="formula">RH² = 60² = 3,600</div>
+
+    <h3>Step 2</h3>
+
+    <p>Substitute the values into the formula:</p>
+
+    <div class="formula">HI = −42.379 + 2.04901523(90) + 10.14333127(60) − 0.22475541(90)(60) − 0.00683783(8,100) − 0.05481717(3,600) + 0.00122874(8,100)(60) + 0.00085282(90)(3,600) − 0.00000199(8,100)(3,600)</div>
+
+    <h3>Step 3</h3>
+
+    <p>Evaluating the full equation gives:</p>
+
+    <div class="formula">HI = 99.6777179°F</div>
+
+    <h3>Final Result</h3>
+
+    <p>The calculated heat index is approximately <strong>99.68°F</strong>.</p>
+
+    <p>This means that an air temperature of 90°F with 60% relative humidity corresponds to an apparent temperature of about 99.68°F under the conditions represented by the heat-index method.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p>The main result is the <strong>heat index</strong>, expressed as an apparent temperature. It combines temperature and humidity into one value that helps describe how hot conditions may feel compared with air temperature alone.</p>
+
+    <p>The result should not be interpreted as body temperature, a diagnosis, or a personal medical threshold. Individual heat stress can also depend on activity, clothing, health, hydration, sun exposure, wind, and other environmental factors.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The Rothfusz regression is designed for appropriate combinations of hot temperatures and relative humidity. The National Weather Service notes that the regression is not valid for extreme temperature and humidity combinations outside the data range on which the method was based.</p>
+
+    <p>Heat-index values are designed around <strong>shady, light-wind conditions</strong>. Current NWS guidance states that exposure to full sunshine can increase the apparent heat burden represented by heat index values by as much as 15°F.</p>
+
+    <p>The broader NWS heat-index procedure can also use a preliminary calculation and specific low- or high-humidity adjustments under certain conditions. The calculation documented for this CalcPro tool is the Rothfusz regression formula shown above, so results near those edge conditions may differ from an NWS operational calculation that applies additional steps.</p>
+
+    <p>Measurement accuracy also matters. An inaccurate air-temperature or humidity reading will directly affect the calculated heat index.</p>
+  </section>
+
+  <section id="rules">
+    <h2>Current Rules / Data</h2>
+
+    <p>As of <strong>September 2026</strong>, the National Weather Service continues to describe heat index as a measure of apparent temperature based on air temperature and relative humidity and notes that it represents shaded, light-wind conditions.</p>
+
+    <p>No yearly rate, tax value, or other regularly changing numerical input is required for this calculator. The main items that should be reviewed over time are official NWS methodology, validity guidance, and heat-safety recommendations.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What does heat index mean?</summary>
+      <p>Heat index is an apparent temperature that combines air temperature and relative humidity to describe how hot conditions feel to the human body.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What temperature unit does the Rothfusz formula use?</summary>
+      <p>The Rothfusz regression shown on this page uses air temperature in <strong>degrees Fahrenheit</strong> and relative humidity as a <strong>percentage</strong>. Its output is heat index in degrees Fahrenheit.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why can the heat index be higher than the air temperature?</summary>
+      <p>High humidity can reduce evaporation of sweat, making hot conditions feel warmer. Because the formula combines temperature with relative humidity, the apparent temperature can be higher than the measured air temperature.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why might my result differ from an official NWS heat index?</summary>
+      <p>The NWS calculation procedure can use a preliminary equation and humidity adjustments in certain conditions. Input precision, rounding, and whether those additional steps are applied can therefore produce differences near the limits of the Rothfusz regression.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does heat index include direct sunlight?</summary>
+      <p>No. Standard NWS heat-index values are intended for shady, light-wind conditions. Direct sunshine can increase the effective heat burden beyond the standard heat-index value.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is the heat index a measure of body temperature?</summary>
+      <p>No. Heat index is an environmental apparent-temperature estimate. It does not predict a person's body temperature and should not be treated as individualized medical advice.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://www.weather.gov/tbw/heatindex?utm_source=chatgpt.com" rel="noopener" target="_blank">National Weather Service — Heat Index Statistics</a><br>
+        Supports the definition of heat index, Rothfusz regression equation, formula variables, NWS calculation procedure, and validity limitations.
+      </li>
+
+      <li>
+        <a href="https://www.wpc.ncep.noaa.gov/html/heatindex_equationbody.html?utm_source=chatgpt.com" rel="noopener" target="_blank">NOAA/NWS Weather Prediction Center — Heat Index Equation</a><br>
+        Supports the Rothfusz equation, Fahrenheit and relative-humidity variables, conditional adjustments, and regression limitations.
+      </li>
+    </ul>
+
+    <h3>Current Data / Rule Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://www.weather.gov/safety/heat-index?os=___&amp;utm_source=chatgpt.com" rel="noopener" target="_blank">National Weather Service — Heat Forecast Tools</a><br>
+        Current NWS guidance on heat index, shaded/light-wind conditions, and the effect of direct sunshine.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/dew-point-calculator/?utm_source=chatgpt.com">Dew Point Calculator</a></li>
+      <li><a href="https://example.com/wind-chill-calculator/?utm_source=chatgpt.com">Wind Chill Calculator</a></li>
+      <li><a href="https://example.com/conversion-calculator/?utm_source=chatgpt.com">Conversion Calculator</a></li>
+      <li><a href="https://example.com/btu-calculator/?utm_source=chatgpt.com">BTU Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+
+            </div>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"194","Batch":"20","Calculator / Page":"Gravel Calculator","Slug":"gravel-calculator","Site Category (Current)":"Engineering & Construction","Recommended Content Domain":"Engineering / Construction","Page Type":"Calculator","Search Intent / Purpose":"Calculate gravel volume from length, width, and depth, with optional supplier density for weight estimates.","Formula / Algorithm Used in Tool":"Gravel Calculator Formula: Volume = length × width × depth. Imperial cubic yards = [L(ft) × W(ft) × D(in ÷ 12)] ÷ 27. Mass = volume × bulk density.","Required User Inputs":"Length (ft); Width (ft); Depth (in); Overage (%); Supplier bulk density (lb/ft³, optional)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Length (ft), Width (ft), Depth (in), Overage (%), Supplier bulk density (lb/ft³, optional). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Exact engineering/geometry formula, units, standards; document any default density, waste factor, safety factor or material assumption.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When standards/default factors change","Important Assumptions / Limitations":"This calculator is not a geotechnical design tool and does not determine structural base thickness. Use engineering specifications for driveways, roads, foundations, drainage, or load-bearing work.","Current Source URLs in Page":"https://extension.k-state.edu/program-areas/supporting-communities/public-trails/trail-talk-files/2023-trail%20talk%20tuesday%20December.pdf | https://www.nist.gov/pml/owm/si-units-volume","Implementation Path":"/gravel-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Engineering &amp; Construction</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../mulch-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Mulch Calculator</strong><small>Estimate mulch
+                            volume in cubic yards or cubic meters, plus bag counts, from area an…</small></span></a><a
+                    class="cp-related-link" href="../concrete-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Concrete Calculator</strong><small>Calculate
+                            concrete volume for slabs, round columns, or tubes, convert to cubic
+                            yard…</small></span></a><a class="cp-related-link"
+                    href="../engine-horsepower-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Engine Horsepower
+                            Calculator</strong><small>Estimate engine horsepower from quarter-mile elapsed time or trap
+                            speed with weight…</small></span></a><a class="cp-related-link"
+                    href="../stair-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Stair
+                            Calculator</strong><small>Calculate straight-stair risers, treads, total run, pitch angle,
+                            and stringer lengt…</small></span></a><a class="cp-related-link"
+                    href="../roofing-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Roofing
+                            Calculator</strong><small>Estimate pitched roof area, roofing squares, bundle quantity,
+                            waste, and optional m…</small></span></a><a class="cp-related-link"
+                    href="../tile-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Tile
+                            Calculator</strong><small>Estimate tile quantity, rows, columns, waste, boxes, and optional
+                            cost for a rectan…</small></span></a><a class="cp-related-link"
+                    href="../concrete-calculator-for-your-site/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Concrete Calculator for Your
+                            Site</strong><small>Calculate concrete volume for rectangular slabs, round columns, and
+                            circular tubes…</small></span></a><a class="cp-related-link"
+                    href="../btu-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>BTU
+                            Calculator</strong><small>Estimate room air-conditioner cooling capacity in BTU per hour
+                            using ENERGY STAR ro…</small></span></a></div><a class="cp-side-category"
+                href="../engineering/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>function fmt(n, d = 2) { if (!Number.isFinite(n)) return '—'; return new Intl.NumberFormat(undefined, { maximumFractionDigits: d }).format(n) } function showError(msg) { const e = document.getElementById('error'); e.textContent = msg; e.classList.add('show') } function clearError() { const e = document.getElementById('error'); e.textContent = ''; e.classList.remove('show') } function copyText(id) { const el = document.getElementById(id); const text = el.value || el.textContent; navigator.clipboard?.writeText(text) } const form = document.getElementById('form'), uImp = document.getElementById('uImp'), uMet = document.getElementById('uMet'), lu = document.getElementById('lu'), length = document.getElementById('length'), wu = document.getElementById('wu'), width = document.getElementById('width'), du = document.getElementById('du'), depth = document.getElementById('depth'), over = document.getElementById('over'), denu = document.getElementById('denu'), density = document.getElementById('density'), error = document.getElementById('error'), reset = document.getElementById('reset'), primary = document.getElementById('primary'), summary = document.getElementById('summary'), base = document.getElementById('base'), weight = document.getElementById('weight'), alt = document.getElementById('alt'), area = document.getElementById('area'); let metric = false; function labels() { lu.textContent = wu.textContent = metric ? '(m)' : '(ft)'; du.textContent = metric ? '(cm)' : '(in)'; denu.textContent = metric ? '(kg/m³, optional)' : '(lb/ft³, optional)'; uImp.classList.toggle('active', !metric); uMet.classList.toggle('active', metric) } function calc() { clearError(); const L = +length.value, W = +width.value, D = +depth.value, O = +over.value || 0, Den = +density.value || 0; if (!(L > 0 && W > 0 && D > 0) || O < 0 || Den < 0) { showError('Enter positive dimensions and non-negative optional values.'); return } if (metric) { const a = L * W, b = a * D / 100, f = b * (1 + O / 100); primary.textContent = fmt(f, 3) + ' m³'; base.textContent = fmt(b, 3) + ' m³'; alt.textContent = fmt(f * 1000, 0) + ' L'; area.textContent = fmt(a, 2) + ' m²'; weight.textContent = Den > 0 ? fmt(f * Den, 0) + ' kg' : 'Add density' } else { const a = L * W, bft = a * D / 12, by = bft / 27, fft = bft * (1 + O / 100), fy = fft / 27; primary.textContent = fmt(fy, 2) + ' yd³'; base.textContent = fmt(by, 2) + ' yd³'; alt.textContent = fmt(fft, 1) + ' ft³'; area.textContent = fmt(a, 1) + ' ft²'; weight.textContent = Den > 0 ? fmt((fft * Den) / 2000, 2) + ' short tons' : 'Add density' } summary.textContent = O ? `Includes ${fmt(O, 1)}% overage.` : 'No overage added.' } form.onsubmit = e => { e.preventDefault(); calc() }; uImp.onclick = () => { metric = false; labels(); calc() }; uMet.onclick = () => { metric = true; length.value = 9; width.value = 3.6; depth.value = 10; density.value = ''; labels(); calc() }; reset.onclick = () => { metric = false; length.value = 30; width.value = 12; depth.value = 4; over.value = 10; density.value = ''; labels(); calc() }; labels(); calc();</script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

@@ -1,24 +1,998 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
-<title>Heat Index Calculator | CalcPro</title><meta content="Calculate heat index from air temperature and relative humidity using the National Weather Service Rothfusz method." name="description"/><meta content="index,follow" name="robots"/><link href="../heat-index-calculator/" rel="canonical"/><meta content="Heat Index Calculator" property="og:title"/><meta content="Calculate heat index from air temperature and relative humidity using the National Weather Service Rothfusz method." property="og:description"/><meta content="website" property="og:type"/><meta content="/heat-index-calculator/" property="og:url"/><meta content="#1477ff" name="theme-color"/><style>:root{--bg:#fff5e6;--card:#fffdf8;--input:#fff9ef;--ink:#3b211a;--text:#65453d;--muted:#8f6c60;--line:#f0d6bd;--accent:#ec5b2a;--accentText:#fff;--soft:#ffe7c8;--shadow:0 28px 80px rgba(175,82,28,.17);--result1:#5a1824;--result2:#e34f2b;--resultInk:#fff9ed;}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}button,input,select,textarea{font:inherit}button{cursor:pointer}.wrap{width:min(1160px,calc(100% - 32px));margin:auto}.crumb{font-size:.9rem;color:var(--muted);padding:20px 0}.crumb a{color:inherit}.hero{position:relative;overflow:hidden}.hero h1{font-size:clamp(2.3rem,6vw,5.5rem);line-height:.95;letter-spacing:-.055em;margin:0 0 18px}.hero p{font-size:1.08rem;color:var(--muted);max-width:700px;margin:0}.eyebrow{font-weight:800;text-transform:uppercase;letter-spacing:.14em;font-size:.76rem;color:var(--accent)}.calc-shell{position:relative;z-index:3}.card{background:var(--card);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow)}.field{display:grid;gap:7px}.field label{font-weight:750;font-size:.9rem}.field small{color:var(--muted)}input,select,textarea{width:100%;border:1px solid var(--line);background:var(--input);color:var(--ink);border-radius:14px;padding:13px 14px;outline:none;transition:.2s}input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 16%,transparent)}textarea{min-height:160px;resize:vertical}.actions{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:800}.btn.primary{background:var(--accent);color:var(--accentText,#fff);box-shadow:0 10px 24px color-mix(in srgb,var(--accent) 26%,transparent)}.btn.ghost{background:var(--soft);color:var(--ink);border:1px solid var(--line)}.error{display:none;padding:11px 13px;border-radius:12px;background:#fee2e2;color:#991b1b;font-weight:700;font-size:.9rem}.error.show{display:block}.result{background:linear-gradient(145deg,var(--result1),var(--result2));color:var(--resultInk);border-radius:24px;padding:22px;min-height:170px;position:relative;overflow:hidden}.result .big{font-size:clamp(2rem,5vw,4rem);line-height:1;font-weight:900;letter-spacing:-.04em;margin:8px 0}.result .label{opacity:.78;font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em}.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}.metric{background:color-mix(in srgb,var(--resultInk) 8%,transparent);border:1px solid color-mix(in srgb,var(--resultInk) 15%,transparent);border-radius:16px;padding:12px}.metric b{display:block;font-size:1.1rem}.metric span{font-size:.8rem;opacity:.75}.content{padding:76px 0 90px}.article-grid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:34px;align-items:start}.article{min-width:0}.article section{padding:28px 0;border-bottom:1px solid var(--line)}.article h2{font-size:clamp(1.55rem,3vw,2.35rem);line-height:1.15;letter-spacing:-.03em;margin:0 0 12px}.article h3{font-size:1.12rem;margin:22px 0 8px}.article p,.article li{color:var(--text)}.formula{padding:18px 20px;border-radius:18px;background:var(--soft);border:1px solid var(--line);font-family:ui-monospace,SFMono-Regular,Consolas,monospace;overflow:auto}.note{border-left:4px solid var(--accent);padding:12px 16px;background:var(--soft);border-radius:0 14px 14px 0}.toc{position:sticky;top:18px;padding:22px}.toc strong{display:block;margin-bottom:10px}.toc a{display:block;padding:7px 0;color:var(--muted);font-size:.9rem}.source-list{padding-left:20px}.source-list li{margin:8px 0}footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.88rem}.pill{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;background:var(--soft);border:1px solid var(--line);font-size:.78rem;font-weight:750}.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.switchline{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.switchline button{border:1px solid var(--line);background:var(--soft);color:var(--ink);padding:8px 12px;border-radius:999px;font-weight:800}.switchline button.active{background:var(--accent);color:var(--accentText,#fff);border-color:transparent}.copybtn{position:absolute;top:14px;right:14px;border:1px solid color-mix(in srgb,var(--resultInk) 24%,transparent);background:color-mix(in srgb,var(--resultInk) 12%,transparent);color:var(--resultInk);border-radius:10px;padding:7px 10px;font-weight:800;font-size:.8rem}@media(max-width:850px){.article-grid{grid-template-columns:1fr}.toc{position:static}.row{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}}@media(max-width:520px){.wrap{width:min(100% - 20px,1160px)}.metrics{grid-template-columns:1fr}.hero h1{font-size:2.65rem}.card{border-radius:22px}}
-.hero{min-height:610px;background:radial-gradient(circle at 72% 38%,#ffdf56 0 11%,#ffb12f 12% 19%,transparent 20%),linear-gradient(130deg,#fff8ea 0 55%,#ffdfb6 55%)}.heat-hero{padding:55px 0 145px;max-width:780px}.heat-map{position:absolute;right:7%;bottom:80px;width:360px;height:220px;border-radius:50%;background:radial-gradient(circle,#ffef7a 0 18%,#ff9a38 18% 36%,#f04b2f 36% 53%,#7c2131 53% 68%,transparent 69%);filter:blur(.2px);transform:rotate(-16deg);box-shadow:0 35px 60px #c7582b44}.heat-map:after{content:"RH";position:absolute;right:15px;top:35px;font-size:3rem;font-weight:950;color:#7b252b}.calc-shell{margin-top:-75px}.heat-card{padding:24px;display:grid;grid-template-columns:.8fr 1.2fr;gap:20px}.heat-form{padding:24px;background:#fff6e6;border-radius:22px}.heat-result{min-height:330px;display:flex;flex-direction:column;justify-content:center}.gauge{height:10px;background:linear-gradient(90deg,#ffd55b,#ff8d3a,#d72d35,#6b1e3d);border-radius:999px;margin-top:18px}@media(max-width:800px){.heat-map{opacity:.35;right:-80px}.heat-card{grid-template-columns:1fr}.hero{min-height:690px}}</style><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Heat Index Calculator", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "description": "Calculate heat index from air temperature and relative humidity using the National Weather Service Rothfusz method.", "url": "/heat-index-calculator/", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Lifestyle & Other", "item": "/other/"}, {"@type": "ListItem", "position": 3, "name": "Weather", "item": "/other/weather/"}, {"@type": "ListItem", "position": 4, "name": "Heat IndexCalculator", "item": "/heat-index-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What inputs does heat index use?", "acceptedAnswer": {"@type": "Answer", "text": "The standard NWS heat-index calculation uses air temperature and relative humidity."}}, {"@type": "Question", "name": "Is heat index measured in the shade?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. NWS heat-index values are defined for shady, light-wind conditions. Direct sunlight can make conditions feel hotter."}}, {"@type": "Question", "name": "Why does the formula change near 80°F?", "acceptedAnswer": {"@type": "Answer", "text": "NWS first applies a simpler Steadman-consistent calculation. If the averaged result reaches 80°F, the full Rothfusz regression and any relevant humidity adjustment are applied."}}]}]}</script><link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head><body data-cp-category="other" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header>
-<nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../other/index.html">Other Tools</a></li><li><a aria-current="page" href="index.html">Heat Index Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../other/index.html">Browse Other Tools</a><a href="../calculators/index.html">All calculators</a></div><header class="hero"><div class="wrap"><nav aria-label="Breadcrumb" class="crumb"><a href="../index.html">Home</a> / Heat Index Calculator</nav><div class="heat-hero"><span class="eyebrow">NWS apparent heat method</span><h1>Heat Index<br/>Calculator</h1><p>Temperature plus humidity, calculated with the National Weather Service procedure and regression adjustments.</p></div><div aria-hidden="true" class="heat-map"></div></div></header>
-<div class="cp-page-layout"><main id="main"><h1 class="page-title">Heat Index Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="calc-shell"><div class="wrap"><div class="card heat-card"><form class="heat-form" id="form"><div class="field"><label>Air temperature</label><div class="row"><input id="temp" step="any" type="number" value="90"/><select id="unit"><option value="F">°F</option><option value="C">°C</option></select></div></div><div class="field"><label>Relative humidity (%)</label><input id="rh" max="100" min="0" step="any" type="number" value="60"/></div><div class="error" id="error"></div><div class="actions"><button class="btn primary">Calculate heat index</button><button class="btn ghost" id="reset" type="button">Reset</button></div></form><div class="result heat-result"><span class="label">Apparent temperature</span><div class="big" id="primary">100°F</div><div id="summary">About 10°F above the air temperature.</div><div class="gauge"></div><div class="metrics"><div class="metric"><b id="cval">38°C</b><span>Celsius</span></div><div class="metric"><b id="delta">+10°F</b><span>Difference</span></div><div class="metric"><b id="method">Rothfusz</b><span>Method used</span></div><div class="metric"><b id="input">90°F · 60%</b><span>Inputs</span></div></div></div></div></div></section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div>
-<div class="content"><div class="wrap article-grid"><article class="article">
-<section id="what"><h2>What Is the Heat Index Calculator?</h2><p>The heat index estimates how hot it feels when air temperature and relative humidity are considered together. This calculator follows the U.S. National Weather Service procedure: it begins with a simpler approximation and uses the Rothfusz regression when the preliminary result reaches the applicable range.</p></section>
-<section id="use"><h2>How to Use the Heat Index Calculator</h2><p>Enter air temperature and relative humidity. Choose Fahrenheit or Celsius; Celsius is converted internally to Fahrenheit because the published NWS regression uses °F. The result is shown in both systems.</p></section>
-<section id="formula"><h2>Heat Index Calculator Formula</h2><div class="formula">HI = −42.379 + 2.04901523T + 10.14333127RH − 0.22475541TRH − 0.00683783T² − 0.05481717RH² + 0.00122874T²RH + 0.00085282TRH² − 0.00000199T²RH²</div><h3>Formula Variables</h3><p>T is temperature in °F and RH is relative humidity in percent. NWS also specifies adjustments for very low humidity from 80–112°F and very high humidity from 80–87°F.</p></section>
-<section id="example"><h2>Calculation Example</h2><p>At 90°F and 60% relative humidity, the NWS method yields a heat index of roughly 100°F.</p></section>
-<section id="results"><h2>Understanding Your Results</h2><p>The result is an apparent temperature for the specified model conditions. The calculator also shows the difference between heat index and actual air temperature.</p></section>
-<section id="factors"><h2>Important Factors</h2><p>Sunlight, wind, clothing, hydration, activity, acclimatization, and individual health can change actual heat stress.</p></section>
-<section id="limits"><h2>Limitations</h2><p>Heat index is not a body-temperature prediction or personal medical threshold. The Rothfusz regression is not valid at extreme combinations outside the data range used to derive it. Follow local heat warnings and safety guidance.</p></section>
-<section id="faq"><h2>Frequently Asked Questions</h2><h3>What inputs does heat index use?</h3><p>The standard NWS heat-index calculation uses air temperature and relative humidity.</p><h3>Is heat index measured in the shade?</h3><p>Yes. NWS heat-index values are defined for shady, light-wind conditions. Direct sunlight can make conditions feel hotter.</p><h3>Why does the formula change near 80°F?</h3><p>NWS first applies a simpler Steadman-consistent calculation. If the averaged result reaches 80°F, the full Rothfusz regression and any relevant humidity adjustment are applied.</p></section>
-<section id="sources"><h2>Sources and Methodology</h2><p>The calculator logic was implemented from the standards and references below. The page uses client-side JavaScript and does not send entered values to a server.</p><ul class="source-list"><li><a href="https://www.weather.gov/tbw/heatindex" rel="noopener noreferrer">National Weather Service — Heat Index</a> — Official Rothfusz regression, low/high humidity adjustments, and low-heat-index method.</li><li><a href="https://www.wpc.ncep.noaa.gov/html/heatindex_equationbody.html" rel="noopener noreferrer">NWS Weather Prediction Center — Heat Index Equation</a> — Technical equation and validity notes.</li></ul></section>
-</article></div></div>
+<html lang="en">
 
-<script class="cp-calculator-data" type="application/json">{"index":"195","Batch":"20","Calculator / Page":"Heat Index Calculator","Slug":"heat-index-calculator","Site Category (Current)":"Other Tools","Recommended Content Domain":"Other Tools","Page Type":"Calculator","Search Intent / Purpose":"Calculate heat index from air temperature and relative humidity using the National Weather Service Rothfusz method.","Formula / Algorithm Used in Tool":"Heat Index Calculator Formula: HI = −42.379 + 2.04901523T + 10.14333127RH − 0.22475541TRH − 0.00683783T² − 0.05481717RH² + 0.00122874T²RH + 0.00085282TRH² − 0.00000199T²RH²","Required User Inputs":"Air temperature; Relative humidity (%)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Air temperature, Relative humidity (%). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Official meteorological formula, valid input range, units and warnings.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When formula validity ranges or official guidance change","Important Assumptions / Limitations":"Heat index is not a body-temperature prediction or personal medical threshold. The Rothfusz regression is not valid at extreme combinations outside the data range used to derive it. Follow local heat warnings and safety guidance.","Current Source URLs in Page":"https://www.weather.gov/tbw/heatindex | https://www.wpc.ncep.noaa.gov/html/heatindex_equationbody.html","Implementation Path":"/heat-index-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Other Tools</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../dew-point-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Dew Point Calculator</strong><small>Calculate dew point from air temperature and relative humidity using a NOAA/NCEP sa…</small></span></a><a class="cp-related-link" href="../wind-chill-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Wind Chill Calculator</strong><small>Calculate National Weather Service wind chill from air temperature and wind speed w…</small></span></a><a class="cp-related-link" href="../height-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Height Calculator</strong><small>Estimate a child's adult height from parental height using the mid-parental method…</small></span></a><a class="cp-related-link" href="../golf-handicap-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Golf Handicap Calculator</strong><small>Calculate Course Handicap and estimate a base Handicap Index using current World Ha…</small></span></a><a class="cp-related-link" href="../love-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Love Calculator</strong><small>Generate a repeatable, just-for-fun name match percentage with a transparent entert…</small></span></a><a class="cp-related-link" href="../tip-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Tip Calculator</strong><small>Calculate tip amount, total bill, and per-person split with custom or quick-select…</small></span></a><a class="cp-related-link" href="../other-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Other Calculators</strong><small>Browse and filter CalcPro utility calculators for date and time, construction, meas…</small></span></a><a class="cp-related-link" href="../calculators-for-your-site/index.html"><span class="cp-related-dot">›</span><span><strong>Calculators for Your Site</strong><small>Browse CalcPro embeddable calculator pages and generate responsive iframe code for…</small></span></a></div><a class="cp-side-category" href="../other/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script>function fmt(n,d=2){if(!Number.isFinite(n))return '—';return new Intl.NumberFormat(undefined,{maximumFractionDigits:d}).format(n)}function showError(msg){const e=document.getElementById('error');e.textContent=msg;e.classList.add('show')}function clearError(){const e=document.getElementById('error');e.textContent='';e.classList.remove('show')}function copyText(id){const el=document.getElementById(id);const text=el.value||el.textContent;navigator.clipboard?.writeText(text)}const form=document.getElementById('form'),temp=document.getElementById('temp'),unit=document.getElementById('unit'),rh=document.getElementById('rh'),error=document.getElementById('error'),reset=document.getElementById('reset'),primary=document.getElementById('primary'),summary=document.getElementById('summary'),cval=document.getElementById('cval'),delta=document.getElementById('delta'),method=document.getElementById('method'),input=document.getElementById('input');function hiNws(T,RH){let simple=.5*(T+61+((T-68)*1.2)+(RH*.094));let avg=(simple+T)/2;if(avg<80)return {v:avg,m:'Simple NWS'};let H=-42.379+2.04901523*T+10.14333127*RH-.22475541*T*RH-.00683783*T*T-.05481717*RH*RH+.00122874*T*T*RH+.00085282*T*RH*RH-.00000199*T*T*RH*RH;if(RH<13&&T>=80&&T<=112)H-=((13-RH)/4)*Math.sqrt((17-Math.abs(T-95))/17);else if(RH>85&&T>=80&&T<=87)H+=((RH-85)/10)*((87-T)/5);return {v:H,m:'Rothfusz'}}function calc(){clearError();let T=+temp.value,R=+rh.value;if(!Number.isFinite(T)||!(R>=0&&R<=100)){showError('Enter a valid temperature and relative humidity from 0% to 100%.');return}let F=unit.value==='C'?T*9/5+32:T;let out=hiNws(F,R),C=(out.v-32)*5/9,d=out.v-F;primary.textContent=fmt(out.v,1)+'°F';cval.textContent=fmt(C,1)+'°C';delta.textContent=(d>=0?'+':'')+fmt(d,1)+'°F';method.textContent=out.m;input.textContent=fmt(F,1)+'°F · '+fmt(R,0)+'%';summary.textContent=d>=0?`About ${fmt(d,1)}°F above the air temperature.`:`About ${fmt(Math.abs(d),1)}°F below the air temperature.`}form.onsubmit=e=>{e.preventDefault();calc()};reset.onclick=()=>{temp.value=90;rh.value=60;unit.value='F';calc()};calc();</script><script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <!-- Primary Meta Tags -->
+<title>Heat Index Calculator – Calculate Feels-Like Temperature</title>
+<meta name="title" content="Heat Index Calculator – Calculate Feels-Like Temperature">
+<meta name="description" content="Calculate heat index from air temperature and relative humidity using the NWS Rothfusz regression, and understand what the apparent temperature means.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/heat-index-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/heat-index-calculator/">
+<meta property="og:title" content="Heat Index Calculator – Calculate Feels-Like Temperature">
+<meta property="og:description" content="Calculate heat index from air temperature and relative humidity using the NWS Rothfusz regression, and understand what the apparent temperature means.">
+<meta property="og:site_name" content="Heat Index Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/heat-index-calculator/">
+<meta name="twitter:title" content="Heat Index Calculator – Calculate Feels-Like Temperature">
+<meta name="twitter:description" content="Calculate heat index from air temperature and relative humidity using the NWS Rothfusz regression, and understand what the apparent temperature means.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        :root {
+            --bg: #fff5e6;
+            --card: #fffdf8;
+            --input: #fff9ef;
+            --ink: #3b211a;
+            --text: #65453d;
+            --muted: #8f6c60;
+            --line: #f0d6bd;
+            --accent: #ec5b2a;
+            --accentText: #fff;
+            --soft: #ffe7c8;
+            --shadow: 0 28px 80px rgba(175, 82, 28, .17);
+            --result1: #5a1824;
+            --result2: #e34f2b;
+            --resultInk: #fff9ed;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.65
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        .wrap {
+            width: min(1160px, calc(100% - 32px));
+            margin: auto
+        }
+
+        .crumb {
+            font-size: .9rem;
+            color: var(--muted);
+            padding: 20px 0
+        }
+
+        .crumb a {
+            color: inherit
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero h1 {
+            font-size: clamp(2.3rem, 6vw, 5.5rem);
+            line-height: .95;
+            letter-spacing: -.055em;
+            margin: 0 0 18px
+        }
+
+        .hero p {
+            font-size: 1.08rem;
+            color: var(--muted);
+            max-width: 700px;
+            margin: 0
+        }
+
+        .eyebrow {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .14em;
+            font-size: .76rem;
+            color: var(--accent)
+        }
+
+        .calc-shell {
+            position: relative;
+            z-index: 3
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            box-shadow: var(--shadow)
+        }
+
+        .field {
+            display: grid;
+            gap: 7px
+        }
+
+        .field label {
+            font-weight: 750;
+            font-size: .9rem
+        }
+
+        .field small {
+            color: var(--muted)
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--line);
+            background: var(--input);
+            color: var(--ink);
+            border-radius: 14px;
+            padding: 13px 14px;
+            outline: none;
+            transition: .2s
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent)
+        }
+
+        textarea {
+            min-height: 160px;
+            resize: vertical
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-weight: 800
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            color: var(--accentText, #fff);
+            box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 26%, transparent)
+        }
+
+        .btn.ghost {
+            background: var(--soft);
+            color: var(--ink);
+            border: 1px solid var(--line)
+        }
+
+        .error {
+            display: none;
+            padding: 11px 13px;
+            border-radius: 12px;
+            background: #fee2e2;
+            color: #991b1b;
+            font-weight: 700;
+            font-size: .9rem
+        }
+
+        .error.show {
+            display: block
+        }
+
+        .result {
+            background: linear-gradient(145deg, var(--result1), var(--result2));
+            color: var(--resultInk);
+            border-radius: 24px;
+            padding: 22px;
+            min-height: 170px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .result .big {
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: -.04em;
+            margin: 8px 0
+        }
+
+        .result .label {
+            opacity: .78;
+            font-weight: 700;
+            font-size: .85rem;
+            text-transform: uppercase;
+            letter-spacing: .08em
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 16px
+        }
+
+        .metric {
+            background: color-mix(in srgb, var(--resultInk) 8%, transparent);
+            border: 1px solid color-mix(in srgb, var(--resultInk) 15%, transparent);
+            border-radius: 16px;
+            padding: 12px
+        }
+
+        .metric b {
+            display: block;
+            font-size: 1.1rem
+        }
+
+        .metric span {
+            font-size: .8rem;
+            opacity: .75
+        }
+
+        .content {
+            padding: 76px 0 90px
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 310px;
+            gap: 34px;
+            align-items: start
+        }
+
+        .article {
+            min-width: 0
+        }
+
+        .article section {
+            padding: 28px 0;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .article h2 {
+            font-size: clamp(1.55rem, 3vw, 2.35rem);
+            line-height: 1.15;
+            letter-spacing: -.03em;
+            margin: 0 0 12px
+        }
+
+        .article h3 {
+            font-size: 1.12rem;
+            margin: 22px 0 8px
+        }
+
+        .article p,
+        .article li {
+            color: var(--text)
+        }
+
+        .formula {
+            padding: 18px 20px;
+            border-radius: 18px;
+            background: var(--soft);
+            border: 1px solid var(--line);
+            font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+            overflow: auto
+        }
+
+        .note {
+            border-left: 4px solid var(--accent);
+            padding: 12px 16px;
+            background: var(--soft);
+            border-radius: 0 14px 14px 0
+        }
+
+        .toc {
+            position: sticky;
+            top: 18px;
+            padding: 22px
+        }
+
+        .toc strong {
+            display: block;
+            margin-bottom: 10px
+        }
+
+        .toc a {
+            display: block;
+            padding: 7px 0;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .source-list {
+            padding-left: 20px
+        }
+
+        .source-list li {
+            margin: 8px 0
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 28px 0;
+            color: var(--muted);
+            font-size: .88rem
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 11px;
+            border-radius: 999px;
+            background: var(--soft);
+            border: 1px solid var(--line);
+            font-size: .78rem;
+            font-weight: 750
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px
+        }
+
+        .switchline {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap
+        }
+
+        .switchline button {
+            border: 1px solid var(--line);
+            background: var(--soft);
+            color: var(--ink);
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-weight: 800
+        }
+
+        .switchline button.active {
+            background: var(--accent);
+            color: var(--accentText, #fff);
+            border-color: transparent
+        }
+
+        .copybtn {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            border: 1px solid color-mix(in srgb, var(--resultInk) 24%, transparent);
+            background: color-mix(in srgb, var(--resultInk) 12%, transparent);
+            color: var(--resultInk);
+            border-radius: 10px;
+            padding: 7px 10px;
+            font-weight: 800;
+            font-size: .8rem
+        }
+
+        @media(max-width:850px) {
+            .article-grid {
+                grid-template-columns: 1fr
+            }
+
+            .toc {
+                position: static
+            }
+
+            .row {
+                grid-template-columns: 1fr
+            }
+
+            .metrics {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        @media(max-width:520px) {
+            .wrap {
+                width: min(100% - 20px, 1160px)
+            }
+
+            .metrics {
+                grid-template-columns: 1fr
+            }
+
+            .hero h1 {
+                font-size: 2.65rem
+            }
+
+            .card {
+                border-radius: 22px
+            }
+        }
+
+        .hero {
+            min-height: 610px;
+            background: radial-gradient(circle at 72% 38%, #ffdf56 0 11%, #ffb12f 12% 19%, transparent 20%), linear-gradient(130deg, #fff8ea 0 55%, #ffdfb6 55%)
+        }
+
+        .heat-hero {
+            padding: 55px 0 145px;
+            max-width: 780px
+        }
+
+        .heat-map {
+            position: absolute;
+            right: 7%;
+            bottom: 80px;
+            width: 360px;
+            height: 220px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ffef7a 0 18%, #ff9a38 18% 36%, #f04b2f 36% 53%, #7c2131 53% 68%, transparent 69%);
+            filter: blur(.2px);
+            transform: rotate(-16deg);
+            box-shadow: 0 35px 60px #c7582b44
+        }
+
+        .heat-map:after {
+            content: "RH";
+            position: absolute;
+            right: 15px;
+            top: 35px;
+            font-size: 3rem;
+            font-weight: 950;
+            color: #7b252b
+        } 
+
+        .heat-card {
+            padding: 24px;
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 20px
+        }
+
+        .heat-form {
+            padding: 24px;
+            background: #fff6e6;
+            border-radius: 22px
+        }
+
+        .heat-result {
+            min-height: 330px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center
+        }
+
+        .gauge {
+            height: 10px;
+            background: linear-gradient(90deg, #ffd55b, #ff8d3a, #d72d35, #6b1e3d);
+            border-radius: 999px;
+            margin-top: 18px
+        }
+
+        @media(max-width:800px) {
+            .heat-map {
+                opacity: .35;
+                right: -80px
+            }
+
+            .heat-card {
+                grid-template-columns: 1fr
+            }
+
+            .hero {
+                min-height: 690px
+            }
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/heat-index-calculator/#webapplication",
+      "name": "Heat Index Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/heat-index-calculator/",
+      "description": "Calculate heat index from air temperature and relative humidity using the NWS Rothfusz regression, and understand what the apparent temperature means.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/heat-index-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Heat Index Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/heat-index-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/heat-index-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does the heat index measure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The heat index estimates how hot conditions feel when air temperature and relative humidity are considered together. It is also called apparent or “feels-like” temperature."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What formula does this calculator use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It uses the National Weather Service Rothfusz regression, which combines temperature in degrees Fahrenheit with relative humidity expressed as a percentage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is relative humidity entered as a decimal?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Relative humidity is used as a percentage in the formula. For 60% relative humidity, RH = 60, not 0.60."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is heat index the same as air temperature?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Air temperature is the measured atmospheric temperature. Heat index combines temperature and humidity to estimate apparent heat."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the Rothfusz formula accurate at low temperatures?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The NWS states that the regression is not appropriate when conditions produce a heat index below about 80°F. Its complete operational method uses a simpler calculation for lower conditions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the calculator account for direct sunlight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Direct sunlight is not a variable in the Rothfusz equation shown here. NWS guidance notes that full sunshine can increase the apparent heat effect by up to about 15°F compared with shaded conditions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use the result to determine my risk of heat illness?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The result provides an environmental heat estimate, not an individualized medical assessment. Personal risk can depend on factors that are not included in this calculation, so current local heat warnings and appropriate safety guidance should also be considered."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "MonkeyMart OnlineFree",
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="other" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../other/index.html">Other Tools</a></li>
+            <li><a aria-current="page" href="index.html">Heat Index Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../other/index.html">Browse Other Tools</a><a
+            href="../calculators/index.html">All calculators</a></div>
+     
+    <div class="cp-page-layout">
+        <main id="main">
+            <h1 class="page-title">Heat Index Calculator</h1>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="calc-shell">
+                <div class="wrap">
+                    <div class="card heat-card">
+                        <form class="heat-form" id="form">
+                            <div class="field"><label>Air temperature</label>
+                                <div class="row"><input id="temp" step="any" type="number" value="90" /><select
+                                        id="unit">
+                                        <option value="F">°F</option>
+                                        <option value="C">°C</option>
+                                    </select></div>
+                            </div>
+                            <div class="field"><label>Relative humidity (%)</label><input id="rh" max="100" min="0"
+                                    step="any" type="number" value="60" /></div>
+                            <div class="error" id="error"></div>
+                            <div class="actions"><button class="btn primary">Calculate heat index</button><button
+                                    class="btn ghost" id="reset" type="button">Reset</button></div>
+                        </form>
+                        <div class="result heat-result"><span class="label">Apparent temperature</span>
+                            <div class="big" id="primary">100°F</div>
+                            <div id="summary">About 10°F above the air temperature.</div>
+                            <div class="gauge"></div>
+                            <div class="metrics">
+                                <div class="metric"><b id="cval">38°C</b><span>Celsius</span></div>
+                                <div class="metric"><b id="delta">+10°F</b><span>Difference</span></div>
+                                <div class="metric"><b id="method">Rothfusz</b><span>Method used</span></div>
+                                <div class="metric"><b id="input">90°F · 60%</b><span>Inputs</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <div class="content">
+                 
+<article class="article">
+
+ 
+  <p>The Heat Index Calculator estimates how hot the air feels when <strong>air temperature</strong> and <strong>relative humidity</strong> are considered together. Enter the temperature and relative humidity to calculate the apparent, or “feels-like,” temperature using the National Weather Service Rothfusz regression.</p>
+
+  <section id="what">
+    <h2>What Is the Heat Index Calculator?</h2>
+    <p>A heat index calculator combines air temperature with relative humidity to estimate apparent temperature. High humidity can make hot conditions feel warmer because moisture in the air reduces how efficiently sweat can evaporate from the skin.</p>
+    <p>This calculator is useful for checking hot-weather conditions during outdoor work, exercise, travel, sports, or other activities. The result is an environmental estimate, not a measurement of body temperature or an individual medical-risk assessment.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Heat Index Calculator</h2>
+    <p>Enter the two required values in this order:</p>
+    <ol>
+      <li><strong>Air Temperature:</strong> Enter the air temperature. In the Rothfusz formula, temperature <strong>T</strong> is measured in degrees Fahrenheit (°F).</li>
+      <li><strong>Relative Humidity (%):</strong> Enter relative humidity as a percentage. For example, enter <strong>50</strong> for 50% humidity, not 0.50.</li>
+    </ol>
+    <p>The calculator applies these values to the Rothfusz regression and returns the calculated heat index.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+    <p>The calculator uses the National Weather Service Rothfusz regression:</p>
+
+    <div class="formula">HI = −42.379 + 2.04901523T + 10.14333127RH − 0.22475541TRH − 0.00683783T² − 0.05481717RH² + 0.00122874T²RH + 0.00085282TRH² − 0.00000199T²RH²</div>
+
+    <p>This regression was developed to approximate apparent temperature from air temperature and relative humidity.</p>
+
+    <h3>Variables</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>HI</strong></td>
+          <td>Calculated heat index</td>
+          <td>°F</td>
+        </tr>
+        <tr>
+          <td><strong>T</strong></td>
+          <td>Air temperature</td>
+          <td>°F</td>
+        </tr>
+        <tr>
+          <td><strong>RH</strong></td>
+          <td>Relative humidity</td>
+          <td>%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Relative humidity is entered as a percentage value, such as 40, 60, or 80.</p>
+
+    <h3>Calculation Sequence</h3>
+    <p>The calculator follows this calculation process:</p>
+    <ol>
+      <li>Read the air temperature as <strong>T</strong>.</li>
+      <li>Read relative humidity as <strong>RH</strong>.</li>
+      <li>Calculate the squared terms <strong>T²</strong> and <strong>RH²</strong>.</li>
+      <li>Calculate the interaction terms such as <strong>T × RH</strong>, <strong>T² × RH</strong>, and <strong>T × RH²</strong>.</li>
+      <li>Substitute all values into the Rothfusz regression.</li>
+      <li>Combine the terms to obtain the heat index in degrees Fahrenheit.</li>
+    </ol>
+
+    <p>The calculation described here is the Rothfusz regression itself. The NWS operational heat-index procedure can also use additional adjustments or a simpler equation under certain temperature and humidity conditions.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+    <p>Suppose:</p>
+
+    <h3>Inputs</h3>
+    <ul>
+      <li>Air temperature: <strong>95°F</strong></li>
+      <li>Relative humidity: <strong>50%</strong></li>
+    </ul>
+
+    <h3>Step 1: Substitute the Values</h3>
+    <p>Using <strong>T = 95</strong> and <strong>RH = 50</strong>:</p>
+
+    <div class="formula">HI = −42.379 + 2.04901523(95) + 10.14333127(50) − 0.22475541(95)(50) − 0.00683783(95²) − 0.05481717(50²) + 0.00122874(95²)(50) + 0.00085282(95)(50²) − 0.00000199(95²)(50²)</div>
+
+    <h3>Step 2: Calculate the Terms</h3>
+    <p>The main calculated terms are approximately:</p>
+    <ul>
+      <li>2.04901523 × 95 = <strong>194.6564</strong></li>
+      <li>10.14333127 × 50 = <strong>507.1666</strong></li>
+      <li>−0.22475541 × 95 × 50 = <strong>−1067.5882</strong></li>
+      <li>−0.00683783 × 95² = <strong>−61.7114</strong></li>
+      <li>−0.05481717 × 50² = <strong>−137.0429</strong></li>
+      <li>0.00122874 × 95² × 50 = <strong>554.4689</strong></li>
+      <li>0.00085282 × 95 × 50² = <strong>202.5448</strong></li>
+      <li>−0.00000199 × 95² × 50² = <strong>−44.8994</strong></li>
+    </ul>
+
+    <h3>Step 3: Combine the Terms</h3>
+    <p>Adding these values with the constant <strong>−42.379</strong> gives:</p>
+
+    <div class="formula">HI ≈ 105.2158°F</div>
+
+    <h3>Final Result</h3>
+    <p>The calculated heat index is approximately <strong>105.22°F</strong>.</p>
+    <p>This means that an air temperature of 95°F with 50% relative humidity produces an apparent temperature of about 105°F under the assumptions represented by the formula.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+    <p>The main result is the <strong>heat index</strong>, expressed as an apparent temperature.</p>
+
+    <p>For example, a result of 105°F does not mean the measured air temperature has increased to 105°F. It means the combination of temperature and humidity can produce heat conditions that feel approximately like that apparent temperature.</p>
+
+    <p>Heat index should not be interpreted as body temperature, a diagnosis, or a personal medical threshold. Individual heat response can differ, and official local heat alerts should be followed when dangerous conditions are present.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+    <p>The Rothfusz regression has several important limitations.</p>
+
+    <p><strong>Hot-weather range:</strong> The National Weather Service states that the Rothfusz regression is not appropriate when temperature and humidity conditions would produce a heat index below about 80°F. Its operational procedure uses another method for lower values.</p>
+
+    <p><strong>Extreme combinations:</strong> The regression is not valid for extreme combinations of temperature and relative humidity outside the data range used to develop the underlying heat-index relationship.</p>
+
+    <p><strong>Shade and light wind:</strong> Official NWS heat-index values are designed for shady, light-wind conditions. Exposure to direct sunlight can increase the apparent heat effect by as much as about 15°F.</p>
+
+    <p><strong>Not a personal medical prediction:</strong> The calculated value does not predict an individual's body temperature, hydration level, or likelihood of developing a heat-related illness.</p>
+
+    <p><strong>Formula scope:</strong> This calculator uses air temperature and relative humidity. Other environmental or personal factors are not part of the Rothfusz equation shown above.</p>
+  </section>
+
+  <section id="rules">
+    <h2>Current NWS Guidance</h2>
+    <p>As of <strong>September 2026</strong>, National Weather Service resources continue to describe heat index as an apparent-temperature measure based on air temperature and relative humidity. The NWS also continues to note that published heat-index values are based on shady, light-wind conditions and that full sun can make conditions feel substantially hotter.</p>
+
+    <p>For real-world heat safety decisions, use current local National Weather Service forecasts, advisories, watches, and warnings rather than relying only on a calculated heat-index value.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What does the heat index measure?</summary>
+      <p>The heat index estimates how hot conditions feel when air temperature and relative humidity are considered together. It is also called apparent or “feels-like” temperature.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What formula does this calculator use?</summary>
+      <p>It uses the National Weather Service Rothfusz regression, which combines temperature in degrees Fahrenheit with relative humidity expressed as a percentage.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is relative humidity entered as a decimal?</summary>
+      <p>No. Relative humidity is used as a percentage in the formula. For 60% relative humidity, <strong>RH = 60</strong>, not 0.60.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is heat index the same as air temperature?</summary>
+      <p>No. Air temperature is the measured atmospheric temperature. Heat index combines temperature and humidity to estimate apparent heat.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is the Rothfusz formula accurate at low temperatures?</summary>
+      <p>The NWS states that the regression is not appropriate when conditions produce a heat index below about 80°F. Its complete operational method uses a simpler calculation for lower conditions.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does the calculator account for direct sunlight?</summary>
+      <p>Direct sunlight is not a variable in the Rothfusz equation shown here. NWS guidance notes that full sunshine can increase the apparent heat effect by up to about 15°F compared with shaded conditions.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can I use the result to determine my risk of heat illness?</summary>
+      <p>The result provides an environmental heat estimate, not an individualized medical assessment. Personal risk can depend on factors that are not included in this calculation, so current local heat warnings and appropriate safety guidance should also be considered.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+    <ul class="sources">
+      <li>
+        <a href="https://www.wpc.ncep.noaa.gov/html/heatindex_equationbody.html?utm_source=chatgpt.com" rel="noopener" target="_blank">NOAA/NWS Weather Prediction Center — The Heat Index Equation</a><br>
+        Supports the Rothfusz regression formula, Fahrenheit and relative-humidity units, operational adjustments, and formula validity limitations.
+      </li>
+      <li>
+        <a href="https://www.weather.gov/tbw/heatindex?utm_source=chatgpt.com" rel="noopener" target="_blank">National Weather Service Tampa Bay — Heat Index Statistics</a><br>
+        Supports the definition of heat index, Rothfusz equation, lower-range calculation guidance, and shade/direct-sun assumptions.
+      </li>
+      <li>
+        <a href="https://www.weather.gov/safety/heat-index?os=___&amp;utm_source=chatgpt.com" rel="noopener" target="_blank">National Weather Service — Heat Forecast Tools</a><br>
+        Supports current NWS heat-index guidance and the effect of direct sunlight on apparent heat.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="https://example.com/dew-point-calculator/?utm_source=chatgpt.com">Dew Point Calculator</a> — Calculate dew point from air temperature and relative humidity.</li>
+      <li><a href="https://example.com/wind-chill-calculator/?utm_source=chatgpt.com">Wind Chill Calculator</a> — Estimate how cold conditions feel using air temperature and wind speed.</li>
+      <li><a href="https://example.com/conversion-calculator/?utm_source=chatgpt.com">Conversion Calculator</a> — Convert temperature and other common measurement units.</li>
+      <li><a href="https://example.com/btu-calculator/?utm_source=chatgpt.com">BTU Calculator</a> — Estimate room air-conditioning capacity based on room conditions and size.</li>
+    </ul>
+  </section>
+
+</article>
+
+
+            </div>
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"195","Batch":"20","Calculator / Page":"Heat Index Calculator","Slug":"heat-index-calculator","Site Category (Current)":"Other Tools","Recommended Content Domain":"Other Tools","Page Type":"Calculator","Search Intent / Purpose":"Calculate heat index from air temperature and relative humidity using the National Weather Service Rothfusz method.","Formula / Algorithm Used in Tool":"Heat Index Calculator Formula: HI = −42.379 + 2.04901523T + 10.14333127RH − 0.22475541TRH − 0.00683783T² − 0.05481717RH² + 0.00122874T²RH + 0.00085282TRH² − 0.00000199T²RH²","Required User Inputs":"Air temperature; Relative humidity (%)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Air temperature, Relative humidity (%). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Official meteorological formula, valid input range, units and warnings.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When formula validity ranges or official guidance change","Important Assumptions / Limitations":"Heat index is not a body-temperature prediction or personal medical threshold. The Rothfusz regression is not valid at extreme combinations outside the data range used to derive it. Follow local heat warnings and safety guidance.","Current Source URLs in Page":"https://www.weather.gov/tbw/heatindex | https://www.wpc.ncep.noaa.gov/html/heatindex_equationbody.html","Implementation Path":"/heat-index-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Other Tools</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../dew-point-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Dew Point Calculator</strong><small>Calculate dew
+                            point from air temperature and relative humidity using a NOAA/NCEP sa…</small></span></a><a
+                    class="cp-related-link" href="../wind-chill-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Wind Chill Calculator</strong><small>Calculate
+                            National Weather Service wind chill from air temperature and wind speed
+                            w…</small></span></a><a class="cp-related-link" href="../height-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Height Calculator</strong><small>Estimate a child's
+                            adult height from parental height using the mid-parental method…</small></span></a><a
+                    class="cp-related-link" href="../golf-handicap-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Golf Handicap Calculator</strong><small>Calculate
+                            Course Handicap and estimate a base Handicap Index using current World
+                            Ha…</small></span></a><a class="cp-related-link" href="../love-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Love Calculator</strong><small>Generate a
+                            repeatable, just-for-fun name match percentage with a transparent
+                            entert…</small></span></a><a class="cp-related-link"
+                    href="../tip-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Tip
+                            Calculator</strong><small>Calculate tip amount, total bill, and per-person split with custom
+                            or quick-select…</small></span></a><a class="cp-related-link"
+                    href="../other-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Other
+                            Calculators</strong><small>Browse and filter CalcPro utility calculators for date and time,
+                            construction, meas…</small></span></a><a class="cp-related-link"
+                    href="../calculators-for-your-site/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Calculators for Your Site</strong><small>Browse
+                            CalcPro embeddable calculator pages and generate responsive iframe code
+                            for…</small></span></a></div><a class="cp-side-category"
+                href="../other/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>function fmt(n, d = 2) { if (!Number.isFinite(n)) return '—'; return new Intl.NumberFormat(undefined, { maximumFractionDigits: d }).format(n) } function showError(msg) { const e = document.getElementById('error'); e.textContent = msg; e.classList.add('show') } function clearError() { const e = document.getElementById('error'); e.textContent = ''; e.classList.remove('show') } function copyText(id) { const el = document.getElementById(id); const text = el.value || el.textContent; navigator.clipboard?.writeText(text) } const form = document.getElementById('form'), temp = document.getElementById('temp'), unit = document.getElementById('unit'), rh = document.getElementById('rh'), error = document.getElementById('error'), reset = document.getElementById('reset'), primary = document.getElementById('primary'), summary = document.getElementById('summary'), cval = document.getElementById('cval'), delta = document.getElementById('delta'), method = document.getElementById('method'), input = document.getElementById('input'); function hiNws(T, RH) { let simple = .5 * (T + 61 + ((T - 68) * 1.2) + (RH * .094)); let avg = (simple + T) / 2; if (avg < 80) return { v: avg, m: 'Simple NWS' }; let H = -42.379 + 2.04901523 * T + 10.14333127 * RH - .22475541 * T * RH - .00683783 * T * T - .05481717 * RH * RH + .00122874 * T * T * RH + .00085282 * T * RH * RH - .00000199 * T * T * RH * RH; if (RH < 13 && T >= 80 && T <= 112) H -= ((13 - RH) / 4) * Math.sqrt((17 - Math.abs(T - 95)) / 17); else if (RH > 85 && T >= 80 && T <= 87) H += ((RH - 85) / 10) * ((87 - T) / 5); return { v: H, m: 'Rothfusz' } } function calc() { clearError(); let T = +temp.value, R = +rh.value; if (!Number.isFinite(T) || !(R >= 0 && R <= 100)) { showError('Enter a valid temperature and relative humidity from 0% to 100%.'); return } let F = unit.value === 'C' ? T * 9 / 5 + 32 : T; let out = hiNws(F, R), C = (out.v - 32) * 5 / 9, d = out.v - F; primary.textContent = fmt(out.v, 1) + '°F'; cval.textContent = fmt(C, 1) + '°C'; delta.textContent = (d >= 0 ? '+' : '') + fmt(d, 1) + '°F'; method.textContent = out.m; input.textContent = fmt(F, 1) + '°F · ' + fmt(R, 0) + '%'; summary.textContent = d >= 0 ? `About ${fmt(d, 1)}°F above the air temperature.` : `About ${fmt(Math.abs(d), 1)}°F below the air temperature.` } form.onsubmit = e => { e.preventDefault(); calc() }; reset.onclick = () => { temp.value = 90; rh.value = 60; unit.value = 'F'; calc() }; calc();</script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

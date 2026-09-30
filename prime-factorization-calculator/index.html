@@ -1,13 +1,942 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
-<title>Prime Factorization Calculator – Prime Factors &amp; Factor Tree | CalcPro</title><meta content="Find prime factors, exponent form, factor pairs, number of divisors, and a visual factor tree for integers up to 1 trillion." name="description"/><meta content="index,follow" name="robots"/><link href="../prime-factorization-calculator/" rel="canonical"/><meta content="Prime Factorization Calculator | CalcPro" property="og:title"/><meta content="Factor an integer into primes and inspect the factor tree." property="og:description"/><meta content="#1477ff" name="theme-color"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Prime Factorization Calculator", "description": "Find prime factors, exponent form, factor pairs, divisors, and a factor tree for integers up to one trillion.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "isAccessibleForFree": true, "url": "/prime-factorization-calculator/"}, {"@type": "BreadcrumbList", "@id": "/prime-factorization-calculator/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Math & Statistics", "item": "/math/"}, {"@type": "ListItem", "position": 3, "name": "Number Theory & Number Systems", "item": "/math/number-theory-number-systems/"}, {"@type": "ListItem", "position": 4, "name": "Split a whole number until only primes remain.", "item": "/prime-factorization-calculator/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is prime factorization?", "acceptedAnswer": {"@type": "Answer", "text": "Prime factorization expresses an integer greater than 1 as a product of prime numbers. Apart from factor order, that prime decomposition is unique."}}, {"@type": "Question", "name": "What is the prime factorization of 60?", "acceptedAnswer": {"@type": "Answer", "text": "60 = 2 × 2 × 3 × 5, which can also be written as 2² × 3 × 5."}}, {"@type": "Question", "name": "Is 1 a prime number?", "acceptedAnswer": {"@type": "Answer", "text": "No. A prime number is an integer greater than 1 with exactly two positive divisors: 1 and itself. The number 1 therefore has no prime factorization."}}]}]}</script><style>
-*{box-sizing:border-box}:root{--bg:#121127;--panel:#1c1938;--violet:#8468ff;--cyan:#47d8df;--ink:#f2efff;--muted:#b1aac8;--line:#34305a}body{margin:0;font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at 10% 0,#2f2758 0,transparent 25%),radial-gradient(circle at 90% 20%,#0a5960 0,transparent 22%),var(--bg);color:var(--ink);line-height:1.6}a{color:#72e5e9}.wrap{width:min(1160px,92%);margin:auto}header{padding:20px 0}nav{display:flex;justify-content:space-between}.brand{font-weight:950}.crumb{color:var(--muted);font-size:.9rem}.hero{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center;padding:50px 0 40px}h1{font-size:clamp(3rem,6vw,5.9rem);line-height:.92;letter-spacing:-.06em;margin:.16em 0}.lead{color:var(--muted);font-size:1.08rem}.treeStage{height:350px;position:relative;perspective:900px}.root,.leaf{position:absolute;display:grid;place-items:center;border-radius:20px;background:linear-gradient(145deg,#2a2550,#17152f);border:1px solid #46406f;box-shadow:0 22px 40px #0005;font-weight:950}.root{width:105px;height:105px;left:50%;top:15px;transform:translateX(-50%) rotateX(10deg);font-size:2rem;color:#fff}.leaf{width:78px;height:78px;font-size:1.45rem;color:#88f5f5}.l1{left:20%;top:145px}.l2{right:20%;top:145px}.l3{left:7%;bottom:5px}.l4{left:34%;bottom:5px}.l5{right:34%;bottom:5px}.l6{right:7%;bottom:5px}.branch{position:absolute;height:2px;background:#6f63a8;transform-origin:left}.b1{width:140px;left:50%;top:112px;transform:rotate(150deg)}.b2{width:140px;left:50%;top:112px;transform:rotate(30deg)}.b3{width:120px;left:25%;top:213px;transform:rotate(145deg)}.b4{width:120px;left:25%;top:213px;transform:rotate(35deg)}.b5{width:120px;right:25%;top:213px;transform:rotate(145deg)}.b6{width:120px;right:25%;top:213px;transform:rotate(35deg)}.tool{display:grid;grid-template-columns:.8fr 1.2fr;gap:24px;padding-bottom:50px}.form,.result{background:#1b1837;border:1px solid #302b53;border-radius:30px;padding:28px;box-shadow:0 25px 60px #0004}label{display:block;font-weight:900;margin-bottom:8px}input{width:100%;padding:15px;border:1px solid var(--line);border-radius:13px;background:#111027;color:#fff;font:inherit}.buttons{display:flex;gap:10px;margin-top:14px}button{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:900;cursor:pointer}.primary{background:linear-gradient(135deg,var(--violet),#5b43db);color:white}.ghost{background:#302c50;color:#ddd8ef}.error{min-height:24px;color:#ff9da9;font-weight:750}.big{font-size:clamp(2.2rem,5vw,4rem);font-weight:950;line-height:1.1;color:#fff;letter-spacing:-.04em;word-break:break-word}.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.chip{background:#0d4449;color:#9af6f6;padding:8px 11px;border-radius:999px;font-weight:900}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.metric{background:#242044;padding:13px;border-radius:15px}.metric b{display:block;color:#6de5e9}.treeOut{margin-top:18px;padding:18px;border-radius:17px;background:#121029;overflow:auto}.nodeTree ul{list-style:none;margin:8px 0 0 20px;padding-left:18px;border-left:1px solid #5a527e}.nodeTree li{margin:6px 0;position:relative}.nodeTree li:before{content:'';position:absolute;width:14px;border-top:1px solid #5a527e;left:-18px;top:12px}article{background:#f8f5ff;color:#262139;border-radius:35px;padding:clamp(28px,5vw,58px);margin-bottom:50px}article h2{font-size:1.9rem}.formula{background:#1a1736;color:#fff;padding:18px;border-radius:16px}.faq{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.faq div{background:white;padding:17px;border-radius:16px}footer{padding:25px 0;color:#a9a2c0}@media(max-width:830px){.hero,.tool{grid-template-columns:1fr}.metrics,.faq{grid-template-columns:1fr}.treeStage{height:310px}}
-</style><link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head><body data-cp-category="math" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header><nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../math/index.html">Math &amp; Statistics</a></li><li><a aria-current="page" href="index.html">Split a whole number until only primes remain.</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main class="wrap" id="main"><h1 class="page-title">Prime Factorization Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="tool"><form class="form" id="pfForm"><h2 style="margin-top:0">Integer to factor</h2><label for="pfnum">Whole number (2 to 1 trillion)</label><input id="pfnum" max="1000000000000" min="2" step="1" type="number" value="360"/><div class="buttons"><button class="primary" type="submit">Factor number</button><button class="ghost" type="reset">Reset</button></div><div class="error" id="pferr" role="alert"></div><p style="color:var(--muted);font-size:.9rem">The calculator uses trial division optimized by testing 2, then odd divisors up to the square root of the remaining value. It is intentionally capped for responsive browser performance.</p></form><div aria-live="polite" class="result"><div style="color:var(--muted)">Prime factorization</div><div class="big" id="pfexp">—</div><div class="chips" id="pfchips"></div><div class="metrics"><div class="metric">Is prime?<b id="pfprime">—</b></div><div class="metric">Distinct primes<b id="pfdist">—</b></div><div class="metric">Positive divisors<b id="pfdivs">—</b></div></div><div class="treeOut"><strong>Factor tree</strong><div class="nodeTree" id="pftree"></div></div></div></section><article><h2>What is prime factorization?</h2><p>Prime factorization expresses an integer greater than 1 as a product of prime numbers. For example, 60 = 2 × 2 × 3 × 5, or 2² × 3 × 5. The Fundamental Theorem of Arithmetic states that this prime decomposition is unique apart from the order of the factors.</p><h2>How the calculator finds prime factors</h2><p>The calculator repeatedly divides by the smallest possible factor. It first removes all factors of 2, then tests odd divisors while the divisor squared is no greater than the remaining number. If the remainder is greater than 1 at the end, that remainder is prime.</p><div class="formula">n = p₁<sup>a₁</sup> × p₂<sup>a₂</sup> × … × pₖ<sup>aₖ</sup></div><h2>How to find the number of divisors</h2><p>If n = p₁<sup>a₁</sup> × p₂<sup>a₂</sup> × …, the number of positive divisors is (a₁+1)(a₂+1)… . For 360 = 2³ × 3² × 5, the divisor count is (3+1)(2+1)(1+1) = 24.</p><h2>What is a factor tree?</h2><p>A factor tree repeatedly splits a composite number into factors until every branch ends at a prime. Different valid trees can branch differently, but the prime leaves multiply to the same unique prime factorization.</p><h2>Limitations</h2><p>Trial division is simple and reliable for modest numbers but not efficient for cryptographic-scale integers. This browser calculator caps input at one trillion so the interface remains responsive.</p><h2>Frequently Asked Questions</h2><div class="faq"><div><h3>Is 1 prime?</h3><p>No. Prime numbers are greater than 1 and have exactly two positive divisors.</p></div><div><h3>What if the input itself is prime?</h3><p>The prime factorization is simply the number itself, such as 17 = 17.</p></div><div><h3>Why are exponents useful?</h3><p>They compress repeated factors. For example, 2 × 2 × 2 × 3 × 3 is written 2³ × 3².</p></div><div><h3>Can a number have two different prime factorizations?</h3><p>No, not when factor order is ignored. Unique prime factorization is the core statement of the Fundamental Theorem of Arithmetic.</p></div></div><h2>Sources and Methodology</h2><p>Calculator scope was cross-checked against <a href="https://www.calculator.net/prime-factorization-calculator.html">Calculator.net’s Prime Factorization Calculator</a>. The uniqueness statement follows the <a href="https://encyclopediaofmath.org/wiki/Distribution_of_prime_numbers">Encyclopedia of Mathematics</a> description of the Fundamental Theorem of Arithmetic, and factor-tree terminology was cross-checked against <a href="https://www.mathsisfun.com/prime-factorization.html">Math Is Fun</a>.</p></article>
+<html lang="en">
 
-<script class="cp-calculator-data" type="application/json">{"index":"208","Batch":"21","Calculator / Page":"Split a whole number until only primes remain.","Slug":"prime-factorization-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Find prime factors, exponent form, factor pairs, number of divisors, and a visual factor tree for integers up to 1 trillion.","Formula / Algorithm Used in Tool":"Trial division: remove factors of 2, then test odd divisors while d² ≤ remaining n; any remainder >1 is prime. Prime form n = Π pᵢ^aᵢ. Number of positive divisors = Π(aᵢ+1).","Required User Inputs":"Whole number (2 to 1 trillion)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Whole number (2 to 1 trillion). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"Trial division is simple and reliable for modest numbers but not efficient for cryptographic-scale integers. This browser calculator caps input at one trillion so the interface remains responsive.","Current Source URLs in Page":"https://www.calculator.net/prime-factorization-calculator.html | https://encyclopediaofmath.org/wiki/Distribution_of_prime_numbers | https://www.mathsisfun.com/prime-factorization.html","Implementation Path":"/prime-factorization-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Math &amp; Statistics</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../factor-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Factor Calculator</strong><small>Find positive factors and prime factorization of an integer. Free, fast and respons…</small></span></a><a class="cp-related-link" href="../common-factor-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Common Factor Calculator</strong><small>Find all common factors and the greatest common factor of two or more positive inte…</small></span></a><a class="cp-related-link" href="../gcf-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>GCF Calculator</strong><small>Find the greatest common factor of two or more integers. Free, fast and responsive…</small></span></a><a class="cp-related-link" href="../fraction-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Fraction Calculator</strong><small>Add, subtract, multiply, or divide two fractions and get the simplified fraction, m…</small></span></a><a class="cp-related-link" href="../percent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Percent Calculator</strong><small>Calculate a percentage of a number, find what percent one value is of another, calc…</small></span></a><a class="cp-related-link" href="../random-number-generator/index.html"><span class="cp-related-dot">›</span><span><strong>Random Number Generator</strong><small>Generate one or many random integers or decimals between custom limits, with option…</small></span></a><a class="cp-related-link" href="../exponent-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Exponent Calculator</strong><small>Calculate a number raised to any valid real exponent and view the result in standar…</small></span></a><a class="cp-related-link" href="../big-number-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Big Number Calculator</strong><small>Perform exact integer arithmetic with very large whole numbers. Free, fast and resp…</small></span></a></div><a class="cp-side-category" href="../math/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script>
-const fg=id=>document.getElementById(id);function factor(n){const arr=[];while(n%2===0){arr.push(2);n/=2}for(let d=3;d*d<=n;d+=2){while(n%d===0){arr.push(d);n/=d}}if(n>1)arr.push(n);return arr}function compress(a){const m=new Map();a.forEach(x=>m.set(x,(m.get(x)||0)+1));return m}function treeHTML(n){if(n<2)return '';const fs=factor(n);if(fs.length===1)return `<ul><li>${n} <span style="color:#72e5e9">prime</span></li></ul>`;const p=fs[0],q=n/p;return `<ul><li>${n}<ul><li>${p} <span style="color:#72e5e9">prime</span></li><li>${q}${factor(q).length===1?' <span style="color:#72e5e9">prime</span>':treeHTML(q)}</li></ul></li></ul>`}function pfcalc(){const n=Number(fg('pfnum').value);fg('pferr').textContent='';if(!Number.isSafeInteger(n)||n<2||n>1e12){fg('pferr').textContent='Enter a whole number from 2 to 1,000,000,000,000.';return}const fs=factor(n),m=compress(fs),exp=[...m].map(([p,e])=>e===1?String(p):`${p}<sup>${e}</sup>`).join(' × '),divs=[...m.values()].reduce((a,e)=>a*(e+1),1);fg('pfexp').innerHTML=exp;fg('pfchips').innerHTML=fs.map(x=>`<span class="chip">${x}</span>`).join('');fg('pfprime').textContent=fs.length===1?'Yes':'No';fg('pfdist').textContent=m.size;fg('pfdivs').textContent=divs;fg('pftree').innerHTML=treeHTML(n)}fg('pfForm').addEventListener('submit',e=>{e.preventDefault();pfcalc()});fg('pfForm').addEventListener('reset',()=>setTimeout(pfcalc));pfcalc();
-</script><script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <!-- Primary Meta Tags -->
+<title>Prime Factorization Calculator – Factors &amp; Factor Tree</title>
+<meta name="title" content="Prime Factorization Calculator – Factors &amp; Factor Tree">
+<meta name="description" content="Find the prime factorization of any whole number from 2 to 1 trillion. See prime factors, exponent form, factor pairs, divisor count, and factor tree.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/prime-factorization-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/prime-factorization-calculator/">
+<meta property="og:title" content="Prime Factorization Calculator – Factors &amp; Factor Tree">
+<meta property="og:description" content="Find the prime factorization of any whole number from 2 to 1 trillion. See prime factors, exponent form, factor pairs, divisor count, and factor tree.">
+<meta property="og:site_name" content="Prime Factorization Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/prime-factorization-calculator/">
+<meta name="twitter:title" content="Prime Factorization Calculator – Factors &amp; Factor Tree">
+<meta name="twitter:description" content="Find the prime factorization of any whole number from 2 to 1 trillion. See prime factors, exponent form, factor pairs, divisor count, and factor tree.">
+    <meta content="#1477ff" name="theme-color" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/prime-factorization-calculator/#webapplication",
+      "name": "Prime Factorization Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/prime-factorization-calculator/",
+      "description": "Find the prime factorization of any whole number from 2 to 1 trillion. See prime factors, exponent form, factor pairs, divisor count, and factor tree.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/prime-factorization-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Prime Factorization Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/prime-factorization-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/prime-factorization-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is prime factorization?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Prime factorization is the process of expressing an integer greater than 1 as a product of prime numbers. For example, 60=2^2×3×5."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does the calculator stop testing divisors at the square root?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If a number is composite, it must have at least one factor no greater than its square root. Therefore, if no valid divisor is found by that point, a remaining value greater than 1 is prime. PrimePages"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I enter 1 in the calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This calculator's supported input range begins at 2. The number 1 does not have a prime factorization."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I enter a prime number?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A prime number cannot be split into smaller positive prime factors. Its prime factorization is therefore the prime number itself with exponent 1, such as 17=17^1."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is the number of divisors calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If n=p_1^{a_1}p_2^{a_2}⋯p_k^{a_k}, its number of positive divisors is (a_1+1)(a_2+1)⋯(a_k+1). UofT Mathematics Department"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the largest number I can enter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The calculator supports whole numbers up to 1,000,000,000,000, or 1 trillion."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are prime factors and factor pairs the same thing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Prime factors are prime numbers used to build the original number. Factor pairs are pairs of positive integers whose product equals the original number."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "Monkeymart Onlinefree",
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+
+
+
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        :root {
+            --bg: #121127;
+            --panel: #1c1938;
+            --violet: #8468ff;
+            --cyan: #47d8df;
+            --ink: #f2efff;
+            --muted: #b1aac8;
+            --line: #34305a
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, sans-serif;
+            background: radial-gradient(circle at 10% 0, #2f2758 0, transparent 25%), radial-gradient(circle at 90% 20%, #0a5960 0, transparent 22%), var(--bg);
+            color: var(--ink);
+            line-height: 1.6
+        }
+
+        a {
+            color: #72e5e9
+        }
+
+        .wrap {
+            width: min(1160px, 92%);
+            margin: auto
+        }
+
+        header {
+            padding: 20px 0
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between
+        }
+
+        .brand {
+            font-weight: 950
+        }
+
+        .crumb {
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            align-items: center;
+            padding: 50px 0 40px
+        }
+
+        h1 {
+            font-size: clamp(3rem, 6vw, 5.9rem);
+            line-height: .92;
+            letter-spacing: -.06em;
+            margin: .16em 0
+        }
+
+        .lead {
+            color: var(--muted);
+            font-size: 1.08rem
+        }
+
+        .treeStage {
+            height: 350px;
+            position: relative;
+            perspective: 900px
+        }
+
+        .root,
+        .leaf {
+            position: absolute;
+            display: grid;
+            place-items: center;
+            border-radius: 20px;
+            background: linear-gradient(145deg, #2a2550, #17152f);
+            border: 1px solid #46406f;
+            box-shadow: 0 22px 40px #0005;
+            font-weight: 950
+        }
+
+        .root {
+            width: 105px;
+            height: 105px;
+            left: 50%;
+            top: 15px;
+            transform: translateX(-50%) rotateX(10deg);
+            font-size: 2rem;
+            color: #fff
+        }
+
+        .leaf {
+            width: 78px;
+            height: 78px;
+            font-size: 1.45rem;
+            color: #88f5f5
+        }
+
+        .l1 {
+            left: 20%;
+            top: 145px
+        }
+
+        .l2 {
+            right: 20%;
+            top: 145px
+        }
+
+        .l3 {
+            left: 7%;
+            bottom: 5px
+        }
+
+        .l4 {
+            left: 34%;
+            bottom: 5px
+        }
+
+        .l5 {
+            right: 34%;
+            bottom: 5px
+        }
+
+        .l6 {
+            right: 7%;
+            bottom: 5px
+        }
+
+        .branch {
+            position: absolute;
+            height: 2px;
+            background: #6f63a8;
+            transform-origin: left
+        }
+
+        .b1 {
+            width: 140px;
+            left: 50%;
+            top: 112px;
+            transform: rotate(150deg)
+        }
+
+        .b2 {
+            width: 140px;
+            left: 50%;
+            top: 112px;
+            transform: rotate(30deg)
+        }
+
+        .b3 {
+            width: 120px;
+            left: 25%;
+            top: 213px;
+            transform: rotate(145deg)
+        }
+
+        .b4 {
+            width: 120px;
+            left: 25%;
+            top: 213px;
+            transform: rotate(35deg)
+        }
+
+        .b5 {
+            width: 120px;
+            right: 25%;
+            top: 213px;
+            transform: rotate(145deg)
+        }
+
+        .b6 {
+            width: 120px;
+            right: 25%;
+            top: 213px;
+            transform: rotate(35deg)
+        }
+
+        .tool {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 24px;
+            padding-bottom: 50px
+        }
+
+        .form,
+        .result {
+            background: #1b1837;
+            border: 1px solid #302b53;
+            border-radius: 30px;
+            padding: 28px;
+            box-shadow: 0 25px 60px #0004
+        }
+
+        label {
+            display: block;
+            font-weight: 900;
+            margin-bottom: 8px
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--line);
+            border-radius: 13px;
+            background: #111027;
+            color: #fff;
+            font: inherit
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px
+        }
+
+        button {
+            border: 0;
+            border-radius: 12px;
+            padding: 12px 16px;
+            font: inherit;
+            font-weight: 900;
+            cursor: pointer
+        }
+
+        .primary {
+            background: linear-gradient(135deg, var(--violet), #5b43db);
+            color: white
+        }
+
+        .ghost {
+            background: #302c50;
+            color: #ddd8ef
+        }
+
+        .error {
+            min-height: 24px;
+            color: #ff9da9;
+            font-weight: 750
+        }
+
+        .big {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 950;
+            line-height: 1.1;
+            color: #fff;
+            letter-spacing: -.04em;
+            word-break: break-word
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 18px 0
+        }
+
+        .chip {
+            background: #0d4449;
+            color: #9af6f6;
+            padding: 8px 11px;
+            border-radius: 999px;
+            font-weight: 900
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 9px
+        }
+
+        .metric {
+            background: #242044;
+            padding: 13px;
+            border-radius: 15px
+        }
+
+        .metric b {
+            display: block;
+            color: #6de5e9
+        }
+
+        .treeOut {
+            margin-top: 18px;
+            padding: 18px;
+            border-radius: 17px;
+            background: #121029;
+            overflow: auto
+        }
+
+        .nodeTree ul {
+            list-style: none;
+            margin: 8px 0 0 20px;
+            padding-left: 18px;
+            border-left: 1px solid #5a527e
+        }
+
+        .nodeTree li {
+            margin: 6px 0;
+            position: relative
+        }
+
+        .nodeTree li:before {
+            content: '';
+            position: absolute;
+            width: 14px;
+            border-top: 1px solid #5a527e;
+            left: -18px;
+            top: 12px
+        }
+
+        article {
+            background: #f8f5ff;
+            color: #262139;
+            border-radius: 35px;
+            padding: clamp(28px, 5vw, 58px);
+            margin-bottom: 50px
+        }
+
+        article h2 {
+            font-size: 1.9rem
+        }
+
+        .formula {
+            background: #1a1736;
+            color: #fff;
+            padding: 18px;
+            border-radius: 16px
+        }
+
+        .faq {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px
+        }
+
+        .faq div {
+            background: white;
+            padding: 17px;
+            border-radius: 16px
+        }
+
+        footer {
+            padding: 25px 0;
+            color: #a9a2c0
+        }
+
+        @media(max-width:830px) {
+
+            .hero,
+            .tool {
+                grid-template-columns: 1fr
+            }
+
+            .metrics,
+            .faq {
+                grid-template-columns: 1fr
+            }
+
+            .treeStage {
+                height: 310px
+            }
+        }
+    </style>
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="math" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../math/index.html">Math &amp; Statistics</a></li>
+            <li><a aria-current="page" href="index.html">Split a whole number until only primes remain.</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../math/index.html">Browse Math &amp; Statistics</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main class="wrap" id="main">
+            <h1 class="page-title">Prime Factorization Calculator</h1>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="tool">
+                <form class="form" id="pfForm">
+                    <h2 style="margin-top:0">Integer to factor</h2><label for="pfnum">Whole number (2 to 1
+                        trillion)</label><input id="pfnum" max="1000000000000" min="2" step="1" type="number"
+                        value="360" />
+                    <div class="buttons"><button class="primary" type="submit">Factor number</button><button
+                            class="ghost" type="reset">Reset</button></div>
+                    <div class="error" id="pferr" role="alert"></div>
+                    <p style="color:var(--muted);font-size:.9rem">The calculator uses trial division optimized by
+                        testing 2, then odd divisors up to the square root of the remaining value. It is intentionally
+                        capped for responsive browser performance.</p>
+                </form>
+                <div aria-live="polite" class="result">
+                    <div style="color:var(--muted)">Prime factorization</div>
+                    <div class="big" id="pfexp">—</div>
+                    <div class="chips" id="pfchips"></div>
+                    <div class="metrics">
+                        <div class="metric">Is prime?<b id="pfprime">—</b></div>
+                        <div class="metric">Distinct primes<b id="pfdist">—</b></div>
+                        <div class="metric">Positive divisors<b id="pfdivs">—</b></div>
+                    </div>
+                    <div class="treeOut"><strong>Factor tree</strong>
+                        <div class="nodeTree" id="pftree"></div>
+                    </div>
+                </div>
+            </section>
+           
+<article class="article">
+
+ 
+
+  <p>The Prime Factorization Calculator breaks a whole number from <strong>2 to 1 trillion</strong> into its prime factors. Enter one integer to see its prime factors, exponent form, factor pairs, number of positive divisors, and a visual factor tree.</p>
+
+  <section id="what">
+    <h2>What Is the Prime Factorization Calculator?</h2>
+
+    <p>A prime factorization calculator expresses a whole number as a product of prime numbers. For example, 360 can be written as <strong>2³ × 3² × 5</strong>.</p>
+
+    <p>Every integer greater than 1 has a unique prime factorization, apart from the order in which the prime factors are written.<a href="https://dlmf.nist.gov/27.2?utm_source=chatgpt.com" rel="noopener" target="_blank"> DLMF</a></p>
+
+    <p>This tool is useful for checking factorization work and for finding information such as the prime-power form and number of positive divisors.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Prime Factorization Calculator</h2>
+
+    <p>Enter a <strong>whole number from 2 to 1,000,000,000,000 (1 trillion)</strong>.</p>
+
+    <p>The calculator processes that number and returns its prime factorization along with supporting values. Decimal numbers, negative numbers, 0, and 1 are outside the calculator's supported input range.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+
+    <p>If a whole number n has distinct prime factors p1,p2,,pk, its prime factorization can be written as:</p>
+
+    <div class="formula">
+n=i=1kpiai
+</div>
+
+    <p>or:</p>
+
+    <div class="formula">
+n=p1a1p2a2pkak
+</div>
+
+    <p>This prime-power representation is unique for every integer greater than 1.<a href="https://dlmf.nist.gov/27.2?utm_source=chatgpt.com" rel="noopener" target="_blank"> DLMF</a></p>
+
+    <h3>Variables</h3>
+
+    <ul>
+      <li><strong>n</strong> = the whole number being factorized</li>
+      <li><strong>pᵢ</strong> = a distinct prime factor of n</li>
+      <li><strong>aᵢ</strong> = the positive integer exponent showing how many times pᵢ occurs</li>
+      <li><strong>k</strong> = the number of distinct prime factors</li>
+    </ul>
+
+    <p>These values are dimensionless because prime factorization operates on whole numbers rather than measured quantities.</p>
+
+    <h3>Calculation Sequence</h3>
+
+    <p>The calculator uses <strong>trial division</strong>:</p>
+
+    <ol>
+      <li>Start with the entered whole number.</li>
+      <li>Divide out factors of <strong>2</strong> repeatedly while the number remains divisible by 2.</li>
+      <li>Test odd divisors in increasing order.</li>
+      <li>For each divisor that divides evenly, repeatedly divide it out and record how many times it occurs.</li>
+      <li>Continue testing while the square of the trial divisor is less than or equal to the remaining number.</li>
+      <li>If a value greater than 1 remains, that remainder is a prime factor.</li>
+    </ol>
+
+    <p>Checking potential divisors only up to the square root is sufficient because a composite integer must have a factor at or below its square root.<a href="https://primes.utm.edu/glossary/page.php?sort=TrialDivision&amp;utm_source=chatgpt.com" rel="noopener" target="_blank"> PrimePages</a></p>
+
+    <h3>Exponent Form</h3>
+
+    <p>Repeated prime factors are grouped using exponents.</p>
+
+    <p>For example:</p>
+
+    <div class="formula">
+360=222335
+</div>
+
+    <p>becomes:</p>
+
+    <div class="formula">
+360=23325
+</div>
+
+    <h3>Number of Positive Divisors</h3>
+
+    <p>For:</p>
+
+    <div class="formula">
+n=p1a1p2a2pkak
+</div>
+
+    <p>the number of positive divisors is:</p>
+
+    <div class="formula">
+d(n)=i=1k(ai+1)
+</div>
+
+    <p>Each exponent is increased by 1, and the resulting values are multiplied. This works because a divisor can contain each prime factor with an exponent from 0 through its exponent in n.<a href="https://www.math.toronto.edu/mpugh/Blue_Book_of_Mathematics_for_Elementary_School_Teachers.pdf?utm_source=chatgpt.com" rel="noopener" target="_blank"> UofT Mathematics Department</a></p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+
+    <p>Factorize <strong>360</strong>.</p>
+
+    <h3>Inputs</h3>
+
+    <p>Whole number:</p>
+
+    <div class="formula">
+n=360
+</div>
+
+    <h3>Step 1</h3>
+
+    <p>Repeatedly divide by 2:</p>
+
+    <div class="formula">
+     
+3602=180
+     
+1802=90
+     
+902=45
+    </div>
+
+    <p>Therefore, 2 occurs three times:</p>
+
+    <div class="formula">
+23
+</div>
+
+    <h3>Step 2</h3>
+
+    <p>Now divide 45 by 3:</p>
+
+    <div class="formula">
+     
+453=15
+     
+153=5
+    </div>
+
+    <p>Therefore, 3 occurs twice:</p>
+
+    <div class="formula">
+32
+</div>
+
+    <h3>Step 3</h3>
+
+    <p>The remaining value is 5, which is prime.</p>
+
+    <p>The complete factorization is therefore:</p>
+
+    <div class="formula">
+360=23325
+</div>
+
+    <p>For the number of positive divisors:</p>
+
+    <div class="formula">
+     
+d(360)=(3+1)(2+1)(1+1)
+     
+d(360)=432=24
+    </div>
+
+    <h3>Final Result</h3>
+
+    <p>
+      <strong>Prime factors:</strong> 2, 3, 5<br>
+      <strong>Prime factorization:</strong> 23325<br>
+      <strong>Number of positive divisors:</strong> 24
+    </p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <p><strong>Prime factors</strong> are the prime numbers that multiply together to produce the original number. A repeated prime still appears only once in the list of distinct prime factors.</p>
+
+    <p><strong>Exponent form</strong> groups repeated factors. An exponent tells you how many times that prime occurs in the factorization.</p>
+
+    <p><strong>Factor pairs</strong> show pairs of whole numbers whose product equals the entered number.</p>
+
+    <p><strong>Number of divisors</strong> is the total count of positive whole-number divisors. It is calculated from the exponents in the prime factorization.</p>
+
+    <p><strong>Factor tree</strong> provides a visual way to break the original number into smaller factors until the branches end in prime numbers.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The calculator accepts only whole numbers from <strong>2 through 1 trillion</strong>. It does not factorize decimals, negative numbers, 0, or 1 within its supported input range.</p>
+
+    <p>It uses trial division, which is simple and reliable for the calculator's supported range. Trial division becomes inefficient for extremely large integers, so this calculator is not designed for cryptographic-scale factorization.</p>
+
+    <p>Because prime factorization deals with exact integers, there is no measurement uncertainty or decimal rounding involved in the factorization itself.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>What is prime factorization?</summary>
+      <p>Prime factorization is the process of expressing an integer greater than 1 as a product of prime numbers. For example, 60=2235.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Why does the calculator stop testing divisors at the square root?</summary>
+      <p>If a number is composite, it must have at least one factor no greater than its square root. Therefore, if no valid divisor is found by that point, a remaining value greater than 1 is prime.<a href="https://primes.utm.edu/glossary/page.php?sort=TrialDivision&amp;utm_source=chatgpt.com" rel="noopener" target="_blank"> PrimePages</a></p>
+    </details>
+
+    <details class="faq">
+      <summary>Can I enter 1 in the calculator?</summary>
+      <p>No. This calculator's supported input range begins at 2. The number 1 does not have a prime factorization.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What happens if I enter a prime number?</summary>
+      <p>A prime number cannot be split into smaller positive prime factors. Its prime factorization is therefore the prime number itself with exponent 1, such as 17=171.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How is the number of divisors calculated?</summary>
+      <p>If n=p1a1p2a2pkak, its number of positive divisors is (a1+1)(a2+1)(ak+1).<a href="https://www.math.toronto.edu/mpugh/Blue_Book_of_Mathematics_for_Elementary_School_Teachers.pdf?utm_source=chatgpt.com" rel="noopener" target="_blank"> UofT Mathematics Department</a></p>
+    </details>
+
+    <details class="faq">
+      <summary>What is the largest number I can enter?</summary>
+      <p>The calculator supports whole numbers up to <strong>1,000,000,000,000</strong>, or <strong>1 trillion</strong>.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Are prime factors and factor pairs the same thing?</summary>
+      <p>No. Prime factors are prime numbers used to build the original number. Factor pairs are pairs of positive integers whose product equals the original number.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://dlmf.nist.gov/27.2?utm_source=chatgpt.com" rel="noopener" target="_blank">NIST Digital Library of Mathematical Functions — Functions of Number Theory</a><br>
+        Supports the unique representation of integers greater than 1 as products of prime powers.
+      </li>
+
+      <li>
+        <a href="https://primes.utm.edu/glossary/page.php?sort=TrialDivision&amp;utm_source=chatgpt.com" rel="noopener" target="_blank">The Prime Pages — Trial Division</a><br>
+        Supports the square-root bound used in trial division.
+      </li>
+
+      <li>
+        <a href="https://www.math.toronto.edu/mpugh/Blue_Book_of_Mathematics_for_Elementary_School_Teachers.pdf?utm_source=chatgpt.com" rel="noopener" target="_blank">University of Toronto — Blue Book of Mathematics</a><br>
+        Supports the formula for calculating the number of positive divisors from prime-factor exponents.
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+
+    <ul>
+      <li><a href="https://example.com/factor-calculator/">Factor Calculator</a></li>
+      <li><a href="https://example.com/common-factor-calculator/">Common Factor Calculator</a></li>
+      <li><a href="https://example.com/gcf-calculator/">GCF Calculator</a></li>
+      <li><a href="https://example.com/lcm-calculator/">LCM Calculator</a></li>
+      <li><a href="https://example.com/long-division-calculator/">Long Division Calculator</a></li>
+      <li><a href="https://example.com/math-calculator/">Math Calculator</a></li>
+    </ul>
+  </section>
+
+</article>
+
+
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"208","Batch":"21","Calculator / Page":"Split a whole number until only primes remain.","Slug":"prime-factorization-calculator","Site Category (Current)":"Math & Statistics","Recommended Content Domain":"Math / Statistics / Geometry","Page Type":"Calculator","Search Intent / Purpose":"Find prime factors, exponent form, factor pairs, number of divisors, and a visual factor tree for integers up to 1 trillion.","Formula / Algorithm Used in Tool":"Trial division: remove factors of 2, then test odd divisors while d² ≤ remaining n; any remainder >1 is prime. Prime form n = Π pᵢ^aᵢ. Number of positive divisors = Π(aᵢ+1).","Required User Inputs":"Whole number (2 to 1 trillion)","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Whole number (2 to 1 trillion). Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions.","Data / Research Needed for Exact Content":"No live data required; verify mathematical definition, notation, domain restrictions, rounding and edge cases.","Fresh Data Required?":"No","Recommended Update Frequency":"Only if formula/definition changes","Important Assumptions / Limitations":"Trial division is simple and reliable for modest numbers but not efficient for cryptographic-scale integers. This browser calculator caps input at one trillion so the interface remains responsive.","Current Source URLs in Page":"https://www.calculator.net/prime-factorization-calculator.html | https://encyclopediaofmath.org/wiki/Distribution_of_prime_numbers | https://www.mathsisfun.com/prime-factorization.html","Implementation Path":"/prime-factorization-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Math &amp; Statistics</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../factor-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Factor Calculator</strong><small>Find positive
+                            factors and prime factorization of an integer. Free, fast and respons…</small></span></a><a
+                    class="cp-related-link" href="../common-factor-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Common Factor Calculator</strong><small>Find all
+                            common factors and the greatest common factor of two or more positive
+                            inte…</small></span></a><a class="cp-related-link" href="../gcf-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>GCF Calculator</strong><small>Find the greatest
+                            common factor of two or more integers. Free, fast and responsive…</small></span></a><a
+                    class="cp-related-link" href="../fraction-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Fraction Calculator</strong><small>Add, subtract,
+                            multiply, or divide two fractions and get the simplified fraction, m…</small></span></a><a
+                    class="cp-related-link" href="../percent-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Percent Calculator</strong><small>Calculate a
+                            percentage of a number, find what percent one value is of another,
+                            calc…</small></span></a><a class="cp-related-link"
+                    href="../random-number-generator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Random Number Generator</strong><small>Generate one
+                            or many random integers or decimals between custom limits, with option…</small></span></a><a
+                    class="cp-related-link" href="../exponent-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Exponent Calculator</strong><small>Calculate a
+                            number raised to any valid real exponent and view the result in
+                            standar…</small></span></a><a class="cp-related-link"
+                    href="../big-number-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Big
+                            Number Calculator</strong><small>Perform exact integer arithmetic with very large whole
+                            numbers. Free, fast and resp…</small></span></a></div><a class="cp-side-category"
+                href="../math/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>
+        const fg = id => document.getElementById(id); function factor(n) { const arr = []; while (n % 2 === 0) { arr.push(2); n /= 2 } for (let d = 3; d * d <= n; d += 2) { while (n % d === 0) { arr.push(d); n /= d } } if (n > 1) arr.push(n); return arr } function compress(a) { const m = new Map(); a.forEach(x => m.set(x, (m.get(x) || 0) + 1)); return m } function treeHTML(n) { if (n < 2) return ''; const fs = factor(n); if (fs.length === 1) return `<ul><li>${n} <span style="color:#72e5e9">prime</span></li></ul>`; const p = fs[0], q = n / p; return `<ul><li>${n}<ul><li>${p} <span style="color:#72e5e9">prime</span></li><li>${q}${factor(q).length === 1 ? ' <span style="color:#72e5e9">prime</span>' : treeHTML(q)}</li></ul></li></ul>` } function pfcalc() { const n = Number(fg('pfnum').value); fg('pferr').textContent = ''; if (!Number.isSafeInteger(n) || n < 2 || n > 1e12) { fg('pferr').textContent = 'Enter a whole number from 2 to 1,000,000,000,000.'; return } const fs = factor(n), m = compress(fs), exp = [...m].map(([p, e]) => e === 1 ? String(p) : `${p}<sup>${e}</sup>`).join(' × '), divs = [...m.values()].reduce((a, e) => a * (e + 1), 1); fg('pfexp').innerHTML = exp; fg('pfchips').innerHTML = fs.map(x => `<span class="chip">${x}</span>`).join(''); fg('pfprime').textContent = fs.length === 1 ? 'Yes' : 'No'; fg('pfdist').textContent = m.size; fg('pfdivs').textContent = divs; fg('pftree').innerHTML = treeHTML(n) } fg('pfForm').addEventListener('submit', e => { e.preventDefault(); pfcalc() }); fg('pfForm').addEventListener('reset', () => setTimeout(pfcalc)); pfcalc();
+    </script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>

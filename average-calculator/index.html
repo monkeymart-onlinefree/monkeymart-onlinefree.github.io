@@ -1,10 +1,891 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport" /><meta http-equiv="content-language" content="en"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="icon" type="image/png" sizes="194x194" href="/favicon.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
-<title>Average Calculator – Mean, Sum, Count &amp; Median | CalcPro</title><meta content="Calculate the arithmetic average of a list of numbers and see the sum, count, median, minimum, and maximum with a clear visual breakdown." name="description"/><meta content="index,follow" name="robots"/><link href="../average-calculator/" rel="canonical"/><meta content="Average Calculator" property="og:title"/><meta content="Find the arithmetic mean, sum, count, median, min, and max of your data." property="og:description"/><meta content="website" property="og:type"/><meta content="#1477ff" name="theme-color"/>
-<style>:root{--teal:#0d746d;--coral:#f06f5f;--sand:#f8edda;--ink:#153b3a;--mint:#d9f3eb;--paper:#fffdf8}*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#f9f0e0,#f3fbf7 60%,#fffaf3);color:var(--ink);font-family:ui-rounded,'Avenir Next',Inter,system-ui,sans-serif;line-height:1.6}.wrap{width:min(1100px,92vw);margin:auto}header{padding:22px 0}nav{display:flex;justify-content:space-between}.brand{font-weight:950;color:var(--teal)}.brand em{font-style:normal;color:var(--coral)}.crumb{font-size:.86rem;color:#66817e}.hero{padding:44px 0 52px;text-align:center;position:relative;overflow:hidden}h1{font-size:clamp(2.7rem,6vw,5.3rem);line-height:.95;letter-spacing:-.065em;margin:.4rem 0 1rem}.lead{max-width:720px;margin:auto;color:#587774;font-size:1.08rem}.balance{height:180px;margin:30px auto 0;max-width:720px;position:relative}.beam{position:absolute;width:64%;height:16px;border-radius:12px;background:linear-gradient(#1f8c84,#09665f);left:18%;top:55px;box-shadow:0 9px 0 #07534e;transform:rotate(-3deg)}.stand{position:absolute;left:50%;top:52px;width:18px;height:110px;background:var(--teal);transform:translateX(-50%);border-radius:10px}.stand:after{content:'';position:absolute;bottom:-8px;left:50%;width:120px;height:16px;background:#11665f;transform:translateX(-50%);border-radius:50%}.pan{position:absolute;top:71px;width:190px;height:64px;border:4px solid #db6759;border-top:0;border-radius:0 0 100px 100px}.pan.left{left:8%}.pan.right{right:8%}.pan span{display:inline-grid;place-items:center;width:44px;height:44px;margin:-23px 3px 0;background:#fff7ed;border:2px solid #f19a8f;border-radius:14px;box-shadow:0 9px 15px #a0514322;font-weight:900;color:#a53f35}.calc{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:55px}.entry{background:#fffdf9;border:1px solid #f2e2ca;border-radius:28px;padding:28px;box-shadow:0 22px 55px #795d3420}label{display:block;font-weight:900;margin-bottom:9px}textarea{width:100%;min-height:140px;border:2px solid #e4d9c7;background:#fffaf2;border-radius:19px;padding:16px;font:750 1.05rem ui-monospace,monospace;resize:vertical;outline:none}textarea:focus{border-color:#36a79e;box-shadow:0 0 0 5px #0d746d12}.actions{display:flex;gap:10px;margin-top:14px}button{border:0;border-radius:14px;padding:13px 18px;font-weight:900;cursor:pointer}.primary{background:var(--coral);color:white;box-shadow:0 10px 0 #b94c40}.ghost{background:#e6f3ef;color:var(--teal)}.error{min-height:24px;color:#b42318;font-weight:700;margin-top:12px}.result{background:linear-gradient(145deg,#09675f,#0e8177 60%,#22a596);color:white;border-radius:28px;padding:28px;box-shadow:0 24px 55px #0b62573b;position:relative;overflow:hidden}.result:after{content:'Σ';position:absolute;right:-12px;top:-48px;font-size:12rem;font-weight:900;color:#ffffff0b}.result small{text-transform:uppercase;letter-spacing:.16em;font-weight:850;opacity:.75}.mean{font-size:clamp(3rem,7vw,5.3rem);font-weight:950;letter-spacing:-.07em;line-height:1;margin:.35rem 0 1.2rem}.metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.metrics div{padding:13px;background:#ffffff10;border:1px solid #ffffff19;border-radius:15px}.metrics b{display:block;font-size:1.25rem}.stackviz{display:flex;align-items:flex-end;gap:8px;height:90px;margin-top:18px}.bar{flex:1;min-width:5px;background:#ffffff50;border-radius:8px 8px 2px 2px}article{background:var(--paper);border-radius:28px;padding:clamp(24px,4vw,44px);box-shadow:0 22px 55px #735c3717;margin-bottom:55px}h2{font-size:clamp(1.55rem,3vw,2.15rem);letter-spacing:-.035em;margin-top:2rem}.formula{padding:16px;background:#e7f5f1;border-radius:17px;border-left:5px solid var(--teal);font:750 1rem ui-monospace,monospace}.example-table{width:100%;border-collapse:collapse}.example-table th,.example-table td{text-align:left;border-bottom:1px solid #eadfce;padding:10px}details{border-top:1px solid #eadfce;padding:14px 0}summary{font-weight:900;cursor:pointer}.sources a{color:#0b6c64;word-break:break-word}footer{padding-bottom:40px;color:#67827f;font-size:.88rem}@media(max-width:760px){.calc{grid-template-columns:1fr}.pan{width:130px}.pan.left{left:1%}.pan.right{right:1%}}</style><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "/average-calculator/#app", "name": "Average Calculator", "url": "/average-calculator/", "description": "Calculate the arithmetic mean of a list of values with sum, count, median, minimum, and maximum.", "applicationCategory": "EducationalApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript"}, {"@type": "BreadcrumbList", "@id": "/average-calculator/#breadcrumbs", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Math & Statistics", "item": "/math/"}, {"@type": "ListItem", "position": 3, "name": "Statistics & Probability", "item": "/math/statistics-probability/"}, {"@type": "ListItem", "position": 4, "name": "Average Calculator", "item": "/average-calculator/"}]}, {"@type": "FAQPage", "@id": "/average-calculator/#faq", "mainEntity": [{"@type": "Question", "name": "How do you calculate the average?", "acceptedAnswer": {"@type": "Answer", "text": "Add all values, then divide the sum by the number of values. This is the arithmetic mean, which is the usual meaning of average in basic mathematics."}}, {"@type": "Question", "name": "Is average the same as median?", "acceptedAnswer": {"@type": "Answer", "text": "Not necessarily. The average or arithmetic mean uses every value in the sum, while the median is the middle value after sorting. Outliers can affect the mean more strongly."}}, {"@type": "Question", "name": "Can the average be a decimal?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Even when every input is a whole number, the sum may not divide evenly by the count, so the arithmetic mean can be a decimal."}}, {"@type": "Question", "name": "Can I average negative numbers?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The arithmetic mean works with positive numbers, negative numbers, zero, and decimal values."}}]}]}</script><link href="../assets/css/global.css" rel="stylesheet"/>
-<link href="../assets/css/taxonomy.css" rel="stylesheet"/><link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet"/></head><body data-cp-category="date-time" data-cp-page-type="Calculator"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header><nav aria-label="Breadcrumb" class="cp-breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../date-time/index.html">Date &amp; Time</a></li><li><a aria-current="page" href="index.html">Average Calculator</a></li></ol></nav><div class="cp-tool-taxonomy"><a href="../date-time/index.html">Browse Date &amp; Time</a><a href="../calculators/index.html">All calculators</a></div><div class="cp-page-layout"><main class="wrap" id="main"><h1 class="page-title">Average Calculator</h1><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><section class="calc"><div class="entry"><label for="values">Numbers</label><textarea id="values">10, 2, 38, 23, 38, 23, 21</textarea><p class="crumb">Separate numbers with commas, spaces, or new lines.</p><div class="actions"><button class="primary" id="calculate">Calculate average</button><button class="ghost" id="reset">Reset</button></div><div class="error" id="error" role="alert"></div></div><div aria-live="polite" class="result"><small>Arithmetic mean</small><div class="mean" id="mean">22.142857</div><div class="metrics"><div>Sum<b id="sum">155</b></div><div>Count<b id="count">7</b></div><div>Median<b id="median">23</b></div><div>Range<b id="range">36</b></div><div>Minimum<b id="min">2</b></div><div>Maximum<b id="max">38</b></div></div><div class="stackviz" id="bars"></div></div></section><section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart=""><div class="cp-visual-top"><div><span class="cp-visual-kicker">Visual breakdown</span><h2 id="cp-visual-title">Calculation Graph</h2><p>Live numeric inputs or results are visualized automatically as you use the calculator.</p></div><span class="cp-chart-badge">Live view</span></div><div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div><div aria-label="Calculation method flow" class="cp-flow"><div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span class="cp-flow-arrow">→</span><div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div></div></section><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div></div><article><h2>What Is an Average Calculator?</h2><p>An average calculator finds a single value that represents a list of numbers. In basic mathematics, “average” usually means the arithmetic mean: add all observations and divide by the number of observations. This page also reports the median and range so you can compare the mean with other simple summaries.</p><h2>How to Use the Average Calculator</h2><p>Enter numbers separated by commas, spaces, or line breaks. Select <strong>Calculate average</strong>. The calculator shows the arithmetic mean plus the sum, number of observations, median, range, minimum, and maximum.</p><h2>Average Formula</h2><div class="formula">Average (arithmetic mean) = (x₁ + x₂ + … + xₙ) ÷ n</div><h3>Formula Variables</h3><p><em>x₁ … xₙ</em> are the values in the dataset, and <em>n</em> is the number of values. The numerator is their total sum.</p><h2>Calculation Example</h2><table class="example-table"><tr><th>Values</th><td>2, 7, 19, 24, 25</td></tr><tr><th>Sum</th><td>77</td></tr><tr><th>Count</th><td>5</td></tr><tr><th>Average</th><td>77 ÷ 5 = <strong>15.4</strong></td></tr></table><h2>Understanding Your Results</h2><p>The mean uses every value, so unusually high or low observations can pull it away from the middle of the dataset. The median is the middle value after sorting and may be more resistant to outliers. The range is maximum minus minimum and describes the full spread.</p><h2>Limitations</h2><p>The arithmetic mean is not always the best summary for skewed data or data with influential outliers. This tool treats every input equally; it does not calculate a weighted mean unless you explicitly repeat values according to their intended weight.</p><h2>Frequently Asked Questions</h2><details><summary>How do you calculate the average?</summary><p>Add all values, then divide the sum by the number of values. This is the arithmetic mean, which is the usual meaning of average in basic mathematics.</p></details><details><summary>Is average the same as median?</summary><p>Not necessarily. The average or arithmetic mean uses every value in the sum, while the median is the middle value after sorting. Outliers can affect the mean more strongly.</p></details><details><summary>Can the average be a decimal?</summary><p>Yes. Even when every input is a whole number, the sum may not divide evenly by the count, so the arithmetic mean can be a decimal.</p></details><details><summary>Can I average negative numbers?</summary><p>Yes. The arithmetic mean works with positive numbers, negative numbers, zero, and decimal values.</p></details><h2>Sources and Methodology</h2><ul class="sources"><li><a href="https://www.calculator.net/average-calculator.html">Calculator.net — Average Calculator</a></li><li><a href="https://csrc.nist.gov/glossary/term/mean">NIST — Mean definition</a></li><li><a href="https://dlmf.nist.gov/1.2">NIST DLMF — Arithmetic Mean</a></li></ul></article>
+<html lang="en">
 
-<script class="cp-calculator-data" type="application/json">{"index":"211","Batch":"22","Calculator / Page":"Average Calculator","Slug":"average-calculator","Site Category (Current)":"Date & Time","Recommended Content Domain":"Date / Time","Page Type":"Calculator","Search Intent / Purpose":"Calculate the arithmetic average of a list of numbers and see the sum, count, median, minimum, and maximum with a clear visual breakdown.","Formula / Algorithm Used in Tool":"Average Formula: Average (arithmetic mean) = (x₁ + x₂ + … + xₙ) ÷ n","Required User Inputs":"Numbers","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Numbers. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Calendar convention and date arithmetic rules; time-zone functions require current IANA/browser data.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When calendar/time-zone rules change","Important Assumptions / Limitations":"The arithmetic mean is not always the best summary for skewed data or data with influential outliers. This tool treats every input equally; it does not calculate a weighted mean unless you explicitly repeat values according to their intended weight.","Current Source URLs in Page":"https://www.calculator.net/average-calculator.html | https://csrc.nist.gov/glossary/term/mean | https://dlmf.nist.gov/1.2","Implementation Path":"/average-calculator/index.html"}</script><div class="cp-ad-slot cp-ad-wide"><div>Advertisement<small>Responsive lower-page placement</small></div></div></main><aside aria-label="Related calculators" class="cp-related-sidebar"><div class="cp-ad-slot cp-ad-sidebar"><div>Advertisement<small>300 × 250 / responsive</small></div></div><span class="cp-side-kicker">Related tools</span><h2>Date &amp; Time</h2><p>More tools from the same Calculator Data category.</p><div class="cp-related-list"><a class="cp-related-link" href="../day-counter/index.html"><span class="cp-related-dot">›</span><span><strong>Day Counter</strong><small>Count calendar days between two dates, with inclusive/exclusive options plus weekda…</small></span></a><a class="cp-related-link" href="../age-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Age Calculator</strong><small>Calculate age between two dates in years, months, and days, plus total days, weeks,…</small></span></a><a class="cp-related-link" href="../date-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Date Calculator</strong><small>Calculate days between dates or add and subtract years, months, weeks, and days fro…</small></span></a><a class="cp-related-link" href="../hours-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Hours Calculator</strong><small>Calculate hours and minutes between two clock times, with an overnight option and d…</small></span></a><a class="cp-related-link" href="../time-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time Calculator</strong><small>Add or subtract two time durations in hours, minutes, and seconds and view the norm…</small></span></a><a class="cp-related-link" href="../marriage-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Marriage Tax Calculator</strong><small>Compare a simplified 2026 federal tax estimate for two people before marriage with…</small></span></a><a class="cp-related-link" href="../gas-mileage-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Gas Mileage Calculator</strong><small>Calculate MPG or L/100 km from odometer readings and fuel added at your latest fill…</small></span></a><a class="cp-related-link" href="../time-card-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time Card Calculator</strong><small>Total weekly work hours, unpaid breaks, configurable overtime, and estimated gross…</small></span></a></div><a class="cp-side-category" href="../date-time/index.html"><span>View category</span><span>→</span></a></aside></div><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script>const area=document.getElementById('values'),err=document.getElementById('error');const fmt=n=>{if(!Number.isFinite(n))return '—';return parseFloat(n.toPrecision(12)).toLocaleString(undefined,{maximumFractionDigits:10})};function run(){const toks=area.value.trim().split(/[\s,;]+/).filter(Boolean);const a=toks.map(Number);err.textContent='';if(!a.length||a.some(x=>!Number.isFinite(x))){err.textContent='Enter a valid list of numbers separated by commas, spaces, or line breaks.';return}const sum=a.reduce((x,y)=>x+y,0),mean=sum/a.length,s=[...a].sort((x,y)=>x-y),mid=Math.floor(s.length/2),med=s.length%2?s[mid]:(s[mid-1]+s[mid])/2,min=s[0],max=s[s.length-1];for(const [id,val] of Object.entries({mean,sum,count:a.length,median:med,range:max-min,min,max}))document.getElementById(id).textContent=fmt(val);const span=max-min||1;document.getElementById('bars').innerHTML=a.slice(0,30).map(x=>`<div class="bar" title="${x}" style="height:${18+72*(x-min)/span}px"></div>`).join('')}document.getElementById('calculate').onclick=run;document.getElementById('reset').onclick=()=>{area.value='10, 2, 38, 23, 38, 23, 21';run()};run();</script><script defer="" src="../assets/js/global.js"></script>
-<script defer="" src="../assets/js/taxonomy.js"></script><script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script></body></html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots" />
+    <!-- Primary Meta Tags -->
+<title>Average Calculator – Find Mean, Sum, Median, Min &amp; Max</title>
+<meta name="title" content="Average Calculator – Find Mean, Sum, Median, Min &amp; Max">
+<meta name="description" content="Calculate the arithmetic average of a list of numbers and view the sum, count, median, minimum, and maximum values in one clear numerical summary.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://monkeymart-onlinefree.github.io/average-calculator/">
+
+<!-- Facebook / Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monkeymart-onlinefree.github.io/average-calculator/">
+<meta property="og:title" content="Average Calculator – Find Mean, Sum, Median, Min &amp; Max">
+<meta property="og:description" content="Calculate the arithmetic average of a list of numbers and view the sum, count, median, minimum, and maximum values in one clear numerical summary.">
+<meta property="og:site_name" content="Average Calculator">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://monkeymart-onlinefree.github.io/average-calculator/">
+<meta name="twitter:title" content="Average Calculator – Find Mean, Sum, Median, Min &amp; Max">
+<meta name="twitter:description" content="Calculate the arithmetic average of a list of numbers and view the sum, count, median, minimum, and maximum values in one clear numerical summary.">
+    <meta content="#1477ff" name="theme-color" />
+    <style>
+        :root {
+            --teal: #0d746d;
+            --coral: #f06f5f;
+            --sand: #f8edda;
+            --ink: #153b3a;
+            --mint: #d9f3eb;
+            --paper: #fffdf8
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, #f9f0e0, #f3fbf7 60%, #fffaf3);
+            color: var(--ink);
+            font-family: ui-rounded, 'Avenir Next', Inter, system-ui, sans-serif;
+            line-height: 1.6
+        }
+
+        .wrap {
+            width: min(1100px, 92vw);
+            margin: auto
+        }
+
+        header {
+            padding: 22px 0
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between
+        }
+
+        .brand {
+            font-weight: 950;
+            color: var(--teal)
+        }
+
+        .brand em {
+            font-style: normal;
+            color: var(--coral)
+        }
+
+        .crumb {
+            font-size: .86rem;
+            color: #66817e
+        }
+
+        .hero {
+            padding: 44px 0 52px;
+            text-align: center;
+            position: relative;
+            overflow: hidden
+        }
+
+        h1 {
+            font-size: clamp(2.7rem, 6vw, 5.3rem);
+            line-height: .95;
+            letter-spacing: -.065em;
+            margin: .4rem 0 1rem
+        }
+
+        .lead {
+            max-width: 720px;
+            margin: auto;
+            color: #587774;
+            font-size: 1.08rem
+        }
+
+        .balance {
+            height: 180px;
+            margin: 30px auto 0;
+            max-width: 720px;
+            position: relative
+        }
+
+        .beam {
+            position: absolute;
+            width: 64%;
+            height: 16px;
+            border-radius: 12px;
+            background: linear-gradient(#1f8c84, #09665f);
+            left: 18%;
+            top: 55px;
+            box-shadow: 0 9px 0 #07534e;
+            transform: rotate(-3deg)
+        }
+
+        .stand {
+            position: absolute;
+            left: 50%;
+            top: 52px;
+            width: 18px;
+            height: 110px;
+            background: var(--teal);
+            transform: translateX(-50%);
+            border-radius: 10px
+        }
+
+        .stand:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            width: 120px;
+            height: 16px;
+            background: #11665f;
+            transform: translateX(-50%);
+            border-radius: 50%
+        }
+
+        .pan {
+            position: absolute;
+            top: 71px;
+            width: 190px;
+            height: 64px;
+            border: 4px solid #db6759;
+            border-top: 0;
+            border-radius: 0 0 100px 100px
+        }
+
+        .pan.left {
+            left: 8%
+        }
+
+        .pan.right {
+            right: 8%
+        }
+
+        .pan span {
+            display: inline-grid;
+            place-items: center;
+            width: 44px;
+            height: 44px;
+            margin: -23px 3px 0;
+            background: #fff7ed;
+            border: 2px solid #f19a8f;
+            border-radius: 14px;
+            box-shadow: 0 9px 15px #a0514322;
+            font-weight: 900;
+            color: #a53f35
+        }
+
+        .calc {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 55px
+        }
+
+        .entry {
+            background: #fffdf9;
+            border: 1px solid #f2e2ca;
+            border-radius: 28px;
+            padding: 28px;
+            box-shadow: 0 22px 55px #795d3420
+        }
+
+        label {
+            display: block;
+            font-weight: 900;
+            margin-bottom: 9px
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 140px;
+            border: 2px solid #e4d9c7;
+            background: #fffaf2;
+            border-radius: 19px;
+            padding: 16px;
+            font: 750 1.05rem ui-monospace, monospace;
+            resize: vertical;
+            outline: none
+        }
+
+        textarea:focus {
+            border-color: #36a79e;
+            box-shadow: 0 0 0 5px #0d746d12
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px
+        }
+
+        button {
+            border: 0;
+            border-radius: 14px;
+            padding: 13px 18px;
+            font-weight: 900;
+            cursor: pointer
+        }
+
+        .primary {
+            background: var(--coral);
+            color: white;
+            box-shadow: 0 10px 0 #b94c40
+        }
+
+        .ghost {
+            background: #e6f3ef;
+            color: var(--teal)
+        }
+
+        .error {
+            min-height: 24px;
+            color: #b42318;
+            font-weight: 700;
+            margin-top: 12px
+        }
+
+        .result {
+            background: linear-gradient(145deg, #09675f, #0e8177 60%, #22a596);
+            color: white;
+            border-radius: 28px;
+            padding: 28px;
+            box-shadow: 0 24px 55px #0b62573b;
+            position: relative;
+            overflow: hidden
+        }
+
+        .result:after {
+            content: 'Σ';
+            position: absolute;
+            right: -12px;
+            top: -48px;
+            font-size: 12rem;
+            font-weight: 900;
+            color: #ffffff0b
+        }
+
+        .result small {
+            text-transform: uppercase;
+            letter-spacing: .16em;
+            font-weight: 850;
+            opacity: .75
+        }
+
+        .mean {
+            font-size: clamp(3rem, 7vw, 5.3rem);
+            font-weight: 950;
+            letter-spacing: -.07em;
+            line-height: 1;
+            margin: .35rem 0 1.2rem
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px
+        }
+
+        .metrics div {
+            padding: 13px;
+            background: #ffffff10;
+            border: 1px solid #ffffff19;
+            border-radius: 15px
+        }
+
+        .metrics b {
+            display: block;
+            font-size: 1.25rem
+        }
+
+        .stackviz {
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            height: 90px;
+            margin-top: 18px
+        }
+
+        .bar {
+            flex: 1;
+            min-width: 5px;
+            background: #ffffff50;
+            border-radius: 8px 8px 2px 2px
+        }
+
+        article {
+            background: var(--paper);
+            border-radius: 28px;
+            padding: clamp(24px, 4vw, 44px);
+            box-shadow: 0 22px 55px #735c3717;
+            margin-bottom: 55px
+        }
+
+        h2 {
+            font-size: clamp(1.55rem, 3vw, 2.15rem);
+            letter-spacing: -.035em;
+            margin-top: 2rem
+        }
+
+        .formula {
+            padding: 16px;
+            background: #e7f5f1;
+            border-radius: 17px;
+            border-left: 5px solid var(--teal);
+            font: 750 1rem ui-monospace, monospace
+        }
+
+        .example-table {
+            width: 100%;
+            border-collapse: collapse
+        }
+
+        .example-table th,
+        .example-table td {
+            text-align: left;
+            border-bottom: 1px solid #eadfce;
+            padding: 10px
+        }
+
+        details {
+            border-top: 1px solid #eadfce;
+            padding: 14px 0
+        }
+
+        summary {
+            font-weight: 900;
+            cursor: pointer
+        }
+
+        .sources a {
+            color: #0b6c64;
+            word-break: break-word
+        }
+
+        footer {
+            padding-bottom: 40px;
+            color: #67827f;
+            font-size: .88rem
+        }
+
+        @media(max-width:760px) {
+            .calc {
+                grid-template-columns: 1fr
+            }
+
+            .pan {
+                width: 130px
+            }
+
+            .pan.left {
+                left: 1%
+            }
+
+            .pan.right {
+                right: 1%
+            }
+        }
+    </style>
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://monkeymart-onlinefree.github.io/average-calculator/#webapplication",
+      "name": "Average Calculator",
+      "url": "https://monkeymart-onlinefree.github.io/average-calculator/",
+      "description": "Calculate the arithmetic average of a list of numbers and view the sum, count, median, minimum, and maximum values in one clear numerical summary.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://monkeymart-onlinefree.github.io/average-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://monkeymart-onlinefree.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Average Calculator",
+          "item": "https://monkeymart-onlinefree.github.io/average-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://monkeymart-onlinefree.github.io/average-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is average the same as arithmetic mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. In this calculator, average means the arithmetic mean: add the numbers and divide by how many numbers there are."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between the average and median?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The average uses every value in the sum. The median is the middle value after the numbers are sorted. With an even number of observations, the median is the average of the two middle values."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the order of the numbers change the average?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Changing the order does not change the sum, count, or arithmetic average."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are repeated numbers counted more than once?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Each entered observation is included separately. If the same number appears multiple times, every occurrence contributes to the sum and count."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this calculator calculate a weighted average?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No separate weighted-average calculation is used. Each entered number has equal weight. If a value is repeated, each repetition is treated as another observation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can the average and median be very different?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A particularly large or small value can move the arithmetic mean while having less effect on the median. This is why both values can be useful when reviewing a data set."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can the arithmetic average be greater than the maximum or smaller than the minimum?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For a non-empty list of ordinary real numbers with equal positive weighting, the arithmetic mean falls between the minimum and maximum values."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://monkeymart-onlinefree.github.io/#website",
+      "url": "https://monkeymart-onlinefree.github.io/",
+      "name": "Monkeymart Onlinefree",
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+
+
+    <link href="../assets/css/global.css" rel="stylesheet" />
+    <link href="../assets/css/taxonomy.css" rel="stylesheet" />
+    <link data-cp-redesign="1" href="../assets/css/redesign.css" rel="stylesheet" />
+</head>
+
+<body data-cp-category="date-time" data-cp-page-type="Calculator">
+    <header class="cp-site-header" data-cp-header="">
+        <div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span
+                    class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a>
+            <nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance"
+                    href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health"
+                    href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math"
+                    href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time"
+                    href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering"
+                    href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a
+                    data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a
+                    class="cp-all-categories" href="../calculators/index.html">All tools</a></nav>
+            <div class="cp-header-actions">
+                <form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get"
+                    role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q"
+                        placeholder="Search calculators…" type="search" />
+                    <div class="cp-search-results" hidden="" role="listbox"></div>
+                </form><a aria-label="Browse all calculators" class="cp-icon-button"
+                    href="../calculators/index.html">☰</a>
+            </div>
+        </div>
+    </header>
+    <nav aria-label="Breadcrumb" class="cp-breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../date-time/index.html">Date &amp; Time</a></li>
+            <li><a aria-current="page" href="index.html">Average Calculator</a></li>
+        </ol>
+    </nav>
+    <div class="cp-tool-taxonomy"><a href="../date-time/index.html">Browse Date &amp; Time</a><a
+            href="../calculators/index.html">All calculators</a></div>
+    <div class="cp-page-layout">
+        <main class="wrap" id="main">
+            <h1 class="page-title">Average Calculator</h1>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+            <section class="calc">
+                <div class="entry"><label for="values">Numbers</label><textarea
+                        id="values">10, 2, 38, 23, 38, 23, 21</textarea>
+                    <p class="crumb">Separate numbers with commas, spaces, or new lines.</p>
+                    <div class="actions"><button class="primary" id="calculate">Calculate average</button><button
+                            class="ghost" id="reset">Reset</button></div>
+                    <div class="error" id="error" role="alert"></div>
+                </div>
+                <div aria-live="polite" class="result"><small>Arithmetic mean</small>
+                    <div class="mean" id="mean">22.142857</div>
+                    <div class="metrics">
+                        <div>Sum<b id="sum">155</b></div>
+                        <div>Count<b id="count">7</b></div>
+                        <div>Median<b id="median">23</b></div>
+                        <div>Range<b id="range">36</b></div>
+                        <div>Minimum<b id="min">2</b></div>
+                        <div>Maximum<b id="max">38</b></div>
+                    </div>
+                    <div class="stackviz" id="bars"></div>
+                </div>
+            </section>
+            <section aria-labelledby="cp-visual-title" class="cp-visual-card" data-cp-auto-chart="">
+                <div class="cp-visual-top">
+                    <div><span class="cp-visual-kicker">Visual breakdown</span>
+                        <h2 id="cp-visual-title">Calculation Graph</h2>
+                        <p>Live numeric inputs or results are visualized automatically as you use the calculator.</p>
+                    </div><span class="cp-chart-badge">Live view</span>
+                </div>
+                <div class="cp-chart-wrap"><canvas aria-label="Calculation values chart" role="img"></canvas></div>
+                <div aria-label="Calculation method flow" class="cp-flow">
+                    <div class="cp-flow-step"><b>1. Input</b><span>Enter calculator values</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>2. Method</b><span>Apply the tool formula</span></div><span
+                        class="cp-flow-arrow">→</span>
+                    <div class="cp-flow-step"><b>3. Result</b><span>Review the calculated output</span></div>
+                </div>
+            </section>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive 970 × 90 / 728 × 90</small></div>
+            </div>
+           
+ 
+
+<article class="article">
+ 
+  <p>The Average Calculator finds the arithmetic mean of a list of numbers. Enter your numbers to calculate the average and see supporting results including the sum, count, median, minimum, and maximum.</p>
+
+  <section id="what">
+    <h2>What Is the Average Calculator?</h2>
+    <p>The Average Calculator is a simple tool for finding the arithmetic average, also called the arithmetic mean, of multiple numbers.</p>
+    <p>It is useful when you want one central value for a set of numbers while also checking important summary values such as the median, total sum, number of observations, smallest value, and largest value.</p>
+  </section>
+
+  <section id="how">
+    <h2>How to Use the Average Calculator</h2>
+    <h3>Numbers</h3>
+    <p>Enter the numbers you want to calculate.</p>
+    <p>Each entered number is treated as one observation with equal importance. For a meaningful result, the values should normally represent the same type of quantity or use compatible units.</p>
+    <p>The calculator uses the complete list to determine the average and its supporting summary values.</p>
+  </section>
+
+  <section id="formula">
+    <h2>Formula / Calculation Method</h2>
+
+    <h3>Main Formula</h3>
+    <p>The arithmetic average is calculated by adding all values and dividing the total by the number of values:</p>
+    <div class="formula"><strong>Average = (x₁ + x₂ + ... + xₙ) ÷ n</strong></div>
+    <p>It can also be written as:</p>
+    <div class="formula"><strong>A = Σxᵢ / n</strong></div>
+    <p>NIST defines the arithmetic mean as the sum of the data points divided by the number of data points.</p>
+
+    <h3>Variables</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>A</strong></td>
+          <td>Arithmetic average or mean</td>
+          <td>Same unit as the entered numbers</td>
+        </tr>
+        <tr>
+          <td><strong>xᵢ</strong></td>
+          <td>Each individual number</td>
+          <td>Same unit as the data</td>
+        </tr>
+        <tr>
+          <td><strong>n</strong></td>
+          <td>Number of entered values</td>
+          <td>Count</td>
+        </tr>
+        <tr>
+          <td><strong>Σ</strong></td>
+          <td>Sum of all included values</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Calculation Sequence</h3>
+    <ol>
+      <li>Add all entered numbers to calculate the sum.</li>
+      <li>Count how many numbers are included.</li>
+      <li>Divide the sum by the count to calculate the arithmetic average.</li>
+      <li>Consider the values in sorted order to determine the median.</li>
+      <li>Identify the smallest and largest values for the minimum and maximum.</li>
+    </ol>
+
+    <h3>Sum</h3>
+    <p>The sum is the total of all entered values:</p>
+    <div class="formula"><strong>Sum = x₁ + x₂ + ... + xₙ</strong></div>
+    <p>or:</p>
+    <div class="formula"><strong>S = Σxᵢ</strong></div>
+
+    <h3>Count</h3>
+    <p>The count is simply the number of values included in the calculation:</p>
+    <div class="formula"><strong>Count = n</strong></div>
+    <p>Each entered observation contributes one to the count.</p>
+
+    <h3>Median</h3>
+    <p>The median is the middle value after the numbers are arranged from smallest to largest.</p>
+    <p>For an odd number of observations:</p>
+    <div class="formula"><strong>Median = middle value</strong></div>
+    <p>For an even number of observations:</p>
+    <div class="formula"><strong>Median = (two middle values) ÷ 2</strong></div>
+    <p>This follows the standard median definition described by the NIST Engineering Statistics Handbook.</p>
+
+    <h3>Minimum</h3>
+    <p>The minimum is the smallest number in the list.</p>
+
+    <h3>Maximum</h3>
+    <p>The maximum is the largest number in the list.</p>
+  </section>
+
+  <section id="example">
+    <h2>Worked Example</h2>
+    <p>Suppose the entered numbers are:</p>
+    <p><strong>12, 18, 25, 35, 40</strong></p>
+
+    <h3>Inputs</h3>
+    <ul>
+      <li>Numbers: 12, 18, 25, 35, 40</li>
+    </ul>
+
+    <h3>Step 1: Calculate the Sum</h3>
+    <div class="formula"><strong>Sum = 12 + 18 + 25 + 35 + 40</strong></div>
+    <div class="formula"><strong>Sum = 130</strong></div>
+
+    <h3>Step 2: Calculate the Average</h3>
+    <p>There are five numbers:</p>
+    <div class="formula"><strong>n = 5</strong></div>
+    <p>Apply the average formula:</p>
+    <div class="formula"><strong>Average = 130 ÷ 5</strong></div>
+    <div class="formula"><strong>Average = 26</strong></div>
+
+    <h3>Step 3: Calculate the Supporting Results</h3>
+    <p>The values in ascending order are:</p>
+    <p><strong>12, 18, 25, 35, 40</strong></p>
+    <p>Therefore:</p>
+    <ul>
+      <li>Median = <strong>25</strong></li>
+      <li>Minimum = <strong>12</strong></li>
+      <li>Maximum = <strong>40</strong></li>
+      <li>Count = <strong>5</strong></li>
+      <li>Sum = <strong>130</strong></li>
+    </ul>
+
+    <h3>Final Result</h3>
+    <div class="formula"><strong>Average = 26</strong></div>
+    <p>The five numbers have a total of 130, a median of 25, a minimum of 12, and a maximum of 40.</p>
+  </section>
+
+  <section id="results">
+    <h2>Understanding Your Results</h2>
+
+    <h3>Average</h3>
+    <p>The average is the equal-share value obtained by dividing the sum by the number of observations. It is expressed in the same unit as the original numbers.</p>
+
+    <h3>Sum</h3>
+    <p>The sum shows the total value of all numbers before division.</p>
+
+    <h3>Count</h3>
+    <p>The count tells you how many individual observations were included.</p>
+
+    <h3>Median</h3>
+    <p>The median shows the center of the ordered data. It can differ significantly from the average when one or more values are unusually high or low.</p>
+
+    <h3>Minimum</h3>
+    <p>The minimum identifies the smallest entered value.</p>
+
+    <h3>Maximum</h3>
+    <p>The maximum identifies the largest entered value.</p>
+
+    <p>Looking at the average together with the median, minimum, and maximum can provide more context than looking at the average alone.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Assumptions and Limitations</h2>
+
+    <p>The calculator uses the <strong>arithmetic mean</strong>, not a geometric, harmonic, or weighted mean.</p>
+
+    <p>Every entered value receives equal weight. There is no separate weight input. Repeating a value multiple times causes that value to be counted multiple times and therefore gives it more influence on the result.</p>
+
+    <p>The arithmetic mean may not always represent the typical value well when the data are strongly skewed or contain unusually large or small observations. The median can be useful for comparison because it is generally less affected by extreme observations.</p>
+
+    <p>The calculation requires at least one observation mathematically because the formula divides by the number of values.</p>
+
+    <p>The arithmetic-mean formula does not require a fixed decimal precision. If a displayed result is rounded, the shown value is an approximation of the exact quotient.</p>
+
+    <p>This calculator summarizes the entered numbers but does not by itself measure variability or describe the complete distribution of the data.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq">
+      <summary>Is average the same as arithmetic mean?</summary>
+      <p>Yes. In this calculator, <strong>average</strong> means the arithmetic mean: add the numbers and divide by how many numbers there are.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What is the difference between the average and median?</summary>
+      <p>The average uses every value in the sum. The median is the middle value after the numbers are sorted. With an even number of observations, the median is the average of the two middle values.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does the order of the numbers change the average?</summary>
+      <p>No. Changing the order does not change the sum, count, or arithmetic average.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Are repeated numbers counted more than once?</summary>
+      <p>Yes. Each entered observation is included separately. If the same number appears multiple times, every occurrence contributes to the sum and count.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Does this calculator calculate a weighted average?</summary>
+      <p>No separate weighted-average calculation is used. Each entered number has equal weight. If a value is repeated, each repetition is treated as another observation.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can the average and median be very different?</summary>
+      <p>Yes. A particularly large or small value can move the arithmetic mean while having less effect on the median. This is why both values can be useful when reviewing a data set.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Can the arithmetic average be greater than the maximum or smaller than the minimum?</summary>
+      <p>For a non-empty list of ordinary real numbers with equal positive weighting, the arithmetic mean falls between the minimum and maximum values.</p>
+    </details>
+  </section>
+
+  <section id="sources">
+    <h2>Sources &amp; Methodology</h2>
+
+    <p>The calculation uses the standard mathematical definition of the arithmetic mean. Median methodology and related terminology were cross-checked against NIST references.</p>
+
+    <h3>Formula / Methodology Sources</h3>
+
+    <ul class="sources">
+      <li>
+        <a href="https://dlmf.nist.gov/1.2?utm_source=chatgpt.com#iv" rel="noopener" target="_blank">NIST Digital Library of Mathematical Functions — Means</a>
+        <p>Provides the standard formula for the arithmetic mean.</p>
+      </li>
+      <li>
+        <a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda351.htm?utm_source=chatgpt.com" rel="noopener" target="_blank">NIST Engineering Statistics Handbook — Measures of Location</a>
+        <p>Supports the definitions and calculation methods for the arithmetic mean and median.</p>
+      </li>
+      <li>
+        <a href="https://csrc.nist.gov/glossary/term/mean?utm_source=chatgpt.com" rel="noopener" target="_blank">NIST CSRC Glossary — Mean</a>
+        <p>Defines the mean as the sum of the data points divided by the number of data points.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="related">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="https://example.com/mean-median-mode-range-calculator/">Mean Median Mode Range Calculator</a></li>
+      <li><a href="https://example.com/statistics-calculator/">Statistics Calculator</a></li>
+      <li><a href="https://example.com/standard-deviation-calculator/">Standard Deviation Calculator</a></li>
+      <li><a href="https://example.com/percent-calculator/">Percent Calculator</a></li>
+      <li><a href="https://example.com/ratio-calculator/">Ratio Calculator</a></li>
+    </ul>
+  </section>
+</article>
+
+
+
+
+            <script class="cp-calculator-data"
+                type="application/json">{"index":"211","Batch":"22","Calculator / Page":"Average Calculator","Slug":"average-calculator","Site Category (Current)":"Date & Time","Recommended Content Domain":"Date / Time","Page Type":"Calculator","Search Intent / Purpose":"Calculate the arithmetic average of a list of numbers and see the sum, count, median, minimum, and maximum with a clear visual breakdown.","Formula / Algorithm Used in Tool":"Average Formula: Average (arithmetic mean) = (x₁ + x₂ + … + xₙ) ÷ n","Required User Inputs":"Numbers","Primary Outputs":"Primary calculated result and supporting values","Content Writer Must Explain":"Start with a direct answer describing exactly what the tool calculates. Show the exact implemented formula/algorithm and define every symbol, unit, and transformation. Explain every input: Numbers. Add a worked example using realistic values that reproduces the calculator result. Explain assumptions, valid input ranges, rounding, edge cases and when results can differ from official/clinical/lender calculations. Add concise FAQs that answer formula, input, result and limitation questions. Date-stamp all time-sensitive data and cite the authoritative current source.","Data / Research Needed for Exact Content":"Calendar convention and date arithmetic rules; time-zone functions require current IANA/browser data.","Fresh Data Required?":"Conditional","Recommended Update Frequency":"When calendar/time-zone rules change","Important Assumptions / Limitations":"The arithmetic mean is not always the best summary for skewed data or data with influential outliers. This tool treats every input equally; it does not calculate a weighted mean unless you explicitly repeat values according to their intended weight.","Current Source URLs in Page":"https://www.calculator.net/average-calculator.html | https://csrc.nist.gov/glossary/term/mean | https://dlmf.nist.gov/1.2","Implementation Path":"/average-calculator/index.html"}</script>
+            <div class="cp-ad-slot cp-ad-wide">
+                <div>Advertisement<small>Responsive lower-page placement</small></div>
+            </div>
+        </main>
+        <aside aria-label="Related calculators" class="cp-related-sidebar">
+            <div class="cp-ad-slot cp-ad-sidebar">
+                <div>Advertisement<small>300 × 250 / responsive</small></div>
+            </div><span class="cp-side-kicker">Related tools</span>
+            <h2>Date &amp; Time</h2>
+            <p>More tools from the same Calculator Data category.</p>
+            <div class="cp-related-list"><a class="cp-related-link" href="../day-counter/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Day Counter</strong><small>Count calendar days
+                            between two dates, with inclusive/exclusive options plus weekda…</small></span></a><a
+                    class="cp-related-link" href="../age-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Age Calculator</strong><small>Calculate age between
+                            two dates in years, months, and days, plus total days, weeks,…</small></span></a><a
+                    class="cp-related-link" href="../date-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Date Calculator</strong><small>Calculate days
+                            between dates or add and subtract years, months, weeks, and days fro…</small></span></a><a
+                    class="cp-related-link" href="../hours-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Hours Calculator</strong><small>Calculate hours and
+                            minutes between two clock times, with an overnight option and d…</small></span></a><a
+                    class="cp-related-link" href="../time-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Time Calculator</strong><small>Add or subtract two
+                            time durations in hours, minutes, and seconds and view the norm…</small></span></a><a
+                    class="cp-related-link" href="../marriage-calculator/index.html"><span
+                        class="cp-related-dot">›</span><span><strong>Marriage Tax Calculator</strong><small>Compare a
+                            simplified 2026 federal tax estimate for two people before marriage
+                            with…</small></span></a><a class="cp-related-link"
+                    href="../gas-mileage-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Gas
+                            Mileage Calculator</strong><small>Calculate MPG or L/100 km from odometer readings and fuel
+                            added at your latest fill…</small></span></a><a class="cp-related-link"
+                    href="../time-card-calculator/index.html"><span class="cp-related-dot">›</span><span><strong>Time
+                            Card Calculator</strong><small>Total weekly work hours, unpaid breaks, configurable
+                            overtime, and estimated gross…</small></span></a></div><a class="cp-side-category"
+                href="../date-time/index.html"><span>View category</span><span>→</span></a>
+        </aside>
+    </div>
+    <footer>
+        <div class="wrap">© 2026 CalcPro. All rights reserved.</div>
+    </footer>
+    <script>const area = document.getElementById('values'), err = document.getElementById('error'); const fmt = n => { if (!Number.isFinite(n)) return '—'; return parseFloat(n.toPrecision(12)).toLocaleString(undefined, { maximumFractionDigits: 10 }) }; function run() { const toks = area.value.trim().split(/[\s,;]+/).filter(Boolean); const a = toks.map(Number); err.textContent = ''; if (!a.length || a.some(x => !Number.isFinite(x))) { err.textContent = 'Enter a valid list of numbers separated by commas, spaces, or line breaks.'; return } const sum = a.reduce((x, y) => x + y, 0), mean = sum / a.length, s = [...a].sort((x, y) => x - y), mid = Math.floor(s.length / 2), med = s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2, min = s[0], max = s[s.length - 1]; for (const [id, val] of Object.entries({ mean, sum, count: a.length, median: med, range: max - min, min, max })) document.getElementById(id).textContent = fmt(val); const span = max - min || 1; document.getElementById('bars').innerHTML = a.slice(0, 30).map(x => `<div class="bar" title="${x}" style="height:${18 + 72 * (x - min) / span}px"></div>`).join('') } document.getElementById('calculate').onclick = run; document.getElementById('reset').onclick = () => { area.value = '10, 2, 38, 23, 38, 23, 21'; run() }; run();</script>
+    <script defer="" src="../assets/js/global.js"></script>
+    <script defer="" src="../assets/js/taxonomy.js"></script>
+    <script data-cp-redesign="1" defer="True" src="../assets/js/redesign.js"></script>
+</body>
+
+</html>
