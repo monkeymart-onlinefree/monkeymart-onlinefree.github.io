@@ -1,1 +1,108 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Search Calculators | CalcPro</title><meta name="description" content="Search all 216 mapped CalcPro calculators."><meta name="robots" content="index,follow"><meta name="theme-color" content="#1477ff"><link rel="stylesheet" href="../assets/css/global.css"><link rel="stylesheet" href="../assets/css/redesign.css"></head><body class="cp-new-page"><header class="cp-site-header" data-cp-header=""><div class="cp-header-shell"><a aria-label="CalcPro home" class="cp-brand" href="../index.html"><span class="cp-brand-mark">▦</span><span class="cp-brand-word">Calc<span>Pro</span></span></a><nav aria-label="Primary navigation" class="cp-main-nav"><a data-cp-section="finance" href="../finance/index.html"><span>Finance</span></a><a data-cp-section="health" href="../health/index.html"><span>Health &amp; Fitness</span></a><a data-cp-section="math" href="../math/index.html"><span>Math &amp; Statistics</span></a><a data-cp-section="date-time" href="../date-time/index.html"><span>Date &amp; Time</span></a><a data-cp-section="engineering" href="../engineering/index.html"><span>Engineering &amp; Construction</span></a><a data-cp-section="conversion" href="../conversion/index.html"><span>Conversion &amp; Web</span></a><a class="cp-all-categories" href="../calculators/index.html">All tools</a></nav><div class="cp-header-actions"><form action="../search/index.html" autocomplete="off" class="cp-header-search" method="get" role="search"><input aria-label="Search CalcPro calculators" class="cp-search-input" name="q" placeholder="Search calculators…" type="search"/><div class="cp-search-results" hidden="" role="listbox"></div></form><a aria-label="Browse all calculators" class="cp-icon-button" href="../calculators/index.html">☰</a></div></div></header><main id="main"><section class="cp-new-hero"><div class="cp-shell"><div class="cp-new-hero-inner"><h1>Search Calculators</h1><p>Search the complete 216-page directory by name, category, purpose, or slug.</p></div></div></section><section class="cp-section"><div class="cp-shell"><div class="cp-filterbar"><input id="q" type="search" placeholder="Type a calculator name…" aria-label="Search calculators"><select id="cat" aria-label="Category"><option value="">All categories</option><option value="Finance">Finance</option><option value="Health &amp; Fitness">Health &amp; Fitness</option><option value="Math &amp; Statistics">Math &amp; Statistics</option><option value="Date &amp; Time">Date &amp; Time</option><option value="Engineering &amp; Construction">Engineering &amp; Construction</option><option value="Conversion &amp; Web">Conversion &amp; Web</option><option value="Education">Education</option><option value="Other Tools">Other Tools</option></select></div><div id="results" class="cp-tool-directory"></div></div></section></main><footer><div class="wrap">© 2026 CalcPro. All rights reserved.</div></footer><script src="../assets/js/search-index.js"></script><script src="../assets/js/global.js"></script><script>(async()=>{const q=document.getElementById('q'),cat=document.getElementById('cat'),out=document.getElementById('results');const data=window.CALCPRO_SEARCH_INDEX||[];const p=new URLSearchParams(location.search);q.value=p.get('q')||'';function escs(s){return String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}function render(){const term=q.value.toLowerCase().trim(),c=cat.value;const rr=data.filter(x=>(!c||x.category===c)&&(!term||(x.title+' '+x.slug+' '+x.description+' '+x.category).toLowerCase().includes(term))).slice(0,120);out.innerHTML=rr.map(x=>`<a class="cp-tool-card-new" href="../${escs(x.slug)}/index.html"><h3>${escs(x.title)}</h3><p>${escs(x.description)}</p><span>${escs(x.category)}</span></a>`).join('')||'<p>No matching calculator found.</p>'}q.addEventListener('input',render);cat.addEventListener('change',render);render()})();</script></body></html>
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <title>Search Games - Monkey Mart</title>
+  <meta name="description" content="Search free online games and play instantly in your browser.">
+  <link rel="stylesheet" type="text/css" href="/assest/css/games.css">
+  <link rel="stylesheet" type="text/css" href="/assest/css/game-page.css">
+  <link rel="stylesheet" type="text/css" href="/assest/css/nav.css">
+  <link rel="stylesheet" type="text/css" href="/assest/css/all.css">
+</head>
+<body>
+  <div id="ubgHeader" class="app-header desktop-nav-layout">
+    <div class="header-left">
+      <a href="/">
+        <div class="site-logo">
+          <div class="logo-icon">
+            <img src="/favicon.png" alt="Monkey Mart Unblocked" class="logo-image"
+              style="width: 40px; height: 40px; margin-right: 10px;">
+            <strong style="color: rgb(255, 255, 255); font-size: 24px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Monkey Mart</strong>
+          </div>
+        </div>
+      </a>
+    </div>
+    <form class="search-form desktop-layout" action="/search/" method="get" autocomplete="off">
+      <div class="search-input-wrapper">
+        <input class="search-input search-field desktop-layout" id="search-input" name="q"
+          placeholder="Search games and categories" type="text" autocomplete="off" autocorrect="off"
+          autocapitalize="off" spellcheck="false" aria-label="Search games and categories">
+        <div class="icon-box"><span role="img" aria-hidden="true" class="icon icon-search icon-size-20"></span></div>
+        <div id="search-suggestions" class="search-results-dropdown hidden"></div>
+      </div>
+    </form>
+    <div class="header-right">
+      <a href="/all-games/" aria-label="All Games" class="btn btn-link-white btn-header-icon btn-header-icon-desktop">
+        <img src="/assest/icon/joystick-game-control-svgrepo-com.svg" alt="All Games"><span>All Games</span>
+      </a>
+      <a href="/popular/" aria-label="Popular Games" class="btn btn-link-white btn-header-icon btn-header-icon-desktop">
+        <img src="/assest/icon/category-svgrepo-com.svg" alt="Popular Games"><span>Popular Games</span>
+      </a>
+      <a href="/setting/" aria-label="Setting" class="btn btn-link-white btn-header-icon btn-header-icon-desktop setting-icon">
+        <img src="/assest/icon/settings-cog-line-svgrepo-com.svg" alt="Setting">
+      </a>
+    </div>
+  </div>
+
+  <div id="skrHeader" class="Header_mobile-43dhd mobile-nav-layout">
+    <div class="Header_left-43dhd">
+      <a href="/">
+        <div class="logo-43dhd">
+          <div class="logo_icon-48dhd"><img src="/favicon.png" alt="Monkey Mart" class="logo_image-48dhd"></div>
+        </div>
+      </a>
+    </div>
+    <div class="header-right">
+      <button id="mobile-search-button" type="button" aria-label="Open search"
+        class="btn btn-link-white btn-header-icon btn-header-icon-desktop mobile-search-button">
+        <span class="icon icon-search icon-size-20"></span>
+      </button>
+      <a href="/all-games/" aria-label="All Games"
+        class="btn btn-link-white btn-header-icon btn-header-icon-desktop btskr-icon">
+        <img src="/assest/icon/joystick-game-control-svgrepo-com.svg" alt="All Games">
+      </a>
+      <a href="/popular/" aria-label="Popular Games"
+        class="btn btn-link-white btn-header-icon btn-header-icon-desktop btskr-icon">
+        <img src="/assest/icon/category-svgrepo-com.svg" alt="Popular Games">
+      </a>
+      <a href="/setting/" aria-label="Setting"
+        class="btn btn-link-white btn-header-icon btn-header-icon-desktop setting-icon">
+        <img src="/assest/icon/settings-cog-line-svgrepo-com.svg" alt="Setting">
+      </a>
+    </div>
+  </div>
+
+  <div id="mobile-search-popup" class="mobile-search-popup" aria-hidden="true">
+    <div class="mobile-search-popup-panel">
+      <div class="mobile-search-popup-header">
+        <h2>Search Games</h2>
+        <button id="mobile-search-close" type="button" aria-label="Close search" class="mobile-search-close">×</button>
+      </div>
+      <form id="mobile-search-form" class="mobile-search-form" action="/search/" method="get" autocomplete="off">
+        <input id="mobile-search-input" class="search-input mobile-search-field" name="q"
+          placeholder="Search games and categories" type="text" autocomplete="off" autocorrect="off"
+          autocapitalize="off" spellcheck="false" aria-label="Search games and categories">
+        <button type="submit" class="btn btn-link-white mobile-search-submit">Search</button>
+      </form>
+      <p class="mobile-search-note">Enter a game name to see matching results.</p>
+    </div>
+  </div>
+
+  <main id="root">
+    <section id="search-results-page" class="search-results-page active" aria-live="polite">
+      <div class="search-results-header">
+        <div>
+          <h1 id="search-results-title" class="search-results-title"></h1>
+          <p id="search-results-note" class="search-results-note"></p>
+        </div>
+        <button id="search-results-close" class="search-results-close" type="button">Close</button>
+      </div>
+      <div id="search-results-grid" class="search-results-grid"></div>
+    </section>
+  </main>
+
+  <script src="/assest/js/search.js"></script>
+</body>
+</html>
